@@ -1,5 +1,14 @@
 {
-  "web1": "https://gaoqing.fm",
-  "web2": "https://www.80s.tw",
-  "web3": "https://www.btbtt15.com"
+  "web1": {
+    "url": "https://gaoqing.fm",
+    "name": "GQDT"
+  },
+  "web2": {
+    "url": "https://www.80s.tw",
+    "name": "80s"
+  },
+  "web3": {
+    "url": "https://www.btbtt15.com",
+    "name": "BTZJ"
+  }
 }
