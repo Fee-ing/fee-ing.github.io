@@ -1,14 +1,42 @@
 {
-  "web1": {
-    "url": "https://gaoqing.fm",
-    "name": "GQDT"
+  "web": {
+    "web1": {
+      "url": "https://gaoqing.fm",
+      "name": "GQDT"
+    },
+    "web2": {
+      "url": "https://www.80s.tw",
+      "name": "80s"
+    },
+    "web3": {
+      "url": "https://www.btbtt15.com",
+      "name": "BTZJ"
+    }
   },
-  "web2": {
-    "url": "https://www.80s.tw",
-    "name": "80s"
-  },
-  "web3": {
-    "url": "https://www.btbtt15.com",
-    "name": "BTZJ"
+  "bt": {
+    "bt1": {
+      "url": "https://www.yuhuage55.xyz",
+      "name": "YHG"
+    },
+    "bt2": {
+      "url": "http://clg00.site/?from=ciligou.app",
+      "name": "CLG"
+    },
+    "bt3": {
+      "url": "https://0cili.com",
+      "name": "WJ"
+    },
+    "bt4": {
+      "url": "https://www.zhongzilou.com",
+      "name": "ZZD"
+    },
+    "bt5": {
+      "url": "https://xccl6.xyz",
+      "name": "XC"
+    },
+    "bt6": {
+      "url": "http://www.btmovi.city",
+      "name": "CLZH"
+    }
   }
 }
