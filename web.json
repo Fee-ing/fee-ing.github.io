@@ -6,7 +6,7 @@
     },
     "web2": {
       "url": "https://www.80s.tw",
-      "name": "80s"
+      "name": "80S"
     },
     "web3": {
       "url": "https://www.btbtt15.com",
@@ -23,16 +23,20 @@
       "name": "WJ"
     },
     "bt3": {
-      "url": "https://www.zhongzilou.com",
-      "name": "ZZD"
+      "url": "https://cl.btsearch.xyz",
+      "name": "BTSaO"
     },
     "bt4": {
-      "url": "https://xccl6.xyz",
-      "name": "XC"
+      "url": "https://bt4g.org/",
+      "name": "BT4G"
     },
     "bt5": {
       "url": "http://www.btmovi.city",
       "name": "CLZH"
+    },
+    "bt6": {
+      "url": "https://bitsearch.to/",
+      "name": "BTSEARCH"
     }
   }
 }
