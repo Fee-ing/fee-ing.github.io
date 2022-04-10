@@ -24,10 +24,10 @@
     },
     "bt3": {
       "url": "https://cl.btsearch.xyz",
-      "name": "BTSaO"
+      "name": "BTSAO"
     },
     "bt4": {
-      "url": "https://bt4g.org/",
+      "url": "https://bt4g.org",
       "name": "BT4G"
     },
     "bt5": {
@@ -35,7 +35,7 @@
       "name": "CLZH"
     },
     "bt6": {
-      "url": "https://bitsearch.to/",
+      "url": "https://bitsearch.to",
       "name": "BTSEARCH"
     }
   }
