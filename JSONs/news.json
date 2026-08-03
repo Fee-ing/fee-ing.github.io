@@ -2,13 +2,13 @@
   "year": "2026",
   "month": "08",
   "day": "03",
-  "hour": "15",
-  "minute": "58",
-  "second": "45",
+  "hour": "16",
+  "minute": "00",
+  "second": "41",
   "events": [
     {
       "source": "淘宝‧天猫",
-      "type": "未知分类",
+      "type": "推荐",
       "content": [
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FNDn7YnmH5tGqK2z8a3CxJyCRtm-xny6BP3HMZv7Ggjt0",
@@ -514,7 +514,7 @@
     },
     {
       "source": "淘宝‧天猫",
-      "type": "未知分类",
+      "type": "推荐",
       "content": [
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FxbZmykyUktqxoJNWQvTQb4uAty-0v9wj0BU52YgQJWqtn6",
@@ -1020,7 +1020,7 @@
     },
     {
       "source": "京东",
-      "type": "未知分类",
+      "type": "推荐",
       "content": [
         {
           "url": "https://tophub.today/link?domain=jd.com&url=https%3A%2F%2Fremai.today%2Flink%2F2%2FZZTdJa3WIG4I1BwbT84wWU34Ap_3vbTdJa3WIwNfwz1tm",
@@ -1526,12 +1526,12 @@
     },
     {
       "source": "实时榜中榜",
-      "type": "未知分类",
+      "type": "推荐",
       "content": []
     },
     {
       "source": "微博",
-      "type": "未知分类",
+      "type": "综合",
       "content": [
         {
           "url": "https://s.weibo.com/weibo?q=%E8%B1%86%E5%8C%85%E7%AE%80%E7%9B%B4%E6%98%AF%E5%8E%8B%E5%8A%9B%E5%85%A8%E5%90%83%E4%B9%8B%E4%BA%BA",
@@ -1792,7 +1792,7 @@
     },
     {
       "source": "知乎",
-      "type": "未知分类",
+      "type": "综合",
       "content": [
         {
           "url": "https://www.zhihu.com/question/2067235011804320517",
@@ -2048,7 +2048,7 @@
     },
     {
       "source": "微信",
-      "type": "未知分类",
+      "type": "综合",
       "content": [
         {
           "url": "https://mp.weixin.qq.com/s?__biz=Mzg2OTY4NDU5MQ==&mid=2247485019&idx=1&sn=7e8e8e70c808c26144bbc640f2dbb3cd#rd",
@@ -2204,7 +2204,7 @@
     },
     {
       "source": "百度",
-      "type": "未知分类",
+      "type": "综合",
       "content": [
         {
           "url": "https://www.baidu.com/s?wd=%E5%9D%9A%E5%AE%9A%E4%B8%8D%E7%A7%BB%E6%8E%A8%E5%8A%A8%E9%AB%98%E8%B4%A8%E9%87%8F%E5%8F%91%E5%B1%95",
@@ -2465,7 +2465,7 @@
     },
     {
       "source": "36氪",
-      "type": "未知分类",
+      "type": "科技",
       "content": [
         {
           "url": "https://www.36kr.com/p/3923043072634498",
@@ -2511,7 +2511,7 @@
     },
     {
       "source": "少数派",
-      "type": "未知分类",
+      "type": "科技",
       "content": [
         {
           "url": "https://sspai.com/post/112405",
@@ -2617,7 +2617,7 @@
     },
     {
       "source": "虎嗅网",
-      "type": "未知分类",
+      "type": "科技",
       "content": [
         {
           "url": "https://www.huxiu.com/article/4879243.html",
@@ -2698,7 +2698,7 @@
     },
     {
       "source": "IT之家",
-      "type": "未知分类",
+      "type": "科技",
       "content": [
         {
           "url": "https://m.ithome.com/html/984779.htm",
@@ -2764,7 +2764,7 @@
     },
     {
       "source": "掘金",
-      "type": "未知分类",
+      "type": "人工智能",
       "content": [
         {
           "url": "https://juejin.cn/post/7667495083470471177",
@@ -2870,7 +2870,7 @@
     },
     {
       "source": "机器之心",
-      "type": "未知分类",
+      "type": "人工智能",
       "content": [
         {
           "url": "https://www.jiqizhixin.com/articles/2025-11-25-12",
@@ -2976,7 +2976,7 @@
     },
     {
       "source": "量子位",
-      "type": "未知分类",
+      "type": "人工智能",
       "content": [
         {
           "url": "https://www.qbitai.com/2026/08/465223.html",
@@ -3032,7 +3032,7 @@
     },
     {
       "source": "Readhub",
-      "type": "未知分类",
+      "type": "人工智能",
       "content": [
         {
           "url": "https://hub.baai.ac.cn/view/56833",
@@ -3088,7 +3088,7 @@
     },
     {
       "source": "哔哩哔哩",
-      "type": "未知分类",
+      "type": "娱乐",
       "content": [
         {
           "url": "https://www.bilibili.com/video/av117014152614196/",
@@ -3594,7 +3594,7 @@
     },
     {
       "source": "抖音",
-      "type": "未知分类",
+      "type": "娱乐",
       "content": [
         {
           "url": "https://www.douyin.com/video/7669290510213276859",
@@ -3700,7 +3700,7 @@
     },
     {
       "source": "快手",
-      "type": "未知分类",
+      "type": "娱乐",
       "content": [
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%AD%A3%E5%A4%AA%E6%89%AD%E8%85%B0&rankType=1",
@@ -3956,7 +3956,7 @@
     },
     {
       "source": "AcFun",
-      "type": "未知分类",
+      "type": "娱乐",
       "content": [
         {
           "url": "http://www.acfun.cn/v/ac48743966",
@@ -4112,7 +4112,7 @@
     },
     {
       "source": "吾爱破解",
-      "type": "未知分类",
+      "type": "社区",
       "content": [
         {
           "url": "https://www.52pojie.cn/thread-2095233-1-1.html",
@@ -4193,7 +4193,7 @@
     },
     {
       "source": "百度贴吧",
-      "type": "未知分类",
+      "type": "社区",
       "content": [
         {
           "url": "http://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356748&topic_name=%E6%98%9F%E5%B7%B4%E5%85%8B%E5%91%98%E5%B7%A5%E5%85%AC%E7%84%B6%E7%BE%9E%E8%BE%B1%E5%91%A8%E6%9D%B0%E4%BC%A6",
@@ -4349,7 +4349,7 @@
     },
     {
       "source": "腾讯新闻",
-      "type": "未知分类",
+      "type": "社区",
       "content": [
         {
           "url": "https://new.qq.com/rain/a/20260801Q0C1QZ00",
@@ -4475,7 +4475,7 @@
     },
     {
       "source": "虎扑社区",
-      "type": "未知分类",
+      "type": "社区",
       "content": [
         {
           "url": "https://bbs.hupu.com/641514436.html",
@@ -4781,7 +4781,7 @@
     },
     {
       "source": "淘宝‧天猫",
-      "type": "未知分类",
+      "type": "购物",
       "content": [
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FNDn7YnmH5tGqK2z8a3CxJyCRtm-xny6BP3HMZv7Ggjt0",
@@ -5287,7 +5287,7 @@
     },
     {
       "source": "淘宝‧天猫",
-      "type": "未知分类",
+      "type": "购物",
       "content": [
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FxbZmykyUktqxoJNWQvTQb4uAty-0v9wj0BU52YgQJWqtn6",
@@ -5793,7 +5793,7 @@
     },
     {
       "source": "今日热卖",
-      "type": "未知分类",
+      "type": "购物",
       "content": [
         {
           "url": "https://remai.today/i/aQd1NwOlKv",
@@ -6299,7 +6299,7 @@
     },
     {
       "source": "淘宝",
-      "type": "未知分类",
+      "type": "购物",
       "content": [
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FwMjba7zhgtDYzzmar8FoaJsbtO-XqGwrmpu3wADpzODsw3",
@@ -6805,7 +6805,7 @@
     },
     {
       "source": "雪球",
-      "type": "未知分类",
+      "type": "财经",
       "content": [
         {
           "url": "http://xueqiu.com/3319897782/403266672",
@@ -6911,7 +6911,7 @@
     },
     {
       "source": "第一财经",
-      "type": "未知分类",
+      "type": "财经",
       "content": [
         {
           "url": "https://www.yicai.com/news/103208655.html",
@@ -6967,7 +6967,7 @@
     },
     {
       "source": "华尔街见闻",
-      "type": "未知分类",
+      "type": "财经",
       "content": [
         {
           "url": "https://wallstreetcn.com/articles/3778528",
@@ -7023,7 +7023,7 @@
     },
     {
       "source": "新浪财经新闻",
-      "type": "未知分类",
+      "type": "财经",
       "content": [
         {
           "url": "https://finance.sina.com.cn/roll/2026-08-03/doc-inikytnx6233324.shtml",
@@ -7079,7 +7079,7 @@
     },
     {
       "source": "水木社区",
-      "type": "未知分类",
+      "type": "大学",
       "content": [
         {
           "url": "https://www.newsmth.net/nForum/article/FamilyLife/1767661676",
@@ -7135,7 +7135,7 @@
     },
     {
       "source": "北大未名",
-      "type": "未知分类",
+      "type": "大学",
       "content": [
         {
           "url": "https://bbs.pku.edu.cn/v2/post-read.php?bid=99&threadid=19011705",
@@ -7641,7 +7641,7 @@
     },
     {
       "source": "北大未名",
-      "type": "未知分类",
+      "type": "大学",
       "content": [
         {
           "url": "https://bbs.pku.edu.cn/v2/post-read.php?bid=351&threadid=19011610",
@@ -7857,7 +7857,7 @@
     },
     {
       "source": "北邮人论坛",
-      "type": "未知分类",
+      "type": "大学",
       "content": [
         {
           "url": "https://bbs.byr.cn/article/Picture/3368556",
@@ -7913,7 +7913,7 @@
     },
     {
       "source": "知乎日报",
-      "type": "未知分类",
+      "type": "日报",
       "content": [
         {
           "url": "https://daily.zhihu.com/story/9791630",
@@ -7939,7 +7939,7 @@
     },
     {
       "source": "开眼视频",
-      "type": "未知分类",
+      "type": "日报",
       "content": [
         {
           "url": "https://www.kaiyanapp.com/detail.html?vid=253541",
@@ -7950,7 +7950,7 @@
     },
     {
       "source": "历史上的今天",
-      "type": "未知分类",
+      "type": "日报",
       "content": [
         {
           "url": "https://baike.so.com/doc/434181.html",
@@ -8006,7 +8006,7 @@
     },
     {
       "source": "哔哩哔哩",
-      "type": "未知分类",
+      "type": "日报",
       "content": [
         {
           "url": "https://www.bilibili.com/video/av116956774531135/",
@@ -8242,7 +8242,7 @@
     },
     {
       "source": "高楼迷",
-      "type": "未知分类",
+      "type": "地方门户",
       "content": [
         {
           "url": "https://gaoloumi.cc/forum.php?mod=viewthread&tid=3339886",
@@ -8278,7 +8278,7 @@
     },
     {
       "source": "宽带山",
-      "type": "未知分类",
+      "type": "地方门户",
       "content": [
         {
           "url": "http://club.kdslife.com/t_11579699.html",
@@ -8384,7 +8384,7 @@
     },
     {
       "source": "厦门小鱼",
-      "type": "未知分类",
+      "type": "地方门户",
       "content": [
         {
           "url": "http://bbs.xmfish.com/read-htm-tid-18321333.html",
@@ -8440,7 +8440,7 @@
     },
     {
       "source": "过早客（光谷社区）",
-      "type": "未知分类",
+      "type": "地方门户",
       "content": [
         {
           "url": "https://www.guozaoke.com/t/132354",
@@ -8496,7 +8496,7 @@
     },
     {
       "source": "豆瓣电影",
-      "type": "未知分类",
+      "type": "影视",
       "content": [
         {
           "url": "https://movie.douban.com/subject/36850814/",
@@ -8552,7 +8552,7 @@
     },
     {
       "source": "猫眼",
-      "type": "未知分类",
+      "type": "影视",
       "content": [
         {
           "url": "https://maoyan.com/films/1528803",
@@ -8608,7 +8608,7 @@
     },
     {
       "source": "IMDb",
-      "type": "未知分类",
+      "type": "影视",
       "content": [
         {
           "url": "https://www.imdb.com/title/tt27543632/",
@@ -9114,7 +9114,7 @@
     },
     {
       "source": "百度视频",
-      "type": "未知分类",
+      "type": "影视",
       "content": [
         {
           "url": "http://v.xiaodutv.com/movie/147845.htm",
@@ -9195,7 +9195,7 @@
     },
     {
       "source": "微信读书",
-      "type": "未知分类",
+      "type": "阅读",
       "content": [
         {
           "url": "https://weread.qq.com/web/search/books?author=%E5%88%98%E6%85%88%E6%AC%A3&bookid=695233",
@@ -9301,7 +9301,7 @@
     },
     {
       "source": "当当",
-      "type": "未知分类",
+      "type": "阅读",
       "content": [
         {
           "url": "https://book.douban.com/subject/36666139/",
@@ -9357,7 +9357,7 @@
     },
     {
       "source": "七猫中文网",
-      "type": "未知分类",
+      "type": "阅读",
       "content": [
         {
           "url": "https://www.qimao.com/shuku/12255177/",
@@ -9463,7 +9463,7 @@
     },
     {
       "source": "七猫中文网",
-      "type": "未知分类",
+      "type": "阅读",
       "content": [
         {
           "url": "https://www.qimao.com/shuku/12214737/",
@@ -9569,7 +9569,7 @@
     },
     {
       "source": "TapTap",
-      "type": "未知分类",
+      "type": "游戏",
       "content": [
         {
           "url": "https://www.taptap.cn/app/43639",
@@ -9625,7 +9625,7 @@
     },
     {
       "source": "3DM游戏网",
-      "type": "未知分类",
+      "type": "游戏",
       "content": [
         {
           "url": "https://m.3dmgame.com/news/202608/3949780.html",
@@ -9726,7 +9726,7 @@
     },
     {
       "source": "机核网",
-      "type": "未知分类",
+      "type": "游戏",
       "content": [
         {
           "url": "https://www.gcores.com/articles/217898",
@@ -9832,7 +9832,7 @@
     },
     {
       "source": "游研社",
-      "type": "未知分类",
+      "type": "游戏",
       "content": [
         {
           "url": "https://www.yystv.cn/p/14230",
@@ -9898,7 +9898,7 @@
     },
     {
       "source": "AppleMusic",
-      "type": "未知分类",
+      "type": "音乐",
       "content": [
         {
           "url": "https://music.apple.com/cn/album/%E7%88%B1%E9%94%99/1134344345?i=1134344911",
@@ -10404,7 +10404,7 @@
     },
     {
       "source": "QQ音乐",
-      "type": "未知分类",
+      "type": "音乐",
       "content": [
         {
           "url": "https://y.qq.com/n/ryqq/songDetail/002AZauQ1UKQxe",
@@ -10510,7 +10510,7 @@
     },
     {
       "source": "豆瓣音乐",
-      "type": "未知分类",
+      "type": "音乐",
       "content": [
         {
           "url": "https://music.douban.com/artists/player/?sid=764845&source=chart",
@@ -10566,7 +10566,7 @@
     },
     {
       "source": "AcFun",
-      "type": "未知分类",
+      "type": "音乐",
       "content": [
         {
           "url": "http://www.acfun.cn/v/ac48744205",
@@ -10722,7 +10722,7 @@
     },
     {
       "source": "新浪体育新闻",
-      "type": "未知分类",
+      "type": "体育",
       "content": [
         {
           "url": "https://sports.sina.com.cn/l/2026-08-02/doc-inikxwic6638181.shtml",
@@ -10778,7 +10778,7 @@
     },
     {
       "source": "抖音",
-      "type": "未知分类",
+      "type": "体育",
       "content": [
         {
           "url": "https://www.douyin.com/video/7668866336395722598",
@@ -10884,7 +10884,7 @@
     },
     {
       "source": "虎扑社区",
-      "type": "未知分类",
+      "type": "体育",
       "content": [
         {
           "url": "https://bbs.hupu.com/641511837.html",
@@ -11190,7 +11190,7 @@
     },
     {
       "source": "懂球帝",
-      "type": "未知分类",
+      "type": "体育",
       "content": [
         {
           "url": "https://www.dongqiudi.com/article/6116634",
@@ -11296,7 +11296,7 @@
     },
     {
       "source": "人人都是产品经理",
-      "type": "未知分类",
+      "type": "产品",
       "content": [
         {
           "url": "https://www.woshipm.com/?p=6438583",
@@ -11802,7 +11802,7 @@
     },
     {
       "source": "咖啡日报",
-      "type": "未知分类",
+      "type": "产品",
       "content": [
         {
           "url": "https://coffee.pmcaff.com/article/G2QdolJ2LZ",
@@ -11883,7 +11883,7 @@
     },
     {
       "source": "即刻圈子",
-      "type": "未知分类",
+      "type": "产品",
       "content": [
         {
           "url": "https://m.okjike.com/originalPosts/6a700003141b85b292008336",
@@ -11939,7 +11939,7 @@
     },
     {
       "source": "ProductHunt",
-      "type": "未知分类",
+      "type": "产品",
       "content": [
         {
           "url": "https://www.producthunt.com/products/mascotai",
@@ -12195,7 +12195,7 @@
     },
     {
       "source": "GitHub",
-      "type": "未知分类",
+      "type": "开发",
       "content": [
         {
           "url": "https://github.com/microsoft/AI-For-Beginners",
@@ -12276,7 +12276,7 @@
     },
     {
       "source": "CSDN博客",
-      "type": "未知分类",
+      "type": "开发",
       "content": [
         {
           "url": "https://blog.csdn.net/weixin_52908342/article/details/163400136",
@@ -12532,7 +12532,7 @@
     },
     {
       "source": "掘金",
-      "type": "未知分类",
+      "type": "开发",
       "content": [
         {
           "url": "https://juejin.cn/post/7667495083470471177",
@@ -12638,7 +12638,7 @@
     },
     {
       "source": "开源中国",
-      "type": "未知分类",
+      "type": "开发",
       "content": [
         {
           "url": "https://www.oschina.net/news/486167/dbeaver-26-1-4-released",
@@ -12744,7 +12744,7 @@
     },
     {
       "source": "站酷",
-      "type": "未知分类",
+      "type": "设计",
       "content": [
         {
           "url": "https://www.zcool.com.cn/work/ZNjU3NjMxNDQ=.html",
@@ -12850,7 +12850,7 @@
     },
     {
       "source": "UI中国",
-      "type": "未知分类",
+      "type": "设计",
       "content": [
         {
           "url": "https://www.ui.cn/detail/670677.html",
@@ -12966,7 +12966,7 @@
     },
     {
       "source": "优设网",
-      "type": "未知分类",
+      "type": "设计",
       "content": [
         {
           "url": "https://www.uisdc.com/design-review-skill",
@@ -13132,7 +13132,7 @@
     },
     {
       "source": "Behance",
-      "type": "未知分类",
+      "type": "设计",
       "content": [
         {
           "url": "https://www.behance.net/gallery/211103137/Haute-Savoie",
@@ -13318,7 +13318,7 @@
     },
     {
       "source": "AppStore",
-      "type": "未知分类",
+      "type": "应用",
       "content": [
         {
           "url": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3%E5%95%86%E5%9F%8E-%E4%B8%8B%E5%8D%95%E8%BF%94%E7%A7%AF%E5%88%86-%E9%80%80%E8%B4%A7%E5%8C%85%E8%BF%90%E8%B4%B9/id1485191072?uo=2",
@@ -13824,7 +13824,7 @@
     },
     {
       "source": "爱范儿",
-      "type": "未知分类",
+      "type": "应用",
       "content": [
         {
           "url": "https://www.ifanr.com/app/1585191",
@@ -13930,7 +13930,7 @@
     },
     {
       "source": "少数派",
-      "type": "未知分类",
+      "type": "应用",
       "content": [
         {
           "url": "https://sspai.com/post/112787",
@@ -14186,7 +14186,7 @@
     },
     {
       "source": "AppSo",
-      "type": "未知分类",
+      "type": "应用",
       "content": [
         {
           "url": "https://itunes.apple.com/us/app/lock-notes-pro-protect-your/id1052612947?mt=8&uo=4",
@@ -14242,7 +14242,7 @@
     },
     {
       "source": "汽车之家",
-      "type": "未知分类",
+      "type": "汽车",
       "content": [
         {
           "url": "https://club.autohome.com.cn/bbs/thread/cf35cb52f3f3d9a2/115714079-1.html",
@@ -14448,7 +14448,7 @@
     },
     {
       "source": "懂车帝",
-      "type": "未知分类",
+      "type": "汽车",
       "content": [
         {
           "url": "https://www.dongchedi.com/article/7668509818093371928",
@@ -14504,7 +14504,7 @@
     },
     {
       "source": "易车网",
-      "type": "未知分类",
+      "type": "汽车",
       "content": [
         {
           "url": "http://vc.yiche.com/vplay/12345118.html",
@@ -14560,7 +14560,7 @@
     },
     {
       "source": "太平洋汽车网",
-      "type": "未知分类",
+      "type": "汽车",
       "content": [
         {
           "url": "https://bbs.pcauto.com.cn/topic-24132723.html",
@@ -14901,7 +14901,7 @@
     },
     {
       "source": "先知社区",
-      "type": "未知分类",
+      "type": "安全",
       "content": [
         {
           "url": "https://xz.aliyun.com/news/92611",
@@ -15407,7 +15407,7 @@
     },
     {
       "source": "安全客",
-      "type": "未知分类",
+      "type": "安全",
       "content": [
         {
           "url": "https://www.anquanke.com/post/id/315908",
@@ -15513,7 +15513,7 @@
     },
     {
       "source": "FreeBuf",
-      "type": "未知分类",
+      "type": "安全",
       "content": [
         {
           "url": "https://www.freebuf.com/articles/web/486017.html",
@@ -15619,7 +15619,7 @@
     },
     {
       "source": "安全脉搏",
-      "type": "未知分类",
+      "type": "安全",
       "content": [
         {
           "url": "https://www.secpulse.com/archives/206316.html",
