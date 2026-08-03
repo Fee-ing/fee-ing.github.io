@@ -1,0 +1,143 @@
+{
+  "year": "2026",
+  "month": "08",
+  "day": "03",
+  "hour": "15",
+  "minute": "13",
+  "second": "31",
+  "events": [
+    {
+      "year": "2008",
+      "title": "诺贝尔文学奖获得者<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%BA%9A%E5%8E%86%E5%B1%B1%E5%A4%A7%C2%B7%E7%B4%A2%E5%B0%94%E4%BB%81%E5%B0%BC%E7%90%B4\">索尔仁尼琴</a>逝世",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E4%BA%9A%E5%8E%86%E5%B1%B1%E5%A4%A7%C2%B7%E7%B4%A2%E5%B0%94%E4%BB%81%E5%B0%BC%E7%90%B4",
+      "type": "death",
+      "desc": "亚历山大·索尔仁尼琴，<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%BF%84%E7%BD%97%E6%96%AF\">俄罗斯</a>作家，二战时的<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%8B%8F%E8%81%94\">苏联</a>炮兵连长，因勇敢获得二枚勋章，1945年因通信中不敬被流放<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%93%88%E8%90%A8%E5%85%8B\">哈萨克</a>8年，此段经历后来成为他作品的主题。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "2008",
+      "title": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%B8%96%E7%95%8C%E8%89%BE%E6%BB%8B%E7%97%85%E5%A4%A7%E4%BC%9A\">世界艾滋病大会</a>在<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%A2%A8%E8%A5%BF%E5%93%A5%E5%9F%8E\">墨西哥城</a>开幕",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%A2%A8%E8%A5%BF%E5%93%A5%E5%9F%8E",
+      "type": "event",
+      "desc": "Mexico City（中文语言：墨西哥城），是墨西哥合众国的首都，集中了全国约一半的工业、商业、服务业和银行金融机构，是全国的政治、经济、文化和交通中心。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1987",
+      "title": "韩国艺人<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%87%91%E4%BA%A8%E4%BF%8A\">金亨俊</a>出生",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E9%87%91%E4%BA%A8%E4%BF%8A",
+      "type": "birth",
+      "desc": "金亨俊，韩国男歌手兼演员同时也是韩国组合<a target=\"_blank\" href=\"https://baike.baidu.com/item/ss501\">SS501</a>的成员之一，组合中年纪最小的一位。",
+      "cover": false,
+      "recommend": false
+    },
+    {
+      "year": "1968",
+      "title": "中国散文家<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%9D%A8%E6%9C%94\">杨朔</a>逝世",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E6%9D%A8%E6%9C%94",
+      "type": "death",
+      "desc": "杨朔，男，1913年生， 山东蓬莱人。原名杨毓晋，字莹叔，蓬莱城里人。现当代著名作家、散文家。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1958",
+      "title": "冷战时期，美国核潜艇<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%B9%A6%E9%B9%89%E8%9E%BA%E5%8F%B7/12644675\">鹦鹉螺号</a>首艘船只到达<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%8C%97%E6%9E%81\">北极</a>点",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%8C%97%E6%9E%81",
+      "type": "event",
+      "desc": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%8C%97%E6%9E%81\">北极</a>是指<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%9C%B0%E7%90%83%E8%87%AA%E8%BD%AC\">地球自转</a>轴的北端，也就是<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%8C%97%E7%BA%AC\">北纬</a>90°的那一点。<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%8C%97%E6%9E%81%E5%9C%B0%E5%8C%BA\">北极地区</a>是指北极附近北纬66°34′北极圈以内的地区。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1956",
+      "title": "电影<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%B7%B4%E9%BB%8E%E5%9C%A3%E6%AF%8D%E9%99%A2/5658602\">《巴黎圣母院》</a>公映",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%B7%B4%E9%BB%8E%E5%9C%A3%E6%AF%8D%E9%99%A2/5658602",
+      "type": "event",
+      "desc": "《巴黎圣母院》是由让·德拉努瓦执导，吉娜·劳洛勃丽吉达、安东尼·奎恩主演的剧情片，该片于1956年12月19日在法国上映。",
+      "cover": false,
+      "recommend": false
+    },
+    {
+      "year": "1948",
+      "title": "法国政治家<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%AE%A9-%E7%9A%AE%E5%9F%83%E5%B0%94%C2%B7%E6%8B%89%E6%B3%95%E5%85%B0\">让·拉法兰</a>出生",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E8%AE%A9-%E7%9A%AE%E5%9F%83%E5%B0%94%C2%B7%E6%8B%89%E6%B3%95%E5%85%B0",
+      "type": "birth",
+      "desc": "让-皮埃尔·拉法兰（Jean-Pierre Raffarin，1948年8月3日-- ）法国政府前总理，保守派<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%94%BF%E6%B2%BB%E5%AE%B6\">政治家</a>和<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%BB%B4%E5%9F%83%E7%BA%B3%E7%9C%81\">维埃纳省</a>参议员。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1902",
+      "title": "总统<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%93%88%E6%AF%94%E5%8D%9C%C2%B7%E5%B8%83%E5%B0%94%E5%90%89%E5%B7%B4\">哈比卜·布尔吉巴</a>出生",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%93%88%E6%AF%94%E5%8D%9C%C2%B7%E5%B8%83%E5%B0%94%E5%90%89%E5%B7%B4",
+      "type": "birth",
+      "desc": "哈比卜。布尔吉巴（Habib Bourguiba） ，<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%AA%81%E5%B0%BC%E6%96%AF\">突尼斯</a>前总统1902年8月3日生于<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%8E%AB%E7%BA%B3%E6%96%AF%E6%8F%90%E5%B0%94\">莫纳斯提尔</a>城。",
+      "cover": false,
+      "recommend": false
+    },
+    {
+      "year": "1867",
+      "title": "英国首相<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%96%AF%E5%9D%A6%E5%88%A9%C2%B7%E9%B2%8D%E5%BE%B7%E6%B8%A9\">斯坦利·鲍德温</a>出生",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E6%96%AF%E5%9D%A6%E5%88%A9%C2%B7%E9%B2%8D%E5%BE%B7%E6%B8%A9",
+      "type": "birth",
+      "desc": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%8B%B1%E5%9B%BD\">英国</a><a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%BF%9D%E5%AE%88%E5%85%9A\">保守党</a><a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%94%BF%E6%B2%BB%E5%AE%B6\">政治家</a>。曾3次出任首相(1923～1924，1924～1929，1935～1937)。其第一届政府因保护关税事件而结束。",
+      "cover": false,
+      "recommend": false
+    },
+    {
+      "year": "1860",
+      "title": "苏格兰发明家<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%A8%81%E5%BB%89%C2%B7%E8%82%AF%E5%B0%BC%E8%BF%AA%C2%B7%E8%BF%AA%E5%85%8B%E6%A3%AE\">威廉·肯尼迪·迪克森</a>出生",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%A8%81%E5%BB%89%C2%B7%E8%82%AF%E5%B0%BC%E8%BF%AA%C2%B7%E8%BF%AA%E5%85%8B%E6%A3%AE",
+      "type": "birth",
+      "desc": "威廉·肯尼迪·劳里·迪克森（英语：William Kennedy Laurie Dickson，1860年8月3日－1935年9月28日），法国-苏格兰人，发明家，在托马斯·爱迪生的公司研制出电影摄像机和活动电影放映机。",
+      "cover": false,
+      "recommend": false
+    },
+    {
+      "year": "1492",
+      "title": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%85%8B%E9%87%8C%E6%96%AF%E6%89%98%E5%BC%97%C2%B7%E5%93%A5%E4%BC%A6%E5%B8%83\">哥伦布</a>首次远航",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%85%8B%E9%87%8C%E6%96%AF%E6%89%98%E5%BC%97%C2%B7%E5%93%A5%E4%BC%A6%E5%B8%83",
+      "type": "event",
+      "desc": "他率船队从帕洛斯角出发西行，经过两个多月航行，10月12日，哥伦布的船队登上中美洲巴哈马群岛中的瓜纳哈尼岛，然后又发现了海地等岛屿。他成为世界历史上最伟大航海家之一。",
+      "cover": true,
+      "recommend": true,
+      "pic_calendar": "https://bkimg.cdn.bcebos.com/pic/060828381f30e924b8997376645379061d950a7b597a?x-bce-process=image/format,f_auto",
+      "pic_share": "https://bkimg.cdn.bcebos.com/pic/a8773912b31bb051f8194f6f1e21cdb44aed2e734a7a?x-bce-process=image/format,f_auto",
+      "pic_index": "https://bkimg.cdn.bcebos.com/pic/b219ebc4b74543a98226728b364c9d82b9014a90be7b?x-bce-process=image/format,f_auto"
+    },
+    {
+      "year": "1460",
+      "title": "苏格兰国王<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%A9%B9%E5%A7%86%E6%96%AF%E4%BA%8C%E4%B8%96/12711566\">詹姆斯二世</a>逝世",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E8%A9%B9%E5%A7%86%E6%96%AF%E4%BA%8C%E4%B8%96/12711566",
+      "type": "death",
+      "desc": "苏格兰斯图亚特王朝国王。苏格兰国王詹姆斯一世之子。\n周岁生日前，詹姆斯二世的孖生大哥罗斯西公爵亚历山大已死。詹姆斯顺理成章成为苏格兰王储及罗斯西公爵。",
+      "cover": false,
+      "recommend": false
+    },
+    {
+      "year": "713",
+      "title": "六祖<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%83%A0%E8%83%BD\">惠能</a>禅师圆寂",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E6%83%A0%E8%83%BD",
+      "type": "death",
+      "desc": "被尊为<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%A6%85%E5%AE%97\">禅宗</a>六祖的<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%9B%B9%E6%BA%AA\">曹溪</a>惠能大师，对<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E4%BD%9B%E6%95%99\">中国佛教</a>以及禅宗的弘化具有深刻和坚实的意义。",
+      "cover": false,
+      "recommend": false
+    }
+  ]
+}
