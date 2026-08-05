@@ -1,5 +1,5 @@
 {
-  "timestamp": 1785964549261,
+  "timestamp": 1785965467667,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3065,6 +3065,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://www.199it.com/archives/1836471.html",
+          "text": "AI 应用繁荣背后的效率幻觉：企业 AI 成熟度调查",
+          "heat": "199IT"
+        },
+        {
           "url": "https://wallstreetcn.com/articles/3778778",
           "text": "Jeff Dean 27 年 Google 生涯落幕，携三位顶尖科学家离职创业，Kavukcuoglu 接棒 Gemini 4",
           "heat": "华尔街见闻"
@@ -3073,11 +3078,6 @@
           "url": "https://api3.cls.cn/share/article/2446796?os=web&sv=8.4.6&app=CailianpressWeb",
           "text": "Meta：Muse Code 测试版已上线",
           "heat": "财联社"
-        },
-        {
-          "url": "https://9to5mac.com/2026/08/05/siri-ai-is-coming-to-newer-apple-devices-only-heres-the-full-list/",
-          "text": "Siri AI is coming to newer Apple devices only, here’s the full list",
-          "heat": "9to5Mac"
         }
       ]
     },
@@ -10606,7 +10606,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48751297",
           "text": "【颜音】ライオン/狮子座，算是二次元音乐入坑曲了，复古味拉满~",
-          "heat": "1681"
+          "heat": "1690"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749018",
@@ -10616,12 +10616,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48753199",
           "text": "『カーネーションの咲く日に』・霧雨",
-          "heat": "1024"
+          "heat": "1027"
         },
         {
           "url": "http://www.acfun.cn/v/ac48753127",
           "text": "【千璃Senri】夏日尽头的我们【日语填词】",
-          "heat": "1075"
+          "heat": "1076"
         },
         {
           "url": "http://www.acfun.cn/v/ac48751448",
@@ -10641,7 +10641,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48751471",
           "text": "你的小怪兽！BABYMONSTER -  MOON  舞蹈版MV",
-          "heat": "812"
+          "heat": "826"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722764",
@@ -10651,7 +10651,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48722786",
           "text": "【酒井法子】夢より愛して (比起夢想更愛你)",
-          "heat": "130"
+          "heat": "144"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722758",
@@ -10734,14 +10734,14 @@
           "heat": "85"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48735436",
-          "text": "【歌うVOICEROID】fragile紲星あかり",
-          "heat": "24"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48753265",
           "text": "That Time I Got Reincarnated as a Slime Season 4 -",
           "heat": "13"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48735436",
+          "text": "【歌うVOICEROID】fragile紲星あかり",
+          "heat": "24"
         },
         {
           "url": "http://www.acfun.cn/v/ac48751152",
