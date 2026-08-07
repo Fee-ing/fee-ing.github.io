@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786121142443,
+  "timestamp": 1786122061750,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://simonwillison.net/2026/Aug/7/pdfs-are-terrible/#atom-everything",
+          "text": "The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI",
+          "heat": "Simon Willison"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/56955",
           "text": "清华校友发布全球首个千亿级 MoE 开源视频生成模型，6B 激活参数跻身全球前列",
           "heat": "智源社区"
@@ -3073,11 +3078,6 @@
           "url": "https://hub.baai.ac.cn/view/56953",
           "text": "美国 AI 安全新规出炉：最强闭源模型自愿送测，开放权重直接放行",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/30194",
-          "text": "Neon 联手 Castform 训出 4B 文档搜索小模型：准确率超 GPT-5.6 Sol，成本仅百分之一",
-          "heat": "aibase"
         }
       ]
     },
@@ -10566,17 +10566,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48733567",
           "text": "【Takeko竹子】转生升天嗵一声落下变成奇美拉【嗵嗵×キメラ×てんしょう しょうてんしょう】",
-          "heat": "576"
+          "heat": "584"
         },
         {
           "url": "http://www.acfun.cn/v/ac48756429",
           "text": "STUDY WITH MIKU - part6 -",
-          "heat": "1035"
+          "heat": "1039"
         },
         {
           "url": "http://www.acfun.cn/v/ac48757918",
           "text": "你在看孤独的风景",
-          "heat": "655"
+          "heat": "666"
         },
         {
           "url": "http://www.acfun.cn/v/ac48756464",
@@ -10591,7 +10591,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48757535",
           "text": "又是什么抽象！aespa《Switchblade》 夏日MV公开",
-          "heat": "969"
+          "heat": "1024"
         },
         {
           "url": "http://www.acfun.cn/v/ac48756188",
@@ -10601,7 +10601,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48722834",
           "text": "【中国音乐地图之听见新疆 锡伯族民间歌曲乐曲集】打猎舞 捡马粪 恰吾尔登",
-          "heat": "75"
+          "heat": "88"
         },
         {
           "url": "http://www.acfun.cn/v/ac48723046",
@@ -10621,7 +10621,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48722871",
           "text": "【Twins】大浪漫主义【双生儿】",
-          "heat": "119"
+          "heat": "139"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722860",
@@ -10674,19 +10674,19 @@
           "heat": "35"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48758309",
+          "text": "Mousou♡Express (もうそう♡えくすぷれす)  by Nadeko Sengoku (K",
+          "heat": "69"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48739305",
           "text": "Jump Up, Super Star! Remix- Super Mario Odyssey- T",
           "heat": "51"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48758309",
-          "text": "Mousou♡Express (もうそう♡えくすぷれす)  by Nadeko Sengoku (K",
-          "heat": "59"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48756780",
-          "text": "【雨衣】シテシテ！（SITESITE！）【なつめ千秋】",
-          "heat": "171"
+          "url": "http://www.acfun.cn/v/ac48758911",
+          "text": "【衣笠雪绘】送福利！抽一个科学兔祝我早日千粉",
+          "heat": "237"
         },
         {
           "url": "http://www.acfun.cn/v/ac48752613",
@@ -10694,24 +10694,24 @@
           "heat": "63"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48756780",
+          "text": "【雨衣】シテシテ！（SITESITE！）【なつめ千秋】",
+          "heat": "171"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48756387",
+          "text": "ftshsm рейв лайв под мостом",
+          "heat": "196"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48751243",
           "text": "ARASHI - 感謝カンゲキ雨嵐 [Official Music Video]",
           "heat": "69"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48756387",
-          "text": "ftshsm рейв лайв под мостом",
-          "heat": "188"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48756238",
           "text": "ナユタン星人 - ロケットサイダー (ft.初音ミク) Official Music Video",
           "heat": "37"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48744620",
-          "text": "Sizuk/俊龍 - Thankful［Music Video］「笑顔のたえない職場です。」エンディ",
-          "heat": "25"
         }
       ]
     },
