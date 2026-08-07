@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786126552998,
+  "timestamp": 1786127455488,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://huggingface.co/blog/allenai/tutormoments",
+          "text": "TutorMoments: Do AI tutors know when to help and when to hold back?",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16748",
           "text": "前 DeepMind 机器人团队创业：工人手把手教，机器人 10 分钟学会新技能",
           "heat": "麻省理工科技评论"
@@ -3072,11 +3077,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/56965",
           "text": "利用图神经网络检测高能物理异常",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/56953",
-          "text": "美国 AI 安全新规出炉：最强闭源模型自愿送测，开放权重直接放行",
           "heat": "智源社区"
         }
       ]
@@ -10546,7 +10546,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48757918",
           "text": "你在看孤独的风景",
-          "heat": "854"
+          "heat": "869"
         },
         {
           "url": "http://www.acfun.cn/v/ac48756464",
@@ -10556,12 +10556,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48720403",
           "text": "【大姨唱戏】京剧《望江亭》选段：《蒙师傅发恻隐把我怜念》（二黄散板转原板）",
-          "heat": "403"
+          "heat": "417"
         },
         {
           "url": "http://www.acfun.cn/v/ac48757535",
           "text": "又是什么抽象！aespa《Switchblade》 夏日MV公开",
-          "heat": "1039"
+          "heat": "1042"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722834",
@@ -10571,12 +10571,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48756188",
           "text": "【薛楚良Retake】Hope/ゆよゆっぺ【UTAU音源测试】",
-          "heat": "326"
+          "heat": "333"
         },
         {
           "url": "http://www.acfun.cn/v/ac48723046",
           "text": "祝福のカンパネラ キャラクターソングVol.4 A ray of Sunshine!!",
-          "heat": "70"
+          "heat": "84"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722871",
@@ -10597,11 +10597,6 @@
           "url": "http://www.acfun.cn/v/ac48722860",
           "text": "【普拉西多·多明戈】圣桑：参孙和大利拉",
           "heat": "97"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48756356",
-          "text": "【妖一】T台幻梦师【ランウェイのファンタジスタ】",
-          "heat": "292"
         },
         {
           "url": "http://www.acfun.cn/v/ac48756002",
@@ -10631,7 +10626,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48739305",
           "text": "Jump Up, Super Star! Remix- Super Mario Odyssey- T",
-          "heat": "65"
+          "heat": "79"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48758190",
+          "text": "清爽夏日!男声翻唱米斯新曲Vitamin ME - fromis_9【么羊】",
+          "heat": "138"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722837",
@@ -10639,19 +10639,14 @@
           "heat": "51"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48758190",
-          "text": "清爽夏日!男声翻唱米斯新曲Vitamin ME - fromis_9【么羊】",
-          "heat": "120"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48758329",
           "text": "『超かぐや姫！』全音楽集  | 超時空輝耀姬! 全音樂合集 | Cosmic Princess",
-          "heat": "35"
+          "heat": "45"
         },
         {
           "url": "http://www.acfun.cn/v/ac48758309",
           "text": "Mousou♡Express (もうそう♡えくすぷれす)  by Nadeko Sengoku (K",
-          "heat": "69"
+          "heat": "79"
         },
         {
           "url": "http://www.acfun.cn/v/ac48758911",
@@ -10661,7 +10656,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48752613",
           "text": "アンタに言ってんの！",
-          "heat": "63"
+          "heat": "75"
         },
         {
           "url": "http://www.acfun.cn/v/ac48756780",
@@ -10669,19 +10664,24 @@
           "heat": "171"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48756387",
-          "text": "ftshsm рейв лайв под мостом",
-          "heat": "196"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48751243",
           "text": "ARASHI - 感謝カンゲキ雨嵐 [Official Music Video]",
           "heat": "69"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48758923",
+          "text": "【衣笠雪绘】画 歌切day188",
+          "heat": "223"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48756238",
           "text": "ナユタン星人 - ロケットサイダー (ft.初音ミク) Official Music Video",
-          "heat": "43"
+          "heat": "63"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48759097",
+          "text": "【TETO LIVE 2026】テトリス【重音テト×亜沙】4K",
+          "heat": "243"
         }
       ]
     },
