@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786223748232,
+  "timestamp": 1786224650013,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10311,7 +10311,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48760658",
           "text": "【绝望女神/翻唱】【最后的花瓣】",
-          "heat": "645"
+          "heat": "658"
         },
         {
           "url": "http://www.acfun.cn/v/ac48759359",
@@ -10321,12 +10321,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48760853",
           "text": "【翻唱】甲乙丙丁 周末愉快~",
-          "heat": "731"
+          "heat": "758"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722899",
           "text": "【普拉西多·多明戈】瓦格纳：Wesendonck Lieder, WWV 91 Der E",
-          "heat": "147"
+          "heat": "155"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722295",
@@ -10334,14 +10334,14 @@
           "heat": "77"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48738135",
+          "text": "【酒井法子】鏡のドレス (鏡中的禮服) [出自電視劇 續-星之金幣 主題曲]",
+          "heat": "89"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48722904",
           "text": "【陈百强】挥不去的你",
           "heat": "122"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48738135",
-          "text": "【酒井法子】鏡のドレス (鏡中的禮服) [出自電視劇 續-星之金幣 主題曲]",
-          "heat": "79"
         },
         {
           "url": "http://www.acfun.cn/v/ac48722886",
@@ -10351,12 +10351,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48760500",
           "text": "喵？喵！喵呜——人是猫喵喵喵喵喵喵喵喵喵",
-          "heat": "248"
+          "heat": "252"
         },
         {
           "url": "http://www.acfun.cn/v/ac48760400",
           "text": "《鸣潮》玄翎秧秧原创角色曲 | 余音犹存",
           "heat": "283"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48761197",
+          "text": "Stardew Valley Overture（星露谷物语序曲）全乐器合奏",
+          "heat": "75"
         },
         {
           "url": "http://www.acfun.cn/v/ac48760357",
@@ -10376,17 +10381,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48723116",
           "text": "【The Cranberries】Linger_(Acoustic_Version)",
-          "heat": "113"
+          "heat": "122"
         },
         {
           "url": "http://www.acfun.cn/v/ac48759291",
           "text": "【MV】前田大翔「Beautiful World 〜ウツクシキボクラノセカイ〜」",
           "heat": "29"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48761197",
-          "text": "Stardew Valley Overture（星露谷物语序曲）全乐器合奏",
-          "heat": "65"
         },
         {
           "url": "http://www.acfun.cn/v/ac48760615",
@@ -10434,6 +10434,11 @@
           "heat": "177"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48738538",
+          "text": "【Twins】热浪假期【HO HOO TAN 】",
+          "heat": "178"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48755311",
           "text": "SiM “BLiNDEYES feat. Yukina from 花冷え。” Music Video",
           "heat": "11"
@@ -10442,11 +10447,6 @@
           "url": "http://www.acfun.cn/v/ac48760275",
           "text": "《全世界都在看吃播？？》",
           "heat": "65"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48759247",
-          "text": "朝鲜民歌专辑第一张",
-          "heat": "159"
         }
       ]
     },
