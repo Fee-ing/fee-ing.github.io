@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786389344538,
+  "timestamp": 1786390252600,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2680,6 +2680,11 @@
           "heat": "格隆汇"
         },
         {
+          "url": "https://9to5mac.com/2026/08/10/heres-whats-new-with-ios-27-beta-5/",
+          "text": "iOS 27 beta 5 新功能一览",
+          "heat": "9to5Mac"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/30220",
           "text": "英伟达发布首款开源全双工语音模型 VoiceChat 11B",
           "heat": "aibase"
@@ -2698,11 +2703,6 @@
           "url": "https://www.aibase.com/zh/news/30221",
           "text": "阿里 Meoo 秒悟上线团队版，接入 Qwen-3.8-Max 模型",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.gelonghui.com/live/2603773",
-          "text": "微软计划于9月发布下一代Maia 300人工智能芯片",
-          "heat": "格隆汇"
         }
       ]
     },
@@ -9406,7 +9406,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48761927",
           "text": "【短视频】海豚从眼前飞跃～",
-          "heat": "1423"
+          "heat": "1427"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763766",
@@ -9416,22 +9416,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48743120",
           "text": "【真・ヌルヌル超高画質 8K 60fps】すぴぱら OP - Magical Happy Show",
-          "heat": "209"
+          "heat": "212"
         },
         {
           "url": "http://www.acfun.cn/v/ac48752677",
           "text": "【作业用/助眠】今天的烦心事就在今天冲洗干净!! Lo-Fi 120mins（恢复疲劳 音乐治疗~）",
-          "heat": "679"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48738373",
-          "text": "【陈百强】未唱的歌",
-          "heat": "94"
+          "heat": "696"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738394",
           "text": "【酒井法子】微笑みを見つけた (發現了微笑)",
           "heat": "179"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48738373",
+          "text": "【陈百强】未唱的歌",
+          "heat": "94"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738369",
@@ -9526,7 +9526,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48764108",
           "text": "清凉舒缓的 Frutiger Aero 风格游戏音乐",
-          "heat": "263"
+          "heat": "288"
         },
         {
           "url": "http://www.acfun.cn/v/ac48752830",
