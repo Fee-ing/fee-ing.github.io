@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786380349125,
+  "timestamp": 1786381258918,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2780,6 +2780,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://huggingface.co/blog/nvidia/magpie-tts-multilingual-voice-agents",
+          "text": "NVIDIA 发布 Magpie TTS：开源低延迟多语言语音代理解决方案",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://huggingface.co/blog/MultiverseComputingCAI/efficient-knowledge-distillation",
           "text": "Making Knowledge Distillation Cheap Enough to Run at Scale",
           "heat": "Hugging Face Blog"
@@ -2812,11 +2817,6 @@
         {
           "url": "https://www.ithome.com/0/988/051.htm",
           "text": "扎克伯格呼吁美国放宽开源AI限制以应对中国竞争",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.ithome.com/0/988/050.htm",
-          "text": "日产在美国工厂部署AI摄像头，纠正装配工人操作姿势",
           "heat": "IT 之家"
         }
       ]
@@ -10041,22 +10041,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48761927",
           "text": "【短视频】海豚从眼前飞跃～",
-          "heat": "1352"
+          "heat": "1364"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763766",
           "text": "2026年7月热歌榜TOP100，好家伙，你敢相信这是2026年？",
-          "heat": "1047"
+          "heat": "1052"
         },
         {
           "url": "http://www.acfun.cn/v/ac48743120",
           "text": "【真・ヌルヌル超高画質 8K 60fps】すぴぱら OP - Magical Happy Show",
-          "heat": "138"
+          "heat": "178"
         },
         {
           "url": "http://www.acfun.cn/v/ac48752677",
           "text": "【作业用/助眠】今天的烦心事就在今天冲洗干净!! Lo-Fi 120mins（恢复疲劳 音乐治疗~）",
-          "heat": "509"
+          "heat": "577"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738373",
@@ -10066,12 +10066,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48738394",
           "text": "【酒井法子】微笑みを見つけた (發現了微笑)",
-          "heat": "122"
+          "heat": "147"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738369",
           "text": "【普拉西多·多明戈】普契尼：波西米亚人 贝娜科娃 1986",
-          "heat": "123"
+          "heat": "134"
         },
         {
           "url": "http://www.acfun.cn/v/ac48734669",
@@ -10119,14 +10119,14 @@
           "heat": "244"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48738391",
-          "text": "【Twins】我们之间【3650】",
-          "heat": "98"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48762783",
           "text": "260809 本周女团现场合集 60帧体验",
-          "heat": "192"
+          "heat": "222"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48738391",
+          "text": "【Twins】我们之间【3650】",
+          "heat": "103"
         },
         {
           "url": "http://www.acfun.cn/v/ac48755445",
@@ -10136,7 +10136,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48732339",
           "text": "幾田りら インスタライブ 君はロックを聴かない 2019.08.01",
-          "heat": "97"
+          "heat": "109"
         },
         {
           "url": "http://www.acfun.cn/v/ac48745055",
@@ -10146,7 +10146,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48765733",
           "text": "【衣笠雪绘】这世界那么多人 歌切day188 +福利开奖",
-          "heat": "319"
+          "heat": "324"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763362",
@@ -11356,6 +11356,11 @@
       "type": "产品",
       "content": [
         {
+          "url": "https://m.okjike.com/originalPosts/6a79f66d756bbb66583db496",
+          "text": "产品经理的日常 08月11日",
+          "heat": ""
+        },
+        {
           "url": "https://m.okjike.com/originalPosts/6a79d2da141b85b292ff36fa",
           "text": "产品经理的日常 08月10日",
           "heat": ""
@@ -11392,11 +11397,6 @@
         },
         {
           "url": "https://m.okjike.com/originalPosts/6a75f5cc756bbb6658d663b4",
-          "text": "产品经理的日常 08月07日",
-          "heat": ""
-        },
-        {
-          "url": "https://m.okjike.com/originalPosts/6a7537a5756bbb6658c32400",
           "text": "产品经理的日常 08月07日",
           "heat": ""
         },
