@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786553143766,
+  "timestamp": 1786554055034,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,6 +3030,11 @@
           "heat": "Google DeepMind"
         },
         {
+          "url": "https://huggingface.co/blog/allenai/olmoearth-embeddings",
+          "text": "OlmoEarth Studio 推出自定义嵌入导出功能",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://openai.com/index/how-enterprises-put-ai-to-work",
           "text": "From assistance to execution: How enterprises put AI to work",
           "heat": "OpenAI"
@@ -3065,14 +3070,9 @@
           "heat": "麻省理工科技评论"
         },
         {
-          "url": "https://hub.baai.ac.cn/view/57075",
-          "text": "AI驱动的PROTAC设计克服CLIP1-LTK融合蛋白驱动的肺癌耐药",
+          "url": "https://hub.baai.ac.cn/view/57077",
+          "text": "刚刚，Manus 恢复独立运营",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/16774",
-          "text": "UCSD 谢澎涛创业：用 AI 搞科研，4 小时交付顶刊水平成果，已获数百万美金融资",
-          "heat": "麻省理工科技评论"
         }
       ]
     },
@@ -10556,22 +10556,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48762034",
           "text": "【短视频】你写给我我的第一首歌",
-          "heat": "1072"
+          "heat": "1074"
         },
         {
           "url": "http://www.acfun.cn/v/ac48771110",
           "text": "【绝望女神/翻唱】【超时空要塞f ED 钻石裂痕】",
-          "heat": "926"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48769878",
-          "text": "【斑斑Spot】斑师傅bbox的直播录像(",
-          "heat": "1144"
+          "heat": "1006"
         },
         {
           "url": "http://www.acfun.cn/v/ac48762910",
           "text": "【东方】柳树下的杜拉罕【Future Bounce Remix】",
-          "heat": "490"
+          "heat": "537"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48769878",
+          "text": "【斑斑Spot】斑师傅bbox的直播录像(",
+          "heat": "1146"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738462",
@@ -10581,27 +10581,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48738540",
           "text": "【陈百强】只因爱你",
-          "heat": "124"
+          "heat": "133"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738479",
           "text": "【普拉西多·多明戈】普契尼：图兰朵 费莱尼 1972",
-          "heat": "86"
+          "heat": "102"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48738558",
+          "text": "【酒井法子】ノレないTeen-age (無法進入狀態的青少年) [出自錄影帶作品 喚起可愛",
+          "heat": "167"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48738546",
+          "text": "【Twins】我决定走了【HO HOO TAN 】",
+          "heat": "195"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738465",
           "text": "【龙飘飘】美酒加咖啡-国语-流行",
           "heat": "77"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48738546",
-          "text": "【Twins】我决定走了【HO HOO TAN 】",
-          "heat": "164"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48738558",
-          "text": "【酒井法子】ノレないTeen-age (無法進入狀態的青少年) [出自錄影帶作品 喚起可愛",
-          "heat": "137"
         },
         {
           "url": "http://www.acfun.cn/v/ac48769085",
@@ -10611,12 +10611,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48738541",
           "text": "【The Cranberries】Dreams",
-          "heat": "74"
+          "heat": "82"
         },
         {
           "url": "http://www.acfun.cn/v/ac48743124",
           "text": "【シャニソン】ボーダーレス・ノンストレス　Sonic Heart (and Signal)【縦画面フ",
           "heat": "55"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48771402",
+          "text": "【衣笠雪绘】杰哥你怎么还不来 歌切day189《秋绪》",
+          "heat": "235"
         },
         {
           "url": "http://www.acfun.cn/v/ac48769174",
@@ -10629,11 +10634,6 @@
           "heat": "20"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48768762",
-          "text": "无耻的抄袭歌曲 合集 第147期(梦想无限大篇)！！！！！！！！",
-          "heat": "216"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48733771",
           "text": "【Live映像】Our Stage - #CONCERTO_Day1 Special Edit Ve",
           "heat": "26"
@@ -10642,6 +10642,11 @@
           "url": "http://www.acfun.cn/v/ac48769383",
           "text": "AcFun术力口周榜     第二期",
           "heat": "279"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48769693",
+          "text": "#桑田佳祐 - AKANE On My Mind～饅頭こわい",
+          "heat": "65"
         },
         {
           "url": "http://www.acfun.cn/v/ac48768906",
@@ -10654,9 +10659,9 @@
           "heat": "48"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48769693",
-          "text": "#桑田佳祐 - AKANE On My Mind～饅頭こわい",
-          "heat": "65"
+          "url": "http://www.acfun.cn/v/ac48769899",
+          "text": "洛克王国世界游 完结撒花夏日毕业版",
+          "heat": "100"
         },
         {
           "url": "http://www.acfun.cn/v/ac48770889",
@@ -10664,19 +10669,9 @@
           "heat": "11"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48771402",
-          "text": "【衣笠雪绘】杰哥你怎么还不来 歌切day189《秋绪》",
-          "heat": "201"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48769899",
-          "text": "洛克王国世界游 完结撒花夏日毕业版",
-          "heat": "83"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48752834",
-          "text": "ドリーマーズビート / 日野森志歩 × 花里みのり × 白石杏 × 天馬司 × 鏡音リン × 鏡音レ",
-          "heat": "88"
+          "url": "http://www.acfun.cn/v/ac48770898",
+          "text": "Beat It",
+          "heat": "31"
         },
         {
           "url": "http://www.acfun.cn/v/ac48766399",
@@ -10702,6 +10697,11 @@
           "url": "http://www.acfun.cn/v/ac48760162",
           "text": "ARASHI - ハダシの未来 [Official Music Video]",
           "heat": "21"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48736441",
+          "text": "AND2BLE (앤더블)  Curious  MV[m6kmpiOsLVk]",
+          "heat": "35"
         }
       ]
     },
