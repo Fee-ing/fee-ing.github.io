@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786551344035,
+  "timestamp": 1786552256214,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,16 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57074",
+          "text": "Nature Photonics 2026 | 利用相干光进行直接张量处理",
+          "heat": "智源社区"
+        },
+        {
+          "url": "https://hub.baai.ac.cn/view/57076",
+          "text": "浙大开源 HugAgentOS：三引擎一体自进化，每步可归因 / 回放 / 回滚",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57070",
           "text": "GPU 开始金融化！黄仁勋拉上华尔街搞 5000 亿美元融资，回应「循环投资」",
           "heat": "智源社区"
@@ -3060,24 +3070,14 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57075",
+          "text": "AI驱动的PROTAC设计克服CLIP1-LTK融合蛋白驱动的肺癌耐药",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16774",
           "text": "UCSD 谢澎涛创业：用 AI 搞科研，4 小时交付顶刊水平成果，已获数百万美金融资",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57072",
-          "text": "蚂蚁首次投向机器人「指尖」！数亿元押注，全球首个物理交互脑发布",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57065",
-          "text": "Meta 重返开源！30B 本地 Agent 塞进 24GB 显存，LeCun 火速力挺",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57063",
-          "text": "腾讯 FalconGEMM：基于 Strassen 与 LCMA 低复杂度矩阵乘，探索超越硬件峰值的优化",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10581,12 +10581,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48762034",
           "text": "【短视频】你写给我我的第一首歌",
-          "heat": "1069"
+          "heat": "1072"
         },
         {
           "url": "http://www.acfun.cn/v/ac48771110",
           "text": "【绝望女神/翻唱】【超时空要塞f ED 钻石裂痕】",
-          "heat": "914"
+          "heat": "926"
         },
         {
           "url": "http://www.acfun.cn/v/ac48769878",
@@ -10596,7 +10596,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48762910",
           "text": "【东方】柳树下的杜拉罕【Future Bounce Remix】",
-          "heat": "463"
+          "heat": "490"
         },
         {
           "url": "http://www.acfun.cn/v/ac48738462",
@@ -10691,7 +10691,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48771402",
           "text": "【衣笠雪绘】杰哥你怎么还不来 歌切day189《秋绪》",
-          "heat": "191"
+          "heat": "201"
         },
         {
           "url": "http://www.acfun.cn/v/ac48769899",
