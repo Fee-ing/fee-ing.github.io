@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786643143059,
+  "timestamp": 1786644065463,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,6 +3030,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://deepmind.google/blog/introducing-gemini-3-7-flash/",
+          "text": "Introducing Gemini 3.7 Flash",
+          "heat": "Google DeepMind"
+        },
+        {
           "url": "https://openai.com/index/previewing-ultrafast",
           "text": "OpenAI 预览 Ultrafast 模式：GPT-5.6 Sol 速度提升至 14 倍",
           "heat": "OpenAI"
@@ -3040,6 +3045,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://huggingface.co/blog/amazon/strands-lerobot-streaming-data-loop",
+          "text": "Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://openai.com/index/dali-rajic-chief-revenue-officer",
           "text": "OpenAI appoints Dali Rajic as Chief Revenue Officer",
           "heat": "OpenAI"
@@ -3048,11 +3058,6 @@
           "url": "https://hub.baai.ac.cn/view/57098",
           "text": "MiniMax 怎么做 Agent：Model-Harness 协同只是第一步，还有 Inference-Harness 协同",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
-          "text": "Introducing Gemini 3.7 Flash",
-          "heat": "blog.google"
         },
         {
           "url": "https://hub.baai.ac.cn/view/57094",
@@ -3073,11 +3078,6 @@
           "url": "https://www.aibase.com/zh/news/30323",
           "text": "Grok 4.6 发布即登顶性价比榜：智能指数追平 GPT-5.6 Sol，定价却便宜 60% 以上",
           "heat": "aibase"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57093",
-          "text": "林俊旸 Agent 创业公司正式亮相，腾讯已投资",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10549,11 +10549,6 @@
           "heat": "100"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48758708",
-          "text": "【アリオ倉敷】好きすぎて泣く リリースイベント【STU48】",
-          "heat": "53"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48771617",
           "text": "如果历史是一群喵 主题曲OP",
           "heat": "178"
@@ -10586,17 +10581,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48772039",
           "text": "碰碰—狐狸（薛之谦）",
-          "heat": "147"
+          "heat": "162"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48772287",
+          "text": "【Guiano】花火【MV】",
+          "heat": "171"
         },
         {
           "url": "http://www.acfun.cn/v/ac48772320",
           "text": "Bliss TV （低皮质醇 / Frutiger Eco 风格混音）",
           "heat": "278"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48772287",
-          "text": "【Guiano】花火【MV】",
-          "heat": "162"
         },
         {
           "url": "http://www.acfun.cn/v/ac48760282",
@@ -10624,14 +10619,14 @@
           "heat": "59"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48774154",
+          "text": "【苏洛锦】闪亮",
+          "heat": "128"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48772134",
           "text": "［听歌］《拖字阙》方皓玟 王浩信",
           "heat": "110"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48774154",
-          "text": "【苏洛锦】闪亮",
-          "heat": "114"
         },
         {
           "url": "http://www.acfun.cn/v/ac48771084",
@@ -10644,19 +10639,24 @@
           "heat": "1038"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48772547",
-          "text": "梦想启航 // 千禧年怀旧氛围音乐",
-          "heat": "137"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48771953",
           "text": "「D.C.III～ダ･カーポIII～」風見鶏編OPムービーIII『True Magic...』",
           "heat": "25"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48772547",
+          "text": "梦想启航 // 千禧年怀旧氛围音乐",
+          "heat": "137"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48772275",
           "text": "【たなか】不可思议的病历",
           "heat": "80"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48741963",
+          "text": "DEVILS DEVEL CONCEPT - The Divinity (inst.)9F",
+          "heat": "27"
         }
       ]
     },
