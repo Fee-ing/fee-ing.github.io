@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786648544191,
+  "timestamp": 1786649453544,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10086,7 +10086,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48738629",
           "text": "【普拉西多·多明戈】威尔第：阿依达 卡巴耶 1977",
-          "heat": "107"
+          "heat": "115"
         },
         {
           "url": "http://www.acfun.cn/v/ac48736454",
@@ -10101,7 +10101,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48738639",
           "text": "【酒井法子】微笑 [中文版]",
-          "heat": "180"
+          "heat": "201"
         },
         {
           "url": "http://www.acfun.cn/v/ac48737489",
@@ -10111,7 +10111,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48738636",
           "text": "【Twins】桃红结他【HO HOO TAN 】",
-          "heat": "100"
+          "heat": "110"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48743127",
+          "text": "In a Hurry!",
+          "heat": "81"
         },
         {
           "url": "http://www.acfun.cn/v/ac48754360",
@@ -10134,11 +10139,6 @@
           "heat": "57"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48743127",
-          "text": "In a Hurry!",
-          "heat": "70"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48772039",
           "text": "碰碰—狐狸（薛之谦）",
           "heat": "162"
@@ -10146,12 +10146,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48772287",
           "text": "【Guiano】花火【MV】",
-          "heat": "171"
+          "heat": "201"
         },
         {
           "url": "http://www.acfun.cn/v/ac48772320",
           "text": "Bliss TV （低皮质醇 / Frutiger Eco 风格混音）",
           "heat": "278"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48774154",
+          "text": "【苏洛锦】闪亮",
+          "heat": "140"
         },
         {
           "url": "http://www.acfun.cn/v/ac48760282",
@@ -10179,11 +10184,6 @@
           "heat": "59"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48774154",
-          "text": "【苏洛锦】闪亮",
-          "heat": "128"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48772134",
           "text": "［听歌］《拖字阙》方皓玟 王浩信",
           "heat": "110"
@@ -10194,14 +10194,19 @@
           "heat": "65"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48772547",
+          "text": "梦想启航 // 千禧年怀旧氛围音乐",
+          "heat": "159"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48771763",
           "text": "【小可儿remix】旧毒新配方！Girigiri爱配上电音！毒上毒！我居然remix了禁忌的边界线！",
           "heat": "1038"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48772547",
-          "text": "梦想启航 // 千禧年怀旧氛围音乐",
-          "heat": "137"
+          "url": "http://www.acfun.cn/v/ac48772275",
+          "text": "【たなか】不可思议的病历",
+          "heat": "91"
         },
         {
           "url": "http://www.acfun.cn/v/ac48771953",
@@ -10209,14 +10214,9 @@
           "heat": "25"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48772275",
-          "text": "【たなか】不可思议的病历",
-          "heat": "80"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48741963",
           "text": "DEVILS DEVEL CONCEPT - The Divinity (inst.)9F",
-          "heat": "27"
+          "heat": "38"
         },
         {
           "url": "http://www.acfun.cn/v/ac48773300",
