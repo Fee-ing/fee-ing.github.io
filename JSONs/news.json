@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786817735028,
+  "timestamp": 1786818642552,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57156",
+          "text": "Nat. Comput. Sci. | 面向未见化学反应的鲁棒生成式过渡态模型",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57148",
           "text": "至知研究院提出大模型可解释性新路线：直接拆权重，数据成本不到 1%",
           "heat": "智源社区"
@@ -3072,11 +3077,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57144",
           "text": "谷歌研究：GPT-5 和 Gemini 3 也会“话到嘴边想不起来”，提出“知识画像”框架",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57154",
-          "text": "算力需求两年涨10倍，机器人为了走进真实物理世界，正在疯狂「吃算力」",
           "heat": "智源社区"
         }
       ]
@@ -10544,19 +10544,19 @@
       "type": "音乐",
       "content": [
         {
+          "url": "http://www.acfun.cn/v/ac48778462",
+          "text": "【绝望女神/翻唱】【超时空要塞F 北十字星】",
+          "heat": "630"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48778159",
           "text": "奇妙能力歌",
-          "heat": "841"
+          "heat": "886"
         },
         {
           "url": "http://www.acfun.cn/v/ac48775752",
           "text": "【歌切】光年之外",
           "heat": "883"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48778462",
-          "text": "【绝望女神/翻唱】【超时空要塞F 北十字星】",
-          "heat": "625"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749911",
@@ -10589,14 +10589,14 @@
           "heat": "123"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48778679",
-          "text": "偏爱",
-          "heat": "195"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48749925",
           "text": "【陈百强】有了你",
           "heat": "113"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48778679",
+          "text": "偏爱",
+          "heat": "195"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749936",
