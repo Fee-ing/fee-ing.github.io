@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786830334603,
+  "timestamp": 1786831247731,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -9901,22 +9901,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48778462",
           "text": "【绝望女神/翻唱】【超时空要塞F 北十字星】",
-          "heat": "710"
+          "heat": "749"
         },
         {
           "url": "http://www.acfun.cn/v/ac48778159",
           "text": "奇妙能力歌",
-          "heat": "928"
+          "heat": "943"
         },
         {
           "url": "http://www.acfun.cn/v/ac48775752",
           "text": "【歌切】光年之外",
-          "heat": "920"
+          "heat": "937"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749911",
           "text": "【中国音乐地图之听见新疆 哈萨克族民间歌曲集】蓝色的阔克河",
-          "heat": "77"
+          "heat": "82"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749922",
@@ -9946,7 +9946,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48778679",
           "text": "偏爱",
-          "heat": "215"
+          "heat": "228"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749925",
@@ -9979,6 +9979,11 @@
           "heat": "30"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48763107",
+          "text": "十分",
+          "heat": "32"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48778658",
           "text": "【良曲】Ghostly Kisses",
           "heat": "218"
@@ -10001,7 +10006,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48777897",
           "text": "抢麦大赛，但是有技能（术曲）",
-          "heat": "47"
+          "heat": "52"
         },
         {
           "url": "http://www.acfun.cn/v/ac48776974",
@@ -10042,11 +10047,6 @@
           "url": "http://www.acfun.cn/v/ac48777227",
           "text": "驱魔彩蛋",
           "heat": "239"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48771553",
-          "text": "枪火",
-          "heat": "43"
         }
       ]
     },
