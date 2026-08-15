@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786810534927,
+  "timestamp": 1786811445693,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57155",
+          "text": "Tokenpolitik：美国对华 AI 竞争转向全球基础设施争夺【智库观察】",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57144",
           "text": "谷歌研究：GPT-5 和 Gemini 3 也会“话到嘴边想不起来”，提出“知识画像”框架",
           "heat": "智源社区"
@@ -3072,11 +3077,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57146",
           "text": "Stripe 以 100 亿美元收购 OpenRouter，模型路由会成为新赛道吗？",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57142",
-          "text": "OpenAI 曝「抄袭门」：下一代模型 Astra 被指未恰当引用前人成果",
           "heat": "智源社区"
         }
       ]
@@ -10566,7 +10566,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48778159",
           "text": "奇妙能力歌",
-          "heat": "757"
+          "heat": "764"
         },
         {
           "url": "http://www.acfun.cn/v/ac48775752",
@@ -10581,7 +10581,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48778462",
           "text": "【绝望女神/翻唱】【超时空要塞F 北十字星】",
-          "heat": "467"
+          "heat": "483"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749911",
@@ -10651,7 +10651,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48778679",
           "text": "偏爱",
-          "heat": "142"
+          "heat": "154"
         },
         {
           "url": "http://www.acfun.cn/v/ac48777553",
