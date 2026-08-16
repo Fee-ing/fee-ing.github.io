@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786916734004,
+  "timestamp": 1786917644024,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10221,12 +10221,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48780209",
           "text": "Fish in the Pool",
-          "heat": "1068"
+          "heat": "1069"
         },
         {
           "url": "http://www.acfun.cn/v/ac48780147",
           "text": "该怎么办？",
-          "heat": "466"
+          "heat": "472"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749950",
@@ -10239,14 +10239,14 @@
           "heat": "230"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48749951",
-          "text": "【龙飘飘】岁月的歌-国语-流行",
-          "heat": "157"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48749989",
           "text": "【大塚 愛】LOVE - MAGIC",
           "heat": "209"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48749951",
+          "text": "【龙飘飘】岁月的歌-国语-流行",
+          "heat": "157"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749955",
@@ -10274,6 +10274,11 @@
           "heat": "310"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48749964",
+          "text": "【The Cranberries】Salvation",
+          "heat": "88"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48780299",
           "text": "（搬运）Chinozo  ハネムンウォー  feat.FloweR,LeN",
           "heat": "140"
@@ -10282,11 +10287,6 @@
           "url": "http://www.acfun.cn/v/ac48752307",
           "text": "スキマスイッチ「トリオス」（Official Audio）",
           "heat": "92"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48749964",
-          "text": "【The Cranberries】Salvation",
-          "heat": "71"
         },
         {
           "url": "http://www.acfun.cn/v/ac48780723",
@@ -10334,6 +10334,11 @@
           "heat": "41"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48780374",
+          "text": "【≠ME】12thシングル 愛くださいませ《フルサイズ》リリースイベントinららぽーと福岡",
+          "heat": "23"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48779056",
           "text": "朝鲜国立交响乐团专辑第十七张（柴可夫斯基《意大利随想曲》与钢琴协奏曲《黄河》）",
           "heat": "157"
@@ -10344,6 +10349,16 @@
           "heat": "65"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48763109",
+          "text": "Snow Man「Color me live…」Music Video - Ryohei Abe /",
+          "heat": "13"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48780724",
+          "text": "【翻唱】可地上的落叶它真的在追啊",
+          "heat": "51"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48779231",
           "text": "【中译版】[奇境]ワンダー / r-906 feat. 初音ミク",
           "heat": "52"
@@ -10352,21 +10367,6 @@
           "url": "http://www.acfun.cn/v/ac48779270",
           "text": "【中译版】[驱车疾行 溺坠而亡] / 初音ミク（BY：佐藤ちなみに）",
           "heat": "83"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48745206",
-          "text": "なにわ男子 - Celebrate [Official Music Video]",
-          "heat": "26"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48763109",
-          "text": "Snow Man「Color me live…」Music Video - Ryohei Abe /",
-          "heat": "13"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48763921",
-          "text": "Shota Watanabe / Koji Mukai  星のうた  Music Video",
-          "heat": "12"
         }
       ]
     },
