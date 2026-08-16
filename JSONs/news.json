@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786913135062,
+  "timestamp": 1786914050270,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,11 +3055,6 @@
           "heat": "快科技"
         },
         {
-          "url": "https://api3.cls.cn/share/article/2455445?os=web&sv=8.4.6&app=CailianpressWeb",
-          "text": "Stripe 据悉即将以超 70 亿美元收购 AI 公司 OpenRouter",
-          "heat": "财联社"
-        },
-        {
           "url": "https://www.infzm.com/contents/328597",
           "text": "算力打包成「证券」，保值吗？",
           "heat": "南方周末"
@@ -3073,6 +3068,11 @@
           "url": "https://www.tmtpost.com/8104976.html",
           "text": "光模块没有死，但「可插拔」死了：英伟达 CPO 量产的产业链账",
           "heat": "钛媒体"
+        },
+        {
+          "url": "https://wallstreetcn.com/livenews/3150072",
+          "text": "全球开源 AI 大洗牌：中国开源模型加速崛起",
+          "heat": "华尔街见闻"
         }
       ]
     },
@@ -10556,7 +10556,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48780147",
           "text": "该怎么办？",
-          "heat": "416"
+          "heat": "421"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749950",
@@ -10574,14 +10574,14 @@
           "heat": "157"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48749955",
-          "text": "【普拉西多·多明戈】威尔第：假面舞会  里夏蕾莉  1975",
-          "heat": "155"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48749989",
           "text": "【大塚 愛】LOVE - MAGIC",
           "heat": "181"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48749955",
+          "text": "【普拉西多·多明戈】威尔第：假面舞会  里夏蕾莉  1975",
+          "heat": "155"
         },
         {
           "url": "http://www.acfun.cn/v/ac48779985",
@@ -10594,14 +10594,14 @@
           "heat": "104"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48778261",
-          "text": "每周音乐分享 2026.08.15期",
-          "heat": "310"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48765278",
           "text": "「好き」聴き比べ #shorts #シャニソン #アイキュー",
           "heat": "85"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48778261",
+          "text": "每周音乐分享 2026.08.15期",
+          "heat": "310"
         },
         {
           "url": "http://www.acfun.cn/v/ac48780299",
@@ -10632,11 +10632,6 @@
           "url": "http://www.acfun.cn/v/ac48780345",
           "text": "【是跟唱】来自音律联觉但是全网最慢的-HuaYu-",
           "heat": "106"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48778958",
-          "text": "KEYGEN CHURCH - Oscuro Domine",
-          "heat": "174"
         },
         {
           "url": "http://www.acfun.cn/v/ac48779220",
@@ -10697,6 +10692,11 @@
           "url": "http://www.acfun.cn/v/ac48763921",
           "text": "Shota Watanabe / Koji Mukai  星のうた  Music Video",
           "heat": "12"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48763109",
+          "text": "Snow Man「Color me live…」Music Video - Ryohei Abe /",
+          "heat": "13"
         }
       ]
     },
