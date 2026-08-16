@@ -1,146 +1,106 @@
 {
-  "timestamp": 1786810053294,
+  "timestamp": 1786896450819,
   "data": [
     {
+      "year": "1993",
+      "title": "中国现代计算数学研究的开拓者<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%86%AF%E5%BA%B7/47515\">冯康</a>逝世",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%86%AF%E5%BA%B7/47515",
+      "type": "death",
+      "desc": "冯康，数学家，应用数学和计算数学家。中国现代计算数学研究的开拓者。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1988",
+      "title": "巴基斯坦总统<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%A9%86%E7%BD%95%E9%BB%98%E5%BE%B7%C2%B7%E9%BD%90%E4%BA%9A%C2%B7%E5%93%88%E5%85%8B\">齐亚·哈克</a>在飞行爆炸中死亡",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E7%A9%86%E7%BD%95%E9%BB%98%E5%BE%B7%C2%B7%E9%BD%90%E4%BA%9A%C2%B7%E5%93%88%E5%85%8B",
+      "type": "death",
+      "desc": "穆罕默德·齐亚·哈克（英语：Muhammad Zia-ul-Haq；1924年8月12日—1988年8月17日），曾于1978年9月16日至1988年8月17日任巴基斯坦伊斯兰共和国军政府总统。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1982",
+      "title": "中美发表<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%85%AB%E4%B8%80%E4%B8%83%E5%85%AC%E6%8A%A5\">《八一七公报》</a>",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%85%AB%E4%B8%80%E4%B8%83%E5%85%AC%E6%8A%A5",
+      "type": "event",
+      "desc": "中美八一七公报是中美双方于1982年8月17日发表的《中华人民共和国与美利坚合众国联合公报》。它是双方经过10个月的反复谈判，就分步骤直到最后彻底解决美国向台湾出售武器问题达成的协议。",
+      "cover": false,
+      "recommend": false
+    },
+    {
+      "year": "1982",
+      "title": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%A3%9E%E5%88%A9%E6%B5%A6/14316\">PHILIPS</a>公司推出了世界上第一片CD",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E9%A3%9E%E5%88%A9%E6%B5%A6/14316",
+      "type": "event",
+      "desc": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%A3%9E%E5%88%A9%E6%B5%A6/14316\">飞利浦</a>，1891年成立于<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%8D%B7%E5%85%B0\">荷兰</a>，主要生产<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%85%A7%E6%98%8E\">照明</a>、家庭电器、<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%8C%BB%E7%96%97%E7%B3%BB%E7%BB%9F\">医疗系统</a>。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1978",
+      "title": "三名美国人驾驶气球首次横渡<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%A4%A7%E8%A5%BF%E6%B4%8B/10883\">大西洋</a>",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E5%A4%A7%E8%A5%BF%E6%B4%8B/10883",
+      "type": "event",
+      "desc": "大西洋（英语：Atlantic Ocean，葡萄牙语：Atlântico，阿拉伯语： أتلانتيك ），是世界第二大洋，位于欧洲、非洲和南、北美洲之间。北以冰岛-法罗岛海丘和威维尔-汤姆森海岭与北冰洋分界，南临南极洲，并与太平洋、印度洋南部水域相通。",
+      "cover": false,
+      "recommend": false
+    },
+    {
       "year": "1977",
-      "title": "摇滚乐歌手“猫王”<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%9F%83%E5%B0%94%E7%BB%B4%E6%96%AF%C2%B7%E6%99%AE%E9%9B%B7%E6%96%AF%E5%88%A9\">普莱斯利</a>去世",
+      "title": "法国足球运动员<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%92%82%E5%9F%83%E9%87%8C%C2%B7%E4%BA%A8%E5%88%A9\">蒂埃里·亨利</a>出生",
       "festival": "",
-      "link": "https://baike.baidu.com/item/%E5%9F%83%E5%B0%94%E7%BB%B4%E6%96%AF%C2%B7%E6%99%AE%E9%9B%B7%E6%96%AF%E5%88%A9",
-      "type": "death",
-      "desc": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%9F%83%E5%B0%94%E7%BB%B4%E6%96%AF%C2%B7%E6%99%AE%E9%9B%B7%E6%96%AF%E5%88%A9\">埃尔维斯·普雷斯利</a>，绰号猫王。美国<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%91%87%E6%BB%9A\">摇滚</a>歌手及演员，1935年1月8日出生在密西西比州图珀洛。",
-      "cover": false,
-      "recommend": true
-    },
-    {
-      "year": "1967",
-      "title": "中华民国财政部长<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%AD%94%E7%A5%A5%E7%86%99/553084?fromModule=disambiguation\">孔祥熙</a>病逝于美国纽约",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E5%AD%94%E7%A5%A5%E7%86%99",
-      "type": "death",
-      "desc": "孔祥熙（1880年—1967年），字庸之，号子渊，出生于<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%B1%B1%E8%A5%BF%E7%9C%81\">山西省</a><a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%A4%AA%E8%B0%B7%E5%8E%BF\">太谷县</a>一个亦商亦儒的家庭。孔祥熙的岳父乃<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%AE%8B%E5%98%89%E6%A0%91\">宋嘉树</a>。",
-      "cover": false,
-      "recommend": true
-    },
-    {
-      "year": "1959",
-      "title": "美国海军司令官<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%B0%8F%E5%A8%81%E5%BB%89%C2%B7%E5%BC%97%E9%9B%B7%E5%BE%B7%E9%87%8C%E5%85%8B%C2%B7%E5%93%88%E5%B0%94%E8%A5%BF\">小威廉·弗雷德里克·哈尔西</a>逝世",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E5%B0%8F%E5%A8%81%E5%BB%89%C2%B7%E5%BC%97%E9%9B%B7%E5%BE%B7%E9%87%8C%E5%85%8B%C2%B7%E5%93%88%E5%B0%94%E8%A5%BF",
-      "type": "death",
-      "desc": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%B0%8F%E5%A8%81%E5%BB%89%C2%B7%E5%BC%97%E9%9B%B7%E5%BE%B7%E9%87%8C%E5%85%8B%C2%B7%E5%93%88%E5%B0%94%E8%A5%BF\">小威廉·弗雷德里克·哈尔西</a>，美国海军司令官。<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%96%E7%95%8C%E5%A4%A7%E6%88%98\">第二次世界大战</a>期间在太平洋地区指挥多次战役并获得胜利。",
-      "cover": false,
-      "recommend": false
-    },
-    {
-      "year": "1954",
-      "title": "好莱坞大导演<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%A9%B9%E5%A7%86%E6%96%AF%C2%B7%E5%8D%A1%E6%A2%85%E9%9A%86/8926\">詹姆斯·卡梅隆</a>出生",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E8%A9%B9%E5%A7%86%E6%96%AF%C2%B7%E5%8D%A1%E6%A2%85%E9%9A%86/8926",
+      "link": "https://baike.baidu.com/item/%E8%92%82%E5%9F%83%E9%87%8C%C2%B7%E4%BA%A8%E5%88%A9",
       "type": "birth",
-      "desc": "詹姆斯·卡梅隆1954年8月16日出生于加拿大安大略省，好莱坞电影导演、编剧。\n1981年，他执导首部影片《食人鱼2:繁殖》。1984年凭借自编自导的科幻电影《终结者》而成名。1986年，詹姆斯·卡梅隆自编自导了电影《异形2》。",
+      "desc": "蒂埃里·亨利（Thierry Henry），1977年8月17日出生于法国巴黎，法国足球运动员、企业家、足球评论员、教练员、演员，球员时代司职前锋。",
       "cover": false,
       "recommend": false
     },
     {
-      "year": "1951",
-      "title": "“中国第一帮主”<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%9D%9C%E6%9C%88%E7%AC%99/1525463\">杜月笙</a>在香港病逝",
+      "year": "1952",
+      "title": "中国围棋“棋圣”<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%81%82%E5%8D%AB%E5%B9%B3\">聂卫平</a>出生",
       "festival": "",
-      "link": "https://baike.baidu.com/item/%E6%9D%9C%E6%9C%88%E7%AC%99/1525463",
-      "type": "death",
-      "desc": "原名杜月生，是近代上海青帮最著名的人物之一，被称为“中国黑帮老大”和“中国第一帮主”，一生叱咤风云，游刃于商界、军界与政界，以及金融、工业、新闻报业、教育等多领域，成就无人能比。",
+      "link": "https://baike.baidu.com/item/%E8%81%82%E5%8D%AB%E5%B9%B3",
+      "type": "birth",
+      "desc": "聂卫平，1952年8月17日出生，<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%B2%B3%E5%8C%97\">河北</a>深县（今河北省<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%B7%B1%E5%B7%9E%E5%B8%82\">深州市</a>）人。中国著名<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%9B%B4%E6%A3%8B\">围棋</a>职业运动员，杰出围棋<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%95%99%E7%BB%83\">教练</a>，<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E5%9B%B4%E6%A3%8B%E5%8D%8F%E4%BC%9A\">中国围棋协会</a>副主席兼技术委员会主任、中国棋院技术顾问。",
       "cover": true,
       "recommend": true,
-      "pic_calendar": "http://baike.bdimg.com/cms/rc/r/image/2014-09-07/9fed486e477c76b3c2169cfe76b848b0_80_80.jpg",
-      "pic_share": "http://baike.bdimg.com/cms/rc/r/image/2014-09-07/d84b0f3c735d1ef4e4a9cf6193e60da5_360_212.jpg",
-      "pic_index": "http://baike.bdimg.com/cms/rc/r/image/2014-09-07/d7865f9740a47762e1b13608e809c81c_134_100.jpg"
+      "pic_calendar": "https://bkimg.cdn.bcebos.com/pic/54fbb2fb43166d224f4ac82571781ef7905298227474?x-bce-process=image/format,f_auto",
+      "pic_share": "https://bkimg.cdn.bcebos.com/pic/6a63f6246b600c33874412792d17460fd9f9d72a0b74?x-bce-process=image/format,f_auto",
+      "pic_index": "https://bkimg.cdn.bcebos.com/pic/242dd42a2834349b033b5f37feb102ce36d3d5391074?x-bce-process=image/format,f_auto"
     },
     {
-      "year": "1948",
-      "title": "有“棒球之神”之称的<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%B4%9D%E6%AF%94%C2%B7%E9%B2%81%E6%96%AF\">贝比·鲁斯</a>逝世",
+      "year": "1937",
+      "title": "中国著名书法家<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%88%98%E7%82%B3%E6%A3%AE\">刘炳森</a>出生",
       "festival": "",
-      "link": "https://baike.baidu.com/item/%E8%B4%9D%E6%AF%94%C2%B7%E9%B2%81%E6%96%AF",
+      "link": "https://baike.baidu.com/item/%E5%88%98%E7%82%B3%E6%A3%AE",
+      "type": "birth",
+      "desc": "<b>刘炳森</b>(1937年8月-2005年2月15日)字树庵，号海村，幼年自号<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%88%98%E4%BA%94\">刘五</a>先生。1962年夏于北京艺术学院<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%BE%8E%E6%9C%AF\">美术</a>系中国画<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%B1%B1%E6%B0%B4\">山水</a>科本科毕业，同年秋至北京故宫博物院从事古代法书绘画的临摹复制和研究工作。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1893",
+      "title": "中国民间音乐家“瞎子阿炳”<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%98%BF%E7%82%B3\">华彦钧</a>出生",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E9%98%BF%E7%82%B3",
+      "type": "birth",
+      "desc": "阿炳，原名华彦钧，民间<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%9F%B3%E4%B9%90%E5%AE%B6\">音乐家</a>，正一派道士。因患<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%9C%BC%E7%96%BE\">眼疾</a>而双目失明。",
+      "cover": false,
+      "recommend": true
+    },
+    {
+      "year": "1850",
+      "title": "南美独立战争领袖<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%BD%95%E5%A1%9E%C2%B7%E5%BC%97%E6%9C%97%E8%A5%BF%E6%96%AF%E7%A7%91%C2%B7%E5%BE%B7%C2%B7%E5%9C%A3%E9%A9%AC%E4%B8%81%C2%B7%E9%A9%AC%E6%89%98%E6%8B%89%E6%96%AF/461147\">圣马丁</a>逝世",
+      "festival": "",
+      "link": "https://baike.baidu.com/item/%E4%BD%95%E5%A1%9E%C2%B7%E5%BC%97%E6%9C%97%E8%A5%BF%E6%96%AF%E7%A7%91%C2%B7%E5%BE%B7%C2%B7%E5%9C%A3%E9%A9%AC%E4%B8%81%C2%B7%E9%A9%AC%E6%89%98%E6%8B%89%E6%96%AF/461147",
       "type": "death",
-      "desc": "贝比·鲁斯，美国职业棒球运动员。原来效力于红袜队，1918年被卖到扬基队，发下“圣婴诅咒”。",
-      "cover": false,
-      "recommend": false
-    },
-    {
-      "year": "1922",
-      "title": "革命烈士、原兰考县县委书记<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E7%84%A6%E8%A3%95%E7%A6%84/80754\">焦裕禄</a>出生",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E7%84%A6%E8%A3%95%E7%A6%84/80754",
-      "type": "birth",
-      "desc": "焦裕禄（1922.8.16 ~1964.5.14）</sup><a target=\"_blank\" href=\"https://baike.baidu.com/item/\"> </a>，山东<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%B7%84%E5%8D%9A\">淄博</a>博山县北崮村人,<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%9D%A9%E5%91%BD%E7%83%88%E5%A3%AB\">革命烈士</a>，干部楷模。",
-      "cover": false,
-      "recommend": true
-    },
-    {
-      "year": "1913",
-      "title": "以色列总理<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%A2%85%E7%BA%B3%E8%B5%AB%E5%A7%86%C2%B7%E8%B4%9D%E4%BA%AC\">梅纳赫姆·贝京</a>出生",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E6%A2%85%E7%BA%B3%E8%B5%AB%E5%A7%86%C2%B7%E8%B4%9D%E4%BA%AC",
-      "type": "birth",
-      "desc": "梅纳赫姆·贝京（英语：Menachem Begin，1913年8月16日—1992年3月8日），波兰籍犹太人，以色列政治家。梅纳赫姆·贝京早年是主张以暴力获得巴勒斯坦的伊尔贡组织的领导人。",
-      "cover": false,
-      "recommend": false
-    },
-    {
-      "year": "1897",
-      "title": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%B8%AD%E4%B8%9C%E9%93%81%E8%B7%AF/7978200\">中东铁路</a>正式开工",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E4%B8%AD%E4%B8%9C%E9%93%81%E8%B7%AF/7978200",
-      "type": "event",
-      "desc": "中东铁路是“中国东方铁路”的简称，亦作“东清铁路”“东省铁路”。日俄战争结束后称中东铁路，即中国东省部铁路之意。中东铁路为19世纪末20世纪初沙皇俄国为攫取中国东北资源，称霸远东地区而修建的一条“丁”字形铁路。",
-      "cover": false,
-      "recommend": false
-    },
-    {
-      "year": "1845",
-      "title": "法国著名物理学家<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%8A%A0%E5%B8%83%E9%87%8C%E5%9F%83%E5%B0%94%C2%B7%E6%9D%8E%E6%99%AE%E6%9B%BC\">李普曼</a>诞生",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E5%8A%A0%E5%B8%83%E9%87%8C%E5%9F%83%E5%B0%94%C2%B7%E6%9D%8E%E6%99%AE%E6%9B%BC",
-      "type": "birth",
-      "desc": "加布里埃尔·李普曼（法语：Gabriel Lippmann，1845年8月16日－1921年7月13日），法国知名物理学家，他因为发明制作彩色玻璃照相技术，于1908年获得诺贝尔物理学奖。",
-      "cover": false,
-      "recommend": false
-    },
-    {
-      "year": "1832",
-      "title": "心理学实验室的创立者<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%A8%81%E5%BB%89%C2%B7%E5%86%AF%E7%89%B9\">威廉·冯特</a>出生",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E5%A8%81%E5%BB%89%C2%B7%E5%86%AF%E7%89%B9",
-      "type": "birth",
-      "desc": "威廉·冯特（Wilhelm Wundt，1832―1920），<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%BE%B7%E5%9B%BD\">德国</a><a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%BF%83%E7%90%86%E5%AD%A6%E5%AE%B6\">心理学家</a>，<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%93%B2%E5%AD%A6%E5%AE%B6\">哲学家</a>，第一个心理学实验室的创立者，<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%9E%84%E9%80%A0%E4%B8%BB%E4%B9%89%E5%BF%83%E7%90%86%E5%AD%A6\">构造主义心理学</a>的代表人物。",
-      "cover": false,
-      "recommend": false
-    },
-    {
-      "year": "1819",
-      "title": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%BD%BC%E5%BE%97%E5%8D%A2%E6%83%A8%E6%A1%88\">彼得卢惨案</a>发生",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E5%BD%BC%E5%BE%97%E5%8D%A2%E6%83%A8%E6%A1%88",
-      "type": "event",
-      "desc": "19世纪初期<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%8B%B1%E5%9B%BD\">英国</a>政府镇压人民群众的事件。1819年8月16日，英国政府出动军队，镇压在<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E5%9F%8E\">曼彻斯特城</a><a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%9C%A3%E5%BD%BC%E5%BE%97%E5%B9%BF%E5%9C%BA\">圣彼得广场</a>举行抗议集会的群众，造成十余人死亡、数百人受伤的惨案。",
-      "cover": false,
-      "recommend": true
-    },
-    {
-      "year": "1743",
-      "title": "拳击冠军杰克·布劳顿首次制定了<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%8B%B3%E5%87%BB/53858\">拳击</a>规则",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E6%8B%B3%E5%87%BB/53858",
-      "type": "event",
-      "desc": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%8B%B3%E5%87%BB/53858\">拳击</a>（英文：<a target=\"_blank\" href=\"https://baike.baidu.com/item/boxing\">boxing</a>;pugilism，法文：Boxe）是戴<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%8B%B3%E5%87%BB%E6%89%8B%E5%A5%97\">拳击手套</a>进行格斗的运动项目。",
-      "cover": false,
-      "recommend": false
-    },
-    {
-      "year": "1449",
-      "title": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E9%AA%A8%E7%89%8C\">多米诺骨牌</a>在<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%84%8F%E5%A4%A7%E5%88%A9/148336\">意大利</a>出现",
-      "festival": "",
-      "link": "https://baike.baidu.com/item/%E5%A4%9A%E7%B1%B3%E8%AF%BA%E9%AA%A8%E7%89%8C",
-      "type": "event",
-      "desc": "多米诺骨牌(domino)是一种用木制、骨制或<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%A1%91%E6%96%99\">塑料</a>制成的长方体骨牌。",
+      "desc": "<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E4%BD%95%E5%A1%9E%C2%B7%E5%BE%B7%C2%B7%E5%9C%A3%E9%A9%AC%E4%B8%81\">何塞·德·圣马丁</a>，1778年2月25日－1850年8月17日），<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E9%98%BF%E6%A0%B9%E5%BB%B7\">阿根廷</a><a target=\"_blank\" href=\"https://baike.baidu.com/item/%E5%B0%86%E5%86%9B\">将军</a>、南美<a target=\"_blank\" href=\"https://baike.baidu.com/item/%E8%A5%BF%E7%8F%AD%E7%89%99\">西班牙</a><a target=\"_blank\" href=\"https://baike.baidu.com/item/%E6%AE%96%E6%B0%91%E5%9C%B0\">殖民地</a>独立战争的领袖之一。",
       "cover": false,
       "recommend": false
     }
