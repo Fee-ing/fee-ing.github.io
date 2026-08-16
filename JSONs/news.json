@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786904135101,
+  "timestamp": 1786905043262,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10549,19 +10549,19 @@
       "type": "音乐",
       "content": [
         {
+          "url": "http://www.acfun.cn/v/ac48780209",
+          "text": "Fish in the Pool",
+          "heat": "1043"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48763107",
           "text": "十分",
           "heat": "545"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48780209",
-          "text": "Fish in the Pool",
-          "heat": "1035"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48780147",
           "text": "该怎么办？",
-          "heat": "340"
+          "heat": "362"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749950",
@@ -10571,7 +10571,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48749977",
           "text": "【Twins】失約【花约】",
-          "heat": "214"
+          "heat": "227"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749951",
@@ -10596,17 +10596,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48779985",
           "text": "【声乐老师和学生一起唱】热异常 / いよわ feat. 足立レイ【附唱法讲解 】",
-          "heat": "680"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48778261",
-          "text": "每周音乐分享 2026.08.15期",
-          "heat": "310"
+          "heat": "697"
         },
         {
           "url": "http://www.acfun.cn/v/ac48749957",
           "text": "【陈百强】约会",
           "heat": "98"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48778261",
+          "text": "每周音乐分享 2026.08.15期",
+          "heat": "310"
         },
         {
           "url": "http://www.acfun.cn/v/ac48765278",
@@ -10641,12 +10641,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48779220",
           "text": "三个笨蛋彩蛋",
-          "heat": "194"
+          "heat": "208"
         },
         {
           "url": "http://www.acfun.cn/v/ac48780345",
           "text": "【是跟唱】来自音律联觉但是全网最慢的-HuaYu-",
-          "heat": "87"
+          "heat": "95"
         },
         {
           "url": "http://www.acfun.cn/v/ac48760302",
@@ -10657,6 +10657,11 @@
           "url": "http://www.acfun.cn/v/ac48766541",
           "text": "moumoon「Sunshine Girl」(Official Music Video)",
           "heat": "24"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48780723",
+          "text": "【翻唱】难道非要死去活来爱才懂 //《Away》",
+          "heat": "120"
         },
         {
           "url": "http://www.acfun.cn/v/ac48777466",
@@ -10671,7 +10676,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48779334",
           "text": "【原创曲】这首《初始之歌》，是我踏出的第一步~！",
-          "heat": "182"
+          "heat": "196"
         },
         {
           "url": "http://www.acfun.cn/v/ac48779056",
@@ -10692,11 +10697,6 @@
           "url": "http://www.acfun.cn/v/ac48779270",
           "text": "【中译版】[驱车疾行 溺坠而亡] / 初音ミク（BY：佐藤ちなみに）",
           "heat": "83"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48745206",
-          "text": "なにわ男子 - Celebrate [Official Music Video]",
-          "heat": "26"
         }
       ]
     },
