@@ -1,5 +1,5 @@
 {
-  "timestamp": 1786997735647,
+  "timestamp": 1786998645086,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3025,6 +3025,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://huggingface.co/blog/Dharma-AI/gpu-management-pt2",
+          "text": "Same Cluster, 33 Points More Utilization: What Changed Was the Order",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://openai.com/index/new-policy-ideas-for-the-intelligence-age",
           "text": "OpenAI funds 14 projects exploring new AI policy ideas",
           "heat": "OpenAI"
@@ -3067,11 +3072,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57185",
           "text": "Claude 隐形水印被光速破解，GitHub 一天狂揽 2.6k 星",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57184",
-          "text": "OpenAI 提速狂飙 16 倍！GPT-5.6 多智能体 V2 上线，741 轮怪物对话 1 秒打开",
           "heat": "智源社区"
         }
       ]
@@ -10596,12 +10596,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48775154",
           "text": "【作业用/助眠】平覆心情的舒缓钢琴曲 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "926"
+          "heat": "936"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783171",
           "text": "2026年7月收藏榜TOP50，天呐？真的文艺复兴啊",
-          "heat": "1114"
+          "heat": "1117"
         },
         {
           "url": "http://www.acfun.cn/v/ac48782645",
@@ -10616,7 +10616,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48780374",
           "text": "【≠ME】12thシングル 愛くださいませ《フルサイズ》リリースイベントinららぽーと福岡",
-          "heat": "139"
+          "heat": "145"
         },
         {
           "url": "http://www.acfun.cn/v/ac48751335",
