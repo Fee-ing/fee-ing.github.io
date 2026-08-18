@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787080537692,
+  "timestamp": 1787081442892,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2625,6 +2625,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://openai.com/index/pacing-model-development-cyber-capabilities",
+          "text": "Pacing model development in an era of cyber-critical capabilities",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://openai.com/index/partnering-with-codeai",
           "text": "Partnering with CodeAI to prepare the first AI generation",
           "heat": "OpenAI"
@@ -2652,11 +2657,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57223",
           "text": "美国拟要求伙伴在中美 AI 之间“选边”，全球人工智能竞争加速阵营化",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57216",
-          "text": "OpenAI 解散「灾难风险应急」团队，GPU 大神 Scott Gray 离职",
           "heat": "智源社区"
         }
       ]
@@ -9316,7 +9316,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48784465",
           "text": "【猪肝来也】Broken Melodies by NCT DREAM",
-          "heat": "1220"
+          "heat": "1221"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784460",
@@ -9326,12 +9326,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48785632",
           "text": "病娇小猫？！",
-          "heat": "813"
+          "heat": "851"
         },
         {
           "url": "http://www.acfun.cn/v/ac48786035",
           "text": "和你「私奔」的话，我只带一支海棠。【原创曲】",
-          "heat": "408"
+          "heat": "417"
         },
         {
           "url": "http://www.acfun.cn/v/ac48751339",
@@ -9339,14 +9339,14 @@
           "heat": "167"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48780715",
-          "text": "【歌ってみた】ECHO / covered by 幸祜",
-          "heat": "64"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48751373",
           "text": "【大塚 愛】あっこゴリラ - ハイナビ",
           "heat": "203"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48780715",
+          "text": "【歌ってみた】ECHO / covered by 幸祜",
+          "heat": "64"
         },
         {
           "url": "http://www.acfun.cn/v/ac48751340",
@@ -9381,7 +9381,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48785131",
           "text": "步步生莲",
-          "heat": "149"
+          "heat": "166"
         },
         {
           "url": "http://www.acfun.cn/v/ac48785081",
@@ -9392,6 +9392,11 @@
           "url": "http://www.acfun.cn/v/ac48777573",
           "text": "テレキャスター流星群 - とある軽音学部(とあんが)feat.知声",
           "heat": "21"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48752408",
+          "text": "シンデレラNo.1",
+          "heat": "52"
         },
         {
           "url": "http://www.acfun.cn/v/ac48774281",
@@ -9427,11 +9432,6 @@
           "url": "http://www.acfun.cn/v/ac48784384",
           "text": "Panorama Lobby(全景大厅) // 千禧年怀旧氛围音乐",
           "heat": "95"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48752408",
-          "text": "シンデレラNo.1",
-          "heat": "49"
         },
         {
           "url": "http://www.acfun.cn/v/ac48785342",
