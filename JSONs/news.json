@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787256939841,
+  "timestamp": 1787257842806,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3065,6 +3065,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://openai.com/index/introducing-ai-futures",
+          "text": "Introducing AI Futures",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57281",
           "text": "浙大提出 Latent-to-4D：视频 DiT 直接生成 4D 世界，仅需 1K 条数据",
           "heat": "智源社区"
@@ -3073,11 +3078,6 @@
           "url": "https://www.aibase.com/zh/news/30507",
           "text": "美团搜索 3.0 如何用大模型表征重构本地生活搜索底座？",
           "heat": "aibase"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57276",
-          "text": "AI for Science 开始「动手」了：机器人正式走进国家级实验室",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10671,7 +10671,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48791140",
           "text": "花田错",
-          "heat": "259"
+          "heat": "261"
         },
         {
           "url": "http://www.acfun.cn/v/ac48760481",
@@ -10746,17 +10746,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48789940",
           "text": "2026-08-19 懒銀 直播录像",
-          "heat": "102"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48753820",
-          "text": "Ending",
-          "heat": "0"
+          "heat": "119"
         },
         {
           "url": "http://www.acfun.cn/v/ac48789873",
           "text": "2026-08-19 张梓义 直播录像",
           "heat": "84"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48753820",
+          "text": "Ending",
+          "heat": "0"
         },
         {
           "url": "http://www.acfun.cn/v/ac48791060",
