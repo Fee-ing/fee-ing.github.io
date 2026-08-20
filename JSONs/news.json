@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787253338264,
+  "timestamp": 1787254244472,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -9419,14 +9419,9 @@
           "heat": "296"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48763118",
-          "text": "Make It Hot",
-          "heat": "49"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48760481",
           "text": "Capretto／Chevon【Music Video】",
-          "heat": "52"
+          "heat": "67"
         },
         {
           "url": "http://www.acfun.cn/v/ac48754989",
@@ -9481,7 +9476,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48778175",
           "text": "しらないプラネット / 初音ミク, 鏡音リン",
-          "heat": "31"
+          "heat": "44"
         },
         {
           "url": "http://www.acfun.cn/v/ac48789940",
@@ -9502,6 +9497,11 @@
           "url": "http://www.acfun.cn/v/ac48791060",
           "text": "《霜雪千年》竹笛 梨花香~",
           "heat": "58"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48790170",
+          "text": "匹诺曹P/热异常/心做",
+          "heat": "88"
         }
       ]
     },
