@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787242532318,
+  "timestamp": 1787243444481,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10629,11 +10629,6 @@
       "type": "音乐",
       "content": [
         {
-          "url": "http://www.acfun.cn/v/ac48788625",
-          "text": "《迢迢》马路战神七夕版",
-          "heat": "1651"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48788754",
           "text": "【薛楚良Retake】ユラギ【UTAU音源测试】",
           "heat": "366"
@@ -10641,12 +10636,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48789198",
           "text": "怪盗哈奇先生 巡音儿力  P主謎J_official",
-          "heat": "462"
+          "heat": "478"
         },
         {
           "url": "http://www.acfun.cn/v/ac48789271",
           "text": "【中日字幕/謎J】某国のハロウィン/某国的万圣节 - feat.鏡音レン",
           "heat": "329"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48763635",
+          "text": "【Twins】幼稚园【一时无两】",
+          "heat": "327"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48763637",
+          "text": "【大塚 愛】（AIO PIANO vol.7）「タイムマシーン」ライブ映像",
+          "heat": "202"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763581",
@@ -10664,19 +10669,9 @@
           "heat": "135"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48763635",
-          "text": "【Twins】幼稚园【一时无两】",
-          "heat": "307"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48763608",
           "text": "【陈百强】无声胜有声",
-          "heat": "122"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48763637",
-          "text": "【大塚 愛】（AIO PIANO vol.7）「タイムマシーン」ライブ映像",
-          "heat": "198"
+          "heat": "136"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763631",
@@ -10686,7 +10681,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48791140",
           "text": "花田错",
-          "heat": "215"
+          "heat": "227"
         },
         {
           "url": "http://www.acfun.cn/v/ac48754989",
@@ -10694,19 +10689,24 @@
           "heat": "24"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48763118",
-          "text": "Make It Hot",
-          "heat": "35"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48789606",
           "text": "Veiling Memories（朦胧的记忆）// 千禧年怀旧氛围音乐",
           "heat": "75"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48763118",
+          "text": "Make It Hot",
+          "heat": "35"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48788872",
           "text": "纪苏联｜免我搓坨苦",
           "heat": "48"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48788790",
+          "text": "≽^⚈⩊⚈^≼",
+          "heat": "108"
         },
         {
           "url": "http://www.acfun.cn/v/ac48758821",
@@ -10719,19 +10719,14 @@
           "heat": "261"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48760481",
+          "text": "Capretto／Chevon【Music Video】",
+          "heat": "52"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48779351",
           "text": "OnyXXX",
           "heat": "21"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48760481",
-          "text": "Capretto／Chevon【Music Video】",
-          "heat": "33"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48783030",
-          "text": "H2O √ after and another Complete story Edition OST",
-          "heat": "28"
         },
         {
           "url": "http://www.acfun.cn/v/ac48771270",
@@ -10739,9 +10734,14 @@
           "heat": "29"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48788790",
-          "text": "≽^⚈⩊⚈^≼",
-          "heat": "108"
+          "url": "http://www.acfun.cn/v/ac48783030",
+          "text": "H2O √ after and another Complete story Edition OST",
+          "heat": "28"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48791165",
+          "text": "我的心里从此住了一个人",
+          "heat": "139"
         },
         {
           "url": "http://www.acfun.cn/v/ac48790308",
@@ -10764,11 +10764,6 @@
           "heat": "0"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48791165",
-          "text": "我的心里从此住了一个人",
-          "heat": "102"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48789873",
           "text": "2026-08-19 张梓义 直播录像",
           "heat": "84"
@@ -10776,7 +10771,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48789940",
           "text": "2026-08-19 懒銀 直播录像",
-          "heat": "72"
+          "heat": "80"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48778175",
+          "text": "しらないプラネット / 初音ミク, 鏡音リン",
+          "heat": "31"
         }
       ]
     },
