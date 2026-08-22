@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787422539226,
+  "timestamp": 1787423441987,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://simonwillison.net/2026/Aug/22/llm/",
+          "text": "llm 0.33",
+          "heat": "Simon Willison"
+        },
+        {
           "url": "https://www.leiphone.com/category/ai/rUNBvF7Iq6C3UtyR.html",
           "text": "WRC 2026 风向标：具身智能下半场，比「大脑」更比「账本」",
           "heat": "雷锋网"
@@ -3078,11 +3083,6 @@
           "url": "https://news.mydrivers.com/1/1145/1145675.htm",
           "text": "不做参数追随者！中诚华隆 HL200 推理芯片发布：能效比 5.12、集群可扩至万卡",
           "heat": "快科技"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57336",
-          "text": "失业小哥用 7000 行代码复刻 AMD 重金收购的 AI 芯片",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10461,7 +10461,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48795654",
           "text": "【绝望女神/翻唱】【超时空要塞F 插曲 射手座☆午後九時Don be late】",
-          "heat": "1024"
+          "heat": "1025"
         },
         {
           "url": "http://www.acfun.cn/v/ac48794053",
@@ -10471,7 +10471,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48795689",
           "text": "DECO*27 - デコミク LIVE starring 初音ミク『Hello』",
-          "heat": "656"
+          "heat": "671"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763688",
@@ -10491,7 +10491,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48794116",
           "text": "“今年的雨季……”",
-          "heat": "319"
+          "heat": "325"
         },
         {
           "url": "http://www.acfun.cn/v/ac48768669",
@@ -10506,7 +10506,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48795806",
           "text": "初恋バタフライ（翻自HKT48）像蝴蝶偶然闯入盛夏*心动措不及防降临",
-          "heat": "315"
+          "heat": "337"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763690",
@@ -10574,11 +10574,6 @@
           "heat": "129"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48794048",
-          "text": "Wallfahrer - Knochenkabinett",
-          "heat": "76"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48770462",
           "text": "Princess Party ～プリンセスパーティー～ - OP",
           "heat": "30"
@@ -10602,6 +10597,11 @@
           "url": "http://www.acfun.cn/v/ac48763166",
           "text": "KESHIKI (INI VER.)",
           "heat": "15"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48783035",
+          "text": "ポルカドットスティングレイ「逆様」MVマスターショット",
+          "heat": "34"
         },
         {
           "url": "http://www.acfun.cn/v/ac48794085",
