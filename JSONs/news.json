@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787415331321,
+  "timestamp": 1787416241593,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,16 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://hub.baai.ac.cn/view/57342",
+          "text": "英矽智能上线虚拟衰老细胞页面，并发布多智能体驱动的多模态虚拟衰老细胞生成平台预览版",
+          "heat": "智源社区"
+        },
+        {
+          "url": "https://hub.baai.ac.cn/view/57343",
+          "text": "药物筛选联合机器学习发现儿童痴呆潜在神经保护药物",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16832",
           "text": "AI「觉醒」之后，谁来负责？",
           "heat": "麻省理工科技评论"
@@ -3072,16 +3082,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57336",
           "text": "失业小哥用 7000 行代码复刻 AMD 重金收购的 AI 芯片",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://news.mydrivers.com/1/1145/1145673.htm",
-          "text": "AI 芯片功耗破 1000 瓦！液冷渗透率飙到 53% 也压不住：散热已成最大瓶颈",
-          "heat": "快科技"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57333",
-          "text": "机器人迎来 GPT-3 时刻：One-shot Learning 模型看 3 秒即可学会新动作",
           "heat": "智源社区"
         }
       ]
@@ -4432,13 +4432,13 @@
           "heat": "本来就是个局外人"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260822Q02K8W00",
-          "text": "比特币一周飙升约22%，料创逾三年最大涨幅，突然暴涨的推手是什么？这轮行情还能走多远？",
+          "url": "https://new.qq.com/rain/a/20260822Q0AKJB00",
+          "text": "荣耀机器人百米跑出9秒32，破人类百米纪录，机器人破人类纪录很轻松吗？这种能力能用在哪些领域？",
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260822Q0AKJB00",
-          "text": "荣耀机器人百米跑出9秒32，破人类百米纪录，机器人破人类纪录很轻松吗？这种能力能用在哪些领域？",
+          "url": "https://new.qq.com/rain/a/20260822Q02K8W00",
+          "text": "比特币一周飙升约22%，料创逾三年最大涨幅，突然暴涨的推手是什么？这轮行情还能走多远？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -4447,14 +4447,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260821Q04BNZ00",
-          "text": "香港宠物酒店女负责人疑似遭30公斤唐狗袭击身亡，唐狗是什么犬种？女子养犬经验丰富为何还会遇袭？",
-          "heat": "墨澜解经"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260822Q0B8IG00",
           "text": "特斯拉9月发布新车，方向盘和脚踏板全去掉，这种车要怎么开？若出事故车内人要负责吗？",
           "heat": "江神"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260821Q04BNZ00",
+          "text": "香港宠物酒店女负责人疑似遭30公斤唐狗袭击身亡，唐狗是什么犬种？女子养犬经验丰富为何还会遇袭？",
+          "heat": "墨澜解经"
         },
         {
           "url": "https://new.qq.com/rain/a/20260822Q0AUFF00",
@@ -10591,7 +10591,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48795654",
           "text": "【绝望女神/翻唱】【超时空要塞F 插曲 射手座☆午後九時Don be late】",
-          "heat": "858"
+          "heat": "889"
         },
         {
           "url": "http://www.acfun.cn/v/ac48794053",
@@ -10641,7 +10641,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48795806",
           "text": "初恋バタフライ（翻自HKT48）像蝴蝶偶然闯入盛夏*心动措不及防降临",
-          "heat": "238"
+          "heat": "245"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763707",
