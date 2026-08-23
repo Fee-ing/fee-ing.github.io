@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787503541215,
+  "timestamp": 1787504450095,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,9 +3030,19 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://hub.baai.ac.cn/view/57348",
+          "text": "AI 赋能癌细胞表面蛋白靶向微型结合蛋白的发现与生化优化",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16837",
           "text": "对话 Prana Labs 联创朱毅：多模态智能的爆发或在 2027 年出现",
           "heat": "麻省理工科技评论"
+        },
+        {
+          "url": "https://hub.baai.ac.cn/view/57347",
+          "text": "为什么机器还不会说「生物学语言」",
+          "heat": "智源社区"
         },
         {
           "url": "https://www.leiphone.com/category/ai/DtuJryomWlykalLZ.html",
@@ -3060,24 +3070,14 @@
           "heat": "daily.dev"
         },
         {
+          "url": "https://www.theblockbeats.info/flash/363080",
+          "text": "ARK 周度报告：AI 代理推动 Anthropic 和 OpenAI 发展，Grok 4.6 或降低前沿 AI 成本",
+          "heat": "theblockbeats.info"
+        },
+        {
           "url": "https://www.huxiu.com/article/4885316.html?f=rss",
           "text": "DeepSeek、智谱与Kimi：前沿竞争中的生存空间",
           "heat": "虎嗅网"
-        },
-        {
-          "url": "https://www.ithome.com/0/993/305.htm",
-          "text": "OpenAI 首席全球事务官勒汉恩：公众、企业要为 AI 网络攻击做好防御准备",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.ithome.com/0/993/258.htm",
-          "text": "诺亦腾机器人发布 HiPHI，开源 617.5 小时高精度人体运动数据",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://news.qq.com/rain/a/20260823A0A37W00",
-          "text": "小狗 Rosie 走后，她的病历变成了一家 AI 医疗公司",
-          "heat": "腾讯网"
         }
       ]
     },
@@ -10581,22 +10581,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48797386",
           "text": "【现切桃片】我爱的是《小狐狸》",
-          "heat": "1262"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48784163",
-          "text": "【东方/交响乐】Demystify Feast【来自幻想乡的邀请 2025音乐会片段】",
-          "heat": "795"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48797621",
-          "text": "666后来还有复活环节…",
-          "heat": "717"
+          "heat": "1273"
         },
         {
           "url": "http://www.acfun.cn/v/ac48797710",
           "text": "バグ",
-          "heat": "462"
+          "heat": "472"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48784163",
+          "text": "【东方/交响乐】Demystify Feast【来自幻想乡的邀请 2025音乐会片段】",
+          "heat": "825"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48797621",
+          "text": "666后来还有复活环节…",
+          "heat": "734"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763719",
@@ -10639,6 +10639,11 @@
           "heat": "120"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48797979",
+          "text": "【妖一】东京不夜城【トキヲ・ファンカ／Tokio・Funka】",
+          "heat": "40"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48763741",
           "text": "【陈百强】昨夜梦见你",
           "heat": "96"
@@ -10652,11 +10657,6 @@
           "url": "http://www.acfun.cn/v/ac48796915",
           "text": "謎J_ official 视频 放置园/镜音铃·镜音连",
           "heat": "126"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48783035",
-          "text": "ポルカドットスティングレイ「逆様」MVマスターショット",
-          "heat": "72"
         },
         {
           "url": "http://www.acfun.cn/v/ac48776361",
@@ -10691,12 +10691,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48797728",
           "text": "【薛楚良Retake】Leia/ゆよゆっぺ【UTAU音源配布】",
-          "heat": "232"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48797979",
-          "text": "【妖一】东京不夜城【トキヲ・ファンカ／Tokio・Funka】",
-          "heat": "35"
+          "heat": "240"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763168",
@@ -10721,12 +10716,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48797944",
           "text": "原创填词，完美世界游戏国际版剑仙城主题同人歌，超长5分钟好听的歌曲！",
-          "heat": "110"
+          "heat": "126"
         },
         {
           "url": "http://www.acfun.cn/v/ac48769163",
           "text": "【Michael Jackson】Beat it 日本語訳 和訳",
           "heat": "18"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48791741",
+          "text": "费多谢耶夫指挥柴可夫斯基交响乐团：贝多芬第八交响曲与柴可夫斯基第五交响曲（2009）",
+          "heat": "34"
         }
       ]
     },
