@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787512533592,
+  "timestamp": 1787513444910,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2605,6 +2605,11 @@
           "heat": "infoq.com"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-08/1516105.html",
+          "text": "万兴科技发布 Filmora.TV 赋能品牌营销 携手茶颜悦色探索 AI 视频创意新路径",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://news.qq.com/rain/a/20260823A0C1Z000",
           "text": "让 AI Agent「试玩」世界模型，长程目标评测有了新基准 PlayWorld",
           "heat": "腾讯网"
@@ -2623,11 +2628,6 @@
           "url": "https://news.qq.com/rain/a/20260823A0C0HT00",
           "text": "300 多组控制实验、70 万余 TPU 小时，普林斯顿团队给出全开放文生图配方 i1",
           "heat": "腾讯网"
-        },
-        {
-          "url": "https://daily.dev/posts/one-pull-to-wipe-them-all-sr44hok5a",
-          "text": "Malicious PR injected wipe command into Amazon Q Developer, reached nearly 1 million VS Code users",
-          "heat": "daily.dev"
         }
       ]
     },
@@ -9191,12 +9191,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48797386",
           "text": "【现切桃片】我爱的是《小狐狸》",
-          "heat": "1309"
+          "heat": "1312"
         },
         {
           "url": "http://www.acfun.cn/v/ac48797710",
           "text": "バグ",
-          "heat": "592"
+          "heat": "613"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784163",
@@ -9206,7 +9206,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48797621",
           "text": "666后来还有复活环节…",
-          "heat": "838"
+          "heat": "840"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763719",
@@ -9246,12 +9246,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48763736",
           "text": "【普拉西多·多明戈】威尔第：奥赛罗 1975",
-          "heat": "96"
+          "heat": "107"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763761",
           "text": "【大塚 愛】（AIO PIANO vol.7）「サクラハラハラ」ライブ映像",
-          "heat": "123"
+          "heat": "138"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48763741",
+          "text": "【陈百强】昨夜梦见你",
+          "heat": "124"
         },
         {
           "url": "http://www.acfun.cn/v/ac48797105",
@@ -9259,14 +9264,9 @@
           "heat": "120"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48763741",
-          "text": "【陈百强】昨夜梦见你",
-          "heat": "100"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48797728",
           "text": "【薛楚良Retake】Leia/ゆよゆっぺ【UTAU音源配布】",
-          "heat": "288"
+          "heat": "290"
         },
         {
           "url": "http://www.acfun.cn/v/ac48796915",
@@ -9321,7 +9321,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48797944",
           "text": "原创填词，完美世界游戏国际版剑仙城主题同人歌，超长5分钟好听的歌曲！",
-          "heat": "228"
+          "heat": "266"
         },
         {
           "url": "http://www.acfun.cn/v/ac48791741",
