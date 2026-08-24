@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787595338478,
+  "timestamp": 1787596249096,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics/",
+          "text": "MTIA 300: Meta’s First Training Chip with Built-in NICs and Communication-Offloading Engines",
+          "heat": "engineering.fb.com"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57418",
           "text": "Anthropic：AI 没有导致失业率的增加",
           "heat": "智源社区"
@@ -3068,11 +3073,6 @@
           "url": "https://hub.baai.ac.cn/view/57419",
           "text": "全球首个 AI 定制狗癌疫苗：澳洲主人自学基因组学，为爱犬手搓 mRNA 疫苗",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/30577",
-          "text": "中国开源模型出海：法律 AI 独角兽 Harvey 基于 Kimi K3 推出 Tenet",
-          "heat": "aibase"
         }
       ]
     },
@@ -10616,17 +10616,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48798392",
           "text": "【柯基】K-391 经典电音《summertime》｜中国人能飞！",
-          "heat": "1298"
+          "heat": "1300"
         },
         {
           "url": "http://www.acfun.cn/v/ac48798230",
           "text": "【浪漫的梦想家】坂本真绫 - プラチナ【Covered by 叫ぶ獣】",
-          "heat": "1229"
+          "heat": "1233"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800066",
           "text": "爱错",
-          "heat": "920"
+          "heat": "976"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800515",
@@ -10636,7 +10636,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48798305",
           "text": "【东方】幻想乡钢琴摇篮曲 67mins【TAMUSIC】",
-          "heat": "516"
+          "heat": "538"
         },
         {
           "url": "http://www.acfun.cn/v/ac48798774",
@@ -10646,7 +10646,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48800278",
           "text": "【翻唱】予君书",
-          "heat": "325"
+          "heat": "344"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783780",
