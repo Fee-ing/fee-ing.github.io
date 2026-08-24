@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787589938690,
+  "timestamp": 1787590853628,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,6 +3030,16 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/",
+          "text": "NVIDIA Vera Rubin NVL72 树立 AI 智能体能效新标准：每瓦特吞吐量提升高达 30 倍",
+          "heat": "NVIDIA Blog"
+        },
+        {
+          "url": "https://blogs.nvidia.com/blog/nvlink-fusion-xpu-ai-factory/",
+          "text": "How XPUs Meet a World-Class AI Factory",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16841",
           "text": "奥特曼亲自点名：他定义了 OpenAI 的技术路线，却几乎没人知道他是谁",
           "heat": "麻省理工科技评论"
@@ -3063,16 +3073,6 @@
           "url": "https://www.aibase.com/zh/news/30577",
           "text": "中国开源模型出海：法律 AI 独角兽 Harvey 基于 Kimi K3 推出 Tenet",
           "heat": "aibase"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57417",
-          "text": "英伟达 AI 服务器将涨价 15%！1GW 数据中心成本激增 50 亿美元",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57411",
-          "text": "OpenAI 下调 GPT-5.6 Sol API 价格，并披露算力租约与成本优化细节",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10631,42 +10631,42 @@
         {
           "url": "http://www.acfun.cn/v/ac48798392",
           "text": "【柯基】K-391 经典电音《summertime》｜中国人能飞！",
-          "heat": "1281"
+          "heat": "1287"
         },
         {
           "url": "http://www.acfun.cn/v/ac48798230",
           "text": "【浪漫的梦想家】坂本真绫 - プラチナ【Covered by 叫ぶ獣】",
-          "heat": "1201"
+          "heat": "1214"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800066",
           "text": "爱错",
-          "heat": "822"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48798305",
-          "text": "【东方】幻想乡钢琴摇篮曲 67mins【TAMUSIC】",
-          "heat": "402"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48798774",
-          "text": "〖琉依翻唱〗Casey Lee Williams - Red Like Roses[含歌词",
-          "heat": "356"
+          "heat": "876"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800515",
           "text": "【衣笠雪绘】空之轨迹 歌切day192《星之所在》",
-          "heat": "242"
+          "heat": "269"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48798305",
+          "text": "【东方】幻想乡钢琴摇篮曲 67mins【TAMUSIC】",
+          "heat": "490"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48798774",
+          "text": "〖琉依翻唱〗Casey Lee Williams - Red Like Roses[含歌词",
+          "heat": "373"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800278",
           "text": "【翻唱】予君书",
-          "heat": "271"
+          "heat": "281"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783780",
           "text": "【Twins】一半女生【见习爱神】",
-          "heat": "173"
+          "heat": "188"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783771",
@@ -10679,14 +10679,14 @@
           "heat": "83"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48763782",
+          "text": "【龙飘飘】情花-国语-流行",
+          "heat": "84"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48800055",
           "text": "TUIDE (튜이드)《SUN KISS》官方MV",
           "heat": "195"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48763782",
-          "text": "【龙飘飘】情花-国语-流行",
-          "heat": "70"
         },
         {
           "url": "http://www.acfun.cn/v/ac48763776",
@@ -10736,7 +10736,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48799138",
           "text": "【初投稿/原创歌曲】恶者，安息【低质量/微血负能，注意】",
-          "heat": "385"
+          "heat": "398"
         },
         {
           "url": "http://www.acfun.cn/v/ac48797204",
@@ -10766,12 +10766,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48800017",
           "text": "《她的花》竹笛 陪着 她慢慢长大~",
-          "heat": "35"
+          "heat": "45"
         },
         {
           "url": "http://www.acfun.cn/v/ac48797497",
           "text": "穆拉文斯基指挥列宁格勒爱乐乐团：贝多芬第四交响曲",
-          "heat": "77"
+          "heat": "113"
         },
         {
           "url": "http://www.acfun.cn/v/ac48798918",
