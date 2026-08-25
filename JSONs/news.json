@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787676335253,
+  "timestamp": 1787677255554,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10641,27 +10641,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48802337",
           "text": "甲乙丙丁",
-          "heat": "1625"
+          "heat": "1661"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802682",
           "text": "明月高悬独不照我听起来很惨，但烈日当空独不晒我听起来就很爽",
-          "heat": "1102"
+          "heat": "1115"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48802692",
+          "text": "【余若/自生贺】深淵（Cover ヰ世界情緒/花譜）",
+          "heat": "554"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802859",
           "text": "2000-2026年华语乐坛冠军单曲，卧槽，这才是真正的神仙打架？",
-          "heat": "1027"
+          "heat": "1039"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802639",
           "text": "猪！猪！侠！",
-          "heat": "355"
+          "heat": "381"
         },
         {
           "url": "http://www.acfun.cn/v/ac48801363",
           "text": "DECO*27  帰想本能 feat.悠木碧",
-          "heat": "710"
+          "heat": "723"
         },
         {
           "url": "http://www.acfun.cn/v/ac48801357",
@@ -10671,7 +10676,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48800736",
           "text": "AI作曲演唱|《旅程》",
-          "heat": "467"
+          "heat": "472"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800957",
@@ -10694,19 +10699,19 @@
           "heat": "164"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48783806",
-          "text": "【普拉西多·多明戈】威尔第：安魂曲 1970",
-          "heat": "93"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48783824",
           "text": "【大塚 愛】（AIO PIANO vol.7）「end and and ～10,000 h",
           "heat": "100"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48783806",
+          "text": "【普拉西多·多明戈】威尔第：安魂曲 1970",
+          "heat": "93"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48802955",
           "text": "给我一首歌的时间",
-          "heat": "240"
+          "heat": "258"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783814",
@@ -10719,19 +10724,14 @@
           "heat": "86"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48800809",
-          "text": "印度尼西亚民歌《Lela Ledhung》",
-          "heat": "170"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48802692",
-          "text": "【余若/自生贺】深淵（Cover ヰ世界情緒/花譜）",
-          "heat": "374"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48783812",
           "text": "【陈百强】一生何求二版",
           "heat": "64"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48800809",
+          "text": "印度尼西亚民歌《Lela Ledhung》",
+          "heat": "170"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800436",
@@ -10759,6 +10759,11 @@
           "heat": "106"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48800114",
+          "text": "【AI】機動戦士ガンダムSEED（机动战士高达SEED 治愈曲）",
+          "heat": "134"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48800075",
           "text": "李昊冉指挥北京交响乐团：肖斯塔科维奇第五交响曲",
           "heat": "126"
@@ -10782,11 +10787,6 @@
           "url": "http://www.acfun.cn/v/ac48783303",
           "text": "米津玄師 - 烏　Kenshi Yonezu - Karasu",
           "heat": "24"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48800114",
-          "text": "【AI】機動戦士ガンダムSEED（机动战士高达SEED 治愈曲）",
-          "heat": "117"
         }
       ]
     },
