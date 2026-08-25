@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787678138610,
+  "timestamp": 1787679045720,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57451",
+          "text": "稀疏数据驱动的自适应模型引导蛋白进化优化紧凑型真核基因组编辑器",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16844",
           "text": "科技巨头深入美国课堂，用免费设备和 AI 培训「控制」下一代",
           "heat": "麻省理工科技评论"
@@ -3073,11 +3078,6 @@
           "url": "https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia",
           "text": "OpenAI disrupts Russian covert influence campaign using AI",
           "heat": "OpenAI"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57449",
-          "text": "AI4S 进入「项目时代」：紫东太初将 AI 从做 Task 推向做 Project",
-          "heat": "智源社区"
         }
       ]
     },
@@ -4412,6 +4412,11 @@
           "heat": "木糠"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260825Q0DA8H00",
+          "text": "北京2.6亿元四合院流拍，35户租户腾退需买家承担，为何有这种瑕疵还拍卖？若真拍下重建要花多少钱？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260824Q0AE6T00",
           "text": "央视曝光“50岁男子伪装少女隔空猥亵10岁女童”，成年人为何能轻易伪装身份接近未成年人？该如何堵住漏洞？",
           "heat": "之乎者也小鱼儿"
@@ -4419,11 +4424,6 @@
         {
           "url": "https://new.qq.com/rain/a/20260825Q042GD00",
           "text": "四川4.7级地震，多省用户收到7.7级地震预警，为何会有这么大偏差？该怎么避免此类问题？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260825Q0DA8H00",
-          "text": "北京2.6亿元四合院流拍，35户租户腾退需买家承担，为何有这种瑕疵还拍卖？若真拍下重建要花多少钱？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -10596,27 +10596,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48802337",
           "text": "甲乙丙丁",
-          "heat": "1661"
+          "heat": "1694"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802682",
           "text": "明月高悬独不照我听起来很惨，但烈日当空独不晒我听起来就很爽",
-          "heat": "1115"
+          "heat": "1123"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802692",
           "text": "【余若/自生贺】深淵（Cover ヰ世界情緒/花譜）",
-          "heat": "554"
+          "heat": "786"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802859",
           "text": "2000-2026年华语乐坛冠军单曲，卧槽，这才是真正的神仙打架？",
-          "heat": "1039"
+          "heat": "1043"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802639",
           "text": "猪！猪！侠！",
-          "heat": "381"
+          "heat": "418"
         },
         {
           "url": "http://www.acfun.cn/v/ac48801363",
@@ -10631,7 +10631,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48800736",
           "text": "AI作曲演唱|《旅程》",
-          "heat": "472"
+          "heat": "483"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800957",
@@ -10659,14 +10659,14 @@
           "heat": "100"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48802955",
+          "text": "给我一首歌的时间",
+          "heat": "263"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48783806",
           "text": "【普拉西多·多明戈】威尔第：安魂曲 1970",
           "heat": "93"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48802955",
-          "text": "给我一首歌的时间",
-          "heat": "258"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783814",
@@ -10734,14 +10734,14 @@
           "heat": "26"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48776535",
-          "text": "〈和訳〉I Knew It, I Knew You (From  Toy Story5 ) Tayl",
-          "heat": "20"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48783303",
           "text": "米津玄師 - 烏　Kenshi Yonezu - Karasu",
           "heat": "24"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48783819",
+          "text": "【Twins】拍住上【Girl Power 】",
+          "heat": "35"
         }
       ]
     },
