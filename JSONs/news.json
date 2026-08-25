@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787674536048,
+  "timestamp": 1787675449957,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://openai.com/index/the-full-stack-behind-abundant-intelligence",
+          "text": "OpenAI CFO 谈智能普及背后的全栈技术",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://huggingface.co/blog/ibm-granite/granite-4-2",
           "text": "Granite 4.2 LLMs: How They're Built",
           "heat": "Hugging Face Blog"
@@ -3073,11 +3078,6 @@
           "url": "https://hub.baai.ac.cn/view/57449",
           "text": "AI4S 进入「项目时代」：紫东太初将 AI 从做 Task 推向做 Project",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://www.theblockbeats.info/flash/363503",
-          "text": "IBM 新一代主机芯片原生兼容 IBM 与 Arm 架构，AI 可直接跑进金融核心系统",
-          "heat": "theblockbeats.info"
         }
       ]
     },
@@ -10651,7 +10651,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48802337",
           "text": "甲乙丙丁",
-          "heat": "1616"
+          "heat": "1625"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802682",
@@ -10661,7 +10661,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48802859",
           "text": "2000-2026年华语乐坛冠军单曲，卧槽，这才是真正的神仙打架？",
-          "heat": "980"
+          "heat": "1027"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802639",
@@ -10716,12 +10716,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48802955",
           "text": "给我一首歌的时间",
-          "heat": "238"
+          "heat": "240"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783814",
           "text": "【The Cranberries】Analyse",
-          "heat": "68"
+          "heat": "71"
         },
         {
           "url": "http://www.acfun.cn/v/ac48802464",
@@ -10736,12 +10736,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48802692",
           "text": "【余若/自生贺】深淵（Cover ヰ世界情緒/花譜）",
-          "heat": "224"
+          "heat": "374"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783812",
           "text": "【陈百强】一生何求二版",
-          "heat": "50"
+          "heat": "64"
         },
         {
           "url": "http://www.acfun.cn/v/ac48800436",
