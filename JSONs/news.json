@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787780738297,
+  "timestamp": 1787781648732,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2940,6 +2940,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://blogs.nvidia.com/blog/nvlink-fusion-nvhbm-custom-high-bandwidth-memory/",
+          "text": "NVIDIA NVLink Fusion 扩展，推出定制高带宽内存 NVHBM",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe/",
           "text": "Intelligent transcription with Gemini 3.5 Transcribe",
           "heat": "Google DeepMind"
@@ -2983,11 +2988,6 @@
           "url": "https://blog.google/innovation-and-ai/products/gemini-app/productivity-features-gemini-live/",
           "text": "Turn your voice into action with new productivity features in Gemini Live",
           "heat": "blog.google"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57471",
-          "text": "黄仁勋、李飞飞、林斌等投资机器人AI公司Generalist",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10491,12 +10491,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48804349",
           "text": "「粉雪」——日剧《一公升的眼泪》主题曲 | “即使这样，我也想守护你直到永远”",
-          "heat": "1267"
+          "heat": "1273"
         },
         {
           "url": "http://www.acfun.cn/v/ac48805317",
           "text": "窝只是个爱你的笨蛋",
-          "heat": "754"
+          "heat": "766"
         },
         {
           "url": "http://www.acfun.cn/v/ac48805370",
@@ -10506,7 +10506,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48805600",
           "text": "【衣笠雪绘】花期终于还是要过了 歌切day194《春泥棒》",
-          "heat": "464"
+          "heat": "477"
         },
         {
           "url": "http://www.acfun.cn/v/ac48805636",
@@ -10574,6 +10574,11 @@
           "heat": "135"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48805681",
+          "text": "爱情转移（女声翻唱）",
+          "heat": "119"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48799961",
           "text": "【AI】機動戦士ガンダムSEED DESTINY（机动战士高达SEED Destiny 治愈曲）",
           "heat": "97"
@@ -10587,11 +10592,6 @@
           "url": "http://www.acfun.cn/v/ac48781234",
           "text": "うたの☆プリンスさまっ♪ソロベストアルバム 黒崎蘭丸「MUSIC FOR LIFE」",
           "heat": "106"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48805681",
-          "text": "爱情转移（女声翻唱）",
-          "heat": "100"
         },
         {
           "url": "http://www.acfun.cn/v/ac48799648",
@@ -14368,7 +14368,7 @@
         {
           "url": "https://www.dongchedi.com/article/7677906137061032472",
           "text": "宝马新世代i3长轴距：新势力7系轿跑的“祖师爷”来了，你会买吗",
-          "heat": "457"
+          "heat": "458"
         },
         {
           "url": "https://www.dongchedi.com/article/7676766028508873240",
