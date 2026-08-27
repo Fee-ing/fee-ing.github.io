@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787849138083,
+  "timestamp": 1787850063288,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3070,6 +3070,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57499",
+          "text": "突发！Opus 5.1 被曝本周发布，最强 AI 智能体恐大洗牌",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57484",
           "text": "加州理工用 AI 攻克量子化学 60 年难题，1 块显卡完成 7800 块 GPU 的工作",
           "heat": "智源社区"
@@ -3078,11 +3083,6 @@
           "url": "https://hub.baai.ac.cn/view/57481",
           "text": "新一代 Mac mini 搭载 M6 开售！M5 Ultra 也来了",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/bpzIqEentybmkCVI.html",
-          "text": "百度搭子宣布一揽子升级，提出「交付即惊艳」专业办公标准",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -4397,6 +4397,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260827Q0DC6I00",
+          "text": "演员景甜被孙宇晨起诉，要求退还3000万彩礼，如何看待这场闹剧？最终可能如何收场？",
+          "heat": "江神"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260827Q04P6W00",
           "text": "吉隆口岸方向发现堰塞湖，这会给救援带来哪些困难？该怎么应对险情？",
           "heat": "贵重物品DR"
@@ -4410,11 +4415,6 @@
           "url": "https://new.qq.com/rain/a/20260826Q05LLL00",
           "text": "美国在中东情报设施被曝遭伊朗无人机和导弹重创，为什么没防住？这对美军有多大影响？",
           "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260827Q0DC6I00",
-          "text": "演员景甜被孙宇晨起诉，要求退还3000万彩礼，如何看待这场闹剧？最终可能如何收场？",
-          "heat": "江神"
         },
         {
           "url": "https://new.qq.com/rain/a/20260826Q0CRT900",
@@ -10611,17 +10611,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48805758",
           "text": "《曾经的你》【hjm专辑】",
-          "heat": "1358"
+          "heat": "1377"
         },
         {
           "url": "http://www.acfun.cn/v/ac48807746",
           "text": "薪墙！之消失的猪猪头",
-          "heat": "1155"
+          "heat": "1170"
         },
         {
           "url": "http://www.acfun.cn/v/ac48807796",
           "text": "第57次取消发送",
-          "heat": "545"
+          "heat": "571"
         },
         {
           "url": "http://www.acfun.cn/v/ac48805636",
@@ -10631,22 +10631,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48803388",
           "text": "【东方】世界如此可爱【Oriental & Chillstep / DVMUSIC】",
-          "heat": "623"
+          "heat": "640"
         },
         {
           "url": "http://www.acfun.cn/v/ac48805681",
           "text": "爱情转移（女声翻唱）",
-          "heat": "519"
+          "heat": "528"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783909",
           "text": "【龙飘飘】樱花恋-国语-新歌推荐",
-          "heat": "127"
+          "heat": "139"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784084",
           "text": "【大塚 愛】“REMIX”企划 第1弹 PEACH (Tomggg Remix)",
-          "heat": "117"
+          "heat": "144"
         },
         {
           "url": "http://www.acfun.cn/v/ac48783917",
@@ -10664,14 +10664,14 @@
           "heat": "28"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48807922",
+          "text": "《霜雪千年》翻唱˃ ˄ ˂̥̥ ​",
+          "heat": "150"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48783901",
           "text": "【中国音乐地图之听见内蒙古 呼麦、短调】兄弟情 塔本塔斯卡",
           "heat": "108"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48807922",
-          "text": "《霜雪千年》翻唱˃ ˄ ˂̥̥ ​",
-          "heat": "132"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784074",
@@ -10699,6 +10699,11 @@
           "heat": "92"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48806728",
+          "text": "【GUMI・音街ウナ】UI【TKN】",
+          "heat": "142"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48807951",
           "text": "我俩谁更可爱！",
           "heat": "117"
@@ -10712,11 +10717,6 @@
           "url": "http://www.acfun.cn/v/ac48783342",
           "text": "LE SSERAFIM (르세라핌) x ILLIT (아일릿) x KATSEYE (캣츠아이)",
           "heat": "34"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48806728",
-          "text": "【GUMI・音街ウナ】UI【TKN】",
-          "heat": "130"
         },
         {
           "url": "http://www.acfun.cn/v/ac48782300",
@@ -10749,14 +10749,14 @@
           "heat": "64"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48806692",
-          "text": "【IA】玲【cuum】",
-          "heat": "48"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48805274",
           "text": "【MV】 METRO / SUKEROQUE TBS系『王様のブランチ』 EDテーマ曲",
           "heat": "29"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48806692",
+          "text": "【IA】玲【cuum】",
+          "heat": "48"
         }
       ]
     },
