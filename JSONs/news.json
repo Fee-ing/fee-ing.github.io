@@ -1,5 +1,5 @@
 {
-  "timestamp": 1787847337402,
+  "timestamp": 1787848244579,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,9 +3030,24 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://deepmind.google/blog/gemini-omni-1-1-flash-lets-you-build-with-more-control/",
+          "text": "Gemini Omni 1.1 Flash lets you build with more control",
+          "heat": "Google DeepMind"
+        },
+        {
+          "url": "https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training",
+          "text": "Better answers, broader thinking: What students gain from ChatGPT and critical-thinking training",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16860",
           "text": "北大团队用柔性数据手套研究手部灵巧操作，揭示机器人为何难学转笔",
           "heat": "麻省理工科技评论"
+        },
+        {
+          "url": "https://hub.baai.ac.cn/view/57498",
+          "text": "Nature 子刊：当 8 亿人都在用 AI 写作，语言多样性正在快速消失",
+          "heat": "智源社区"
         },
         {
           "url": "https://www.mittrchina.com/news/detail/16859",
@@ -3062,21 +3077,6 @@
         {
           "url": "https://www.leiphone.com/category/industrynews/bpzIqEentybmkCVI.html",
           "text": "百度搭子宣布一揽子升级，提出「交付即惊艳」专业办公标准",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57494",
-          "text": "迈向统一的 AI 驱动断裂力学：扩展深度能量法",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57496",
-          "text": "英矽智能发起成立 AI 药物研发基准质量开放联盟 O3DC",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://www.leiphone.com/category/yanxishe/1zYtnZ1hPi0jc5Ud.html",
-          "text": "像素级对标？智谱、Kimi 底层参数「撞衫」背后，藏着线性注意力的黄金窗口",
           "heat": "雷锋网"
         }
       ]
@@ -10641,17 +10641,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48805758",
           "text": "《曾经的你》【hjm专辑】",
-          "heat": "1351"
+          "heat": "1357"
         },
         {
           "url": "http://www.acfun.cn/v/ac48807746",
           "text": "薪墙！之消失的猪猪头",
-          "heat": "1136"
+          "heat": "1143"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48805600",
-          "text": "【衣笠雪绘】花期终于还是要过了 歌切day194《春泥棒》",
-          "heat": "1034"
+          "url": "http://www.acfun.cn/v/ac48807796",
+          "text": "第57次取消发送",
+          "heat": "529"
         },
         {
           "url": "http://www.acfun.cn/v/ac48805636",
@@ -10661,12 +10661,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48803388",
           "text": "【东方】世界如此可爱【Oriental & Chillstep / DVMUSIC】",
-          "heat": "591"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48807796",
-          "text": "第57次取消发送",
-          "heat": "513"
+          "heat": "618"
         },
         {
           "url": "http://www.acfun.cn/v/ac48805681",
@@ -10704,19 +10699,24 @@
           "heat": "108"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48784074",
-          "text": "【The Cranberries】伦敦现场会_1994",
-          "heat": "111"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48807922",
           "text": "《霜雪千年》翻唱˃ ˄ ˂̥̥ ​",
           "heat": "132"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48784074",
+          "text": "【The Cranberries】伦敦现场会_1994",
+          "heat": "111"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48784079",
           "text": "【Twins】森巴皇后【Samba】",
           "heat": "136"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48784068",
+          "text": "【陈百强】盼三年",
+          "heat": "64"
         },
         {
           "url": "http://www.acfun.cn/v/ac48806403",
@@ -10729,9 +10729,9 @@
           "heat": "92"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48784068",
-          "text": "【陈百强】盼三年",
-          "heat": "64"
+          "url": "http://www.acfun.cn/v/ac48807951",
+          "text": "我俩谁更可爱！",
+          "heat": "117"
         },
         {
           "url": "http://www.acfun.cn/v/ac48779184",
@@ -10747,11 +10747,6 @@
           "url": "http://www.acfun.cn/v/ac48806728",
           "text": "【GUMI・音街ウナ】UI【TKN】",
           "heat": "130"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48807951",
-          "text": "我俩谁更可爱！",
-          "heat": "107"
         },
         {
           "url": "http://www.acfun.cn/v/ac48782300",
@@ -10787,6 +10782,11 @@
           "url": "http://www.acfun.cn/v/ac48806692",
           "text": "【IA】玲【cuum】",
           "heat": "48"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48805274",
+          "text": "【MV】 METRO / SUKEROQUE TBS系『王様のブランチ』 EDテーマ曲",
+          "heat": "29"
         }
       ]
     },
@@ -14538,7 +14538,7 @@
         {
           "url": "https://www.dongchedi.com/article/7677906137061032472",
           "text": "宝马新世代i3长轴距：新势力7系轿跑的“祖师爷”来了，你会买吗",
-          "heat": "863"
+          "heat": "867"
         },
         {
           "url": "https://www.dongchedi.com/article/7676766028508873240",
