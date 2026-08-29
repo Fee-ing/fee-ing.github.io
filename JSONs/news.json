@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788038135615,
+  "timestamp": 1788039044799,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "虎嗅网"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-08/1531126.html",
+          "text": "中科曙光推出 ParaCache 方案：减少大模型重复计算 提升处理效率与算力利用率",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57537",
           "text": "Claude 内置浏览器功能：AI 可独立完成网页任务",
           "heat": "智源社区"
@@ -3073,11 +3078,6 @@
           "url": "https://news.mydrivers.com/1/1147/1147334.htm",
           "text": "美国拟推新规：禁止中国 AI 企业通过第三国远程调用英伟达算力",
           "heat": "快科技"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57529",
-          "text": "给 AI Agent 装上「科学常识」，端到端仿真成功率从 0 拉到 84%",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10541,7 +10541,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48807921",
           "text": "【剑网三|江湖不败少年我】 三山四海，万里并肩同去 —— 来听17P高燃大合唱！全是热爱！",
-          "heat": "1104"
+          "heat": "1105"
         },
         {
           "url": "http://www.acfun.cn/v/ac48812454",
@@ -10556,7 +10556,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48812306",
           "text": "【罗马音】噗尼露是可爱史莱姆 完整版op1「ぎゅむ！」",
-          "heat": "163"
+          "heat": "173"
         },
         {
           "url": "http://www.acfun.cn/v/ac48812936",
@@ -10569,14 +10569,19 @@
           "heat": "273"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48812924",
+          "text": "【重音テトSV2】Brain Rot (English Cover)",
+          "heat": "220"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48784307",
           "text": "【龙飘飘】怎能再回头-国语-流行",
           "heat": "225"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48812924",
-          "text": "【重音テトSV2】Brain Rot (English Cover)",
-          "heat": "220"
+          "url": "http://www.acfun.cn/v/ac48784493",
+          "text": "【大塚 愛】“REMIX”企划 第3弹 Chime (AmPm Remix) Lyric",
+          "heat": "144"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811706",
@@ -10587,11 +10592,6 @@
           "url": "http://www.acfun.cn/v/ac48811957",
           "text": "他不懂（我很菜我唱着玩的）",
           "heat": "168"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48784493",
-          "text": "【大塚 愛】“REMIX”企划 第3弹 Chime (AmPm Remix) Lyric",
-          "heat": "137"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784480",
@@ -10626,7 +10626,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48812834",
           "text": "【DAY1】Roselia「Lehre der Rose」 DAY1",
-          "heat": "407"
+          "heat": "427"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784349",
