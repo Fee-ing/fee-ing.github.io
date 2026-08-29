@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788029138139,
+  "timestamp": 1788030050807,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10536,12 +10536,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48807921",
           "text": "【剑网三|江湖不败少年我】 三山四海，万里并肩同去 —— 来听17P高燃大合唱！全是热爱！",
-          "heat": "1095"
+          "heat": "1098"
         },
         {
           "url": "http://www.acfun.cn/v/ac48812454",
           "text": "【绝望女神/翻唱】【自我叛逆的男孩 Ego Renegade Boy】",
-          "heat": "1055"
+          "heat": "1057"
         },
         {
           "url": "http://www.acfun.cn/v/ac48812292",
@@ -10556,6 +10556,11 @@
         {
           "url": "http://www.acfun.cn/v/ac48784307",
           "text": "【龙飘飘】怎能再回头-国语-流行",
+          "heat": "225"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48812931",
+          "text": "【重音テト】WHODUNIT【手书+MC MV】",
           "heat": "225"
         },
         {
@@ -10584,14 +10589,24 @@
           "heat": "103"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48783399",
-          "text": "灰色の証明 (Instrumental)",
-          "heat": "108"
+          "url": "http://www.acfun.cn/v/ac48784493",
+          "text": "【大塚 愛】“REMIX”企划 第3弹 Chime (AmPm Remix) Lyric",
+          "heat": "86"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48812924",
+          "text": "【重音テトSV2】Brain Rot (English Cover)",
+          "heat": "220"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811726",
           "text": "【AI】コードギアス反逆のルルーシュ EDM mix arrangement（『反叛的鲁路修』混音）",
           "heat": "202"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48783399",
+          "text": "灰色の証明 (Instrumental)",
+          "heat": "108"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811804",
@@ -10604,9 +10619,9 @@
           "heat": "168"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48781400",
-          "text": "薛凯琪 小红书夜人节",
-          "heat": "76"
+          "url": "http://www.acfun.cn/v/ac48812834",
+          "text": "【DAY1】Roselia「Lehre der Rose」 DAY1",
+          "heat": "299"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784349",
@@ -10614,9 +10629,9 @@
           "heat": "72"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48784493",
-          "text": "【大塚 愛】“REMIX”企划 第3弹 Chime (AmPm Remix) Lyric",
-          "heat": "86"
+          "url": "http://www.acfun.cn/v/ac48811813",
+          "text": "【星界】Case・Officer【宮口カイライ】",
+          "heat": "302"
         },
         {
           "url": "http://www.acfun.cn/v/ac48810884",
@@ -10624,19 +10639,9 @@
           "heat": "104"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48811813",
-          "text": "【星界】Case・Officer【宮口カイライ】",
-          "heat": "302"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48811714",
           "text": "无耻的抄袭歌曲合集 第151期(lovelive篇)02",
           "heat": "87"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48812931",
-          "text": "【重音テト】WHODUNIT【手书+MC MV】",
-          "heat": "225"
         },
         {
           "url": "http://www.acfun.cn/v/ac48777168",
@@ -10649,24 +10654,24 @@
           "heat": "42"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48780366",
+          "text": "点描の唄 / Mrs. GREEN APPLE (feat.井上苑子) full covered b",
+          "heat": "35"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48811712",
           "text": "无耻的抄袭歌曲 合集 第150期(lovelive篇)01",
           "heat": "133"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48780366",
-          "text": "点描の唄 / Mrs. GREEN APPLE (feat.井上苑子) full covered b",
-          "heat": "24"
+          "url": "http://www.acfun.cn/v/ac48812100",
+          "text": "【翻唱】幻境中",
+          "heat": "95"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811284",
           "text": "がいへき神社",
           "heat": "49"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48812100",
-          "text": "【翻唱】幻境中",
-          "heat": "95"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811514",
@@ -10677,11 +10682,6 @@
           "url": "http://www.acfun.cn/v/ac48810738",
           "text": "nihigo 2019-2021",
           "heat": "79"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48812924",
-          "text": "【重音テトSV2】Brain Rot (English Cover)",
-          "heat": "216"
         }
       ]
     },
