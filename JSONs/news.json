@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788027339725,
+  "timestamp": 1788028245537,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://daily.dev/posts/sony-music-and-warner-chappell-just-sued-anthropic-with-a-multi-billion-lawsuit-calling-it-one-of-dihuvxtmc",
+          "text": "Sony Music and Warner Chappell sue Anthropic in multi-billion dollar copyright case",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57548",
           "text": "两家 AI 巨头将吞噬全球近半新增算力",
           "heat": "智源社区"
@@ -3073,11 +3078,6 @@
           "url": "https://hub.baai.ac.cn/view/57529",
           "text": "给 AI Agent 装上「科学常识」，端到端仿真成功率从 0 拉到 84%",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://9to5mac.com/2026/08/29/apple-carplay-gaining-a-new-ai-chatbot-app-before-siri-ai-arrives/",
-          "text": "Apple CarPlay 迎来第三款第三方 AI 聊天应用，Meta AI 加入",
-          "heat": "9to5Mac"
         }
       ]
     },
@@ -10536,12 +10536,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48807921",
           "text": "【剑网三|江湖不败少年我】 三山四海，万里并肩同去 —— 来听17P高燃大合唱！全是热爱！",
-          "heat": "1090"
+          "heat": "1095"
         },
         {
           "url": "http://www.acfun.cn/v/ac48812454",
           "text": "【绝望女神/翻唱】【自我叛逆的男孩 Ego Renegade Boy】",
-          "heat": "1045"
+          "heat": "1055"
         },
         {
           "url": "http://www.acfun.cn/v/ac48812292",
@@ -10561,7 +10561,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48811706",
           "text": "【BD丨工藤晴香】MUSIKDHR ～Adventure of My Tape～",
-          "heat": "434"
+          "heat": "452"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811957",
@@ -10591,7 +10591,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48811726",
           "text": "【AI】コードギアス反逆のルルーシュ EDM mix arrangement（『反叛的鲁路修』混音）",
-          "heat": "190"
+          "heat": "202"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811804",
@@ -10604,14 +10604,14 @@
           "heat": "168"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48781400",
+          "text": "薛凯琪 小红书夜人节",
+          "heat": "76"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48784349",
           "text": "【陈百强】Hot night（TVB版）",
           "heat": "72"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48781400",
-          "text": "薛凯琪 小红书夜人节",
-          "heat": "66"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784493",
@@ -10634,6 +10634,11 @@
           "heat": "87"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48812931",
+          "text": "【重音テト】WHODUNIT【手书+MC MV】",
+          "heat": "225"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48777168",
           "text": "Billyrrom -  Boogie 【Official Music Video】",
           "heat": "65"
@@ -10641,12 +10646,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48811561",
           "text": "胡琴说",
-          "heat": "35"
+          "heat": "42"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811712",
           "text": "无耻的抄袭歌曲 合集 第150期(lovelive篇)01",
           "heat": "133"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48780366",
+          "text": "点描の唄 / Mrs. GREEN APPLE (feat.井上苑子) full covered b",
+          "heat": "24"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811284",
@@ -10656,7 +10666,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48812100",
           "text": "【翻唱】幻境中",
-          "heat": "80"
+          "heat": "95"
         },
         {
           "url": "http://www.acfun.cn/v/ac48811514",
@@ -10669,19 +10679,9 @@
           "heat": "79"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48810823",
-          "text": "【翻唱】白金disco",
-          "heat": "172"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48811545",
-          "text": "捉迷藏（鬼ごっこ）-春野feat.洛天依",
-          "heat": "62"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48780366",
-          "text": "点描の唄 / Mrs. GREEN APPLE (feat.井上苑子) full covered b",
-          "heat": "24"
+          "url": "http://www.acfun.cn/v/ac48812924",
+          "text": "【重音テトSV2】Brain Rot (English Cover)",
+          "heat": "216"
         }
       ]
     },
