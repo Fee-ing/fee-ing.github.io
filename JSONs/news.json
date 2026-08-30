@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788117333575,
+  "timestamp": 1788118247610,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2600,6 +2600,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://www.infoq.com/news/2026/08/cloudflare-ai-search/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+          "text": "Cloudflare Extends AI Search to Make it Easier for Agents and Developers to Search Custom Data",
+          "heat": "infoq.com"
+        },
+        {
           "url": "https://www.theblockbeats.info/flash/364322",
           "text": "SemiAnalysis 发布 Neocloud 安全深度报告：基础设施配置错误触目惊心，跨租户 RCE 可波及银行、电信乃至一国情报机构",
           "heat": "theblockbeats.info"
@@ -2607,11 +2612,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57560",
           "text": "只靠一问一答，就能抓出大模型幻觉，准确率 88% | ICML'26",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57557",
-          "text": "20ms 把 PDF 变成 Markdown！开源 OCR 神器快了近 300 倍",
           "heat": "智源社区"
         }
       ]
@@ -9646,12 +9646,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48814764",
           "text": "【DAY2】Roselia「Lehre der Rose」十周年精选专辑发售纪念LIVE DAY2",
-          "heat": "248"
+          "heat": "265"
         },
         {
           "url": "http://www.acfun.cn/v/ac48786930",
           "text": "【大塚 愛】“REMIX”企划 第3弹 Chime (AmPm Remix)",
-          "heat": "153"
+          "heat": "166"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784522",
@@ -9684,6 +9684,11 @@
           "heat": "82"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48814709",
+          "text": "【良曲】Seafret - Atlantis",
+          "heat": "133"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48811890",
           "text": "每周音乐分享 2026.08.29期",
           "heat": "80"
@@ -9699,14 +9704,9 @@
           "heat": "189"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48814709",
-          "text": "【良曲】Seafret - Atlantis",
-          "heat": "133"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48786922",
           "text": "【Twins】多谢失恋【Touch Of Love】",
-          "heat": "149"
+          "heat": "166"
         },
         {
           "url": "http://www.acfun.cn/v/ac48784509",
@@ -9721,7 +9721,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48814550",
           "text": "2026-08-30 凌晨 懒銀 直播录像",
-          "heat": "178"
+          "heat": "181"
         },
         {
           "url": "http://www.acfun.cn/v/ac48813522",
@@ -9741,7 +9741,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48814699",
           "text": "初音未来魔法未来2026 演唱会（东京站 最终日 夜场）",
-          "heat": "275"
+          "heat": "283"
         },
         {
           "url": "http://www.acfun.cn/v/ac48814217",
@@ -9784,9 +9784,9 @@
           "heat": "81"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48813247",
-          "text": "亚历山大·切尔努申科指挥圣彼得堡卡佩拉交响乐团：里姆斯基·科萨科夫之夜",
-          "heat": "102"
+          "url": "http://www.acfun.cn/v/ac48813532",
+          "text": "初星学园 「クライアイ」Official Music Video Short Ver. ①各大音",
+          "heat": "43"
         }
       ]
     },
