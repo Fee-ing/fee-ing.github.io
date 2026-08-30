@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788119136631,
+  "timestamp": 1788120049324,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2585,6 +2585,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://www.gelonghui.com/live/2641117",
+          "text": "AI 繁荣还是账面繁荣？科技巨头利润数据遭遇质疑",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://sebastianraschka.com/blog/2026/reasoning-models-and-agents-from-scratch.html",
           "text": "Reasoning Models From Scratch: Code Setup",
           "heat": "sebastianraschka.com"
@@ -2608,11 +2613,6 @@
           "url": "https://www.theblockbeats.info/flash/364322",
           "text": "SemiAnalysis 发布 Neocloud 安全深度报告：基础设施配置错误触目惊心，跨租户 RCE 可波及银行、电信乃至一国情报机构",
           "heat": "theblockbeats.info"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57560",
-          "text": "只靠一问一答，就能抓出大模型幻觉，准确率 88% | ICML'26",
-          "heat": "智源社区"
         }
       ]
     },
@@ -9641,12 +9641,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48808649",
           "text": "【东方/交响乐】东方红魔乡 - Title~Stage1 组曲【来自幻想乡的邀请2024音乐会片段】",
-          "heat": "855"
+          "heat": "865"
         },
         {
           "url": "http://www.acfun.cn/v/ac48814764",
           "text": "【DAY2】Roselia「Lehre der Rose」十周年精选专辑发售纪念LIVE DAY2",
-          "heat": "265"
+          "heat": "293"
         },
         {
           "url": "http://www.acfun.cn/v/ac48786930",
@@ -9661,7 +9661,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48784501",
           "text": "【中国音乐地图之听见内蒙古 呼麦、短调】吐尔基山",
-          "heat": "168"
+          "heat": "172"
         },
         {
           "url": "http://www.acfun.cn/v/ac48813258",
@@ -9677,6 +9677,11 @@
           "url": "http://www.acfun.cn/v/ac48784504",
           "text": "【龙飘飘】欢乐歌声满人间-国语-流行",
           "heat": "77"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48814699",
+          "text": "初音未来魔法未来2026 演唱会（东京站 最终日 夜场）",
+          "heat": "283"
         },
         {
           "url": "http://www.acfun.cn/v/ac48813988",
@@ -9736,12 +9741,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48784515",
           "text": "【陈百强】我的故事二版",
-          "heat": "111"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48814699",
-          "text": "初音未来魔法未来2026 演唱会（东京站 最终日 夜场）",
-          "heat": "283"
+          "heat": "124"
         },
         {
           "url": "http://www.acfun.cn/v/ac48814217",
@@ -9769,6 +9769,11 @@
           "heat": "72"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48813532",
+          "text": "初星学园 「クライアイ」Official Music Video Short Ver. ①各大音",
+          "heat": "43"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48812600",
           "text": "Ed Sheeran - Shape of You (Official Music Video)",
           "heat": "82"
@@ -9782,11 +9787,6 @@
           "url": "http://www.acfun.cn/v/ac48814224",
           "text": "2026-08-29 余若_ 直播录像",
           "heat": "81"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48813532",
-          "text": "初星学园 「クライアイ」Official Music Video Short Ver. ①各大音",
-          "heat": "43"
         }
       ]
     },
