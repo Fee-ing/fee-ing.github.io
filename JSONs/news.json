@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788203740847,
+  "timestamp": 1788204643083,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://news.cctv.com/2026/09/01/ARTIVMy0Di0MKasQuQpWhRMm260901.shtml",
+          "text": "欧盟将加强对 ChatGPT、Reddit 和 Roblox 的监管",
+          "heat": "央视新闻"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/30730",
           "text": "Anthropic 发安全警报：信息窃取木马盗走部分用户 Claude 登录会话",
           "heat": "aibase"
@@ -3065,19 +3070,14 @@
           "heat": "aibase"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-09/1533861.html",
+          "text": "全球 AI 大模型调用量激增：中国连续十八周居首，智谱新模型 Ox Alpha 登顶",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://www.leiphone.com/category/chips/ARHh6hZXIzvBZq5z.html",
           "text": "Cadence 滕晋庆：AI 有望让芯片设计时间减半，但资深工程师仍是核心竞争力",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.leiphone.com/category/robot/aDmmeg0GHDOQc0yR.html",
-          "text": "具身智能规模化落地的解法，鹿明摸索出来了",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/30724",
-          "text": "索尼等35家音乐出版商起诉Anthropic，称其大规模盗用音乐作品并索赔数十亿美元",
-          "heat": "aibase"
         }
       ]
     },
@@ -10581,12 +10581,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48815884",
           "text": "【作业用/助眠】降雪森林的冬夜咖啡厅 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "834"
+          "heat": "875"
         },
         {
           "url": "http://www.acfun.cn/v/ac48816860",
           "text": "Departures〜あなたにおくるアイの歌〜",
-          "heat": "809"
+          "heat": "826"
         },
         {
           "url": "http://www.acfun.cn/v/ac48815701",
@@ -10596,7 +10596,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48817201",
           "text": "【衣笠雪绘】胆小鬼 歌切day195",
-          "heat": "616"
+          "heat": "628"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48817229",
+          "text": "2026年8月Apple Music热歌榜TOP50，难绷！这也太夸张了吧？！",
+          "heat": "585"
         },
         {
           "url": "http://www.acfun.cn/v/ac48814984",
@@ -10604,19 +10609,14 @@
           "heat": "721"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48817229",
-          "text": "2026年8月Apple Music热歌榜TOP50，难绷！这也太夸张了吧？！",
-          "heat": "559"
+          "url": "http://www.acfun.cn/v/ac48817038",
+          "text": "淡淡地 用男声打开SUN KISS 【么羊】COVER. TUIDE",
+          "heat": "272"
         },
         {
           "url": "http://www.acfun.cn/v/ac48816989",
           "text": "下雨天",
           "heat": "421"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48817038",
-          "text": "淡淡地 用男声打开SUN KISS 【么羊】COVER. TUIDE",
-          "heat": "267"
         },
         {
           "url": "http://www.acfun.cn/v/ac48814981",
@@ -10629,14 +10629,14 @@
           "heat": "203"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48814536",
+          "text": "破亿只是门槛，全球最畅销音乐人！",
+          "heat": "131"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48814887",
           "text": "【全乐器翻弹】在你家门口坚持要进去看看的宮舞モカ",
           "heat": "192"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48814536",
-          "text": "破亿只是门槛，全球最畅销音乐人！",
-          "heat": "129"
         },
         {
           "url": "http://www.acfun.cn/v/ac48816636",
@@ -10651,12 +10651,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48815863",
           "text": "想走就走呗",
-          "heat": "611"
+          "heat": "626"
         },
         {
           "url": "http://www.acfun.cn/v/ac48816890",
           "text": "【罗马音】噗尼露是可爱史莱姆 完整版ED 「唱」",
-          "heat": "102"
+          "heat": "117"
         },
         {
           "url": "http://www.acfun.cn/v/ac48786934",
