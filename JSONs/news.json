@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788293736217,
+  "timestamp": 1788294642952,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,6 +3030,11 @@
           "heat": "Google DeepMind"
         },
         {
+          "url": "https://openai.com/index/path-to-astra",
+          "text": "Path to Astra: critical capabilities and frontier safeguards",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://openai.com/index/ai-native-company-workflows",
           "text": "How AI-native companies turn workflows into operating capability",
           "heat": "OpenAI"
@@ -3067,11 +3072,6 @@
         {
           "url": "https://www.leiphone.com/category/yanxishe/dufRSsU0sr3hCOII.html",
           "text": "万字长文拆解 DeepSeek V4 Pro 与 Harness：从后训练到「代理自进化」，更大的变化在开源框架里",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.leiphone.com/category/yanxishe/LyUNV8iNxl2VuE3X.html",
-          "text": "阿里开源 Qwen3.8-27B 本地实测：性能很强，但 Agent 适配仍待补课",
           "heat": "雷锋网"
         }
       ]
@@ -10616,17 +10616,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48819090",
           "text": "【甲鱼的旅法十年】漫漫来时路",
-          "heat": "1665"
+          "heat": "1675"
         },
         {
           "url": "http://www.acfun.cn/v/ac48819439",
           "text": "以为是甜番，结果破防了！粤语版「Amore」【与你相恋到生命尽头/ReoNa】",
-          "heat": "785"
+          "heat": "800"
         },
         {
           "url": "http://www.acfun.cn/v/ac48819543",
           "text": "《春》翻唱(cover陈文非)",
-          "heat": "1041"
+          "heat": "1042"
         },
         {
           "url": "http://www.acfun.cn/v/ac48817648",
