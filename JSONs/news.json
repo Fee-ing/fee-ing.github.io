@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788282938440,
+  "timestamp": 1788283848347,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2895,6 +2895,21 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://hub.baai.ac.cn/view/57621",
+          "text": "从蛋白质到完整基因组：Evo 首次生成可存活噬菌体",
+          "heat": "智源社区"
+        },
+        {
+          "url": "https://hub.baai.ac.cn/view/57620",
+          "text": "OpenAI 将终止向 Cursor 提供模型，Anthropic 或补位",
+          "heat": "智源社区"
+        },
+        {
+          "url": "https://hub.baai.ac.cn/view/57619",
+          "text": "3 秒出片比播放还快，MiniMax 打开 AI 视频的实时商业化路径",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16882",
           "text": "无需电池、电机，机器人靠声波飞起来了",
           "heat": "麻省理工科技评论"
@@ -2903,6 +2918,11 @@
           "url": "https://hub.baai.ac.cn/view/57610",
           "text": "Co-Scientist 升级：AI 走出屏幕，首次在真实实验室「造出」半导体",
           "heat": "智源社区"
+        },
+        {
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/",
+          "text": "Introducing agentic video understanding with Gemini",
+          "heat": "blog.google"
         },
         {
           "url": "https://www.leiphone.com/category/yanxishe/dufRSsU0sr3hCOII.html",
@@ -2922,26 +2942,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57618",
           "text": "Lovart 国内版上线，Design Agent 的竞争开始回归到「设计」本身",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57617",
-          "text": "67国推进“主权AI”，美国智库发现一个麻烦",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57613",
-          "text": "Claude Max 20x 在哪儿？200 刀只管 5 小时",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://www.leiphone.com/category/yanxishe/31ByEdzxZC7DMqoR.html",
-          "text": "GLM 5.3 更强却更难用了？我们让它和 5.2 做了同一个北京城市驾驶游戏",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57611",
-          "text": "姚顺雨空降腾讯半年，混元 Hy4 冲进第一梯队",
           "heat": "智源社区"
         }
       ]
@@ -4257,14 +4257,14 @@
           "heat": "旁边那页"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260901Q02TPL00",
-          "text": "梅西宣布从阿根廷国家队退役，10号球衣与队长袖标最可能由谁接过？没有梅西，阿根廷还能保持争冠实力吗？",
-          "heat": "英仙说"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260901Q0B3LG00",
           "text": "宇树科技被曝只罚不奖、超100元报销需王兴兴审批，如此大规模的公司能管这么细吗？对公司发展有何利弊？",
           "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260901Q02TPL00",
+          "text": "梅西宣布从阿根廷国家队退役，10号球衣与队长袖标最可能由谁接过？没有梅西，阿根廷还能保持争冠实力吗？",
+          "heat": "英仙说"
         },
         {
           "url": "https://new.qq.com/rain/a/20260831Q0953Q00",
@@ -4302,6 +4302,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260901Q097ZW00",
+          "text": "执掌苹果15年的库克正式卸任CEO，库克时代最牛的苹果产品是什么？如何评价他的功劳和弱处？",
+          "heat": "拾光者"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260901Q031N400",
           "text": "梅西退出阿根廷国家队引发“南美足球断档”担忧，阿根廷、巴西真的后继无人了吗？未来世界杯会成为“欧洲杯”吗？",
           "heat": "之乎者也小鱼儿"
@@ -4310,11 +4315,6 @@
           "url": "https://new.qq.com/rain/a/20260831Q0CTQT00",
           "text": "中国男篮世预赛险胜黎巴嫩，杨瀚森命中准绝杀，他对这支国家队有多重要？如何调整才能更好地发挥他的作用？",
           "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260901Q097ZW00",
-          "text": "执掌苹果15年的库克正式卸任CEO，库克时代最牛的苹果产品是什么？如何评价他的功劳和弱处？",
-          "heat": "拾光者"
         },
         {
           "url": "https://new.qq.com/rain/a/20260901Q05Y0900",
@@ -10346,37 +10346,37 @@
         {
           "url": "http://www.acfun.cn/v/ac48819090",
           "text": "【甲鱼的旅法十年】漫漫来时路",
-          "heat": "1515"
+          "heat": "1556"
         },
         {
           "url": "http://www.acfun.cn/v/ac48819439",
           "text": "以为是甜番，结果破防了！粤语版「Amore」【与你相恋到生命尽头/ReoNa】",
-          "heat": "645"
+          "heat": "683"
         },
         {
           "url": "http://www.acfun.cn/v/ac48819543",
           "text": "《春》翻唱(cover陈文非)",
-          "heat": "895"
+          "heat": "976"
         },
         {
           "url": "http://www.acfun.cn/v/ac48817648",
           "text": "【童年向翻唱】魔神英雄传1OP Step a·chi-a·chi",
-          "heat": "439"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48819324",
-          "text": "Forふるーつばすけッと",
-          "heat": "325"
+          "heat": "441"
         },
         {
           "url": "http://www.acfun.cn/v/ac48819404",
           "text": "bangbangbang",
-          "heat": "246"
+          "heat": "291"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48819324",
+          "text": "Forふるーつばすけッと",
+          "heat": "333"
         },
         {
           "url": "http://www.acfun.cn/v/ac48818893",
           "text": "Mili - One Million Moons Asia Tour 2026（东京场）",
-          "heat": "530"
+          "heat": "540"
         },
         {
           "url": "http://www.acfun.cn/v/ac48786982",
@@ -10419,6 +10419,11 @@
           "heat": "20"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48816793",
+          "text": "【AI】スーパーロボット大戦『A』・『R』・『D』・『J』EDM mix（超级机器人大战ARDJ）",
+          "heat": "67"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48786995",
           "text": "【Twins】朋友以上-KKBOX【花约】",
           "heat": "86"
@@ -10432,16 +10437,6 @@
           "url": "http://www.acfun.cn/v/ac48786993",
           "text": "【The Cranberries】1993 - Linger",
           "heat": "61"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48817327",
-          "text": "【流行/citypop】泡沫时代的黄金回响",
-          "heat": "94"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48816793",
-          "text": "【AI】スーパーロボット大戦『A』・『R』・『D』・『J』EDM mix（超级机器人大战ARDJ）",
-          "heat": "55"
         },
         {
           "url": "http://www.acfun.cn/v/ac48786986",
@@ -10459,14 +10454,19 @@
           "heat": "25"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48817425",
+          "text": "【BD】Photon Maiden部分",
+          "heat": "151"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48816877",
           "text": "穆拉文斯基指挥列宁格勒爱乐乐团与高克指挥全联盟广播交响乐团：拉威尔《波莱罗》与杜卡《小巫师》",
           "heat": "40"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48817305",
-          "text": "astraia 8.31",
-          "heat": "24"
+          "url": "http://www.acfun.cn/v/ac48786997",
+          "text": "【大塚 愛】“REMIX”企划 第5弹 桃ノ花ビラ (mabanua Remix)",
+          "heat": "23"
         },
         {
           "url": "http://www.acfun.cn/v/ac48796211",
@@ -10479,11 +10479,6 @@
           "heat": "119"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48817425",
-          "text": "【BD】Photon Maiden部分",
-          "heat": "116"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48816846",
           "text": "斯维特兰诺夫指挥苏联国立交响乐团：肖斯塔科维奇第十交响曲",
           "heat": "32"
@@ -10492,6 +10487,11 @@
           "url": "http://www.acfun.cn/v/ac48817969",
           "text": "C社六子的图片（后面有小彩蛋）",
           "heat": "101"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48819093",
+          "text": "【MV】ナイト／可憐なアイボリー【HoneyWorks】",
+          "heat": "12"
         }
       ]
     },
