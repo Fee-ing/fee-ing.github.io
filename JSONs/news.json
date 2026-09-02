@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788372938843,
+  "timestamp": 1788373851717,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://news.10jqka.com.cn/20260903/c679541199.shtml",
+          "text": "黄仁勋 G20 布道「AI 经济学」：算力已成国家级基建 未来几年迈向 AGI",
+          "heat": "同花顺财经"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16883",
           "text": "Anthropic 发布 Fable 5.1：科研、编程能力翻倍，成本最高降 45%",
           "heat": "麻省理工科技评论"
@@ -3073,11 +3078,6 @@
           "url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini/",
           "text": "Introducing agentic video understanding with Gemini",
           "heat": "Google DeepMind"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/30776",
-          "text": "网信办「清朗」第二阶段重拳整治 AI 乱象：清理违规信息 561 万余条，查处账号 4.9 万余个",
-          "heat": "aibase"
         }
       ]
     },
@@ -4392,6 +4392,11 @@
           "heat": "英仙说"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260902Q0DPLU00",
+          "text": "英超狂砸40亿欧元买卖球员，比西德意法4大联赛之和还多8亿，欧洲足球人才会被吸空吗？其他联赛该如何对抗？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260902Q06SQE00",
           "text": "天津多名环卫工疑坐三轮车休息被罚20元，企业有权对员工罚款吗？正常休息与“坐岗”如何界定？",
           "heat": "之乎者也小鱼儿"
@@ -4404,11 +4409,6 @@
         {
           "url": "https://new.qq.com/rain/a/20260901Q06AIF00",
           "text": "国内首部AI长剧《后西游记》收视率拿下第一，如何评价其制作水平？AI将改写电视剧哪些生产模式？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260902Q0DPLU00",
-          "text": "英超狂砸40亿欧元买卖球员，比西德意法4大联赛之和还多8亿，欧洲足球人才会被吸空吗？其他联赛该如何对抗？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -4477,6 +4477,11 @@
           "heat": "本来就是个局外人"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260902Q0DUW500",
+          "text": "《富爸爸穷爸爸》作者自曝12亿美元债务，反称“越借越富”，欠债到底是不是坏事？普通人能学习他的操作吗？",
+          "heat": "拾光者"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260902Q08TZB00",
           "text": "偶像男团办演唱会，12345热线收到近5万件粉丝诉求，普通市民求助会被挤占吗？该怎么约束这种滥用政务热线的行为？",
           "heat": "飞跃本屯"
@@ -4490,11 +4495,6 @@
           "url": "https://new.qq.com/rain/a/20260902Q048WC00",
           "text": "秘鲁宣布与伊朗断绝外交关系，两国相距遥远怎么突然翻脸？秘鲁为何要通过伊朗驻厄瓜多尔使馆递交照会？",
           "heat": "闻号说经济"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260902Q042O100",
-          "text": "Anthropic上新Fable 5.1，号称全球最强模型也开始卷价格，成本是怎么打下来的？会引发降价潮吗？",
-          "heat": "拾光者"
         }
       ]
     },
@@ -11921,6 +11921,11 @@
           "heat": ""
         },
         {
+          "url": "https://m.okjike.com/originalPosts/6a9832b6141b85b2923795f2",
+          "text": "产品经理的日常 09月02日",
+          "heat": ""
+        },
+        {
           "url": "https://m.okjike.com/originalPosts/6a9810a5141b85b29233e254",
           "text": "产品经理的日常 09月02日",
           "heat": ""
@@ -11938,11 +11943,6 @@
         {
           "url": "https://m.okjike.com/originalPosts/6a960c86141b85b292fc2e30",
           "text": "产品经理的日常 09月01日",
-          "heat": ""
-        },
-        {
-          "url": "https://m.okjike.com/originalPosts/6a9559bfcfb5d08b3eb3942f",
-          "text": "产品经理的日常 08月31日",
           "heat": ""
         },
         {
