@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788378337713,
+  "timestamp": 1788379250093,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://news.10jqka.com.cn/20260903/c679541319.shtml",
+          "text": "Meta 发布迄今最强大 AI 模型，称缩小与竞争对手差距",
+          "heat": "同花顺财经"
+        },
+        {
           "url": "https://www.techradar.com/vehicle-tech/hybrid-electric-vehicles/tesla-autopilot-and-fsd-face-fresh-scrutiny-after-two-fatal-freeway-crashes-where-cars-came-to-a-complete-stop",
           "text": "Tesla Autopilot and FSD face fresh scrutiny after two fatal freeway crashes where cars came to a complete stop",
           "heat": "techradar.com"
@@ -3068,11 +3073,6 @@
           "url": "https://www.mittrchina.com/news/detail/16883",
           "text": "Anthropic 发布 Fable 5.1：科研、编程能力翻倍，成本最高降 45%",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://daily.dev/posts/a-massive-win-for-openai-and-for-ai-training-in-general-for-its-legal-case-against-new-york-times--hkltuduxl",
-          "text": "US Justice Department backs OpenAI in NYT copyright case citing fair use and national security",
-          "heat": "daily.dev"
         }
       ]
     },
@@ -4417,6 +4417,11 @@
           "heat": "溯流Pi"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260902Q0AGDI00",
+          "text": "官方出钱要送百余名青少年出国踢球，如何保证他们出国后真正踢上高水平比赛？普通家庭的足球苗子怎么获得机会？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260902Q061IE00",
           "text": "2026暑期档票房场次人次创三年新高，放映场次3851万破纪录，今年暑期档为何这么猛？哪部电影带来最大惊喜？",
           "heat": "之乎者也小鱼儿"
@@ -4429,11 +4434,6 @@
         {
           "url": "https://new.qq.com/rain/a/20260901Q031N400",
           "text": "梅西退出阿根廷国家队引发“南美足球断档”担忧，阿根廷、巴西真的后继无人了吗？未来世界杯会成为“欧洲杯”吗？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260902Q0AGDI00",
-          "text": "官方出钱要送百余名青少年出国踢球，如何保证他们出国后真正踢上高水平比赛？普通家庭的足球苗子怎么获得机会？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -10616,12 +10616,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48821978",
           "text": "《我在春天等你》翻唱(cover杨钰莹)",
-          "heat": "811"
+          "heat": "875"
         },
         {
           "url": "http://www.acfun.cn/v/ac48820193",
           "text": "【东方】Dark Pegasus 钢琴演绎【ViddyWell】",
-          "heat": "668"
+          "heat": "690"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821621",
@@ -10636,7 +10636,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48821962",
           "text": "【衣笠雪绘】你们就是我的天使 歌切day196《相遇天使》",
-          "heat": "367"
+          "heat": "403"
         },
         {
           "url": "http://www.acfun.cn/v/ac48820156",
@@ -10646,7 +10646,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48820647",
           "text": "また来襲",
-          "heat": "362"
+          "heat": "377"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821728",
@@ -10699,14 +10699,14 @@
           "heat": "122"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48792721",
-          "text": "【The Cranberries】1994 - Ode To My Family",
-          "heat": "104"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48792708",
           "text": "【陈百强】今宵多珍重",
           "heat": "77"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48792721",
+          "text": "【The Cranberries】1994 - Ode To My Family",
+          "heat": "104"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821160",
