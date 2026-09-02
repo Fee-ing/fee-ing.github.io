@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788385544124,
+  "timestamp": 1788386451474,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2845,6 +2845,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://daily.dev/posts/the-robotics-breakthrough-everyone-has-been-waiting-for-chxhb0dbw",
+          "text": "Generalist AI releases Gen 1.5 robot model with zero-shot in-context learning",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://news.10jqka.com.cn/20260903/c679541319.shtml",
           "text": "Meta 发布迄今最强大 AI 模型，称缩小与竞争对手差距",
           "heat": "同花顺财经"
@@ -2855,14 +2860,9 @@
           "heat": "techradar.com"
         },
         {
-          "url": "https://news.10jqka.com.cn/20260903/c679541199.shtml",
-          "text": "黄仁勋 G20 布道「AI 经济学」：算力已成国家级基建 未来几年迈向 AGI",
-          "heat": "同花顺财经"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/16883",
-          "text": "Anthropic 发布 Fable 5.1：科研、编程能力翻倍，成本最高降 45%",
-          "heat": "麻省理工科技评论"
+          "url": "https://www.gelonghui.com/live/2648028",
+          "text": "G20 成员国通过「卡罗来纳原则」支持美国 AI「轻监管」原则",
+          "heat": "格隆汇"
         }
       ]
     },
@@ -4227,19 +4227,24 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260902Q00G5Y00",
-          "text": "星宇股份批量劝退应届生事件后，给外包工涨薪1元/小时，这个涨幅什么水平？月工时300小时合法吗？",
-          "heat": "酒旅王朝"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260902Q09VOZ00",
           "text": "李飞飞旗下企业发布全球首个多模态世界模型，它与普通视频生成模型有何不同？哪些行业和岗位会最先被改变？",
           "heat": "贵重物品DR"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260902Q00G5Y00",
+          "text": "星宇股份批量劝退应届生事件后，给外包工涨薪1元/小时，这个涨幅什么水平？月工时300小时合法吗？",
+          "heat": "酒旅王朝"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260901Q05Y0900",
           "text": "韩方公开中国女留学生遇害案嫌疑人身份，能否将其引渡回国审判？若由中国法院审理，可能面临什么刑罚？",
           "heat": "法途萤光"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260902Q0DUW500",
+          "text": "《富爸爸穷爸爸》作者自曝12亿美元债务，反称“越借越富”，欠债到底是不是坏事？普通人能学习他的操作吗？",
+          "heat": "拾光者"
         },
         {
           "url": "https://new.qq.com/rain/a/20260902Q07HOC00",
@@ -4260,11 +4265,6 @@
           "url": "https://new.qq.com/rain/a/20260901Q061N600",
           "text": "男子扫墓发现8座祖坟遭施工破坏，警方称属于纠纷不予立案，为何不按刑事案件处理？挖坏祖坟在什么情况下会构成犯罪？",
           "heat": "本来就是个局外人"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260902Q0DUW500",
-          "text": "《富爸爸穷爸爸》作者自曝12亿美元债务，反称“越借越富”，欠债到底是不是坏事？普通人能学习他的操作吗？",
-          "heat": "拾光者"
         },
         {
           "url": "https://new.qq.com/rain/a/20260902Q08TZB00",
@@ -10196,12 +10196,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48821978",
           "text": "《我在春天等你》翻唱(cover杨钰莹)",
-          "heat": "943"
+          "heat": "952"
         },
         {
           "url": "http://www.acfun.cn/v/ac48820193",
           "text": "【东方】Dark Pegasus 钢琴演绎【ViddyWell】",
-          "heat": "723"
+          "heat": "752"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821621",
@@ -10216,7 +10216,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48821962",
           "text": "【衣笠雪绘】你们就是我的天使 歌切day196《相遇天使》",
-          "heat": "426"
+          "heat": "434"
         },
         {
           "url": "http://www.acfun.cn/v/ac48820156",
