@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788367539451,
+  "timestamp": 1788368453773,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,6 +3030,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/",
+          "text": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+          "heat": "Google DeepMind"
+        },
+        {
           "url": "https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/",
           "text": "Claude's new system prompt really doesn't want to reproduce song lyrics",
           "heat": "Simon Willison"
@@ -3053,11 +3058,6 @@
           "url": "https://hub.baai.ac.cn/view/57640",
           "text": "西湖大学团队提出 Code World Model：让 Coding Agent 成为世界模型的大脑",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
-          "text": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
-          "heat": "blog.google"
         },
         {
           "url": "https://www.mittrchina.com/news/detail/16883",
@@ -4407,6 +4407,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260902Q0DPLU00",
+          "text": "英超狂砸40亿欧元买卖球员，比西德意法4大联赛之和还多8亿，欧洲足球人才会被吸空吗？其他联赛该如何对抗？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260902Q0BPPZ00",
           "text": "高考排260名的新生不满与第2600名同寝，提出退学，260名和2600名差距大吗？高考厉害以后就会一直优秀吗？",
           "heat": "拾光者"
@@ -4415,11 +4420,6 @@
           "url": "https://new.qq.com/rain/a/20260901Q045KW00",
           "text": "美国陆军部长与国防部长争执数月后辞职，“领导真空”如何填补？谁将接任这一职位？",
           "heat": "溯流Pi"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260902Q0DPLU00",
-          "text": "英超狂砸40亿欧元买卖球员，比西德意法4大联赛之和还多8亿，欧洲足球人才会被吸空吗？其他联赛该如何对抗？",
-          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260902Q061IE00",
@@ -11966,8 +11966,8 @@
       "type": "产品",
       "content": [
         {
-          "url": "https://m.okjike.com/originalPosts/6a9832b6141b85b2923795f2",
-          "text": "产品经理的日常 09月02日",
+          "url": "https://m.okjike.com/originalPosts/6a984cd50b4e4f75ea48b9aa",
+          "text": "产品经理的日常 09月03日",
           "heat": ""
         },
         {
@@ -14553,7 +14553,7 @@
         {
           "url": "https://www.dongchedi.com/article/7678936140481921598",
           "text": "比燃油车卖不动，更可怕的事在发生：“加油站的数量”，正在减少",
-          "heat": "56"
+          "heat": "57"
         },
         {
           "url": "https://www.dongchedi.com/article/7680203255955685950",
@@ -14563,7 +14563,7 @@
         {
           "url": "https://www.dongchedi.com/article/7679996741509710361",
           "text": "2026款iCAR超级V23S新车商品性评价",
-          "heat": "37"
+          "heat": "39"
         },
         {
           "url": "https://www.dongchedi.com/article/7678906763530633752",
