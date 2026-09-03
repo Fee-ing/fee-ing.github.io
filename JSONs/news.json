@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788457536471,
+  "timestamp": 1788458452057,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
           "heat": "Google DeepMind"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/local-ai-ifa-next-gen-agents-nv-pair-rtx-spark/",
+          "text": "NVIDIA 在 IFA 2026 推出 PAIR 工具，加速本地 AI 推理",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16894",
           "text": "去半人马座阿尔法星，AI 想出了人类没想到的办法",
           "heat": "麻省理工科技评论"
@@ -3073,11 +3078,6 @@
           "url": "https://hub.baai.ac.cn/view/57666",
           "text": "颜水成团队新作：Scaling Harness Intelligence",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://blog.google/products-and-platforms/products/workspace/voice-features-gmail-docs-keep/",
-          "text": "Use your voice to get more done in Gmail, Docs, and Keep",
-          "heat": "blog.google"
         }
       ]
     },
@@ -4382,6 +4382,11 @@
           "heat": "本来就是个局外人"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260903Q08PHD00",
+          "text": "西藏泥石流灾害系“冰岩崩”所致，可否预测？为何危害比雪崩大？与全球变暖是否有关联？",
+          "heat": "胡恺蘅"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260902Q09VOZ00",
           "text": "李飞飞旗下企业发布全球首个多模态世界模型，它与普通视频生成模型有何不同？哪些行业和岗位会最先被改变？",
           "heat": "贵重物品DR"
@@ -4420,11 +4425,6 @@
           "url": "https://new.qq.com/rain/a/20260903Q0BN8P00",
           "text": "河南男子莫名背上20万贷款，鉴定显示签名指印均系伪造，银行为何15年未发现？银行需承担什么责任？",
           "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260903Q08PHD00",
-          "text": "西藏泥石流灾害系“冰岩崩”所致，可否预测？为何危害比雪崩大？与全球变暖是否有关联？",
-          "heat": "胡恺蘅"
         },
         {
           "url": "https://new.qq.com/rain/a/20260902Q0BPPZ00",
@@ -10392,11 +10392,6 @@
           "heat": "许茹芸"
         },
         {
-          "url": "https://y.qq.com/n/ryqq/songDetail/000Q8gRW2WkkDS",
-          "text": "删了一百遍",
-          "heat": "A-Lin"
-        },
-        {
           "url": "https://y.qq.com/n/ryqq/songDetail/001auUcH4WQs2V",
           "text": "恋人",
           "heat": "李荣浩"
@@ -10407,14 +10402,14 @@
           "heat": "郑中基"
         },
         {
-          "url": "https://y.qq.com/n/ryqq/songDetail/000Tx0ZM2xaBhM",
-          "text": "樱花草",
-          "heat": "Sweety"
-        },
-        {
           "url": "https://y.qq.com/n/ryqq/songDetail/000BO3xy4fd8BJ",
           "text": "我怀念的",
           "heat": "孙燕姿"
+        },
+        {
+          "url": "https://y.qq.com/n/ryqq/songDetail/000NVIwc0ezTOD",
+          "text": "LEMONADE",
+          "heat": "aespa (에스파)"
         },
         {
           "url": "https://y.qq.com/n/ryqq/songDetail/000rh0dE2TyUic",
@@ -10427,11 +10422,6 @@
           "heat": "梁静茹"
         },
         {
-          "url": "https://y.qq.com/n/ryqq/songDetail/004Hy0mj2EEvtO",
-          "text": "我好想你 (苏打绿版)",
-          "heat": "苏打绿"
-        },
-        {
           "url": "https://y.qq.com/n/ryqq/songDetail/004fneUm24gD2c",
           "text": "爱错",
           "heat": "王力宏"
@@ -10442,14 +10432,9 @@
           "heat": "孙燕姿"
         },
         {
-          "url": "https://y.qq.com/n/ryqq/songDetail/0016znix01HNzO",
-          "text": "碎碎念",
-          "heat": "队长"
-        },
-        {
-          "url": "https://y.qq.com/n/ryqq/songDetail/000NVIwc0ezTOD",
-          "text": "LEMONADE",
-          "heat": "aespa (에스파)"
+          "url": "https://y.qq.com/n/ryqq/songDetail/000Tx0ZM2xaBhM",
+          "text": "樱花草",
+          "heat": "Sweety"
         },
         {
           "url": "https://y.qq.com/n/ryqq/songDetail/001Y2S0F1OaM2s",
@@ -10457,14 +10442,24 @@
           "heat": "Suki刘舒妤"
         },
         {
+          "url": "https://y.qq.com/n/ryqq/songDetail/001NgljR0RUhy1",
+          "text": "唯一",
+          "heat": "G.E.M.邓紫棋"
+        },
+        {
           "url": "https://y.qq.com/n/ryqq/songDetail/003cSLOO35W3yP",
           "text": "特别的人",
           "heat": "方大同"
         },
         {
-          "url": "https://y.qq.com/n/ryqq/songDetail/001NgljR0RUhy1",
-          "text": "唯一",
-          "heat": "G.E.M.邓紫棋"
+          "url": "https://y.qq.com/n/ryqq/songDetail/003aAPj81VWrbL",
+          "text": "富士山下",
+          "heat": "陈奕迅"
+        },
+        {
+          "url": "https://y.qq.com/n/ryqq/songDetail/004Hy0mj2EEvtO",
+          "text": "我好想你 (苏打绿版)",
+          "heat": "苏打绿"
         },
         {
           "url": "https://y.qq.com/n/ryqq/songDetail/0031PqYN0sj8K3",
@@ -10472,9 +10467,14 @@
           "heat": "莫文蔚"
         },
         {
-          "url": "https://y.qq.com/n/ryqq/songDetail/003aAPj81VWrbL",
-          "text": "富士山下",
-          "heat": "陈奕迅"
+          "url": "https://y.qq.com/n/ryqq/songDetail/0016znix01HNzO",
+          "text": "碎碎念",
+          "heat": "队长"
+        },
+        {
+          "url": "https://y.qq.com/n/ryqq/songDetail/001N8e5Q4Gjxda",
+          "text": "Always Online",
+          "heat": "林俊杰"
         }
       ]
     },
