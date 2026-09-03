@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788470139751,
+  "timestamp": 1788471042216,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10481,7 +10481,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48822500",
           "text": "【BD丨DAY1】D4DJ D4 FES. XROSS∞BEAT DAY1",
-          "heat": "77"
+          "heat": "81"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48792809",
+          "text": "【大塚 愛】1st[LOVE.PUNCH].MV",
+          "heat": "156"
         },
         {
           "url": "http://www.acfun.cn/v/ac48824035",
@@ -10489,19 +10494,9 @@
           "heat": "103"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48792809",
-          "text": "【大塚 愛】1st[LOVE.PUNCH].MV",
-          "heat": "149"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48815306",
           "text": "Japanese Funk Song name: Montagem Kokoro - Dj Sami",
           "heat": "68"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48822116",
-          "text": "nya, bye!｜бодихоррор",
-          "heat": "30"
         },
         {
           "url": "http://www.acfun.cn/v/ac48814904",
@@ -10512,11 +10507,6 @@
           "url": "http://www.acfun.cn/v/ac48796570",
           "text": "胡静怡 RED广州演唱会",
           "heat": "42"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48822119",
-          "text": "YCRF｜Out for Blood",
-          "heat": "39"
         },
         {
           "url": "http://www.acfun.cn/v/ac48816857",
@@ -10536,7 +10526,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48822915",
           "text": "奔跑的姜允儿-2026.09.02",
-          "heat": "96"
+          "heat": "104"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48813133",
+          "text": "岸田教団　夏色ストレート",
+          "heat": "20"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48823229",
+          "text": "【Furry】兽装翻唱《危险派对》",
+          "heat": "21"
         }
       ]
     },
