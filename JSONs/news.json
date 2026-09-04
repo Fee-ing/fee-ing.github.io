@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788558336678,
+  "timestamp": 1788559250626,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2870,6 +2870,11 @@
           "heat": "Simon Willison"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57709",
+          "text": "Axiom Math 对谈 SGLang：模型的下一步是可验证，结果层才是真正的护城河",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16899",
           "text": "美国拟封堵中国 AI 海外算力通道，东南亚数据中心或受审查",
           "heat": "麻省理工科技评论"
@@ -2908,11 +2913,6 @@
           "url": "https://www.mittrchina.com/news/detail/16895",
           "text": "GPT-6 Astra 发布，多个基准测试接近满分，「欢迎来到 AGI 时代」？",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.gelonghui.com/live/2652425",
-          "text": "Anthropic 筹备上市，摩根士丹利、高盛或获关键承销角色",
-          "heat": "格隆汇"
         }
       ]
     },
@@ -10231,12 +10231,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48825961",
           "text": "【甲鱼来时路】如何用音乐架起中法文化之桥",
-          "heat": "810"
+          "heat": "829"
         },
         {
           "url": "http://www.acfun.cn/v/ac48825345",
           "text": "来看你们的漂亮金智秀！-《CLICK》 4K版MV",
-          "heat": "933"
+          "heat": "944"
         },
         {
           "url": "http://www.acfun.cn/v/ac48825342",
