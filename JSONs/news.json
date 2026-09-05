@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788633946074,
+  "timestamp": 1788634849311,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "techradar.com"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-09/1543728.html",
+          "text": "HTC 黄昭颖谈手机创新瓶颈：资源聚焦 AI 眼镜，新品类营收已超手机",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://www.theblockbeats.info/flash/365520",
           "text": "XDOF 亮相三个月即冲刺 B 轮融资，估值达 12 亿美元",
           "heat": "theblockbeats.info"
@@ -3068,11 +3073,6 @@
           "url": "https://www.infoq.cn/article/tij5T0vJ1Yk0s7Uov7SE",
           "text": "RTX 4060 跑 35B 模型，每秒 39 Token？伯克利、MIT 联手开源 FreeToken",
           "heat": "infoq.cn"
-        },
-        {
-          "url": "https://www.ithome.com/0/998/810.htm",
-          "text": "塔塔咨询将在印度海得拉巴建设 1GW AI 数据中心，预计投资 7000 亿卢比",
-          "heat": "IT 之家"
         }
       ]
     },
@@ -4357,14 +4357,14 @@
           "heat": "营养师Bruce"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260904Q0B1XO00",
-          "text": "摇滚歌手、“魔岩三杰”之一何勇去世，你对他有什么特别的回忆？",
-          "heat": "不怕困难的王导演"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260905Q0BXT400",
           "text": "男子杀妻煮尸后谎称妻子离家出走，凶手的手段有多残忍？",
           "heat": "用户7507205"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260904Q0B1XO00",
+          "text": "摇滚歌手、“魔岩三杰”之一何勇去世，你对他有什么特别的回忆？",
+          "heat": "不怕困难的王导演"
         },
         {
           "url": "https://new.qq.com/rain/a/20260904Q08UD600",
@@ -4387,6 +4387,11 @@
           "heat": "本来就是个局外人"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260905Q0BTHA00",
+          "text": "日本网友无法理解中文“就”字，崩溃发帖求助，该怎么让日本人看懂“就”字？中文有这么难学吗？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260905Q0384X00",
           "text": "女子在寿司郎餐位上给孩子接小便，会带来哪些卫生风险？餐厅遇到这种事情该怎么做？",
           "heat": "之乎者也小鱼儿"
@@ -4395,11 +4400,6 @@
           "url": "https://new.qq.com/rain/a/20260904Q0447F00",
           "text": "山东一小学新校区被指气味刺鼻，有学生头晕流鼻血，官方称甲醛检测合格，甲醛合格等于空气安全吗？引发症状的可能是什么物质？",
           "heat": "营养师Bruce"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260905Q0BTHA00",
-          "text": "日本网友无法理解中文“就”字，崩溃发帖求助，该怎么让日本人看懂“就”字？中文有这么难学吗？",
-          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260905Q02U1Q00",
