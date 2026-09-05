@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788626737957,
+  "timestamp": 1788627647628,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4347,6 +4347,11 @@
           "heat": "注册营养师刘又姣"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260905Q0B06600",
+          "text": "尼泊尔泥石流一名中国公民被困11天后获救，他靠什么苦撑这么多天？为何隧道能帮助躲避泥石流？",
+          "heat": "中医大课堂"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260905Q048CL00",
           "text": "男子肚子疼被误诊为胃癌，医院瞒着切全胃，这起医疗事件暴露出哪些问题？对患者影响有多大？",
           "heat": "营养师Bruce"
@@ -4357,11 +4362,6 @@
           "heat": "不怕困难的王导演"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260905Q0B06600",
-          "text": "尼泊尔泥石流一名中国公民被困11天后获救，他靠什么苦撑这么多天？为何隧道能帮助躲避泥石流？",
-          "heat": "中医大课堂"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260904Q08UD600",
           "text": "老板称已把社保折进工资，员工离职后追讨社保致其关店，社保能算进工资吗？若补缴，员工该把当初的社保折算款返还吗？",
           "heat": "本来就是个局外人"
@@ -4370,6 +4370,11 @@
           "url": "https://new.qq.com/rain/a/20260905Q081IQ00",
           "text": "甘肃榆中被曝给莴笋“染色”，检出亮蓝、柠檬黄色素，若吃了“染色莴笋”对身体有何影响？还有哪些蔬菜是“染色”重灾区？",
           "heat": "自有喵计"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260905Q0BXT400",
+          "text": "男子杀妻煮尸后谎称妻子离家出走，凶手的手段有多残忍？",
+          "heat": "用户7507205"
         },
         {
           "url": "https://new.qq.com/rain/a/20260904Q03DEG00",
@@ -4392,13 +4397,13 @@
           "heat": "营养师Bruce"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260905Q0BXT400",
-          "text": "男子杀妻煮尸后谎称妻子离家出走，凶手的手段有多残忍？",
-          "heat": "用户7507205"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260905Q02U1Q00",
           "text": "万斯自曝“吃很多酸菜”，多位部长相继加入“吃酸菜”风潮，这种饮食方式真的健康吗？美国高官的吃法适合普通人吗？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260905Q0BTHA00",
+          "text": "日本网友无法理解中文“就”字，崩溃发帖求助，该怎么让日本人看懂“就”字？中文有这么难学吗？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -4412,26 +4417,6 @@
           "heat": "粘粘有语"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260905Q0BTHA00",
-          "text": "日本网友无法理解中文“就”字，崩溃发帖求助，该怎么让日本人看懂“就”字？中文有这么难学吗？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260905Q0A7CC00",
-          "text": "报道称第一批戴运动手环的“受害者”出现，皮肤发白老化，是表带有问题吗？运动手环还能长期戴吗？",
-          "heat": "营养师Bruce"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260905Q08FV600",
-          "text": "考研名师汤家凤公开呼吁取消英语主科地位，英语该不该退出主科？若真取消会产生什么影响？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260904Q072I800",
-          "text": "乌克兰两大情报部门在基辅枪战，这两个机构有什么“仇怨”？为何一个国家有两个情报部门？",
-          "heat": "飞跃本屯"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260905Q0BI6X00",
           "text": "80岁清陵学者徐广源去世，曾亲手整理慈禧太后遗体，他借此揭开了哪些历史谜团？对清陵研究贡献多大？",
           "heat": "之乎者也小鱼儿"
@@ -4440,6 +4425,21 @@
           "url": "https://new.qq.com/rain/a/20260905Q0AJP400",
           "text": "考研名师呼吁取消英语主科地位，称“放眼全世界是个笑话”，英语真没这么重要？毕业用不上就不必重视吗？",
           "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260905Q08FV600",
+          "text": "考研名师汤家凤公开呼吁取消英语主科地位，英语该不该退出主科？若真取消会产生什么影响？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260905Q0A7CC00",
+          "text": "报道称第一批戴运动手环的“受害者”出现，皮肤发白老化，是表带有问题吗？运动手环还能长期戴吗？",
+          "heat": "营养师Bruce"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260904Q072I800",
+          "text": "乌克兰两大情报部门在基辅枪战，这两个机构有什么“仇怨”？为何一个国家有两个情报部门？",
+          "heat": "飞跃本屯"
         },
         {
           "url": "https://new.qq.com/rain/a/20260904Q0CS7Y00",
@@ -10591,37 +10591,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48828103",
           "text": "【绝望女神/翻唱】【爱杀宝贝 ED 二人心意的真正秘密】",
-          "heat": "993"
+          "heat": "1024"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828097",
           "text": "【绝望女神/翻唱】【超时空要塞F 插曲 射手座☆午後九時Don be late】",
-          "heat": "624"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48826581",
-          "text": "【衣笠雪绘】夕颜 歌切day196",
-          "heat": "907"
+          "heat": "635"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827641",
           "text": "来看wuli迪迪！ 260830 idle 澳门演唱会 宋雨琦《Fate》个人直拍",
-          "heat": "577"
+          "heat": "602"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827692",
           "text": "她来了！BLACKPINK 金智秀JISOO - CLICK 官方MV正式版",
-          "heat": "961"
+          "heat": "979"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827224",
           "text": "Chop Suey!【System Of A Down】 Cover by A-YEON",
-          "heat": "389"
+          "heat": "395"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828265",
           "text": "神様はじめました",
-          "heat": "357"
+          "heat": "374"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828131",
@@ -10642,11 +10637,6 @@
           "url": "http://www.acfun.cn/v/ac48827237",
           "text": "中华民国(1912——1949)空军军歌《壮志凌霄》",
           "heat": "291"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48819275",
-          "text": "=LOVE 18th Single c/w「超特急逃走中」- Chou Tokkyuu Tousou",
-          "heat": "113"
         },
         {
           "url": "http://www.acfun.cn/v/ac48824569",
@@ -10674,14 +10664,14 @@
           "heat": "41"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48798593",
+          "text": "【Twins】老鼠爱大米【见习爱神(第二版)】",
+          "heat": "85"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48827707",
           "text": "FNF  瀰囃鼙鼓晡颙黹么？ 擬鎯嗁么？",
           "heat": "31"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48798574",
-          "text": "【普拉西多·多明戈】威尔第：弄臣 1973",
-          "heat": "111"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827498",
@@ -10689,9 +10679,9 @@
           "heat": "131"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48798593",
-          "text": "【Twins】老鼠爱大米【见习爱神(第二版)】",
-          "heat": "85"
+          "url": "http://www.acfun.cn/v/ac48798574",
+          "text": "【普拉西多·多明戈】威尔第：弄臣 1973",
+          "heat": "111"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828053",
@@ -10724,6 +10714,11 @@
           "heat": "118"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48826793",
+          "text": "穆拉文斯基指挥列宁格勒爱乐乐团：贝多芬第一交响曲（1982）",
+          "heat": "57"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48827471",
           "text": "【高燃男女对唱】NEXT DOOR│SYNCRO-8（シンクロエイト)",
           "heat": "21"
@@ -10737,6 +10732,11 @@
           "url": "http://www.acfun.cn/v/ac48827244",
           "text": "预告片",
           "heat": "150"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48795468",
+          "text": "【七夕特集】「SOS」舞蹈MV七夕特别企划！为大家连续带来充满爱意的歌曲！「SOS」MV演",
+          "heat": "45"
         }
       ]
     },
@@ -14481,14 +14481,14 @@
           "heat": "52"
         },
         {
+          "url": "https://www.dongchedi.com/article/7680826430713119257",
+          "text": "smart精灵5号：好开是真好开，但辅助驾驶还要提升！",
+          "heat": "33"
+        },
+        {
           "url": "https://www.dongchedi.com/article/7681137960775959102",
           "text": "皮卡年检、报废改不改？一次说清GB 7258-2026新国标热点问题",
           "heat": "32"
-        },
-        {
-          "url": "https://www.dongchedi.com/article/7680826430713119257",
-          "text": "smart精灵5号：好开是真好开，但辅助驾驶还要提升！",
-          "heat": "31"
         },
         {
           "url": "https://www.dongchedi.com/article/7681290601132098072",
@@ -14506,13 +14506,13 @@
           "heat": "21"
         },
         {
-          "url": "https://www.dongchedi.com/article/7681156336046031384",
-          "text": "大众、奔驰启动调查！星宇股份刺痛了谁的神经？",
-          "heat": "19"
-        },
-        {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
           "text": "8月德国车市小升2.6%，大众下挫14%，中国品牌份额首次破6",
+          "heat": "20"
+        },
+        {
+          "url": "https://www.dongchedi.com/article/7681156336046031384",
+          "text": "大众、奔驰启动调查！星宇股份刺痛了谁的神经？",
           "heat": "19"
         }
       ]
