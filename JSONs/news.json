@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788624933852,
+  "timestamp": 1788625841343,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "Simon Willison"
         },
         {
+          "url": "https://www.ithome.com/0/998/840.htm",
+          "text": "极摩客展出 EVO-X5 Pro 迷你主机：锐龙 AI Max+ PRO 495 处理器，192GB 内存",
+          "heat": "IT 之家"
+        },
+        {
           "url": "https://www.gelonghui.com/live/2652932",
           "text": "DeepSeek 被曝将采购 16 万颗华为昇腾 950DT 芯片",
           "heat": "格隆汇"
@@ -3077,11 +3082,6 @@
         {
           "url": "https://www.ithome.com/0/998/810.htm",
           "text": "塔塔咨询将在印度海得拉巴建设 1GW AI 数据中心，预计投资 7000 亿卢比",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.ithome.com/0/998/828.htm",
-          "text": "HTC 黄昭颖：手机难有创新突破，资源转向 AI 眼镜",
           "heat": "IT 之家"
         }
       ]
@@ -10591,7 +10591,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48828103",
           "text": "【绝望女神/翻唱】【爱杀宝贝 ED 二人心意的真正秘密】",
-          "heat": "953"
+          "heat": "989"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828097",
@@ -10606,17 +10606,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48827641",
           "text": "来看wuli迪迪！ 260830 idle 澳门演唱会 宋雨琦《Fate》个人直拍",
-          "heat": "520"
+          "heat": "562"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827692",
           "text": "她来了！BLACKPINK 金智秀JISOO - CLICK 官方MV正式版",
-          "heat": "892"
+          "heat": "954"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827224",
           "text": "Chop Suey!【System Of A Down】 Cover by A-YEON",
-          "heat": "376"
+          "heat": "389"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828265",
@@ -10631,12 +10631,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48798601",
           "text": "【大塚 愛】8th[LOVE HONEY] DVD",
-          "heat": "92"
+          "heat": "118"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828337",
           "text": "「朝鲜音乐」前进的社会主义",
-          "heat": "93"
+          "heat": "100"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827237",
@@ -10651,7 +10651,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48824569",
           "text": "【歌謡秀】新サクラ大戦 the Stage ～桜歌之宴～（新樱花大战 歌谣秀 ~樱歌之宴~）",
-          "heat": "117"
+          "heat": "122"
         },
         {
           "url": "http://www.acfun.cn/v/ac48826717",
@@ -10679,14 +10679,19 @@
           "heat": "31"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48827498",
-          "text": "嘘ばっか(笑)彩蛋",
-          "heat": "124"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48798574",
           "text": "【普拉西多·多明戈】威尔第：弄臣 1973",
           "heat": "111"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48827498",
+          "text": "嘘ばっか(笑)彩蛋",
+          "heat": "131"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48798593",
+          "text": "【Twins】老鼠爱大米【见习爱神(第二版)】",
+          "heat": "74"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828053",
@@ -10709,11 +10714,6 @@
           "heat": "45"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48798593",
-          "text": "【Twins】老鼠爱大米【见习爱神(第二版)】",
-          "heat": "74"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48827711",
           "text": "油管转载《首都》专辑《新生代》群星",
           "heat": "72"
@@ -10731,7 +10731,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48826765",
           "text": "洗脳／初音彡ク（BY：DECO*27）",
-          "heat": "158"
+          "heat": "163"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827244",
