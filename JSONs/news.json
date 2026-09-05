@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788637540228,
+  "timestamp": 1788638446500,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,9 +3035,19 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://daily.dev/posts/runway-s-gwm-worlds-2-is-a-world-model-that-generates-interactive-environments-in-real-time-at-720p--x8rkvvrxp",
+          "text": "Runway releases GWM Worlds 2 with real-time interactive world generation and audio",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos/",
           "text": "Using Blender with coding agents on macOS",
           "heat": "Simon Willison"
+        },
+        {
+          "url": "https://www.itbear.com.cn/html/2026-09/1543774.html",
+          "text": "AI 助力 Bun 1.4 重写：11 天 100 万行代码，传统编程模式或迎变革",
+          "heat": "ITBear科技资讯"
         },
         {
           "url": "https://www.ithome.com/0/998/840.htm",
@@ -3063,16 +3073,6 @@
           "url": "https://www.itbear.com.cn/html/2026-09/1543728.html",
           "text": "HTC 黄昭颖谈手机创新瓶颈：资源聚焦 AI 眼镜，新品类营收已超手机",
           "heat": "ITBear科技资讯"
-        },
-        {
-          "url": "https://www.theblockbeats.info/flash/365520",
-          "text": "XDOF 亮相三个月即冲刺 B 轮融资，估值达 12 亿美元",
-          "heat": "theblockbeats.info"
-        },
-        {
-          "url": "https://www.infoq.cn/article/tij5T0vJ1Yk0s7Uov7SE",
-          "text": "RTX 4060 跑 35B 模型，每秒 39 Token？伯克利、MIT 联手开源 FreeToken",
-          "heat": "infoq.cn"
         }
       ]
     },
@@ -10571,7 +10571,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48828103",
           "text": "【绝望女神/翻唱】【爱杀宝贝 ED 二人心意的真正秘密】",
-          "heat": "1053"
+          "heat": "1059"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828097",
@@ -10581,12 +10581,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48827641",
           "text": "来看wuli迪迪！ 260830 idle 澳门演唱会 宋雨琦《Fate》个人直拍",
-          "heat": "687"
+          "heat": "691"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828265",
           "text": "神様はじめました",
-          "heat": "453"
+          "heat": "462"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827692",
@@ -10604,14 +10604,14 @@
           "heat": "134"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48798601",
-          "text": "【大塚 愛】8th[LOVE HONEY] DVD",
-          "heat": "131"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48828337",
           "text": "「朝鲜音乐」前进的社会主义",
           "heat": "113"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48798601",
+          "text": "【大塚 愛】8th[LOVE HONEY] DVD",
+          "heat": "131"
         },
         {
           "url": "http://www.acfun.cn/v/ac48798593",
@@ -10632,6 +10632,11 @@
           "url": "http://www.acfun.cn/v/ac48798592",
           "text": "【The Cranberries】1995 - Ridiculous Thoughts (",
           "heat": "71"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48798565",
+          "text": "【龙飘飘】倦(国语)",
+          "heat": "125"
         },
         {
           "url": "http://www.acfun.cn/v/ac48826717",
@@ -10661,7 +10666,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48828053",
           "text": "画心",
-          "heat": "55"
+          "heat": "60"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827707",
@@ -10697,11 +10702,6 @@
           "url": "http://www.acfun.cn/v/ac48826920",
           "text": "河内广播电视台交响乐团：《军事下迈步》",
           "heat": "45"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48798565",
-          "text": "【龙飘飘】倦(国语)",
-          "heat": "125"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827711",
