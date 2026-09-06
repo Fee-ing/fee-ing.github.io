@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788718534859,
+  "timestamp": 1788719443377,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3065,6 +3065,11 @@
           "heat": "快科技"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-09/1544700.html",
+          "text": "Gemini 用户规模破 10 亿，谷歌 2000 亿 AI 投资回报遭外界质疑",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://www.techradar.com/tech/flocks-ai-search-tool-for-police-officers-has-been-reverse-engineered-heres-what-it-shows",
           "text": "Flock 的 AI 警务搜索工具被逆向工程，揭示其功能",
           "heat": "techradar.com"
@@ -3078,11 +3083,6 @@
           "url": "https://www.ithome.com/0/999/015.htm",
           "text": "微软借力 AI 重塑 Win11 应用生态：30 分钟即可生成 WinUI 原生应用",
           "heat": "IT 之家"
-        },
-        {
-          "url": "https://aibars.net/zh/news/884517606214864896",
-          "text": "微软称 Copilot 对话中仅 24 次与受版权保护文本高度相似",
-          "heat": "aibars.net"
         }
       ]
     },
@@ -4362,14 +4362,14 @@
           "heat": "中医大课堂"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260905Q048CL00",
-          "text": "男子肚子疼被误诊为胃癌，医院瞒着切全胃，这起医疗事件暴露出哪些问题？对患者影响有多大？",
-          "heat": "营养师Bruce"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260906Q04B7W00",
           "text": "郑钦文2-1大逆转，美网6连胜进16强，如何评价这场比赛？这波连胜是状态真正回升的信号吗？",
           "heat": "拾光者"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260905Q048CL00",
+          "text": "男子肚子疼被误诊为胃癌，医院瞒着切全胃，这起医疗事件暴露出哪些问题？对患者影响有多大？",
+          "heat": "营养师Bruce"
         },
         {
           "url": "https://new.qq.com/rain/a/20260906Q05R0A00",
@@ -14433,16 +14433,16 @@
         {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
           "text": "8月德国车市小升2.6%，大众下挫14%，中国品牌份额首次破6",
-          "heat": "69"
-        },
-        {
-          "url": "https://www.dongchedi.com/article/7681968393398043198",
-          "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
-          "heat": "53"
+          "heat": "70"
         },
         {
           "url": "https://www.dongchedi.com/article/7681290601132098072",
           "text": "土耳其8月销量跌20.3%，关税逼退中国品牌，本土韩系受益？",
+          "heat": "55"
+        },
+        {
+          "url": "https://www.dongchedi.com/article/7681968393398043198",
+          "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
           "heat": "53"
         },
         {
@@ -14453,7 +14453,7 @@
         {
           "url": "https://www.dongchedi.com/article/7681334704213918232",
           "text": "自购车实拍！本田CB500SF评测，6000转共振真实存在",
-          "heat": "45"
+          "heat": "46"
         },
         {
           "url": "https://www.dongchedi.com/article/7680826430713119257",
