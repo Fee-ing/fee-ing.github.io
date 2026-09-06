@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788714936057,
+  "timestamp": 1788715841752,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://openai.com/index/an-alien-mind",
+          "text": "An Alien Mind",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16908",
           "text": "David Baker 启动 AI BioDesign 项目：按功能设计生物分子",
           "heat": "麻省理工科技评论"
@@ -3078,11 +3083,6 @@
           "url": "https://aibars.net/zh/news/884517606214864896",
           "text": "微软称 Copilot 对话中仅 24 次与受版权保护文本高度相似",
           "heat": "aibars.net"
-        },
-        {
-          "url": "https://www.ithome.com/0/999/014.htm",
-          "text": "微软重塑 Win11 AI 战略：「无计量智能」将让更多 AI 在 PC 本地运行",
-          "heat": "IT 之家"
         }
       ]
     },
@@ -10446,32 +10446,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48829236",
           "text": "剧院魅影2026中巡武汉站现场",
-          "heat": "980"
+          "heat": "1002"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829766",
           "text": "《跳楼机》翻唱(cover LBI利比)",
-          "heat": "1155"
+          "heat": "1163"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829974",
           "text": "【千璃Senri】煙",
-          "heat": "1070"
+          "heat": "1074"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821785",
           "text": "【东方】弹一弹东方经典二创音乐!!【まらしぃ 触手猴 钢琴】",
-          "heat": "529"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48830085",
-          "text": "【甲鱼的旅法十年】为什么选择法国学音乐(无广纯分享)",
-          "heat": "607"
+          "heat": "563"
         },
         {
           "url": "http://www.acfun.cn/v/ac48830250",
           "text": "【付小远】《听见下雨的声音remix连名带姓》现场，从静谧弹唱到激情强混",
-          "heat": "701"
+          "heat": "802"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48830085",
+          "text": "【甲鱼的旅法十年】为什么选择法国学音乐(无广纯分享)",
+          "heat": "633"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829402",
@@ -10499,11 +10499,6 @@
           "heat": "220"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48828504",
-          "text": "何勇经典歌曲《钟鼓楼》韩宇吉他弹唱",
-          "heat": "196"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48798608",
           "text": "【中国音乐地图之听见内蒙古 火不思、羊皮鼓、冒顿潮尔音乐集】恩情 阿其图",
           "heat": "149"
@@ -10516,7 +10511,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48829518",
           "text": "穆拉文斯基指挥列宁格勒爱乐乐团：普罗科菲耶夫《罗密欧与朱丽叶》第二组曲",
-          "heat": "128"
+          "heat": "138"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829701",
@@ -10591,7 +10586,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48829435",
           "text": "【BD中字】MyGO!!!!! × Ave Mujica 「わかれ道の、その先へ 」DAY 2",
-          "heat": "77"
+          "heat": "89"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48825561",
+          "text": "【歌謡秀】新サクラ大戦 the Stage ～桜歌之宴・彩～（新樱花大战 歌谣秀～樱歌之宴・彩～）",
+          "heat": "106"
         }
       ]
     },
@@ -14323,7 +14323,12 @@
         {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
           "text": "8月德国车市小升2.6%，大众下挫14%，中国品牌份额首次破6",
-          "heat": "65"
+          "heat": "68"
+        },
+        {
+          "url": "https://www.dongchedi.com/article/7681968393398043198",
+          "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
+          "heat": "53"
         },
         {
           "url": "https://www.dongchedi.com/article/7681290601132098072",
@@ -14336,14 +14341,9 @@
           "heat": "52"
         },
         {
-          "url": "https://www.dongchedi.com/article/7681968393398043198",
-          "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
-          "heat": "52"
-        },
-        {
           "url": "https://www.dongchedi.com/article/7681334704213918232",
           "text": "自购车实拍！本田CB500SF评测，6000转共振真实存在",
-          "heat": "43"
+          "heat": "45"
         },
         {
           "url": "https://www.dongchedi.com/article/7680826430713119257",
