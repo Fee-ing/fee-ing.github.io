@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788713140602,
+  "timestamp": 1788714046833,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4397,14 +4397,14 @@
           "heat": "营养师Bruce"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260905Q0BI6X00",
-          "text": "80岁清陵学者徐广源去世，曾亲手整理慈禧太后遗体，他借此揭开了哪些历史谜团？对清陵研究贡献多大？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260906Q0BGO000",
           "text": "网传女生赴港看演唱会后全家被取消低保，出境旅游真的会取消低保吗？哪些行为会触发低保复核？",
           "heat": "不怕困难的王导演"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260905Q0BI6X00",
+          "text": "80岁清陵学者徐广源去世，曾亲手整理慈禧太后遗体，他借此揭开了哪些历史谜团？对清陵研究贡献多大？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260905Q0384X00",
@@ -10586,27 +10586,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48829766",
           "text": "《跳楼机》翻唱(cover LBI利比)",
-          "heat": "1148"
+          "heat": "1155"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829974",
           "text": "【千璃Senri】煙",
-          "heat": "1062"
+          "heat": "1070"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821785",
           "text": "【东方】弹一弹东方经典二创音乐!!【まらしぃ 触手猴 钢琴】",
-          "heat": "485"
+          "heat": "529"
         },
         {
           "url": "http://www.acfun.cn/v/ac48830085",
           "text": "【甲鱼的旅法十年】为什么选择法国学音乐(无广纯分享)",
-          "heat": "598"
+          "heat": "607"
         },
         {
           "url": "http://www.acfun.cn/v/ac48830250",
           "text": "【付小远】《听见下雨的声音remix连名带姓》现场，从静谧弹唱到激情强混",
-          "heat": "487"
+          "heat": "701"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829402",
@@ -10614,14 +10614,14 @@
           "heat": "323"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48829295",
+          "text": "不同风格的《U.N.オーエンは彼女なのか？》",
+          "heat": "435"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48827814",
           "text": "每周音乐分享 2026.09.05期",
           "heat": "120"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48829295",
-          "text": "不同风格的《U.N.オーエンは彼女なのか？》",
-          "heat": "410"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828711",
@@ -10636,7 +10636,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48828504",
           "text": "何勇经典歌曲《钟鼓楼》韩宇吉他弹唱",
-          "heat": "166"
+          "heat": "196"
         },
         {
           "url": "http://www.acfun.cn/v/ac48798608",
@@ -10646,7 +10646,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48829400",
           "text": "穆拉文斯基指挥列宁格勒爱乐乐团：柴可夫斯基芭蕾组曲《胡桃夹子》（1981）",
-          "heat": "108"
+          "heat": "119"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829518",
@@ -10691,7 +10691,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48829772",
           "text": "【初音ミク】ハイドロエンドロール（Hydro End Roll）【ノイ】",
-          "heat": "264"
+          "heat": "286"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828868",
@@ -10714,11 +10714,6 @@
           "heat": "85"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48819280",
-          "text": "辰巳ゆうと「ロンリー・ジェネレーション」Music Video",
-          "heat": "60"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48829715",
           "text": "【VANTA】オレンジ",
           "heat": "126"
@@ -10727,6 +10722,11 @@
           "url": "http://www.acfun.cn/v/ac48829761",
           "text": "【からん】アポリア",
           "heat": "36"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48829435",
+          "text": "【BD中字】MyGO!!!!! × Ave Mujica 「わかれ道の、その先へ 」DAY 2",
+          "heat": "77"
         }
       ]
     },
@@ -14463,7 +14463,7 @@
         {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
           "text": "8月德国车市小升2.6%，大众下挫14%，中国品牌份额首次破6",
-          "heat": "63"
+          "heat": "65"
         },
         {
           "url": "https://www.dongchedi.com/article/7681290601132098072",
