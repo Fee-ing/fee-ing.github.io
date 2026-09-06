@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788716734390,
+  "timestamp": 1788717645064,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10541,17 +10541,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48829236",
           "text": "剧院魅影2026中巡武汉站现场",
-          "heat": "1002"
+          "heat": "1022"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829766",
           "text": "《跳楼机》翻唱(cover LBI利比)",
-          "heat": "1163"
+          "heat": "1168"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829974",
           "text": "【千璃Senri】煙",
-          "heat": "1074"
+          "heat": "1081"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48830250",
+          "text": "【付小远】《听见下雨的声音remix连名带姓》现场，从静谧弹唱到激情强混",
+          "heat": "886"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821785",
@@ -10559,14 +10564,9 @@
           "heat": "563"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48830250",
-          "text": "【付小远】《听见下雨的声音remix连名带姓》现场，从静谧弹唱到激情强混",
-          "heat": "802"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48830085",
           "text": "【甲鱼的旅法十年】为什么选择法国学音乐(无广纯分享)",
-          "heat": "633"
+          "heat": "673"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829402",
@@ -10576,7 +10576,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48829295",
           "text": "不同风格的《U.N.オーエンは彼女なのか？》",
-          "heat": "435"
+          "heat": "444"
         },
         {
           "url": "http://www.acfun.cn/v/ac48827814",
@@ -10621,7 +10621,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48798628",
           "text": "【谢霆锋viva live演唱会】去偷独自欢+对你爱不完",
-          "heat": "54"
+          "heat": "62"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829750",
@@ -10639,6 +10639,11 @@
           "heat": "133"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48830373",
+          "text": "【小畑杏Kobata】快乐的扑满（翻唱跑调版）",
+          "heat": "70"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48798612",
           "text": "【龙飘飘】空留回忆-国语-流行",
           "heat": "98"
@@ -10647,6 +10652,11 @@
           "url": "http://www.acfun.cn/v/ac48829772",
           "text": "【初音ミク】ハイドロエンドロール（Hydro End Roll）【ノイ】",
           "heat": "286"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48798648",
+          "text": "【Twins】爱情当入樽【爱情当入樽】",
+          "heat": "99"
         },
         {
           "url": "http://www.acfun.cn/v/ac48828868",
@@ -10664,19 +10674,9 @@
           "heat": "31"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48798648",
-          "text": "【Twins】爱情当入樽【爱情当入樽】",
-          "heat": "85"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48829715",
           "text": "【VANTA】オレンジ",
           "heat": "126"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48829761",
-          "text": "【からん】アポリア",
-          "heat": "36"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829435",
@@ -10684,9 +10684,9 @@
           "heat": "89"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48825561",
-          "text": "【歌謡秀】新サクラ大戦 the Stage ～桜歌之宴・彩～（新樱花大战 歌谣秀～樱歌之宴・彩～）",
-          "heat": "106"
+          "url": "http://www.acfun.cn/v/ac48829761",
+          "text": "【からん】アポリア",
+          "heat": "36"
         }
       ]
     },
@@ -14428,7 +14428,7 @@
         {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
           "text": "8月德国车市小升2.6%，大众下挫14%，中国品牌份额首次破6",
-          "heat": "68"
+          "heat": "69"
         },
         {
           "url": "https://www.dongchedi.com/article/7681968393398043198",
@@ -14463,7 +14463,7 @@
         {
           "url": "https://www.dongchedi.com/article/7681483268696883737",
           "text": "吉利帝豪智擎混动日常实用性测试报告",
-          "heat": "25"
+          "heat": "27"
         }
       ]
     },
