@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788817537770,
+  "timestamp": 1788818450186,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2890,6 +2890,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://simonwillison.net/2026/Sep/7/equal-earth/",
+          "text": "Mercator ↔ Equal Earth",
+          "heat": "Simon Willison"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57748",
           "text": "黄仁勋 129 亿买下 AI 圈 GitHub！Hugging Face 守了 10 年的独立没了",
           "heat": "智源社区"
@@ -2910,14 +2915,9 @@
           "heat": "techradar.com"
         },
         {
-          "url": "https://www.itbear.com.cn/html/2026-09/1546897.html",
-          "text": "宇树科技再突破：世界模型实时驱动 人形机器人全自主格斗成现实",
-          "heat": "ITBear科技资讯"
-        },
-        {
-          "url": "https://www.itbear.com.cn/html/2026-09/1546790.html",
-          "text": "小米秋季新品发布：自研玄戒三芯亮相，18 Fold 与平板 9 Pro Max 引领创新",
-          "heat": "ITBear科技资讯"
+          "url": "https://9to5mac.com/2026/09/07/whatsapp-will-soon-let-users-chat-with-up-to-five-third-party-ai-agents/",
+          "text": "WhatsApp将支持用户与最多五个第三方AI代理聊天",
+          "heat": "9to5Mac"
         }
       ]
     },
@@ -4252,16 +4252,6 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260906Q0994N00",
-          "text": "研究生卖父亲藏金收到12.4万元，因买家涉案被冻结账户，正常交易为何会被“冻卡”？若钱款最终被返还受害人，卖家的黄金损失该由谁承担？",
-          "heat": "法途萤光"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260907Q0BPQ300",
-          "text": "平陆运河即将通航，可通航5000吨级船舶，这相当于什么水平？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260907Q0DV7Y00",
           "text": "郑佩佩去世后捐赠大脑用于医学研究，能用于研究哪些疾病？任何人都可以向医疗机构捐赠大脑吗？",
           "heat": "之乎者也小鱼儿"
@@ -4269,6 +4259,31 @@
         {
           "url": "https://new.qq.com/rain/a/20260907Q03UI600",
           "text": "多地严查赵一鸣、好想来，4块牛肉干称重64.58元复秤17.29元，这种零食贩卖店都有什么猫腻？真的划算吗？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260906Q0994N00",
+          "text": "研究生卖父亲藏金收到12.4万元，因买家涉案被冻结账户，正常交易为何会被“冻卡”？若钱款最终被返还受害人，卖家的黄金损失该由谁承担？",
+          "heat": "法途萤光"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260907Q0DSQ700",
+          "text": "韩国券商称三星和海力士存储芯片库存不足10天，为何短缺更严重了？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260907Q0BPQ300",
+          "text": "平陆运河即将通航，可通航5000吨级船舶，这相当于什么水平？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260907Q05OE600",
+          "text": "18岁严子怡五连冠成女子标枪第一人，18岁就“无敌手”意味着什么？标枪运动员通常几岁进入巅峰？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260907Q04CTP00",
+          "text": "储能新建产能审批或将收紧，上半年还“一芯难求”，为何突然就产能过剩了？这轮过剩是怎么形成的？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -4282,11 +4297,6 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260907Q0DSQ700",
-          "text": "韩国券商称三星和海力士存储芯片库存不足10天，为何短缺更严重了？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260907Q0CB6300",
           "text": "NBL香港金牛队已为王俊杰报备合同，他要回国打球了吗？为何不直接去打CBA？",
           "heat": "闻号说经济"
@@ -4295,16 +4305,6 @@
           "url": "https://new.qq.com/rain/a/20260907Q06JMH00",
           "text": "联大鼓励弃用墨卡托投影地图，164国赞成，为何唯独美国反对？世界地图还有哪些画法？",
           "heat": "拾光者"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260907Q05OE600",
-          "text": "18岁严子怡五连冠成女子标枪第一人，18岁就“无敌手”意味着什么？标枪运动员通常几岁进入巅峰？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260907Q04CTP00",
-          "text": "储能新建产能审批或将收紧，上半年还“一芯难求”，为何突然就产能过剩了？这轮过剩是怎么形成的？",
-          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260906Q0562T00",
