@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788806737549,
+  "timestamp": 1788807651555,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3065,6 +3065,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-09/1546897.html",
+          "text": "宇树科技再突破：世界模型实时驱动 人形机器人全自主格斗成现实",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://www.itbear.com.cn/html/2026-09/1546790.html",
           "text": "小米秋季新品发布：自研玄戒三芯亮相，18 Fold 与平板 9 Pro Max 引领创新",
           "heat": "ITBear科技资讯"
@@ -3073,11 +3078,6 @@
           "url": "https://www.mittrchina.com/news/detail/16911",
           "text": "AI 正在「吃掉」俄乌战争留下的数据",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57726",
-          "text": "MotifAE：利用蛋白质语言模型无监督发现功能性序列模式",
-          "heat": "智源社区"
         }
       ]
     },
@@ -4402,6 +4402,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260907Q0DOMC00",
+          "text": "24岁吃播网红长期催吐，疑因低钾诱发心脏骤停去世，她为何出现低钾？",
+          "heat": "中医大课堂"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260907Q05ZJR00",
           "text": "9家车企因车内应急机械拉手不易识别召回多款车辆，给其贴一张贴纸真能消除风险吗？怎么设计最合理？",
           "heat": "之乎者也小鱼儿"
@@ -4410,11 +4415,6 @@
           "url": "https://new.qq.com/rain/a/20260906Q0994N00",
           "text": "研究生卖父亲藏金收到12.4万元，因买家涉案被冻结账户，正常交易为何会被“冻卡”？若钱款最终被返还受害人，卖家的黄金损失该由谁承担？",
           "heat": "法途萤光"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260907Q0DOMC00",
-          "text": "24岁吃播网红长期催吐，疑因低钾诱发心脏骤停去世，她为何出现低钾？",
-          "heat": "中医大课堂"
         },
         {
           "url": "https://new.qq.com/rain/a/20260907Q0BPQ300",
@@ -10566,22 +10566,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48832190",
           "text": "你像一场大雨 淋湿我的眼睛",
-          "heat": "510"
+          "heat": "525"
         },
         {
           "url": "http://www.acfun.cn/v/ac48823849",
           "text": "【作业用/助眠】夕阳西下的水上咖啡馆 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "448"
+          "heat": "478"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48832549",
+          "text": "【衣笠雪绘】乱步奇谈 歌切day197《新月》",
+          "heat": "240"
         },
         {
           "url": "http://www.acfun.cn/v/ac48829878",
           "text": "唱了一段星街彗星的ビビデバ",
           "heat": "139"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48832549",
-          "text": "【衣笠雪绘】乱步奇谈 歌切day197《新月》",
-          "heat": "230"
         },
         {
           "url": "http://www.acfun.cn/v/ac48832559",
@@ -10596,7 +10596,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48801212",
           "text": "【大塚 愛】LOVE FANTASTIC",
-          "heat": "192"
+          "heat": "208"
         },
         {
           "url": "http://www.acfun.cn/v/ac48832501",
@@ -10684,14 +10684,14 @@
           "heat": "49"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48801392",
+          "text": "【The Cranberries】1996 - Salvation",
+          "heat": "122"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48831133",
           "text": "【初音ミク】Voyager【鬱桑型】",
           "heat": "75"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48831800",
-          "text": "【东方同人曲/字幕付】太陽のうた（森羅万象）",
-          "heat": "37"
         },
         {
           "url": "http://www.acfun.cn/v/ac48831413",
@@ -10699,9 +10699,9 @@
           "heat": "113"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48801392",
-          "text": "【The Cranberries】1996 - Salvation",
-          "heat": "122"
+          "url": "http://www.acfun.cn/v/ac48831800",
+          "text": "【东方同人曲/字幕付】太陽のうた（森羅万象）",
+          "heat": "37"
         },
         {
           "url": "http://www.acfun.cn/v/ac48831160",
