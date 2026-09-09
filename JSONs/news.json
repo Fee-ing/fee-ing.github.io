@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788986743545,
+  "timestamp": 1788987656387,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2909,6 +2909,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://www.qbitai.com/2026/09/486450.html",
+          "text": "刚刚，苹果首款折叠屏发布！15999元起，AI参与设计",
+          "heat": ""
+        },
+        {
           "url": "https://www.qbitai.com/2026/09/486374.html",
           "text": "实测星火X2.5：手搓粒子月亮、拆完61页财报……还揪出了我的Bug",
           "heat": ""
@@ -2951,11 +2956,6 @@
         {
           "url": "https://www.qbitai.com/2026/09/485784.html",
           "text": "深度智控获宁德时代、沙特阿美战投等重磅加码，加速打造物理AI时代算力与能源底座",
-          "heat": ""
-        },
-        {
-          "url": "https://www.qbitai.com/2026/09/485630.html",
-          "text": "深入马来西亚AI现场！WAIC CONNECT MALAYSIA首日亮点全速递",
           "heat": ""
         }
       ]
@@ -3005,14 +3005,14 @@
           "heat": "blog.google"
         },
         {
+          "url": "https://www.ithome.com/1/000/540.htm",
+          "text": "苹果发布自研 C2 5G 调制解调器：上传提速 50%，美版 iPhone 18 Pro 支持 mmWave 毫米波",
+          "heat": "IT 之家"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16926",
           "text": "一个失败率 80% 的 20 人团队，如何做出 Anthropic 最成功的 AI 产品？",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57823",
-          "text": "最高法发布涉人工智能纠纷案件裁判规则",
-          "heat": "智源社区"
         }
       ]
     },
@@ -10511,7 +10511,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48835330",
           "text": "【成为标本的诗句】一场限时的相遇，把心动封进不朽诗句里。",
-          "heat": "1213"
+          "heat": "1215"
         },
         {
           "url": "http://www.acfun.cn/v/ac48836676",
@@ -10526,12 +10526,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48835611",
           "text": "PLAY BACK-绝不重蹈覆辙",
-          "heat": "478"
+          "heat": "487"
         },
         {
           "url": "http://www.acfun.cn/v/ac48836216",
           "text": "你的辣丽萨！LISA - SaWaDiKa 4K版MV",
-          "heat": "869"
+          "heat": "874"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837014",
@@ -10569,14 +10569,14 @@
           "heat": "88"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48806872",
+          "text": "【大塚 愛】Rabbit -Nikki",
+          "heat": "134"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48834192",
           "text": "【毕雯珺】我想留在你身边（电影《我想留在你身边》同名主题曲）MV",
           "heat": "102"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48806872",
-          "text": "【大塚 愛】Rabbit -Nikki",
-          "heat": "114"
         },
         {
           "url": "http://www.acfun.cn/v/ac48835654",
@@ -14363,17 +14363,17 @@
         {
           "url": "https://www.dongchedi.com/article/7683009381868552729",
           "text": "实测小米澎程N90！北京到上海1200km真能跑到？网友问题详细解析",
-          "heat": "150"
+          "heat": "152"
         },
         {
           "url": "https://www.dongchedi.com/article/7681968393398043198",
           "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
-          "heat": "149"
+          "heat": "150"
         },
         {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
           "text": "8月德国车市小升2.6%，大众下挫14%，中国品牌份额首次破6",
-          "heat": "145"
+          "heat": "146"
         },
         {
           "url": "https://www.dongchedi.com/article/7681334704213918232",
