@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789058739844,
+  "timestamp": 1789059653618,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/",
+          "text": "Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16933",
           "text": "OpenAI 宣称攻克千禧年难题，人类数学家还能做什么？",
           "heat": "麻省理工科技评论"
@@ -3060,6 +3065,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57858",
+          "text": "DrugEvolve：让 AI 学会自我进化，重塑药物研发全链条",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/d-matrix-nvlink-fusion/",
           "text": "d-Matrix Adopts NVIDIA NVLink Fusion for Rack-Scale XPU Deployment",
           "heat": "NVIDIA Blog"
@@ -3068,16 +3078,6 @@
           "url": "https://hub.baai.ac.cn/view/57855",
           "text": "免训练 LoRA 合并框架上线：单样本校准、零推理开销 | ICML'26",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57854",
-          "text": "中等强国想在中美 AI 之外保留「第三种选择」【智库观察】",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/16929",
-          "text": "光计算如何走向实际部署？清华、上交提出光计算实用化技术路线图",
-          "heat": "麻省理工科技评论"
         }
       ]
     },
@@ -4377,6 +4377,11 @@
           "heat": "张青阳"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260910Q0CCFF00",
+          "text": "中国女篮世界杯61比90不敌法国出局，这场球输在哪儿？我们跟对手的差距有多大？",
+          "heat": "拾光者"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260909Q09YCY00",
           "text": "男子酒后撞电梯门坠亡，物业因未贴标识等被判赔14万余元，物业冤吗？贴上标识就能无责吗？",
           "heat": "春树律师"
@@ -4395,11 +4400,6 @@
           "url": "https://new.qq.com/rain/a/20260910Q02Y1M00",
           "text": "中国女篮3分险胜波多黎各晋级，八强将战法国，这场球有多惊险？距离下场对决仅剩十几个小时该如何调整状态？",
           "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260910Q0CCFF00",
-          "text": "中国女篮世界杯61比90不敌法国出局，这场球输在哪儿？我们跟对手的差距有多大？",
-          "heat": "拾光者"
         },
         {
           "url": "https://new.qq.com/rain/a/20260909Q0FD1X00",
@@ -4437,6 +4437,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260910Q0ASA600",
+          "text": "罗永浩吐槽折叠屏iPhoneDuo多处抄袭，哪些设计争议最大？怎么判断折叠屏是谁抄谁？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260910Q03B3G00",
           "text": "郑钦文美网不敌莱巴金娜无缘四强，这场有多遗憾？从资格赛一路杀到八强她距离最佳状态还有多远？",
           "heat": "之乎者也小鱼儿"
@@ -4462,24 +4467,19 @@
           "heat": "溯流Pi"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260910Q0ASA600",
-          "text": "罗永浩吐槽折叠屏iPhoneDuo多处抄袭，哪些设计争议最大？怎么判断折叠屏是谁抄谁？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260910Q07HPZ00",
           "text": "特朗普称若共和党拿下中期选举，每个美国成年人发5000美元，兑现的可能性有多大？对中期选举有多大影响？",
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260910Q0CDSG00",
-          "text": "中国女篮世界杯不敌法国止步八强，女篮距重返世界一流还有多远？这届杯赛最大的收获是什么？",
-          "heat": "拾光者"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260910Q0CAOS00",
           "text": "特朗普称共和党赢中期选举后给每个成年人发5000美元，这钱真发得出来吗？此举算贿选吗？",
           "heat": "江神"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260910Q0CDSG00",
+          "text": "中国女篮世界杯不敌法国止步八强，女篮距重返世界一流还有多远？这届杯赛最大的收获是什么？",
+          "heat": "拾光者"
         },
         {
           "url": "https://new.qq.com/rain/a/20260909Q0F6G800",
@@ -10676,12 +10676,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48837255",
           "text": "【柯基】《谢师说》｜电视剧《春风化雨》主题曲",
-          "heat": "1346"
+          "heat": "1348"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839016",
           "text": "在这个疯狂的世界   总有一个人为我而活",
-          "heat": "358"
+          "heat": "400"
         },
         {
           "url": "http://www.acfun.cn/v/ac48838038",
@@ -10691,12 +10691,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48837341",
           "text": "【东方】最好的⑨日 钢琴Arrange【ViddyWell】",
-          "heat": "588"
+          "heat": "633"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837116",
           "text": "【妖一】奏【かなで】",
-          "heat": "220"
+          "heat": "244"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839070",
@@ -14558,12 +14558,12 @@
         {
           "url": "https://www.dongchedi.com/article/7681968393398043198",
           "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
-          "heat": "193"
+          "heat": "195"
         },
         {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
           "text": "8月德国车市小升2.6%，大众下挫14%，中国品牌份额首次破6",
-          "heat": "172"
+          "heat": "174"
         },
         {
           "url": "https://www.dongchedi.com/article/7683009381868552729",
