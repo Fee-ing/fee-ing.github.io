@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789060541055,
+  "timestamp": 1789061450236,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2488,13 +2488,13 @@
           "heat": ""
         },
         {
-          "url": "https://www.36kr.com/p/3976607903307657",
-          "text": "手机圈爱马仕，15999元的iPhone Duo摸着华为小米过河，开启手机奢侈品时代？",
+          "url": "https://www.36kr.com/p/3977186183655680",
+          "text": "海底捞减持背后，“离岸富豪”排队补税",
           "heat": ""
         },
         {
-          "url": "https://www.36kr.com/p/3977186183655680",
-          "text": "海底捞减持背后，“离岸富豪”排队补税",
+          "url": "https://www.36kr.com/p/3976607903307657",
+          "text": "手机圈爱马仕，15999元的iPhone Duo摸着华为小米过河，开启手机奢侈品时代？",
           "heat": ""
         },
         {
@@ -4467,14 +4467,14 @@
           "heat": "溯流Pi"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260910Q07HPZ00",
-          "text": "特朗普称若共和党拿下中期选举，每个美国成年人发5000美元，兑现的可能性有多大？对中期选举有多大影响？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260910Q0CAOS00",
           "text": "特朗普称共和党赢中期选举后给每个成年人发5000美元，这钱真发得出来吗？此举算贿选吗？",
           "heat": "江神"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260910Q07HPZ00",
+          "text": "特朗普称若共和党拿下中期选举，每个美国成年人发5000美元，兑现的可能性有多大？对中期选举有多大影响？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260910Q0CDSG00",
@@ -10641,22 +10641,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48837255",
           "text": "【柯基】《谢师说》｜电视剧《春风化雨》主题曲",
-          "heat": "1348"
+          "heat": "1358"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839016",
           "text": "在这个疯狂的世界   总有一个人为我而活",
-          "heat": "400"
+          "heat": "430"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48837341",
+          "text": "【东方】最好的⑨日 钢琴Arrange【ViddyWell】",
+          "heat": "651"
         },
         {
           "url": "http://www.acfun.cn/v/ac48838038",
           "text": "来看你们的刷！idle 香港演唱会 叶舒华 《Red Redemption》",
           "heat": "800"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48837341",
-          "text": "【东方】最好的⑨日 钢琴Arrange【ViddyWell】",
-          "heat": "633"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837116",
@@ -10666,12 +10666,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48839070",
           "text": "为A站写歌，我作词，AI演唱",
-          "heat": "179"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48837041",
-          "text": "无耻的抄袭歌曲合集 第152期",
-          "heat": "316"
+          "heat": "180"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837947",
@@ -10701,12 +10696,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48821571",
           "text": "【大塚 愛】LOVE MUSiC",
-          "heat": "96"
+          "heat": "108"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821561",
           "text": "【The Cranberries】1999 - Animal Instinct",
-          "heat": "67"
+          "heat": "74"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837685",
@@ -10764,6 +10759,11 @@
           "heat": "130"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48838122",
+          "text": "奔跑的姜允儿-2026.09.09",
+          "heat": "127"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48818593",
           "text": "HoneyWorks 『可愛くなりたい feat.成海聖奈（CV.：雨宮天）』",
           "heat": "44"
@@ -10774,11 +10774,6 @@
           "heat": "120"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48838122",
-          "text": "奔跑的姜允儿-2026.09.09",
-          "heat": "127"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48838516",
           "text": "BEAST IN BLACK - Fear The Beast",
           "heat": "38"
@@ -10786,7 +10781,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48839224",
           "text": "从此做《甲乙丙丁》cover李佳薇",
-          "heat": "37"
+          "heat": "49"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48839142",
+          "text": "青衿轻轲意气婆娑，旋舞回辙恰似清歌。感谢网友投稿@清风中通",
+          "heat": "35"
         }
       ]
     },
@@ -14518,7 +14518,7 @@
         {
           "url": "https://www.dongchedi.com/article/7681968393398043198",
           "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
-          "heat": "195"
+          "heat": "196"
         },
         {
           "url": "https://www.dongchedi.com/article/7681555964092547609",
@@ -14538,7 +14538,7 @@
         {
           "url": "https://www.dongchedi.com/article/7681290601132098072",
           "text": "土耳其8月销量跌20.3%，关税逼退中国品牌，本土韩系受益？",
-          "heat": "91"
+          "heat": "92"
         },
         {
           "url": "https://www.dongchedi.com/article/7683419698649924158",
