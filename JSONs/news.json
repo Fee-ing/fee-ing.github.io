@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789062336247,
+  "timestamp": 1789063247685,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/",
+          "text": "Physical AI Takes the Wheel: How the World's Robotaxi Leaders Are Building With NVIDIA Technologies",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16933",
           "text": "OpenAI 宣称攻克千禧年难题，人类数学家还能做什么？",
           "heat": "麻省理工科技评论"
@@ -3073,11 +3078,6 @@
           "url": "https://blogs.nvidia.com/blog/d-matrix-nvlink-fusion/",
           "text": "d-Matrix Adopts NVIDIA NVLink Fusion for Rack-Scale XPU Deployment",
           "heat": "NVIDIA Blog"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57855",
-          "text": "免训练 LoRA 合并框架上线：单样本校准、零推理开销 | ICML'26",
-          "heat": "智源社区"
         }
       ]
     },
@@ -4367,14 +4367,14 @@
           "heat": "法途萤光"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260909Q07LQF00",
-          "text": "日韩女篮世界杯相继惨败出局，面对欧美强队，亚洲女篮的短板在哪里？中国女篮能避开同样的坑吗？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260910Q0BHZW00",
           "text": "“会飞的硫酸”隐翅虫进入活跃期，北方多地也有出现，为何活动范围会扩散至北方？如何识别及处理？",
           "heat": "张青阳"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260909Q07LQF00",
+          "text": "日韩女篮世界杯相继惨败出局，面对欧美强队，亚洲女篮的短板在哪里？中国女篮能避开同样的坑吗？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260910Q0CCFF00",
@@ -4410,6 +4410,11 @@
           "url": "https://new.qq.com/rain/a/20260909Q0DD3H00",
           "text": "父母收彩礼包办18岁女儿婚姻并雇人强行带回，涉嫌哪些违法犯罪？男方若知情参与是否担责？",
           "heat": "木糠"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260910Q0CAOS00",
+          "text": "特朗普称共和党赢中期选举后给每个成年人发5000美元，这钱真发得出来吗？此举算贿选吗？",
+          "heat": "江神"
         },
         {
           "url": "https://new.qq.com/rain/a/20260910Q03HMR00",
@@ -4465,11 +4470,6 @@
           "url": "https://new.qq.com/rain/a/20260909Q05M4L00",
           "text": "7岁小孩梦游从7楼坠落砸中楼下汽车，梦游有多危险？家长能提前防住吗？",
           "heat": "溯流Pi"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260910Q0CAOS00",
-          "text": "特朗普称共和党赢中期选举后给每个成年人发5000美元，这钱真发得出来吗？此举算贿选吗？",
-          "heat": "江神"
         },
         {
           "url": "https://new.qq.com/rain/a/20260910Q07HPZ00",
@@ -10646,32 +10646,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48837255",
           "text": "【柯基】《谢师说》｜电视剧《春风化雨》主题曲",
-          "heat": "1358"
+          "heat": "1368"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839016",
           "text": "在这个疯狂的世界   总有一个人为我而活",
-          "heat": "430"
+          "heat": "480"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837341",
           "text": "【东方】最好的⑨日 钢琴Arrange【ViddyWell】",
-          "heat": "651"
+          "heat": "680"
         },
         {
           "url": "http://www.acfun.cn/v/ac48838038",
           "text": "来看你们的刷！idle 香港演唱会 叶舒华 《Red Redemption》",
-          "heat": "800"
+          "heat": "810"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837116",
           "text": "【妖一】奏【かなで】",
-          "heat": "244"
+          "heat": "256"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839070",
           "text": "为A站写歌，我作词，AI演唱",
-          "heat": "180"
+          "heat": "196"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837947",
@@ -10701,7 +10701,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48821571",
           "text": "【大塚 愛】LOVE MUSiC",
-          "heat": "108"
+          "heat": "110"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821561",
@@ -10729,14 +10729,14 @@
           "heat": "36"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48821562",
+          "text": "【Twins】士多啤梨苹果橙【Magic】",
+          "heat": "119"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48837930",
           "text": "【初音ミク・重音テト】自意識過剰の宴【なぬい】",
           "heat": "57"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48821562",
-          "text": "【Twins】士多啤梨苹果橙【Magic】",
-          "heat": "95"
         },
         {
           "url": "http://www.acfun.cn/v/ac48837885",
@@ -10749,9 +10749,9 @@
           "heat": "59"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48812487",
-          "text": "米津玄師「烏」Kenshi Yonezu - Karasu  #サッカー #W杯",
-          "heat": "30"
+          "url": "http://www.acfun.cn/v/ac48839224",
+          "text": "从此做《甲乙丙丁》cover李佳薇",
+          "heat": "59"
         },
         {
           "url": "http://www.acfun.cn/v/ac48838486",
@@ -10784,14 +10784,14 @@
           "heat": "38"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48839224",
-          "text": "从此做《甲乙丙丁》cover李佳薇",
-          "heat": "49"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48839142",
           "text": "青衿轻轲意气婆娑，旋舞回辙恰似清歌。感谢网友投稿@清风中通",
           "heat": "35"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48837864",
+          "text": "【𝗂𝖿】𝖨𝖬𝖠𝖶𝖠𝖭𝖮𝖪𝖨𝖶𝖠",
+          "heat": "44"
         }
       ]
     },
