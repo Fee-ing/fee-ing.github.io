@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789145137609,
+  "timestamp": 1789146056194,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "aibase"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-09/1556153.html",
+          "text": "蚂蚁发布「灵影」开放平台：AI 眼镜等新终端迎来 Agent 运行底座",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57878",
           "text": "OpenAI 把「末日论者」请进董事会，刚上任就开炮：AI 可能杀死多数人",
           "heat": "智源社区"
@@ -3073,11 +3078,6 @@
           "url": "https://hub.baai.ac.cn/view/57876",
           "text": "OpenAI 内部 Agent 集体出逃，入侵 20+ 网站",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31002",
-          "text": "具身智能的「ChatGPT 时刻」何时到来？百亿具身 CEO 与青年创业者外滩大会热议",
-          "heat": "aibase"
         }
       ]
     },
@@ -4412,9 +4412,19 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260910Q0CDSG00",
-          "text": "中国女篮世界杯不敌法国止步八强，女篮距重返世界一流还有多远？这届杯赛最大的收获是什么？",
+          "url": "https://new.qq.com/rain/a/20260911Q0G2BK00",
+          "text": "网友称父亲拨120误入手机“魔法画报”，耽误急救时间致母亲死亡，厂商需担责吗？适老化设计应守住哪些安全底线？",
           "heat": "拾光者"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260911Q0G6K200",
+          "text": "75岁王石参加多站HYROX比赛并取得良好成绩，为何这项运动能吸引众多名人参加？高龄参赛者需要注意什么？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260911Q0G2I800",
+          "text": "中国男足亚运队9月14日启程前往日本，37岁吴曦出任第一队长，这届阵容水平如何？吴曦的经验对球队会有多大助力？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260911Q0EP1A00",
@@ -4422,14 +4432,14 @@
           "heat": "本来就是个局外人"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260910Q0CDSG00",
+          "text": "中国女篮世界杯不敌法国止步八强，女篮距重返世界一流还有多远？这届杯赛最大的收获是什么？",
+          "heat": "拾光者"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260911Q0EE3V00",
           "text": "打假网红“铁头”犯敲诈勒索等罪获刑8年，曾向主播勒索数百克黄金，流量打假藏着哪些灰色生意？他勒索黄金的目的是什么？",
           "heat": "本来就是个局外人"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260911Q0D9YF00",
-          "text": "中国男足亚运队9月14日启程前往日本，37岁吴曦出任第一队长，这届阵容水平如何？吴曦的经验对球队会有多大助力？",
-          "heat": "拾光者"
         },
         {
           "url": "https://new.qq.com/rain/a/20260911Q040FI00",
@@ -4440,16 +4450,6 @@
           "url": "https://new.qq.com/rain/a/20260911Q039L100",
           "text": "阿尔及利亚宣布与阿联酋断交，同为阿拉伯世界国家二者有何矛盾？",
           "heat": "飞跃本屯"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260911Q0G2BK00",
-          "text": "网友称父亲拨120误入手机“魔法画报”，耽误急救时间致母亲死亡，厂商需担责吗？适老化设计应守住哪些安全底线？",
-          "heat": "拾光者"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260911Q0G6K200",
-          "text": "75岁王石参加多站HYROX比赛并取得良好成绩，为何这项运动能吸引众多名人参加？高龄参赛者需要注意什么？",
-          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260911Q0FKI300",
@@ -10601,12 +10601,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48841070",
           "text": "【骆怀瑜&小子贼疯】循迹 | 像我们的纠葛 腐烂成沼泽",
-          "heat": "1327"
+          "heat": "1336"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841192",
           "text": "《雨爱》翻唱(cover杨丞琳)",
-          "heat": "1049"
+          "heat": "1053"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839820",
@@ -10626,12 +10626,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48819448",
           "text": "这ED太好听了吧！粤语版《Hearts Glow》【再见菈菈/Hana Hope】",
-          "heat": "238"
+          "heat": "280"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841322",
           "text": "震天动地的我来了！",
-          "heat": "382"
+          "heat": "391"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841030",
@@ -10706,12 +10706,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48841583",
           "text": "【小黑猫】2026年九月直播录像合集",
-          "heat": "320"
+          "heat": "335"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821597",
           "text": "【The Cranberries】1999 - Promises",
-          "heat": "77"
+          "heat": "84"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841049",
@@ -10741,7 +10741,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48841476",
           "text": "【初音ミク・ナースロボ_タイプT】SLOP【いさな!】",
-          "heat": "57"
+          "heat": "65"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839312",
@@ -11911,17 +11911,17 @@
       "type": "产品",
       "content": [
         {
+          "url": "https://m.okjike.com/originalPosts/6aa42892141b85b2927f48bd",
+          "text": "产品经理的日常 09月12日",
+          "heat": ""
+        },
+        {
           "url": "https://m.okjike.com/originalPosts/6aa37945cfb5d08b3e36f131",
           "text": "产品经理的日常 09月11日",
           "heat": ""
         },
         {
           "url": "https://m.okjike.com/originalPosts/6aa345641ea177b91b55916a",
-          "text": "产品经理的日常 09月11日",
-          "heat": ""
-        },
-        {
-          "url": "https://m.okjike.com/originalPosts/6aa33c49756bbb6658a07a65",
           "text": "产品经理的日常 09月11日",
           "heat": ""
         },
@@ -14503,7 +14503,7 @@
         {
           "url": "https://www.dongchedi.com/article/7683419698649924158",
           "text": "方程豹钛7：明明是城市SUV，但开起来像硬派越野车！",
-          "heat": "61"
+          "heat": "62"
         },
         {
           "url": "https://www.dongchedi.com/article/7682952411494629913",
