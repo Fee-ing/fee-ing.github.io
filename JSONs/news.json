@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789150541464,
+  "timestamp": 1789151445629,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4357,6 +4357,11 @@
           "heat": "江神"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260910Q0ASI600",
+          "text": "山东青岛一外籍货轮靠港维修期间起火，什么是“靠港维修”？维修期间有哪些问题必须注意？",
+          "heat": "贵重物品DR"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260910Q03C9O00",
           "text": "苹果折叠屏iPhone Duo亮相，起售价15999元，它将如何改变折叠屏生态？会给苹果的销量和利润带来什么影响？",
           "heat": "江神"
@@ -4365,11 +4370,6 @@
           "url": "https://new.qq.com/rain/a/20260910Q0CCFF00",
           "text": "中国女篮世界杯61比90不敌法国出局，这场球输在哪儿？我们跟对手的差距有多大？",
           "heat": "拾光者"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260910Q0ASI600",
-          "text": "山东青岛一外籍货轮靠港维修期间起火，什么是“靠港维修”？维修期间有哪些问题必须注意？",
-          "heat": "贵重物品DR"
         },
         {
           "url": "https://new.qq.com/rain/a/20260911Q03RTK00",
@@ -10581,22 +10581,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48841070",
           "text": "【骆怀瑜&小子贼疯】循迹 | 像我们的纠葛 腐烂成沼泽",
-          "heat": "1367"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48841192",
-          "text": "《雨爱》翻唱(cover杨丞琳)",
-          "heat": "1061"
+          "heat": "1391"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839820",
           "text": "2026年8月热歌榜TOP100，今夕是何年？你敢相信这是2026年？",
-          "heat": "1113"
+          "heat": "1114"
         },
         {
           "url": "http://www.acfun.cn/v/ac48819448",
           "text": "这ED太好听了吧！粤语版《Hearts Glow》【再见菈菈/Hana Hope】",
-          "heat": "330"
+          "heat": "375"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840967",
@@ -10606,7 +10601,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48839453",
           "text": "写了一首国产日语歌《在永不停歇的雨中》，略带一点后摇风味",
-          "heat": "598"
+          "heat": "617"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841322",
@@ -10616,7 +10611,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48841030",
           "text": "【贝斯】在这颗行星所有的______ - 万能青年旅店 Bass Cover",
-          "heat": "145"
+          "heat": "153"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840208",
@@ -10637,6 +10632,11 @@
           "url": "http://www.acfun.cn/v/ac48821576",
           "text": "【中国音乐地图之听见内蒙古 火不思、羊皮鼓、冒顿潮尔音乐集】土尔扈特故乡",
           "heat": "79"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48841583",
+          "text": "【小黑猫】2026年九月直播录像合集",
+          "heat": "391"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821577",
@@ -10669,19 +10669,19 @@
           "heat": "152"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48841480",
+          "text": "【初音ミク】常夏ココナッツ（常夏椰子）【めろくる】",
+          "heat": "50"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48841542",
           "text": "【初音ミク】少女A（REMIX）【市瀬るぽ】",
           "heat": "45"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48841480",
-          "text": "【初音ミク】常夏ココナッツ（常夏椰子）【めろくる】",
-          "heat": "34"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48841583",
-          "text": "【小黑猫】2026年九月直播录像合集",
-          "heat": "387"
+          "url": "http://www.acfun.cn/v/ac48841595",
+          "text": "【千璃Senri】2026年九月直播录像合集",
+          "heat": "132"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821597",
@@ -10694,9 +10694,19 @@
           "heat": "104"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48841587",
+          "text": "【via冰阔落】2026年九月直播录像合集",
+          "heat": "93"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48821608",
           "text": "【大塚 愛】CHU-LIP",
           "heat": "89"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48840552",
+          "text": "Jay Chou 周杰倫【Sicily 西西里】Official Music Video",
+          "heat": "79"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841049",
@@ -10717,16 +10727,6 @@
           "url": "http://www.acfun.cn/v/ac48841114",
           "text": "2026-09-10 牛铲铲 直播录像",
           "heat": "65"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48841594",
-          "text": "【初音ミク】あなたに贈る一曲（赠予你的一曲）【傘村トータ】",
-          "heat": "44"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48839549",
-          "text": "ASMR - 木质拼图  新挑战 - 咔哒低语",
-          "heat": "43"
         }
       ]
     },
@@ -14473,7 +14473,7 @@
         {
           "url": "https://www.dongchedi.com/article/7681968393398043198",
           "text": "8月英国新车销量超9.4万，中国品牌市占率破20%，纯电卡在3成关口",
-          "heat": "229"
+          "heat": "230"
         },
         {
           "url": "https://www.dongchedi.com/article/7683009381868552729",
@@ -14483,12 +14483,12 @@
         {
           "url": "https://www.dongchedi.com/article/7683755249530225214",
           "text": "方程豹钛7拆车：看上去这么“硬”的车，拆开看看防撞梁什么样？",
-          "heat": "73"
+          "heat": "74"
         },
         {
           "url": "https://www.dongchedi.com/article/7683419698649924158",
           "text": "方程豹钛7：明明是城市SUV，但开起来像硬派越野车！",
-          "heat": "63"
+          "heat": "64"
         },
         {
           "url": "https://www.dongchedi.com/article/7682952411494629913",
