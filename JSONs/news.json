@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789235137654,
+  "timestamp": 1789236053346,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://hub.baai.ac.cn/view/57912",
+          "text": "Nat. Comput. Sci. | 向物理酶工程的「直觉到设计」转译器",
+          "heat": "智源社区"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/57911",
           "text": "从「自动建模」到「持续研究」：一个会积累证据、自我演化的 ADMET 科学智能体",
           "heat": "智源社区"
@@ -3072,11 +3077,6 @@
         {
           "url": "https://www.leiphone.com/category/industrynews/2AopCWDkpGmBAL9L.html",
           "text": "2026 外滩大会闭幕：50 余项科技成果首发首展，80 多个产业合作达成意向",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/Elgap4KyV9VEWLce.html",
-          "text": "0 团队、1 台电脑、全球 70 国用户，外滩大会见证个人造风者登场",
           "heat": "雷锋网"
         }
       ]
@@ -10581,17 +10581,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48842995",
           "text": "【现切桃片】空も飛べるはず-抓住夏天的尾巴",
-          "heat": "1208"
+          "heat": "1216"
         },
         {
           "url": "http://www.acfun.cn/v/ac48843195",
           "text": "【绝望女神/翻唱】【机动战士高达 F91 ETERNAL WIND ~闪耀在风中的微笑～】",
-          "heat": "618"
+          "heat": "696"
         },
         {
           "url": "http://www.acfun.cn/v/ac48843184",
           "text": "你发的娃娃脸 降落在身边",
-          "heat": "514"
+          "heat": "567"
         },
         {
           "url": "http://www.acfun.cn/v/ac48843048",
@@ -10606,7 +10606,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48843602",
           "text": "法语官宣｜巡演启程前在法国亚眠的演出",
-          "heat": "305"
+          "heat": "386"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841964",
@@ -10619,14 +10619,14 @@
           "heat": "256"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48843205",
+          "text": "酔恋花 -suirenka-【东方同人曲/唱见专用】",
+          "heat": "43"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48842338",
           "text": "【初音未来・知更鸟】夏空组曲：Tell Your World × 唯有追赶风的方向【崩坏：星穹铁道】",
           "heat": "104"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48843205",
-          "text": "酔恋花 -suirenka-【东方同人曲/唱见专用】",
-          "heat": "35"
         },
         {
           "url": "http://www.acfun.cn/v/ac48842309",
@@ -10636,7 +10636,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48842469",
           "text": "マイストーリー  /  重音テトSV",
-          "heat": "204"
+          "heat": "217"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821639",
@@ -10686,17 +10686,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48842526",
           "text": "面包烤焦了彩蛋",
-          "heat": "146"
+          "heat": "150"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821619",
           "text": "【龙飘飘】明白你的心(台语)",
           "heat": "76"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48841698",
-          "text": "Clamosum - Gnosis Absolute",
-          "heat": "52"
         },
         {
           "url": "http://www.acfun.cn/v/ac48842313",
@@ -10727,6 +10722,11 @@
           "url": "http://www.acfun.cn/v/ac48842267",
           "text": "【流水 × Lonepi】少女与舍利【MV】",
           "heat": "57"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48842335",
+          "text": "【重音テト】ぐぬぬ（GUNUNU）【読谷あかね】",
+          "heat": "92"
         }
       ]
     },
