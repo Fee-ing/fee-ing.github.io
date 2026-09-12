@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789229739284,
+  "timestamp": 1789230644041,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4387,14 +4387,14 @@
           "heat": "本来就是个局外人"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260911Q0A3B200",
-          "text": "小孩从7楼坠下砸坏宝马车，车主称家长解释系梦游，“梦游”说法如何核实？监护和赔偿责任能否因此减轻？",
-          "heat": "本来就是个局外人"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260912Q0B8B200",
           "text": "名校硕士因第一学历是专科被拒入职，为何企业会卡“第一学历”？学历歧视在职场中常见吗？",
           "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260911Q0A3B200",
+          "text": "小孩从7楼坠下砸坏宝马车，车主称家长解释系梦游，“梦游”说法如何核实？监护和赔偿责任能否因此减轻？",
+          "heat": "本来就是个局外人"
         },
         {
           "url": "https://new.qq.com/rain/a/20260912Q09ZW300",
@@ -10644,34 +10644,29 @@
       "type": "音乐",
       "content": [
         {
-          "url": "http://www.acfun.cn/v/ac48819448",
-          "text": "这ED太好听了吧！粤语版《Hearts Glow》【再见菈菈/Hana Hope】",
-          "heat": "1101"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48842995",
           "text": "【现切桃片】空も飛べるはず-抓住夏天的尾巴",
-          "heat": "1185"
+          "heat": "1192"
         },
         {
           "url": "http://www.acfun.cn/v/ac48842821",
           "text": "《泪海》 翻唱(cover许茹芸)",
-          "heat": "1074"
+          "heat": "1077"
         },
         {
           "url": "http://www.acfun.cn/v/ac48843195",
           "text": "【绝望女神/翻唱】【机动战士高达 F91 ETERNAL WIND ~闪耀在风中的微笑～】",
-          "heat": "547"
+          "heat": "597"
         },
         {
           "url": "http://www.acfun.cn/v/ac48843184",
           "text": "你发的娃娃脸 降落在身边",
-          "heat": "476"
+          "heat": "491"
         },
         {
           "url": "http://www.acfun.cn/v/ac48843048",
           "text": "晚间音乐电台【爱的回归线】up:是小瑜大王呀",
-          "heat": "117"
+          "heat": "121"
         },
         {
           "url": "http://www.acfun.cn/v/ac48842408",
@@ -10681,7 +10676,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48841964",
           "text": "暴饮暴食P《Poki demo》feat. KasaneTeto",
-          "heat": "326"
+          "heat": "330"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48843602",
+          "text": "法语官宣｜巡演启程前在法国亚眠的演出",
+          "heat": "181"
         },
         {
           "url": "http://www.acfun.cn/v/ac48842612",
@@ -10704,14 +10704,14 @@
           "heat": "191"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48842243",
-          "text": "【初音ミク】世界最后的音乐队【夏山よつぎ × ど～ぱみん】",
-          "heat": "66"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48821639",
           "text": "【大塚 愛】さくらんぼーカクテルー【THE FIRST TAKE】",
           "heat": "96"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48842243",
+          "text": "【初音ミク】世界最后的音乐队【夏山よつぎ × ど～ぱみん】",
+          "heat": "66"
         },
         {
           "url": "http://www.acfun.cn/v/ac48839562",
@@ -10729,14 +10729,14 @@
           "heat": "59"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48821626",
+          "text": "【普拉西多·多明戈】普契尼：外套",
+          "heat": "109"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48842259",
           "text": "【弦巻マキ】オムライス作りたいな（想做蛋包饭啊）【GYARI（ココアシガレットP）】",
           "heat": "46"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48821626",
-          "text": "【普拉西多·多明戈】普契尼：外套",
-          "heat": "93"
         },
         {
           "url": "http://www.acfun.cn/v/ac48842329",
@@ -10744,24 +10744,24 @@
           "heat": "211"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48821629",
+          "text": "【谢霆锋viva live演唱会】开放日",
+          "heat": "125"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48842526",
           "text": "面包烤焦了彩蛋",
           "heat": "146"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48821629",
-          "text": "【谢霆锋viva live演唱会】开放日",
-          "heat": "113"
+          "url": "http://www.acfun.cn/v/ac48821619",
+          "text": "【龙飘飘】明白你的心(台语)",
+          "heat": "76"
         },
         {
           "url": "http://www.acfun.cn/v/ac48841698",
           "text": "Clamosum - Gnosis Absolute",
           "heat": "52"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48821619",
-          "text": "【龙飘飘】明白你的心(台语)",
-          "heat": "63"
         },
         {
           "url": "http://www.acfun.cn/v/ac48842313",
@@ -10774,6 +10774,11 @@
           "heat": "36"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48842252",
+          "text": "【iLiFE!】LiMiT STRiKER!（极限突击手!）【MV】",
+          "heat": "65"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48842291",
           "text": "【初音ミク・鏡音リン・鏡音レン・巡音ルカ・MEIKO・KAITO】音乐还会继续【OSTER proj",
           "heat": "59"
@@ -10784,14 +10789,9 @@
           "heat": "57"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48842252",
-          "text": "【iLiFE!】LiMiT STRiKER!（极限突击手!）【MV】",
-          "heat": "53"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48842335",
           "text": "【重音テト】ぐぬぬ（GUNUNU）【読谷あかね】",
-          "heat": "84"
+          "heat": "92"
         }
       ]
     },
