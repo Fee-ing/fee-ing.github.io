@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789409738843,
+  "timestamp": 1789410648805,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "techflowpost.com"
         },
         {
+          "url": "https://phone.cnmo.com/news/818482.html",
+          "text": "苹果正式推送 iOS 27：Siri AI 全面升级，老款机型性能优化",
+          "heat": "手机中国"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31032",
           "text": "宇树人形机器人 G1+ 发布：电机、视觉、交互与续航全面增强，标准版售价 9.5 万元",
           "heat": "aibase"
@@ -3078,11 +3083,6 @@
           "url": "https://www.aibase.com/zh/news/31030",
           "text": "ElevenLabs 发布 Music v2.5 音频模型，同步开放 APP 与 API 访问",
           "heat": "aibase"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57952",
-          "text": "AI 能解千禧难题，也能杀死人类？华尔街日报拉响末日警报",
-          "heat": "智源社区"
         }
       ]
     },
@@ -14473,7 +14473,7 @@
         {
           "url": "https://www.dongchedi.com/article/7683755249530225214",
           "text": "方程豹钛7拆车：看上去这么“硬”的车，拆开看看防撞梁什么样？",
-          "heat": "178"
+          "heat": "179"
         },
         {
           "url": "https://www.dongchedi.com/article/7683009381868552729",
