@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789407936872,
+  "timestamp": 1789408851767,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -1797,22 +1797,22 @@
         {
           "url": "https://www.zhihu.com/question/2082776732701148394",
           "text": "广汽集团发布公告，筹划购买一汽股份持有的某整车合资公司部分股权，会带来哪些影响？",
-          "heat": "800 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2068319199533823517",
-          "text": "程序员为干私活腾空间 17 小时删光公司 89TB 数据，获刑五年十个月，暴露出哪些问题？",
-          "heat": "284 万热度"
+          "heat": "828 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/1915802544451592194",
           "text": "哪个著名演员，演好人非常像，演坏人也非常像？",
-          "heat": "268 万热度"
+          "heat": "305 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2081353745712128189",
           "text": "我每秒一米慢慢飞，能脱离地球吗？非得达到第二宇宙速度才行吗？保持速度不变，发动机功率会随高度变化吗？",
-          "heat": "231 万热度"
+          "heat": "263 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2068319199533823517",
+          "text": "程序员为干私活腾空间 17 小时删光公司 89TB 数据，获刑五年十个月，暴露出哪些问题？",
+          "heat": "240 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2081163395638760993",
@@ -1822,17 +1822,17 @@
         {
           "url": "https://www.zhihu.com/question/2081037697808691696",
           "text": "女子买学区房双证齐全疑因房间太小孩子无法入学，工作人员说法矛盾，具体是怎么回事？因小户型拒收合理吗？",
-          "heat": "174 万热度"
+          "heat": "178 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2081806874471392512",
           "text": "部分年轻人送礼物开始走「实用型」，够用一年的洗衣液、视频会员年卡等，为啥会这样？你希望收到这种礼物吗？",
-          "heat": "163 万热度"
+          "heat": "168 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2049473324745598973",
           "text": "为啥全世界范围内没有一个知名导演下场用 AI 制作一部院线长片？",
-          "heat": "152 万热度"
+          "heat": "157 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2082546625952727198",
@@ -1842,22 +1842,37 @@
         {
           "url": "https://www.zhihu.com/question/2071561231157179655",
           "text": "2026 年下半年了，你认为 codex 已经超越 claude code 了吗？",
-          "heat": "116 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2081760485578203767",
-          "text": "快船队将保罗的 3 号让给比尔穿，这背后有什么寓意，难道快船不打算给保罗退役球衣吗？",
-          "heat": "89 万热度"
+          "heat": "128 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2080209965613168033",
           "text": "隔夜的水和茶到底能不能喝呢？",
-          "heat": "86 万热度"
+          "heat": "94 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2081760485578203767",
+          "text": "快船队将保罗的 3 号让给比尔穿，这背后有什么寓意，难道快船不打算给保罗退役球衣吗？",
+          "heat": "93 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/667844611",
           "text": "曹操为什么厌恶杨修，要杀死杨修？",
-          "heat": "81 万热度"
+          "heat": "90 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2082594654583837444",
+          "text": "2627 赛季西甲第 5 轮莱万特 2:4 巴塞罗那，如何评价这场比赛？",
+          "heat": "86 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2076252158261982997",
+          "text": "胖东来因为租金不公搬店，那么租金是否公平的经济理论依据是什么？",
+          "heat": "79 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/13460614689",
+          "text": "多练深蹲，有哪些好处呢？",
+          "heat": "74 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/19920926",
@@ -1865,24 +1880,9 @@
           "heat": "74 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2076252158261982997",
-          "text": "胖东来因为租金不公搬店，那么租金是否公平的经济理论依据是什么？",
-          "heat": "73 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/22889049",
-          "text": "中国餐馆的利润大部分来源于酒水吗？如果是的话，为什么？",
-          "heat": "70 万热度"
-        },
-        {
           "url": "https://www.zhihu.com/question/2081493943905161487",
           "text": "为什么随着年龄增大，会觉得打《魔兽世界》这类网游是消耗呢?",
-          "heat": "70 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/13460614689",
-          "text": "多练深蹲，有哪些好处呢？",
-          "heat": "68 万热度"
+          "heat": "72 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2082376355325464661",
@@ -1890,19 +1890,19 @@
           "heat": "66 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/1975139999579129588",
-          "text": "军机处这种临时指挥机构这么好用，为何现代没有国家采用了？",
-          "heat": "58 万热度"
+          "url": "https://www.zhihu.com/question/22889049",
+          "text": "中国餐馆的利润大部分来源于酒水吗？如果是的话，为什么？",
+          "heat": "59 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/1915101908760225512",
           "text": "曝井柏然刘雯结婚了，这是真的吗？你看好他们吗？",
-          "heat": "57 万热度"
+          "heat": "59 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/14257873390",
-          "text": "做科研是中科院还是高校的环境好？",
-          "heat": "57 万热度"
+          "url": "https://www.zhihu.com/question/1975139999579129588",
+          "text": "军机处这种临时指挥机构这么好用，为何现代没有国家采用了？",
+          "heat": "58 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2056153939586945213",
@@ -1910,28 +1910,8 @@
           "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2040313406482294437",
-          "text": "领导天天画饼、还让无偿加班，我直接怼回去了，是我太冲动了吗？",
-          "heat": "55 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2082083648409551544",
-          "text": "姆巴佩今年有机会拿到金球奖吗？",
-          "heat": "55 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2081779888046995214",
-          "text": "中方 9 月 14 日起上调日本公民赴华签证规费，外交部称依据对等原则安排，哪些信息值得关注？",
-          "heat": "55 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2082602592325079170",
-          "text": "亚运会男篮小组赛，中国男篮 105-61 大胜菲律宾，王俊杰 20+14，如何评价本场比赛？",
-          "heat": "55 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2081647900174693078",
-          "text": "令狐冲心知数万斤炸药炸开，见性峰上少林武当恒山仪琳势必玉石俱焚，他内心深处却盼望炸药炸起来，这对吗？",
+          "url": "https://www.zhihu.com/question/14257873390",
+          "text": "做科研是中科院还是高校的环境好？",
           "heat": "55 万热度"
         },
         {
@@ -1940,13 +1920,13 @@
           "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2078801736223776963",
-          "text": "长期依赖 AI 做投研，会不会削弱自己的判断能力？",
+          "url": "https://www.zhihu.com/question/2081647900174693078",
+          "text": "令狐冲心知数万斤炸药炸开，见性峰上少林武当恒山仪琳势必玉石俱焚，他内心深处却盼望炸药炸起来，这对吗？",
           "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2082311421673616444",
-          "text": "《魔兽世界：永恒》11 月 4 日上线，其作为「怀旧服 +」会给游戏带来哪些影响？",
+          "url": "https://www.zhihu.com/question/2078801736223776963",
+          "text": "长期依赖 AI 做投研，会不会削弱自己的判断能力？",
           "heat": "55 万热度"
         },
         {
@@ -1955,23 +1935,23 @@
           "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/1945062964945199385",
-          "text": "为什么五虎将最后一位是黄忠，而不是魏延？",
-          "heat": "55 万热度"
-        },
-        {
           "url": "https://www.zhihu.com/question/8725086493",
           "text": "如何能保证精力充沛身体健康?",
           "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2062234441888665832",
-          "text": "如果孩子这辈子注定考不上 985/211，只能做个普通体力劳动者，那我拼命鸡娃，买学区房的意义是什么？",
+          "url": "https://www.zhihu.com/question/2082311421673616444",
+          "text": "《魔兽世界：永恒》11 月 4 日上线，其作为「怀旧服 +」会给游戏带来哪些影响？",
           "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2081661494270415480",
-          "text": "如何看待苹果宣布 App 可以直接获取 iPhone Duo 铰链开合角度？将此应用于开屏广告的前景如何？",
+          "url": "https://www.zhihu.com/question/1945062964945199385",
+          "text": "为什么五虎将最后一位是黄忠，而不是魏延？",
+          "heat": "55 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2081779888046995214",
+          "text": "中方 9 月 14 日起上调日本公民赴华签证规费，外交部称依据对等原则安排，哪些信息值得关注？",
           "heat": "55 万热度"
         },
         {
@@ -1980,18 +1960,23 @@
           "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/1903914928965915069",
-          "text": "普通人如何学好高中数学？",
+          "url": "https://www.zhihu.com/question/2081661494270415480",
+          "text": "如何看待苹果宣布 App 可以直接获取 iPhone Duo 铰链开合角度？将此应用于开屏广告的前景如何？",
+          "heat": "55 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2062234441888665832",
+          "text": "如果孩子这辈子注定考不上 985/211，只能做个普通体力劳动者，那我拼命鸡娃，买学区房的意义是什么？",
           "heat": "55 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2081689482680612405",
           "text": "如何评价前 PS 总裁现腾讯顾问称服务型游戏成功全靠运气，没有可复制的成功公式？",
-          "heat": "54 万热度"
+          "heat": "55 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2082576558351284038",
-          "text": "Tarzan 获得 2026 LPL 总决赛 FMVP，如何评价他在本届总决赛上的表现？",
+          "url": "https://www.zhihu.com/question/1903914928965915069",
+          "text": "普通人如何学好高中数学？",
           "heat": "54 万热度"
         },
         {
@@ -2000,18 +1985,13 @@
           "heat": "54 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2079270490183562309",
-          "text": "世界历史上有哪些在位时间短暂的君主取得了辉煌的军事成就？",
-          "heat": "54 万热度"
-        },
-        {
           "url": "https://www.zhihu.com/question/2061596340572919542",
           "text": "孩子的学习重要吗？",
           "heat": "54 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2060844406081589410",
-          "text": "庞德抬棺决死战，于禁临危却投降，为什么拼死效忠的「降将」被关羽杀了，而曹魏元老于禁反而活了下来？",
+          "url": "https://www.zhihu.com/question/2082576558351284038",
+          "text": "Tarzan 获得 2026 LPL 总决赛 FMVP，如何评价他在本届总决赛上的表现？",
           "heat": "54 万热度"
         },
         {
@@ -2020,8 +2000,18 @@
           "heat": "54 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2082360371906720195",
-          "text": "家长该如何有效的提升孩子的抗挫折能力？",
+          "url": "https://www.zhihu.com/question/2078918941477545304",
+          "text": "下一代程序员离开 AI 还能独立工作吗？",
+          "heat": "54 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2079270490183562309",
+          "text": "世界历史上有哪些在位时间短暂的君主取得了辉煌的军事成就？",
+          "heat": "54 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/1905834118178124163",
+          "text": "《甄嬛传》中各嫔妃私下的小手段皇上都毫不知情嘛？",
           "heat": "54 万热度"
         },
         {
@@ -2040,8 +2030,18 @@
           "heat": "54 万热度"
         },
         {
+          "url": "https://www.zhihu.com/question/2080686281286051290",
+          "text": "阿里代理的《旅行青蛙》因授权到期将停止运营，如何评价？你对它有哪些回忆？",
+          "heat": "54 万热度"
+        },
+        {
           "url": "https://www.zhihu.com/question/2081769429302506285",
           "text": "是什么让当代父母在养育孩子时越来越心力交瘁？",
+          "heat": "54 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2055964078607004727",
+          "text": "有没有什么历史故事，听起来「比小说还小说」，但却是真实历史事件？",
           "heat": "54 万热度"
         }
       ]
@@ -2214,252 +2214,252 @@
         {
           "url": "https://www.baidu.com/s?wd=%E5%B9%BF%E6%B1%BD%E9%9B%86%E5%9B%A2+%E8%B5%84%E4%BA%A7%E9%87%8D%E7%BB%84",
           "text": "广汽集团 资产重组",
-          "heat": "780.8万"
+          "heat": "780.9万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E4%B8%80%E8%BD%A6%E4%BA%BA%E4%B9%B0%E9%94%99%E7%A5%A8+%E6%B8%B8%E5%AE%A2%E5%BB%BA%E8%AE%AE%E8%BD%A6%E7%AB%99%E6%94%B9%E5%90%8D",
           "text": "一车人买错票 游客建议车站改名",
-          "heat": "771.3万"
+          "heat": "771.5万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%9C%AA%E6%9D%A5%E4%BA%94%E5%B9%B4%E6%B0%91%E7%94%9F%E5%81%A5%E5%BA%B7%E9%87%8D%E7%A3%85%E8%A7%84%E5%88%92",
           "text": "未来五年民生健康重磅规划",
-          "heat": "761.8万"
+          "heat": "761.7万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E2%80%9C%E5%96%8A%E5%9D%90%E4%B8%8B%E9%83%BD%E7%AE%97%E7%A4%BC%E8%B2%8C+%E8%A6%81%E6%88%91%E5%B0%B1%E5%96%8A%E7%A6%BB%E5%A9%9A%E2%80%9D",
           "text": "“喊坐下都算礼貌 要我就喊离婚”",
-          "heat": "752.0万"
+          "heat": "752.3万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%A4%A7%E5%9E%8B%E4%BC%81%E4%B8%9A%E6%8B%96%E6%AC%A0%E8%B4%A6%E6%AC%BE%E8%A7%81%E4%B8%80%E4%B8%AA%E6%9F%A5%E4%B8%80%E4%B8%AA",
           "text": "大型企业拖欠账款见一个查一个",
-          "heat": "742.8万"
+          "heat": "742.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=3000%E5%85%83%E4%B8%80%E9%92%88%E7%9A%84%E2%80%9C%E5%B0%B8%E7%9A%AE%E9%92%88%E2%80%9D%E7%81%AB%E4%BA%86",
           "text": "3000元一针的“尸皮针”火了",
-          "heat": "733.2万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%BC%94%E5%94%B1%E4%BC%9A%E6%B1%82%E5%A9%9A+%E5%88%AB%E6%8A%8A%E6%B2%A1%E7%B4%A0%E8%B4%A8%E5%BD%93%E4%BB%AA%E5%BC%8F%E6%84%9F",
-          "text": "演唱会求婚 别把没素质当仪式感",
-          "heat": "723.5万"
+          "heat": "733.1万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%85%A8%E7%90%83%E6%9C%80%E5%A4%A7%E6%AF%8F%E5%91%A8%E8%BD%A6%E5%B1%95%E5%88%9B%E5%A7%8B%E4%BA%BA%E8%BD%A6%E7%A5%B8%E8%BA%AB%E4%BA%A1",
           "text": "全球最大每周车展创始人车祸身亡",
-          "heat": "713.9万"
+          "heat": "723.5万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%AE%B6%E9%95%BF%E7%A7%B03000%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%A4%9F%E5%90%83%E9%A5%AD%E8%BF%98%E8%83%BD%E7%82%B9%E5%A4%96%E5%8D%96",
-          "text": "家长称3000生活费够吃饭还能点外卖",
+          "url": "https://www.baidu.com/s?wd=%E6%BC%94%E5%94%B1%E4%BC%9A%E6%B1%82%E5%A9%9A+%E5%88%AB%E6%8A%8A%E6%B2%A1%E7%B4%A0%E8%B4%A8%E5%BD%93%E4%BB%AA%E5%BC%8F%E6%84%9F",
+          "text": "演唱会求婚 别把没素质当仪式感",
+          "heat": "714.1万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E8%8B%B9%E6%9E%9C%E5%9B%9E%E5%BA%94iPhone18Pro%E7%A0%B4%E5%8F%91",
+          "text": "苹果回应iPhone18Pro破发",
           "heat": "704.7万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%9D%8E%E7%8E%89%E5%88%9A%E5%BD%93%E9%80%89%E5%90%89%E6%9E%97%E6%96%87%E8%81%94%E5%85%BC%E8%81%8C%E5%89%AF%E4%B8%BB%E5%B8%AD",
           "text": "李玉刚当选吉林文联兼职副主席",
-          "heat": "694.6万"
+          "heat": "694.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%81%9C%E6%AD%A2%E8%B5%84%E5%8A%A9%E5%AD%A6%E7%94%9F%E5%90%8E%E5%8F%8D%E9%81%AD%E5%A8%81%E8%83%81%E7%B3%BB%E9%80%A0%E8%B0%A3",
           "text": "停止资助学生后反遭威胁系造谣",
-          "heat": "685.2万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%8D%AB%E5%81%A5%E5%A7%94%EF%BC%9A%E6%8F%90%E5%80%A1%E5%A4%A7%E5%AE%B6%E5%A4%9A%E5%96%9D%E7%99%BD%E5%BC%80%E6%B0%B4%E6%B7%A1%E8%8C%B6%E6%B0%B4",
-          "text": "卫健委：提倡大家多喝白开水淡茶水",
-          "heat": "675.9万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%95%AC%E4%B8%80%E4%B8%B9%E5%A4%9A%E5%BC%A0%E7%94%9F%E5%89%8D%E7%85%A7%E7%89%87%E5%85%AC%E5%B8%83",
-          "text": "敬一丹多张生前照片公布",
-          "heat": "665.6万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%A4%9A%E5%9F%8E%E6%A5%BC%E7%9B%98%E2%80%9C%E6%8A%B1%E5%9B%A2%E6%B6%A8%E4%BB%B7%E2%80%9D",
-          "text": "多城楼盘“抱团涨价”",
-          "heat": "656.8万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E8%8B%B9%E6%9E%9C%E5%9B%9E%E5%BA%94iPhone18Pro%E7%A0%B4%E5%8F%91",
-          "text": "苹果回应iPhone18Pro破发",
-          "heat": "647.3万"
+          "heat": "685.9万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E4%BE%84%E5%A5%B3%E5%B8%AE%E5%B0%8F%E5%A7%A8%E6%8C%A1%E5%82%AC%E5%A9%9A+%E9%87%91%E5%8F%A5%E9%A2%91%E5%87%BA",
           "text": "侄女帮小姨挡催婚 金句频出",
-          "heat": "636.8万"
+          "heat": "675.5万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E6%B5%99%E6%B1%9F%E7%9C%81%E5%A7%94%E4%B9%A6%E8%AE%B0%E7%9C%81%E9%95%BF%E5%B8%A6%E5%A4%B4%E6%8D%90%E6%AC%BE",
-          "text": "浙江省委书记省长带头捐款",
-          "heat": "628.2万"
+          "url": "https://www.baidu.com/s?wd=%E6%95%AC%E4%B8%80%E4%B8%B9%E5%A4%9A%E5%BC%A0%E7%94%9F%E5%89%8D%E7%85%A7%E7%89%87%E5%85%AC%E5%B8%83",
+          "text": "敬一丹多张生前照片公布",
+          "heat": "666.4万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%B0%8F%E5%AD%A9%E5%93%A5%E8%A7%A3%E9%94%81%E6%B3%A1%E9%9D%A2%E7%9B%96%E2%80%9C%E4%BC%A0%E9%80%81%E5%B8%A6%E2%80%9D%E5%BC%8F%E5%90%83%E6%B3%95",
-          "text": "小孩哥解锁泡面盖“传送带”式吃法",
-          "heat": "618.6万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%9B%BD%E4%BA%A7AI%E7%9F%AD%E7%89%87+%E6%9C%80%E4%B8%8D%E5%83%8FAI%E7%9A%84AI%E7%A5%9E%E4%BD%9C",
-          "text": "国产AI短片 最不像AI的AI神作",
-          "heat": "609.3万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%9F%A9%E5%89%A7%E7%94%B7%E4%B8%BB%E5%9B%9E%E5%BA%94%E9%95%BF%E5%BE%97%E4%B8%91",
-          "text": "韩剧男主回应长得丑",
-          "heat": "599.1万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%87%91%E6%98%9F%E4%BC%B4%E6%9C%88",
-          "text": "金星伴月",
-          "heat": "588.7万"
+          "url": "https://www.baidu.com/s?wd=%E5%AE%B6%E9%95%BF%E7%A7%B03000%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%A4%9F%E5%90%83%E9%A5%AD%E8%BF%98%E8%83%BD%E7%82%B9%E5%A4%96%E5%8D%96",
+          "text": "家长称3000生活费够吃饭还能点外卖",
+          "heat": "656.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%B5%B7%E5%8D%97%E5%A4%9A%E5%9C%B0%E5%81%9C%E8%AF%BE",
           "text": "海南多地停课",
-          "heat": "579.8万"
+          "heat": "646.6万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E9%BB%84%E6%B2%B3%E8%BE%B9%E7%BA%A6%E4%BC%9A%E5%90%8E%E5%A4%B1%E8%B8%AA%E5%A5%B3%E5%AD%A9%E9%81%97%E4%BD%93%E5%B7%B2%E7%81%AB%E5%8C%96",
-          "text": "黄河边约会后失踪女孩遗体已火化",
-          "heat": "571.3万"
+          "url": "https://www.baidu.com/s?wd=%E9%9F%A9%E5%89%A7%E7%94%B7%E4%B8%BB%E5%9B%9E%E5%BA%94%E9%95%BF%E5%BE%97%E4%B8%91",
+          "text": "韩剧男主回应长得丑",
+          "heat": "638.1万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%A4%9A%E5%9F%8E%E6%A5%BC%E7%9B%98%E2%80%9C%E6%8A%B1%E5%9B%A2%E6%B6%A8%E4%BB%B7%E2%80%9D",
+          "text": "多城楼盘“抱团涨价”",
+          "heat": "628.4万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%9B%BD%E4%BA%A7AI%E7%9F%AD%E7%89%87+%E6%9C%80%E4%B8%8D%E5%83%8FAI%E7%9A%84AI%E7%A5%9E%E4%BD%9C",
+          "text": "国产AI短片 最不像AI的AI神作",
+          "heat": "617.9万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E6%B5%99%E6%B1%9F%E7%9C%81%E5%A7%94%E4%B9%A6%E8%AE%B0%E7%9C%81%E9%95%BF%E5%B8%A6%E5%A4%B4%E6%8D%90%E6%AC%BE",
+          "text": "浙江省委书记省长带头捐款",
+          "heat": "609.0万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%8D%AB%E5%81%A5%E5%A7%94%EF%BC%9A%E6%8F%90%E5%80%A1%E5%A4%A7%E5%AE%B6%E5%A4%9A%E5%96%9D%E7%99%BD%E5%BC%80%E6%B0%B4%E6%B7%A1%E8%8C%B6%E6%B0%B4",
+          "text": "卫健委：提倡大家多喝白开水淡茶水",
+          "heat": "598.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%B5%B7%E5%8D%97%E4%B8%87%E5%AE%81%E5%87%BA%E7%8E%B0%E9%BE%99%E5%8D%B7%E9%A3%8E",
           "text": "海南万宁出现龙卷风",
-          "heat": "561.4万"
+          "heat": "588.7万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E8%BF%9120%E7%9C%81%E4%BB%BD%E5%85%AC%E5%B8%83%E7%A4%BE%E4%BF%9D%E7%BC%B4%E8%B4%B9%E6%96%B0%E5%9F%BA%E6%95%B0",
-          "text": "近20省份公布社保缴费新基数",
-          "heat": "551.1万"
+          "url": "https://www.baidu.com/s?wd=%E5%B0%8F%E5%AD%A9%E5%93%A5%E8%A7%A3%E9%94%81%E6%B3%A1%E9%9D%A2%E7%9B%96%E2%80%9C%E4%BC%A0%E9%80%81%E5%B8%A6%E2%80%9D%E5%BC%8F%E5%90%83%E6%B3%95",
+          "text": "小孩哥解锁泡面盖“传送带”式吃法",
+          "heat": "580.6万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E7%9F%A5%E5%90%8D%E6%B8%B8%E6%88%8F%E8%80%81%E6%9D%BF%E7%99%BE%E4%BA%BF%E5%85%83%E5%A4%A9%E4%BB%B7%E7%A6%BB%E5%A9%9A%E5%88%9B%E7%BA%AA%E5%BD%95",
           "text": "知名游戏老板百亿元天价离婚创纪录",
-          "heat": "542.3万"
+          "heat": "569.9万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=60%E4%B8%AA%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%8C%82%E5%90%8D%E4%B8%8B+%E7%94%B7%E5%AD%9014%E5%B9%B4%E5%90%8E%E6%89%8D%E5%8F%91%E7%8E%B0",
-          "text": "60个手机号挂名下 男子14年后才发现",
-          "heat": "533.2万"
+          "url": "https://www.baidu.com/s?wd=%E9%87%91%E6%98%9F%E4%BC%B4%E6%9C%88",
+          "text": "金星伴月",
+          "heat": "561.8万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E8%BF%9120%E7%9C%81%E4%BB%BD%E5%85%AC%E5%B8%83%E7%A4%BE%E4%BF%9D%E7%BC%B4%E8%B4%B9%E6%96%B0%E5%9F%BA%E6%95%B0",
+          "text": "近20省份公布社保缴费新基数",
+          "heat": "550.8万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E7%8E%8B%E4%B8%80%E5%8D%9A%E4%BB%A3%E8%A8%80%E7%96%91%E6%B6%89%E8%99%9A%E5%81%87%E5%AE%A3%E4%BC%A0%EF%BC%9F%E5%93%81%E7%89%8C%E6%96%B9%E5%9B%9E%E5%BA%94",
           "text": "王一博代言疑涉虚假宣传？品牌方回应",
-          "heat": "523.1万"
+          "heat": "542.8万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%86%9C%E6%9D%91%E5%A4%A7%E9%9B%86%E4%B8%8A+%E4%BA%BA%E5%A4%A7%E4%BB%A3%E8%A1%A8%E2%80%9C%E6%91%86%E4%BA%86%E4%B8%AA%E6%91%8A%E5%84%BF%E2%80%9D",
-          "text": "农村大集上 人大代表“摆了个摊儿”",
-          "heat": "513.3万"
+          "url": "https://www.baidu.com/s?wd=%E9%BB%84%E6%B2%B3%E8%BE%B9%E7%BA%A6%E4%BC%9A%E5%90%8E%E5%A4%B1%E8%B8%AA%E5%A5%B3%E5%AD%A9%E9%81%97%E4%BD%93%E5%B7%B2%E7%81%AB%E5%8C%96",
+          "text": "黄河边约会后失踪女孩遗体已火化",
+          "heat": "533.0万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E4%BA%91%E5%8D%97%E6%99%AE%E6%B4%B1%E5%9C%B0%E9%9C%87",
           "text": "云南普洱地震",
-          "heat": "502.4万"
+          "heat": "523.7万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%A4%AB%E5%A6%BB%E8%A2%AB%E6%92%9E%E8%BA%AB%E4%BA%A1%E5%84%BF%E5%AD%90%E9%97%AE%E8%83%8C%E5%90%8E%E6%9D%A5%E8%BD%A6%E6%80%8E%E4%B9%88%E8%BA%B2",
-          "text": "夫妻被撞身亡儿子问背后来车怎么躲",
-          "heat": "495.0万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E7%8E%8B%E8%80%81%E5%90%89%E5%9B%9E%E5%BA%94%E6%96%B0%E5%93%81%E8%A2%AB%E6%8C%87%E6%8A%84%E8%A2%AD",
-          "text": "王老吉回应新品被指抄袭",
-          "heat": "484.1万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E4%BA%8E%E4%B8%9C%E6%9D%A5%E5%9B%9E%E5%BA%94%E6%96%B0%E5%91%98%E5%B7%A5%E5%AE%9E%E8%A1%8C%E5%9B%9B%E5%B9%B4%E5%90%88%E5%90%8C%E5%88%B6",
-          "text": "于东来回应新员工实行四年合同制",
-          "heat": "473.7万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%A6%88%E5%A6%88%E5%90%83%E6%97%A0%E7%A2%98%E7%9B%90%E8%87%B4%E5%A5%B3%E5%84%BF2%E5%B2%81%E5%A4%9A%E4%B8%8D%E4%BC%9A%E8%AF%B4%E8%AF%9D",
-          "text": "妈妈吃无碘盐致女儿2岁多不会说话",
-          "heat": "466.9万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E7%90%83%E5%91%98%E5%90%95%E5%AD%9F%E6%B4%8B%E5%8A%A0%E7%9B%9F%E8%A5%BF%E7%8F%AD%E7%89%99%E4%BA%BA",
-          "text": "中国球员吕孟洋加盟西班牙人",
-          "heat": "456.3万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E7%94%98%E8%82%83%E7%9C%81%E6%94%BF%E5%BA%9C%EF%BC%9A%E5%9D%9A%E5%86%B3%E6%8B%A5%E6%8A%A4%E5%85%9A%E4%B8%AD%E5%A4%AE%E5%86%B3%E5%AE%9A",
-          "text": "甘肃省政府：坚决拥护党中央决定",
-          "heat": "446.3万"
+          "url": "https://www.baidu.com/s?wd=60%E4%B8%AA%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%8C%82%E5%90%8D%E4%B8%8B+%E7%94%B7%E5%AD%9014%E5%B9%B4%E5%90%8E%E6%89%8D%E5%8F%91%E7%8E%B0",
+          "text": "60个手机号挂名下 男子14年后才发现",
+          "heat": "512.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E7%8E%8B%E6%9B%BC%E6%98%B1%E5%8F%8D%E8%B6%85%E5%AD%99%E9%A2%96%E8%8E%8E%E7%99%BB%E9%A1%B6%E5%A5%B3%E5%8D%95%E4%B8%96%E7%95%8C%E7%AC%AC%E4%B8%80",
           "text": "王曼昱反超孙颖莎登顶女单世界第一",
-          "heat": "437.8万"
+          "heat": "502.9万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E4%B8%9A%E4%B8%BB%E7%A9%BA%E7%BD%AE%E6%88%BF%E8%A2%AB%E7%89%A9%E4%B8%9A%E6%93%85%E8%87%AA%E6%89%93%E5%BC%80%E5%A0%86%E6%9D%82%E7%89%A9",
-          "text": "业主空置房被物业擅自打开堆杂物",
-          "heat": "426.0万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%97%A5%E6%9C%AC%E8%89%BA%E6%9C%AF%E5%AE%B6%E5%8A%9E%E5%B1%95%E6%8F%AD%E4%BE%B5%E5%8D%8E%E6%97%A5%E5%86%9B%E6%9A%B4%E8%A1%8C",
-          "text": "日本艺术家办展揭侵华日军暴行",
-          "heat": "416.6万"
+          "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E7%90%83%E5%91%98%E5%90%95%E5%AD%9F%E6%B4%8B%E5%8A%A0%E7%9B%9F%E8%A5%BF%E7%8F%AD%E7%89%99%E4%BA%BA",
+          "text": "中国球员吕孟洋加盟西班牙人",
+          "heat": "495.6万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%B0%8F%E5%AD%A6%E6%94%B9%E5%85%BB%E8%80%81%E9%99%A2%E4%B8%8D%E6%98%AF%E2%80%9C%E6%8D%A2%E5%9D%97%E7%89%8C%E5%AD%90%E2%80%9D%E5%B0%B1%E8%A1%8C",
           "text": "小学改养老院不是“换块牌子”就行",
-          "heat": "406.9万"
+          "heat": "485.0万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%A5%B3%E5%AD%90%E7%BB%9E%E6%9D%80%E9%86%89%E9%85%92%E7%94%B7%E5%8F%8B%E6%BD%9C%E9%80%8325%E5%B9%B4%E5%90%8E%E8%90%BD%E7%BD%91",
-          "text": "女子绞杀醉酒男友潜逃25年后落网",
-          "heat": "399.1万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E8%8D%B7%E5%85%B0%E5%BC%9F%E7%99%BB%E9%A1%B6%E5%85%A8%E7%90%83%E5%BD%B1%E5%8F%B2%E6%BC%94%E5%91%98%E7%A5%A8%E6%88%BF%E6%A6%9C",
-          "text": "荷兰弟登顶全球影史演员票房榜",
-          "heat": "388.8万"
+          "url": "https://www.baidu.com/s?wd=%E4%BA%8E%E4%B8%9C%E6%9D%A5%E5%9B%9E%E5%BA%94%E6%96%B0%E5%91%98%E5%B7%A5%E5%AE%9E%E8%A1%8C%E5%9B%9B%E5%B9%B4%E5%90%88%E5%90%8C%E5%88%B6",
+          "text": "于东来回应新员工实行四年合同制",
+          "heat": "475.1万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E9%9F%A9%E6%96%B9%E5%90%90%E6%A7%BD%E5%90%8D%E5%8F%A4%E5%B1%8B%E4%BA%9A%E8%BF%90%E4%BC%9A%E4%BD%8F%E5%AE%BF%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%B7%AE",
           "text": "韩方吐槽名古屋亚运会住宿史上最差",
-          "heat": "381.3万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%AE%A0%E7%89%A9%E7%8C%AB%E5%9D%A0%E4%BA%A1+%E5%AE%B6%E6%94%BF%E5%B7%A5%E8%B5%9415750%E5%85%83",
-          "text": "宠物猫坠亡 家政工赔15750元",
-          "heat": "368.6万"
+          "heat": "465.7万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E7%94%B3%E8%81%AA%E7%A7%B0%E6%A2%85%E5%A7%A8%E8%AE%A4%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%9C%A8%E5%81%9A%E5%A5%BD%E4%BA%BA%E5%A5%BD%E4%BA%8B",
           "text": "申聪称梅姨认为自己在做好人好事",
-          "heat": "359.2万"
+          "heat": "454.6万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%AE%A0%E7%89%A9%E7%8C%AB%E5%9D%A0%E4%BA%A1+%E5%AE%B6%E6%94%BF%E5%B7%A5%E8%B5%9415750%E5%85%83",
+          "text": "宠物猫坠亡 家政工赔15750元",
+          "heat": "444.7万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E7%94%98%E8%82%83%E7%9C%81%E6%94%BF%E5%BA%9C%EF%BC%9A%E5%9D%9A%E5%86%B3%E6%8B%A5%E6%8A%A4%E5%85%9A%E4%B8%AD%E5%A4%AE%E5%86%B3%E5%AE%9A",
+          "text": "甘肃省政府：坚决拥护党中央决定",
+          "heat": "436.7万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E4%B8%9A%E4%B8%BB%E7%A9%BA%E7%BD%AE%E6%88%BF%E8%A2%AB%E7%89%A9%E4%B8%9A%E6%93%85%E8%87%AA%E6%89%93%E5%BC%80%E5%A0%86%E6%9D%82%E7%89%A9",
+          "text": "业主空置房被物业擅自打开堆杂物",
+          "heat": "426.1万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E7%8E%8B%E8%80%81%E5%90%89%E5%9B%9E%E5%BA%94%E6%96%B0%E5%93%81%E8%A2%AB%E6%8C%87%E6%8A%84%E8%A2%AD",
+          "text": "王老吉回应新品被指抄袭",
+          "heat": "418.4万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%86%9C%E6%9D%91%E5%A4%A7%E9%9B%86%E4%B8%8A+%E4%BA%BA%E5%A4%A7%E4%BB%A3%E8%A1%A8%E2%80%9C%E6%91%86%E4%BA%86%E4%B8%AA%E6%91%8A%E5%84%BF%E2%80%9D",
+          "text": "农村大集上 人大代表“摆了个摊儿”",
+          "heat": "408.0万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E6%97%A5%E6%9C%AC%E8%89%BA%E6%9C%AF%E5%AE%B6%E5%8A%9E%E5%B1%95%E6%8F%AD%E4%BE%B5%E5%8D%8E%E6%97%A5%E5%86%9B%E6%9A%B4%E8%A1%8C",
+          "text": "日本艺术家办展揭侵华日军暴行",
+          "heat": "399.4万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E8%8D%B7%E5%85%B0%E5%BC%9F%E7%99%BB%E9%A1%B6%E5%85%A8%E7%90%83%E5%BD%B1%E5%8F%B2%E6%BC%94%E5%91%98%E7%A5%A8%E6%88%BF%E6%A6%9C",
+          "text": "荷兰弟登顶全球影史演员票房榜",
+          "heat": "389.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%9D%AD%E5%B7%9E%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A4%E8%AD%A6%E4%B8%AD%E9%98%9F%E5%AE%8C%E6%88%90%E5%8D%87%E7%BA%A7",
           "text": "杭州机器人交警中队完成升级",
-          "heat": "348.9万"
+          "heat": "379.9万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%A6%88%E5%A6%88%E5%90%83%E6%97%A0%E7%A2%98%E7%9B%90%E8%87%B4%E5%A5%B3%E5%84%BF2%E5%B2%81%E5%A4%9A%E4%B8%8D%E4%BC%9A%E8%AF%B4%E8%AF%9D",
+          "text": "妈妈吃无碘盐致女儿2岁多不会说话",
+          "heat": "367.9万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E7%BA%B3%E6%8C%87%E4%BD%8E%E5%BC%80+AI%E7%A1%AC%E4%BB%B6%E4%BA%A7%E4%B8%9A%E9%93%BE%E8%82%A1%E7%A5%A8%E5%A4%A7%E5%B9%85%E4%B8%8B%E6%8C%AB",
           "text": "纳指低开 AI硬件产业链股票大幅下挫",
-          "heat": "341.3万"
+          "heat": "358.4万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E7%94%B5%E5%BD%B1%E6%92%A4%E6%A1%A3%E6%94%B9%E6%9C%9F%E4%B8%8D%E5%A6%82%E5%86%85%E5%AE%B9%E6%8F%90%E8%B4%A8",
+          "text": "电影撤档改期不如内容提质",
+          "heat": "349.8万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%8D%97%E9%98%B3%E5%87%BA%E9%80%83%E9%B3%84%E9%B1%BC%E5%B7%B2%E8%A2%AB%E6%8A%93%E8%8E%B7",
           "text": "南阳出逃鳄鱼已被抓获",
-          "heat": "331.1万"
+          "heat": "339.5万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E7%9C%8B%E7%97%85%E4%B8%8D%E7%94%A8%E5%8F%8D%E5%A4%8D%E6%8B%8D%E7%89%87%E5%8C%96%E9%AA%8C%E4%BA%86",
-          "text": "看病不用反复拍片化验了",
-          "heat": "320.8万"
+          "url": "https://www.baidu.com/s?wd=%E6%B5%B7%E5%8D%97%E5%85%A8%E7%9C%81%E5%B7%B2%E8%BD%AC%E7%A7%BB4.2%E4%B8%87%E4%BD%99%E4%BA%BA",
+          "text": "海南全省已转移4.2万余人",
+          "heat": "333.7万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E9%82%B1%E6%AF%85%EF%BC%9A%E7%BB%9F%E4%B8%80%E6%98%AF%E5%BF%85%E7%AD%94%E9%A2%98",
-          "text": "邱毅：统一是必答题",
-          "heat": "312.2万"
+          "url": "https://www.baidu.com/s?wd=iPhone18Pro%E7%A0%B4%E5%8F%91",
+          "text": "iPhone18Pro破发",
+          "heat": "323.3万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%A4%AB%E5%A6%BB%E8%A2%AB%E6%92%9E%E8%BA%AB%E4%BA%A1%E5%84%BF%E5%AD%90%E9%97%AE%E8%83%8C%E5%90%8E%E6%9D%A5%E8%BD%A6%E6%80%8E%E4%B9%88%E8%BA%B2",
+          "text": "夫妻被撞身亡儿子问背后来车怎么躲",
+          "heat": "313.8万"
         }
       ]
     },
@@ -2493,18 +2493,18 @@
           "heat": ""
         },
         {
+          "url": "https://www.36kr.com/p/3982855580416772",
+          "text": "一个月净赚5万元，小红书上爆火的“避雷帖”养活一条暴利灰产",
+          "heat": ""
+        },
+        {
           "url": "https://www.36kr.com/p/3982957231995910",
           "text": "震撼，果蝇大脑成功接上了ChatGPT",
           "heat": ""
         },
         {
-          "url": "https://www.36kr.com/p/3981356827940482",
-          "text": "高中前不许碰 AI，纽约市给美国教育划下史上最狠红线",
-          "heat": ""
-        },
-        {
-          "url": "https://www.36kr.com/p/3982855580416772",
-          "text": "一个月净赚5万元，小红书上爆火的“避雷帖”养活一条暴利灰产",
+          "url": "https://www.36kr.com/p/3983164706520068",
+          "text": "奥特曼深夜长文警告：AI巨头必须集体“踩刹车”",
           "heat": ""
         }
       ]
@@ -2703,17 +2703,17 @@
         {
           "url": "https://m.ithome.com/html/1001921.htm",
           "text": "苹果 iOS 27 正式版前瞻：升级 Siri AI、优化液态玻璃设计、隔空投送提速 80%",
-          "heat": "278评"
+          "heat": "283评"
         },
         {
           "url": "https://m.ithome.com/html/1002055.htm",
           "text": "消息称苹果发布 iPhone Duo 后的四天，华为阔折叠手机 Pura X Max 销量环比上周暴涨 76.5%",
-          "heat": "374评"
+          "heat": "376评"
         },
         {
           "url": "https://m.ithome.com/html/1002243.htm",
           "text": "消息称多家大厂派开发人员赴苹果总部，适配 iPhone Duo 折叠手机",
-          "heat": "450评"
+          "heat": "452评"
         },
         {
           "url": "https://m.ithome.com/html/1001896.htm",
@@ -2723,12 +2723,12 @@
         {
           "url": "https://m.ithome.com/html/1002042.htm",
           "text": "消息称华为阔直板手机 Pura X View“卖爆”，销量突破 30 万台",
-          "heat": "565评"
+          "heat": "567评"
         },
         {
           "url": "https://m.ithome.com/html/1002005.htm",
           "text": "苹果优质售后新案例：“免费”为 6 年旧款 MacBook Air 升级 M5 新款",
-          "heat": "149评"
+          "heat": "150评"
         },
         {
           "url": "https://m.ithome.com/html/1001900.htm",
@@ -3055,6 +3055,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.techflowpost.com/zh-CN/newsletter/136197",
+          "text": "苹果正式推出 Siri AI 智能助手",
+          "heat": "techflowpost.com"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31032",
           "text": "宇树人形机器人 G1+ 发布：电机、视觉、交互与续航全面增强，标准版售价 9.5 万元",
           "heat": "aibase"
@@ -3077,11 +3082,6 @@
         {
           "url": "https://hub.baai.ac.cn/view/57952",
           "text": "AI 能解千禧难题，也能杀死人类？华尔街日报拉响末日警报",
-          "heat": "智源社区"
-        },
-        {
-          "url": "https://hub.baai.ac.cn/view/57951",
-          "text": "中国物理 AI 大突破：PhysBrain 1.5 登顶全球开源榜一，空间智能与 GPT-6 Astra 并驾齐驱",
           "heat": "智源社区"
         }
       ]
@@ -10606,17 +10606,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48839951",
           "text": "【东方/助眠/AI】碎月 57mins（恢复疲劳 音乐治疗~）",
-          "heat": "443"
+          "heat": "569"
         },
         {
           "url": "http://www.acfun.cn/v/ac48847819",
           "text": "【甲鱼的旅法十年】你会为了梦想孤身远行吗？",
-          "heat": "639"
+          "heat": "687"
         },
         {
           "url": "http://www.acfun.cn/v/ac48847690",
           "text": "怎么办我爱你",
-          "heat": "618"
+          "heat": "620"
         },
         {
           "url": "http://www.acfun.cn/v/ac48846067",
@@ -10626,12 +10626,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48847939",
           "text": "【衣笠雪绘】天气之子 歌切day198",
-          "heat": "312"
+          "heat": "341"
         },
         {
           "url": "http://www.acfun.cn/v/ac48821735",
           "text": "【大塚 愛】プラネタリウム 【THE FIRST TAKE】",
-          "heat": "92"
+          "heat": "104"
         },
         {
           "url": "http://www.acfun.cn/v/ac48846044",
@@ -10760,54 +10760,54 @@
       "type": "体育",
       "content": [
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirtwik4106035.shtml",
-          "text": "14场销4785万今年第4!足彩头奖195注18万滚存被清",
-          "heat": "11,209"
+          "url": "https://sports.sina.com.cn/basketball/nba/2026-09-14/doc-inirtwik4131699.shtml",
+          "text": "两大巨星！E1官方晒詹姆斯和威尔·史密斯今日在安哥拉观赛花絮",
+          "heat": "654"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirtwie9739913.shtml",
-          "text": "[新浪彩票]足彩第26125期任九：比利亚建议舍弃",
-          "heat": "10,957"
+          "url": "https://sports.sina.com.cn/basketball/nba/2026-09-14/doc-inirtwik4064814.shtml",
+          "text": "加内特：得知我的经纪人拒绝了1.22亿合同后 我立马将其解雇",
+          "heat": "648"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirtwik4089438.shtml",
-          "text": "[新浪彩票]足彩第26125期大势：罗马大单防平",
-          "heat": "7,475"
+          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-iniruark4825392.shtml",
+          "text": "105期阿燕大乐透预测奖号：大小比参考",
+          "heat": "645"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirtwik4091700.shtml",
-          "text": "[新浪彩票]足彩26125期盈亏指数：中国女足无悬念",
-          "heat": "6,969"
+          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-iniruara9662179.shtml",
+          "text": "105期江红雨大乐透预测奖号：后区推荐",
+          "heat": "644"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-iniruarh4038312.shtml",
-          "text": "[新浪彩票]足彩26125期冷热指数：利兹联分胜负",
-          "heat": "6,846"
+          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirutnw7268534.shtml",
+          "text": "107期安队双色球预测奖号：红球胆码分析",
+          "heat": "629"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirtwie9740466.shtml",
-          "text": "[新浪彩票]足彩26125期投注策略：国米主胜稳胆",
-          "heat": "6,509"
+          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirutny4041078.shtml",
+          "text": "107期彩鱼双色球预测奖号：012路比分析",
+          "heat": "627"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirszcu4397220.shtml",
-          "text": "男子刚买大乐透一年就中1728万 现场捐20万-图",
-          "heat": "5,019"
+          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-iniruara9662181.shtml",
+          "text": "105期袁启晨大乐透预测奖号：前三区解析",
+          "heat": "624"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-inirtwih7316070.shtml",
-          "text": "竞彩大势：国米大胜信心足 贝蒂斯客场不败",
-          "heat": "4,645"
+          "url": "https://sports.sina.com.cn/basketball/nba/2026-09-14/doc-iniruarh4131601.shtml",
+          "text": "大宝贝：NBA球员退役后的身份转换很难 这是我们离婚率极高的原因",
+          "heat": "618"
         },
         {
-          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-iniruhwy9594024.shtml",
-          "text": "足彩连续7天停售已过半 接下来均20点前停售",
-          "heat": "3,276"
+          "url": "https://sports.sina.com.cn/l/2026-09-14/doc-iniruark4825393.shtml",
+          "text": "105期山哥大乐透预测奖号：跨度分析",
+          "heat": "614"
         },
         {
-          "url": "https://sports.sina.com.cn/basketball/nba/2026-09-14/doc-inirtwih7357294.shtml",
-          "text": "法国女篮很给力！美国女篮一度落后14分 第三节大爆发最后赢18分",
-          "heat": "3,132"
+          "url": "https://sports.sina.com.cn/g/2026-09-14/doc-iniruara9655084.shtml",
+          "text": "连续6场0首发！7000万欧铁腰在阿森纳彻底失宠，皇马迎挖角绝佳良机",
+          "heat": "611"
         }
       ]
     },
@@ -14473,7 +14473,7 @@
         {
           "url": "https://www.dongchedi.com/article/7683755249530225214",
           "text": "方程豹钛7拆车：看上去这么“硬”的车，拆开看看防撞梁什么样？",
-          "heat": "177"
+          "heat": "178"
         },
         {
           "url": "https://www.dongchedi.com/article/7683009381868552729",
@@ -14488,7 +14488,7 @@
         {
           "url": "https://www.dongchedi.com/article/7683419698649924158",
           "text": "方程豹钛7：明明是城市SUV，但开起来像硬派越野车！",
-          "heat": "85"
+          "heat": "86"
         },
         {
           "url": "https://www.dongchedi.com/article/7682952411494629913",
