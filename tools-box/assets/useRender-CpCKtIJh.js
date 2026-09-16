@@ -1,0 +1,1 @@
+import{St as e}from"./utils-B6F8KXMt.js";function t(t){return e(t.defaultTagName??`div`,t,t)}export{t};
