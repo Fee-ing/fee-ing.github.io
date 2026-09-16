@@ -1,0 +1,1 @@
+import{$ as e}from"./utils-BGG09xDx.js";function t(t){return e(t.defaultTagName??`div`,t,t)}export{t};
