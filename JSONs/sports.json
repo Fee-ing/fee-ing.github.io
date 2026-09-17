@@ -1,9 +1,9 @@
 {
-  "timestamp": 1789605045455,
+  "timestamp": 1789605935260,
   "data": [
     {
       "source": "足球",
-      "type": "体育",
+      "type": "直播吧",
       "content": [
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-17/match2272530date2026vnative.htm",
@@ -45,7 +45,7 @@
     },
     {
       "source": "篮球",
-      "type": "体育",
+      "type": "直播吧",
       "content": [
         {
           "url": "https://news.zhibo8.com/nba/2026-09-17/6aab249adfa3enative.htm",
