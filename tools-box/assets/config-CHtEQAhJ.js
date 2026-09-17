@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BpzPEenQ.js";var t=e();function n({name:e,size:n=20,color:r=`currentColor`,className:i,style:a,...o}){return(0,t.jsx)(`svg`,{className:`iconfont ${i??``}`,style:{width:n,height:n,fill:r,...a},"aria-hidden":`true`,...o,children:(0,t.jsx)(`use`,{xlinkHref:`#${e}`})})}var r=[`svg`,`ai`];export{n,r as t};
