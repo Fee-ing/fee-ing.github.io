@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789670741994,
+  "timestamp": 1789671651811,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "aibase"
         },
         {
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+          "text": "The new CC, an AI agent built for families",
+          "heat": "blog.google"
+        },
+        {
           "url": "https://www.leiphone.com/category/industrynews/sOtgTcXitH6C7vAT.html",
           "text": "九识建成首个 L4 万卡集群，无人驾驶进入多模态大模型新范式",
           "heat": "雷锋网"
@@ -3068,11 +3073,6 @@
           "url": "https://hub.baai.ac.cn/view/58047",
           "text": "Claude 王座失守！OpenAI 一夜反超，神秘 GPT-6 Sol 偷跑",
           "heat": "智源社区"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31126",
-          "text": "阿里云展示全新升级的 Wan3.0 视频大模型：单条直出 30 秒长镜头，支持多达五条视频参考",
-          "heat": "aibase"
         }
       ]
     },
@@ -4377,14 +4377,14 @@
           "heat": "贵重物品DR"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260916Q0B2T400",
-          "text": "中国男篮亚运会87比78险胜沙特晋级四强，为何赛中一度被反超？谁是本场取胜的关键？",
-          "heat": "孔明空城聊球"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260917Q0EK8600",
           "text": "亚运场地积水，中国女子板球队备战3年一场没打被淘汰，为何不能补赛？中国队的损失该谁买单？",
           "heat": "江神"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260916Q0B2T400",
+          "text": "中国男篮亚运会87比78险胜沙特晋级四强，为何赛中一度被反超？谁是本场取胜的关键？",
+          "heat": "孔明空城聊球"
         },
         {
           "url": "https://new.qq.com/rain/a/20260916Q03ZOP00",
@@ -4417,14 +4417,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260917Q057VH00",
-          "text": "冯德莱恩提议加拿大成为欧盟首个“联席成员”，特朗普随即威胁停止美欧贸易，“联席成员”是何身份？为何激怒美国？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260917Q0DVRJ00",
           "text": "女生称同济大学痛经请假需脱裤检查，校医院表示必要时会做妇科检查，学校有权这样做吗？边界到底在哪？",
           "heat": "夏夏回来了"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260917Q057VH00",
+          "text": "冯德莱恩提议加拿大成为欧盟首个“联席成员”，特朗普随即威胁停止美欧贸易，“联席成员”是何身份？为何激怒美国？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20260917Q0C7N500",
