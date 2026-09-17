@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789665338285,
+  "timestamp": 1789666246840,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
           "heat": "智源社区"
         },
         {
+          "url": "https://www.itbear.com.cn/html/2026-09/1565527.html",
+          "text": "苹果 iPhone 18 Pro 系列今日开售：A20 Pro 芯片、国行 9999 元起",
+          "heat": "ITBear科技资讯"
+        },
+        {
           "url": "https://hub.baai.ac.cn/view/58048",
           "text": "Benchmark 进入真实世界，斯坦福 / 清华 / Anthropic/Meta/ 阿里等重新定义 AI 能力评测",
           "heat": "智源社区"
@@ -3068,11 +3073,6 @@
           "url": "https://www.aibase.com/zh/news/31126",
           "text": "阿里云展示全新升级的 Wan3.0 视频大模型：单条直出 30 秒长镜头，支持多达五条视频参考",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.huxiu.com/article/4892115.html?f=rss",
-          "text": "AI 设计抗体挑战赛：超越传统实验，但远未封神",
-          "heat": "虎嗅网"
         }
       ]
     },
