@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789679739990,
+  "timestamp": 1789680643350,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2945,6 +2945,16 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://simonwillison.net/2026/Sep/17/compaction-summaries/",
+          "text": "Self-generated prompt injections in compaction summaries",
+          "heat": "Simon Willison"
+        },
+        {
+          "url": "https://www.gelonghui.com/live/2675674",
+          "text": "Anthropic 发布 AI 发展速度评估指标 追踪前沿实验室模型研发进程",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16967",
           "text": "20 所全球顶尖高校联手打造「科学 IDE」，用科研经验训练 AI",
           "heat": "麻省理工科技评论"
@@ -2970,29 +2980,19 @@
           "heat": "aibase"
         },
         {
+          "url": "https://wallstreetcn.com/articles/3782026",
+          "text": "桥水：应对 AI 算力巨头进行监管",
+          "heat": "华尔街见闻"
+        },
+        {
           "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
           "text": "The new CC, an AI agent built for families",
           "heat": "blog.google"
         },
         {
-          "url": "https://www.leiphone.com/category/industrynews/sOtgTcXitH6C7vAT.html",
-          "text": "九识建成首个 L4 万卡集群，无人驾驶进入多模态大模型新范式",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/IX9DPt2tjo0E0gDh.html",
-          "text": "360 纳米 Work 启动「双城千店上岗计划」探索实体商业 AI 落地新路径",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31131",
-          "text": "小米公开 MiMo-V2.6 大模型 RL 训练过程 罗福莉发文确认将开源技术细节",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.199it.com/archives/1838619.html",
-          "text": "KPMG：2026 年第二季度全球 AI 脉搏报告",
-          "heat": "199IT"
+          "url": "https://wallstreetcn.com/articles/3782023",
+          "text": "SpaceX 考虑从倒闭初创公司购买数据，为 Grok AI 模型扩充训练资源",
+          "heat": "华尔街见闻"
         }
       ]
     },
@@ -4292,14 +4292,14 @@
           "heat": "孔明空城聊球"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260916Q08MLO00",
-          "text": "平陆运河正式通航，船闸一次要把5000吨级船抬升近30米，这是怎么做到的？5000吨级是什么概念？",
-          "heat": "贵重物品DR"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260917Q0EK8600",
           "text": "亚运场地积水，中国女子板球队备战3年一场没打被淘汰，为何不能补赛？中国队的损失该谁买单？",
           "heat": "江神"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260916Q08MLO00",
+          "text": "平陆运河正式通航，船闸一次要把5000吨级船抬升近30米，这是怎么做到的？5000吨级是什么概念？",
+          "heat": "贵重物品DR"
         },
         {
           "url": "https://new.qq.com/rain/a/20260916Q0B2T400",
@@ -10401,22 +10401,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48855057",
           "text": "全世界的人都知道",
-          "heat": "736"
+          "heat": "768"
         },
         {
           "url": "http://www.acfun.cn/v/ac48855426",
           "text": "法语｜喀麦隆鼓手说，唯有美食与热爱不可辜负",
-          "heat": "572"
+          "heat": "588"
         },
         {
           "url": "http://www.acfun.cn/v/ac48855039",
           "text": "翻唱了一段米津玄师的火烈鸟",
-          "heat": "850"
+          "heat": "863"
         },
         {
           "url": "http://www.acfun.cn/v/ac48855092",
           "text": "《鸣潮》先约电台EP3.7——心《心月辞》",
-          "heat": "304"
+          "heat": "310"
         },
         {
           "url": "http://www.acfun.cn/v/ac48854770",
@@ -10449,14 +10449,14 @@
           "heat": "329"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48854900",
+          "text": "【转载】摸鱼曲 我快来救我啊  原创：班钓鱼",
+          "heat": "803"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48853406",
           "text": "【saewool・重音テト】QED【MIMI】",
           "heat": "131"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48854900",
-          "text": "【转载】摸鱼曲 我快来救我啊  原创：班钓鱼",
-          "heat": "781"
         },
         {
           "url": "http://www.acfun.cn/v/ac48853400",
@@ -10489,19 +10489,24 @@
           "heat": "129"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48853648",
+          "text": "【全场中字】羊宫妃那的HOOOOPE! #119",
+          "heat": "125"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48853837",
           "text": "𝘕𝘐𝘕𝘌𝘛𝘠 𝘍𝘐𝘝𝘌 - Windows95氛围音乐-放松与专注的梦幻怀旧音景",
           "heat": "122"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48854145",
+          "text": "2026-09-16 牛铲铲 直播录像",
+          "heat": "117"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48853621",
           "text": "2026-09-16 超绝可爱锅锅酱 直播录像",
           "heat": "113"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48854145",
-          "text": "2026-09-16 牛铲铲 直播录像",
-          "heat": "101"
         },
         {
           "url": "http://www.acfun.cn/v/ac48853371",
@@ -10521,17 +10526,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48854076",
           "text": "2026-09-16 懒銀 直播录像",
-          "heat": "76"
+          "heat": "81"
         },
         {
           "url": "http://www.acfun.cn/v/ac48853391",
           "text": "【初音ミク】欲望【Sharkman】",
           "heat": "57"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48853648",
-          "text": "【全场中字】羊宫妃那的HOOOOPE! #119",
-          "heat": "125"
         },
         {
           "url": "http://www.acfun.cn/v/ac48854473",
