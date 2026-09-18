@@ -1,4 +1,4 @@
-import{i as e}from"./rolldown-runtime-Dd_uD5pT.js";import{n as t,t as n}from"./jsx-runtime-BpzPEenQ.js";import{o as r,s as i}from"./index-DbcZ7MwL.js";import{t as a}from"./Window-cnVTI6MZ.js";var o=e(t(),1);function s(e,t=``){return[{role:`system`,content:`You are a precise Shell Command Explainer API. Your ONLY job is to parse shell commands and return structured JSON for frontend rendering.
+import{i as e}from"./rolldown-runtime-Dd_uD5pT.js";import{n as t,t as n}from"./jsx-runtime-BpzPEenQ.js";import{o as r,s as i}from"./index-dAgcWFN2.js";import{t as a}from"./Window-B8AOyq3T.js";var o=e(t(),1);function s(e,t=``){return[{role:`system`,content:`You are a precise Shell Command Explainer API. Your ONLY job is to parse shell commands and return structured JSON for frontend rendering.
 
 ## INPUT
 - \`command\`: The shell command string to explain.
