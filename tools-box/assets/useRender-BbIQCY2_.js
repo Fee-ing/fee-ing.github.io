@@ -1,0 +1,1 @@
+import{s as e}from"./dist-BIkCOEi7.js";function t(t){return e(t.defaultTagName??`div`,t,t)}export{t};
