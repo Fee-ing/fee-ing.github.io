@@ -1,5 +1,5 @@
 {
-  "timestamp": 1789749940009,
+  "timestamp": 1789750856528,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4462,6 +4462,11 @@
           "heat": "营养师Bruce"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260918Q0B3A600",
+          "text": "男子高空作业从30楼下到2楼发现绳子被剪断，涉事老人赔400元，为何安全绳这么容易剪断？该怎么防人为破坏？",
+          "heat": "贵重物品DR"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260918Q094JD00",
           "text": "AI可以不断生产数学证明，数学家真的会消失吗？",
           "heat": "用户7032021"
@@ -4480,11 +4485,6 @@
           "url": "https://new.qq.com/rain/a/20260917Q04M5W00",
           "text": "美军高官称需为月球周边空间作战做准备，为何急着备战？技术距离现实还有多远？",
           "heat": "闻号说经济"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260918Q0B3A600",
-          "text": "男子高空作业从30楼下到2楼发现绳子被剪断，涉事老人赔400元，为何安全绳这么容易剪断？该怎么防人为破坏？",
-          "heat": "贵重物品DR"
         },
         {
           "url": "https://new.qq.com/rain/a/20260918Q0A96O00",
@@ -10616,32 +10616,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48855665",
           "text": "【柯基】《九一八》｜黄自",
-          "heat": "1373"
+          "heat": "1382"
         },
         {
           "url": "http://www.acfun.cn/v/ac48855598",
           "text": "【翻唱】我恨明月不照我 周末愉快",
-          "heat": "377"
+          "heat": "388"
         },
         {
           "url": "http://www.acfun.cn/v/ac48855690",
           "text": "张梓义第8场线下（广州）现场实拍片段",
-          "heat": "1076"
+          "heat": "1077"
         },
         {
           "url": "http://www.acfun.cn/v/ac48857617",
           "text": "【猪肝来也】不死鸟",
-          "heat": "546"
+          "heat": "623"
         },
         {
           "url": "http://www.acfun.cn/v/ac48856764",
           "text": "来看朴彩英！ROSÉ - new trick 4K版MV",
-          "heat": "847"
+          "heat": "854"
         },
         {
           "url": "http://www.acfun.cn/v/ac48856592",
           "text": "你们的炽！ LE SSERAFIM - 《Made My Night》官方舞蹈版MV",
-          "heat": "788"
+          "heat": "790"
         },
         {
           "url": "http://www.acfun.cn/v/ac48856372",
@@ -10654,14 +10654,19 @@
           "heat": "127"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48857383",
+          "text": "落单的路人，在黑白格填满悲伤",
+          "heat": "218"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48839914",
           "text": "【中国音乐地图之听见内蒙古 马头琴、潮尔音乐集】天边圆溜溜的山峰  本宾锡勒",
           "heat": "145"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48857383",
-          "text": "落单的路人，在黑白格填满悲伤",
-          "heat": "180"
+          "url": "http://www.acfun.cn/v/ac48857646",
+          "text": "【衣笠雪绘】偶像大师灰姑娘 歌切day200",
+          "heat": "216"
         },
         {
           "url": "http://www.acfun.cn/v/ac48856822",
@@ -10719,11 +10724,6 @@
           "heat": "27"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48857646",
-          "text": "【衣笠雪绘】偶像大师灰姑娘 歌切day200",
-          "heat": "153"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48840084",
           "text": "【大塚 愛】I××× 第二版",
           "heat": "28"
@@ -10739,14 +10739,14 @@
           "heat": "55"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48856254",
-          "text": "【東方】暁Records - コマノエール -全力貢献中!! (Full Album) 2017",
-          "heat": "19"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48855875",
           "text": "【初音ミク】アンデッドルラビー【フユウ】",
           "heat": "157"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48856254",
+          "text": "【東方】暁Records - コマノエール -全力貢献中!! (Full Album) 2017",
+          "heat": "19"
         },
         {
           "url": "http://www.acfun.cn/v/ac48856535",
@@ -10761,7 +10761,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48855870",
           "text": "【ヨミ（VESPERBEL）】IRIS OUT",
-          "heat": "116"
+          "heat": "128"
         }
       ]
     },
