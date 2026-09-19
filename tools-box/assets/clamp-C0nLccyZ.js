@@ -1,1 +1,0 @@
-import{f as e}from"./dist-BQt4zFhV.js";function t(t){return e(19)?t:t?`true`:void 0}function n(e,t=-(2**53-1),n=2**53-1){return Math.max(t,Math.min(e,n))}export{t as n,n as t};
