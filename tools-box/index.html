@@ -10,37 +10,41 @@
       @keyframes boot-spin { to { transform: rotate(360deg); } }
       @keyframes boot-progress { from { width: 0%; } to { width: 70%; } }
     </style>
-    <script type="module" crossorigin src="/tools-box/assets/index-DkJlgM7d.js"></script>
+    <script type="module" crossorigin src="/tools-box/assets/index-PBI-LzsZ.js"></script>
     <link rel="modulepreload" crossorigin href="/tools-box/assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/jsx-runtime-BpzPEenQ.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/with-selector-DJ0JX1iX.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/preload-helper-Dw7sw2k_.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/config-TWT0DDpc.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/chunk-62JRHF6Z-CdTzgN7g.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/floating-ui.utils.dom-Bga_OvHD.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/clsx-DB0hHKMi.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/dist-BQt4zFhV.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/dist-BFGQnjj0.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/bundle-mjs-DxdGK6Xj.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/utils-BuCi67hE.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-DPkrYgNt.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-B6MWGpNi.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/button-I56k6C6S.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/createLucideIcon-C9BLIj54.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/info-ChmguEjw.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-Dfv1RSI1.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-BLX3v8BO.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-XdAnWno7.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/triangle-alert-BfJ-SJel.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-B_UO_rRj.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-CNR_Ybd0.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-B9fhDIZL.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/floating-ui.react-dom-CRWPNd1i.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-DMfQvsXw.js">
-    <link rel="stylesheet" crossorigin href="/tools-box/assets/index-BHUHDF6c.css">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-PVzvFFq9.js">
+    <link rel="stylesheet" crossorigin href="/tools-box/assets/index-6s9qUiaw.css">
   </head>
   <body style="margin:0;padding:0;box-sizing:border-box;overflow:hidden">
     <!-- 静态壳与 LoadingScreen 完全同构：均 position:fixed 全屏 + flex 居中，过渡时居中基线一致、零位移 -->
+    <!-- 进度条带 boot-progress 动画（0→70%，8s）：JS 接管前也持续有「正在推进」的观感；
+         React 侧 BootOverlay 从 70% 起步接管，进度单调不回跳 -->
     <div id="root" class="h-screen overflow-hidden" style="height:100vh">
       <div style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:#000;color:#fff;font-family:system-ui,sans-serif;line-height:1.5;user-select:none;overflow:hidden">
-        <div style="width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:2px solid rgba(255,255,255,0.15);border-top-color:rgba(255,255,255,0.8);"></div>
+        <div style="width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:2px solid rgba(255,255,255,0.15);border-top-color:rgba(255,255,255,0.8);animation:boot-spin 0.8s linear infinite;"></div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
           <span style="font-size:14px;letter-spacing:0.3em;color:rgba(255,255,255,0.6)">正在加载资源</span>
           <div style="width:224px;height:3px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden">
-            <div style="height:100%;width:0%;border-radius:9999px;background:rgba(255,255,255,0.8);"></div>
+            <div style="height:100%;width:0%;border-radius:9999px;background:rgba(255,255,255,0.8);animation:boot-progress 8s ease-out forwards;"></div>
           </div>
-          <span style="font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:0.1em;color:rgba(255,255,255,0.4)">0%</span>
+          <span style="font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:0.1em;color:rgba(255,255,255,0.4)">加载中</span>
         </div>
       </div>
     </div>

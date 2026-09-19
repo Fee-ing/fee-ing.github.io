@@ -1,1 +1,0 @@
-var e=[`svg`,`ai`],t=`/phone`,n=31457280;export{t as n,e as r,n as t};
