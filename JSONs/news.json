@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790012742065,
+  "timestamp": 1790013657163,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,9 +3035,19 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://openai.com/index/building-standards-next-phase-ai",
+          "text": "Building standards for the next phase of AI",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/egypt-africa-ai-ecosystem/",
           "text": "From Enablement to Execution, Egypt's AI Ecosystem Reaches Production Scale",
           "heat": "NVIDIA Blog"
+        },
+        {
+          "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths",
+          "text": "OpenAI Academy 扩展新学习路径",
+          "heat": "OpenAI"
         },
         {
           "url": "https://www.mittrchina.com/news/detail/16994",
@@ -3073,16 +3083,6 @@
           "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
           "text": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
           "heat": "NVIDIA Blog"
-        },
-        {
-          "url": "https://blogs.nvidia.com/blog/clean-energy-nvidia-ai/",
-          "text": "5 Companies Using NVIDIA AI for Clean Energy",
-          "heat": "NVIDIA Blog"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31240",
-          "text": "微软花 12 万美元让 AI 重写 Copilot 运行时：43 万行 TS 变 80 万行 Rust，快 15.9 倍",
-          "heat": "aibase"
         }
       ]
     },
