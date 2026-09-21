@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790007340281,
+  "timestamp": 1790008252169,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10611,12 +10611,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48862303",
           "text": "【付小远】一段让人瞬间放松的前奏…",
-          "heat": "1218"
+          "heat": "1233"
         },
         {
           "url": "http://www.acfun.cn/v/ac48855956",
           "text": "【东方/助眠】夏夜的东方和风组曲 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "641"
+          "heat": "672"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48864533",
+          "text": "【衣笠雪绘】梦回非主流 歌切day201",
+          "heat": "208"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840224",
@@ -10634,6 +10639,11 @@
           "heat": "200"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48840265",
+          "text": "【大塚 愛】GO",
+          "heat": "117"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48840235",
           "text": "【龙飘飘】顺风珍重(无原唱)-国语-流行",
           "heat": "70"
@@ -10644,29 +10654,24 @@
           "heat": "122"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48840238",
-          "text": "【普拉西多·多明戈】Sorozábal La tabernera del puerto",
-          "heat": "79"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48840265",
-          "text": "【大塚 愛】GO",
-          "heat": "117"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48840242",
-          "text": "【谢霆锋viva live演唱会】活着viva",
-          "heat": "35"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48840255",
           "text": "【Toni Braxton】He Wasn t Man Enough",
           "heat": "99"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48840238",
+          "text": "【普拉西多·多明戈】Sorozábal La tabernera del puerto",
+          "heat": "79"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48862945",
           "text": "【4K】翡翠地平线  |  Frutiger Aero氛围(无AI)",
-          "heat": "70"
+          "heat": "88"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48840242",
+          "text": "【谢霆锋viva live演唱会】活着viva",
+          "heat": "35"
         },
         {
           "url": "http://www.acfun.cn/v/ac48864101",
@@ -10681,7 +10686,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48862309",
           "text": "【绝区零】薇薇安抽卡，燃尽了！！！！！",
-          "heat": "76"
+          "heat": "80"
         },
         {
           "url": "http://www.acfun.cn/v/ac48863998",
@@ -10689,14 +10694,9 @@
           "heat": "31"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48862200",
-          "text": "＝LOVE（イコールラブ）/ 18th Single『とくべチュ、して』FAN CAM “佐々木舞香",
-          "heat": "61"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48864533",
-          "text": "【衣笠雪绘】梦回非主流 歌切day201",
-          "heat": "123"
+          "url": "http://www.acfun.cn/v/ac48864233",
+          "text": "【白银之城】灰姑娘抽卡!!!!!!!!!!!!!",
+          "heat": "34"
         },
         {
           "url": "http://www.acfun.cn/v/ac48864230",
@@ -10729,11 +10729,6 @@
           "heat": "132"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48864233",
-          "text": "【白银之城】灰姑娘抽卡!!!!!!!!!!!!!",
-          "heat": "21"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48862414",
           "text": "「4K」Björk - Violenlty Happy",
           "heat": "130"
@@ -10757,6 +10752,11 @@
           "url": "http://www.acfun.cn/v/ac48862408",
           "text": "「4K」Björk - Human Behaviour",
           "heat": "106"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48862422",
+          "text": "「4K」Björk - Play Dead",
+          "heat": "96"
         }
       ]
     },
