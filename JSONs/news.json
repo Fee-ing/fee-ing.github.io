@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790010935125,
+  "timestamp": 1790011846405,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2935,6 +2935,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://blogs.nvidia.com/blog/egypt-africa-ai-ecosystem/",
+          "text": "From Enablement to Execution, Egypt's AI Ecosystem Reaches Production Scale",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/16994",
           "text": "爆火一周后，Jev 正式全面开放：一个「不会说话」的 AI，为何风靡硅谷？",
           "heat": "麻省理工科技评论"
@@ -2965,6 +2970,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+          "text": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/clean-energy-nvidia-ai/",
           "text": "5 Companies Using NVIDIA AI for Clean Energy",
           "heat": "NVIDIA Blog"
@@ -2973,16 +2983,6 @@
           "url": "https://www.aibase.com/zh/news/31240",
           "text": "微软花 12 万美元让 AI 重写 Copilot 运行时：43 万行 TS 变 80 万行 Rust，快 15.9 倍",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31239",
-          "text": "月之暗面推出 Kimi Code Desktop 桌面端，把 AI 编程 Agent 直接搬上 macOS 和 Windows",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://openai.com/index/v7",
-          "text": "How V7 gives AI agents institutional memory",
-          "heat": "OpenAI"
         }
       ]
     },
@@ -4262,14 +4262,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260920Q04PQP00",
-          "text": "苹果高管称看到iPhone贴膜会“感到不适”，贴膜是保护刚需还是智商税？手机裸屏能经得住日常磕碰吗？",
-          "heat": "江神"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260921Q03OEY00",
           "text": "饮料用果葡糖浆替代白砂糖引争议，两者差别有多大？配料表中还藏哪些“隐形糖”？",
           "heat": "注册营养师刘又姣"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260920Q04PQP00",
+          "text": "苹果高管称看到iPhone贴膜会“感到不适”，贴膜是保护刚需还是智商税？手机裸屏能经得住日常磕碰吗？",
+          "heat": "江神"
         },
         {
           "url": "https://new.qq.com/rain/a/20260920Q0BGLU00",
