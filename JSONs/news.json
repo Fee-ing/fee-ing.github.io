@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790021736194,
+  "timestamp": 1790022643772,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://openai.com/index/higgsfield-from-prompt-to-production-with-astra",
+          "text": "Higgsfield AI ships new video features in a day with GPT-6 Astra",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths",
           "text": "OpenAI Academy 扩展新学习路径",
           "heat": "OpenAI"
@@ -3077,11 +3082,6 @@
         {
           "url": "https://www.mittrchina.com/news/detail/16992",
           "text": "AI 会带来新一轮的经济泡沫吗？",
-          "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/16991",
-          "text": "AI 虚拟细胞是什么？一篇报告说清楚",
           "heat": "麻省理工科技评论"
         }
       ]
@@ -10561,7 +10561,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48864533",
           "text": "【衣笠雪绘】梦回非主流 歌切day201",
-          "heat": "407"
+          "heat": "417"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840224",
@@ -10571,7 +10571,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48861870",
           "text": "260920 本周女团现场合集 60帧体验",
-          "heat": "141"
+          "heat": "155"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840256",
@@ -10659,11 +10659,6 @@
           "heat": "45"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48862205",
-          "text": "EBiDAN(恵比寿学園男子部) 「Yes! 東京」 MUSIC VIDEO",
-          "heat": "32"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48862405",
           "text": "「4K」Björk - Jóga",
           "heat": "132"
@@ -10697,6 +10692,11 @@
           "url": "http://www.acfun.cn/v/ac48860962",
           "text": "文森特·维古纳指挥雅加达小交响乐团：音乐会“向圣桑致敬”",
           "heat": "25"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48861247",
+          "text": "尼基福钦指挥莫斯科国立学术交响乐团：音乐会“莫扎特歌剧音乐之旅”（2026.7.1）",
+          "heat": "23"
         }
       ]
     },
