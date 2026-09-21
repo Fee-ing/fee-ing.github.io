@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BpzPEenQ.js";import{Vt as t}from"./useBaseUiId-Djwnb2DX.js";var n=e();function r({className:e,...r}){return(0,n.jsx)(`div`,{"data-slot":`skeleton`,className:t(`animate-pulse rounded-md bg-muted`,e),...r})}export{r as t};

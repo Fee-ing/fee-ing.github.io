@@ -10,7 +10,7 @@
       @keyframes boot-spin { to { transform: rotate(360deg); } }
       @keyframes boot-progress { from { width: 0%; } to { width: 70%; } }
     </style>
-    <script type="module" crossorigin src="/tools-box/assets/index-CTZFyHS3.js"></script>
+    <script type="module" crossorigin src="/tools-box/assets/index-CmdMAOnm.js"></script>
     <link rel="modulepreload" crossorigin href="/tools-box/assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/jsx-runtime-BpzPEenQ.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/with-selector-DJ0JX1iX.js">
@@ -21,21 +21,27 @@
     <link rel="modulepreload" crossorigin href="/tools-box/assets/bundle-mjs-DxdGK6Xj.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/floating-ui.utils.dom-Bga_OvHD.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/dist-PlbibXl9.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-Djwnb2DX.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-MzQODkge.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortal-DrgydckO.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-flWDS1TV.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/triangle-alert-BfJ-SJel.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-BkD7-F7Q.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-DtURMNtp.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-Enb1KqSl.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-DedHIqz9.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-Bm1Sc8mM.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-DuXt52X6.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-D0eE_JAH.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/floating-ui.react-dom-CRWPNd1i.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-CCbKdpIx.js">
-    <link rel="stylesheet" crossorigin href="/tools-box/assets/index-D3SB9Yj4.css">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-Cer-ZbQE.js">
+    <link rel="stylesheet" crossorigin href="/tools-box/assets/index-UUpN7LVE.css">
   </head>
   <body style="margin:0;padding:0;box-sizing:border-box;overflow:hidden">
     <!-- 静态壳与 LoadingScreen 完全同构：均 position:fixed 全屏 + flex 居中，过渡时居中基线一致、零位移 -->
     <!-- 进度条带 boot-progress 动画（0→70%，8s）：JS 接管前也持续有「正在推进」的观感；
          React 侧 BootOverlay 从 70% 起步接管，进度单调不回跳 -->
-    <div id="root" class="h-screen overflow-hidden" style="height:100vh">
+    <!-- 根容器高度必须与移动端外壳（tailwind.css 的 app-screen-h）用同一套单位。
+         只写 100vh：iOS Safari 取的是「地址栏收起」的大视口，比可视区更高，
+         100dvh 的外壳矮一截，差额就在底部露出空白；
+         只写 100dvh：不支持 dvh 的旧内核会整条丢弃声明、高度退回 auto，同样撑不满。
+         因此两条都写，由浏览器各取所需。 -->
+    <div id="root" class="h-screen overflow-hidden" style="height:100vh;height:100dvh">
       <div style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:#000;color:#fff;font-family:system-ui,sans-serif;line-height:1.5;user-select:none;overflow:hidden">
         <div style="width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:2px solid rgba(255,255,255,0.15);border-top-color:rgba(255,255,255,0.8);animation:boot-spin 0.8s linear infinite;"></div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
