@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790109937907,
+  "timestamp": 1790110852856,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://www.ithome.com/1/006/004.htm",
+          "text": "全球最快移动 CPU，高通发布第六代骁龙 8 至尊版 / 超级至尊版芯片",
+          "heat": "IT 之家"
+        },
+        {
           "url": "https://www.ithome.com/1/006/003.htm",
           "text": "高通骁龙芯片将整合 HBC 架构：手机本地运行 AI 更快、更省电",
           "heat": "IT 之家"
@@ -3078,11 +3083,6 @@
           "url": "https://www.mittrchina.com/news/detail/16996",
           "text": "2026 PAIR 大会落幕，百余位学者专家共议下一代物理智能",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://daily.dev/posts/anthropic-releases-opus-5-5-and-cuts-pricing-by-20-your-agent-calls-might-secretly-get-routed-to-a-jrjahdiam",
-          "text": "Anthropic releases Claude Opus 5.5 with 20% price cut and silent model rerouting caveat",
-          "heat": "daily.dev"
         }
       ]
     },
@@ -4372,14 +4372,14 @@
           "heat": "刘昭廷"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260922Q0AN2J00",
-          "text": "中国女排3比0横扫日本女排，加冕亚运会十冠王，这场赢在哪里？女排和亚锦赛丢冠时有了哪些变化？",
-          "heat": "孔明空城聊球"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260922Q070RL00",
           "text": "地球“体检报告”亮红灯，九大“行星边界”已突破七个，继续恶化会有什么后果？还能拉回安全线吗？",
           "heat": "拾光者"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260922Q0AN2J00",
+          "text": "中国女排3比0横扫日本女排，加冕亚运会十冠王，这场赢在哪里？女排和亚锦赛丢冠时有了哪些变化？",
+          "heat": "孔明空城聊球"
         },
         {
           "url": "https://new.qq.com/rain/a/20260921Q09HDE00",
