@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790108136457,
+  "timestamp": 1790109046875,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,9 +3045,19 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://www.ithome.com/1/006/003.htm",
+          "text": "高通骁龙芯片将整合 HBC 架构：手机本地运行 AI 更快、更省电",
+          "heat": "IT 之家"
+        },
+        {
           "url": "https://www.leiphone.com/category/weiwu/DHnalKdgCUg8xEpC.html",
           "text": "一张硬件卡片，一场上下文之争：千问办公押注企业 Agent",
           "heat": "雷锋网"
+        },
+        {
+          "url": "https://daily.dev/posts/5zlqdbrtr",
+          "text": "Alibaba unveils Zhenwu V900 chip and full-stack AI strategy at Apsara Conference",
+          "heat": "daily.dev"
         },
         {
           "url": "https://www.mittrchina.com/news/detail/16995",
@@ -3063,16 +3073,6 @@
           "url": "https://daily.dev/posts/anthropic-releases-opus-5-5-and-cuts-pricing-by-20-your-agent-calls-might-secretly-get-routed-to-a-jrjahdiam",
           "text": "Anthropic releases Claude Opus 5.5 with 20% price cut and silent model rerouting caveat",
           "heat": "daily.dev"
-        },
-        {
-          "url": "https://openai.com/index/priorities-principles-third-party-assessments",
-          "text": "OpenAI 阐述第三方 AI 安全评估的优先事项与原则",
-          "heat": "OpenAI"
-        },
-        {
-          "url": "https://www.ithome.com/1/005/988.htm",
-          "text": "后摩智能确认其下代大模型端边 AI 芯片采用 3D CIM 存算一体架构",
-          "heat": "IT 之家"
         }
       ]
     },
