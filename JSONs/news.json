@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790180133795,
+  "timestamp": 1790181051180,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
+          "text": "Advancing Private AI Compute with secure, server-side memory",
+          "heat": "Google DeepMind"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/nvidia-life-sakeena-fiza/",
           "text": "Sakeena Fiza Helps NVIDIA Hardware Succeed at Scale",
           "heat": "NVIDIA Blog"
@@ -3072,11 +3077,6 @@
         {
           "url": "https://www.mittrchina.com/news/detail/17002",
           "text": "斯坦福团队做了一家「AI 药企」，3.7 万个智能体一起做药",
-          "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/17001",
-          "text": "Anthropic、OpenAI 同夜上新：Opus 5.5 多项性能超过 Astra，GPT-6 Sol 赢在价格",
           "heat": "麻省理工科技评论"
         }
       ]
@@ -10571,27 +10571,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48867295",
           "text": "【柯基】papi酱《生气了》｜oh my god你吓到我了",
-          "heat": "1257"
+          "heat": "1260"
         },
         {
           "url": "http://www.acfun.cn/v/ac48865167",
           "text": "【东方】watershard【ぱらどっと Melodic Progressive House】",
-          "heat": "772"
+          "heat": "786"
         },
         {
           "url": "http://www.acfun.cn/v/ac48868968",
           "text": "【绝望女神/翻唱】【机动新世纪高达 X OP DREAMS 梦想】",
-          "heat": "774"
+          "heat": "809"
         },
         {
           "url": "http://www.acfun.cn/v/ac48869295",
           "text": "【衣笠雪绘】精灵亚丝娜prpr 歌切day202《overfly》",
-          "heat": "416"
+          "heat": "487"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867875",
           "text": "【闪光的哈萨维-喀耳刻的魔女】LOSTandFOUND",
-          "heat": "195"
+          "heat": "203"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867127",
@@ -10606,7 +10606,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48869049",
           "text": "［朝鲜音乐］只要妈妈笑一笑",
-          "heat": "125"
+          "heat": "137"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840327",
@@ -10616,7 +10616,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48840349",
           "text": "【普拉西多·多明戈】威尔第：法斯塔夫  Act 3 Dal labbro il canto",
-          "heat": "89"
+          "heat": "98"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867807",
@@ -10631,7 +10631,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48869266",
           "text": "【付小远brenda】2026年九月直播录像合集",
-          "heat": "410"
+          "heat": "483"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867392",
@@ -10641,7 +10641,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48840366",
           "text": "【洪卓立&鍾欣桐】細味【All Around Us】",
-          "heat": "135"
+          "heat": "147"
         },
         {
           "url": "http://www.acfun.cn/v/ac48868502",
@@ -10651,7 +10651,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48840358",
           "text": "【Toni Braxton】How Many Ways",
-          "heat": "96"
+          "heat": "100"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867481",
@@ -10676,12 +10676,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48840379",
           "text": "【大塚 愛】大好きだよ。",
-          "heat": "181"
+          "heat": "225"
         },
         {
           "url": "http://www.acfun.cn/v/ac48868583",
           "text": "［SUZU］25.10.25 peroperopero",
-          "heat": "177"
+          "heat": "182"
         },
         {
           "url": "http://www.acfun.cn/v/ac48861349",
