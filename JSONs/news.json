@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790190936090,
+  "timestamp": 1790191844992,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
+          "text": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://huggingface.co/blog/nvidia/nemotron-diarization",
           "text": "Know Who Spoke When: Build Real-Time, Multi-Speaker AI with NVIDIA Nemotron 3 Diarization",
           "heat": "Hugging Face Blog"
@@ -3045,9 +3050,19 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
+          "text": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
           "text": "Advancing Private AI Compute with secure, server-side memory",
           "heat": "Google DeepMind"
+        },
+        {
+          "url": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+          "text": "How invideo improves color grading 3x with GPT‑6 Astra",
+          "heat": "OpenAI"
         },
         {
           "url": "https://daily.dev/posts/malicious-ai-agents-steal-600k-credit-cards-infect-100-sites-with-skimmers-zgb8oxehj",
@@ -3068,21 +3083,6 @@
           "url": "https://www.aibase.com/zh/news/31305",
           "text": "千问一口气端出五款语音大模型，TTS 价格腰斩七成、ASR 砍掉九成五，把耳朵和嗓子全打包给了开发者",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31314",
-          "text": "科大讯飞正式发布 Spark-ASR-2.0，全面赋能硬件与开放生态",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.ithome.com/1/006/503.htm",
-          "text": "YouTube 推出全新 AI 智能体，能帮创作者「翻红」老视频",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/vcFXR69YQUTL9k43.html",
-          "text": "蚂蚁密算发布企业级可信智能云服务平台「密算一号」，启动首批定向邀测",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -10541,7 +10541,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48867295",
           "text": "【柯基】papi酱《生气了》｜oh my god你吓到我了",
-          "heat": "1284"
+          "heat": "1286"
         },
         {
           "url": "http://www.acfun.cn/v/ac48865167",
@@ -10551,7 +10551,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48868968",
           "text": "【绝望女神/翻唱】【机动新世纪高达 X OP DREAMS 梦想】",
-          "heat": "884"
+          "heat": "896"
         },
         {
           "url": "http://www.acfun.cn/v/ac48869295",
@@ -10564,9 +10564,9 @@
           "heat": "223"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48867127",
-          "text": "{洛天依＆乐正绫}翻调《吹梦到西洲》",
-          "heat": "70"
+          "url": "http://www.acfun.cn/v/ac48867841",
+          "text": "竟然没在A站发现心做し的翻弹，那我来",
+          "heat": "71"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867496",
@@ -10587,11 +10587,6 @@
           "url": "http://www.acfun.cn/v/ac48840349",
           "text": "【普拉西多·多明戈】威尔第：法斯塔夫  Act 3 Dal labbro il canto",
           "heat": "108"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48867841",
-          "text": "竟然没在A站发现心做し的翻弹，那我来",
-          "heat": "71"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840327",
@@ -10681,7 +10676,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48869008",
           "text": "【東方】Rolling Contact Dubliminal Effect 全专2026",
-          "heat": "107"
+          "heat": "117"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48869161",
+          "text": "The Tornados - Do You Come Here Often (1966/原速)",
+          "heat": "33"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867366",
