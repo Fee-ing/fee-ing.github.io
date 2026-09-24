@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790271936409,
+  "timestamp": 1790272853525,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,16 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://wallstreetcn.com/livenews/3170548",
+          "text": "OpenAI、Anthropic 被要求在完成白宫测试之前不能给英国分享新模型",
+          "heat": "华尔街见闻"
+        },
+        {
+          "url": "https://daily.dev/posts/the-pulse-a-new-trend-of-cpu-shortages-6yfwmynmb",
+          "text": "CPU shortages hit cloud infrastructure as AI agent workloads drive demand surge",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31341",
           "text": "阿里达摩院发布食管癌 AI 模型 DAMO EAGLE：不插管，平扫 CT 就能查早癌",
           "heat": "aibase"
@@ -3067,16 +3077,6 @@
         {
           "url": "https://www.aibase.com/zh/news/31356",
           "text": "蚂蚁 inclusionAI 把训练底稿摆上 HuggingFace，Ling、Ring、Ming 全系模型按欧盟 AI 法案交透明账",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-control-resonant/",
-          "text": "Contain the Chaos:「CONTROL Resonant」Launches on GeForce NOW",
-          "heat": "NVIDIA Blog"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31350",
-          "text": "谷歌确认新一代旗舰 Gemini 4 即将推出：已进入后训练，有望远早于年底",
           "heat": "aibase"
         }
       ]
@@ -10486,17 +10486,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48871323",
           "text": "【绝望女神/翻唱】【星际牛仔ED The Real Folk Blues】",
-          "heat": "657"
+          "heat": "678"
         },
         {
           "url": "http://www.acfun.cn/v/ac48871180",
           "text": "【翻唱】鬼ノ宴",
-          "heat": "959"
+          "heat": "964"
         },
         {
           "url": "http://www.acfun.cn/v/ac48869560",
           "text": "【黒碳】ライトダンス - サカナクション【生日作】【翻唱】",
-          "heat": "1038"
+          "heat": "1042"
         },
         {
           "url": "http://www.acfun.cn/v/ac48871186",
@@ -10506,12 +10506,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48870493",
           "text": "【牛子组合】凉凉",
-          "heat": "540"
+          "heat": "584"
         },
         {
           "url": "http://www.acfun.cn/v/ac48870420",
           "text": "きゅうくらりん (Arrangement)",
-          "heat": "728"
+          "heat": "740"
         },
         {
           "url": "http://www.acfun.cn/v/ac48870403",
@@ -10541,7 +10541,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48870363",
           "text": "【maimai でらっくす】Dear Player 2 / tn-shi",
-          "heat": "336"
+          "heat": "342"
         },
         {
           "url": "http://www.acfun.cn/v/ac48840458",
@@ -10561,7 +10561,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48871176",
           "text": "【初音未来】反乌托邦×拼接遗憾",
-          "heat": "89"
+          "heat": "99"
         },
         {
           "url": "http://www.acfun.cn/v/ac48870118",
@@ -10571,7 +10571,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48840416",
           "text": "【龙飘飘】祥祥都吉祥-国语-流行",
-          "heat": "368"
+          "heat": "373"
         },
         {
           "url": "http://www.acfun.cn/v/ac48870091",
@@ -10586,7 +10586,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48840464",
           "text": "【钟欣桐&方力申】一生一世【Moov On...】",
-          "heat": "243"
+          "heat": "256"
         },
         {
           "url": "http://www.acfun.cn/v/ac48871690",
@@ -10619,14 +10619,14 @@
           "heat": "214"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48840449",
+          "text": "【谢霆锋viva live演唱会】游乐场",
+          "heat": "117"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48840405",
           "text": "【中国音乐地图之听见内蒙古 蒙古长调】褐色的麻雀",
           "heat": "111"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48840449",
-          "text": "【谢霆锋viva live演唱会】游乐场",
-          "heat": "103"
         },
         {
           "url": "http://www.acfun.cn/v/ac48862161",
