@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790284538165,
+  "timestamp": 1790285446558,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2860,6 +2860,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://daily.dev/posts/anthropic-signs-11-6bn-akamai-cloud-deal-and-gets-warrant-for-5-of-akamai-p2zii26cu",
+          "text": "Anthropic signs $11.6bn Akamai cloud deal with warrant for 5% of Akamai stock",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17009",
           "text": "AGI 时代真的来了？可能只是炒作",
           "heat": "麻省理工科技评论"
@@ -2887,11 +2892,6 @@
         {
           "url": "https://www.aibase.com/zh/news/31341",
           "text": "阿里达摩院发布食管癌 AI 模型 DAMO EAGLE：不插管，平扫 CT 就能查早癌",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31356",
-          "text": "蚂蚁 inclusionAI 把训练底稿摆上 HuggingFace，Ling、Ring、Ming 全系模型按欧盟 AI 法案交透明账",
           "heat": "aibase"
         }
       ]
