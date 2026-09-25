@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790343943029,
+  "timestamp": 1790344861452,
   "data": [
     {
       "source": "足球",
@@ -7,7 +7,7 @@
       "content": [
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab67a3f2ae54native.htm",
-          "text": "DO独家：曼城115项指控除1项外全部被判有罪！"
+          "text": "DO独家：曼城115项指控已做出裁决，除其中1项外其余全部成立！"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-25/match2298124date2026vnative.htm",
@@ -20,6 +20,10 @@
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab665dbb51b6native.htm",
           "text": "1000万年薪世界第一！安帅带队友谊赛平澳大利亚，世界杯16强出局"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab67b33b90adnative.htm",
+          "text": "曼城115项指控可能结果：谴责&罚款&扣分 可能追溯实施&剥夺冠军"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab676eb52098native.htm",
@@ -36,10 +40,6 @@
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab62299af424native.htm",
           "text": "超级逆转！库拉索62分钟0-3落后，20分钟内连入4球逆转哥斯达黎加"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab627e1c8e3fnative.htm",
-          "text": "传就是单刀！王霜最后时刻未传空位队友自己打门被扑，比赛进加时"
         }
       ]
     },
@@ -56,14 +56,6 @@
           "text": "颗粒无收！中国篮协给四支亚运会的参赛队伍定下的目标全都是冠军"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab6477ae7012native.htm",
-          "text": "韩媒：中国女篮一直认为韩国队不如自己 一万次投篮不奏效了"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab639b16207dnative.htm",
-          "text": "媒体人：大家可能在想小宝和韩旭没来 其实韩国一样有核心没来"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-09-25/6ab61e5b0e7d1native.htm",
           "text": "徐静雨：男篮918输日本根本没人关心 关注金牌还不如关注AI发展"
         },
@@ -72,16 +64,24 @@
           "text": "记者：周琦给郭士强打电话说我能打亚运 都要衣服尺码&后来没下文"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab61d8c4a5d8native.htm",
-          "text": "徐静雨：樊振东不打亚运咋了？美国男篮也不是每次都有詹姆斯库里"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-09-25/6ab636223f980native.htm",
           "text": "女篮三分13中0！杨毅：这已经不是大清篮球了 这是周口店篮球"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab63279bb9cenative.htm",
-          "text": "力不从心！王思雨10中1得8分5板10助 吃两个违体被罚出场"
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab64c04e452enative.htm",
+          "text": "媒体人：宫鲁鸣的意思是没有好食材炒不出好菜 邓雨婷能不能用？"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab639b16207dnative.htm",
+          "text": "媒体人：大家可能在想小宝和韩旭没来 其实韩国一样有核心没来"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab6477ae7012native.htm",
+          "text": "韩媒：中国女篮一直认为韩国队不如自己 一万次投篮不奏效了"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab64a709d566native.htm",
+          "text": "媒体人：中国篮球之所以脱轨如此严重 归根结底还是因为外线太差"
         }
       ]
     }
