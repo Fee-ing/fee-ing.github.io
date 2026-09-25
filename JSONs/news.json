@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790365576258,
+  "timestamp": 1790366455703,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://www.techradar.com/pro/alibaba-wants-to-expand-data-center-capacity-past-20-gw-by-2032-says-its-new-v900-ai-chip-can-scale-to-500-000-card-clusters-but-will-chinas-most-powerful-ai-chip-be-enough-to-displace-nvidia-gpus",
+          "text": "Alibaba unveils V900 AI chip, plans data center capacity past 20 GW by 2032",
+          "heat": "techradar.com"
+        },
+        {
           "url": "https://simonwillison.net/2026/Sep/25/john-gruber/",
           "text": "Quoting John Gruber",
           "heat": "Simon Willison"
@@ -3072,11 +3077,6 @@
         {
           "url": "https://wallstreetcn.com/articles/3782549",
           "text": "马斯克放话：Colossus 2 部署的英伟达芯片年底或增加一倍",
-          "heat": "华尔街见闻"
-        },
-        {
-          "url": "https://wallstreetcn.com/articles/3782541",
-          "text": "AI 资本开支冲向 1.7 万亿美元，回报要达到什么水平才算合理？高盛算了一笔账",
           "heat": "华尔街见闻"
         }
       ]
@@ -10456,37 +10456,37 @@
         {
           "url": "http://www.acfun.cn/v/ac48871580",
           "text": "【锅锅x怀瑜x阔落】千里邀月——共饮此杯赏此月，夜好眠",
-          "heat": "1753"
+          "heat": "1754"
         },
         {
           "url": "http://www.acfun.cn/v/ac48873434",
           "text": "今夜的风悄悄月悄悄~",
-          "heat": "1279"
+          "heat": "1287"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872065",
           "text": "【颜音】中秋歌回~祝大家节日快乐",
-          "heat": "1442"
+          "heat": "1444"
         },
         {
           "url": "http://www.acfun.cn/v/ac48871599",
           "text": "“原来和思念的人相见，就是人们常说的团圆” | 愿年年有今夜《妙妙人间》",
-          "heat": "1089"
+          "heat": "1090"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872627",
           "text": "【柯基】《金风玉露》～～～晚风啊～～～",
-          "heat": "1160"
+          "heat": "1161"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872351",
           "text": "「Super8」《如烟》大家中秋快乐鸭～",
-          "heat": "917"
+          "heat": "920"
         },
         {
           "url": "http://www.acfun.cn/v/ac48873230",
           "text": "【猪肝来也】one love",
-          "heat": "1059"
+          "heat": "1060"
         },
         {
           "url": "http://www.acfun.cn/v/ac48873021",
@@ -10496,7 +10496,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48872948",
           "text": "明月几时有？我想有时就有～",
-          "heat": "1022"
+          "heat": "1024"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872771",
@@ -10506,7 +10506,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48873165",
           "text": "折月满兜（cover镜予歌）",
-          "heat": "313"
+          "heat": "332"
         },
         {
           "url": "http://www.acfun.cn/v/ac48873321",
