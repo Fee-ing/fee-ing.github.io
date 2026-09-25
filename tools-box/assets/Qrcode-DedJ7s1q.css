@@ -1,0 +1,1 @@
+:root{--qr-primary:#7c3aed;--qr-ink:#1e1b4b;--qr-muted:#6b7280;--qr-border:#ddd6fe;--qr-active:#eef2ff;--qr-page:#faf5ff;--qr-shadow:#7c3aed26;--qr-ring:#7c3aed80}.qr-card-glow{border:1px solid var(--qr-border);box-shadow:0 0 40px var(--qr-shadow);background-color:#fff}
