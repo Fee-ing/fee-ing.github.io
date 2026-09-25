@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790358340456,
+  "timestamp": 1790359258443,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2635,6 +2635,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://simonwillison.net/2026/Sep/25/john-gruber/",
+          "text": "Quoting John Gruber",
+          "heat": "Simon Willison"
+        },
+        {
           "url": "https://www.leiphone.com/category/yanxishe/8IlKEXMO2Pxju8ke.html",
           "text": "梁文锋狙击战：深扒那些梁文锋署名的论文有多牛",
           "heat": "雷锋网"
@@ -2668,11 +2673,6 @@
           "url": "https://www.tmtpost.com/8152613.html",
           "text": "灵巧手不是等 AGI 才用：一份被误读的物理 AI 落地地图",
           "heat": "maomu.com"
-        },
-        {
-          "url": "https://aws.amazon.com/blogs/machine-learning/scaling-moe-reinforcement-learning-on-amazon-eks-with-efa-and-deepep-with-40-more-throughput/",
-          "text": "Scaling MoE reinforcement learning on Amazon EKS with EFA and DeepEP with 40% more throughput",
-          "heat": "aws.amazon.com"
         }
       ]
     },
@@ -3957,6 +3957,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20260925Q0A1OA00",
+          "text": "17岁陈妤颉亚运女子百米跑出11秒06夺冠并打破赛会纪录，这个成绩有多了不起？这个成绩在奥运会能排到什么位置？",
+          "heat": "英仙说"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20260924Q0839S00",
           "text": "表演艺术家游本昌去世，除了济公之外他还演过哪些经典角色？他对文艺界做出了哪些贡献？",
           "heat": "不怕困难的王导演"
@@ -3970,11 +3975,6 @@
           "url": "https://new.qq.com/rain/a/20260924Q0EUIH00",
           "text": "国乒男团亚运队史首负日本丢金牌，赛前变阵田忌赛马失利，决赛前该变阵吗？为何这次战术崩塌了？",
           "heat": "江神"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260925Q0A1OA00",
-          "text": "17岁陈妤颉亚运女子百米跑出11秒06夺冠并打破赛会纪录，这个成绩有多了不起？这个成绩在奥运会能排到什么位置？",
-          "heat": "英仙说"
         },
         {
           "url": "https://new.qq.com/rain/a/20260925Q0474Q00",
@@ -9636,32 +9636,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48871580",
           "text": "【锅锅x怀瑜x阔落】千里邀月——共饮此杯赏此月，夜好眠",
-          "heat": "1718"
+          "heat": "1725"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872065",
           "text": "【颜音】中秋歌回~祝大家节日快乐",
-          "heat": "1421"
+          "heat": "1423"
         },
         {
           "url": "http://www.acfun.cn/v/ac48873434",
           "text": "今夜的风悄悄月悄悄~",
-          "heat": "1160"
+          "heat": "1196"
         },
         {
           "url": "http://www.acfun.cn/v/ac48871599",
           "text": "“原来和思念的人相见，就是人们常说的团圆” | 愿年年有今夜《妙妙人间》",
-          "heat": "1073"
+          "heat": "1077"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872627",
           "text": "【柯基】《金风玉露》～～～晚风啊～～～",
-          "heat": "1143"
+          "heat": "1147"
         },
         {
           "url": "http://www.acfun.cn/v/ac48873230",
           "text": "【猪肝来也】one love",
-          "heat": "1044"
+          "heat": "1049"
         },
         {
           "url": "http://www.acfun.cn/v/ac48873021",
@@ -9671,12 +9671,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48872948",
           "text": "明月几时有？我想有时就有～",
-          "heat": "979"
+          "heat": "992"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872351",
           "text": "「Super8」《如烟》大家中秋快乐鸭～",
-          "heat": "839"
+          "heat": "847"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872771",
@@ -9706,7 +9706,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48869254",
           "text": "【徵羽摩柯 V4】三百六十五里路【Vocaloid Cover】",
-          "heat": "87"
+          "heat": "92"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872788",
@@ -9721,7 +9721,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48872890",
           "text": "中秋节快乐呐",
-          "heat": "121"
+          "heat": "135"
         },
         {
           "url": "http://www.acfun.cn/v/ac48871853",
@@ -9744,11 +9744,6 @@
           "heat": "102"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48871807",
-          "text": "【少女a】原MV#术力口#镜音铃#术曲中日双字幕原MV#转载非原创",
-          "heat": "370"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48872878",
           "text": "弹一下试试3",
           "heat": "175"
@@ -9759,9 +9754,19 @@
           "heat": "88"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48872653",
+          "text": "伊万·斯托尔博夫指挥马林斯基交响乐团：第六届“长笛名家”音乐节闭幕式音乐会",
+          "heat": "89"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48846023",
           "text": "【钟欣桐&陈伟霆】最在现场 【人人彈起 】",
           "heat": "107"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48872432",
+          "text": "无耻的抄袭歌曲 合集 第155期",
+          "heat": "84"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872261",
@@ -9769,19 +9774,14 @@
           "heat": "159"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48872653",
-          "text": "伊万·斯托尔博夫指挥马林斯基交响乐团：第六届“长笛名家”音乐节闭幕式音乐会",
-          "heat": "89"
+          "url": "http://www.acfun.cn/v/ac48872426",
+          "text": "【unravel】汐间萤 vs 周深 谁更强？",
+          "heat": "60"
         },
         {
           "url": "http://www.acfun.cn/v/ac48846001",
           "text": "【普拉西多·多明戈】舒伯特：Mille Cherubini in coro After W",
           "heat": "113"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48872550",
-          "text": "盗的视频，侵权必删",
-          "heat": "342"
         }
       ]
     },
