@@ -1,14 +1,10 @@
 {
-  "timestamp": 1790386242615,
+  "timestamp": 1790387137041,
   "data": [
     {
       "source": "足球",
       "type": "直播吧",
       "content": [
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab67a3f2ae54native.htm",
-          "text": "重磅！DO独家：曼城115项指控已做出裁决，除1项外其余全部成立！"
-        },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-26/match1949131date2026vnative.htm",
           "text": "齐祖开门红！法国1-0土耳其 姆巴佩破门+伤退 奥利塞献助攻"
@@ -30,16 +26,20 @@
           "text": "罗德里谈曼城违规：我们的成就不是靠钱买来的，相信俱乐部清白"
         },
         {
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab720b3d8ebenative.htm",
+          "text": "若降级无法跑路？BBC：曼城多名球员合同未包含降级解约条款"
+        },
+        {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-25/6ab62299af424native.htm",
           "text": "超级逆转！库拉索62分钟0-3落后，20分钟内连入4球逆转哥斯达黎加"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab6be2a7fa4dnative.htm",
-          "text": "法国历史第二人！齐达内执教首战的首发中，竟然没有任何新国脚"
-        },
-        {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab6c58579fa6native.htm",
           "text": "电讯报：若曼城被剥夺全部冠军，红军曼联各拿3座英超国米1座欧冠"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab6d270dfbfanative.htm",
+          "text": "曼城将被裁定违规，德赫亚发文：那我到底赢了多少个英超冠军？"
         }
       ]
     },
@@ -48,16 +48,12 @@
       "type": "直播吧",
       "content": [
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab6a2be4ee76native.htm",
-          "text": "下一站在哪？Shams：灰熊已裁掉后卫拉塞尔 此前传闻CBA球队有意"
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab71c539b145native.htm",
+          "text": "可签4年2.76亿~文胖：唐斯和尼克斯的提前续约谈判差距达到数千万"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab641b5bf85bnative.htm",
-          "text": "颗粒无收！中国篮协给四支亚运会的参赛队伍定下的目标全都是冠军"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab709d3a248enative.htm",
-          "text": "火箭队内三分训练命中率前五：范乔丹70% 谢泼德/博格丹68% KD63%"
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab700e79b3afnative.htm",
+          "text": "那这次谁负责呢？19年中国男篮出局 姚明斩钉截铁：我负责！"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-09-26/6ab69c742b7eanative.htm",
@@ -68,6 +64,14 @@
           "text": "记者：周琦给郭士强打电话说我能打亚运 都要衣服尺码&后来没下文"
         },
         {
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab6a2be4ee76native.htm",
+          "text": "下一站在哪？Shams：灰熊已裁掉后卫拉塞尔 此前传闻CBA球队有意"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab641b5bf85bnative.htm",
+          "text": "颗粒无收！中国篮协给四支亚运会的参赛队伍定下的目标全都是冠军"
+        },
+        {
           "url": "https://news.zhibo8.com/nba/2026-09-25/6ab61e5b0e7d1native.htm",
           "text": "徐静雨：男篮918输日本根本没人关心 关注金牌还不如关注AI发展"
         },
@@ -76,12 +80,8 @@
           "text": "詹姆斯：选择76人因与马克西私交 布朗交易 以及我想帮恩比德夺冠"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/match2301104date2026vnative.htm",
-          "text": "🏀中国女篮三分13中0负韩国无缘亚运会决赛 王思雨遭吹致命违体"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab639b16207dnative.htm",
-          "text": "媒体人：大家可能在想小宝和韩旭没来 其实韩国一样有核心没来"
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab60c11e8ce2native.htm",
+          "text": "放弃千万年薪？李贤重：我一定要去NBA试试 回日本可能后悔一辈子"
         }
       ]
     }
