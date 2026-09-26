@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790464540685,
+  "timestamp": 1790465447773,
   "data": [
     {
       "source": "足球",
@@ -22,12 +22,12 @@
           "text": "早报：这就是世界冠军的实力吗"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-27/6ab838e242c1cnative.htm",
-          "text": "41岁还在C！莫德里奇一路推进后爆射世界波，助克罗地亚2-1胜捷克"
-        },
-        {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-27/6ab8482f520c4native.htm",
           "text": "带队夺冠！38岁迪马利亚轰任意球世界波，完全复刻梅西11年前进球"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-27/6ab838e242c1cnative.htm",
+          "text": "41岁还在C！莫德里奇一路推进后爆射世界波，助克罗地亚2-1胜捷克"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-27/6ab8321b73511native.htm",
@@ -38,8 +38,8 @@
           "text": "无敌斗牛士！西班牙连续39场不败，继续刷新足坛国家队纪录"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab7d57f16fa1native.htm",
-          "text": "留住老本？BBC：英超联赛内部对剥夺曼城过往冠军并没有太大兴趣"
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab7a56b0ba88native.htm",
+          "text": "历史首次！自中国代表团参加亚运会以来，男足成绩首次追平男篮"
         }
       ]
     },
@@ -47,6 +47,10 @@
       "source": "篮球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-27/6ab83c31a6c56native.htm",
+          "text": "Shams：公牛将罗布·迪林厄姆交易至黄蜂 换来巴迪·希尔德和现金"
+        },
         {
           "url": "https://news.zhibo8.com/nba/2026-09-26/6ab7302e20efdnative.htm",
           "text": "库里本已“打爆顶薪” 但最后放弃顶薪😭为球队省出一个库明加"
@@ -56,16 +60,8 @@
           "text": "明夏5年3.6亿历史最大合同留队？名记：没人认为约基奇会离开掘金"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-27/6ab83c31a6c56native.htm",
-          "text": "Shams：公牛将罗布·迪林厄姆交易至黄蜂 换来巴迪·希尔德和现金"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab72b985420anative.htm",
-          "text": "Shams：库里2年1.16亿美元降薪提前续约勇士！第二年球员选项"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab7844030b8enative.htm",
-          "text": "遮羞布！国家队26年集训及交流经费1943万 4项无缘决赛仅女篮夺牌"
+          "url": "https://news.zhibo8.com/nba/2026-09-27/6ab8144d1edb9native.htm",
+          "text": "追梦谈球哥：希望他能再打一年 凑满10个赛季获得应得的福利"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-09-26/6ab72f1c4b74fnative.htm",
@@ -76,12 +72,16 @@
           "text": "历史首现！詹姆斯、杜兰特和库里均无缘ESPN百大球星前十榜单"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab797164d7f3native.htm",
-          "text": "张子宇很难完全跟上平时的训练强度 她的训练完整性一直都有问题"
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab7844030b8enative.htm",
+          "text": "遮羞布！国家队26年集训及交流经费1943万 4项无缘决赛仅女篮夺牌"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab7be6152caanative.htm",
-          "text": "杨毅：亚运会韩国男女篮双冠 东亚篮球现在比的是谁退步速度更快"
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab72b985420anative.htm",
+          "text": "Shams：库里2年1.16亿美元降薪提前续约勇士！第二年球员选项"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab72b0c457d3native.htm",
+          "text": "离大谱！前CBA外援皮特森关键罚球不进 被对手1.5秒后场三分绝杀"
         }
       ]
     }
