@@ -1,10 +1,14 @@
 {
-  "timestamp": 1790408735350,
+  "timestamp": 1790409655660,
   "data": [
     {
       "source": "足球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/match2298091date2026vnative.htm",
+          "text": "挺进4强！U23国足3-0泰国半决赛将战韩国 胡荷韬建功张玉宁破门"
+        },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab7724b828fanative.htm",
           "text": "酣畅淋漓！张玉宁替补出场破门，U23国足3-0领先泰国"
@@ -22,6 +26,10 @@
           "text": "🕯️著名音乐家刘欢昨日在上海不幸病逝，享年63岁"
         },
         {
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab7556a7e357native.htm",
+          "text": "创历史！U23国足自2002年亚运会改制以来，首进挺进男足四强！"
+        },
+        {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab762d2cf6e5native.htm",
           "text": "错失绝佳良机！依木兰快发，毛伟杰超级单刀被泰国后卫回追解围"
         },
@@ -30,16 +38,8 @@
           "text": "这集我看过！U23亚洲杯国足3-0越南，为球队打入首球的也是彭啸"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab7722c81560native.htm",
-          "text": "加时0-1中国女足！官方：为肯定越南女足努力，足协奖励3亿越南盾"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab74256bedb7native.htm",
-          "text": "你认同吗？孙继海：若赵松源一直在清华读书，错过生涯节点不可逆"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab772946b55fnative.htm",
-          "text": "心态崩了！U23国足3-0领先泰国，泰国球员表情有些绝望"
+          "url": "https://news.zhibo8.com/zuqiu/2026-09-26/6ab77622e2ee7native.htm",
+          "text": "进球无效！中国队任意球机会张玉宁破门，主裁判罚朱辰杰犯规在先"
         }
       ]
     },
@@ -56,32 +56,32 @@
           "text": "『吧友评选』🌟新赛季30大球星评选👑谁是No.7球星？"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab7712fa2dc8native.htm",
-          "text": "亚运会女篮铜牌战首节战罢 中国女篮暂时17比20落后中国台北女篮"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-09-26/6ab776a51a743native.htm",
           "text": "亚运女篮铜牌战上半场：中国女篮与中国台北女篮战成36平！"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab7712fa2dc8native.htm",
+          "text": "亚运会女篮铜牌战首节战罢 中国女篮暂时17比20落后中国台北女篮"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-09-26/6ab72b0c457d3native.htm",
           "text": "离大谱！前CBA外援皮特森关键罚球不进 被对手1.5秒后场三分绝杀"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab665163579dnative.htm",
-          "text": "媒体人：中国女篮每天固定要做2个小时的大力量 重量甚至超过男篮"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab72ea576d22native.htm",
-          "text": "2年1.16亿提前续约！库里总薪资达6.52亿 连超三巨星升至历史第一"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-09-26/6ab7302e20efdnative.htm",
           "text": "库里本已“打爆顶薪” 但最后放弃顶薪😭为球队省出一个库明加"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab6477ae7012native.htm",
-          "text": "韩媒：中国女篮一直认为韩国队不如自己 一万次投篮不奏效了"
+          "url": "https://news.zhibo8.com/nba/2026-09-26/6ab6a2be4ee76native.htm",
+          "text": "下一站在哪？Shams：灰熊已裁掉后卫拉塞尔 此前传闻CBA球队有意"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab62b2b7c016native.htm",
+          "text": "怎么那么高啊！张子宇站着轻松2+1 韩国女篮气笑了"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-25/6ab6402e064d2native.htm",
+          "text": "女篮三分13中0！宫鲁鸣：我自己做运动员的时候 也曾10中0"
         }
       ]
     }
