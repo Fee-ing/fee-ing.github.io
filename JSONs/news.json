@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790540142670,
+  "timestamp": 1790541049003,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2825,6 +2825,11 @@
           "heat": "199IT"
         },
         {
+          "url": "https://www.techradar.com/pro/an-asus-homage-to-legendary-apple-mac-pro-gb300-dgx-workstation-gets-two-thumbs-up-from-reviewer-who-calls-usd120-000-ai-supercomputer-the-most-capable-thing-weve-ever-put-on-a-desk",
+          "text": "Asus ExpertCenter Pro ET900N G3 工作站发布：搭载 Nvidia GB300 Grace Blackwell Ultra 超级芯片，被评「我们桌上见过的最强设备」",
+          "heat": "techradar.com"
+        },
+        {
           "url": "https://news.qq.com/rain/a/20260927A0BNXZ00",
           "text": "答案正确，推理就可靠吗？V-Rubrics 用 35 万条细粒度准则细化多模态强化学习奖励",
           "heat": "腾讯网"
@@ -2843,11 +2848,6 @@
           "url": "https://news.mydrivers.com/1/1154/1154180.htm",
           "text": "AI 客服比人还会踢皮球，是什么技术原理",
           "heat": "快科技"
-        },
-        {
-          "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651059900&idx=2&sn=cab09529af435a2c01a2dfb34ca7899e",
-          "text": "CoRL 2026 | 0 条带力数据预训练！上海交大卢策吾、汶川团队让 VLA 学会力",
-          "heat": "机器之心"
         }
       ]
     },
@@ -4172,14 +4172,14 @@
           "heat": "点评校尉"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260927Q0CX3V00",
-          "text": "国足热身赛0比3完败于新西兰，球队与世界杯参赛队差距有多大？需要在哪些方面提升？",
-          "heat": "英仙说"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260927Q0CBY200",
           "text": "张雪机车团队在意大利乘坐的大巴车遭盗匪光顾多人被盗，当地小偷有多猖獗？去那旅游该怎么防范？",
           "heat": "本来就是个局外人"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260927Q0CX3V00",
+          "text": "国足热身赛0比3完败于新西兰，球队与世界杯参赛队差距有多大？需要在哪些方面提升？",
+          "heat": "英仙说"
         },
         {
           "url": "https://new.qq.com/rain/a/20260926Q08PJ000",
@@ -13858,17 +13858,17 @@
         {
           "url": "https://www.dongchedi.com/article/7688731408084828734",
           "text": "宁德时代仍是金字招牌，但车企不再只有一个答案",
-          "heat": "350"
+          "heat": "352"
         },
         {
           "url": "https://www.dongchedi.com/article/7688372046665826878",
           "text": "休旅旗舰 名副其实 测评五羊本田NWZ150",
-          "heat": "210"
+          "heat": "211"
         },
         {
           "url": "https://www.dongchedi.com/article/7689042120192115225",
           "text": "试完新世代iX3，我发现宝马故意把智驾做反了",
-          "heat": "147"
+          "heat": "152"
         },
         {
           "url": "https://www.dongchedi.com/article/7687974191325561369",
