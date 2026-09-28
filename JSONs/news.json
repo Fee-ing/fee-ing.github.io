@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790622944599,
+  "timestamp": 1790623847633,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2590,6 +2590,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://simonwillison.net/2026/Sep/28/joedaroo/",
+          "text": "Quoting @joedaroo",
+          "heat": "Simon Willison"
+        },
+        {
           "url": "https://huggingface.co/blog/Hcompany/holo4",
           "text": "Holo4: powering generalist computer-use agents",
           "heat": "Hugging Face Blog"
@@ -2617,11 +2622,6 @@
         {
           "url": "https://www.aibase.com/zh/news/31382",
           "text": "英伟达发布 1 亿参数免费模型 Nemotron3，支持 8 人实时语音分割识别",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31384",
-          "text": "暗网疯抢 AI 算力：顶配账号打三折卖，黑客白嫖大模型搞攻击",
           "heat": "aibase"
         }
       ]
@@ -3917,14 +3917,14 @@
           "heat": "本来就是个局外人"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260928Q04AFQ00",
-          "text": "《兰香如故》站内热度破33000，有望超过《庆余年2》冲击史冠吗？从《知否》到《雁回时》再到《兰香如故》，宅斗为何易出爆款？",
-          "heat": "不怕困难的王导演"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260928Q075J900",
           "text": "亚运会马拉松竞走项目冠军因“穿错鞋”被取消成绩，鞋子对比赛结果能产生多大影响？为何不在比赛前进行装备审查？",
           "heat": "营养师Bruce"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260928Q04AFQ00",
+          "text": "《兰香如故》站内热度破33000，有望超过《庆余年2》冲击史冠吗？从《知否》到《雁回时》再到《兰香如故》，宅斗为何易出爆款？",
+          "heat": "不怕困难的王导演"
         },
         {
           "url": "https://new.qq.com/rain/a/20260927Q08Q5800",
@@ -3932,14 +3932,14 @@
           "heat": "不怕困难的王导演"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260927Q0CX3V00",
-          "text": "国足热身赛0比3完败于新西兰，球队与世界杯参赛队差距有多大？需要在哪些方面提升？",
-          "heat": "英仙说"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20260928Q0BPU400",
           "text": "林诗栋本届亚运会身兼4项拿到3块金牌，他未来能扛起男乒大旗吗？可以期待他洛杉矶奥运会上的表现吗？",
           "heat": "江神"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260927Q0CX3V00",
+          "text": "国足热身赛0比3完败于新西兰，球队与世界杯参赛队差距有多大？需要在哪些方面提升？",
+          "heat": "英仙说"
         },
         {
           "url": "https://new.qq.com/rain/a/20260928Q04GVV00",
@@ -13003,7 +13003,7 @@
         {
           "url": "https://www.dongchedi.com/article/7690024500821983769",
           "text": "2026款上汽大众ID.ERA 9X完全评价报告",
-          "heat": "37"
+          "heat": "38"
         },
         {
           "url": "https://www.dongchedi.com/article/7688587937487176217",
