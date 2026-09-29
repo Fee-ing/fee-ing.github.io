@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790707541885,
+  "timestamp": 1790708459198,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,9 +3055,19 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://www.ithome.com/1/008/531.htm",
+          "text": "OpenAI 推出 Decisions API：150 毫秒极速响应，让 AI 从「聊天」走向「实时决策」",
+          "heat": "IT 之家"
+        },
+        {
           "url": "https://magazine.sebastianraschka.com/p/classifier-history-and-jev",
           "text": "Language Models for Text Classification: From Bag-of-Words to Jev",
           "heat": "sebastianraschka.com"
+        },
+        {
+          "url": "https://www.ithome.com/1/008/529.htm",
+          "text": "OpenAI ChatGPT 账号变身「万能钥匙」：可一键登录网站，Notion / GitLab 率先接入",
+          "heat": "IT 之家"
         },
         {
           "url": "https://wallstreetcn.com/livenews/3172389",
@@ -3073,16 +3083,6 @@
           "url": "https://www.mittrchina.com/news/detail/17029",
           "text": "无人机的下一步，是「飞行智能」｜对话浙大高飞",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.techflowpost.com/zh-CN/newsletter/138277",
-          "text": "Anthropic 披露与 SpaceX 签署高达 845 亿美元的算力协议",
-          "heat": "techflowpost.com"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/D0f2E1vxteSIbZVF.html",
-          "text": "从 App 到服务，腾讯 Marvis 为什么认准「管家」",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -10561,37 +10561,37 @@
         {
           "url": "http://www.acfun.cn/v/ac48880114",
           "text": "【柯基】《鞋儿破帽儿破》｜电视剧《济公》主题曲",
-          "heat": "1227"
+          "heat": "1233"
         },
         {
           "url": "http://www.acfun.cn/v/ac48881412",
           "text": "当困难来临的时候",
-          "heat": "747"
+          "heat": "765"
         },
         {
           "url": "http://www.acfun.cn/v/ac48880891",
           "text": "【MV】ふつつかな悪女ではございますが ～雛宮蝶鼠とりかえ伝～「Sunny」（恶女不才，请多关照）",
-          "heat": "1127"
+          "heat": "1129"
         },
         {
           "url": "http://www.acfun.cn/v/ac48879140",
           "text": "【东方】MAID I MADE【暁Records公式 PV Stack】",
-          "heat": "559"
+          "heat": "567"
         },
         {
           "url": "http://www.acfun.cn/v/ac48881078",
           "text": "泪海（cover许茹芸）",
-          "heat": "327"
+          "heat": "343"
         },
         {
           "url": "http://www.acfun.cn/v/ac48880239",
           "text": "キスだって左利き（翻自SKE48）Kiss的触碰~ 接吻也是左撇子",
-          "heat": "175"
+          "heat": "186"
         },
         {
           "url": "http://www.acfun.cn/v/ac48881272",
           "text": "吉他弹唱《butterfly》 被宣召的孩子们~出发！",
-          "heat": "185"
+          "heat": "195"
         },
         {
           "url": "http://www.acfun.cn/v/ac48880145",
@@ -10612,11 +10612,6 @@
           "url": "http://www.acfun.cn/v/ac48851236",
           "text": "【中国音乐地图之听见内蒙古 蒙古长调】金色圣山",
           "heat": "80"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48879665",
-          "text": "【直播源中字】梦限大MewType 47都道府县制霸之旅 东京场",
-          "heat": "189"
         },
         {
           "url": "http://www.acfun.cn/v/ac48881014",
@@ -10679,14 +10674,14 @@
           "heat": "22"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48881431",
+          "text": "2026-09-28 贝学姐 直播录像",
+          "heat": "160"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48879703",
           "text": "【Suno AI 原创】柠檬",
           "heat": "21"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48881431",
-          "text": "2026-09-28 贝学姐 直播录像",
-          "heat": "152"
         },
         {
           "url": "http://www.acfun.cn/v/ac48880951",
@@ -10707,6 +10702,11 @@
           "url": "http://www.acfun.cn/v/ac48880804",
           "text": "2026-09-28 懒銀 直播录像",
           "heat": "42"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48880565",
+          "text": "【幽音しの x *Luna】Linger【MV】",
+          "heat": "97"
         }
       ]
     },
