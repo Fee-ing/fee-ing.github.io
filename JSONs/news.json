@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790714742075,
+  "timestamp": 1790715661284,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2865,6 +2865,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://www.techflowpost.com/zh-CN/newsletter/138305",
+          "text": "OpenAI 获 300 亿美元注资，估值达 1.4 万亿美元",
+          "heat": "techflowpost.com"
+        },
+        {
           "url": "https://www.ithome.com/1/008/532.htm",
           "text": "OpenAI 宣布 ChatGPT 周活跃用户超 12 亿，AI 加速走向工作场景",
           "heat": "IT 之家"
@@ -2883,11 +2888,6 @@
           "url": "https://www.ithome.com/1/008/529.htm",
           "text": "OpenAI ChatGPT 账号变身「万能钥匙」：可一键登录网站，Notion / GitLab 率先接入",
           "heat": "IT 之家"
-        },
-        {
-          "url": "https://wallstreetcn.com/livenews/3172389",
-          "text": "报道：OpenAI 考虑按 1.4 万亿美元估值融资 300 亿美元，作为替代 IPO 的过桥轮融资",
-          "heat": "华尔街见闻"
         },
         {
           "url": "https://www.techflowpost.com/zh-CN/newsletter/138292",
@@ -10186,12 +10186,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48881412",
           "text": "当困难来临的时候",
-          "heat": "794"
+          "heat": "800"
         },
         {
           "url": "http://www.acfun.cn/v/ac48880891",
           "text": "【MV】ふつつかな悪女ではございますが ～雛宮蝶鼠とりかえ伝～「Sunny」（恶女不才，请多关照）",
-          "heat": "1140"
+          "heat": "1142"
         },
         {
           "url": "http://www.acfun.cn/v/ac48879140",
