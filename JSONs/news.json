@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790702144661,
+  "timestamp": 1790703050726,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2685,6 +2685,16 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://magazine.sebastianraschka.com/p/classifier-history-and-jev",
+          "text": "Language Models for Text Classification: From Bag-of-Words to Jev",
+          "heat": "sebastianraschka.com"
+        },
+        {
+          "url": "https://wallstreetcn.com/livenews/3172375",
+          "text": "OpenAI 推出 GPT-6.1 Sol 模型，性能接近 Astra，标准词元价格仅为 Astra 的五分之一",
+          "heat": "华尔街见闻"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17029",
           "text": "无人机的下一步，是「飞行智能」｜对话浙大高飞",
           "heat": "麻省理工科技评论"
@@ -2700,6 +2710,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://www.solidot.org/story?sid=85506",
+          "text": "银行高管被 Deepfake 语音骗走 1 亿美元",
+          "heat": "Solidot"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17026",
           "text": "星际之门AI项目被电力卡住：5000亿美元投资计划，甲骨文先坐不住了",
           "heat": "麻省理工科技评论"
@@ -2708,21 +2723,6 @@
           "url": "https://www.aibase.com/zh/news/31411",
           "text": "中国生成式 AI 用户破 7 亿，普及率过半，算力一年涨了 177%",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.nbd.com.cn/articles/2026-09-29/4594874.html",
-          "text": "调查｜C 端 Token 中转市场乱象：定价失序、计量「黑盒化」、供给鱼龙混杂，行业亟需第三方",
-          "heat": "每经网"
-        },
-        {
-          "url": "https://finance.jrj.com.cn/2026/09/29221358585909.shtml",
-          "text": "Meta Muse 爆火引发金融业担忧，伯恩斯坦：银行、保险、券商商业模式面临重塑，Visa、万事达或成受益者",
-          "heat": "金融界"
-        },
-        {
-          "url": "https://bydrug.pharmcube.com/news/detail/167c0b525e0db84bd3cb2cbf851565ee",
-          "text": "Nature 子刊：利用 AI 加速发现热稳定性 mRNA-LNP 疫苗",
-          "heat": "医药魔方"
         }
       ]
     },
@@ -4092,9 +4092,14 @@
           "heat": "本来就是个局外人"
         },
         {
-          "url": "https://new.qq.com/rain/a/20260929Q0DJ6C00",
+          "url": "https://new.qq.com/rain/a/20260929Q0DJDE00",
           "text": "于和伟、宋佳连拿今年白玉兰奖和金鹰奖视帝视后，这两人演技有多出色？可能包揽今年电视剧三大奖吗？",
-          "heat": "江神"
+          "heat": "不怕困难的王导演"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20260929Q0CXVI00",
+          "text": "只有女团和混双夺冠，亚运会国羽2金3银3铜收官，这个成绩如何？暴露出哪些问题？",
+          "heat": "三棱镜"
         },
         {
           "url": "https://new.qq.com/rain/a/20260929Q048XC00",
@@ -4130,11 +4135,6 @@
           "url": "https://new.qq.com/rain/a/20260929Q0DJ3S00",
           "text": "“小孩姐”陈妤颉亚运会3金1银，她未来能达到什么高度？还有哪些地方需要提高？",
           "heat": "江神"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20260929Q0CXVI00",
-          "text": "只有女团和混双夺冠，亚运会国羽2金3银3铜收官，这个成绩如何？暴露出哪些问题？",
-          "heat": "三棱镜"
         },
         {
           "url": "https://new.qq.com/rain/a/20260929Q06GPH00",
@@ -13693,12 +13693,12 @@
         {
           "url": "https://www.dongchedi.com/article/7689042120192115225",
           "text": "试完新世代iX3，我发现宝马故意把智驾做反了",
-          "heat": "180"
+          "heat": "181"
         },
         {
           "url": "https://www.dongchedi.com/article/7690024500821983769",
           "text": "2026款上汽大众ID.ERA 9X完全评价报告",
-          "heat": "77"
+          "heat": "79"
         },
         {
           "url": "https://www.dongchedi.com/article/7688587937487176217",
