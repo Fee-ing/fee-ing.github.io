@@ -1,0 +1,1 @@
+import{_ as e,h as t}from"./dist-BFGQnjj0.js";function n(n){let i=e(r,n).current;return i.next=n,t(i.effect),i}function r(e){let t={current:e,next:e,effect:()=>{t.current=t.next}};return t}export{n as t};
