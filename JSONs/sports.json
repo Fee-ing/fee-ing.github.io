@@ -1,13 +1,25 @@
 {
-  "timestamp": 1790794861542,
+  "timestamp": 1790795747580,
   "data": [
     {
       "source": "足球",
       "type": "直播吧",
       "content": [
         {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-01/6abd57a7ca18anative.htm",
+          "text": "C罗：我决定离开国家队集训营，会在合适时候说明离开的真正原因"
+        },
+        {
           "url": "https://news.zhibo8.com/zuqiu/2026-09-30/6abcf38f40bebnative.htm",
           "text": "韩日争金牌！亚运会铜牌战：中国vs乌兹别克，亚洲杯1/4决赛重演"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-01/6abd59b2bd289native.htm",
+          "text": "葡媒：葡足协主席正全力劝说C罗回心转意 队友对他离开感到惊讶"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-01/6abd592082596native.htm",
+          "text": "光速打脸主教练！热苏斯刚称C罗会训练，C罗直接走人+发声明"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-01/6abd39d5e6bd9native.htm",
@@ -22,24 +34,12 @@
           "text": "连续3天缺训！现场视频：C罗没训练直接乘车离开，甚至没踏上草坪"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-01/6abd341ba2ffbnative.htm",
-          "text": "热苏斯：我做得不妥的是该让C罗晚点热身 如果需要对丹麦他会出场"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-01/6abd4fc8ebf97native.htm",
+          "text": "马卡报：C罗提前离开集训，这次事件可能成为其国家队生涯终点"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-01/6abd4479d1b52native.htm",
           "text": "未参加今日训练！葡媒：C罗的私人飞机飞往丹麦 之后将飞回马德里"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-30/6abd18205f403native.htm",
-          "text": "贡萨洛·拉莫斯：我世界杯进球助葡萄牙晋级，16强战我却没能上场"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-30/6abd2d66c5f2bnative.htm",
-          "text": "热苏斯：C罗告诉我想让他上场他就上，想让他坐板凳他就坐"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-09-30/6abd1e778bea1native.htm",
-          "text": "官方：毛伟杰初步诊断为左踝关节韧带损伤，无缘亚运会季军战"
         }
       ]
     },
@@ -47,30 +47,6 @@
       "source": "篮球",
       "type": "直播吧",
       "content": [
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-30/6abd316e53e9dnative.htm",
-          "text": "开拓者要在11月3日之前决定是否执行杨瀚森和克林根的球队选项"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-01/6abd36ec69456native.htm",
-          "text": "有人想要吗？Siegel：雄鹿计划交易/裁掉32岁老将后卫勒韦尔"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-30/6abd216cda9b7native.htm",
-          "text": "再见了克小弟~湖人名单上有16人 要在10月12日之前缩减至15人"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-30/6abd1bb490e63native.htm",
-          "text": "秋后算账来了！TMZ：太阳球员狄龙因涉嫌酒驾被起诉 曾于3月被捕"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-09-30/6abd194122437native.htm",
-          "text": "5年2亿/1年960万+自由身？10月2日11:59是杜伦资质报价的截止时间"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-01/6abd35a99c3e4native.htm",
-          "text": "Siegel：湖人曾考虑2换1引进希尔德 但对方索要次轮签补偿作罢"
-        },
         {
           "url": "https://news.zhibo8.com/nba/2026-09-30/6abca44579c95native.htm",
           "text": "💥重磅！NBA全明星拉塞尔签约上海男篮 新赛季将征战CBA！"
@@ -80,8 +56,32 @@
           "text": "🚨搭档拉塞尔！前NBA球员麦基加盟上海男篮 已到队训练！"
         },
         {
+          "url": "https://news.zhibo8.com/nba/2026-09-30/6abd057902bd3native.htm",
+          "text": "未通过CBA体测26人名单：沈梓捷、张皓嘉、阿不都、王哲林在列"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-01/6abd36ec69456native.htm",
+          "text": "有人想要吗？Siegel：雄鹿计划交易/裁掉32岁老将后卫勒韦尔"
+        },
+        {
           "url": "https://news.zhibo8.com/nba/2026-09-30/6abcc258c52a1native.htm",
           "text": "白巧克力：杜伦全家都不理解他为何拒绝2亿 若拿资质报价会被雪藏"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-30/6abd2324edc55native.htm",
+          "text": "好起来了！网红送给德隆蒂·韦斯特一辆10万美元的玛莎拉蒂汽车"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-30/6abcffb3e5717native.htm",
+          "text": "媒体人：英格拉姆跟腱部分撕裂让猛龙在伦纳德交易中大获全胜"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-30/6abce7632eec8native.htm",
+          "text": "或创造历史~队记：杜伦拒绝5年2亿合同 考虑接受1年960万资质报价"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-09-30/6abd316e53e9dnative.htm",
+          "text": "开拓者要在11月3日之前决定是否执行杨瀚森和克林根的球队选项"
         }
       ]
     }
