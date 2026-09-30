@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790804738617,
+  "timestamp": 1790805656582,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2885,14 +2885,14 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-science-ai-flu-forecasts/",
+          "text": "Google's AI ranks #1 for predicting flu hospitalizations.",
+          "heat": "blog.google"
+        },
+        {
           "url": "https://www.leiphone.com/category/chips/kgknicdWxIIoulL9.html",
           "text": "5500 颗光引擎如何撑起 4096 卡超节点？华为 NPO 的故事还没讲完",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://daily.dev/posts/reddit-is-killing-rss-feeds-and-ending-public-api-access-because-of-ai-bots-etgqokzhb",
-          "text": "Reddit kills RSS feeds and ends public API access citing AI bot scraping",
-          "heat": "daily.dev"
         }
       ]
     },
@@ -10206,7 +10206,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48882778",
           "text": "我说再喝一碗我熬的茶汤",
-          "heat": "1292"
+          "heat": "1293"
         },
         {
           "url": "http://www.acfun.cn/v/ac48883821",
@@ -10226,17 +10226,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48883513",
           "text": "【汪苏泷×宋雨琦】是非主流内味了！粤语版《雨终曲》“独自寂寞怀念大概，现实谁愿认领......”",
-          "heat": "663"
+          "heat": "679"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48883661",
+          "text": "【我只在乎你】",
+          "heat": "890"
         },
         {
           "url": "http://www.acfun.cn/v/ac48882689",
           "text": "【猪肝来也】茶汤",
           "heat": "1101"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48883661",
-          "text": "【我只在乎你】",
-          "heat": "884"
         },
         {
           "url": "http://www.acfun.cn/v/ac48883817",
@@ -10262,11 +10262,6 @@
           "url": "http://www.acfun.cn/v/ac48883563",
           "text": "弹了 调查中",
           "heat": "269"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48881984",
-          "text": "【4k60fps中字】梦限大MewType「新宿着陸計画」DAY2",
-          "heat": "107"
         },
         {
           "url": "http://www.acfun.cn/v/ac48883279",
@@ -10334,14 +10329,14 @@
           "heat": "80"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48882823",
-          "text": "圣彼得堡交响乐团2026—2027乐季开幕演出：布列兹、斯特拉文斯基与穆索尔斯基",
-          "heat": "68"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48883983",
           "text": "很喜欢这段点弦但总是弹不好（蓝毛变绿了。。）",
           "heat": "55"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48882823",
+          "text": "圣彼得堡交响乐团2026—2027乐季开幕演出：布列兹、斯特拉文斯基与穆索尔斯基",
+          "heat": "68"
         },
         {
           "url": "http://www.acfun.cn/v/ac48867744",
@@ -10352,6 +10347,11 @@
           "url": "http://www.acfun.cn/v/ac48883814",
           "text": "在杂货间清唱了《镜面之波》",
           "heat": "35"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48883657",
+          "text": "圣彼得堡卡佩拉交响乐团2026-27乐季开幕演出：肖斯塔科维奇第一大提琴协奏曲与德沃夏克第三交响曲",
+          "heat": "111"
         }
       ]
     },
