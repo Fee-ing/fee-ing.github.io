@@ -1,1 +1,0 @@
-import{i as e}from"./rolldown-runtime-Dd_uD5pT.js";import{n as t}from"./jsx-runtime-BpzPEenQ.js";import{A as n}from"./utils-CAuSlCw7.js";var r=e(t(),1),i=r.createContext(void 0);function a(){return r.useContext(i)?.direction??`ltr`}function o(e){return n(e,`base-ui`)}export{a as n,o as t};
