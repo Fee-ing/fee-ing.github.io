@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790793940907,
+  "timestamp": 1790794861526,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/applications-open-graduate-fellowship-awards-2026/",
+          "text": "NVIDIA Opens Applications for 2027–2028 Graduate Fellowships With Awards Up to $60,000",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17034",
           "text": "YC 复盘 2026 创业趋势：经验型创始人正在回归",
           "heat": "麻省理工科技评论"
@@ -3073,11 +3078,6 @@
           "url": "https://daily.dev/posts/reddit-is-killing-rss-feeds-and-ending-public-api-access-because-of-ai-bots-etgqokzhb",
           "text": "Reddit kills RSS feeds and ends public API access citing AI bot scraping",
           "heat": "daily.dev"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31438",
-          "text": "亏损超 80 亿、算力承诺 546 亿：Anthropic 招股书揭开大模型顶流的真实账本",
-          "heat": "aibase"
         }
       ]
     },
@@ -14443,7 +14443,7 @@
         {
           "url": "https://www.dongchedi.com/article/7690024500821983769",
           "text": "2026款上汽大众ID.ERA 9X完全评价报告",
-          "heat": "126"
+          "heat": "129"
         },
         {
           "url": "https://www.dongchedi.com/article/7690769121046856216",
