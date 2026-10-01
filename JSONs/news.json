@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790880337771,
+  "timestamp": 1790881261855,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://wallstreetcn.com/articles/3782897",
+          "text": "微软上新三款语音 AI 模型：实时转文字准确率登测评榜首，MAI-Voice 2.1 覆盖 23 种语言",
+          "heat": "华尔街见闻"
+        },
+        {
           "url": "https://news.mydrivers.com/1/1155/1155103.htm",
           "text": "存储又要涨价了！AI 疯狂吞噬产能：Q4 DRAM 和 NAND 最高涨 20%",
           "heat": "快科技"
@@ -3068,11 +3073,6 @@
           "url": "https://aws.amazon.com/blogs/machine-learning/uplifting-conversion-across-the-acquisition-funnel-with-personalization-using-contextual-bandits-on-aws/",
           "text": "Uplifting conversion across the acquisition funnel with personalization using contextual bandits on AWS",
           "heat": "aws.amazon.com"
-        },
-        {
-          "url": "https://wallstreetcn.com/livenews/3173431",
-          "text": "凯雷警告：私募信贷追逐 AI 融资面临集中度风险",
-          "heat": "华尔街见闻"
         }
       ]
     },
@@ -10506,22 +10506,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48884561",
           "text": "【柯基】《绣红旗》｜这盛世如你所愿！国庆快乐！",
-          "heat": "1186"
+          "heat": "1189"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885464",
           "text": "【绝望女神/翻唱】【黑礁 OP 赤色碎片 RED FRACTION】",
-          "heat": "882"
+          "heat": "909"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885539",
           "text": "【东方】嘘付きフォルテッシモ MV【幽閉サテライト】",
-          "heat": "873"
+          "heat": "890"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885379",
           "text": "【猪肝来也】茶汤",
-          "heat": "1095"
+          "heat": "1097"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884989",
@@ -10531,7 +10531,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48885331",
           "text": "可以弹一个《孤独摇滚》换一条生日快乐吗",
-          "heat": "292"
+          "heat": "316"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885763",
@@ -10556,7 +10556,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48885667",
           "text": "【贝学姐】2026年九月直播录像合集",
-          "heat": "332"
+          "heat": "348"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884599",
@@ -10639,14 +10639,14 @@
           "heat": "51"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48884755",
-          "text": "[ 彼女は旅に出る]   -锁那",
-          "heat": "43"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48872070",
           "text": "Machi Gurumi no Wana ~Hakudaku ni Mamireta Shitai~",
           "heat": "49"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48884755",
+          "text": "[ 彼女は旅に出る]   -锁那",
+          "heat": "43"
         },
         {
           "url": "http://www.acfun.cn/v/ac48876582",
