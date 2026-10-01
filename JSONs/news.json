@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790873143217,
+  "timestamp": 1790874062695,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3025,6 +3025,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://openai.com/index/albertsons-reimagining-retail",
+          "text": "How Albertsons Companies is reimagining retail from the inside out",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17040",
           "text": "尘封 217 年的拿破仑密信，被 GPT-6 Astra 用 6 小时解开",
           "heat": "麻省理工科技评论"
@@ -3050,29 +3055,24 @@
           "heat": "快科技"
         },
         {
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/",
+          "text": "Guided Vision in Gemini Live: built for accessibility",
+          "heat": "blog.google"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17037",
           "text": "Gemini 4 终于来了！先给防御方用，然后再给普通用户",
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://wallstreetcn.com/livenews/3173431",
+          "text": "凯雷警告：私募信贷追逐 AI 融资面临集中度风险",
+          "heat": "华尔街见闻"
+        },
+        {
           "url": "https://api3.cls.cn/share/article/2496961?os=web&sv=8.4.6&app=CailianpressWeb",
           "text": "博通拟向 Anthropic 提供最高 420 亿美元融资，后者明年或成博通最大芯片设计客户",
           "heat": "财联社"
-        },
-        {
-          "url": "https://www.ithome.com/1/009/112.htm",
-          "text": "OpenAI 称其遭遇有组织蒸馏，将矛头指向月之暗面",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.techradar.com/pro/security/it-is-possible-that-threat-actors-are-finding-it-more-accessible-or-efficient-to-use-llms-and-ai-tools-google-warns-that-ai-explosion-will-lead-to-more-dangerous-and-advanced-security-threats",
-          "text": "Google warns that AI explosion will lead to more dangerous and advanced security threats",
-          "heat": "techradar.com"
-        },
-        {
-          "url": "https://news.mydrivers.com/1/1155/1155097.htm",
-          "text": "AMD 下代锐龙 Z3 掌机芯片浮出水面：砍 CPU 换 GPU，15W/25W 双版本",
-          "heat": "快科技"
         }
       ]
     },
@@ -10546,22 +10546,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48884561",
           "text": "【柯基】《绣红旗》｜这盛世如你所愿！国庆快乐！",
-          "heat": "1168"
+          "heat": "1178"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885464",
           "text": "【绝望女神/翻唱】【黑礁 OP 赤色碎片 RED FRACTION】",
-          "heat": "722"
+          "heat": "796"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885539",
           "text": "【东方】嘘付きフォルテッシモ MV【幽閉サテライト】",
-          "heat": "616"
+          "heat": "718"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885379",
           "text": "【猪肝来也】茶汤",
-          "heat": "1082"
+          "heat": "1088"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884989",
@@ -10571,7 +10571,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48885331",
           "text": "可以弹一个《孤独摇滚》换一条生日快乐吗",
-          "heat": "188"
+          "heat": "220"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884977",
@@ -10594,19 +10594,19 @@
           "heat": "59"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48885667",
+          "text": "【贝学姐】2026年九月直播录像合集",
+          "heat": "294"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48856321",
           "text": "【龙飘飘】想你又恨你-国语",
           "heat": "173"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48885667",
-          "text": "【贝学姐】2026年九月直播录像合集",
-          "heat": "264"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48856330",
           "text": "【Raidas】传说Live TVB Version",
-          "heat": "126"
+          "heat": "138"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885166",
@@ -10641,7 +10641,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48885428",
           "text": "【东方Arrange】CONTI:NEW【原曲：スカーレットデビルは遅れて顕れる】",
-          "heat": "94"
+          "heat": "106"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885313",
@@ -10649,14 +10649,19 @@
           "heat": "35"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48885156",
+          "text": "《欧美风音乐》River（Eminem/Ed Sheeran）",
+          "heat": "84"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48885303",
+          "text": "露子的天真烂漫机能，（只是我纯想过耳瘾，所以只调了一句的参数◐⩊◑  ྀི",
+          "heat": "57"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48860367",
           "text": "【灰姑娘女孩】もしも「カワイイ」が世界からなくなっても（晚场公演）｜Pop n ToyBox!!来",
           "heat": "56"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48885156",
-          "text": "《欧美风音乐》River（Eminem/Ed Sheeran）",
-          "heat": "77"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884755",
@@ -10676,12 +10681,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48885763",
           "text": "［朝鲜中字］战士和姑娘",
-          "heat": "41"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48885303",
-          "text": "露子的天真烂漫机能，（只是我纯想过耳瘾，所以只调了一句的参数◐⩊◑  ྀི",
-          "heat": "57"
+          "heat": "100"
         },
         {
           "url": "http://www.acfun.cn/v/ac48876582",
