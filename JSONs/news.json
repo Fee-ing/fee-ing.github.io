@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790874943298,
+  "timestamp": 1790875848756,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2645,14 +2645,14 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://aws.amazon.com/blogs/machine-learning/uplifting-conversion-across-the-acquisition-funnel-with-personalization-using-contextual-bandits-on-aws/",
+          "text": "Uplifting conversion across the acquisition funnel with personalization using contextual bandits on AWS",
+          "heat": "aws.amazon.com"
+        },
+        {
           "url": "https://wallstreetcn.com/livenews/3173431",
           "text": "凯雷警告：私募信贷追逐 AI 融资面临集中度风险",
           "heat": "华尔街见闻"
-        },
-        {
-          "url": "https://api3.cls.cn/share/article/2496961?os=web&sv=8.4.6&app=CailianpressWeb",
-          "text": "博通拟向 Anthropic 提供最高 420 亿美元融资，后者明年或成博通最大芯片设计客户",
-          "heat": "财联社"
         }
       ]
     },
@@ -9276,32 +9276,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48884561",
           "text": "【柯基】《绣红旗》｜这盛世如你所愿！国庆快乐！",
-          "heat": "1178"
+          "heat": "1180"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885464",
           "text": "【绝望女神/翻唱】【黑礁 OP 赤色碎片 RED FRACTION】",
-          "heat": "796"
+          "heat": "856"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885539",
           "text": "【东方】嘘付きフォルテッシモ MV【幽閉サテライト】",
-          "heat": "718"
+          "heat": "784"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885379",
           "text": "【猪肝来也】茶汤",
-          "heat": "1088"
+          "heat": "1091"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884989",
           "text": "天依翻唱《知我》！！结尾超燃！！૮꒰ྀི   .   ꒱ྀིა",
-          "heat": "161"
+          "heat": "179"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885331",
           "text": "可以弹一个《孤独摇滚》换一条生日快乐吗",
-          "heat": "220"
+          "heat": "255"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884977",
@@ -9319,6 +9319,11 @@
           "heat": "58"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48885763",
+          "text": "［朝鲜中字］战士和姑娘",
+          "heat": "132"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48884599",
           "text": "【初音未来】“我被困在了这片混沌”——《莫愁乡》",
           "heat": "59"
@@ -9326,7 +9331,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48885667",
           "text": "【贝学姐】2026年九月直播录像合集",
-          "heat": "294"
+          "heat": "309"
         },
         {
           "url": "http://www.acfun.cn/v/ac48856321",
@@ -9374,6 +9379,11 @@
           "heat": "106"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48884890",
+          "text": "【告别作】《从今以后》的你与我",
+          "heat": "36"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48885313",
           "text": "Tonight you belong to me",
           "heat": "35"
@@ -9394,14 +9404,14 @@
           "heat": "56"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48884755",
-          "text": "[ 彼女は旅に出る]   -锁那",
-          "heat": "43"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48858992",
           "text": "「D.C.III～ダ･カーポIII～」風見鶏編OPムービー",
           "heat": "51"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48884755",
+          "text": "[ 彼女は旅に出る]   -锁那",
+          "heat": "43"
         },
         {
           "url": "http://www.acfun.cn/v/ac48872070",
@@ -9409,19 +9419,9 @@
           "heat": "49"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48885763",
-          "text": "［朝鲜中字］战士和姑娘",
-          "heat": "100"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48876582",
           "text": "【SUMAGA SPECIAL】 Perfect Loop",
           "heat": "36"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48874721",
-          "text": "BooooM!!!",
-          "heat": "32"
         }
       ]
     },
