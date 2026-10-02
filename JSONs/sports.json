@@ -1,5 +1,5 @@
 {
-  "timestamp": 1790901049238,
+  "timestamp": 1790901939217,
   "data": [
     {
       "source": "足球",
@@ -12,6 +12,10 @@
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-02/match1949486date2026vnative.htm",
           "text": "渣叔治下首胜！德国2-0塞尔维亚 比朔夫国家队处子球维尔茨建功"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-02/6abef84c0895enative.htm",
+          "text": "C罗擅自退训！葡萄牙将帅：没分裂球队|没影响|C罗是国家队的一员"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-02/6abe8e5e98826native.htm",
@@ -36,10 +40,6 @@
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-02/match1949487date2026vnative.htm",
           "text": "威尔士2-1逆转10人挪威 丹尼尔·詹姆斯破门 黑格姆直红"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-02/6abef2a89bce0native.htm",
-          "text": "霍伊伦：做SIU庆祝是致敬C罗，他可能已结束国家队生涯"
         }
       ]
     },
@@ -56,32 +56,32 @@
           "text": "文班亚马明确拒绝代言博彩：看到球员推广很遗憾 但别算上我"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-02/6abe887bcf2dfnative.htm",
-          "text": "拉塞尔自宣加盟上海：准备直接搬家到中国 希望能有个出色的赛季"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-02/6abef1fe63940native.htm",
           "text": "勇士提前三天公布季前赛首发：库里 波杰姆 追梦 伦德博格 霍福德"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-02/6abef4c422457native.htm",
-          "text": "小杨的好兄弟~太阳执行马卢阿奇662万球队选项 球员夏联19.5+12.8"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-02/6abeef65e9ee4native.htm",
           "text": "不为钱低头！文班自曝拒绝多份巨额代言：价值观不符 想向善引导"
         },
         {
+          "url": "https://news.zhibo8.com/nba/2026-10-02/6abef4c422457native.htm",
+          "text": "小杨的好兄弟~太阳执行马卢阿奇662万球队选项 球员夏联19.5+12.8"
+        },
+        {
           "url": "https://news.zhibo8.com/nba/2026-10-01/6abe446515465native.htm",
           "text": "Buha：艾顿因关键比赛态度散漫被雷迪克放弃 八村塁和海斯则不同"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-02/6abee9e483684native.htm",
-          "text": "准备签谁？名记：火箭裁掉中锋卡斯特罗 腾出一个双向合同名额"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-01/6abe3f05b0193native.htm",
           "text": "差得太多！名记：尼克斯希望4年2亿续约唐斯 比最大合同低7600万"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-01/6aba357a23ca3native.htm",
+          "text": "总决赛班底尽数回归！哈利伯顿满血归来 步行者能否“蹦极”反弹"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-02/6abee9e483684native.htm",
+          "text": "准备签谁？名记：火箭裁掉中锋卡斯特罗 腾出一个双向合同名额"
         }
       ]
     }
