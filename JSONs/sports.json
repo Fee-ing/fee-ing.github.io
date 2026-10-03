@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791028851635,
+  "timestamp": 1791029741181,
   "data": [
     {
       "source": "足球",
@@ -34,12 +34,12 @@
           "text": "三大球夺金前瞻唯独漏男足？人民日报回应：小伙子们好样的！加油"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-03/6ac0b51be3c98native.htm",
-          "text": "国足U23vs乌兹别克点球全过程：李昊两扑点！彭啸第五罚制胜"
-        },
-        {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-03/6ac0aee8b6718native.htm",
           "text": "就你最争气！中国男足摘铜，首次亚运成绩超过女足、男篮和男排！"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-03/6ac080a5e16e1native.htm",
+          "text": "展望！安东尼奥有望接手新一届国奥 冲击2028年U23亚洲杯＆奥运会"
         }
       ]
     },
@@ -47,10 +47,6 @@
       "source": "篮球",
       "type": "直播吧",
       "content": [
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-03/6ac0776d614afnative.htm",
-          "text": "『吧友评选』🌟新赛季30大球星评选👑谁是No.14球星？"
-        },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-03/6ac0e36d3f67cnative.htm",
           "text": "最高可拿5年3.71亿~队记：布伦森未来预计将签下4年2.9亿的新合同"
@@ -60,20 +56,16 @@
           "text": "媒体人：拉塞尔从机场出来后的第一件事 就是到康桥基地进行训练"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-03/6ac050ae27b46native.htm",
-          "text": "湖记：东契奇已提交法律申请 要求将女儿从斯洛文尼亚带到美国！"
+          "url": "https://news.zhibo8.com/nba/2026-10-03/6ac0cd5303b5fnative.htm",
+          "text": "恭喜！阿不都沙拉木和张俊生体测补测通过 拿到新赛季上岗证"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-03/6ac098dd1c7f7native.htm",
-          "text": "宿命又爱了！加比真的是又飒又能打🍒或与绯闻女友顶峰相见"
+          "url": "https://news.zhibo8.com/nba/2026-10-03/6ac03b6797002native.htm",
+          "text": "不到一天被解雇！开拓者新解说15岁言论：歧视亚裔 侮辱女性"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-03/6ac04bc547bccnative.htm",
           "text": "青涩变成熟！杰伦·格林转发五年前刚到火箭和今年的定妆照对比"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-03/6ac0c5fb5b871native.htm",
-          "text": "裁员形势明朗！布朗尼年轻进步空间大 克内克特已不适合新版湖人"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-03/6ac0e11fba533native.htm",
@@ -82,6 +74,14 @@
         {
           "url": "https://news.zhibo8.com/nba/2026-10-03/6ac0641c269danative.htm",
           "text": "完美！旅美小将张懿赵杰美高首秀爆砍22分 三分5中4+劈扣亮眼！"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-02/6abfc4feeae07native.htm",
+          "text": "媒体人：拉塞尔来CBA最少场均30+ 级别超布鲁克斯 盼复制老马奇迹"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-03/6ac0c5fb5b871native.htm",
+          "text": "裁员形势明朗！布朗尼年轻进步空间大 克内克特已不适合新版湖人"
         }
       ]
     }
