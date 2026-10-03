@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791049543108,
+  "timestamp": 1791050459535,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10541,27 +10541,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48888095",
           "text": "【颜音】『白色声音』靡言 主题曲",
-          "heat": "1368"
+          "heat": "1378"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885164",
           "text": "【AC独家】斯卡布罗集市~钢琴独奏",
-          "heat": "1622"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48883403",
-          "text": "【付小远】第一次为自己的歌曲录制吉他solo！",
-          "heat": "1135"
+          "heat": "1637"
         },
         {
           "url": "http://www.acfun.cn/v/ac48888786",
           "text": "【绝望女神/翻唱】【机动战士高达SEED 插曲 晓之车】",
-          "heat": "717"
+          "heat": "733"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48883403",
+          "text": "【付小远】第一次为自己的歌曲录制吉他solo！",
+          "heat": "1142"
         },
         {
           "url": "http://www.acfun.cn/v/ac48888436",
           "text": "【猪肝来也】巴拉莱卡",
-          "heat": "1052"
+          "heat": "1060"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48889179",
+          "text": "［朝鲜音乐］请看我们吧",
+          "heat": "234"
         },
         {
           "url": "http://www.acfun.cn/v/ac48888732",
@@ -10576,12 +10581,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48889042",
           "text": "［朝鲜音乐］我生命之花的绽放之地（汉谚混写）",
-          "heat": "257"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48889179",
-          "text": "［朝鲜音乐］请看我们吧",
-          "heat": "202"
+          "heat": "274"
         },
         {
           "url": "http://www.acfun.cn/v/ac48888879",
@@ -10591,7 +10591,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48889038",
           "text": "［朝鲜中字］金达莱",
-          "heat": "143"
+          "heat": "180"
         },
         {
           "url": "http://www.acfun.cn/v/ac48888022",
@@ -10614,6 +10614,11 @@
           "heat": "89"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48887667",
+          "text": "阿丽西亚·列维娜：拉赫玛尼诺夫《六首音乐瞬间》",
+          "heat": "73"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48875913",
           "text": "【東方Orchestral／Symphonic】 さくらさくら　～ Japanize Dream..",
           "heat": "94"
@@ -10624,9 +10629,9 @@
           "heat": "96"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48887667",
-          "text": "阿丽西亚·列维娜：拉赫玛尼诺夫《六首音乐瞬间》",
-          "heat": "61"
+          "url": "http://www.acfun.cn/v/ac48862875",
+          "text": "【萧亚轩】And I Know",
+          "heat": "67"
         },
         {
           "url": "http://www.acfun.cn/v/ac48859188",
@@ -10644,9 +10649,14 @@
           "heat": "49"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48862875",
-          "text": "【萧亚轩】And I Know",
-          "heat": "45"
+          "url": "http://www.acfun.cn/v/ac48888055",
+          "text": "Sacred Play Secret Place",
+          "heat": "93"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48889017",
+          "text": "bios——Animenz（罪恶王冠）",
+          "heat": "83"
         },
         {
           "url": "http://www.acfun.cn/v/ac48881636",
@@ -10664,29 +10674,19 @@
           "heat": "99"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48887415",
-          "text": "Rabbit World！",
-          "heat": "41"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48888055",
-          "text": "Sacred Play Secret Place",
-          "heat": "72"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48887443",
-          "text": "2026-10-02 懒銀 假期快乐！",
-          "heat": "30"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48887824",
           "text": "我想和你一起去海边（白小晴）",
-          "heat": "78"
+          "heat": "84"
         },
         {
           "url": "http://www.acfun.cn/v/ac48859194",
           "text": "【Raidas】倾心Live-陈德彰若愚（黄凯芹）",
           "heat": "156"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48888123",
+          "text": "【东方红楼梦22XFD】Crab Crab Chapter6 【Crab Crab Club】",
+          "heat": "24"
         }
       ]
     },
@@ -14423,7 +14423,7 @@
         {
           "url": "https://www.dongchedi.com/article/7691218992372220440",
           "text": "赔给吉利6个亿，越卖越亏的欣旺达，凭什么让小米理想抢着买单？",
-          "heat": "40"
+          "heat": "41"
         },
         {
           "url": "https://www.dongchedi.com/article/7691139436189827609",
