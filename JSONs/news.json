@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791137744868,
+  "timestamp": 1791138649834,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "手机中国"
         },
         {
+          "url": "https://www.techradar.com/pro/generate-usd6-trillion-in-annual-revenue-or-face-a-major-collapse-ai-data-center-costs-are-doubling-every-12-months",
+          "text": "Generate $6 trillion in annual revenue or face a major collapse — AI data center costs are doubling every 12 months",
+          "heat": "techradar.com"
+        },
+        {
           "url": "https://www.techradar.com/pro/phone-communications/the-agent-itself-has-become-its-own-entity-to-secure-bitdefenders-new-free-mac-tool-goes-after-flaws-that-let-attackers-fool-ai-models",
           "text": "Bitdefender 推出免费 Mac 工具 AI Guardian，防范攻击者欺骗 AI 模型",
           "heat": "techradar.com"
@@ -3067,11 +3072,6 @@
         {
           "url": "https://www.ithome.com/1/009/669.htm",
           "text": "System76 更新 COSMIC 项目 PR 模板，禁止贡献者提交 AI 辅助完成的代码",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.ithome.com/1/009/701.htm",
-          "text": "DeepSeek Harness 崔添翼：产品核心理念是「一切皆插件」，可扩展性是初心",
           "heat": "IT 之家"
         }
       ]
@@ -4372,14 +4372,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261003Q094Y400",
-          "text": "中国三大球亚运会拿到1金2铜，男足首次超越男篮女足，为何这次是男足出彩？三大球格局会就此改写吗？",
-          "heat": "不怕困难的王导演"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261004Q05W8L00",
           "text": "服务区闪充变慢充，不同品牌充电上限搞“双标”遭吐槽，“差别待遇”合理吗？节假日排队充电体验如何改善？",
           "heat": "贵重物品DR"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261003Q094Y400",
+          "text": "中国三大球亚运会拿到1金2铜，男足首次超越男篮女足，为何这次是男足出彩？三大球格局会就此改写吗？",
+          "heat": "不怕困难的王导演"
         },
         {
           "url": "https://new.qq.com/rain/a/20261004Q03ACQ00",
@@ -14448,7 +14448,7 @@
         {
           "url": "https://www.dongchedi.com/article/7691218992372220440",
           "text": "赔给吉利6个亿，越卖越亏的欣旺达，凭什么让小米理想抢着买单？",
-          "heat": "52"
+          "heat": "53"
         },
         {
           "url": "https://www.dongchedi.com/article/7691139436189827609",
