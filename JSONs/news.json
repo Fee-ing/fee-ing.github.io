@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791148542699,
+  "timestamp": 1791149447381,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.gelonghui.com/live/2697935",
+          "text": "警告 AI 失控的前 Anthropic 研究员将出席纽约听证会",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://notebook.cnmo.com/news/819721.html",
           "text": "技嘉发布 AI Top 100 B850 桌面 AI 工作站 支持 2350 亿参数模型",
           "heat": "手机中国"
@@ -3068,11 +3073,6 @@
           "url": "https://smartcar.cnmo.com/news/819720.html",
           "text": "特斯拉 Robotaxi 延长至 23 时 夜间识别仍受限",
           "heat": "手机中国"
-        },
-        {
-          "url": "https://www.ithome.com/1/009/669.htm",
-          "text": "System76 更新 COSMIC 项目 PR 模板，禁止贡献者提交 AI 辅助完成的代码",
-          "heat": "IT 之家"
         }
       ]
     },
