@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791163848730,
+  "timestamp": 1791164739526,
   "data": [
     {
       "source": "足球",
@@ -38,8 +38,8 @@
           "text": "七喜！巴萨女足7-0皇马女足，巴萨男足官推转发比分牌：提醒一下"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-05/6ac2ce930b3banative.htm",
-          "text": "媒体表示他承诺向C罗道歉！热苏斯：不会向任何人道歉 为何道歉？"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-05/6ac2f4b03317cnative.htm",
+          "text": "媒体一致报道，热苏斯曾承诺向C罗道歉！热苏斯却说：为何道歉？"
         }
       ]
     },
@@ -47,6 +47,10 @@
       "source": "篮球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-05/match2290592date2026vnative.htm",
+          "text": "🏀5号秀瓦格勒准绝杀快船险胜勇士 八村塁半场21分 库里10分"
+        },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-05/match2290595date2026vnative.htm",
           "text": "🏀季前赛-马尔卡宁17分 彼得森5中1 约基奇7助攻 爵士轻取掘金"
@@ -64,24 +68,20 @@
           "text": "莫杨连线！莫兰特长传助攻杨瀚森空接暴扣 做出望远镜庆祝动作"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-04/6ac230f23c50anative.htm",
-          "text": "萧华：我惊讶的不是湖人卖了125亿 而是竟然真有人会把湖人卖了"
+          "url": "https://news.zhibo8.com/nba/2026-10-05/6ac2fd78e2be3native.htm",
+          "text": "铁了一整场！5号秀瓦格勒关键时刻中投得手 率队再度反超1分"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-05/6ac2fa4b2c553native.htm",
+          "text": "又臭又香！5号秀瓦格勒15中3疯狂打铁 但关键时刻中投准绝杀"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-05/6ac2db27d5042native.htm",
           "text": "🚨伤病突袭！马刺新援哈里斯小腿拉伤 揭幕战打雷霆出战成疑！"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-05/6ac2ea10cd697native.htm",
-          "text": "强得可怕！八村塁15分钟怒砍21分 投篮11中8🏹三分球5中4！"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-04/6ac1ef138d011native.htm",
-          "text": "迪班萨：当状元却不用一上来场均25分 我能跟着浓眉&米德尔顿学习"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-04/6ac269b2cfeb8native.htm",
-          "text": "追梦：开拓者新帅没必要在媒体前反驳利拉德 这会失去后者信任"
+          "url": "https://news.zhibo8.com/nba/2026-10-04/6ac230f23c50anative.htm",
+          "text": "萧华：我惊讶的不是湖人卖了125亿 而是竟然真有人会把湖人卖了"
         }
       ]
     }
