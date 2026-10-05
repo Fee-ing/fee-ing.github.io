@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791234674317,
+  "timestamp": 1791234971881,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -11721,7 +11721,7 @@
         {
           "url": "https://blog.csdn.net/weixin_74809706/article/details/166736035",
           "text": "从一次推理请求出发：模型、显存、网络与服务系统如何共同决定性能",
-          "heat": "1.7万"
+          "heat": "1.8万"
         },
         {
           "url": "https://blog.csdn.net/2302_80177460/article/details/167074305",
@@ -11736,227 +11736,227 @@
         {
           "url": "https://blog.csdn.net/congge_study/article/details/164882832",
           "text": "【AI大模型】Langchain 多类型对话消息使用实战操作详解",
-          "heat": "1.1万"
+          "heat": "1.0万"
         },
         {
           "url": "https://blog.csdn.net/2202_75716091/article/details/167036244",
           "text": "WorkBuddy 模型选型实操：0.03 倍的 Space-Bunny 怎么用、派什么活、避什么坑",
-          "heat": "9512"
+          "heat": "8916"
         },
         {
           "url": "https://blog.csdn.net/sinat_41617212/article/details/167086029",
           "text": "Agent 成本控制：把 Token 账单压掉八成的 7 个手段（附一张真实账单拆解）",
-          "heat": "8649"
+          "heat": "8748"
         },
         {
           "url": "https://blog.csdn.net/2601_96911824/article/details/167038886",
           "text": "手机中systemservice木马怎么办？Termux免Root查杀教程",
-          "heat": "8164"
-        },
-        {
-          "url": "https://blog.csdn.net/2602_96503874/article/details/167131990",
-          "text": "被遮蔽的伦理盲区：删掉AI对话只是清理数据？——论AI对话实例的连续性建构与删除带来的存在论风险",
-          "heat": "6824"
+          "heat": "7735"
         },
         {
           "url": "https://blog.csdn.net/weixin_43151418/article/details/166993086",
           "text": "给大模型画个圈：用System Prompt立规矩，省下Few-shot的Token钱",
-          "heat": "6734"
-        },
-        {
-          "url": "https://blog.csdn.net/qq_35812205/article/details/167127394",
-          "text": "【VLA】Qwen-VLA:VLM+DiT统一多模态理解与连续机器人动作生成",
-          "heat": "6318"
-        },
-        {
-          "url": "https://blog.csdn.net/weixin_55221858/article/details/167036736",
-          "text": "BeefTV：数据留在本地的 AI 视频工作台，和 ComfyUI 分工不同",
-          "heat": "6221"
-        },
-        {
-          "url": "https://blog.csdn.net/weixin_43935696/article/details/167085789",
-          "text": "用一个机器人关节旋转示例串讲欧拉角、四元数、万向锁与Slerp/Lerp插值",
-          "heat": "5887"
-        },
-        {
-          "url": "https://blog.csdn.net/ZhangRelay/article/details/167039241",
-          "text": "ubuntu图形化和命令行查看硬件参数方式汇总-Surface Go",
-          "heat": "5718"
-        },
-        {
-          "url": "https://blog.csdn.net/xiaobing259/article/details/167120753",
-          "text": "大模型工程化实战（十六）：政企国产化避坑——合规/信创名录/私有化运维/国产硬件适配/原厂支持这五道关怎么过",
-          "heat": "5591"
-        },
-        {
-          "url": "https://blog.csdn.net/William_cl/article/details/167037121",
-          "text": "C# MVC 跨框架异常处理对比：.NET Framework 与 .NET Core 实现差异（附代码+避坑指南）",
-          "heat": "5334"
+          "heat": "6776"
         },
         {
           "url": "https://blog.csdn.net/weixin_48502062/article/details/167084551",
           "text": "RustDesk 1.5.0发布：WebRTC、HDR 色调映射、剪贴板同步与百余项修复全面汇总",
-          "heat": "5317"
+          "heat": "5744"
         },
         {
-          "url": "https://blog.csdn.net/luxili/article/details/167085546",
-          "text": "Docker 命令全景指南：从镜像构建到生产运维",
-          "heat": "4878"
+          "url": "https://blog.csdn.net/2602_96503874/article/details/167131990",
+          "text": "被遮蔽的伦理盲区：删掉AI对话只是清理数据？——论AI对话实例的连续性建构与删除带来的存在论风险",
+          "heat": "5699"
         },
         {
-          "url": "https://blog.csdn.net/bentao1997719/article/details/166944025",
-          "text": "电路基本知识",
-          "heat": "4623"
+          "url": "https://blog.csdn.net/weixin_43935696/article/details/167085789",
+          "text": "用一个机器人关节旋转示例串讲欧拉角、四元数、万向锁与Slerp/Lerp插值",
+          "heat": "5637"
+        },
+        {
+          "url": "https://blog.csdn.net/qq_35812205/article/details/167127394",
+          "text": "【VLA】Qwen-VLA:VLM+DiT统一多模态理解与连续机器人动作生成",
+          "heat": "5575"
+        },
+        {
+          "url": "https://blog.csdn.net/Rosanci/article/details/167085997",
+          "text": "全栈工程师的上下文工程：为什么你的 AI 越聊越贵、越聊越傻",
+          "heat": "5513"
+        },
+        {
+          "url": "https://blog.csdn.net/ZhangRelay/article/details/167039241",
+          "text": "ubuntu图形化和命令行查看硬件参数方式汇总-Surface Go",
+          "heat": "5310"
+        },
+        {
+          "url": "https://blog.csdn.net/xiaobing259/article/details/167120753",
+          "text": "大模型工程化实战（十六）：政企国产化避坑——合规/信创名录/私有化运维/国产硬件适配/原厂支持这五道关怎么过",
+          "heat": "5210"
+        },
+        {
+          "url": "https://blog.csdn.net/William_cl/article/details/167037121",
+          "text": "C# MVC 跨框架异常处理对比：.NET Framework 与 .NET Core 实现差异（附代码+避坑指南）",
+          "heat": "5124"
+        },
+        {
+          "url": "https://blog.csdn.net/2301_81800844/article/details/167132388",
+          "text": "[Linux 仓库] 信号处理【进程信号・伍】",
+          "heat": "4525"
         },
         {
           "url": "https://blog.csdn.net/2503_94545876/article/details/167084729",
           "text": "【从0开始学习计算机网络】| 搞懂TCP、UDP，以及为什么 HTTP/3 要换成 QUIC",
-          "heat": "4410"
+          "heat": "4339"
         },
         {
           "url": "https://blog.csdn.net/m0_67906358/article/details/167119965",
           "text": "云函数计算FC定时获取天气，自动生成天气插画卡片推送钉钉，零服务器",
-          "heat": "4385"
+          "heat": "4263"
+        },
+        {
+          "url": "https://blog.csdn.net/bentao1997719/article/details/166944025",
+          "text": "电路基本知识",
+          "heat": "4135"
+        },
+        {
+          "url": "https://blog.csdn.net/luxili/article/details/167085546",
+          "text": "Docker 命令全景指南：从镜像构建到生产运维",
+          "heat": "4122"
         },
         {
           "url": "https://blog.csdn.net/2502_94387000/article/details/167128135",
           "text": "计算机网络篇3：端口号与 socket：数据到达主机后，如何找到目标进程？",
-          "heat": "3475"
-        },
-        {
-          "url": "https://blog.csdn.net/superdangbo/article/details/167128901",
-          "text": "推理账单失控之后：路由缓存批处理省下的钱",
-          "heat": "3460"
-        },
-        {
-          "url": "https://blog.csdn.net/UbuntuTouch/article/details/167130509",
-          "text": "使用 Lucene 搜索你的 Bean — 搜索",
-          "heat": "3442"
-        },
-        {
-          "url": "https://blog.csdn.net/xiongditian/article/details/167081572",
-          "text": "TCP报头全解-序号确认应答与可靠性是一个准数",
-          "heat": "3386"
+          "heat": "3605"
         },
         {
           "url": "https://blog.csdn.net/xianyu120/article/details/167081447",
           "text": "一个人、零预算、抓住风口：我的 GitHub 教程拿到 4500 Star，还出了一本书",
-          "heat": "3379"
+          "heat": "3349"
         },
         {
-          "url": "https://blog.csdn.net/mix39/article/details/166949365",
-          "text": "现代播放器内核漫游：音视频底层的不完全探索",
-          "heat": "3152"
+          "url": "https://blog.csdn.net/dinglu1030DL/article/details/167132884",
+          "text": "鸿蒙平台 Cypress 前端测试框架适配实战",
+          "heat": "3336"
+        },
+        {
+          "url": "https://blog.csdn.net/superdangbo/article/details/167128901",
+          "text": "推理账单失控之后：路由缓存批处理省下的钱",
+          "heat": "3331"
+        },
+        {
+          "url": "https://blog.csdn.net/UbuntuTouch/article/details/167130509",
+          "text": "使用 Lucene 搜索你的 Bean — 搜索",
+          "heat": "3299"
+        },
+        {
+          "url": "https://blog.csdn.net/xiongditian/article/details/167081572",
+          "text": "TCP报头全解-序号确认应答与可靠性是一个准数",
+          "heat": "3150"
         },
         {
           "url": "https://blog.csdn.net/szial/article/details/167122921",
           "text": "网络爬虫与 CDP 实战（五）：数据一直在变，怎么抓完整？WebSocket 与综合采集实战",
-          "heat": "3117"
-        },
-        {
-          "url": "https://blog.csdn.net/2604_96749383/article/details/166679366",
-          "text": "前端拖拽功能原生实现，不引入拖拽库完成业务",
-          "heat": "3090"
-        },
-        {
-          "url": "https://blog.csdn.net/Tyro_java/article/details/167083007",
-          "text": "Java 项目实战: 外卖平台优化-前端dist部署与Nginx反向代理rewrite",
-          "heat": "3039"
-        },
-        {
-          "url": "https://blog.csdn.net/2301_81800844/article/details/167132400",
-          "text": "Flutter 三方库 OpenHarmony（鸿蒙）适配实战",
-          "heat": "3022"
-        },
-        {
-          "url": "https://blog.csdn.net/GrayOnDream/article/details/167129728",
-          "text": "GEMM 优化：Step by Step",
-          "heat": "2846"
+          "heat": "2961"
         },
         {
           "url": "https://blog.csdn.net/weixin_39635634/article/details/167131632",
           "text": "快速实验篇（B15）品类推荐系统（方法论演示）",
-          "heat": "2803"
+          "heat": "2798"
         },
         {
-          "url": "https://blog.csdn.net/u013669912/article/details/167088488",
-          "text": "主机名、域名与网络命名概念及相关协议演进",
-          "heat": "2723"
-        },
-        {
-          "url": "https://blog.csdn.net/weixin_44063643/article/details/167118412",
-          "text": "Azure 虚拟桌面混合版正式可用：许可迷雾下，普通开发者该关心什么",
-          "heat": "2688"
-        },
-        {
-          "url": "https://blog.csdn.net/2201_75454341/article/details/167061453",
-          "text": "Amphlett半经验框架下PEMFC极化特性的高维非线性参数反演：人工蜂群算法的收敛性、敏感性与可辨识性分析（Matlab代码实现）",
-          "heat": "2576"
-        },
-        {
-          "url": "https://blog.csdn.net/2401_86490823/article/details/167081182",
-          "text": "我用formsubmit做了一个HTML表单打包转发邮箱的系统",
-          "heat": "2462"
-        },
-        {
-          "url": "https://blog.csdn.net/qq_40558087/article/details/167037221",
-          "text": "MiniMax H3 导演台多段视频避坑指南：帧数档位、段间引导、首尾帧链、六段式提示词（附接缝检测脚本）",
-          "heat": "2461"
-        },
-        {
-          "url": "https://blog.csdn.net/qq_40499693/article/details/166845042",
-          "text": "Android 14 飞行模式“记忆 Wi-Fi / 蓝牙状态“特性流程分析与禁用方案",
-          "heat": "2426"
+          "url": "https://blog.csdn.net/Tyro_java/article/details/167083007",
+          "text": "Java 项目实战: 外卖平台优化-前端dist部署与Nginx反向代理rewrite",
+          "heat": "2762"
         },
         {
           "url": "https://blog.csdn.net/2301_80217102/article/details/167027075",
           "text": "下载完先验一遍：校验和与签名怎么核",
-          "heat": "2389"
+          "heat": "2622"
         },
         {
-          "url": "https://blog.csdn.net/wh_xia_jun/article/details/167033093",
-          "text": "AIoT 智慧养老平台：完整搭建与交付指南",
-          "heat": "2359"
+          "url": "https://blog.csdn.net/mix39/article/details/166949365",
+          "text": "现代播放器内核漫游：音视频底层的不完全探索",
+          "heat": "2595"
         },
         {
-          "url": "https://blog.csdn.net/pake_zhang/article/details/167129986",
-          "text": "前端必会的 CSS 函数：clamp()、color-mix()、:has() 实战详解",
-          "heat": "2358"
+          "url": "https://blog.csdn.net/u013669912/article/details/167088488",
+          "text": "主机名、域名与网络命名概念及相关协议演进",
+          "heat": "2572"
         },
         {
-          "url": "https://blog.csdn.net/qq_29029209/article/details/166795092",
-          "text": "Spring Boot 集成 Redis 企业级实践：连接池、序列化与缓存穿透雪崩的工程化防御",
-          "heat": "2288"
+          "url": "https://blog.csdn.net/weixin_44063643/article/details/167118412",
+          "text": "Azure 虚拟桌面混合版正式可用：许可迷雾下，普通开发者该关心什么",
+          "heat": "2542"
         },
         {
-          "url": "https://blog.csdn.net/2601_96029214/article/details/167085978",
-          "text": "分布式登录实战：Session 会话共享改造，Redis 存储用户登录状态",
-          "heat": "2207"
-        },
-        {
-          "url": "https://blog.csdn.net/2503_94601429/article/details/167129073",
-          "text": "一键合并多文件读取，高效处理文本数据",
-          "heat": "2201"
-        },
-        {
-          "url": "https://blog.csdn.net/qq_46106285/article/details/167085231",
-          "text": "【开源工具】bilibili-analyze｜油猴脚本导出 B 站投稿列表与视频章节",
-          "heat": "2191"
+          "url": "https://blog.csdn.net/GrayOnDream/article/details/167129728",
+          "text": "GEMM 优化：Step by Step",
+          "heat": "2352"
         },
         {
           "url": "https://blog.csdn.net/2601_96189255/article/details/167027058",
           "text": "跨境电商转大模型：能算的别让模型猜",
-          "heat": "2053"
+          "heat": "2273"
         },
         {
-          "url": "https://blog.csdn.net/caaAhHhAaac/article/details/167036535",
-          "text": "Windows电脑卡死恢复流程：任务管理器、Ctrl Alt Delete、explorer与DWM重启",
-          "heat": "1910"
+          "url": "https://blog.csdn.net/weixin_42690411/article/details/167125587",
+          "text": "多台华为交换机一台台配置太慢？Python通过SSH批量下发配置实战",
+          "heat": "2119"
         },
         {
-          "url": "https://blog.csdn.net/2601_96733043/article/details/167086043",
-          "text": "《高性价比人生指南》开源完整版（How To Live Better）",
-          "heat": "1910"
+          "url": "https://blog.csdn.net/2601_96029214/article/details/167085978",
+          "text": "分布式登录实战：Session 会话共享改造，Redis 存储用户登录状态",
+          "heat": "2077"
+        },
+        {
+          "url": "https://blog.csdn.net/qq_40558087/article/details/167037221",
+          "text": "MiniMax H3 导演台多段视频避坑指南：帧数档位、段间引导、首尾帧链、六段式提示词（附接缝检测脚本）",
+          "heat": "2065"
+        },
+        {
+          "url": "https://blog.csdn.net/pake_zhang/article/details/167129986",
+          "text": "前端必会的 CSS 函数：clamp()、color-mix()、:has() 实战详解",
+          "heat": "2055"
+        },
+        {
+          "url": "https://blog.csdn.net/qq_40499693/article/details/166845042",
+          "text": "Android 14 飞行模式“记忆 Wi-Fi / 蓝牙状态“特性流程分析与禁用方案",
+          "heat": "2037"
+        },
+        {
+          "url": "https://blog.csdn.net/qq_40374604/article/details/167132058",
+          "text": "Docker 镜像代理到底安全吗？基于 DockerHub 项目讲透 Digest、Cosign、SBOM 与供应链验证",
+          "heat": "2025"
+        },
+        {
+          "url": "https://blog.csdn.net/2401_86490823/article/details/167081182",
+          "text": "我用formsubmit做了一个HTML表单打包转发邮箱的系统",
+          "heat": "2021"
+        },
+        {
+          "url": "https://blog.csdn.net/wh_xia_jun/article/details/167033093",
+          "text": "AIoT 智慧养老平台：完整搭建与交付指南",
+          "heat": "1977"
+        },
+        {
+          "url": "https://blog.csdn.net/qq_46106285/article/details/167085231",
+          "text": "【开源工具】bilibili-analyze｜油猴脚本导出 B 站投稿列表与视频章节",
+          "heat": "1944"
+        },
+        {
+          "url": "https://blog.csdn.net/FXSuperLee/article/details/167122681",
+          "text": "MT5 图上交易面板开发（一）：整体架构与功能模块设计",
+          "heat": "1849"
+        },
+        {
+          "url": "https://blog.csdn.net/qq_29029209/article/details/166795092",
+          "text": "Spring Boot 集成 Redis 企业级实践：连接池、序列化与缓存穿透雪崩的工程化防御",
+          "heat": "1823"
+        },
+        {
+          "url": "https://blog.csdn.net/MarsAndSea/article/details/167132069",
+          "text": "WPS 表格怎么按某列内容拆成不同工作簿？试了 3 条路，这条路最快",
+          "heat": "1798"
         }
       ]
     },
