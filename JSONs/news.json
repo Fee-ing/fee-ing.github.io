@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791222344380,
+  "timestamp": 1791223261391,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://daily.dev/posts/2026-nobel-prize-in-medicine-goes-to-optogenetics-pioneers-and-the-committee-warns-against-ai-brain-q09nze4ta",
+          "text": "Karl Deisseroth, Peter Hegemann and Georg Nagel win 2026 Nobel Prize in Medicine for optogenetics",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17056",
           "text": "AI「读心术」更进一步：仅凭脑扫描，就能重建你正在看的画面",
           "heat": "麻省理工科技评论"
@@ -3073,11 +3078,6 @@
           "url": "https://daily.dev/posts/ai-in-mathematics-challenges-academic-norms-wgozf6vj3",
           "text": "OpenAI claims Navier-Stokes Millennium Prize solution as mathematicians push back",
           "heat": "daily.dev"
-        },
-        {
-          "url": "https://news.mydrivers.com/1/1155/1155449.htm",
-          "text": "存储价格还得涨！英伟达豪掷 1.87 万亿元锁定 HBM 产能：独占全球 37%",
-          "heat": "快科技"
         }
       ]
     },
@@ -10526,27 +10526,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48883410",
           "text": "【付小远】眼泪若嫌多…",
-          "heat": "1087"
+          "heat": "1088"
         },
         {
           "url": "http://www.acfun.cn/v/ac48892894",
           "text": "【绝望女神/翻唱】【全金属狂潮 OP2 那就是爱吧】",
-          "heat": "991"
+          "heat": "1024"
         },
         {
           "url": "http://www.acfun.cn/v/ac48892928",
           "text": "虫儿飞",
-          "heat": "622"
+          "heat": "699"
         },
         {
           "url": "http://www.acfun.cn/v/ac48887789",
           "text": "【作业用/助眠】情绪高涨的秋日爵士 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "629"
+          "heat": "681"
         },
         {
           "url": "http://www.acfun.cn/v/ac48891871",
           "text": "029乐队个人展示",
-          "heat": "610"
+          "heat": "630"
         },
         {
           "url": "http://www.acfun.cn/v/ac48892598",
@@ -10559,6 +10559,11 @@
           "heat": "291"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48892299",
+          "text": "动漫音乐节祈Inory现场演唱刀剑神域l F 从零开始的异世界生活",
+          "heat": "145"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48863019",
           "text": "【龙飘飘】喜气洋洋-国语-流行",
           "heat": "104"
@@ -10569,9 +10574,14 @@
           "heat": "1027"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48892299",
-          "text": "动漫音乐节祈Inory现场演唱刀剑神域l F 从零开始的异世界生活",
-          "heat": "145"
+          "url": "http://www.acfun.cn/v/ac48892313",
+          "text": "动漫音乐节现场银魂，灼眼的夏娜等歌曲",
+          "heat": "93"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48892762",
+          "text": "MyGO!!!!! cover｜ ないものねだり",
+          "heat": "122"
         },
         {
           "url": "http://www.acfun.cn/v/ac48890256",
@@ -10584,14 +10594,14 @@
           "heat": "100"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48892762",
-          "text": "MyGO!!!!! cover｜ ないものねだり",
-          "heat": "122"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48892790",
           "text": "初学者｜口袋钢琴《隐形的翅膀》",
-          "heat": "137"
+          "heat": "149"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48892323",
+          "text": "动漫音乐节跑圈，青春活力满满",
+          "heat": "72"
         },
         {
           "url": "http://www.acfun.cn/v/ac48893160",
@@ -10599,19 +10609,9 @@
           "heat": "174"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48892313",
-          "text": "动漫音乐节现场银魂，灼眼的夏娜等歌曲",
-          "heat": "93"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48892315",
           "text": "动漫音乐节西瓜，现场演唱前前世世",
           "heat": "69"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48892323",
-          "text": "动漫音乐节跑圈，青春活力满满",
-          "heat": "72"
         },
         {
           "url": "http://www.acfun.cn/v/ac48891319",
@@ -10636,7 +10636,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48892808",
           "text": "【苏洛锦】镜光（重翻版）",
-          "heat": "23"
+          "heat": "34"
         },
         {
           "url": "http://www.acfun.cn/v/ac48892611",
