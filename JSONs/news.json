@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791234971881,
+  "timestamp": 1791235858780,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2815,6 +2815,11 @@
           "heat": "daily.dev"
         },
         {
+          "url": "https://wallstreetcn.com/articles/3783035",
+          "text": "报道：OpenAI 正与阿联酋基金、贝莱德洽谈 300 亿美元融资轮",
+          "heat": "华尔街见闻"
+        },
+        {
           "url": "https://www.gelonghui.com/live/2698569",
           "text": "维基基金会称发现 OpenAI「失控」AI 代理活动",
           "heat": "格隆汇"
@@ -2823,11 +2828,6 @@
           "url": "https://www.mittrchina.com/news/detail/17056",
           "text": "AI「读心术」更进一步：仅凭脑扫描，就能重建你正在看的画面",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://wallstreetcn.com/articles/3783030",
-          "text": "OpenAI 遭商标侵权诉讼，「Astra」名称引发法律纠纷",
-          "heat": "华尔街见闻"
         }
       ]
     },
@@ -4107,24 +4107,24 @@
           "heat": "营养师Bruce"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261004Q0354L00",
-          "text": "小沈阳夫妇新片《什么意思夫妇》逆袭成国庆档黑马，它是靠什么打动观众的？真夫妻出演到底有多加分？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261005Q04D1W00",
           "text": "亚足联拟2030年起推出亚国联，与世界杯资格挂钩，为什么各大洲都推广类似赛制？国足重返世界杯更难了吗？",
           "heat": "孔明空城聊球"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261005Q02S0H00",
-          "text": "巴西总统选举首轮投票无人胜出，将进行第二轮角逐，最终结果的变数在哪？卢拉和博索纳罗当选影响有何不同？",
+          "url": "https://new.qq.com/rain/a/20261004Q0354L00",
+          "text": "小沈阳夫妇新片《什么意思夫妇》逆袭成国庆档黑马，它是靠什么打动观众的？真夫妻出演到底有多加分？",
           "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20261005Q07UV800",
           "text": "司机时速120公里开辅助驾驶，撞车前10米辅助驾驶突然退出，为何10米时退出？撞车是车企还是司机的锅？",
           "heat": "木糠"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261005Q02S0H00",
+          "text": "巴西总统选举首轮投票无人胜出，将进行第二轮角逐，最终结果的变数在哪？卢拉和博索纳罗当选影响有何不同？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20261005Q037WA00",
@@ -10036,12 +10036,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48883410",
           "text": "【付小远】眼泪若嫌多…",
-          "heat": "1102"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48892894",
-          "text": "【绝望女神/翻唱】【全金属狂潮 OP2 那就是爱吧】",
-          "heat": "1027"
+          "heat": "1105"
         },
         {
           "url": "http://www.acfun.cn/v/ac48892928",
@@ -10051,7 +10046,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48887789",
           "text": "【作业用/助眠】情绪高涨的秋日爵士 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "768"
+          "heat": "780"
         },
         {
           "url": "http://www.acfun.cn/v/ac48891871",
@@ -10129,6 +10124,11 @@
           "heat": "69"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48892611",
+          "text": "T氏彩蛋",
+          "heat": "128"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48892808",
           "text": "【苏洛锦】镜光（重翻版）",
           "heat": "34"
@@ -10144,19 +10144,14 @@
           "heat": "56"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48892611",
-          "text": "T氏彩蛋",
-          "heat": "128"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48870917",
           "text": "【大塚 愛】Chime",
-          "heat": "114"
+          "heat": "123"
         },
         {
           "url": "http://www.acfun.cn/v/ac48870912",
           "text": "【M6 Music Live Session】Amir",
-          "heat": "73"
+          "heat": "85"
         },
         {
           "url": "http://www.acfun.cn/v/ac48870771",
@@ -10182,6 +10177,11 @@
           "url": "http://www.acfun.cn/v/ac48862984",
           "text": "【中国音乐地图之听见内蒙古 蒙古长调】温柔的春风",
           "heat": "38"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48870767",
+          "text": "【普拉西多·多明戈】威尔第：阿提拉 Act 3 Oh, dolore",
+          "heat": "32"
         }
       ]
     },
