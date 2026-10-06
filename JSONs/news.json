@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791319542069,
+  "timestamp": 1791320461728,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2980,6 +2980,16 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://simonwillison.net/2026/Oct/6/le-chonk/",
+          "text": "Introducing Mistral Large 4: Le chonk",
+          "heat": "Simon Willison"
+        },
+        {
+          "url": "https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/",
+          "text": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
+          "heat": "Google DeepMind"
+        },
+        {
           "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
           "text": "Advancing computer use with Ironclad",
           "heat": "OpenAI"
@@ -3012,16 +3022,6 @@
         {
           "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/blind-sweep-ultrasounds-ai/",
           "text": "Ask a Scientist: How are researchers using AI to help pregnant women access ultrasounds?",
-          "heat": "blog.google"
-        },
-        {
-          "url": "https://www.ithome.com/1/010/108.htm",
-          "text": "Mistral AI 发布 Mistral Large 4 公开预览版，月底开放权重",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/",
-          "text": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
           "heat": "blog.google"
         }
       ]
