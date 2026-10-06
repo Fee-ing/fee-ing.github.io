@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791310546987,
+  "timestamp": 1791311460172,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,6 +3030,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
+          "text": "Advancing computer use with Ironclad",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17060",
           "text": "嘴上讨厌 AI，身体却很诚实",
           "heat": "麻省理工科技评论"
@@ -3068,11 +3073,6 @@
           "url": "https://daily.dev/posts/the-ai-app-builder-your-team-trusts-has-a-root-level-backdoor-tzeyqwasx",
           "text": "Langflow RCE 漏洞 CVE-2026-0768 正被活跃利用，已记录超 1.5 万次成功利用",
           "heat": "daily.dev"
-        },
-        {
-          "url": "https://blog.google/innovation-and-ai/technology/health/google-earth-ai/",
-          "text": "Making global public health more proactive with Google Earth AI",
-          "heat": "blog.google"
         }
       ]
     },
@@ -4362,14 +4362,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261005Q037WA00",
-          "text": "美国撤回部署在英国的B-1轰炸机，涉及的恐怖阴谋到底是什么？下一步可能会部署去哪？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261005Q054M700",
           "text": "俄罗斯女子因打破实验室试管后感染肺鼠疫去世，近200人隔离，肺鼠疫为何如此致命？会引发大规模疫情吗？",
           "heat": "中医大课堂"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261005Q037WA00",
+          "text": "美国撤回部署在英国的B-1轰炸机，涉及的恐怖阴谋到底是什么？下一步可能会部署去哪？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20261006Q04CVR00",
@@ -10571,17 +10571,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48893626",
           "text": "【柯基】《主角》王菲｜我站在舞台中央，影子被钉在墙上，迎着光才刻下勋章",
-          "heat": "1338"
+          "heat": "1344"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895165",
           "text": "不想回家，天还没亮呢酒别想着醒来",
-          "heat": "1022"
+          "heat": "1025"
         },
         {
           "url": "http://www.acfun.cn/v/ac48894925",
           "text": "《夏蝉不知我心忧》｜夏蝉声声，不懂我心底的愁",
-          "heat": "836"
+          "heat": "855"
         },
         {
           "url": "http://www.acfun.cn/v/ac48894947",
@@ -10596,7 +10596,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48894713",
           "text": "ASMR｜偏震感の口腔语言ᰔᩚ/•᷅•᷄୭",
-          "heat": "1049"
+          "heat": "1052"
         },
         {
           "url": "http://www.acfun.cn/v/ac48893723",
@@ -10604,14 +10604,14 @@
           "heat": "403"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48894187",
-          "text": "笨蛋，别哭，还有我陪着你……",
-          "heat": "739"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48894509",
           "text": "【东方】初见乐谱10分钟就要马上弹奏U.N.オーエンは彼女なのか【りほピアノ】",
-          "heat": "691"
+          "heat": "732"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48894187",
+          "text": "笨蛋，别哭，还有我陪着你……",
+          "heat": "765"
         },
         {
           "url": "http://www.acfun.cn/v/ac48893410",
@@ -10621,7 +10621,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48893659",
           "text": "【良曲】New Translation: “Wait”",
-          "heat": "293"
+          "heat": "308"
         },
         {
           "url": "http://www.acfun.cn/v/ac48893820",
@@ -10639,14 +10639,14 @@
           "heat": "241"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48893440",
-          "text": "［朝鲜音乐］我们除了他谁也不认",
-          "heat": "294"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48895130",
           "text": "［朝鲜音乐］海岸炮兵之歌",
           "heat": "220"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48893440",
+          "text": "［朝鲜音乐］我们除了他谁也不认",
+          "heat": "294"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895164",
@@ -10654,14 +10654,14 @@
           "heat": "140"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48894182",
+          "text": "《忽然之间》韩宇吉他弹唱",
+          "heat": "242"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48873899",
           "text": "「D.C.III～ダ･カーポIII～」風見鶏編OPムービー店頭版",
           "heat": "98"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48894182",
-          "text": "《忽然之间》韩宇吉他弹唱",
-          "heat": "229"
         },
         {
           "url": "http://www.acfun.cn/v/ac48894750",
@@ -10684,6 +10684,11 @@
           "heat": "43"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48894583",
+          "text": "【東方】AdamKadmon - シアター (Full Album) 2014",
+          "heat": "63"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48893972",
           "text": "阿列克谢耶夫指挥圣彼得堡爱乐乐团：纪念列宁格勒爱乐乐团撤离至新西伯利亚85周年音乐会",
           "heat": "62"
@@ -10692,11 +10697,6 @@
           "url": "http://www.acfun.cn/v/ac48894810",
           "text": "【万能青年旅店】  永嘉慧星",
           "heat": "79"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48894583",
-          "text": "【東方】AdamKadmon - シアター (Full Album) 2014",
-          "heat": "59"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895106",
@@ -10709,14 +10709,14 @@
           "heat": "22"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48894658",
+          "text": "2026-10-05 贝学姐 直播录像",
+          "heat": "50"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48870952",
           "text": "【萧亚轩】Honey Honey Honey",
           "heat": "75"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48881648",
-          "text": "【ひぐらしのなく頃に】ひぐらし業・ひぐらし卒　OP・ED等関連曲まとめ　【Higurashi whe",
-          "heat": "55"
         }
       ]
     },
