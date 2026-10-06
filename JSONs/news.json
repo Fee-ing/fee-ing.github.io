@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791317743005,
+  "timestamp": 1791318649882,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://www.gelonghui.com/live/2699489",
+          "text": "Anthropic 扩大网络安全公司获取最新 AI 模型的渠道",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://wallstreetcn.com/articles/3783082",
           "text": "共和党斥 AI 危险论，民主党质疑「大厂」影响特朗普政府 AI 政策，要求披露监管框架修改过程",
           "heat": "华尔街见闻"
@@ -3067,11 +3072,6 @@
         {
           "url": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/",
           "text": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
-          "heat": "blog.google"
-        },
-        {
-          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/create-music-production-plugins-google-flow/",
-          "text": "Producers can now vibe code their own music production tools using Google Flow Music.",
           "heat": "blog.google"
         }
       ]
@@ -10571,7 +10571,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48893626",
           "text": "【柯基】《主角》王菲｜我站在舞台中央，影子被钉在墙上，迎着光才刻下勋章",
-          "heat": "1349"
+          "heat": "1351"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895165",
@@ -10581,7 +10581,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48894925",
           "text": "《夏蝉不知我心忧》｜夏蝉声声，不懂我心底的愁",
-          "heat": "892"
+          "heat": "910"
         },
         {
           "url": "http://www.acfun.cn/v/ac48894947",
@@ -10596,12 +10596,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48894713",
           "text": "ASMR｜偏震感の口腔语言ᰔᩚ/•᷅•᷄୭",
-          "heat": "1064"
+          "heat": "1067"
         },
         {
           "url": "http://www.acfun.cn/v/ac48893723",
           "text": "Кино乐队维克多崔莫斯科演唱会现场2021",
-          "heat": "423"
+          "heat": "436"
         },
         {
           "url": "http://www.acfun.cn/v/ac48894509",
@@ -10641,7 +10641,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48894182",
           "text": "《忽然之间》韩宇吉他弹唱",
-          "heat": "277"
+          "heat": "282"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895164",
