@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791407744394,
+  "timestamp": 1791408654932,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2865,6 +2865,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
+          "text": "Introducing Claude Haiku 5.5",
+          "heat": "Simon Willison"
+        },
+        {
           "url": "https://huggingface.co/blog/tiiuae/falcon-asr",
           "text": "Introducing Falcon ASR",
           "heat": "Hugging Face Blog"
@@ -2888,11 +2893,6 @@
           "url": "https://www.gelonghui.com/live/2700400",
           "text": "特朗普将出席 AI 科学会议，宣布逾 10 亿美元投资承诺",
           "heat": "格隆汇"
-        },
-        {
-          "url": "https://www.ithome.com/1/010/308.htm",
-          "text": "MAI Code 1.1 Flash 模型将整合到微软 Win11：上下文窗口 256K、130B 参数",
-          "heat": "IT 之家"
         }
       ]
     },
