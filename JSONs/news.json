@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791396943534,
+  "timestamp": 1791397848726,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://openai.com/index/radisson",
+          "text": "Radisson Hotel Group brings hotel discovery into ChatGPT",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://huggingface.co/blog/tiiuae/falcon-asr",
           "text": "Introducing Falcon ASR",
           "heat": "Hugging Face Blog"
@@ -3048,6 +3053,11 @@
           "url": "https://huggingface.co/blog/nvidia/nemotron-ioi-and-imo-2026",
           "text": "One Model Family, Two Gold-Level Results: Fine-Tuning Nemotron for IOI and IMO",
           "heat": "Hugging Face Blog"
+        },
+        {
+          "url": "https://www.ithome.com/1/010/313.htm",
+          "text": "英伟达发布 DGX Station for Windows：本地运行 1 万亿参数 AI 模型，最高 748GB 内存",
+          "heat": "IT 之家"
         },
         {
           "url": "https://www.ithome.com/1/010/308.htm",
@@ -3063,16 +3073,6 @@
           "url": "https://finance.jrj.com.cn/2026/10/07212558628805.shtml",
           "text": "谷歌联手 Unity 打造新一代游戏平台：不用编程，动动嘴就能做游戏",
           "heat": "金融界"
-        },
-        {
-          "url": "https://daily.dev/posts/ibm-anderon-quantum-foundry-automates-qubit-fabs-0xmpy2j6d",
-          "text": "IBM spinoff Anderon secures $1bn CHIPS Act award to build quantum chip foundry",
-          "heat": "daily.dev"
-        },
-        {
-          "url": "https://www.ithome.com/1/010/307.htm",
-          "text": "微软重点介绍 MXC SDK，为 AI 智能体提供受控执行环境",
-          "heat": "IT 之家"
         }
       ]
     },
