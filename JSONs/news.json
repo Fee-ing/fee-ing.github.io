@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791395144698,
+  "timestamp": 1791396059776,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://www.ithome.com/1/010/308.htm",
+          "text": "MAI Code 1.1 Flash 模型将整合到微软 Win11：上下文窗口 256K、130B 参数",
+          "heat": "IT 之家"
+        },
+        {
           "url": "https://www.ithome.com/1/010/293.htm",
           "text": "谷歌 SynthID 面向全球用户开放，可检测 AI 生成内容",
           "heat": "maomu.com"
@@ -3065,14 +3070,9 @@
           "heat": "daily.dev"
         },
         {
-          "url": "https://www.gelonghui.com/live/2700287",
-          "text": "旧金山加入反数据中心浪潮：45 天内暂禁新建数据中心",
-          "heat": "格隆汇"
-        },
-        {
-          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synth-id-ai-content/",
-          "text": "We're making it easier to identify AI-generated content globally.",
-          "heat": "blog.google"
+          "url": "https://www.ithome.com/1/010/307.htm",
+          "text": "微软重点介绍 MXC SDK，为 AI 智能体提供受控执行环境",
+          "heat": "IT 之家"
         }
       ]
     },
@@ -4352,14 +4352,14 @@
           "heat": "Geranium"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261006Q05CHN00",
-          "text": "中网女单美国名将高芙投诉广告牌干扰获重打，随后7-5逆转孙心然，裁判判罚重打依据是什么？为何引发这么大争议？",
-          "heat": "不怕困难的王导演"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261007Q0AKRH00",
           "text": "82岁的物理学家独享价值800万元物理诺奖，圈内科学家如何看？如何理解这项工作的意义？",
           "heat": "乔见科学"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261006Q05CHN00",
+          "text": "中网女单美国名将高芙投诉广告牌干扰获重打，随后7-5逆转孙心然，裁判判罚重打依据是什么？为何引发这么大争议？",
+          "heat": "不怕困难的王导演"
         },
         {
           "url": "https://new.qq.com/rain/a/20261007Q04DTH00",
@@ -10511,17 +10511,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48897141",
           "text": "【颜音】サクラ・インカーネーション（Sakura Incarnation）",
-          "heat": "1148"
+          "heat": "1154"
         },
         {
           "url": "http://www.acfun.cn/v/ac48889523",
           "text": "【千璃Senri】《17》cover：椎名林檎",
-          "heat": "1083"
+          "heat": "1084"
         },
         {
           "url": "http://www.acfun.cn/v/ac48896712",
           "text": "全民进入大红果时代哈哈（五分钟给姐妹速通一首",
-          "heat": "836"
+          "heat": "841"
         },
         {
           "url": "http://www.acfun.cn/v/ac48896970",
@@ -10531,12 +10531,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48897384",
           "text": "【衣笠雪绘】要死一次试试吗 歌切day203《逆蝶》",
-          "heat": "286"
+          "heat": "310"
         },
         {
           "url": "http://www.acfun.cn/v/ac48894520",
           "text": "【东方】独り占めドール【幽閉サテライト】",
-          "heat": "769"
+          "heat": "786"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895701",
@@ -10546,7 +10546,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48897116",
           "text": "鼠来宝才是最强的！",
-          "heat": "468"
+          "heat": "472"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895797",
@@ -10629,6 +10629,11 @@
           "heat": "109"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48887038",
+          "text": "秘密基地-你给我的所有-/secret base 〜君がくれたもの〜/ ZONE（Covered b",
+          "heat": "38"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48874165",
           "text": "トレセンラーメン列伝 (Game Size)",
           "heat": "69"
@@ -10652,11 +10657,6 @@
           "url": "http://www.acfun.cn/v/ac48896622",
           "text": "Chuni｜The End of Suffering",
           "heat": "79"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48871002",
-          "text": "【罗百吉&宝贝】chiqita 小妞-国语-合唱",
-          "heat": "74"
         }
       ]
     },
