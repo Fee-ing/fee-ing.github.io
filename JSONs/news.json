@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791409545853,
+  "timestamp": 1791410459748,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2880,6 +2880,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://api3.cls.cn/share/article/2498855?os=web&sv=8.4.6&app=CailianpressWeb",
+          "text": "博通为 OpenAI 定制芯片研发寻求逾 500 亿美元融资",
+          "heat": "财联社"
+        },
+        {
           "url": "https://www.ithome.com/1/010/313.htm",
           "text": "英伟达发布 DGX Station for Windows：本地运行 1 万亿参数 AI 模型，最高 748GB 内存",
           "heat": "IT 之家"
@@ -2888,11 +2893,6 @@
           "url": "https://www.techflowpost.com/zh-CN/newsletter/139122",
           "text": "OpenAI 宣布推出 GPT-6 模型并面向免费版开放",
           "heat": "techflowpost.com"
-        },
-        {
-          "url": "https://www.gelonghui.com/live/2700400",
-          "text": "特朗普将出席 AI 科学会议，宣布逾 10 亿美元投资承诺",
-          "heat": "格隆汇"
         }
       ]
     },
@@ -4162,13 +4162,13 @@
       "type": "社区",
       "content": [
         {
-          "url": "https://new.qq.com/rain/a/20261006Q09YDV00",
-          "text": "比利时科学家独享今年价值800万元的物理诺奖，他做出了哪些重要贡献？如何通俗理解？",
+          "url": "https://new.qq.com/rain/a/20261007Q0AKRH00",
+          "text": "82岁的物理学家独享价值800万元物理诺奖，圈内科学家如何看？如何理解这项工作的意义？",
           "heat": "乔见科学"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261007Q0AKRH00",
-          "text": "82岁的物理学家独享价值800万元物理诺奖，圈内科学家如何看？如何理解这项工作的意义？",
+          "url": "https://new.qq.com/rain/a/20261006Q09YDV00",
+          "text": "比利时科学家独享今年价值800万元的物理诺奖，他做出了哪些重要贡献？如何通俗理解？",
           "heat": "乔见科学"
         },
         {
@@ -10151,17 +10151,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48897141",
           "text": "【颜音】サクラ・インカーネーション（Sakura Incarnation）",
-          "heat": "1180"
+          "heat": "1181"
         },
         {
           "url": "http://www.acfun.cn/v/ac48889523",
           "text": "【千璃Senri】《17》cover：椎名林檎",
-          "heat": "1096"
+          "heat": "1101"
         },
         {
           "url": "http://www.acfun.cn/v/ac48896712",
           "text": "全民进入大红果时代哈哈（五分钟给姐妹速通一首",
-          "heat": "862"
+          "heat": "898"
         },
         {
           "url": "http://www.acfun.cn/v/ac48896970",
@@ -10176,7 +10176,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48894520",
           "text": "【东方】独り占めドール【幽閉サテライト】",
-          "heat": "815"
+          "heat": "836"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895701",
@@ -10186,7 +10186,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48897116",
           "text": "鼠来宝才是最强的！",
-          "heat": "519"
+          "heat": "537"
         },
         {
           "url": "http://www.acfun.cn/v/ac48895797",
@@ -10266,7 +10266,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48887038",
           "text": "秘密基地-你给我的所有-/secret base 〜君がくれたもの〜/ ZONE（Covered b",
-          "heat": "38"
+          "heat": "40"
         },
         {
           "url": "http://www.acfun.cn/v/ac48874165",
@@ -10289,14 +10289,14 @@
           "heat": "159"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48897473",
+          "text": "碰碰—孤独音乐家（江皓南）",
+          "heat": "80"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48896622",
           "text": "Chuni｜The End of Suffering",
           "heat": "79"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48897473",
-          "text": "碰碰—孤独音乐家（江皓南）",
-          "heat": "76"
         }
       ]
     },
