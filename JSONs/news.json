@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791481542401,
+  "timestamp": 1791482464193,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3025,6 +3025,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://openai.com/index/oracle",
+          "text": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17068",
           "text": "虚拟生物学计划扩容，18 亿美金投向 AI 生物学数据底座，美国能源部、Google、NIH 等参与建设",
           "heat": "麻省理工科技评论"
@@ -3033,6 +3038,11 @@
           "url": "https://www.mittrchina.com/news/detail/17067",
           "text": "礼来 CEO：AI 制药路还很长，人类可能只掌握 10% 的生物学知识",
           "heat": "麻省理工科技评论"
+        },
+        {
+          "url": "https://openai.com/index/pollo-ai",
+          "text": "Pollo AI turns creative ideas into campaigns with OpenAI",
+          "heat": "OpenAI"
         },
         {
           "url": "https://openai.com/index/disrupting-ai-enabled-false-front-operations",
@@ -3062,16 +3072,6 @@
         {
           "url": "https://www.aibase.com/zh/news/31475",
           "text": "德国环保搜索引擎 Ecosia 弃用 Mistral，转投中国开源模型：欧洲自主梦撞上现实",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.ithome.com/1/010/716.htm",
-          "text": "格芯与台积电签署 20 亿美元协议，在美国建立首个硅中介层生产基地",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31466",
-          "text": "美国地方媒体组团起诉微软 OpenAI：数万篇文章被喂进模型，一文钱没给",
           "heat": "aibase"
         }
       ]
@@ -4442,14 +4442,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261008Q0CJ5200",
-          "text": "俄民航机队老化大量停飞，想从越南租客机，俄民航状况有多严峻？未来可能无机可飞吗？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261008Q0BTQI00",
           "text": "“西西弗书店是如何盈利的”冲上热搜，他们在商场究竟靠什么赚钱？小书店能复制吗？",
           "heat": "江神"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261008Q0CJ5200",
+          "text": "俄民航机队老化大量停飞，想从越南租客机，俄民航状况有多严峻？未来可能无机可飞吗？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20261007Q0A6O600",
@@ -10311,12 +10311,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48898305",
           "text": "口死那个石家庄人 Live 片段",
-          "heat": "1723"
+          "heat": "1733"
         },
         {
           "url": "http://www.acfun.cn/v/ac48899152",
           "text": "《探窗》翻唱(cover汐音社)",
-          "heat": "1130"
+          "heat": "1136"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898447",
@@ -10344,19 +10344,14 @@
           "heat": "339"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48871032",
-          "text": "【中国音乐地图之听见内蒙古 蒙古族民间歌曲集】多姿的风采 乌乐木吉其那尔",
-          "heat": "33"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48871086",
           "text": "【罗百吉&宝贝】不要在脸上流下眼泪-国语-合唱",
           "heat": "143"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48875097",
-          "text": "【シャニソン】No 1 feel alone「My time」2DMV【アイドルマスター】",
-          "heat": "51"
+          "url": "http://www.acfun.cn/v/ac48871032",
+          "text": "【中国音乐地图之听见内蒙古 蒙古族民间歌曲集】多姿的风采 乌乐木吉其那尔",
+          "heat": "33"
         },
         {
           "url": "http://www.acfun.cn/v/ac48885941",
@@ -10416,7 +10411,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48897542",
           "text": "神秘红色小岛",
-          "heat": "95"
+          "heat": "106"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48899409",
+          "text": "《黑街DJ》公路之王の小曲，驾考宝典小典！",
+          "heat": "27"
         },
         {
           "url": "http://www.acfun.cn/v/ac48897587",
