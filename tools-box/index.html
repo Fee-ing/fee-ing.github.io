@@ -9,7 +9,7 @@
          静态壳不必等 JS bundle 就能拿到样式；React 挂载后的 LoadingMask 继续复用
          同一份 CSS，因此「静态壳 → React」接管前后零换肤、零位移。 -->
     <link rel="stylesheet" href="/tools-box/loading-mask.css" />
-    <script type="module" crossorigin src="/tools-box/assets/index-Bl4tkysr.js"></script>
+    <script type="module" crossorigin src="/tools-box/assets/index-BBE2A1Hs.js"></script>
     <link rel="modulepreload" crossorigin href="/tools-box/assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/jsx-runtime-BpzPEenQ.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/with-selector-DJ0JX1iX.js">
@@ -21,23 +21,21 @@
     <link rel="modulepreload" crossorigin href="/tools-box/assets/clsx-DB0hHKMi.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/dist-BFGQnjj0.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/bundle-mjs-DxdGK6Xj.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/utils-fo7pTTTq.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortal-Cf9p6v1P.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-BWJ7KExN.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/utils-DQ4u5jca.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortal-Bq_ZzU-P.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-Dx8_NVij.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/triangle-alert-BfJ-SJel.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-DI1M9sxz.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-DPFb9CbK.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-B1sd4zc-.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-BoB7t1rS.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/useValueAsRef-CH42Pxrg.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-HWZdu5VS.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-DUEdZ93Z.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/floating-ui.react-dom-CRWPNd1i.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-REOoL5Rh.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-UYjETUtX.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-CDtpcsAn.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-CsMqUZ2C.js">
     <link rel="stylesheet" crossorigin href="/tools-box/assets/index-pwMKD3ct.css">
   </head>
   <body style="margin:0;padding:0;box-sizing:border-box;overflow:hidden">
-    <!-- 首屏静态加载壳：JS bundle 下载/执行期间展示，React 挂载后由 LoadingScreen 接管。
-         标记结构与 LoadingMask 完全同构（.lm-mask 三件套 + 居中 label），进度不再用
-         进度条，而是以「文字 + 百分比」呈现。 -->
+    <!-- 首屏静态加载壳：JS bundle 下载/执行期间展示。 -->
     <!-- 根容器高度必须与移动端外壳（tailwind.css 的 app-screen-h）用同一套单位。
          只写 100vh：iOS Safari 取的是「地址栏收起」的大视口，比可视区更高，
          100dvh 的外壳矮一截，差额就在底部露出空白；

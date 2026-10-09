@@ -4,7 +4,7 @@
  * 放在 public/ 由 index.html 用 <link> 直接加载，是为了让「启动」的两个阶段
  * 共用同一份皮肤、不存在两套样式：
  *   1. React 挂载前的首屏静态壳（index.html 内联标记）；
- *   2. React 挂载后的 LoadingMask（启动遮罩 LoadingScreen / 页面加载 PageLoading）。
+ *   2. React 挂载后的 LoadingMask。
  * 若只留在 src 里被打包，静态壳就必须另抄一份，改一处漏一处。
  *
  * 视觉：高饱和呼吸渐变 + 斜向流光 + 噪点纹理，让加载过程有「色彩在流动」的
