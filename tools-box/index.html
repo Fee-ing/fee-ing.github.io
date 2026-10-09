@@ -5,12 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/tools-box/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>工具箱</title>
-    <style>
-      /* 首屏静态加载壳：JS bundle 下载/执行期间展示，React 挂载后由 LoadingScreen 接管 */
-      @keyframes boot-spin { to { transform: rotate(360deg); } }
-      @keyframes boot-progress { from { width: 0%; } to { width: 70%; } }
-    </style>
-    <script type="module" crossorigin src="/tools-box/assets/index-1BxRUKBe.js"></script>
+    <!-- 首屏静态壳用的是加载蒙层皮肤（.lm-mask*）。放在 public 里直接 <link>，
+         静态壳不必等 JS bundle 就能拿到样式；React 挂载后的 LoadingMask 继续复用
+         同一份 CSS，因此「静态壳 → React」接管前后零换肤、零位移。 -->
+    <link rel="stylesheet" href="/tools-box/loading-mask.css" />
+    <script type="module" crossorigin src="/tools-box/assets/index-Bl4tkysr.js"></script>
     <link rel="modulepreload" crossorigin href="/tools-box/assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/jsx-runtime-BpzPEenQ.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/with-selector-DJ0JX1iX.js">
@@ -22,39 +21,55 @@
     <link rel="modulepreload" crossorigin href="/tools-box/assets/clsx-DB0hHKMi.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/dist-BFGQnjj0.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/bundle-mjs-DxdGK6Xj.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/utils-DYdRagIl.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortal-mv5cF7XN.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-DVlsAIZj.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/utils-fo7pTTTq.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortal-Cf9p6v1P.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-BWJ7KExN.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/triangle-alert-BfJ-SJel.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-CUorpLiT.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-C3Lh9RKF.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-DI1M9sxz.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-DPFb9CbK.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/useValueAsRef-CH42Pxrg.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-CLqbd57b.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-HWZdu5VS.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/floating-ui.react-dom-CRWPNd1i.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-TEcMNjJX.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-MooH2i-w.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-REOoL5Rh.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-UYjETUtX.js">
     <link rel="stylesheet" crossorigin href="/tools-box/assets/index-pwMKD3ct.css">
   </head>
   <body style="margin:0;padding:0;box-sizing:border-box;overflow:hidden">
-    <!-- 静态壳与 LoadingScreen 完全同构：均 position:fixed 全屏 + flex 居中，过渡时居中基线一致、零位移 -->
-    <!-- 进度条带 boot-progress 动画（0→70%，8s）：JS 接管前也持续有「正在推进」的观感；
-         React 侧 BootOverlay 从 70% 起步接管，进度单调不回跳 -->
+    <!-- 首屏静态加载壳：JS bundle 下载/执行期间展示，React 挂载后由 LoadingScreen 接管。
+         标记结构与 LoadingMask 完全同构（.lm-mask 三件套 + 居中 label），进度不再用
+         进度条，而是以「文字 + 百分比」呈现。 -->
     <!-- 根容器高度必须与移动端外壳（tailwind.css 的 app-screen-h）用同一套单位。
          只写 100vh：iOS Safari 取的是「地址栏收起」的大视口，比可视区更高，
          100dvh 的外壳矮一截，差额就在底部露出空白；
          只写 100dvh：不支持 dvh 的旧内核会整条丢弃声明、高度退回 auto，同样撑不满。
          因此两条都写，由浏览器各取所需。 -->
     <div id="root" class="h-screen overflow-hidden" style="height:100vh;height:100dvh">
-      <div style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:#000;color:#fff;font-family:system-ui,sans-serif;line-height:1.5;user-select:none;overflow:hidden">
-        <div style="width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:2px solid rgba(255,255,255,0.15);border-top-color:rgba(255,255,255,0.8);animation:boot-spin 0.8s linear infinite;"></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <span style="font-size:14px;letter-spacing:0.3em;color:rgba(255,255,255,0.6)">正在加载资源</span>
-          <div style="width:224px;height:3px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden">
-            <div style="height:100%;width:0%;border-radius:9999px;background:rgba(255,255,255,0.8);animation:boot-progress 8s ease-out forwards;"></div>
-          </div>
-          <span style="font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:0.1em;color:rgba(255,255,255,0.4)">加载中</span>
+      <div style="position:fixed;inset:0;z-index:9999;overflow:hidden">
+        <div class="lm-mask" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <div class="lm-mask__blur"></div>
+          <div class="lm-mask__shimmer"></div>
+          <div class="lm-mask__noise"></div>
+          <span class="lm-mask__label" id="boot-label">正在加载资源 0%</span>
         </div>
       </div>
     </div>
+    <!-- 静态壳的百分比：没有真实进度可读，用一条缓慢爬升的曲线制造「正在推进」的观感，
+         爬到 70% 即停住 —— 与 React 侧 BootOverlay 的接管起点(70%)对齐，进度单调不回跳。
+         classic script 在解析到此处即执行，早于下方 type=module 的入口。 -->
+    <script>
+      (function () {
+        var el = document.getElementById('boot-label');
+        if (!el) return;
+        var p = 0;
+        var timer = setInterval(function () {
+          p += Math.random() * 2 + (p < 40 ? 1.2 : 0.4);
+          if (p >= 70) {
+            p = 70;
+            clearInterval(timer);
+          }
+          el.textContent = '正在加载资源 ' + Math.floor(p) + '%';
+        }, 160);
+      })();
+    </script>
   </body>
 </html>

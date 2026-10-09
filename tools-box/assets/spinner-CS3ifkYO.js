@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BpzPEenQ.js";import{n as t}from"./triangle-alert-BfJ-SJel.js";import{t as n}from"./utils-fo7pTTTq.js";var r=e();function i({className:e,...i}){return(0,r.jsx)(t,{"data-slot":`spinner`,role:`status`,"aria-label":`Loading`,className:n(`size-4 animate-spin`,e),...i})}export{i as t};

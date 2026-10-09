@@ -1,0 +1,103 @@
+/*
+ * 通用加载蒙层样式（components/LoadingMask.jsx）。
+ *
+ * 放在 public/ 由 index.html 用 <link> 直接加载，是为了让「启动」的两个阶段
+ * 共用同一份皮肤、不存在两套样式：
+ *   1. React 挂载前的首屏静态壳（index.html 内联标记）；
+ *   2. React 挂载后的 LoadingMask（启动遮罩 LoadingScreen / 页面加载 PageLoading）。
+ * 若只留在 src 里被打包，静态壳就必须另抄一份，改一处漏一处。
+ *
+ * 视觉：高饱和呼吸渐变 + 斜向流光 + 噪点纹理，让加载过程有「色彩在流动」的
+ * 真实感。根节点用 absolute inset-0 铺满调用方的相对容器，因此这里只管外观，
+ * 尺寸与定位交给组件上的 Tailwind 类（静态壳用内联样式）。
+ */
+
+.lm-mask {
+  /* 贴合父容器圆角：inset-0 是矩形，靠继承半径避免盖住圆角边缘 */
+  border-radius: inherit;
+  /* ✅ 压暗底色，避免反衬冲淡色彩 */
+  background: #dce4f0;
+  /* ✅ 大幅降低磨砂模糊半径，保留色块饱和度 */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* 第1层：高饱和模糊渐变呼吸背景 */
+.lm-mask__blur {
+  position: absolute;
+  inset: -40px;
+  /* ✅ 不透明度拉满，让色彩层占主导 */
+  opacity: 1;
+  /* ✅ 提升渐变 alpha 值，色彩更浓郁 */
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255, 160, 175, 0.75), transparent 50%),
+    radial-gradient(circle at 70% 20%, rgba(140, 200, 255, 0.8), transparent 55%),
+    radial-gradient(circle at 50% 80%, rgba(190, 170, 255, 0.7), transparent 60%);
+  /* ✅ 模糊略微收紧，减少色彩混合泛白 */
+  filter: blur(30px);
+  animation: lm-breathing 5s ease-in-out infinite alternate;
+}
+
+/* 第2层：斜向流光 Shimmer */
+.lm-mask__shimmer {
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 65%
+  );
+  animation: lm-shimmer 3s linear infinite;
+}
+
+/* 第3层：噪声纹理（降低强度避免提亮画面） */
+.lm-mask__noise {
+  position: absolute;
+  inset: 0;
+  /* ✅ 降低噪声不透明度，避免 overlay 模式泛白 */
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+}
+
+/* 居中提示文案（原 demo 位于左上角，此处收敛到容器正中） */
+.lm-mask__label {
+  position: relative;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+  /* 冷灰文字：在彩色渐变与噪点上都有足够对比 */
+  color: rgba(60, 60, 80, 0.8);
+  letter-spacing: 0.5px;
+  font-variant-numeric: tabular-nums;
+  animation: lm-label-fade 1.2s ease-in-out infinite alternate;
+  user-select: none;
+}
+
+/* ========== 动画定义 ========== */
+@keyframes lm-breathing {
+  from { transform: scale(1); }
+  to   { transform: scale(1.15); }
+}
+
+@keyframes lm-shimmer {
+  0%   { transform: translateX(-80%) translateY(-30%); }
+  100% { transform: translateX(80%) translateY(30%); }
+}
+
+@keyframes lm-label-fade {
+  from { opacity: 0.5; }
+  to   { opacity: 1; }
+}
+
+/* 尊重「减弱动态效果」偏好：静态呈现，不做呼吸 / 流光 / 闪烁 */
+@media (prefers-reduced-motion: reduce) {
+  .lm-mask__blur,
+  .lm-mask__shimmer,
+  .lm-mask__label {
+    animation: none;
+  }
+}
