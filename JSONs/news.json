@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791652546308,
+  "timestamp": 1791653452510,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2824,26 +2824,6 @@
       "type": "人工智能",
       "content": [
         {
-          "url": "https://www.qbitai.com/2026/10/502541.html",
-          "text": "西门子将亮相2026工博会：以软硬协同的工业全栈能力，推动物理AI加速落地",
-          "heat": ""
-        },
-        {
-          "url": "https://www.qbitai.com/2026/10/502496.html",
-          "text": "超清双2亿，掌中电影机，荣耀Magic9 系列正式发布，售价4499元起",
-          "heat": ""
-        },
-        {
-          "url": "https://www.qbitai.com/2026/10/502492.html",
-          "text": "24天！Jev估值翻至75亿美元，年度硅谷最爽逆袭了吧",
-          "heat": ""
-        },
-        {
-          "url": "https://www.qbitai.com/2026/10/502484.html",
-          "text": "Nano Banana终于2.1了！4K直出，中文进步太明显",
-          "heat": ""
-        },
-        {
           "url": "https://www.qbitai.com/2026/10/502467.html",
           "text": "特斯拉FSD，在欧洲被打回原形",
           "heat": ""
@@ -2871,6 +2851,26 @@
         {
           "url": "https://www.qbitai.com/2026/10/502359.html",
           "text": "《柳叶刀》研究表明：AI 有望改善医患关系",
+          "heat": ""
+        },
+        {
+          "url": "https://www.qbitai.com/2026/10/502330.html",
+          "text": "灵巧操作头号玩家：Sharpa把指尖「触觉」进化到全面「体感」",
+          "heat": ""
+        },
+        {
+          "url": "https://www.qbitai.com/2026/10/502125.html",
+          "text": "清华具身模型登顶全球第一！突围GPT-6、英伟达，不靠外挂和额外数据",
+          "heat": ""
+        },
+        {
+          "url": "https://www.qbitai.com/2026/10/502114.html",
+          "text": "尊界深夜回应“刹车踏板断裂”，懂车帝再发声",
+          "heat": ""
+        },
+        {
+          "url": "https://www.qbitai.com/2026/10/502106.html",
+          "text": "openJiuwen发布并开源企业级AgentOS，加速智能体规模落地企业",
           "heat": ""
         }
       ]
@@ -4292,6 +4292,11 @@
           "heat": "英仙说"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261010Q0CM1500",
+          "text": "杜兰特说他和詹姆斯并非抱团先驱，但总冠军还是看篮球水平，这话对吗？为何球星报团始终争议很大？",
+          "heat": "粘粘有语"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261010Q0BPXC00",
           "text": "葡萄牙足协宣布对C罗启动纪律程序，实施非自动预防性停赛，什么是非自动预防性停赛？C罗会彻底告别国家队了吗？",
           "heat": "闻号说经济"
@@ -4320,11 +4325,6 @@
           "url": "https://new.qq.com/rain/a/20261010Q0CQ6S00",
           "text": "Anthropic新规禁止“虐待”模型，持续辱骂Claude或被封号，为什么不让骂？AI有“痛苦”的感受吗？",
           "heat": "闻号说经济"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261010Q0CM1500",
-          "text": "杜兰特说他和詹姆斯并非抱团先驱，但总冠军还是看篮球水平，这话对吗？为何球星报团始终争议很大？",
-          "heat": "粘粘有语"
         },
         {
           "url": "https://new.qq.com/rain/a/20261010Q0BYAL00",
@@ -10216,17 +10216,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48898316",
           "text": "夜空中最亮的星",
-          "heat": "1376"
+          "heat": "1400"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902078",
           "text": "【东方】小悪魔りんご Bad Apple!!【幽閉サテライト】",
-          "heat": "707"
+          "heat": "767"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904161",
           "text": "【绝望女神/翻唱】【圣枪修女 ED 再见了Solitia】",
-          "heat": "544"
+          "heat": "552"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902782",
@@ -10236,7 +10236,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48896797",
           "text": "【Takeko竹子/自生贺】小小的我 feat.我家UTAU",
-          "heat": "117"
+          "heat": "155"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902307",
@@ -10246,7 +10246,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48904328",
           "text": "Poppin Party「Now Roading♪♪」（BanG Dream! 13th DAY1）",
-          "heat": "642"
+          "heat": "735"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898126",
@@ -10259,6 +10259,11 @@
           "heat": "113"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48904030",
+          "text": "只有我是你的sugar coat",
+          "heat": "88"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48902921",
           "text": "a q u a t i c  r e a l m （水域国度） // 2000年代怀旧氛围音乐",
           "heat": "68"
@@ -10267,11 +10272,6 @@
           "url": "http://www.acfun.cn/v/ac48903099",
           "text": "亜咲花「SHINY DAYS～Re_MAKE～」Music Video Full ver.",
           "heat": "127"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48904030",
-          "text": "只有我是你的sugar coat",
-          "heat": "68"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898134",
@@ -10309,14 +10309,14 @@
           "heat": "65"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48902615",
-          "text": "【有声书】百妖捕物帐",
-          "heat": "96"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48902459",
           "text": "2026-10-09 牛铲铲 直播录像",
           "heat": "146"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48902615",
+          "text": "【有声书】百妖捕物帐",
+          "heat": "96"
         },
         {
           "url": "http://www.acfun.cn/v/ac48901660",
@@ -10334,6 +10334,11 @@
           "heat": "81"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48904190",
+          "text": "魔神英雄传 神龙斗士 片尾曲",
+          "heat": "39"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48903240",
           "text": "阿纳斯塔西娅·罗加列娃与德米特里·彼得罗夫：阿连斯基双钢琴G大调第一组曲（2023）",
           "heat": "49"
@@ -10347,11 +10352,6 @@
           "url": "http://www.acfun.cn/v/ac48903418",
           "text": "【有声书】名探偵のいけにえ",
           "heat": "16"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48904190",
-          "text": "魔神英雄传 神龙斗士 片尾曲",
-          "heat": "39"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902621",
@@ -14033,7 +14033,7 @@
         {
           "url": "https://www.dongchedi.com/article/7691218992372220440",
           "text": "赔给吉利6个亿，越卖越亏的欣旺达，凭什么让小米理想抢着买单？",
-          "heat": "116"
+          "heat": "117"
         },
         {
           "url": "https://www.dongchedi.com/article/7690769121046856216",
