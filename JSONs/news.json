@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791650748648,
+  "timestamp": 1791651663213,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4357,11 +4357,6 @@
           "heat": "营养师Bruce"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261009Q0104X00",
-          "text": "“喝大水”在网络爆火，年轻人戒掉奶茶换1.5升大瓶水，为什么“喝大水”突然火了？到底怎么喝水才健康？",
-          "heat": "张青阳"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261009Q0D0TH00",
           "text": "宋佳凭《山花烂漫时》获飞天奖优秀女演员奖，这个角色诠释得有多好？国剧三大奖一串三的难度有多大？",
           "heat": "不怕困难的王导演"
@@ -4464,6 +4459,11 @@
         {
           "url": "https://new.qq.com/rain/a/20261009Q07ETX00",
           "text": "OpenAI年化营收被曝接近500亿美元，比预期少约200亿，这对其IPO前景会有多大影响？整体AI市场会受波及吗？",
+          "heat": "闻号说经济"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261010Q0CQ6S00",
+          "text": "Anthropic新规禁止“虐待”模型，持续辱骂Claude或被封号，为什么不让骂？AI有“痛苦”的感受吗？",
           "heat": "闻号说经济"
         },
         {
@@ -10536,17 +10536,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48898316",
           "text": "夜空中最亮的星",
-          "heat": "1370"
+          "heat": "1376"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902078",
           "text": "【东方】小悪魔りんご Bad Apple!!【幽閉サテライト】",
-          "heat": "696"
+          "heat": "707"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904161",
           "text": "【绝望女神/翻唱】【圣枪修女 ED 再见了Solitia】",
-          "heat": "533"
+          "heat": "544"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902782",
@@ -10554,9 +10554,9 @@
           "heat": "910"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48902154",
-          "text": "【衣笠雪绘】最近也是关注起了地偶 歌切day205《桃色单恋》",
-          "heat": "1065"
+          "url": "http://www.acfun.cn/v/ac48896797",
+          "text": "【Takeko竹子/自生贺】小小的我 feat.我家UTAU",
+          "heat": "117"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902307",
@@ -10564,19 +10564,14 @@
           "heat": "195"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48896797",
-          "text": "【Takeko竹子/自生贺】小小的我 feat.我家UTAU",
-          "heat": "94"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48904328",
           "text": "Poppin Party「Now Roading♪♪」（BanG Dream! 13th DAY1）",
-          "heat": "614"
+          "heat": "642"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898126",
           "text": "【萧亚轩】More More More",
-          "heat": "60"
+          "heat": "70"
         },
         {
           "url": "http://www.acfun.cn/v/ac48874317",
@@ -10594,9 +10589,9 @@
           "heat": "127"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48887095",
-          "text": "【MV】私立恵比寿中学「えびチリ、はじめました」",
-          "heat": "60"
+          "url": "http://www.acfun.cn/v/ac48904030",
+          "text": "只有我是你的sugar coat",
+          "heat": "68"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898134",
@@ -10641,7 +10636,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48902459",
           "text": "2026-10-09 牛铲铲 直播录像",
-          "heat": "134"
+          "heat": "146"
         },
         {
           "url": "http://www.acfun.cn/v/ac48901660",
@@ -10676,7 +10671,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48904190",
           "text": "魔神英雄传 神龙斗士 片尾曲",
-          "heat": "25"
+          "heat": "39"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48902621",
+          "text": "奔跑的姜允儿-2026.10.09",
+          "heat": "121"
         },
         {
           "url": "http://www.acfun.cn/v/ac48874371",
