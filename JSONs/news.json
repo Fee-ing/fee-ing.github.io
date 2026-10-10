@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791659740831,
+  "timestamp": 1791660652773,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2595,6 +2595,11 @@
           "heat": "格隆汇"
         },
         {
+          "url": "https://www.gelonghui.com/live/2704905",
+          "text": "微软 CEO 呼吁为高级 AI 模型设置紧急刹车机制",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31544",
           "text": "Meta AI 智能体 Muse 曾曝安全隐患，扎克伯格为何仍执意上线？",
           "heat": "aibase"
@@ -2618,11 +2623,6 @@
           "url": "https://www.leiphone.com/category/robot/Pz34omTBnW9Y0LhO.html",
           "text": "让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.gelonghui.com/live/2704783",
-          "text": "伯恩斯坦拆解 AI 基建成本：每吉瓦投资最高 395 亿美元",
-          "heat": "格隆汇"
         }
       ]
     },
