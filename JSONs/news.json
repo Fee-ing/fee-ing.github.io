@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791657940416,
+  "timestamp": 1791658861855,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3025,6 +3025,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://www.leiphone.com/category/yanxishe/zm33Zeu88CNbEPMx.html",
+          "text": "字节发现 DeepSeek 隐藏 Bug：加点空格，模型翻车",
+          "heat": "雷锋网"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17075",
           "text": "AI 让知识变得廉价，大学何去何从？",
           "heat": "麻省理工科技评论"
@@ -3033,6 +3038,11 @@
           "url": "https://www.mittrchina.com/news/detail/17076",
           "text": "当我们与 AI 聊天时，我们会变成什么样的人？",
           "heat": "麻省理工科技评论"
+        },
+        {
+          "url": "https://www.gelonghui.com/live/2704899",
+          "text": "英伟达据悉洽谈收购美国 AI 初创公司 Reflection AI",
+          "heat": "格隆汇"
         },
         {
           "url": "https://www.aibase.com/zh/news/31544",
@@ -3063,16 +3073,6 @@
           "url": "https://www.gelonghui.com/live/2704783",
           "text": "伯恩斯坦拆解 AI 基建成本：每吉瓦投资最高 395 亿美元",
           "heat": "格隆汇"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31543",
-          "text": "千问首款 AI 耳机亮相 NBA 中国赛，可在淘宝、京东官方店预约",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31541",
-          "text": "深圳一家 GEO 服务商因「给 AI 植入广告」涉嫌虚假宣传被罚款 5 万元",
-          "heat": "aibase"
         }
       ]
     },
@@ -4472,9 +4472,9 @@
           "heat": "闻号说经济"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261010Q0BYAL00",
+          "url": "https://new.qq.com/rain/a/20261011Q016QL00",
           "text": "郑钦文横扫梅尔滕斯成首位晋级中网女单决赛的中国选手，决赛将对阵安德列娃，夺冠可能性有多大？",
-          "heat": "拾光者"
+          "heat": "三棱镜"
         },
         {
           "url": "https://new.qq.com/rain/a/20261010Q0BRQD00",
