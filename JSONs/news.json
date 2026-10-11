@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791757852893,
+  "timestamp": 1791758744786,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -1201,7 +1201,72 @@
         {
           "url": "https://s.weibo.com/weibo?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80",
           "text": "霸王茶姬买一送一",
-          "heat": "21万"
+          "heat": "42万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E6%9D%8E%E5%A8%9C+%E9%83%91%E9%92%A6%E6%96%87",
+          "text": "李娜 郑钦文",
+          "heat": "29万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E6%9C%AC%E5%91%A8%E8%BF%99%E4%BA%9B%E6%95%B0%E6%8D%AE%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8",
+          "text": "本周这些数据值得关注",
+          "heat": "25万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E6%99%92%E5%9B%BE%E5%BA%86%E7%A5%9D%E5%A4%BA%E5%86%A0",
+          "text": "郑钦文晒图庆祝夺冠",
+          "heat": "22万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E8%AE%B0%E8%80%85%E6%9A%97%E8%AE%BF%E6%9C%89%E5%81%BF%E9%99%AA%E4%BC%B4%E6%9C%8D%E5%8A%A1",
+          "text": "记者暗访有偿陪伴服务",
+          "heat": "18万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E8%BA%AB%E9%AB%982.2%E7%B1%B3%E5%B7%A8%E4%BA%BA%E7%BD%91%E7%BA%A2%E5%B0%8F%E7%8E%A5%E5%8E%BB%E4%B8%96",
+          "text": "身高2.2米巨人网红小玥去世",
+          "heat": "16万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E5%85%B3%E6%99%93%E5%BD%A4%E5%9B%9E%E5%BA%94%E5%8E%BB%E5%AE%8B%E9%9B%A8%E7%90%A6%E6%BC%94%E5%94%B1%E4%BC%9A",
+          "text": "关晓彤回应去宋雨琦演唱会",
+          "heat": "14万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E5%A5%B3%E5%AD%A9%E5%8E%BB%E9%A9%AC%E6%9D%A5%E8%A5%BF%E4%BA%9A%E9%AB%98%E8%96%AA%E5%B7%A5%E4%BD%9C%E5%90%8E%E5%A4%B1%E8%81%94",
+          "text": "女孩去马来西亚高薪工作后失联",
+          "heat": "13万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E8%80%81%E6%8A%A4%E5%A3%AB%E8%BE%9E%E8%81%8C%E5%90%8E%E5%84%BF%E7%A7%91%E6%8A%95%E8%AF%89%E7%BF%BB%E5%80%8D",
+          "text": "老护士辞职后儿科投诉翻倍",
+          "heat": "11万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E5%A4%AE%E8%A7%86%E6%9B%9D%E6%8A%95%E8%B5%841.2%E4%BA%BF%E9%A1%B9%E7%9B%AE%E4%BB%85%E5%BB%BA5%E4%B8%AA%E6%A3%9A",
+          "text": "央视曝投资1.2亿项目仅建5个棚",
+          "heat": "9万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E7%A4%BE%E4%BF%9D",
+          "text": "社保",
+          "heat": "9万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E6%94%B6%E8%8E%B7%E6%98%8E%E5%B9%B4%E6%BE%B3%E7%BD%91%E7%9A%84%E7%A7%8D%E5%AD%90%E5%B8%AD%E4%BD%8D",
+          "text": "郑钦文收获明年澳网的种子席位",
+          "heat": "9万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E7%BD%91%E4%BC%A0%E7%BC%85%E5%8C%97%E8%AF%88%E9%AA%97%E7%9B%AF%E4%B8%8A%E6%B3%B0%E7%99%BE%E7%B2%89%E4%B8%9D",
+          "text": "网传缅北诈骗盯上泰百粉丝",
+          "heat": "8万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E5%9B%BD%E5%A5%B3%E6%80%A7%E4%BC%A0%E7%BB%9F%E5%9D%90%E5%A7%BF%E6%9D%BE%E5%BC%9B%E5%BC%A0%E6%89%AC",
+          "text": "中国女性传统坐姿松弛张扬",
+          "heat": "8万"
         },
         {
           "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E5%B0%B1%E5%B7%AE%E4%B8%80%E4%B8%AA%E5%A4%A7%E6%BB%A1%E8%B4%AF%E5%86%A0%E5%86%9B%E4%BA%86",
@@ -1209,48 +1274,93 @@
           "heat": "7万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E6%9C%AC%E5%91%A8%E8%BF%99%E4%BA%9B%E6%95%B0%E6%8D%AE%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8",
-          "text": "本周这些数据值得关注",
-          "heat": "6万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E4%B8%80%E5%8A%A016",
-          "text": "一加16",
-          "heat": "6万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E6%9D%8E%E5%A8%9C+%E9%83%91%E9%92%A6%E6%96%87",
-          "text": "李娜 郑钦文",
-          "heat": "6万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E6%94%B6%E8%8E%B7%E6%98%8E%E5%B9%B4%E6%BE%B3%E7%BD%91%E7%9A%84%E7%A7%8D%E5%AD%90%E5%B8%AD%E4%BD%8D",
-          "text": "郑钦文收获明年澳网的种子席位",
-          "heat": "6万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E8%BA%AB%E9%AB%982.2%E7%B1%B3%E5%B7%A8%E4%BA%BA%E7%BD%91%E7%BA%A2%E5%B0%8F%E7%8E%A5%E5%8E%BB%E4%B8%96",
-          "text": "身高2.2米巨人网红小玥去世",
-          "heat": "6万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E6%9D%8E%E7%8E%B0%E5%9C%A8%E5%B8%8C%E5%B0%94%E9%A1%BF%E4%BD%8F%E5%87%BA%E5%88%AB%E6%A0%B7%E6%96%B0%E6%84%8F",
-          "text": "李现在希尔顿住出别样新意",
-          "heat": "5万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E8%AE%B0%E8%80%85%E6%9A%97%E8%AE%BF%E6%9C%89%E5%81%BF%E9%99%AA%E4%BC%B4%E6%9C%8D%E5%8A%A1",
-          "text": "记者暗访有偿陪伴服务",
-          "heat": "5万"
+          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E7%BD%91%E5%A5%96%E9%87%91",
+          "text": "中网奖金",
+          "heat": "7万"
         },
         {
           "url": "https://s.weibo.com/weibo?q=%E5%88%A9%E7%89%A9%E6%B5%A60%E6%AF%943%E6%9B%BC%E5%9F%8E",
           "text": "利物浦0比3曼城",
+          "heat": "7万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E6%9D%BE%E5%B2%9B%E8%BE%89%E7%A9%BA%E5%90%AF%E8%92%99%E6%95%99%E7%BB%83%E6%98%AF%E4%B8%AD%E5%9B%BD%E9%A1%B6%E7%BA%A7%E7%90%83%E5%91%98",
+          "text": "松岛辉空启蒙教练是中国顶级球员",
+          "heat": "6万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E5%88%98%E5%AD%A6%E4%B9%89%E6%9E%97%E9%94%A6%E5%B2%90%E5%91%8A%E5%88%AB%E5%85%B0%E9%A6%99",
+          "text": "刘学义林锦岐告别兰香",
+          "heat": "6万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E7%BD%91%E7%BB%88%E4%BA%8E%E8%BF%8E%E6%9D%A5%E5%B1%9E%E4%BA%8E%E4%B8%AD%E5%9B%BD%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B",
+          "text": "中网终于迎来属于中国自己的女单冠军",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E8%A2%AB%E9%AA%97%E7%BC%85%E5%8C%97%E5%A5%B3%E5%AD%A9%E9%81%AD%E9%81%87%E6%83%A8%E4%B8%8D%E5%BF%8D%E7%9D%B9",
+          "text": "被骗缅北女孩遭遇惨不忍睹",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E8%BA%AB%E4%B8%8A%E5%87%BA%E7%8E%B0%E8%BF%99%E6%A0%B7%E7%9A%84%E7%BA%A2%E7%82%B9%E8%A6%81%E8%AD%A6%E6%83%95",
+          "text": "身上出现这样的红点要警惕",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E5%8D%B0%E5%BA%A6%E7%94%B7%E5%90%8C%E4%BA%8B%E5%A5%B3%E5%8F%8B%E6%98%AF%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%88%98%E5%A3%AB",
+          "text": "印度男同事女友是六边形战士",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E6%A2%85%E5%B0%BC%E8%80%B6%E5%A6%BB%E5%AD%90%E6%89%8B%E8%87%82%E7%98%A6%E5%BE%97%E5%90%93%E4%BA%BA",
+          "text": "梅尼耶妻子手臂瘦得吓人",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E7%88%B8%E7%88%B8%E5%A6%88%E5%A6%88%E7%8E%B0%E5%9C%BA%E8%A7%81%E8%AF%81%E5%A5%B3%E5%84%BF%E5%A4%BA%E5%86%A0",
+          "text": "郑钦文爸爸妈妈现场见证女儿夺冠",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E4%BB%A3%E8%A8%80",
+          "text": "郑钦文代言",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E6%9D%8E%E4%B9%9D+AG",
+          "text": "李九 AG",
+          "heat": "5万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E5%A9%9A%E5%A7%BB%E4%B8%8D%E6%98%AF%E5%B9%B4%E9%BE%84%E5%88%B0%E4%BA%86%E5%B0%B1%E8%AF%A5%E7%BB%93",
+          "text": "婚姻不是年龄到了就该结",
           "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E5%9B%BD%E5%A5%B3%E6%80%A7%E4%BC%A0%E7%BB%9F%E5%9D%90%E5%A7%BF%E6%9D%BE%E5%BC%9B%E5%BC%A0%E6%89%AC",
-          "text": "中国女性传统坐姿松弛张扬",
+          "url": "https://s.weibo.com/weibo?q=%E4%BF%9D%E5%A7%86%E8%A2%AB%E8%AF%AF%E4%BC%9A%E5%8B%BE%E5%BC%95%E7%94%B7%E4%B8%BB%E4%BA%BA",
+          "text": "保姆被误会勾引男主人",
+          "heat": "4万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E4%B8%AD%E7%BD%91%E5%A5%B3%E5%8D%95%E5%A4%BA%E5%86%A0",
+          "text": "郑钦文中网女单夺冠",
+          "heat": "4万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E6%81%8B%E7%88%B1%E8%A6%81%E6%89%BE%E5%A4%A7%E6%96%B9%E7%9A%84%E7%94%B7%E6%9C%8B%E5%8F%8B",
+          "text": "恋爱要找大方的男朋友",
+          "heat": "4万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=iPhone18Pro%E5%8D%96%E4%B8%8D%E5%8A%A8%E4%BA%86",
+          "text": "iPhone18Pro卖不动了",
+          "heat": "4万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E9%BE%9A%E4%BF%8AF1%E9%87%87%E8%AE%BF",
+          "text": "龚俊F1采访",
           "heat": "4万"
         },
         {
@@ -1259,8 +1369,18 @@
           "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E7%A4%BE%E4%BF%9D",
-          "text": "社保",
+          "url": "https://s.weibo.com/weibo?q=%E7%BD%97%E5%AE%B6%E8%8B%B1%E5%9B%9B%E5%BA%A6%E6%82%A3%E7%99%8C%E9%80%89%E6%8B%A9%E6%8B%92%E7%BB%9D%E5%8C%96%E7%96%97",
+          "text": "罗家英四度患癌选择拒绝化疗",
+          "heat": "4万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%97%B6%E9%9A%9414%E5%B9%B4%E5%86%8D%E5%A4%BA1000%E8%B5%9B%E5%86%A0%E5%86%9B",
+          "text": "中国人时隔14年再夺1000赛冠军",
+          "heat": "4万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E8%B0%81%E8%83%BD%E6%89%9B%E5%BE%97%E4%BD%8F%E6%AA%80%E5%81%A5%E6%AC%A1%E7%9A%84%E8%88%9E%E5%8F%B0",
+          "text": "谁能扛得住檀健次的舞台",
           "heat": "4万"
         },
         {
@@ -1269,194 +1389,64 @@
           "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E5%85%B3%E6%99%93%E5%BD%A4%E5%9B%9E%E5%BA%94%E5%8E%BB%E5%AE%8B%E9%9B%A8%E7%90%A6%E6%BC%94%E5%94%B1%E4%BC%9A",
-          "text": "关晓彤回应去宋雨琦演唱会",
+          "url": "https://s.weibo.com/weibo?q=%E6%88%90%E7%86%9F%E5%90%8E%E6%89%8D%E7%9F%A5%E9%81%93%E5%93%81%E5%91%B3%E6%AF%AB%E6%97%A0%E6%84%8F%E4%B9%89",
+          "text": "成熟后才知道品味毫无意义",
           "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E6%9D%8E%E4%B9%9D+AG",
-          "text": "李九 AG",
+          "url": "https://s.weibo.com/weibo?q=%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9F%A5%E9%81%93%E6%B1%89%E8%AF%AD%E6%8B%BC%E9%9F%B3%E7%9A%84%E7%94%B1%E6%9D%A5",
+          "text": "第一次知道汉语拼音的由来",
           "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E7%BD%91%E4%BC%A0%E7%BC%85%E5%8C%97%E8%AF%88%E9%AA%97%E7%9B%AF%E4%B8%8A%E6%B3%B0%E7%99%BE%E7%B2%89%E4%B8%9D",
-          "text": "网传缅北诈骗盯上泰百粉丝",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E5%88%A9%E7%89%A9%E6%B5%A6%E7%BA%A2%E7%89%8C",
-          "text": "利物浦红牌",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E8%80%81%E6%8A%A4%E5%A3%AB%E8%BE%9E%E8%81%8C%E5%90%8E%E5%84%BF%E7%A7%91%E6%8A%95%E8%AF%89%E7%BF%BB%E5%80%8D",
-          "text": "老护士辞职后儿科投诉翻倍",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E7%BD%91%E7%BB%88%E4%BA%8E%E8%BF%8E%E6%9D%A5%E5%B1%9E%E4%BA%8E%E4%B8%AD%E5%9B%BD%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B",
-          "text": "中网终于迎来属于中国自己的女单冠军",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E7%88%B8%E7%88%B8%E5%A6%88%E5%A6%88%E7%8E%B0%E5%9C%BA%E8%A7%81%E8%AF%81%E5%A5%B3%E5%84%BF%E5%A4%BA%E5%86%A0",
-          "text": "郑钦文爸爸妈妈现场见证女儿夺冠",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E5%A4%AE%E8%A7%86%E6%9B%9D%E6%8A%95%E8%B5%841.2%E4%BA%BF%E9%A1%B9%E7%9B%AE%E4%BB%85%E5%BB%BA5%E4%B8%AA%E6%A3%9A",
-          "text": "央视曝投资1.2亿项目仅建5个棚",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E8%A2%AB%E9%AA%97%E7%BC%85%E5%8C%97%E5%A5%B3%E5%AD%A9%E9%81%AD%E9%81%87%E6%83%A8%E4%B8%8D%E5%BF%8D%E7%9D%B9",
-          "text": "被骗缅北女孩遭遇惨不忍睹",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E8%BA%AB%E4%B8%8A%E5%87%BA%E7%8E%B0%E8%BF%99%E6%A0%B7%E7%9A%84%E7%BA%A2%E7%82%B9%E8%A6%81%E8%AD%A6%E6%83%95",
-          "text": "身上出现这样的红点要警惕",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E5%88%A9%E7%89%A9%E6%B5%A6vs%E6%9B%BC%E5%9F%8E",
-          "text": "利物浦vs曼城",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E4%BB%A3%E8%A8%80",
-          "text": "郑钦文代言",
-          "heat": "4万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E5%8E%9A%E6%9C%AC%E6%88%91%E4%B8%8D%E6%98%AFNPC%E6%BC%94%E6%8A%80",
-          "text": "厚本我不是NPC演技",
-          "heat": "3万"
         },
         {
           "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E5%A5%96%E6%9D%AF%E7%9A%84%E9%87%8D%E9%87%8F%E6%98%AF%E6%A2%A6%E6%83%B3%E7%9A%84%E9%87%8D%E9%87%8F",
           "text": "郑钦文奖杯的重量是梦想的重量",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E7%BD%91%E5%A5%96%E9%87%91",
-          "text": "中网奖金",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E4%B8%AD%E7%BD%91%E5%A5%B3%E5%8D%95%E5%A4%BA%E5%86%A0",
-          "text": "郑钦文中网女单夺冠",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E4%BF%9D%E5%A7%86%E8%A2%AB%E8%AF%AF%E4%BC%9A%E5%8B%BE%E5%BC%95%E7%94%B7%E4%B8%BB%E4%BA%BA",
-          "text": "保姆被误会勾引男主人",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E6%9B%BC%E5%9F%8E6%E6%88%98%E5%85%A8%E8%83%9C%E9%A2%86%E8%B7%91%E7%A7%AF%E5%88%86%E6%A6%9C",
-          "text": "曼城6战全胜领跑积分榜",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E5%8D%B0%E5%BA%A6%E7%94%B7%E5%90%8C%E4%BA%8B%E5%A5%B3%E5%8F%8B%E6%98%AF%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%88%98%E5%A3%AB",
-          "text": "印度男同事女友是六边形战士",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=AG%E6%88%98%E8%83%9CTES",
-          "text": "AG战胜TES",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%97%B6%E9%9A%9414%E5%B9%B4%E5%86%8D%E5%A4%BA1000%E8%B5%9B%E5%86%A0%E5%86%9B",
-          "text": "中国人时隔14年再夺1000赛冠军",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E5%A7%90%E5%A7%90%E7%BB%99%E8%80%81%E5%BC%9F%E7%85%AE%E5%85%AD%E5%8C%85%E7%BA%BF%E9%9D%A2%E5%9C%A8%E5%A4%96%E7%BD%91%E7%81%AB%E4%BA%86",
-          "text": "姐姐给老弟煮六包线面在外网火了",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E6%9D%BE%E5%B2%9B%E8%BE%89%E7%A9%BA%E5%90%AF%E8%92%99%E6%95%99%E7%BB%83%E6%98%AF%E4%B8%AD%E5%9B%BD%E9%A1%B6%E7%BA%A7%E7%90%83%E5%91%98",
-          "text": "松岛辉空启蒙教练是中国顶级球员",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E6%A2%85%E5%B0%BC%E8%80%B6%E5%A6%BB%E5%AD%90%E6%89%8B%E8%87%82%E7%98%A6%E5%BE%97%E5%90%93%E4%BA%BA",
-          "text": "梅尼耶妻子手臂瘦得吓人",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E9%83%91%E9%92%A6%E6%96%87%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%AD%E7%BD%91%E6%AD%8C%E5%8D%95%E5%BC%A0%E9%9F%B6%E6%B6%B5%E5%90%AB%E9%87%8F%E6%8B%89%E6%BB%A1",
-          "text": "郑钦文喜欢的中网歌单张韶涵含量拉满",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E9%BE%9A%E4%BF%8AF1%E9%87%87%E8%AE%BF",
-          "text": "龚俊F1采访",
-          "heat": "3万"
+          "heat": "4万"
         },
         {
           "url": "https://s.weibo.com/weibo?q=2.2%E7%B1%B3%E5%8E%BB%E4%B8%96%E5%A5%B3%E7%BD%91%E7%BA%A2%E5%B0%8F%E7%8E%A5%E6%9B%BE%E8%A2%AB%E6%9F%A5%E5%87%BA%E8%84%91%E7%98%A4",
           "text": "2.2米去世女网红小玥曾被查出脑瘤",
-          "heat": "3万"
+          "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E6%9D%8E%E4%B9%9D%E8%AF%B4AG%E8%BD%AE%E6%8D%A2%E6%98%AF%E5%A1%AB%E9%94%99%E5%90%8D%E5%8D%95",
-          "text": "李九说AG轮换是填错名单",
-          "heat": "3万"
+          "url": "https://s.weibo.com/weibo?q=%E5%91%A8%E9%B8%BF%E7%A5%8E%E6%94%80%E5%B2%A9%E4%BB%8E3%E7%B1%B3%E9%AB%98%E5%A4%84%E6%91%94%E4%B8%8B",
+          "text": "周鸿祎攀岩从3米高处摔下",
+          "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E7%A5%9E%E5%85%B5%E5%B0%8F%E5%B0%86",
-          "text": "神兵小将",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E6%A2%A6%E7%9A%84%E5%85%89%E7%82%B9",
-          "text": "梦的光点",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E8%A7%A3%E8%AF%B4%E8%B0%83%E4%BE%83AG%E8%BD%AE%E6%8D%A2%E5%A1%AB%E9%94%99",
-          "text": "解说调侃AG轮换填错",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E4%B8%80%E8%AF%BA%E5%AE%88%E7%BA%A6%E5%A5%BD%E5%87%86",
-          "text": "一诺守约好准",
-          "heat": "3万"
-        },
-        {
-          "url": "https://s.weibo.com/weibo?q=%E4%B8%80%E5%AE%9A%E8%A6%81%E9%A2%91%E7%B9%81%E7%9A%84%E8%AE%B0%E5%BD%95%E5%92%8C%E8%A1%A8%E8%BE%BE%E8%87%AA%E5%B7%B1",
-          "text": "一定要频繁的记录和表达自己",
-          "heat": "3万"
+          "url": "https://s.weibo.com/weibo?q=%E8%8B%B1%E8%BE%BE%E5%B0%8F%E5%84%BF%E5%AD%90%E7%9B%B4%E6%92%AD%E8%B0%88%E5%AE%8B%E4%B8%B9%E4%B8%B9",
+          "text": "英达小儿子直播谈宋丹丹",
+          "heat": "4万"
         },
         {
           "url": "https://s.weibo.com/weibo?q=%E5%BC%A0%E7%9B%9B%E8%A7%A3%E8%AF%B4%E6%BC%8F%E6%8E%89%E6%9D%8E%E5%A8%9C",
           "text": "张盛解说漏掉李娜",
-          "heat": "3万"
+          "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=2026%E4%B8%AD%E7%BD%91",
-          "text": "2026中网",
-          "heat": "3万"
+          "url": "https://s.weibo.com/weibo?q=%E5%AE%89%E5%BE%B7%E5%88%97%E5%A8%83%E8%AF%B4%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E5%8F%AB%E5%B0%8F%E7%B1%B3%E8%BE%A3",
+          "text": "安德列娃说知道自己叫小米辣",
+          "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E7%94%A8vivo%E7%9C%8B%E9%83%91%E9%92%A6%E6%96%87%E6%AF%94%E8%B5%9B%E6%98%AF%E4%BB%80%E4%B9%88%E4%BD%93%E9%AA%8C",
-          "text": "用vivo看郑钦文比赛是什么体验",
-          "heat": "3万"
+          "url": "https://s.weibo.com/weibo?q=%E6%92%92%E8%B4%9D%E5%AE%81%E9%BE%99%E5%87%A4%E8%83%8E%E9%95%BF%E8%BF%99%E4%B9%88%E5%A4%A7%E4%BA%86",
+          "text": "撒贝宁龙凤胎长这么大了",
+          "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E5%88%98%E5%AD%A6%E4%B9%89%E6%9E%97%E9%94%A6%E5%B2%90%E5%91%8A%E5%88%AB%E5%85%B0%E9%A6%99",
-          "text": "刘学义林锦岐告别兰香",
-          "heat": "3万"
+          "url": "https://s.weibo.com/weibo?q=AG%E6%88%98%E8%83%9CTES",
+          "text": "AG战胜TES",
+          "heat": "4万"
         },
         {
-          "url": "https://s.weibo.com/weibo?q=%E6%9D%AD%E5%B7%9E%E9%99%90%E7%8B%97%E4%BB%A4%E7%99%BD%E5%A4%A9%E9%81%9B%E7%8B%97%E7%BD%9A%E6%AC%BE",
-          "text": "杭州限狗令白天遛狗罚款",
-          "heat": "3万"
+          "url": "https://s.weibo.com/weibo?q=%E5%AE%8B%E9%9B%A8%E7%90%A6%E5%85%B3%E6%99%93%E5%BD%A4%E6%98%AF%E4%BB%8E%E8%B7%91%E7%94%B7%E8%AE%A4%E8%AF%86%E7%9A%84",
+          "text": "宋雨琦关晓彤是从跑男认识的",
+          "heat": "4万"
+        },
+        {
+          "url": "https://s.weibo.com/weibo?q=%E6%A2%A6%E7%9A%84%E5%85%89%E7%82%B9",
+          "text": "梦的光点",
+          "heat": "4万"
         }
       ]
     },
@@ -1467,42 +1457,42 @@
         {
           "url": "https://www.zhihu.com/question/2092635424363476073",
           "text": "中网女单决赛，郑钦文 2-0 战胜安德列娃夺得冠军，如何评价本场比赛以及她的亮眼表现？",
-          "heat": "1206 万热度"
+          "heat": "1170 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/1904336392173093128",
           "text": "为什么大部分医院的院长副院长都是心外科胸外科上任的？",
-          "heat": "184 万热度"
+          "heat": "190 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092640723375842413",
           "text": "媒体曝 46 岁「数学家」用 AI 炒股登上富豪榜，年赚 642 亿，如何看待这一造富神话？对普通人有借鉴意义吗？",
-          "heat": "177 万热度"
+          "heat": "184 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092513467722719411",
           "text": "沙特利雅得机场遭袭，造成 12 人死亡 309 人受伤，哪些信息值得关注？对中东局势有何影响？",
-          "heat": "160 万热度"
+          "heat": "159 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092387652544589909",
           "text": "我国验证出一种全新抗癌疗法，一针纳米材料打进肿瘤可让癌细胞生锈死亡，原理是什么？这一成果具有哪些意义？",
-          "heat": "145 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2092304359237406726",
-          "text": "第四届衢州烂柯杯世界围棋公开赛，韩国申真谞、申旻埈、卞相壹、李志贤包揽四强，如何看待这一结果？",
-          "heat": "134 万热度"
+          "heat": "146 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/614889347",
           "text": "为什么喝酒喝到微醺会让人感到快乐？",
-          "heat": "124 万热度"
+          "heat": "126 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092372203266487423",
           "text": "女子 3 个月对盒马 399 件商品申请仅退款，快递员取件退还吃剩的，涉嫌诈骗罪被采取刑事强制，如何看待此事？",
-          "heat": "112 万热度"
+          "heat": "119 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2092304359237406726",
+          "text": "第四届衢州烂柯杯世界围棋公开赛，韩国申真谞、申旻埈、卞相壹、李志贤包揽四强，如何看待这一结果？",
+          "heat": "117 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2076955434141873261",
@@ -1510,108 +1500,73 @@
           "heat": "106 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2091593487581975365",
-          "text": "广东 5 人吃野生红尾鲤确诊哈夫病，这种病是如何引发的？日常吃鱼该怎样防范？",
-          "heat": "99 万热度"
+          "url": "https://www.zhihu.com/question/2092562681433514181",
+          "text": "大二专科生自述靠切片三年赚七百万，直播切片究竟是怎么赚钱的？这种赚钱模式能复制吗？",
+          "heat": "98 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092373331072612285",
           "text": "因长期辱骂江秋莲被判道歉 + 赔付，网红黄建生公开发文向江秋莲道歉，哪些信息值得关注？",
-          "heat": "99 万热度"
+          "heat": "97 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2092562681433514181",
-          "text": "大二专科生自述靠切片三年赚七百万，直播切片究竟是怎么赚钱的？这种赚钱模式能复制吗？",
-          "heat": "99 万热度"
+          "url": "https://www.zhihu.com/question/2091593487581975365",
+          "text": "广东 5 人吃野生红尾鲤确诊哈夫病，这种病是如何引发的？日常吃鱼该怎样防范？",
+          "heat": "96 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092197283857175132",
           "text": "OpenAI 发布 175 页四维挂谷猜想证明稿，这意味着什么？",
-          "heat": "86 万热度"
+          "heat": "77 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092726996291868461",
           "text": "如何评价郑钦文拿到中国球手的第一个中网冠军？这也是李娜之后中国网球的第二个 WTA1000 大师赛冠军？",
-          "heat": "73 万热度"
+          "heat": "59 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092697880695928022",
           "text": "WTT 中国大满贯赛，男世一松岛辉空 4-3 林昀儒夺冠，怎么评价本场比赛以及 19 岁松岛辉空的上升势头？",
-          "heat": "69 万热度"
+          "heat": "59 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092332439364489582",
           "text": "人社部提出「通过政策优化、数据找人等措施，力争基本养老保险参保率稳定在 95% 以上」，哪些信息值得关注？",
-          "heat": "67 万热度"
+          "heat": "59 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2057495861937153314",
           "text": "谁在用 Codex？实际体验真有那么好吗？",
-          "heat": "65 万热度"
+          "heat": "59 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092187029413090572",
           "text": "史上最大退休潮来了，未来 14 年，平均每天 6 万人退休 ​，养老金体系该如何应对？",
-          "heat": "61 万热度"
+          "heat": "59 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2081873980173174282",
           "text": "红果短剧为何让人着迷？",
-          "heat": "59 万热度"
+          "heat": "58 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2092006267560649453",
           "text": "深圳中小学将迎春秋假且不调休，会对双职工家庭带来哪些影响？",
-          "heat": "59 万热度"
+          "heat": "58 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2091593011432010382",
           "text": "如何看待四川巴中 12345 被指拖欠员工工资，工作人员称欠薪问题已在解决，常拖欠不属实，暴露了哪些问题？",
-          "heat": "59 万热度"
+          "heat": "57 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2079863733422142709",
           "text": "为什么感觉 gpt6 反而不好用了？",
-          "heat": "58 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/284634562",
-          "text": "为什么五子棋始终没有发展起来？",
           "heat": "57 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2090584961963378643",
-          "text": "《天国：拯救》主创说玩家厌倦了「天选之人」，可如果真让亨利当个普通人，玩家能接受不特别的主角吗？",
-          "heat": "56 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2075269578842816645",
-          "text": "《三体》3 中褚岩摧毁水滴后为什么直接广播，而不是尝试再次建立威慑？",
-          "heat": "56 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2092302606202946517",
-          "text": "多车企扎堆发布猛踩刹车视频，会倒逼行业提高安全冗余标准吗？",
-          "heat": "56 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2049776403307029645",
-          "text": "为什么不把香港元朗、屯门、北区划到深圳，既能帮助香港开发荒地，又能解决深圳的用地不足问题？",
-          "heat": "56 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2090980380291736782",
-          "text": "刘欢是怎么做到一天音乐学院都没上过，就能在音乐方面有这么大的造诣的？",
-          "heat": "56 万热度"
         },
         {
           "url": "https://www.zhihu.com/question/2091907275392866244",
           "text": "在职场中，A 承担了 80% 的工作量，B 只做 20%，但 B 零失误，为什么最后奖金、升职全是干活少的 B？",
-          "heat": "56 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2083962505064355419",
-          "text": "《空之轨迹 2nd》里艾丝蒂尔这种天然呆放现实职场，你会觉得她是真性情还是情商低？",
           "heat": "56 万热度"
         },
         {
@@ -1625,18 +1580,13 @@
           "heat": "56 万热度"
         },
         {
+          "url": "https://www.zhihu.com/question/2092302606202946517",
+          "text": "多车企扎堆发布猛踩刹车视频，会倒逼行业提高安全冗余标准吗？",
+          "heat": "56 万热度"
+        },
+        {
           "url": "https://www.zhihu.com/question/2089661309084344503",
           "text": "电影《神探之痕迹》有哪些细思极恐的细节？",
-          "heat": "56 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2091902491575297732",
-          "text": "双 11 想给孩子买 AI 学习机，市面上的主流品牌该怎么选？",
-          "heat": "56 万热度"
-        },
-        {
-          "url": "https://www.zhihu.com/question/2091866621082187468",
-          "text": "如何评价浙江诸葛村改用汉服祭祀诸葛亮了？",
           "heat": "56 万热度"
         },
         {
@@ -1650,18 +1600,43 @@
           "heat": "56 万热度"
         },
         {
+          "url": "https://www.zhihu.com/question/2083962505064355419",
+          "text": "《空之轨迹 2nd》里艾丝蒂尔这种天然呆放现实职场，你会觉得她是真性情还是情商低？",
+          "heat": "56 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2049776403307029645",
+          "text": "为什么不把香港元朗、屯门、北区划到深圳，既能帮助香港开发荒地，又能解决深圳的用地不足问题？",
+          "heat": "56 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2090980380291736782",
+          "text": "刘欢是怎么做到一天音乐学院都没上过，就能在音乐方面有这么大的造诣的？",
+          "heat": "56 万热度"
+        },
+        {
           "url": "https://www.zhihu.com/question/2086594998665999640",
           "text": "为什么很多人买新能源车之前很兴奋，开了一年后却开始怀念燃油车？",
           "heat": "56 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2051835195830056877",
-          "text": "慢慢消磨掉一个人前进动力的从来不是懒惰，真正根源到底是什么？",
+          "url": "https://www.zhihu.com/question/2091902491575297732",
+          "text": "双 11 想给孩子买 AI 学习机，市面上的主流品牌该怎么选？",
           "heat": "56 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2022298794440533518",
-          "text": "有什么可以平替梁灿彬微分几何与广义相对论的书吗？",
+          "url": "https://www.zhihu.com/question/2091866621082187468",
+          "text": "如何评价浙江诸葛村改用汉服祭祀诸葛亮了？",
+          "heat": "56 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2075269578842816645",
+          "text": "《三体》3 中褚岩摧毁水滴后为什么直接广播，而不是尝试再次建立威慑？",
+          "heat": "56 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2051835195830056877",
+          "text": "慢慢消磨掉一个人前进动力的从来不是懒惰，真正根源到底是什么？",
           "heat": "56 万热度"
         },
         {
@@ -1675,8 +1650,8 @@
           "heat": "56 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/1989261671991107873",
-          "text": "职场老实人不想吃亏，该守住哪些底线、带哪些锋芒？",
+          "url": "https://www.zhihu.com/question/2022298794440533518",
+          "text": "有什么可以平替梁灿彬微分几何与广义相对论的书吗？",
           "heat": "56 万热度"
         },
         {
@@ -1685,13 +1660,13 @@
           "heat": "56 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2090937372464649504",
-          "text": "如何评价 TES 选手 369，休息半年后参加世界赛这件事？",
+          "url": "https://www.zhihu.com/question/1989261671991107873",
+          "text": "职场老实人不想吃亏，该守住哪些底线、带哪些锋芒？",
           "heat": "56 万热度"
         },
         {
-          "url": "https://www.zhihu.com/question/2075906663240970315",
-          "text": "国足新生代有复苏迹象，中国足球能焕发第二春吗？闯进 2030 世界杯舞台？",
+          "url": "https://www.zhihu.com/question/2090937372464649504",
+          "text": "如何评价 TES 选手 369，休息半年后参加世界赛这件事？",
           "heat": "56 万热度"
         },
         {
@@ -1712,6 +1687,21 @@
         {
           "url": "https://www.zhihu.com/question/2085007088338597636",
           "text": "为什么不能由产品经理操作 AI 开发，把程序员全淘汰掉？",
+          "heat": "56 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/1996587665122935713",
+          "text": "你家有没有哪道年菜是你从小到大每年必吃，味道也一丝没变？",
+          "heat": "56 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2089005964619944221",
+          "text": "怎么系统建立计算机科学的知识体系，再逐步完善到实际开发？",
+          "heat": "56 万热度"
+        },
+        {
+          "url": "https://www.zhihu.com/question/2092046621265679384",
+          "text": "1N （牛）的力量有多大？1500N 呢？",
           "heat": "56 万热度"
         }
       ]
@@ -1879,32 +1869,32 @@
         {
           "url": "https://www.baidu.com/s?wd=%E6%AF%8F%E4%B8%80%E4%BB%A3%E4%BA%BA%E9%83%BD%E8%A6%81%E8%B5%B0%E5%A5%BD%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%BF%E5%BE%81%E8%B7%AF",
           "text": "每一代人都要走好自己的长征路",
-          "heat": "790.4万"
+          "heat": "790.5万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%88%9B%E9%80%A0%E5%8E%86%E5%8F%B2%EF%BC%81%E9%83%91%E9%92%A6%E6%96%87%E4%B8%AD%E7%BD%91%E5%A4%BA%E5%86%A0",
           "text": "创造历史！郑钦文中网夺冠",
-          "heat": "781.0万"
+          "heat": "780.9万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87+%E6%8E%92%E5%90%8D",
           "text": "郑钦文 排名",
-          "heat": "771.3万"
+          "heat": "771.5万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E8%BF%99%E4%BA%9B%E6%96%87%E7%89%A9%E8%A7%81%E8%AF%81%E4%BC%9F%E5%A4%A7%E8%BF%9C%E5%BE%81",
           "text": "这些文物见证伟大远征",
-          "heat": "761.8万"
+          "heat": "761.7万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%EF%BC%9A%E8%87%AA%E5%B7%B1%E5%A4%AA%E6%83%B3%E8%B5%A2+%E8%B5%9B%E5%89%8D%E4%B8%8D%E5%81%9C%E5%91%95%E5%90%90",
           "text": "郑钦文：自己太想赢 赛前不停呕吐",
-          "heat": "752.1万"
+          "heat": "752.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%9D%8E%E5%A8%9C%E4%B9%8B%E5%90%8E%E8%8B%A6%E7%AD%8914%E5%B9%B4",
           "text": "李娜之后苦等14年",
-          "heat": "742.4万"
+          "heat": "742.9万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%91%A8%E9%B8%BF%E7%A5%8E%E6%94%80%E5%B2%A9%E6%91%94%E4%BC%A4%E8%87%B4%E5%B7%A6%E8%86%9D%E7%B2%89%E7%A2%8E%E6%80%A7%E9%AA%A8%E6%8A%98",
@@ -1914,222 +1904,222 @@
         {
           "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E5%A4%BA%E5%86%A0%E5%90%8E%E6%8B%A5%E6%8A%B1%E6%95%99%E7%BB%83%E9%87%8C%E5%B7%B4",
           "text": "郑钦文夺冠后拥抱教练里巴",
-          "heat": "723.3万"
+          "heat": "723.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E8%83%96%E4%B8%9C%E6%9D%A5%E6%96%BD%E5%B7%A5%E7%8E%B0%E5%9C%BA+%E5%B9%B2%E5%87%80%E5%BE%97%E5%83%8FAI",
           "text": "胖东来施工现场 干净得像AI",
-          "heat": "713.8万"
+          "heat": "714.0万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E7%88%B6%E6%AF%8D%E7%8E%B0%E5%9C%BA%E8%A7%81%E8%AF%81%E5%A4%BA%E5%86%A0",
           "text": "郑钦文父母现场见证夺冠",
-          "heat": "704.6万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E8%A7%A3%E8%AF%B4%E5%93%BD%E5%92%BD%EF%BC%9A%E6%88%91%E4%BB%AC%E8%BF%8E%E6%9D%A5%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B",
-          "text": "解说哽咽：我们迎来了自己的女单冠军",
-          "heat": "694.4万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E4%BA%B2%E5%AD%90%E9%89%B4%E5%AE%9A32%E4%BB%BD%E6%8A%A5%E5%91%8A21%E4%B8%AA%E9%9D%9E%E4%BA%B2%E7%94%9F%EF%BC%9F%E5%81%87%E7%9A%84",
-          "text": "亲子鉴定32份报告21个非亲生？假的",
-          "heat": "685.7万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E4%BA%8C%E5%8D%81%E5%B9%B4%E5%A4%AB%E5%A6%BB%E5%9B%A01%E4%B8%87%E5%85%83%E6%89%93%E6%96%97%E8%87%B4%E4%B8%88%E5%A4%AB%E6%AD%BB%E4%BA%A1",
-          "text": "二十年夫妻因1万元打斗致丈夫死亡",
-          "heat": "676.2万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E5%86%B3%E8%B5%9B%E4%B8%8A%E6%BC%94%E9%97%AA%E8%BA%AB%E6%AD%A5",
-          "text": "郑钦文决赛上演闪身步",
-          "heat": "666.7万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E4%BD%99%E4%BE%9D%E5%A9%B7%E4%B8%89%E6%97%A5%E8%BF%9E%E5%A4%BA%E4%B8%89%E9%87%91",
-          "text": "余依婷三日连夺三金",
-          "heat": "656.2万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E7%9A%8424%E5%B2%81%E5%A4%AF%E7%88%86%E4%BA%86",
-          "text": "郑钦文的24岁夯爆了",
-          "heat": "647.3万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%90%9C%E2%80%9C%E4%B8%AD%E5%9B%BD%E7%9F%B3%E6%B2%B9%E2%80%9D%E8%A2%AB%E5%AF%BC%E8%88%AA%E5%88%B0%E2%80%9C%E4%B8%AD%E5%9B%BD%E5%8A%A0%E6%B2%B9%E2%80%9D",
-          "text": "搜“中国石油”被导航到“中国加油”",
-          "heat": "637.9万"
+          "heat": "704.8万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%A4%AE%E8%A7%86%E6%9B%9D%E5%85%89%E4%B8%AA%E5%88%AB%E5%9C%B0%E5%8C%BA%E8%94%AC%E8%8F%9C%E5%A4%A7%E6%A3%9A%E6%92%82%E8%8D%92",
           "text": "央视曝光个别地区蔬菜大棚撂荒",
-          "heat": "627.4万"
+          "heat": "695.1万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E8%A2%AB%E5%AD%97%E8%8A%82%E5%BC%80%E9%99%A4%E5%AE%9E%E4%B9%A0%E7%94%9F%E5%88%9B%E4%B8%9A%E8%8E%B72%E4%BA%BF%E7%BE%8E%E5%85%83%E4%BC%B0%E5%80%BC",
-          "text": "被字节开除实习生创业获2亿美元估值",
-          "heat": "617.7万"
+          "url": "https://www.baidu.com/s?wd=%E4%BA%B2%E5%AD%90%E9%89%B4%E5%AE%9A32%E4%BB%BD%E6%8A%A5%E5%91%8A21%E4%B8%AA%E9%9D%9E%E4%BA%B2%E7%94%9F%EF%BC%9F%E5%81%87%E7%9A%84",
+          "text": "亲子鉴定32份报告21个非亲生？假的",
+          "heat": "684.9万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%A5%B3%E7%94%9F%E8%A2%AB%E8%BF%AB%E5%90%B8%E4%BA%8C%E6%89%8B%E7%83%9F%E6%80%92%E5%90%BC%E6%8A%BD%E7%83%9F%E7%9A%84%E6%8A%8A%E7%83%9F%E6%8E%90%E4%BA%86",
-          "text": "女生被迫吸二手烟怒吼抽烟的把烟掐了",
-          "heat": "608.2万"
+          "url": "https://www.baidu.com/s?wd=%E4%BA%8C%E5%8D%81%E5%B9%B4%E5%A4%AB%E5%A6%BB%E5%9B%A01%E4%B8%87%E5%85%83%E6%89%93%E6%96%97%E8%87%B4%E4%B8%88%E5%A4%AB%E6%AD%BB%E4%BA%A1",
+          "text": "二十年夫妻因1万元打斗致丈夫死亡",
+          "heat": "675.5万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E5%93%AD%E4%BA%86",
-          "text": "郑钦文哭了",
-          "heat": "599.8万"
+          "url": "https://www.baidu.com/s?wd=%E8%A7%A3%E8%AF%B4%E5%93%BD%E5%92%BD%EF%BC%9A%E6%88%91%E4%BB%AC%E8%BF%8E%E6%9D%A5%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B",
+          "text": "解说哽咽：我们迎来了自己的女单冠军",
+          "heat": "665.7万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%BD%98%E7%8E%AE%E6%9F%8F%E8%87%AA%E6%9B%9D%E7%98%A6%E4%BA%8626%E6%96%A4+%E7%98%A6%E5%88%B0%E7%A9%BF%E5%A5%B3%E8%A3%85",
           "text": "潘玮柏自曝瘦了26斤 瘦到穿女装",
-          "heat": "590.6万"
+          "heat": "656.0万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E7%9A%8424%E5%B2%81%E5%A4%AF%E7%88%86%E4%BA%86",
+          "text": "郑钦文的24岁夯爆了",
+          "heat": "647.6万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E5%86%B3%E8%B5%9B%E4%B8%8A%E6%BC%94%E9%97%AA%E8%BA%AB%E6%AD%A5",
+          "text": "郑钦文决赛上演闪身步",
+          "heat": "637.7万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%A5%B3%E7%94%9F%E8%A2%AB%E8%BF%AB%E5%90%B8%E4%BA%8C%E6%89%8B%E7%83%9F%E6%80%92%E5%90%BC%E6%8A%BD%E7%83%9F%E7%9A%84%E6%8A%8A%E7%83%9F%E6%8E%90%E4%BA%86",
+          "text": "女生被迫吸二手烟怒吼抽烟的把烟掐了",
+          "heat": "627.8万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E6%90%9C%E2%80%9C%E4%B8%AD%E5%9B%BD%E7%9F%B3%E6%B2%B9%E2%80%9D%E8%A2%AB%E5%AF%BC%E8%88%AA%E5%88%B0%E2%80%9C%E4%B8%AD%E5%9B%BD%E5%8A%A0%E6%B2%B9%E2%80%9D",
+          "text": "搜“中国石油”被导航到“中国加油”",
+          "heat": "618.7万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%A4%96%E5%9C%B0%E5%8A%A1%E5%B7%A5%E4%BA%BA%E5%91%982%E5%85%83%E5%BD%A9%E7%A5%A8%E4%B8%AD500%E4%B8%87",
           "text": "外地务工人员2元彩票中500万",
-          "heat": "579.6万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%BC%A0%E9%9B%AA%E5%85%A8%E7%BD%91%E5%AF%BB%E6%89%BE%E2%80%9C%E5%8A%A0%E6%B2%B9%E7%AB%99%E6%91%94%E5%80%92%E8%BD%A6%E4%B8%BB%E2%80%9D",
-          "text": "张雪全网寻找“加油站摔倒车主”",
-          "heat": "570.0万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%A4%AE%E8%80%83%E6%A0%B8%E5%B7%A1%E6%9F%A5%E4%B8%93%E5%AE%B6%EF%BC%9A%E4%BD%A0%E4%BB%AC%E8%BF%99%E4%B9%88%E6%8C%82%E7%81%AF%E6%B2%A1%E7%94%A8",
-          "text": "中央考核巡查专家：你们这么挂灯没用",
-          "heat": "561.2万"
+          "heat": "608.2万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%B2%B3%E5%8D%97%E5%B0%8F%E5%90%83%E5%BC%80%E4%BC%A6%E6%95%A6%E9%A6%96%E5%BA%97+%E4%B8%80%E7%A2%97%E8%83%A1%E8%BE%A3%E6%B1%A487%E5%85%83",
           "text": "河南小吃开伦敦首店 一碗胡辣汤87元",
-          "heat": "552.1万"
+          "heat": "598.4万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E4%BD%99%E4%BE%9D%E5%A9%B7%E4%B8%89%E6%97%A5%E8%BF%9E%E5%A4%BA%E4%B8%89%E9%87%91",
+          "text": "余依婷三日连夺三金",
+          "heat": "588.7万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E5%93%AD%E4%BA%86",
+          "text": "郑钦文哭了",
+          "heat": "579.4万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%BC%A0%E9%9B%AA%E5%85%A8%E7%BD%91%E5%AF%BB%E6%89%BE%E2%80%9C%E5%8A%A0%E6%B2%B9%E7%AB%99%E6%91%94%E5%80%92%E8%BD%A6%E4%B8%BB%E2%80%9D",
+          "text": "张雪全网寻找“加油站摔倒车主”",
+          "heat": "569.9万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E8%A2%AB%E5%AD%97%E8%8A%82%E5%BC%80%E9%99%A4%E5%AE%9E%E4%B9%A0%E7%94%9F%E5%88%9B%E4%B8%9A%E8%8E%B72%E4%BA%BF%E7%BE%8E%E5%85%83%E4%BC%B0%E5%80%BC",
+          "text": "被字节开除实习生创业获2亿美元估值",
+          "heat": "560.3万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%A4%AE%E8%80%83%E6%A0%B8%E5%B7%A1%E6%9F%A5%E4%B8%93%E5%AE%B6%EF%BC%9A%E4%BD%A0%E4%BB%AC%E8%BF%99%E4%B9%88%E6%8C%82%E7%81%AF%E6%B2%A1%E7%94%A8",
+          "text": "中央考核巡查专家：你们这么挂灯没用",
+          "heat": "550.5万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E5%B1%B1%E4%B8%9C%E5%A4%A7%E7%88%B7%E4%B8%80%E5%BC%80%E5%8F%A3%E7%BD%91%E5%8F%8B%E5%90%AC%E5%87%BA%E2%80%9C%E4%BC%A6%E6%95%A6%E8%85%94%E2%80%9D",
           "text": "山东大爷一开口网友听出“伦敦腔”",
-          "heat": "541.9万"
+          "heat": "542.9万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E6%95%91%E7%90%83%E7%A5%9E%E6%9D%A5%E4%B9%8B%E7%AC%94",
           "text": "郑钦文救球神来之笔",
-          "heat": "532.4万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%B2%99%E7%89%B9%E4%B8%BB%E5%AF%BC%E8%81%94%E5%86%9B%E7%A7%B0%E5%88%A9%E9%9B%85%E5%BE%97%E6%9C%BA%E5%9C%BA%E8%88%AA%E7%AB%99%E6%A5%BC%E9%81%AD%E8%A2%AD",
-          "text": "沙特主导联军称利雅得机场航站楼遭袭",
-          "heat": "522.1万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%9D%91%E6%B0%91%E8%87%AA%E5%BB%BA%E6%88%BF%E7%94%A8%E7%9A%84%E7%A0%96%E5%8F%AF%E4%BB%A5%E5%BE%92%E6%89%8B%E6%8E%B0%E6%96%AD",
-          "text": "村民自建房用的砖可以徒手掰断",
-          "heat": "511.9万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%9E%97%E6%98%80%E5%84%924%E6%AF%943%E9%9B%A8%E6%9E%9C%E6%99%8B%E7%BA%A7%E5%86%B3%E8%B5%9B",
-          "text": "林昀儒4比3雨果晋级决赛",
-          "heat": "505.2万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%EF%BC%9A%E9%9D%9E%E5%B8%B8%E9%9D%9E%E5%B8%B8%E9%9A%BE%E4%BD%86%E6%88%91%E6%9C%89%E5%8F%A3%E6%B0%94%E9%A1%B6%E5%9C%A8%E9%82%A3",
-          "text": "郑钦文：非常非常难但我有口气顶在那",
-          "heat": "492.6万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E2%80%9C%E8%9B%9F%E9%BE%99%E2%80%9D%E5%8F%B7%E8%BD%BD%E4%BA%BA%E6%BD%9C%E6%B0%B4%E5%99%A8%E5%85%A5%E6%B5%B7",
-          "text": "“蛟龙”号载人潜水器入海",
-          "heat": "483.6万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E7%89%B9%E6%9C%97%E6%99%AE%EF%BC%9A%E4%BF%84%E4%B9%8C%E5%8F%8C%E6%96%B9%E5%90%8C%E6%84%8F%E2%80%9C%E8%83%BD%E6%BA%90%E5%81%9C%E7%81%AB%E2%80%9D",
-          "text": "特朗普：俄乌双方同意“能源停火”",
-          "heat": "473.7万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E7%99%BB%E4%B8%8A%E4%B8%AD%E7%BD%91%E5%86%A0%E5%86%9B%E8%B5%B0%E5%BB%8A",
-          "text": "郑钦文登上中网冠军走廊",
-          "heat": "463.8万"
+          "heat": "532.3万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E5%9B%9E%E5%BA%94%E5%A4%BA%E5%86%A0%EF%BC%9A%E8%BF%99%E4%B8%AA%E5%86%A0%E5%86%9B%E6%9C%89%E4%BD%A0%E4%BB%AC%E4%B8%80%E4%BB%BD",
           "text": "郑钦文回应夺冠：这个冠军有你们一份",
-          "heat": "456.0万"
+          "heat": "522.3万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87+%E4%BD%8E%E8%B0%B7%E7%9A%84%E7%81%AB%E7%84%B0%E7%82%BC%E5%87%BA%E5%86%A0%E5%86%9B%E7%9A%84%E5%BF%83",
-          "text": "郑钦文 低谷的火焰炼出冠军的心",
-          "heat": "444.6万"
+          "url": "https://www.baidu.com/s?wd=%E7%89%B9%E6%9C%97%E6%99%AE%EF%BC%9A%E4%BF%84%E4%B9%8C%E5%8F%8C%E6%96%B9%E5%90%8C%E6%84%8F%E2%80%9C%E8%83%BD%E6%BA%90%E5%81%9C%E7%81%AB%E2%80%9D",
+          "text": "特朗普：俄乌双方同意“能源停火”",
+          "heat": "513.3万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%B8%82%E7%9B%91%E5%B1%80%E9%80%9A%E6%8A%A5%E7%83%A7%E7%83%A4%E5%BA%97%E5%8E%A8%E5%B8%88%E5%90%90%E6%BC%B1%E5%8F%A3%E6%B0%B4",
-          "text": "市监局通报烧烤店厨师吐漱口水",
-          "heat": "438.1万"
+          "url": "https://www.baidu.com/s?wd=%E6%9D%91%E6%B0%91%E8%87%AA%E5%BB%BA%E6%88%BF%E7%94%A8%E7%9A%84%E7%A0%96%E5%8F%AF%E4%BB%A5%E5%BE%92%E6%89%8B%E6%8E%B0%E6%96%AD",
+          "text": "村民自建房用的砖可以徒手掰断",
+          "heat": "505.0万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E9%80%83%E5%8D%95%E4%B9%8C%E9%BE%99+%E2%80%9C%E6%8C%82%E4%BA%BA%E5%BC%8F%E7%BB%B4%E6%9D%83%E2%80%9D%E6%B2%A1%E6%9C%89%E8%B5%A2%E5%AE%B6",
-          "text": "逃单乌龙 “挂人式维权”没有赢家",
-          "heat": "427.3万"
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%EF%BC%9A%E9%9D%9E%E5%B8%B8%E9%9D%9E%E5%B8%B8%E9%9A%BE%E4%BD%86%E6%88%91%E6%9C%89%E5%8F%A3%E6%B0%94%E9%A1%B6%E5%9C%A8%E9%82%A3",
+          "text": "郑钦文：非常非常难但我有口气顶在那",
+          "heat": "492.8万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E5%B0%BC%E6%B3%8A%E5%B0%94%E5%B1%B1%E6%B4%AA%E7%8E%B0%E5%9C%BA%E6%88%BF%E5%B1%8B%E6%A1%A5%E6%A2%81%E7%9E%AC%E9%97%B4%E8%A2%AB%E5%86%B2%E5%A1%8C",
-          "text": "尼泊尔山洪现场房屋桥梁瞬间被冲塌",
-          "heat": "416.0万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E6%94%B6%E8%8E%B7115%E4%B8%87%E7%BE%8E%E5%85%83%E5%A5%96%E9%87%91",
-          "text": "郑钦文收获115万美元奖金",
-          "heat": "410.0万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E8%B5%9B%E5%90%8E%E5%94%B1%E7%8E%8B%E5%BF%83%E5%87%8C%E3%80%8A%E6%A2%A6%E7%9A%84%E5%85%89%E7%82%B9%E3%80%8B",
-          "text": "郑钦文赛后唱王心凌《梦的光点》",
-          "heat": "399.8万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%AE%89%E5%BE%B7%E5%88%97%E5%A8%83%E6%81%AD%E5%96%9C%E9%83%91%E9%92%A6%E6%96%87%E5%A4%BA%E5%86%A0",
-          "text": "安德列娃恭喜郑钦文夺冠",
-          "heat": "388.4万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%98%86%E6%98%8E%E4%B8%80%E9%81%93%E8%B7%AF%E5%9D%8D%E5%A1%8C%E8%87%B4%E5%A4%9A%E8%BD%A6%E5%8F%97%E6%8D%9F+%E5%BD%93%E5%9C%B0%E5%9B%9E%E5%BA%94",
-          "text": "昆明一道路坍塌致多车受损 当地回应",
-          "heat": "379.4万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E6%B7%B1%E5%9C%B3%E5%85%AC%E5%B8%83%E4%B8%80%E8%B5%B7%E9%AB%98%E5%A4%84%E5%9D%A0%E8%90%BD%E4%BA%8B%E6%95%85%E8%B0%83%E6%9F%A5%E6%8A%A5%E5%91%8A",
-          "text": "深圳公布一起高处坠落事故调查报告",
-          "heat": "370.8万"
-        },
-        {
-          "url": "https://www.baidu.com/s?wd=%E5%85%B3%E6%99%93%E5%BD%A4%E6%83%8A%E5%96%9C%E7%8E%B0%E8%BA%AB%E5%AE%8B%E9%9B%A8%E7%90%A6%E6%BC%94%E5%94%B1%E4%BC%9A",
-          "text": "关晓彤惊喜现身宋雨琦演唱会",
-          "heat": "359.2万"
+          "url": "https://www.baidu.com/s?wd=%E6%B2%99%E7%89%B9%E4%B8%BB%E5%AF%BC%E8%81%94%E5%86%9B%E7%A7%B0%E5%88%A9%E9%9B%85%E5%BE%97%E6%9C%BA%E5%9C%BA%E8%88%AA%E7%AB%99%E6%A5%BC%E9%81%AD%E8%A2%AD",
+          "text": "沙特主导联军称利雅得机场航站楼遭袭",
+          "heat": "485.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E6%90%AC%E8%BF%90%E7%9B%B4%E6%92%AD%E5%88%87%E7%89%87%E5%B8%A6%E8%B4%A7+%E4%BE%B5%E6%9D%83",
           "text": "搬运直播切片带货 侵权",
-          "heat": "352.4万"
+          "heat": "475.6万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E6%B1%9F%E8%A5%BF%E7%AB%8B%E6%B3%95%E6%9D%9C%E7%BB%9D+%E2%80%9C%E6%96%B0%E5%AE%98%E4%B8%8D%E7%90%86%E6%97%A7%E8%B4%A6%E2%80%9D",
-          "text": "江西立法杜绝 “新官不理旧账”",
-          "heat": "341.3万"
+          "url": "https://www.baidu.com/s?wd=%E6%9E%97%E6%98%80%E5%84%924%E6%AF%943%E9%9B%A8%E6%9E%9C%E6%99%8B%E7%BA%A7%E5%86%B3%E8%B5%9B",
+          "text": "林昀儒4比3雨果晋级决赛",
+          "heat": "464.2万"
         },
         {
-          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87+%E4%B8%AD%E7%BD%91%E9%A6%96%E4%BD%8D%E6%9C%AC%E5%9C%9F%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B",
-          "text": "郑钦文 中网首位本土女单冠军",
-          "heat": "329.7万"
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E7%99%BB%E4%B8%8A%E4%B8%AD%E7%BD%91%E5%86%A0%E5%86%9B%E8%B5%B0%E5%BB%8A",
+          "text": "郑钦文登上中网冠军走廊",
+          "heat": "456.7万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E6%98%86%E6%98%8E%E4%B8%80%E9%81%93%E8%B7%AF%E5%9D%8D%E5%A1%8C%E8%87%B4%E5%A4%9A%E8%BD%A6%E5%8F%97%E6%8D%9F+%E5%BD%93%E5%9C%B0%E5%9B%9E%E5%BA%94",
+          "text": "昆明一道路坍塌致多车受损 当地回应",
+          "heat": "446.8万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%B0%BC%E6%B3%8A%E5%B0%94%E5%B1%B1%E6%B4%AA%E7%8E%B0%E5%9C%BA%E6%88%BF%E5%B1%8B%E6%A1%A5%E6%A2%81%E7%9E%AC%E9%97%B4%E8%A2%AB%E5%86%B2%E5%A1%8C",
+          "text": "尼泊尔山洪现场房屋桥梁瞬间被冲塌",
+          "heat": "435.3万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E2%80%9C%E8%9B%9F%E9%BE%99%E2%80%9D%E5%8F%B7%E8%BD%BD%E4%BA%BA%E6%BD%9C%E6%B0%B4%E5%99%A8%E5%85%A5%E6%B5%B7",
+          "text": "“蛟龙”号载人潜水器入海",
+          "heat": "429.1万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%B8%82%E7%9B%91%E5%B1%80%E9%80%9A%E6%8A%A5%E7%83%A7%E7%83%A4%E5%BA%97%E5%8E%A8%E5%B8%88%E5%90%90%E6%BC%B1%E5%8F%A3%E6%B0%B4",
+          "text": "市监局通报烧烤店厨师吐漱口水",
+          "heat": "417.3万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%80%83%E5%8D%95%E4%B9%8C%E9%BE%99+%E2%80%9C%E6%8C%82%E4%BA%BA%E5%BC%8F%E7%BB%B4%E6%9D%83%E2%80%9D%E6%B2%A1%E6%9C%89%E8%B5%A2%E5%AE%B6",
+          "text": "逃单乌龙 “挂人式维权”没有赢家",
+          "heat": "407.5万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87+%E4%BD%8E%E8%B0%B7%E7%9A%84%E7%81%AB%E7%84%B0%E7%82%BC%E5%87%BA%E5%86%A0%E5%86%9B%E7%9A%84%E5%BF%83",
+          "text": "郑钦文 低谷的火焰炼出冠军的心",
+          "heat": "399.3万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%85%B3%E6%99%93%E5%BD%A4%E6%83%8A%E5%96%9C%E7%8E%B0%E8%BA%AB%E5%AE%8B%E9%9B%A8%E7%90%A6%E6%BC%94%E5%94%B1%E4%BC%9A",
+          "text": "关晓彤惊喜现身宋雨琦演唱会",
+          "heat": "387.8万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E6%B7%B1%E5%9C%B3%E5%85%AC%E5%B8%83%E4%B8%80%E8%B5%B7%E9%AB%98%E5%A4%84%E5%9D%A0%E8%90%BD%E4%BA%8B%E6%95%85%E8%B0%83%E6%9F%A5%E6%8A%A5%E5%91%8A",
+          "text": "深圳公布一起高处坠落事故调查报告",
+          "heat": "380.8万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E6%94%B6%E8%8E%B7115%E4%B8%87%E7%BE%8E%E5%85%83%E5%A5%96%E9%87%91",
+          "text": "郑钦文收获115万美元奖金",
+          "heat": "371.6万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87%E8%B5%9B%E5%90%8E%E5%94%B1%E7%8E%8B%E5%BF%83%E5%87%8C%E3%80%8A%E6%A2%A6%E7%9A%84%E5%85%89%E7%82%B9%E3%80%8B",
+          "text": "郑钦文赛后唱王心凌《梦的光点》",
+          "heat": "361.9万"
         },
         {
           "url": "https://www.baidu.com/s?wd=24%E5%B2%81%E9%83%91%E9%92%A6%E6%96%87%E9%9C%B8%E6%B0%947%E8%BF%9E%E8%83%9C",
           "text": "24岁郑钦文霸气7连胜",
-          "heat": "320.0万"
+          "heat": "349.3万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E6%B1%9F%E8%A5%BF%E7%AB%8B%E6%B3%95%E6%9D%9C%E7%BB%9D+%E2%80%9C%E6%96%B0%E5%AE%98%E4%B8%8D%E7%90%86%E6%97%A7%E8%B4%A6%E2%80%9D",
+          "text": "江西立法杜绝 “新官不理旧账”",
+          "heat": "341.8万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E5%AE%89%E5%BE%B7%E5%88%97%E5%A8%83%E6%81%AD%E5%96%9C%E9%83%91%E9%92%A6%E6%96%87%E5%A4%BA%E5%86%A0",
+          "text": "安德列娃恭喜郑钦文夺冠",
+          "heat": "331.2万"
+        },
+        {
+          "url": "https://www.baidu.com/s?wd=%E9%83%91%E9%92%A6%E6%96%87+%E4%B8%AD%E7%BD%91%E9%A6%96%E4%BD%8D%E6%9C%AC%E5%9C%9F%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B",
+          "text": "郑钦文 中网首位本土女单冠军",
+          "heat": "322.4万"
         },
         {
           "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E8%B5%9B-%E6%9D%9C%E5%85%B0%E7%89%B9%E8%BD%AE%E4%BC%91%E7%8B%AC%E8%A1%8C%E4%BE%A0%E5%A4%A7%E8%83%9C%E7%81%AB%E7%AE%AD",
           "text": "中国赛-杜兰特轮休独行侠大胜火箭",
-          "heat": "314.4万"
+          "heat": "314.9万"
         }
       ]
     },
@@ -2378,7 +2368,7 @@
         {
           "url": "https://m.ithome.com/html/1011645.htm",
           "text": "京东预约超 200 万人：苹果 iPhone Duo 折叠屏手机 15999 元起倒数 5 天预售",
-          "heat": "146评"
+          "heat": "145评"
         },
         {
           "url": "https://m.ithome.com/html/1011573.htm",
@@ -2393,7 +2383,7 @@
         {
           "url": "https://m.ithome.com/html/1011600.htm",
           "text": "长城汽车魏牌 CEO 赵永坡：最大的豪华不是沙发，是刹车",
-          "heat": "255评"
+          "heat": "254评"
         },
         {
           "url": "https://m.ithome.com/html/1011581.htm",
@@ -2413,12 +2403,12 @@
         {
           "url": "https://m.ithome.com/html/1011644.htm",
           "text": "邓承浩：本次行业掀起重视安全、反对速成车 / 伪创新的大讨论和反思，深蓝汽车举双手赞成和拥护",
-          "heat": "201评"
+          "heat": "200评"
         },
         {
           "url": "https://m.ithome.com/html/1011637.htm",
           "text": "四部门为汽车安全划定红线：明确汽车设计、可靠性验证试验管理，研发测试要包含两冬一夏",
-          "heat": "255评"
+          "heat": "257评"
         },
         {
           "url": "https://m.ithome.com/html/1011574.htm",
@@ -2449,7 +2439,7 @@
         {
           "url": "https://juejin.cn/post/7693414422438723626",
           "text": "AI 帮我投资 85 天，最多赚到 3733 元",
-          "heat": "2309"
+          "heat": "2311"
         },
         {
           "url": "https://juejin.cn/post/7693144953569493043",
@@ -2459,7 +2449,7 @@
         {
           "url": "https://juejin.cn/post/7693828979246186546",
           "text": "🚀 2026 年 9 月 GitHub 十大热门项目排行榜 🔥",
-          "heat": "1516"
+          "heat": "1517"
         },
         {
           "url": "https://juejin.cn/post/7693225151681560586",
@@ -2479,7 +2469,7 @@
         {
           "url": "https://juejin.cn/post/7693805723601764362",
           "text": "Agent 天天挂在嘴边的沙箱，到底是个啥？",
-          "heat": "941"
+          "heat": "944"
         },
         {
           "url": "https://juejin.cn/post/7692614083904274486",
@@ -2489,7 +2479,7 @@
         {
           "url": "https://juejin.cn/post/7693481478181584932",
           "text": "A 社为什么反超了",
-          "heat": "666"
+          "heat": "668"
         },
         {
           "url": "https://juejin.cn/post/7694469284471390242",
@@ -2519,12 +2509,12 @@
         {
           "url": "https://juejin.cn/post/7694883716313759795",
           "text": "最近爆火的 Muse 浙大开源版 nanoMuse，来了！",
-          "heat": "315"
+          "heat": "319"
         },
         {
           "url": "https://juejin.cn/post/7693805723602567178",
           "text": "给中级开发者的 AI 能力升级路线图",
-          "heat": "412"
+          "heat": "413"
         },
         {
           "url": "https://juejin.cn/post/7693689217004732459",
@@ -2763,12 +2753,12 @@
         {
           "url": "https://www.bilibili.com/video/av117412577938174/",
           "text": "《司机の噩梦》",
-          "heat": "538.4万"
+          "heat": "538.6万"
         },
         {
           "url": "https://www.bilibili.com/video/av117404491450249/",
           "text": "超市生存挑战后续！4人吃完整个超市赢100万美金！",
-          "heat": "638.6万"
+          "heat": "638.8万"
         },
         {
           "url": "https://www.bilibili.com/video/av117403954514761/",
@@ -2778,12 +2768,12 @@
         {
           "url": "https://www.bilibili.com/video/av117403820230630/",
           "text": "2026英雄联盟全球总决赛主题曲《KNOW MY NAME》（以我之名）",
-          "heat": "383.9万"
+          "heat": "384.0万"
         },
         {
           "url": "https://www.bilibili.com/video/av117404944304860/",
           "text": "deepseek 翻唱《人是猫》完整版，大肥鱼觉得人和猫一样可爱,所以人是猫",
-          "heat": "128.2万"
+          "heat": "128.3万"
         },
         {
           "url": "https://www.bilibili.com/video/av117404390656449/",
@@ -2793,12 +2783,12 @@
         {
           "url": "https://www.bilibili.com/video/av117411353204712/",
           "text": "超市里……未检测到人脸……",
-          "heat": "196.6万"
+          "heat": "196.8万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409524488318/",
           "text": "如果把我和男朋友这几年的约会地点列出来",
-          "heat": "118.6万"
+          "heat": "118.7万"
         },
         {
           "url": "https://www.bilibili.com/video/av117406907307687/",
@@ -2813,27 +2803,27 @@
         {
           "url": "https://www.bilibili.com/video/av117410564675625/",
           "text": "老歌还是得老东西来唱『深夜之门/Stay With Me』翻唱【bilibili次元干杯】",
-          "heat": "98.5万"
+          "heat": "98.7万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409121834906/",
           "text": "影视飓风的直升机？怪东西分享9.0",
-          "heat": "189.8万"
+          "heat": "190.0万"
         },
         {
           "url": "https://www.bilibili.com/video/av117406252992422/",
           "text": "法国最近太烧心了",
-          "heat": "219.5万"
+          "heat": "219.6万"
         },
         {
           "url": "https://www.bilibili.com/video/av117416285765897/",
           "text": "“上大学该谈个女朋友了”。我呀？我去谈恋爱啊？！那无敌了……",
-          "heat": "205.2万"
+          "heat": "206.2万"
         },
         {
           "url": "https://www.bilibili.com/video/av117416487096831/",
           "text": "12个脑洞大开的做饭方式！",
-          "heat": "151.8万"
+          "heat": "153.0万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410380188663/",
@@ -2846,14 +2836,14 @@
           "heat": "235.7万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117397847546071/",
-          "text": "讨伐型人格大合集",
-          "heat": "188.9万"
-        },
-        {
           "url": "https://www.bilibili.com/video/av117417158187658/",
           "text": "虽然命还在，但是鱼没了啊！！！【AI全民制作人】",
-          "heat": "278.5万"
+          "heat": "279.6万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117397847546071/",
+          "text": "讨伐型人格大合集",
+          "heat": "189.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117353572536771/",
@@ -2863,17 +2853,17 @@
         {
           "url": "https://www.bilibili.com/video/av117399340712858/",
           "text": "【男巫ZachKing】2026最佳魔术！",
-          "heat": "311.4万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117403316917696/",
-          "text": "来纽约，拍到了些怪东西",
-          "heat": "319.7万"
+          "heat": "311.5万"
         },
         {
           "url": "https://www.bilibili.com/video/av117403434486720/",
           "text": "对话孙宇晨：年轻人如何抓住AI时代的机会？",
-          "heat": "102.2万"
+          "heat": "102.3万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117403316917696/",
+          "text": "来纽约，拍到了些怪东西",
+          "heat": "319.8万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409138741713/",
@@ -2881,19 +2871,9 @@
           "heat": "59.8万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117402679378226/",
-          "text": "Live2d模型动画/Love Options",
-          "heat": "112.5万"
-        },
-        {
           "url": "https://www.bilibili.com/video/av117409776206837/",
           "text": "雨哥到处跑新车曝光！居然是……",
-          "heat": "110.9万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117404692649583/",
-          "text": "【新宿决战】皮特VS鸡哥",
-          "heat": "189.2万"
+          "heat": "111.0万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410447297111/",
@@ -2901,19 +2881,29 @@
           "heat": "130.6万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117414809371847/",
-          "text": "疯牛失控窜行，民警到场一枪将其击毙，及时消除安全隐患。",
-          "heat": "463.7万"
-        },
-        {
           "url": "https://www.bilibili.com/video/av117421704741732/",
           "text": "逃离闪电侠黄金费德熊！你好邻居Mod",
-          "heat": "54.7万"
+          "heat": "56.2万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117414809371847/",
+          "text": "疯牛失控窜行，民警到场一枪将其击毙，及时消除安全隐患。",
+          "heat": "464.1万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117404692649583/",
+          "text": "【新宿决战】皮特VS鸡哥",
+          "heat": "189.3万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117402679378226/",
+          "text": "Live2d模型动画/Love Options",
+          "heat": "112.5万"
         },
         {
           "url": "https://www.bilibili.com/video/av117411303002133/",
           "text": "小时候幻想过的事",
-          "heat": "404.9万"
+          "heat": "405.4万"
         },
         {
           "url": "https://www.bilibili.com/video/av117406974350604/",
@@ -2921,14 +2911,14 @@
           "heat": "27.6万"
         },
         {
+          "url": "https://www.bilibili.com/video/av117411202208777/",
+          "text": "【大鸣王潮1566】岁主帮岁共",
+          "heat": "100.4万"
+        },
+        {
           "url": "https://www.bilibili.com/video/av117402662606479/",
           "text": "大学讲GalGame这一块",
           "heat": "123.4万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117411202208777/",
-          "text": "【大鸣王潮1566】岁主帮岁共",
-          "heat": "100.3万"
         },
         {
           "url": "https://www.bilibili.com/video/av117412863153415/",
@@ -2938,82 +2928,82 @@
         {
           "url": "https://www.bilibili.com/video/av117416101218212/",
           "text": "也是当上外卖大法官了",
-          "heat": "258.1万"
+          "heat": "258.8万"
         },
         {
           "url": "https://www.bilibili.com/video/av117415245513024/",
           "text": "【雀说】雀巢&鲸尾 | 自卑在哪一天消失",
-          "heat": "80.0万"
+          "heat": "80.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117406622026584/",
           "text": "新人第1次编曲耶",
-          "heat": "40.3万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117405313407145/",
-          "text": "说不痛苦那是假的",
-          "heat": "173.2万"
+          "heat": "40.8万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410564740751/",
           "text": "内蒙古包头一婚礼主持人发现新人买的礼炮里塞满纸钱和骂人纸条，婚礼主持人：发现及时，没使用",
-          "heat": "454.4万"
+          "heat": "454.8万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117405313407145/",
+          "text": "说不痛苦那是假的",
+          "heat": "173.4万"
         },
         {
           "url": "https://www.bilibili.com/video/av117399374269187/",
           "text": "⚡老牧师恰恰舞⚡",
-          "heat": "136.3万"
+          "heat": "136.4万"
         },
         {
           "url": "https://www.bilibili.com/video/av117404692649300/",
           "text": "丧尸入门指南，真丧尸路过都得夸你正宗",
-          "heat": "275.8万"
+          "heat": "275.9万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409088279897/",
           "text": "巧克力中毒",
-          "heat": "225.6万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117404860422710/",
-          "text": "全网首发《银松镇》正式版 高质量生化危机+寂静岭风格恐怖游戏 全收集 全结局",
-          "heat": "146.0万"
+          "heat": "225.7万"
         },
         {
           "url": "https://www.bilibili.com/video/av117416419920535/",
           "text": "有人说一台苹果18的钱能在山东大集买到多少东西和多少人快乐，咱们一起来挑战和数数！",
-          "heat": "100.7万"
+          "heat": "101.0万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117405195964471/",
-          "text": "【速凌宇宙】第二十八集：七人小队！四方混战！全员集结到场！",
-          "heat": "116.2万"
+          "url": "https://www.bilibili.com/video/av117404860422710/",
+          "text": "全网首发《银松镇》正式版 高质量生化危机+寂静岭风格恐怖游戏 全收集 全结局",
+          "heat": "146.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117414205332034/",
           "text": "动态视频｜一根头发认亲？亲子鉴定是怎么做的？",
-          "heat": "159.3万"
+          "heat": "159.4万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117405195964471/",
+          "text": "【速凌宇宙】第二十八集：七人小队！四方混战！全员集结到场！",
+          "heat": "116.3万"
         },
         {
           "url": "https://www.bilibili.com/video/av117408954062530/",
           "text": "史上最大现金收购案 富二代如何正确拼爹",
-          "heat": "150.9万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117358454637022/",
-          "text": "如何在中国合法造一把你自己的枪？【鹰哥Studio】",
-          "heat": "145.9万"
+          "heat": "151.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410061420323/",
           "text": "倒查三年流水，顶级商K集体关门！商K经济终于崩盘了？",
-          "heat": "161.7万"
+          "heat": "162.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117414490540606/",
           "text": "最后离开教室的人，获得1000包干脆面！",
-          "heat": "90.6万"
+          "heat": "91.0万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117403199603542/",
+          "text": "【科普】撕痂皮一时爽，留疤哭断肠！预防伤口留疤小妙招，记得收藏好……",
+          "heat": "312.6万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410631846645/",
@@ -3021,29 +3011,29 @@
           "heat": "626.1万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117403199603542/",
-          "text": "【科普】撕痂皮一时爽，留疤哭断肠！预防伤口留疤小妙招，记得收藏好……",
-          "heat": "312.4万"
+          "url": "https://www.bilibili.com/video/av117358454637022/",
+          "text": "如何在中国合法造一把你自己的枪？【鹰哥Studio】",
+          "heat": "145.9万"
         },
         {
           "url": "https://www.bilibili.com/video/av117412963816940/",
           "text": "【春物语】我的婚后生活果然有问题 第4话：小町的加分作战，加上前社长的经验。",
-          "heat": "79.3万"
+          "heat": "79.5万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409289607278/",
           "text": "希特勒·墨索里尼当选秘鲁市长 引关注",
-          "heat": "153.5万"
+          "heat": "153.6万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409490928787/",
           "text": "三年之期已到，恭迎世一上归位！【第13集】",
-          "heat": "137.5万"
+          "heat": "137.6万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409641925446/",
           "text": "我是猎人！",
-          "heat": "248.1万"
+          "heat": "248.4万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410229194832/",
@@ -3053,22 +3043,22 @@
         {
           "url": "https://www.bilibili.com/video/av117414574495959/",
           "text": "礼花炸响那一刻 又有个家庭蒸蒸日上",
-          "heat": "45.3万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117394106291349/",
-          "text": "【断网补全计划149】太阳之子，闪身步，不烧心，农大科比，雨中霸王龙，超长蛋挞，疯狂水世界，冰冰冰，咕咕嘎嘎小孩，野人先生罗永浩风波，钟薛高复活",
-          "heat": "339.2万"
+          "heat": "45.4万"
         },
         {
           "url": "https://www.bilibili.com/video/av117414809310229/",
           "text": "《贫道》",
-          "heat": "155.5万"
+          "heat": "156.0万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117394106291349/",
+          "text": "【断网补全计划149】太阳之子，闪身步，不烧心，农大科比，雨中霸王龙，超长蛋挞，疯狂水世界，冰冰冰，咕咕嘎嘎小孩，野人先生罗永浩风波，钟薛高复活",
+          "heat": "339.5万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410313013991/",
           "text": "无敌小面包升级版，挡无限子弹",
-          "heat": "251.2万"
+          "heat": "251.3万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410111685753/",
@@ -3078,12 +3068,12 @@
         {
           "url": "https://www.bilibili.com/video/av117416386500493/",
           "text": "《结账是你的谎言》",
-          "heat": "147.7万"
+          "heat": "147.9万"
         },
         {
           "url": "https://www.bilibili.com/video/av117388318083741/",
           "text": "耗时一年，改造善良老人晚年，完整后续来了！",
-          "heat": "384.8万"
+          "heat": "385.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410698892676/",
@@ -3091,14 +3081,14 @@
           "heat": "168.9万"
         },
         {
+          "url": "https://www.bilibili.com/video/av117410380186070/",
+          "text": "（改良加长版）“已经没有什么能让我睁开眼睛了”",
+          "heat": "147.8万"
+        },
+        {
           "url": "https://www.bilibili.com/video/av117404726203735/",
           "text": "《我信任的、交心的、交流的、心与心的》",
           "heat": "212.6万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117410380186070/",
-          "text": "（改良加长版）“已经没有什么能让我睁开眼睛了”",
-          "heat": "147.7万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410329855933/",
@@ -3108,17 +3098,17 @@
         {
           "url": "https://www.bilibili.com/video/av117416872904333/",
           "text": "《明日方舟》× 国家图书馆「恒远津梁」合作宣传PV",
-          "heat": "99.0万"
+          "heat": "99.2万"
         },
         {
           "url": "https://www.bilibili.com/video/av117416671579093/",
           "text": "你们考驾照费劲吗？",
-          "heat": "97.4万"
+          "heat": "97.7万"
         },
         {
           "url": "https://www.bilibili.com/video/av117398266972669/",
           "text": "《甲乙丙丁》，但是昭和金曲（citypop日语版）【AI MV大赛】",
-          "heat": "103.8万"
+          "heat": "104.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117404977923773/",
@@ -3128,12 +3118,12 @@
         {
           "url": "https://www.bilibili.com/video/av117404726331668/",
           "text": "时代峰峻全员过日子时代，热门壁纸技能也惨被抄袭",
-          "heat": "75.9万"
+          "heat": "76.0万"
         },
         {
           "url": "https://www.bilibili.com/video/av117411638482255/",
           "text": "荧：可是我觉得这样很萌啊",
-          "heat": "57.7万"
+          "heat": "57.9万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409205721032/",
@@ -3143,47 +3133,47 @@
         {
           "url": "https://www.bilibili.com/video/av117410548094562/",
           "text": "【梗百科】非常中国但丁是啥梗？",
-          "heat": "88.4万"
+          "heat": "88.5万"
         },
         {
           "url": "https://www.bilibili.com/video/av117369561159694/",
           "text": "《涌现 · 无人指挥》",
-          "heat": "141.2万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117398199864226/",
-          "text": "自己喂的猪，才有这个家乡味，这大油，这肥膘，这颜色",
-          "heat": "279.0万"
+          "heat": "141.3万"
         },
         {
           "url": "https://www.bilibili.com/video/av117420429738461/",
           "text": "【邓肯】新发恐怖事件！女企业家被儿子雇人送入老年护理中心丨诡异的五亿高中生坠楼谜案！",
-          "heat": "106.2万"
+          "heat": "108.2万"
         },
         {
           "url": "https://www.bilibili.com/video/av117415463619435/",
           "text": "后来的我才明白...",
-          "heat": "139.1万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117404659159451/",
-          "text": "“豆包问诊改问千问”是恶搞“请AI当判官”是日常，医患之间信任的沟壑不是AI挖的 AI也填不平（评论员：王珍珍 编辑：刘嘉欣）",
-          "heat": "248.1万"
+          "heat": "139.5万"
         },
         {
           "url": "https://www.bilibili.com/video/av117405229519082/",
           "text": "【颠覆】我用AI魔改周星驰电影宇宙  【AI全民制作人】",
-          "heat": "122.6万"
+          "heat": "122.7万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117398199864226/",
+          "text": "自己喂的猪，才有这个家乡味，这大油，这肥膘，这颜色",
+          "heat": "279.1万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117421268539265/",
+          "text": "我们来到了地中海，重走《奥德赛》十年回家路！",
+          "heat": "66.7万"
         },
         {
           "url": "https://www.bilibili.com/video/av117399743365991/",
           "text": "【初九】《第五人格》祭司仿妆来咯～",
-          "heat": "112.7万"
+          "heat": "112.8万"
         },
         {
           "url": "https://www.bilibili.com/video/av117414222104175/",
           "text": "哪一行都不好干（84）",
-          "heat": "136.0万"
+          "heat": "136.2万"
         },
         {
           "url": "https://www.bilibili.com/video/av117404172556005/",
@@ -3191,24 +3181,19 @@
           "heat": "99.9万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117410044641725/",
-          "text": "兄弟们，你们猜我今天握力pk能赢这个16岁小姑娘吗？",
-          "heat": "110.9万"
-        },
-        {
           "url": "https://www.bilibili.com/video/av117407058235472/",
           "text": "为什么说黑死病搜是因为死的太快，导致传染链断裂才控制住的呢？",
-          "heat": "113.0万"
+          "heat": "113.2万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117397562395557/",
-          "text": "可是我的位置已被谁替代...",
-          "heat": "282.0万"
+          "url": "https://www.bilibili.com/video/av117410044641725/",
+          "text": "兄弟们，你们猜我今天握力pk能赢这个16岁小姑娘吗？",
+          "heat": "111.0万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117421268539265/",
-          "text": "我们来到了地中海，重走《奥德赛》十年回家路！",
-          "heat": "65.2万"
+          "url": "https://www.bilibili.com/video/av117404659159451/",
+          "text": "“豆包问诊改问千问”是恶搞“请AI当判官”是日常，医患之间信任的沟壑不是AI挖的 AI也填不平（评论员：王珍珍 编辑：刘嘉欣）",
+          "heat": "248.1万"
         },
         {
           "url": "https://www.bilibili.com/video/av117405330179848/",
@@ -3218,12 +3203,17 @@
         {
           "url": "https://www.bilibili.com/video/av117408568186124/",
           "text": "假小子仙人最新力作，耗时55555秒制作！！！1-5集大合集",
-          "heat": "48.3万"
+          "heat": "48.4万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117397562395557/",
+          "text": "可是我的位置已被谁替代...",
+          "heat": "282.2万"
         },
         {
           "url": "https://www.bilibili.com/video/av117398602581122/",
           "text": "泰坦磨的面吃着不烧心",
-          "heat": "261.4万"
+          "heat": "261.6万"
         },
         {
           "url": "https://www.bilibili.com/video/av117409457440313/",
@@ -3231,34 +3221,34 @@
           "heat": "79.8万"
         },
         {
-          "url": "https://www.bilibili.com/video/av117402662603617/",
-          "text": "《和樱花妹互换身体の日常》第五集【AI全民制作人】",
-          "heat": "151.6万"
-        },
-        {
-          "url": "https://www.bilibili.com/video/av117404340324613/",
-          "text": "可观测宇宙中最困的一声囔",
-          "heat": "72.4万"
-        },
-        {
           "url": "https://www.bilibili.com/video/av117410145305456/",
           "text": "西班牙住房危机大爆发，桑切斯掀桌提前大选",
           "heat": "81.3万"
         },
         {
+          "url": "https://www.bilibili.com/video/av117404340324613/",
+          "text": "可观测宇宙中最困的一声囔",
+          "heat": "73.0万"
+        },
+        {
           "url": "https://www.bilibili.com/video/av117410078136063/",
           "text": "嘘声一片：委内瑞拉感谢美国，以色列送伊朗星链——联大一般性辩论02",
-          "heat": "74.7万"
+          "heat": "74.8万"
+        },
+        {
+          "url": "https://www.bilibili.com/video/av117402662603617/",
+          "text": "《和樱花妹互换身体の日常》第五集【AI全民制作人】",
+          "heat": "151.7万"
         },
         {
           "url": "https://www.bilibili.com/video/av117406135486172/",
           "text": "【HYPNITIC】|“胳膊肘往外拐”【卧底の小曲】",
-          "heat": "59.3万"
+          "heat": "59.4万"
         },
         {
           "url": "https://www.bilibili.com/video/av117410078196168/",
           "text": "杀人经历写进小说，意外成为名作家？现实比剧更离奇！万字解析《悬案：旅馆案》下",
-          "heat": "98.1万"
+          "heat": "98.2万"
         }
       ]
     },
@@ -3375,252 +3365,252 @@
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E9%83%91%E9%92%A6%E6%96%87%E9%A6%96%E5%A4%BA%E4%B8%AD%E7%BD%91%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B&rankType=1",
           "text": "郑钦文首夺中网女单冠军",
-          "heat": "1313.0万"
+          "heat": "1325.8万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%8E%8B%E6%9B%BC%E6%98%B1%E5%A4%BA%E5%BE%97%E4%B8%AD%E5%9B%BD%E5%A4%A7%E6%BB%A1%E8%B4%AF%E5%A5%B3%E5%8D%95%E5%86%A0%E5%86%9B&rankType=1",
           "text": "王曼昱夺得中国大满贯女单冠军",
-          "heat": "1312.7万"
+          "heat": "1325.7万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%88%91%E5%9B%BD%E7%89%A9%E6%B5%81%E4%B8%9A%E6%99%AF%E6%B0%94%E6%B0%B4%E5%B9%B3%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%8F%90%E5%8D%87&rankType=1",
           "text": "我国物流业景气水平进一步提升",
-          "heat": "1312.4万"
+          "heat": "1325.6万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%9B%9E%E9%A1%BE%E9%83%91%E9%92%A6%E6%96%87%E4%B8%AD%E7%BD%91%E5%A4%BA%E5%86%A0%E4%B9%8B%E8%B7%AF&rankType=1",
           "text": "回顾郑钦文中网夺冠之路",
-          "heat": "1312.4万"
+          "heat": "1325.6万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%97%B6%E9%9A%9414%E5%B9%B4%E5%86%8D%E5%A4%BA1000%E8%B5%9B%E5%86%A0%E5%86%9B&rankType=1",
           "text": "中国人时隔14年再夺1000赛冠军",
-          "heat": "1312.4万"
+          "heat": "1325.4万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%BC%A0%E9%9B%AA%E6%9C%BA%E8%BD%A6%E5%8B%87%E5%A4%BA%E7%AC%AC%E4%B8%89&rankType=1",
           "text": "张雪机车勇夺第三",
-          "heat": "1312.3万"
+          "heat": "1325.3万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E4%B8%9C%E5%8C%97%E4%BA%BA%E7%94%A8%E9%9B%AA%E6%B4%97%E8%A1%A3%E6%9C%8D&rankType=1",
           "text": "东北人用雪洗衣服",
-          "heat": "1312.2万"
+          "heat": "1325.1万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%B0%8F%E7%8C%AB%E9%92%88%E7%81%B8%E4%B8%A4%E6%AC%A1%E5%90%8E%E5%8F%98%E7%AB%AF%E5%BA%84&rankType=1",
           "text": "小猫针灸两次后变端庄",
-          "heat": "1260.7万"
+          "heat": "1250.6万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%B0%B4%E7%A8%BB%E4%B8%B0%E6%94%B6%E6%BB%A1%E5%BF%83%E6%AC%A2%E5%96%9C&rankType=1",
           "text": "水稻丰收满心欢喜",
-          "heat": "1174.9万"
+          "heat": "1177.9万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%AB%8B%E8%AE%AF%E7%B2%BE%E5%AF%86%E5%9B%9E%E5%BA%94%E7%BE%8E337%E8%B0%83%E6%9F%A5&rankType=1",
           "text": "立讯精密回应美337调查",
-          "heat": "1130.6万"
+          "heat": "1133.0万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%A4%B4%E5%AD%A2%E5%81%9C%E8%8D%AF3%E5%A4%A9%E5%B0%B1%E8%83%BD%E9%A5%AE%E9%85%92%E6%98%AF%E8%B0%A3%E8%A8%80&rankType=1",
           "text": "头孢停药3天就能饮酒是谣言",
-          "heat": "1129.5万"
+          "heat": "1122.5万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%BC%97%E6%8B%89%E6%A0%BC%E4%B8%B9%E5%B0%BC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%8B%89%E6%BB%A1%E4%BA%86&rankType=1",
           "text": "弗拉格丹尼相似度拉满了",
-          "heat": "1110.6万"
+          "heat": "1110.3万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%A4%AE%E8%A7%86%E6%9B%9D%E5%85%891.2%E4%BA%BF%E5%86%9C%E4%B8%9A%E9%A1%B9%E7%9B%AE%E7%83%82%E5%B0%BE&rankType=1",
           "text": "央视曝光1.2亿农业项目烂尾",
-          "heat": "1087.6万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%A6%88%E5%A6%88%E9%99%AA%E5%A8%83%E5%9B%9E%E6%A0%A1%E5%8F%96%E4%BD%9C%E4%B8%9A&rankType=1",
-          "text": "妈妈陪娃回校取作业",
-          "heat": "1066.5万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%9D%8E%E8%BF%9E%E6%9D%B0%E5%90%A6%E8%AE%A4%E6%8A%9B%E5%A6%BB%E5%BC%83%E5%AD%90&rankType=1",
-          "text": "李连杰否认抛妻弃子",
-          "heat": "1043.4万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%9D%8E%E4%BF%A1cos&rankType=1",
-          "text": "李信cos",
-          "heat": "1043.3万"
+          "heat": "1089.9万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%B8%85%E6%9C%9D%E5%BE%A1%E5%8E%A8%E5%81%9A%E9%80%8F%E6%98%8E%E7%BA%A2%E7%83%A7%E6%8E%92%E9%AA%A8&rankType=1",
           "text": "清朝御厨做透明红烧排骨",
-          "heat": "1038.1万"
+          "heat": "1069.7万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%9D%8E%E8%BF%9E%E6%9D%B0%E5%90%A6%E8%AE%A4%E6%8A%9B%E5%A6%BB%E5%BC%83%E5%AD%90&rankType=1",
+          "text": "李连杰否认抛妻弃子",
+          "heat": "1064.2万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%9D%8E%E4%BF%A1cos&rankType=1",
+          "text": "李信cos",
+          "heat": "1045.9万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%A6%88%E5%A6%88%E9%99%AA%E5%A8%83%E5%9B%9E%E6%A0%A1%E5%8F%96%E4%BD%9C%E4%B8%9A&rankType=1",
+          "text": "妈妈陪娃回校取作业",
+          "heat": "1043.0万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%91%A8%E6%9D%B0%E4%BC%A6%E7%B2%89%E4%B8%9D%E8%8A%B1%E5%BC%8F%E7%8E%A9%E6%A2%97&rankType=1",
           "text": "周杰伦粉丝花式玩梗",
-          "heat": "1033.2万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E8%BE%BD%E5%AE%81%E5%A4%9A%E6%89%B9%E6%AC%A1%E9%A3%9F%E5%93%81%E6%8A%BD%E6%A3%80%E4%B8%8D%E5%90%88%E6%A0%BC&rankType=1",
-          "text": "辽宁多批次食品抽检不合格",
-          "heat": "1024.9万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%BC%9F%E5%BC%9F%E4%B8%8B%E5%9B%B4%E6%A3%8B%E6%80%A5%E5%93%AD%E5%A7%90%E5%A7%90%E7%88%86%E7%AC%91&rankType=1",
-          "text": "弟弟下围棋急哭姐姐爆笑",
-          "heat": "1022.0万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%89%B9%E6%9C%97%E6%99%AE%E7%A7%B0%E4%BF%84%E4%B9%8C%E5%90%8C%E6%84%8F%E8%83%BD%E6%BA%90%E5%81%9C%E7%81%AB&rankType=1",
-          "text": "特朗普称俄乌同意能源停火",
-          "heat": "1020.0万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%8D%9A%E4%B8%BB%E6%B2%B9%E7%82%B8%E7%81%AB%E9%B8%A1%E9%9D%A2%E6%B5%8B%E8%AF%95%E5%A4%8D%E5%8E%9F&rankType=1",
-          "text": "博主油炸火鸡面测试复原",
-          "heat": "1018.0万"
+          "heat": "1035.1万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%BE%B7%E6%AF%94%E6%96%AF%E6%8F%90%E5%89%8D%E9%94%81%E5%AE%9A%E5%B9%B4%E5%BA%A6%E4%BA%9A%E5%86%9B&rankType=1",
           "text": "德比斯提前锁定年度亚军",
-          "heat": "1015.4万"
+          "heat": "1029.7万"
         },
         {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%97%A9%E8%B5%B7%E6%99%A8%E7%BB%83%E6%8E%A8%E8%8D%90%E5%9B%9B%E5%BC%8F&rankType=1",
-          "text": "早起晨练推荐四式",
-          "heat": "1012.6万"
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E8%BE%BD%E5%AE%81%E5%A4%9A%E6%89%B9%E6%AC%A1%E9%A3%9F%E5%93%81%E6%8A%BD%E6%A3%80%E4%B8%8D%E5%90%88%E6%A0%BC&rankType=1",
+          "text": "辽宁多批次食品抽检不合格",
+          "heat": "1026.8万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=21%E5%B2%81%E5%B0%8F%E4%BC%99%E7%86%AC%E5%A4%9C%E6%89%93%E6%B8%B8%E6%88%8F%E5%BF%83%E8%84%8F%E9%AA%A4%E5%81%9C%E5%8E%BB%E4%B8%96&rankType=1",
           "text": "21岁小伙熬夜打游戏心脏骤停去世",
-          "heat": "1009.9万"
+          "heat": "1023.9万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%97%A9%E8%B5%B7%E6%99%A8%E7%BB%83%E6%8E%A8%E8%8D%90%E5%9B%9B%E5%BC%8F&rankType=1",
+          "text": "早起晨练推荐四式",
+          "heat": "1021.5万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%8D%9A%E4%B8%BB%E6%B2%B9%E7%82%B8%E7%81%AB%E9%B8%A1%E9%9D%A2%E6%B5%8B%E8%AF%95%E5%A4%8D%E5%8E%9F&rankType=1",
+          "text": "博主油炸火鸡面测试复原",
+          "heat": "1018.8万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%89%B9%E6%9C%97%E6%99%AE%E7%A7%B0%E4%BF%84%E4%B9%8C%E5%90%8C%E6%84%8F%E8%83%BD%E6%BA%90%E5%81%9C%E7%81%AB&rankType=1",
+          "text": "特朗普称俄乌同意能源停火",
+          "heat": "1013.9万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E9%87%91%E4%BB%B7%E5%9B%9E%E8%90%BD%E5%9B%BD%E5%BA%86%E6%8E%80%E8%B4%AD%E9%87%91%E7%83%AD&rankType=1",
           "text": "金价回落国庆掀购金热",
-          "heat": "1007.1万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E8%9B%8B%E4%BB%94%E6%B4%BE%E5%AF%B9%E6%A3%AE%E6%A3%AE%E6%A3%AE&rankType=1",
-          "text": "蛋仔派对森森森",
-          "heat": "1004.2万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%88%B8%E6%94%B66%E5%9D%976%E5%BC%95%E5%8F%91%E7%A6%BB%E5%A9%9A%E9%A3%8E%E6%B3%A2&rankType=1",
-          "text": "爸收6块6引发离婚风波",
-          "heat": "1001.6万"
+          "heat": "1011.5万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%B3%B0%E5%9B%BD%E8%AD%A6%E6%96%B9%E8%A7%A3%E6%95%913%E5%90%8D%E4%B8%AD%E5%9B%BD%E4%BA%BA&rankType=1",
           "text": "泰国警方解救3名中国人",
-          "heat": "999.5万"
+          "heat": "1008.8万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%88%B8%E6%94%B66%E5%9D%976%E5%BC%95%E5%8F%91%E7%A6%BB%E5%A9%9A%E9%A3%8E%E6%B3%A2&rankType=1",
+          "text": "爸收6块6引发离婚风波",
+          "heat": "1005.9万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E8%9B%8B%E4%BB%94%E6%B4%BE%E5%AF%B9%E6%A3%AE%E6%A3%AE%E6%A3%AE&rankType=1",
+          "text": "蛋仔派对森森森",
+          "heat": "1005.0万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E4%B8%AD%E5%9B%BD%E5%A4%A9%E7%9C%BC%E5%8F%91%E7%8E%B0%E9%A6%96%E4%BE%8B%E4%B8%89%E4%BD%93%E7%B3%BB%E7%BB%9F&rankType=1",
           "text": "中国天眼发现首例三体系统",
-          "heat": "997.3万"
+          "heat": "1001.4万"
         },
         {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%B0%BC%E6%B3%8A%E5%B0%94%E5%86%8D%E6%AC%A1%E6%9A%B4%E5%8F%91%E4%B8%A5%E9%87%8D%E5%B1%B1%E6%B4%AA&rankType=1",
-          "text": "尼泊尔再次暴发严重山洪",
-          "heat": "994.8万"
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%BC%9F%E5%BC%9F%E4%B8%8B%E5%9B%B4%E6%A3%8B%E6%80%A5%E5%93%AD%E5%A7%90%E5%A7%90%E7%88%86%E7%AC%91&rankType=1",
+          "text": "弟弟下围棋急哭姐姐爆笑",
+          "heat": "999.3万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E8%B5%B0%E8%B7%AF%E6%AF%94%E8%B7%91%E6%AD%A5%E6%9B%B4%E5%BB%B6%E5%AF%BF&rankType=1",
           "text": "走路比跑步更延寿",
-          "heat": "992.2万"
+          "heat": "997.0万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%B0%BC%E6%B3%8A%E5%B0%94%E5%86%8D%E6%AC%A1%E6%9A%B4%E5%8F%91%E4%B8%A5%E9%87%8D%E5%B1%B1%E6%B4%AA&rankType=1",
+          "text": "尼泊尔再次暴发严重山洪",
+          "heat": "994.0万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%98%86%E6%98%8E%E4%B8%80%E9%81%93%E8%B7%AF%E5%A1%8C%E9%99%B7%E6%9C%89%E4%BA%BA%E8%A2%AB%E5%9B%B0&rankType=1",
           "text": "昆明一道路塌陷有人被困",
-          "heat": "990.1万"
+          "heat": "991.9万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E9%83%91%E9%92%A6%E6%96%87%E6%94%B6%E8%8E%B7115%E4%B8%87%E7%BE%8E%E5%85%83%E5%92%8C1000%E7%A7%AF%E5%88%86&rankType=1",
           "text": "郑钦文收获115万美元和1000积分",
-          "heat": "987.5万"
+          "heat": "989.5万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%89%BE%E8%80%81%E6%9D%BF%E6%8A%A5%E9%94%80%E7%90%86%E7%94%B1%E5%A4%AA%E7%A6%BB%E8%B0%B1&rankType=1",
           "text": "找老板报销理由太离谱",
-          "heat": "982.7万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%94%B7%E5%AD%90%E7%A9%BF%E4%B8%80%E6%AC%A1%E6%80%A7%E5%86%85%E8%A3%A4%E8%B5%B7%E6%B0%B4%E6%B3%A1&rankType=1",
-          "text": "男子穿一次性内裤起水泡",
-          "heat": "979.8万"
+          "heat": "986.7万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%9D%8E%E4%B8%80%E6%A1%90%E7%BA%A2%E8%A3%99%E7%BE%8E%E7%BF%BB%E4%BA%86&rankType=1",
           "text": "李一桐红裙美翻了",
-          "heat": "977.5万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%A2%85%E8%89%B3%E8%8A%B340%E5%B2%81%E7%97%85%E9%80%9D&rankType=1",
-          "text": "梅艳芳40岁病逝",
-          "heat": "973.4万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%8E%8B%E5%B0%8F%E7%8E%AE%E9%82%80%E4%BD%A0%E5%8F%82%E5%8A%A0%E6%88%B7%E5%A4%96%E5%A4%A7%E4%BC%9A&rankType=1",
-          "text": "王小玮邀你参加户外大会",
-          "heat": "971.4万"
+          "heat": "980.5万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=NBA%E4%B8%AD%E5%9B%BD%E8%B5%9B%E6%A2%A6%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%97%B6%E5%88%BB&rankType=1",
           "text": "NBA中国赛梦想实现的时刻",
-          "heat": "969.1万"
+          "heat": "979.3万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%A2%85%E8%89%B3%E8%8A%B340%E5%B2%81%E7%97%85%E9%80%9D&rankType=1",
+          "text": "梅艳芳40岁病逝",
+          "heat": "976.3万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E4%BC%8A%E6%9C%97%E8%BF%9C%E7%A8%8B%E8%A2%AD%E5%87%BB%E7%BE%8E%E5%86%9BB1%E8%BD%B0%E7%82%B8%E6%9C%BA%E6%92%A4%E7%A6%BB&rankType=1",
           "text": "伊朗远程袭击美军B1轰炸机撤离",
-          "heat": "964.3万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%BC%A0%E5%B8%85%E7%BB%84%E5%90%88%E8%8E%B7%E4%B8%AD%E7%BD%91%E5%A5%B3%E5%8F%8C%E4%BA%9A%E5%86%9B&rankType=1",
-          "text": "张帅组合获中网女双亚军",
-          "heat": "963.6万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%9D%BE%E5%B2%9B%E8%BE%89%E7%A9%BA%E4%B8%AD%E5%9B%BD%E5%A4%A7%E6%BB%A1%E8%B4%AF%E5%A4%BA%E5%86%A0&rankType=1",
-          "text": "松岛辉空中国大满贯夺冠",
-          "heat": "961.1万"
+          "heat": "974.8万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%8D%81%E6%9C%88%E5%A4%9A%E9%83%A8%E6%96%B0%E7%89%87%E4%B8%8A%E6%98%A0&rankType=1",
           "text": "十月多部新片上映",
-          "heat": "958.7万"
+          "heat": "972.4万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%8E%8B%E5%B0%8F%E7%8E%AE%E9%82%80%E4%BD%A0%E5%8F%82%E5%8A%A0%E6%88%B7%E5%A4%96%E5%A4%A7%E4%BC%9A&rankType=1",
+          "text": "王小玮邀你参加户外大会",
+          "heat": "970.2万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%BC%A0%E5%B8%85%E7%BB%84%E5%90%88%E8%8E%B7%E4%B8%AD%E7%BD%91%E5%A5%B3%E5%8F%8C%E4%BA%9A%E5%86%9B&rankType=1",
+          "text": "张帅组合获中网女双亚军",
+          "heat": "968.1万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%94%B7%E5%AD%90%E7%A9%BF%E4%B8%80%E6%AC%A1%E6%80%A7%E5%86%85%E8%A3%A4%E8%B5%B7%E6%B0%B4%E6%B3%A1&rankType=1",
+          "text": "男子穿一次性内裤起水泡",
+          "heat": "966.1万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%9D%BE%E5%B2%9B%E8%BE%89%E7%A9%BA%E4%B8%AD%E5%9B%BD%E5%A4%A7%E6%BB%A1%E8%B4%AF%E5%A4%BA%E5%86%A0&rankType=1",
+          "text": "松岛辉空中国大满贯夺冠",
+          "heat": "963.4万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%91%A8%E9%B8%BF%E7%A5%8E%E6%94%80%E5%B2%A9%E8%87%B4%E7%B2%89%E7%A2%8E%E6%80%A7%E9%AA%A8%E6%8A%98&rankType=1",
           "text": "周鸿祎攀岩致粉碎性骨折",
-          "heat": "955.8万"
+          "heat": "961.1万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%88%91%E5%9B%BD%E7%BB%8F%E6%B5%8E%E5%9B%9E%E5%8D%87%E5%90%91%E5%A5%BD%E6%80%81%E5%8A%BF%E6%8C%81%E7%BB%AD%E5%B7%A9%E5%9B%BA&rankType=1",
           "text": "我国经济回升向好态势持续巩固",
-          "heat": "953.7万"
+          "heat": "958.6万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E7%BE%8E%E5%9B%BD%E6%B5%81%E6%B5%AA%E6%B1%89%E5%85%9C%E5%94%AE%E6%98%8F%E8%BF%B7%E5%A5%B3%E5%8F%8B&rankType=1",
           "text": "美国流浪汉兜售昏迷女友",
-          "heat": "949.2万"
+          "heat": "957.2万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%93%88%E8%8D%AF%E8%82%A1%E4%BB%BD%E8%91%A3%E4%BA%8B%E5%85%BC%E6%80%BB%E8%A3%81%E8%A2%AB%E7%AB%8B%E6%A1%88%E7%95%99%E7%BD%AE&rankType=1",
+          "text": "哈药股份董事兼总裁被立案留置",
+          "heat": "953.5万"
+        },
+        {
+          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E8%94%A1%E7%90%B4%E8%AF%B4%E6%98%8E%E5%B9%B4%E8%BF%87%E5%90%8E%E4%B8%8D%E5%86%8D%E5%9C%A8%E8%88%9E%E5%8F%B0%E5%94%B1%E6%AD%8C&rankType=1",
+          "text": "蔡琴说明年过后不再在舞台唱歌",
+          "heat": "952.2万"
         },
         {
           "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E6%8F%92%E9%98%9F%E8%A2%AB%E6%8B%92%E6%8A%95%E8%AF%89%E5%8C%BB%E7%94%9F%E7%9A%84%E5%AE%B6%E9%95%BF%E5%B7%B2%E9%81%93%E6%AD%89&rankType=1",
           "text": "插队被拒投诉医生的家长已道歉",
           "heat": "948.8万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%88%86%E6%94%B9%E8%80%81%E4%BA%BA%E5%8B%87%E9%97%AF%E6%9D%91ROX&rankType=1",
-          "text": "大学生爆改老人勇闯村ROX",
-          "heat": "945.8万"
-        },
-        {
-          "url": "https://index.e.kuaishou.com/rank/hotDetail?keyword=%E4%B8%B4%E6%B2%82%E6%B2%82%E9%82%B3%E7%BA%BF%E6%94%B9%E5%BB%BA%E5%8A%A0%E9%80%9F&rankType=1",
-          "text": "临沂沂邳线改建加速",
-          "heat": "943.3万"
         }
       ]
     },
@@ -3631,92 +3621,92 @@
         {
           "url": "http://www.acfun.cn/v/ac48903543",
           "text": "《猫咪MBTI性格图鉴》",
-          "heat": "2383"
+          "heat": "2391"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904440",
           "text": "停停停，太快了！★手机竖屏2030★",
-          "heat": "4213"
+          "heat": "4227"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905503",
           "text": "连体旗袍~弹一首琵琶曲",
-          "heat": "1728"
+          "heat": "1743"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904446",
           "text": "网络上常见的热门短视频集锦   第三千四百八十一期",
-          "heat": "3057"
+          "heat": "3068"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904734",
           "text": "网络上常见的热门短视频集锦   第三千四百八十二期",
-          "heat": "2599"
+          "heat": "2611"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905638",
           "text": "厨师长入行20多年开的第一家中餐馆，经营四年后决定搬迁！",
-          "heat": "1887"
+          "heat": "1895"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904736",
           "text": "帮Acer问一下地址在哪里？欢乐八点档-1799",
-          "heat": "2104"
+          "heat": "2119"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905589",
           "text": "你们最爱听的云长",
-          "heat": "1896"
+          "heat": "1918"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905411",
           "text": "相亲局【今天有什么好笑的 #2533】",
-          "heat": "1867"
+          "heat": "1874"
         },
         {
           "url": "http://www.acfun.cn/v/ac48881634",
           "text": "看完这个视频的家里请高人吧",
-          "heat": "1490"
+          "heat": "1504"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904519",
           "text": "剑修第一课️",
-          "heat": "1414"
+          "heat": "1419"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905604",
           "text": "烧鸟，凭什么这么贵？我选择自助餐！",
-          "heat": "1345"
+          "heat": "1352"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905195",
           "text": "离谱！打输了就超度队友？这届国产 MMO 彻底放飞了",
-          "heat": "1228"
+          "heat": "1231"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904910",
           "text": "厨师长教你复刻传统川菜：“白油猪肝”，咸鲜香嫩，不柴不腥",
-          "heat": "1648"
+          "heat": "1652"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905934",
           "text": "带爸妈来云南玩儿了",
-          "heat": "1174"
+          "heat": "1178"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904812",
           "text": "【柯基】《伴随军旗》｜朝鲜电影《军旗》主题曲",
-          "heat": "1212"
+          "heat": "1216"
         },
         {
           "url": "http://www.acfun.cn/v/ac48894927",
           "text": "包芯线太适合做各种收纳了！",
-          "heat": "1326"
+          "heat": "1341"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898681",
           "text": "血条消失术！2万分局！快速看完一局韩服王者斗殴局#854 0909, Tarzan",
-          "heat": "1250"
+          "heat": "1252"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884376",
@@ -3726,12 +3716,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48906215",
           "text": "新英雄出了好多啊，还有人玩dva吗",
-          "heat": "1069"
+          "heat": "1077"
         },
         {
           "url": "http://www.acfun.cn/v/ac48906072",
           "text": "当我在崩铁好声音附近录舞..",
-          "heat": "1095"
+          "heat": "1103"
         },
         {
           "url": "http://www.acfun.cn/v/ac48899752",
@@ -3741,17 +3731,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48906191",
           "text": "【异世界转生部实习生】cos炮姐被雪糕砸死了？",
-          "heat": "629"
+          "heat": "654"
         },
         {
           "url": "http://www.acfun.cn/v/ac48906281",
           "text": "【观史君】兰香如故观后感",
-          "heat": "1055"
+          "heat": "1068"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904458",
           "text": "佐天泪子 紫色迷情卧室 成熟系御姐【AI动画/超清】",
-          "heat": "1573"
+          "heat": "1574"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905187",
@@ -3771,7 +3761,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48906056",
           "text": "【AI】小摆锤",
-          "heat": "1052"
+          "heat": "1062"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905043",
@@ -4102,9 +4092,9 @@
           "heat": "木糠"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261011Q0AHNI00",
+          "url": "https://new.qq.com/rain/a/20261011Q0ALBU00",
           "text": "郑钦文创历史首夺中网女单冠军，世界排名4个月疯狂提升140位，她现在实力到底有多强？距离大满贯冠军有多远？",
-          "heat": "之乎者也小鱼儿"
+          "heat": "三棱镜"
         },
         {
           "url": "https://new.qq.com/rain/a/20261011Q09VL300",
@@ -4175,7 +4165,7 @@
         {
           "url": "https://bbs.hupu.com/642893364.html",
           "text": "小作坊下料就是猛",
-          "heat": "22亮"
+          "heat": "21亮"
         },
         {
           "url": "https://bbs.hupu.com/642900031.html",
@@ -4193,19 +4183,19 @@
           "heat": "10亮"
         },
         {
+          "url": "https://bbs.hupu.com/642896475.html",
+          "text": "恭喜郑钦文首夺中网女单冠军",
+          "heat": "17亮"
+        },
+        {
           "url": "https://bbs.hupu.com/642894876.html",
           "text": "谈恋爱碰上npd，八个月花了十几万",
-          "heat": "18亮"
+          "heat": "49亮"
         },
         {
           "url": "https://bbs.hupu.com/642898007.html",
           "text": "男友视角",
           "heat": "8亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642896475.html",
-          "text": "恭喜郑钦文首夺中网女单冠军",
-          "heat": "17亮"
         },
         {
           "url": "https://bbs.hupu.com/642897258.html",
@@ -4215,17 +4205,12 @@
         {
           "url": "https://bbs.hupu.com/642894233.html",
           "text": "和老哥们一起聊聊，都有哪些离谱的历史谣言？",
-          "heat": "18亮"
+          "heat": "19亮"
         },
         {
           "url": "https://bbs.hupu.com/642897348.html",
           "text": "这是会买还是不会买呢？",
           "heat": "4亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642896404.html",
-          "text": "台湾两千多万人口，今年前九个月贸易顺差1600亿美元，怎么没见台湾人发大财？",
-          "heat": "14亮"
         },
         {
           "url": "https://bbs.hupu.com/642891440.html",
@@ -4236,11 +4221,6 @@
           "url": "https://bbs.hupu.com/642887023.html",
           "text": "外卖53元的烧鹅饭和26元的烧鹅饭有什么区别？",
           "heat": "13亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642896595.html",
-          "text": "78名中国建筑工人，在马来西亚打黑工被抓",
-          "heat": "4亮"
         },
         {
           "url": "https://bbs.hupu.com/642896623.html",
@@ -4353,11 +4333,6 @@
           "heat": "3亮"
         },
         {
-          "url": "https://bbs.hupu.com/642882410.html",
-          "text": "以一个长沙ktv经理的视角,沉浸式带大家体验夜场如何运作的",
-          "heat": "3亮"
-        },
-        {
           "url": "https://bbs.hupu.com/642888083.html",
           "text": "福特因为一个刹车踏板召回超过四万辆野马",
           "heat": "7亮"
@@ -4366,11 +4341,6 @@
           "url": "https://bbs.hupu.com/642901780.html",
           "text": "求助各位jrs！！！",
           "heat": ""
-        },
-        {
-          "url": "https://bbs.hupu.com/642887741.html",
-          "text": "我搞不明白黑子们了，刹车踏板踩断了，去踩踏板上面那根棍不就行了，有什么可黑的，又不影响正常使用！",
-          "heat": "8亮"
         },
         {
           "url": "https://bbs.hupu.com/642886970.html",
@@ -4413,9 +4383,14 @@
           "heat": ""
         },
         {
+          "url": "https://bbs.hupu.com/642883301.html",
+          "text": "一男子闯入英国动物园，被老虎咬死了",
+          "heat": "20亮"
+        },
+        {
           "url": "https://bbs.hupu.com/642899986.html",
           "text": "带着俩孩子也敢晚上逆行！！这种人真的是无知至极！当然视频车也是不是啥好鸟！开车容易上头的迟早出事！",
-          "heat": ""
+          "heat": "1亮"
         },
         {
           "url": "https://bbs.hupu.com/642899769.html",
@@ -4428,9 +4403,9 @@
           "heat": "1亮"
         },
         {
-          "url": "https://bbs.hupu.com/642883301.html",
-          "text": "一男子闯入英国动物园，被老虎咬死了",
-          "heat": "22亮"
+          "url": "https://bbs.hupu.com/642886516.html",
+          "text": "道歉！黄岛梵希咖啡对不起！！我没被你们赶出店门！",
+          "heat": "4亮"
         },
         {
           "url": "https://bbs.hupu.com/642886547.html",
@@ -4448,19 +4423,34 @@
           "heat": "1亮"
         },
         {
-          "url": "https://bbs.hupu.com/642886516.html",
-          "text": "道歉！黄岛梵希咖啡对不起！！我没被你们赶出店门！",
-          "heat": "4亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642886266.html",
-          "text": "中国北方人的身高也不怎么样：北京市的国民体测数字公布，20-24岁男性，平均身高为174.5厘米",
-          "heat": "3亮"
-        },
-        {
           "url": "https://bbs.hupu.com/642884786.html",
           "text": "这样看老虎跟人的实际差距好像没那么大",
           "heat": "4亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642883100.html",
+          "text": "预测中网女单决赛：郑钦文VS小米拉",
+          "heat": "18亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642898003.html",
+          "text": "海底月是天上月",
+          "heat": ""
+        },
+        {
+          "url": "https://bbs.hupu.com/642883699.html",
+          "text": "为什么上海迪士尼总是有人打架",
+          "heat": "4亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642897253.html",
+          "text": "周鸿祎攀岩时意外失手坠落摔伤，致左膝粉碎性骨折，未来两三个月内，所有出差、外出活动都将取消",
+          "heat": "1亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642897862.html",
+          "text": "身边的极端花粉",
+          "heat": ""
         }
       ]
     },
@@ -5697,14 +5687,14 @@
           "heat": "月销3.0万件"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2F4z85dm0TgtN53amnGaIwgeCNtg-v6PKX7dC87wjBPNNho",
-          "text": "【孟子义新款】LeeCooper爆款老爹鞋德训鞋 原价¥359 券后¥179",
-          "heat": "月销10000件"
-        },
-        {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2F48K4YzMfgtN53Jz8p3FwkmhNtg-rXbmoxZH29yPa8Q2CD",
           "text": "买1发2怡浓金典黑巧克力纯可可脂140g 原价¥19.9 券后¥13.9",
           "heat": "月销10.0万件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2F4z85dm0TgtN53amnGaIwgeCNtg-v6PKX7dC87wjBPNNho",
+          "text": "【孟子义新款】LeeCooper爆款老爹鞋德训鞋 原价¥359 券后¥179",
+          "heat": "月销10000件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fn65romNFMt3X7GrdGeckZqc0tq-7no8vaXHY3MQoeDbSVQ",
@@ -5767,19 +5757,19 @@
           "heat": "热销100件(近2小时)"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FQadMkPVfQtB5g96yrncXn8SatQ-djGP3KNHpoz2DKJDFP0",
-          "text": "雅漾Cica霜倍护霜40ml 原价¥60 券后¥30",
-          "heat": "月销4.0万件"
-        },
-        {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FrN2VmmKSOtV0BR732Gu67YcqtZ-woMjqrKCQ4P3yZK9hd8",
           "text": "【19.9】泓一紫米夹心大份量面包 原价¥19.9 券后¥19.9",
           "heat": "月销3.0万件"
         },
         {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FQadMkPVfQtB5g96yrncXn8SatQ-djGP3KNHpoz2DKJDFP0",
+          "text": "雅漾Cica霜倍护霜40ml 原价¥60 券后¥30",
+          "heat": "月销4.0万件"
+        },
+        {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FGkrKzBC8tYr5yR487sYxxsQtJ-YJGeOZNHB29Py5ZyHRW",
           "text": "【任选8件】自由点益生菌卫生巾 原价¥151.2 券后¥34.2",
-          "heat": "月销100.0万件"
+          "heat": "热销100件(近2小时)"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FRyy8qQdhZtjaPgJm2dsrRWfMt5-YJGeOZNHjeoR2p2AcRz",
@@ -5842,14 +5832,19 @@
           "heat": "月销40.0万件"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FDDoYGrXfDt5XBRQXvJTQwRFjtn-9za58XohOkxDnNA7HR",
-          "text": "阿迪达斯T头鞋复古德训板鞋 原价¥269 券后¥269",
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2F88eMQ30OInt9wRbGMA3UgbGibt8-4V2A3ZgI8oOXpyZ2Fk",
+          "text": "钙尔奇液体钙VD390粒×3瓶+赠1瓶*28粒 原价¥102 券后¥95",
           "heat": "月销10.0万件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FowR6o8rhrtKbD5wReauDQGuntA-xny6BP3HyzqQBZKHJY",
           "text": "全家都爱喝的牛奶！夏进纯牛奶243ml*15瓶 原价¥46.8 券后¥29.8",
           "heat": "月销20.0万件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FDDoYGrXfDt5XBRQXvJTQwRFjtn-9za58XohOkxDnNA7HR",
+          "text": "阿迪达斯T头鞋复古德训板鞋 原价¥269 券后¥269",
+          "heat": "月销10.0万件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FWqBgZ6wQuot25V70BWoTaVzHQta-9za58XohOvMmk32kCrO",
@@ -5862,9 +5857,9 @@
           "heat": "月销10.0万件"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2F88eMQ30OInt9wRbGMA3UgbGibt8-4V2A3ZgI8oOXpyZ2Fk",
-          "text": "钙尔奇液体钙VD390粒×3瓶+赠1瓶*28粒 原价¥102 券后¥95",
-          "heat": "月销10.0万件"
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fn3PmqRAuMt3X7r7abjtkZaU0tP-26VpOQjCMJW7wBXYFZn",
+          "text": "奥妙除菌除螨洗衣液酵素洗衣液11斤 原价¥53.9 券后¥35.9",
+          "heat": "月销30.0万件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FNYgkb74U5tGqNGDeD4cxJOhRtm-woMjqrKCQaX8VNKjuyx",
@@ -5887,24 +5882,19 @@
           "heat": "热销100件(近2小时)"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fn3PmqRAuMt3X7r7abjtkZaU0tP-26VpOQjCMJW7wBXYFZn",
-          "text": "奥妙除菌除螨洗衣液酵素洗衣液11斤 原价¥53.9 券后¥35.9",
-          "heat": "月销30.0万件"
-        },
-        {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FAezP3qZuzt4WmQ06ByHmOoivtn-v6PKX7dCBQbWyeOWsd6",
           "text": "【超值囤货】护舒宝液体卫生巾240/270mm 原价¥33.75 券后¥33.75",
           "heat": "月销10.0万件"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fy3K92G2OsRt2XWXQBZVSod8SvtY-26VpOQjCMa4BzpOyf3B",
-          "text": "【任选四件】杰士邦避孕套超薄男女生专用 原价¥97.2 券后¥24.2",
-          "heat": "月销60.0万件"
-        },
-        {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FGxYQYmKU8tYr5ymdWvuYxZCQtJ-5n4WgaoHW69awk30CNy",
           "text": "旗舰店258！腾讯视频SVIP会员年卡 原价¥259 券后¥258",
           "heat": "月销20.0万件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fy3K92G2OsRt2XWXQBZVSod8SvtY-26VpOQjCMa4BzpOyf3B",
+          "text": "【任选四件】杰士邦避孕套超薄男女生专用 原价¥97.2 券后¥24.2",
+          "heat": "月销60.0万件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FOqyKyxwXCzt6QOZM5DjCNgJcMtW-VrGvymkIkbJM7Owoun",
@@ -5922,14 +5912,14 @@
           "heat": "月销60.0万件"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FnJbXK7KMTMt3XJegmW2skZqc0tP-Q0GkBmxsbW9VvGaDiKn",
-          "text": "健美生维生素D3营养片100片*3瓶 原价¥213 券后¥118",
-          "heat": "月销4.0万件"
-        },
-        {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fv6djQdMaSZt6X9B65zxFABzS0te-pBx2XAdI2XAq2rX9Uq",
           "text": "3.3瓶！乌江下饭酱组合138g*3瓶 原价¥24.9 券后¥9.9",
           "heat": "月销600件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FnJbXK7KMTMt3XJegmW2skZqc0tP-Q0GkBmxsbW9VvGaDiKn",
+          "text": "健美生维生素D3营养片100片*3瓶 原价¥213 券后¥118",
+          "heat": "月销4.0万件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FRaJZ0woHZtjaPXxb2gurR0TMt5-OqGjQoAu0NGXQ6PDh89",
@@ -5962,24 +5952,9 @@
           "heat": "月销10000件"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FYrWpNx5UptXKM9GDMBsWR5t2t6-OqGjQoAu0gNDz5RMUN",
-          "text": "任选5件！三只松鼠吐司面包糕点合集 原价¥49.9 券后¥29.9",
-          "heat": "月销10000件"
-        },
-        {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FwPnpJGAUgtDY3NgqjktojPFbtd-XqGwrmpu0Ao70DAgSwW",
-          "text": "【瑷尔博士】益生平衡修护6件套 原价¥178 券后¥88",
-          "heat": "月销7000件"
-        },
-        {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FeQ2n7Zq6FDtdePj2DMPf8g9Izt0-YJGeOZNHdW9q0XxxCRA",
           "text": "【科巢】婴儿棉签双头超细宝宝专用 原价¥6.84 券后¥5.84",
           "heat": "月销30.0万件"
-        },
-        {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fdgy6r27CZt3wxg2nkbFj8RietV-26VpOQjCOJ7pz6gPsZv",
-          "text": "【贝德美】婴儿多效霜35g 原价¥34 券后¥24",
-          "heat": "月销10.0万件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fw8nAM7ugtDYGPGRjmTojdcbtd-6RmxkGoIyR36d2R9tq",
@@ -5987,14 +5962,34 @@
           "heat": "月销30.0万件"
         },
         {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FJQ2Y359CRtqKPz53DKcXKZcvta-eQGMq6ACG6rJ6opxI9Q",
-          "text": "【周翊然同款】元气森林气泡水330mLx12罐 原价¥38.9 券后¥29.9",
-          "heat": "月销3.0万件"
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FYrWpNx5UptXKM9GDMBsWR5t2t6-OqGjQoAu0gNDz5RMUN",
+          "text": "任选5件！三只松鼠吐司面包糕点合集 原价¥49.9 券后¥29.9",
+          "heat": "月销10000件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FYDQ9q3mcptXKM2A82wFW0pi2t6-xny6BP3HObJbeAmZuJ7",
           "text": "威露士旗下清可新抑菌洗手液 原价¥17.4 券后¥17.4",
           "heat": "月销40.0万件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FwPnpJGAUgtDY3NgqjktojPFbtd-XqGwrmpu0Ao70DAgSwW",
+          "text": "【瑷尔博士】益生平衡修护6件套 原价¥178 券后¥88",
+          "heat": "月销7000件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2Fdgy6r27CZt3wxg2nkbFj8RietV-26VpOQjCOJ7pz6gPsZv",
+          "text": "【贝德美】婴儿多效霜35g 原价¥34 券后¥24",
+          "heat": "月销10.0万件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FJQ2Y359CRtqKPz53DKcXKZcvta-eQGMq6ACG6rJ6opxI9Q",
+          "text": "【周翊然同款】元气森林气泡水330mLx12罐 原价¥38.9 券后¥29.9",
+          "heat": "月销3.0万件"
+        },
+        {
+          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FnQbjveYHMt3XJGnReWukZ7F0tP-WqGXOmeuXXD9N2nPfmP",
+          "text": "得宝太阳花/蓝风铃有香手帕纸54包 原价¥39.9 券后¥19.9",
+          "heat": "月销9.0万件"
         },
         {
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FJDRN6PGhRtqK60xN2jIXoKIvta-36ON23KC0VrKMvmGTq",
@@ -6150,11 +6145,6 @@
           "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FnGYMNNwSMt3XJa9obvhkQ3U0tq-D3G9b6AsPPKMYgrehP",
           "text": "【任选四件】杰士邦避孕套超薄 原价¥95.4 券后¥22.4",
           "heat": "月销10000件"
-        },
-        {
-          "url": "https://tophub.today/link?domain=taobao.com&url=https%3A%2F%2Fremai.today%2Flink%2F1%2FGzgYJXvF8tYr5XjAOzUYqGHQtJ-7no8vaXHw9DbgkdJCV",
-          "text": "波司登2026新款羽绒服女士短款加厚连帽 原价¥759 券后¥759",
-          "heat": "月销10000件"
         }
       ]
     },
@@ -6232,7 +6222,7 @@
         {
           "url": "https://wallstreetcn.com/articles/3783345",
           "text": "沙特利雅得机场遇袭造成12人死亡309人受伤，特朗普称美国有可能加入对胡塞武装的打击",
-          "heat": "10.6万"
+          "heat": "10.7万"
         },
         {
           "url": "https://wallstreetcn.com/articles/3783354",
@@ -6257,7 +6247,7 @@
         {
           "url": "https://wallstreetcn.com/articles/3783356",
           "text": "全球原油和成品油库存已经告急！高盛模型测算“油价中的风险溢价逼近历史最高”",
-          "heat": "5.1万"
+          "heat": "5.2万"
         },
         {
           "url": "https://wallstreetcn.com/articles/3783348",
@@ -6265,13 +6255,13 @@
           "heat": "5.0万"
         },
         {
-          "url": "https://wallstreetcn.com/articles/3783363",
-          "text": "高盛讨论会：AI交易从硬件转向应用，市场迫切渴望“下一个AI故事”",
+          "url": "https://wallstreetcn.com/articles/3783385",
+          "text": "如何看待当前中美科技股的背离？",
           "heat": "4.6万"
         },
         {
-          "url": "https://wallstreetcn.com/articles/3783385",
-          "text": "如何看待当前中美科技股的背离？",
+          "url": "https://wallstreetcn.com/articles/3783363",
+          "text": "高盛讨论会：AI交易从硬件转向应用，市场迫切渴望“下一个AI故事”",
           "heat": "4.6万"
         },
         {
@@ -6344,46 +6334,46 @@
         {
           "url": "https://www.newsmth.net/nForum/article/Tennis/1194553",
           "text": "祝贺郑钦文夺得中网冠军",
-          "heat": "14"
+          "heat": "16"
         },
         {
           "url": "https://www.newsmth.net/nForum/article/FamilyLife/1767743765",
           "text": "退休金要体现公平性",
-          "heat": "7"
+          "heat": "11"
         },
         {
           "url": "https://www.newsmth.net/nForum/article/Geography/691058",
           "text": "世界的未来属于印度...",
-          "heat": "6"
-        },
-        {
-          "url": "https://www.newsmth.net/nForum/article/AutoWorld/1945325843",
-          "text": "豪车的入口是30万",
-          "heat": "4"
+          "heat": "8"
         },
         {
           "url": "https://www.newsmth.net/nForum/article/Aero/562871",
           "text": "闲聊日韩的战机发展",
+          "heat": "5"
+        },
+        {
+          "url": "https://www.newsmth.net/nForum/article/METech/509208",
+          "text": "硅谷码农疯了，大模型逆向反编译一切软件bin，商软全部开盒裸奔",
+          "heat": "5"
+        },
+        {
+          "url": "https://www.newsmth.net/nForum/article/AutoWorld/1945325813",
+          "text": "好多电车都这么贵，跟以前的豪车还贵",
+          "heat": "4"
+        },
+        {
+          "url": "https://www.newsmth.net/nForum/article/PieLove/2955207",
+          "text": "各位散帅客观的说，相亲的住通县你们觉得远吗？",
+          "heat": "4"
+        },
+        {
+          "url": "https://www.newsmth.net/nForum/article/ChildEducation/2590384",
+          "text": "同届中年龄最小的娃，竞争会劣势很多吗？",
           "heat": "4"
         },
         {
           "url": "https://www.newsmth.net/nForum/article/Divorce/2224231",
           "text": "如何调节自己的心理",
-          "heat": "3"
-        },
-        {
-          "url": "https://www.newsmth.net/nForum/article/PieLove/2955207",
-          "text": "各位散帅客观的说，相亲的住通县你们觉得远吗？",
-          "heat": "3"
-        },
-        {
-          "url": "https://www.newsmth.net/nForum/article/METech/509208",
-          "text": "硅谷码农疯了，大模型逆向反编译一切软件bin，商软全部开盒裸奔",
-          "heat": "3"
-        },
-        {
-          "url": "https://www.newsmth.net/nForum/article/ChildEducation/2590384",
-          "text": "同届中年龄最小的娃，竞争会劣势很多吗？",
           "heat": "3"
         },
         {
@@ -7311,7 +7301,7 @@
         {
           "url": "https://www.bilibili.com/video/av117360736344040/",
           "text": "从未见过如此「好笑」之人丨丞相还挺忙·于洋",
-          "heat": "67.4万观看 · 10月8日"
+          "heat": "67.5万观看 · 10月8日"
         },
         {
           "url": "https://www.bilibili.com/video/av117373419915771/",
@@ -7321,7 +7311,7 @@
         {
           "url": "https://www.bilibili.com/video/av117359712997385/",
           "text": "惊惊惊惊惊惊惊惊了",
-          "heat": "379.7万观看 · 10月5日"
+          "heat": "379.8万观看 · 10月5日"
         },
         {
           "url": "https://www.bilibili.com/video/av117381221322927/",
@@ -7331,7 +7321,7 @@
         {
           "url": "https://www.bilibili.com/video/av117364310086981/",
           "text": "如何用5分钟让听日语歌的和唱中文歌的都沉默☝️",
-          "heat": "435.4万观看 · 10月2日"
+          "heat": "435.5万观看 · 10月2日"
         },
         {
           "url": "https://www.bilibili.com/video/av117378520259290/",
@@ -7341,7 +7331,7 @@
         {
           "url": "https://www.bilibili.com/video/av117404491450249/",
           "text": "超市生存挑战后续！4人吃完整个超市赢100万美金！",
-          "heat": "638.6万观看 · 10月8日"
+          "heat": "638.7万观看 · 10月8日"
         },
         {
           "url": "https://www.bilibili.com/video/av117355585737986/",
@@ -7426,7 +7416,7 @@
         {
           "url": "https://www.bilibili.com/video/av117364930646313/",
           "text": "假如地球online有幕后玩家",
-          "heat": "394.2万观看 · 10月1日"
+          "heat": "394.3万观看 · 10月1日"
         },
         {
           "url": "https://www.bilibili.com/video/av117369309500997/",
@@ -7481,12 +7471,12 @@
         {
           "url": "https://www.bilibili.com/video/av117393401713852/",
           "text": "【我在现代当幽差】：赶着去投胎啊！！！！【UP动画】",
-          "heat": "204万观看 · 10月6日"
+          "heat": "204.1万观看 · 10月6日"
         },
         {
           "url": "https://www.bilibili.com/video/av117397646219298/",
           "text": "【科学史】那些年，科学家用光遗传做的鬼畜实验……",
-          "heat": "101.8万观看 · 10月7日"
+          "heat": "101.9万观看 · 10月7日"
         },
         {
           "url": "https://www.bilibili.com/video/av117381976364515/",
@@ -7533,47 +7523,47 @@
         {
           "url": "http://club.kdslife.com/t_11594709.html",
           "text": "开始抓不交社保的人了",
-          "heat": "1419"
+          "heat": "1425"
         },
         {
           "url": "http://club.kdslife.com/t_11594641.html",
           "text": "真惨，梅姐骨灰都没了，这下彻底干净",
-          "heat": "974"
+          "heat": "979"
         },
         {
           "url": "http://club.kdslife.com/t_11594769.html",
           "text": "想逃？没门，问你们害怕不害怕",
-          "heat": "879"
+          "heat": "926"
         },
         {
           "url": "http://club.kdslife.com/t_11594659.html",
           "text": "9月1号开始 单位必须为员工缴纳社保！",
-          "heat": "910"
+          "heat": "917"
         },
         {
           "url": "http://club.kdslife.com/t_11594627.html",
           "text": "尊界800汽配商的刹车补丁已经出来了，",
-          "heat": "886"
+          "heat": "891"
         },
         {
           "url": "http://club.kdslife.com/t_11594739.html",
           "text": "当年郑成功收复台湾时开了洋荤？",
-          "heat": "791"
+          "heat": "793"
         },
         {
           "url": "http://club.kdslife.com/t_11594679.html",
           "text": "老乡这素质...",
-          "heat": "817"
+          "heat": "821"
         },
         {
           "url": "http://club.kdslife.com/t_11594661.html",
           "text": "结婚选哪个？",
-          "heat": "738"
+          "heat": "757"
         },
         {
           "url": "http://club.kdslife.com/t_11594621.html",
           "text": "浩浩荡荡得外卖大军",
-          "heat": "762"
+          "heat": "765"
         },
         {
           "url": "http://club.kdslife.com/t_11594632.html",
@@ -7583,12 +7573,12 @@
         {
           "url": "http://club.kdslife.com/t_11594702.html",
           "text": "登个山龟头掉了还想跑！",
-          "heat": "766"
+          "heat": "772"
         },
         {
           "url": "http://club.kdslife.com/t_11594753.html",
           "text": "民国的一顿饭，当时属于什么水平？",
-          "heat": "606"
+          "heat": "608"
         },
         {
           "url": "http://club.kdslife.com/t_11594690.html",
@@ -7598,7 +7588,7 @@
         {
           "url": "http://club.kdslife.com/t_11594622.html",
           "text": "还有这种洗法？",
-          "heat": "574"
+          "heat": "575"
         },
         {
           "url": "http://club.kdslife.com/t_11594624.html",
@@ -7618,7 +7608,7 @@
         {
           "url": "http://club.kdslife.com/t_11594749.html",
           "text": "家里人说上海人几乎没不加金的对不对",
-          "heat": "499"
+          "heat": "518"
         },
         {
           "url": "http://club.kdslife.com/t_11594648.html",
@@ -7628,7 +7618,7 @@
         {
           "url": "http://club.kdslife.com/t_11594756.html",
           "text": "胖东来又要出名了",
-          "heat": "439"
+          "heat": "441"
         }
       ]
     },
@@ -8878,8 +8868,23 @@
       "type": "游戏",
       "content": [
         {
+          "url": "https://m.3dmgame.com/news/202610/3956070.html",
+          "text": "《星际公民：42中队》新截图 2027年第二季度发售",
+          "heat": ""
+        },
+        {
           "url": "https://m.3dmgame.com/news/202610/3956067.html",
           "text": "《胧村正怪奇谭》主机支持60帧 PC推荐RTX3050",
+          "heat": ""
+        },
+        {
+          "url": "https://m.3dmgame.com/news/202610/3956069.html",
+          "text": "梅艳芳骨灰被盗近3个月 家属报警至今仍未找回",
+          "heat": ""
+        },
+        {
+          "url": "https://m.3dmgame.com/news/202610/3956068.html",
+          "text": "Steam在2026年10月创下同时在线用户新纪录 峰值超4350万",
           "heat": ""
         },
         {
@@ -8960,21 +8965,6 @@
         {
           "url": "https://m.3dmgame.com/news/202610/3956051.html",
           "text": "《GTA6》有果体内容能过审 为啥独立游戏就不行",
-          "heat": ""
-        },
-        {
-          "url": "https://m.3dmgame.com/news/202610/3956050.html",
-          "text": "《权力的游戏：维斯特洛之战》2027年推出 丹妮莉丝等参战",
-          "heat": ""
-        },
-        {
-          "url": "https://m.3dmgame.com/news/202610/3956049.html",
-          "text": "宫本茂2004年E3绘制的马里奥原画拍卖中 报价达10500美元",
-          "heat": ""
-        },
-        {
-          "url": "https://m.3dmgame.com/news/202610/3956048.html",
-          "text": "AI时代将至 前神海4开发者感慨：《星际：异端先知》凝聚人类匠心",
           "heat": ""
         }
       ]
@@ -9826,17 +9816,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48905589",
           "text": "你们最爱听的云长",
-          "heat": "1891"
+          "heat": "1915"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904812",
           "text": "【柯基】《伴随军旗》｜朝鲜电影《军旗》主题曲",
-          "heat": "1212"
+          "heat": "1214"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884376",
           "text": "【短视频】唱这首歌时候的脑补…",
-          "heat": "1129"
+          "heat": "1130"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902797",
@@ -9846,7 +9836,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48906015",
           "text": "梦限大MewType「DIMENSIONAL OVERLAP」（邦邦 13th DAY1）",
-          "heat": "687"
+          "heat": "695"
         },
         {
           "url": "http://www.acfun.cn/v/ac48903694",
@@ -9856,17 +9846,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48906016",
           "text": "刻在我心底的名字",
-          "heat": "204"
+          "heat": "212"
         },
         {
           "url": "http://www.acfun.cn/v/ac48900851",
           "text": "【翻唱粤语】理智想逃亡，欲望却投降；沉溺着受害，煎熬着清醒｜斯德哥尔摩情人",
-          "heat": "159"
+          "heat": "162"
         },
         {
           "url": "http://www.acfun.cn/v/ac48906258",
           "text": "【via冰阔落】2026年十月直播录像合集",
-          "heat": "237"
+          "heat": "249"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905078",
@@ -9876,7 +9866,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48906251",
           "text": "【贝学姐】2026年十月直播录像合集",
-          "heat": "377"
+          "heat": "381"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905913",
@@ -9946,12 +9936,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48906248",
           "text": "【小黑猫】2026年十月直播录像合集",
-          "heat": "159"
+          "heat": "163"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905820",
           "text": "【K.V.M:Foolish Play】Phase1.25 Good Night/晚安 V2 原声带",
           "heat": "57"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48904745",
+          "text": "2026-10-10 懒銀 直播录像",
+          "heat": "94"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905806",
@@ -9967,11 +9962,6 @@
           "url": "http://www.acfun.cn/v/ac48896963",
           "text": "银河管弦乐团专辑第十二张",
           "heat": "50"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48905451",
-          "text": "巴赫慕托娃《俄罗斯组曲》终曲（国民近卫军南部军区参谋部军乐团，2026）",
-          "heat": "85"
         }
       ]
     },
@@ -10147,19 +10137,19 @@
           "heat": "50亮"
         },
         {
-          "url": "https://bbs.hupu.com/642897188.html",
-          "text": "[流言板]东契奇：队员们齐聚斯洛文尼亚时，我就相信我们有能力夺冠",
-          "heat": "41亮"
-        },
-        {
           "url": "https://bbs.hupu.com/642901715.html",
           "text": "[流言板]东契奇谈湖人休赛期运作：几乎每笔操作都征询了我的意见",
-          "heat": "33亮"
+          "heat": "47亮"
         },
         {
           "url": "https://bbs.hupu.com/642902013.html",
           "text": "[流言板]国王官方：雷诺右膝髌骨半脱位，两周后重新评估",
-          "heat": "30亮"
+          "heat": "32亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642897188.html",
+          "text": "[流言板]东契奇：队员们齐聚斯洛文尼亚时，我就相信我们有能力夺冠",
+          "heat": "38亮"
         },
         {
           "url": "https://bbs.hupu.com/642891358.html",
@@ -10177,19 +10167,19 @@
           "heat": "29亮"
         },
         {
-          "url": "https://bbs.hupu.com/642891642.html",
-          "text": "[流言板]时隔586天！欧文篮下小拉杆将球打进，取得复出后首分",
-          "heat": "16亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642893267.html",
-          "text": "[流言板]欧文半场出战16分钟，投篮9中5得到14分2篮板3助攻",
-          "heat": "19亮"
+          "url": "https://bbs.hupu.com/642902943.html",
+          "text": "[流言板]詹姆斯：每天都在逐渐适应新环境，和队友相处让我享受工作",
+          "heat": "5亮"
         },
         {
           "url": "https://bbs.hupu.com/642894529.html",
           "text": "[流言板]CP：哈登的生涯大概是NBA最令人感慨的“如果当初”故事",
-          "heat": "46亮"
+          "heat": "47亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642891642.html",
+          "text": "[流言板]时隔586天！欧文篮下小拉杆将球打进，取得复出后首分",
+          "heat": "16亮"
         },
         {
           "url": "https://bbs.hupu.com/642889831.html",
@@ -10197,19 +10187,9 @@
           "heat": "40亮"
         },
         {
-          "url": "https://bbs.hupu.com/642893802.html",
-          "text": "[流言板]斯马特投进个人第4记三分，目前12中7已砍下20分5篮板3助攻",
-          "heat": "32亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642901795.html",
-          "text": "[流言板]亚历山大成为马竞股东：很高兴成为俱乐部未来的一部分",
-          "heat": "7亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642891087.html",
-          "text": "[流言板]独行侠今日首发：欧文，里萨谢，弗拉格，华盛顿和加福德",
-          "heat": "14亮"
+          "url": "https://bbs.hupu.com/642901724.html",
+          "text": "[流言板]雷迪克：凯斯勒伤势不严重，但还不能确定下场复出",
+          "heat": "22亮"
         },
         {
           "url": "https://bbs.hupu.com/642900624.html",
@@ -10217,9 +10197,39 @@
           "heat": "11亮"
         },
         {
-          "url": "https://bbs.hupu.com/642901724.html",
-          "text": "[流言板]雷迪克：凯斯勒伤势不严重，但还不能确定下场复出",
-          "heat": "22亮"
+          "url": "https://bbs.hupu.com/642901795.html",
+          "text": "[流言板]亚历山大成为马竞股东：很高兴成为俱乐部未来的一部分",
+          "heat": "7亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642893802.html",
+          "text": "[流言板]斯马特投进个人第4记三分，目前12中7已砍下20分5篮板3助攻",
+          "heat": "32亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642895818.html",
+          "text": "拒绝偏科！4记三分外加2大帽1抢断，谢泼德集锦 17分正负值+4的表现有多香？",
+          "heat": "35亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642891087.html",
+          "text": "[流言板]独行侠今日首发：欧文，里萨谢，弗拉格，华盛顿和加福德",
+          "heat": "14亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642892744.html",
+          "text": "四千万买了一个四不像",
+          "heat": "30亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642901900.html",
+          "text": "[流言板]活塞两场季前赛均爆发冲突，两次均有人吃到技犯",
+          "heat": "16亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642892103.html",
+          "text": "[流言板]天外飞仙！欧文手腕一抖神奇命中压哨超远三分，首节得到5分",
+          "heat": "21亮"
         },
         {
           "url": "https://bbs.hupu.com/642895261.html",
@@ -10232,29 +10242,19 @@
           "heat": "50亮"
         },
         {
-          "url": "https://bbs.hupu.com/642895818.html",
-          "text": "拒绝偏科！4记三分外加2大帽1抢断，谢泼德集锦 17分正负值+4的表现有多香？",
-          "heat": "35亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642892103.html",
-          "text": "[流言板]天外飞仙！欧文手腕一抖神奇命中压哨超远三分，首节得到5分",
-          "heat": "21亮"
-        },
-        {
           "url": "https://bbs.hupu.com/642900049.html",
           "text": "[流言板]海佐尼亚：哈登像有两个自己，一二号位都是名人堂级别",
-          "heat": "19亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642897462.html",
-          "text": "[流言板]欧文：现在打球不只是为了钱，我想留下更大的意义",
-          "heat": "13亮"
+          "heat": "20亮"
         },
         {
           "url": "https://bbs.hupu.com/642901745.html",
           "text": "为什么会给一个不会投篮的球员顶薪",
-          "heat": "3亮"
+          "heat": "8亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642897462.html",
+          "text": "[流言板]欧文：现在打球不只是为了钱，我想留下更大的意义",
+          "heat": "15亮"
         },
         {
           "url": "https://bbs.hupu.com/642896898.html",
@@ -10262,14 +10262,9 @@
           "heat": "26亮"
         },
         {
-          "url": "https://bbs.hupu.com/642892744.html",
-          "text": "四千万买了一个四不像",
-          "heat": "30亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642897641.html",
-          "text": "[流言板]阿门：斯马特是DPOY级别的防守人，一直教我比赛诀窍",
-          "heat": "27亮"
+          "url": "https://bbs.hupu.com/642893267.html",
+          "text": "[流言板]欧文半场出战16分钟，投篮9中5得到14分2篮板3助攻",
+          "heat": "19亮"
         },
         {
           "url": "https://bbs.hupu.com/642901263.html",
@@ -10277,19 +10272,24 @@
           "heat": "3亮"
         },
         {
-          "url": "https://bbs.hupu.com/642894383.html",
-          "text": "博格丹这个状态已经基本宣告这笔引援失败了！",
-          "heat": "24亮"
-        },
-        {
           "url": "https://bbs.hupu.com/642901977.html",
           "text": "[流言板]小贾巴里季前赛进步明显，有望迎来生涯最佳赛季",
           "heat": "13亮"
         },
         {
-          "url": "https://bbs.hupu.com/642901900.html",
-          "text": "[流言板]活塞两场季前赛均爆发冲突，两次均有人吃到技犯",
-          "heat": "13亮"
+          "url": "https://bbs.hupu.com/642897641.html",
+          "text": "[流言板]阿门：斯马特是DPOY级别的防守人，一直教我比赛诀窍",
+          "heat": "27亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642894383.html",
+          "text": "博格丹这个状态已经基本宣告这笔引援失败了！",
+          "heat": "24亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642900213.html",
+          "text": "[流言板]阿伦：现在NBA一到五号位都冲抢篮板，我们得先撞人再抢球",
+          "heat": "10亮"
         },
         {
           "url": "https://bbs.hupu.com/642894788.html",
@@ -10297,18 +10297,28 @@
           "heat": "22亮"
         },
         {
+          "url": "https://bbs.hupu.com/642896621.html",
+          "text": "说阿门不值4000万的，都是什么成分，不用我多说了吧",
+          "heat": "20亮"
+        },
+        {
           "url": "https://bbs.hupu.com/642897552.html",
           "text": "[流言板]欧文致敬沃尔罗斯：他们重伤后坚持复出，给我树了榜样",
           "heat": "9亮"
         },
         {
-          "url": "https://bbs.hupu.com/642891768.html",
-          "text": "这阿门…",
-          "heat": "20亮"
+          "url": "https://bbs.hupu.com/642898581.html",
+          "text": "[流言板]勇士官方分享巴特勒的主题海报：还有10天勇士篮球就回来了",
+          "heat": "17亮"
         },
         {
-          "url": "https://bbs.hupu.com/642901032.html",
-          "text": "[流言板]欧文谈弗拉格：他的竞争天性让我想到詹姆斯和杜兰特",
+          "url": "https://bbs.hupu.com/642893212.html",
+          "text": "即布克背打小贾之后，欧文也可以背打小贾。",
+          "heat": "21亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642899768.html",
+          "text": "[流言板]克里斯蒂：我不想只当接球投手，还要持球攻击和组织",
           "heat": "10亮"
         },
         {
@@ -10317,54 +10327,24 @@
           "heat": "11亮"
         },
         {
-          "url": "https://bbs.hupu.com/642898581.html",
-          "text": "[流言板]勇士官方分享巴特勒的主题海报：还有10天勇士篮球就回来了",
-          "heat": "15亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642899768.html",
-          "text": "[流言板]克里斯蒂：我不想只当接球投手，还要持球攻击和组织",
-          "heat": "10亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642896621.html",
-          "text": "说阿门不值4000万的，都是什么成分，不用我多说了吧",
-          "heat": "19亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642900213.html",
-          "text": "[流言板]阿伦：现在NBA一到五号位都冲抢篮板，我们得先撞人再抢球",
-          "heat": "10亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642888426.html",
-          "text": "[流言板]格林谈詹姆斯融入76人：不让全队围着自己转，主动适配队友",
-          "heat": "50亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642897995.html",
-          "text": "只比防守科比和詹姆斯谁更强一些？",
-          "heat": "40亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642889233.html",
-          "text": "[流言板]美媒发问：联盟25岁以下球星vs35岁以上球星，哪边能赢？",
-          "heat": "40亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642893212.html",
-          "text": "即布克背打小贾之后，欧文也可以背打小贾。",
-          "heat": "21亮"
-        },
-        {
           "url": "https://bbs.hupu.com/642894260.html",
           "text": "阿门再怎么菜也比顺子强吧",
           "heat": "17亮"
         },
         {
-          "url": "https://bbs.hupu.com/642901572.html",
-          "text": "[流言板]波什谈欧文等人复出：他们展示了如何从低谷中归来",
-          "heat": "5亮"
+          "url": "https://bbs.hupu.com/642895032.html",
+          "text": "[流言板]恭喜！伦德博格ins祝贺波杰5年1.1亿美元续约勇士",
+          "heat": "23亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642901032.html",
+          "text": "[流言板]欧文谈弗拉格：他的竞争天性让我想到詹姆斯和杜兰特",
+          "heat": "10亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642897995.html",
+          "text": "只比防守科比和詹姆斯谁更强一些？",
+          "heat": "39亮"
         },
         {
           "url": "https://bbs.hupu.com/642894008.html",
@@ -10372,24 +10352,14 @@
           "heat": "19亮"
         },
         {
-          "url": "https://bbs.hupu.com/642895032.html",
-          "text": "[流言板]恭喜！伦德博格ins祝贺波杰5年1.1亿美元续约勇士",
-          "heat": "20亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642883804.html",
-          "text": "[流言板]老秀！伦德博格全场14中10，砍下23分10篮板6助攻2抢断1盖帽",
+          "url": "https://bbs.hupu.com/642888426.html",
+          "text": "[流言板]格林谈詹姆斯融入76人：不让全队围着自己转，主动适配队友",
           "heat": "50亮"
         },
         {
-          "url": "https://bbs.hupu.com/642901467.html",
-          "text": "[流言板]鹈鹕新赛季预计飞行55530英里，联盟最多",
-          "heat": "6亮"
-        },
-        {
-          "url": "https://bbs.hupu.com/642887147.html",
-          "text": "[流言板]追梦谈詹姆斯直升机通勤：让他安静通勤吧，这咋成大新闻了",
-          "heat": "44亮"
+          "url": "https://bbs.hupu.com/642889233.html",
+          "text": "[流言板]美媒发问：联盟25岁以下球星vs35岁以上球星，哪边能赢？",
+          "heat": "40亮"
         },
         {
           "url": "https://bbs.hupu.com/642894152.html",
@@ -10397,14 +10367,19 @@
           "heat": "16亮"
         },
         {
-          "url": "https://bbs.hupu.com/642899219.html",
-          "text": "[流言板]欧文：弗拉格具备KD詹姆斯那种竞争天性，他只会变得更好",
-          "heat": "8亮"
+          "url": "https://bbs.hupu.com/642901572.html",
+          "text": "[流言板]波什谈欧文等人复出：他们展示了如何从低谷中归来",
+          "heat": "5亮"
         },
         {
           "url": "https://bbs.hupu.com/642893129.html",
           "text": "谢泼德在场上的意义是什么？",
           "heat": "17亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642901467.html",
+          "text": "[流言板]鹈鹕新赛季预计飞行55530英里，联盟最多",
+          "heat": "11亮"
         },
         {
           "url": "https://bbs.hupu.com/642893084.html",
@@ -10427,9 +10402,9 @@
           "heat": "13亮"
         },
         {
-          "url": "https://bbs.hupu.com/642900409.html",
-          "text": "[流言板]麦凯恩父亲：76人经历帮助他成长，加盟雷霆是最理想结果",
-          "heat": "8亮"
+          "url": "https://bbs.hupu.com/642883804.html",
+          "text": "[流言板]老秀！伦德博格全场14中10，砍下23分10篮板6助攻2抢断1盖帽",
+          "heat": "50亮"
         },
         {
           "url": "https://bbs.hupu.com/642893072.html",
@@ -10437,9 +10412,24 @@
           "heat": "14亮"
         },
         {
+          "url": "https://bbs.hupu.com/642895331.html",
+          "text": "你们这群骂阿门的臭黑子！",
+          "heat": "11亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642892563.html",
+          "text": "联盟最大的垃圾合同；阿门汤普森",
+          "heat": "9亮"
+        },
+        {
           "url": "https://bbs.hupu.com/642900789.html",
           "text": "[流言板]太阳调整首发，马卢阿奇获季前赛首次先发",
-          "heat": "7亮"
+          "heat": "9亮"
+        },
+        {
+          "url": "https://bbs.hupu.com/642893049.html",
+          "text": "斯玛特完全可以打控卫啊，打球太老道了",
+          "heat": "13亮"
         }
       ]
     },
@@ -10453,58 +10443,58 @@
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473567",
-          "text": "卡拉格：利物浦给维尔茨的机会够多了，该让他暂时退出首发了",
+          "url": "https://www.dongqiudi.com/article/6473475",
+          "text": "迪马济奥：萨勒马克尔斯周二手术，加比亚可能是跟腱受伤",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473546",
-          "text": "贝尔戈米：齐沃可继续轮换，皮奥已成锋线第三主力",
+          "url": "https://www.dongqiudi.com/article/6473635",
+          "text": "京多安：对阵巴萨感触很多，但哨声响后我会全身心投入比赛",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473334",
-          "text": "斯帕莱蒂：在比赛的某些特定时刻，我们必须要投入更多的东西",
+          "url": "https://www.dongqiudi.com/article/6473479",
+          "text": "皮萨卡内：尤文配得上平局；我和斯帕莱蒂本该拥抱收场",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473561",
-          "text": "迪卡尼奥：迪乌夫很强，国米阵容很充实",
+          "url": "https://www.dongqiudi.com/article/6473639",
+          "text": "拉比奥：我们丢了该拿的两分；进攻时应该往禁区投入更多兵力",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473065",
-          "text": "伯纳姆：此前担任市长期间与曼城的所有往来细节都将公开",
+          "url": "https://www.dongqiudi.com/article/6473486",
+          "text": "卡拉格：如果曼城被判有罪，就不该被允许赢得英超冠军",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473394",
-          "text": "帕尔默：我的23/24赛季英超最佳被抢走了，但也只能这样了",
+          "url": "https://www.dongqiudi.com/article/6473517",
+          "text": "派尚下场拒绝握手，热内西奥：理解他的失望，他需要找回信心",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473314",
-          "text": "马特乌斯：乌尔比希让我想起年轻的诺伊尔，出球比特狮更从容",
+          "url": "https://www.dongqiudi.com/article/6473641",
+          "text": "弗拉门戈1-0弗鲁米嫩塞，卡拉斯卡尔助球队取胜",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473304",
-          "text": "在先丢球的情况下，尤文已经连续比赛14场没能取胜",
+          "url": "https://www.dongqiudi.com/article/6473528",
+          "text": "曼晚：曼城3-0客胜利物浦赛后两队球迷爆发冲突，警方介入",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473305",
-          "text": "蒙特拉：执教土耳其是我的荣幸，希望大家怀着爱和尊重记住我",
+          "url": "https://www.dongqiudi.com/article/6473637",
+          "text": "格雷米奥1-1巴西国际，维蒂尼奥打破僵局，瓦拉斯扳平",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473275",
-          "text": "斯帕莱蒂：为什么被罚下？我对皮萨卡内说你们很懂如何拖时间",
+          "url": "https://www.dongqiudi.com/article/6473533",
+          "text": "阿明-阿里：3分最重要，马赛还不能放松",
           "heat": "足球"
         },
         {
-          "url": "https://www.dongqiudi.com/article/6473073",
-          "text": "奥科查：金球奖该给姆巴佩；悬念比以往任何时候都更强",
+          "url": "https://www.dongqiudi.com/article/6473537",
+          "text": "博格巴调侃曼城115项指控：想拿回2座英超冠军",
           "heat": "足球"
         }
       ]
@@ -11415,7 +11405,7 @@
         {
           "url": "https://github.com/morluto/rea",
           "text": "morluto / rea",
-          "heat": "10.1万"
+          "heat": "10.2万"
         },
         {
           "url": "https://github.com/boykopovar/AnyPS5",
@@ -11742,17 +11732,17 @@
         {
           "url": "https://juejin.cn/post/7694121230733246499",
           "text": "GROUP BY 先别想当然，查汇总前把规则跑清楚",
-          "heat": "3124"
+          "heat": "3126"
         },
         {
           "url": "https://juejin.cn/post/7693414422438723626",
           "text": "AI 帮我投资 85 天，最多赚到 3733 元",
-          "heat": "2309"
+          "heat": "2311"
         },
         {
           "url": "https://juejin.cn/post/7694480295002128410",
           "text": "🤔同事突然问我：Spring的注解 @Component 和 @Service 有何不同？",
-          "heat": "2336"
+          "heat": "2338"
         },
         {
           "url": "https://juejin.cn/post/7693144953569493043",
@@ -11762,7 +11752,7 @@
         {
           "url": "https://juejin.cn/post/7693579496969486382",
           "text": "别用前端思维写后端：一张 5MB 图片，为什么能撑爆内存？",
-          "heat": "1527"
+          "heat": "1528"
         },
         {
           "url": "https://juejin.cn/post/7694064588329320490",
@@ -11772,17 +11762,17 @@
         {
           "url": "https://juejin.cn/post/7693828979246186546",
           "text": "🚀 2026 年 9 月 GitHub 十大热门项目排行榜 🔥",
-          "heat": "1516"
+          "heat": "1517"
         },
         {
           "url": "https://juejin.cn/post/7693757919828901923",
           "text": "🚀 nacos-web-config：运营半夜改条配置，网页秒更新 —— 不用发版、不用轮询，我把它开源了",
-          "heat": "1342"
+          "heat": "1345"
         },
         {
           "url": "https://juejin.cn/post/7693805723602157578",
           "text": "一个全程 AI 写的小程序「厨菜记」，上线 20 天跑通流量主，收入几块钱，开心得不行",
-          "heat": "1100"
+          "heat": "1101"
         },
         {
           "url": "https://juejin.cn/post/7693358476032049162",
@@ -11802,7 +11792,7 @@
         {
           "url": "https://juejin.cn/post/7694299604674297891",
           "text": "AI时代建议学点自己真正感兴趣的！",
-          "heat": "731"
+          "heat": "733"
         },
         {
           "url": "https://juejin.cn/post/7693712140221792271",
@@ -13628,7 +13618,7 @@
         {
           "url": "https://www.dongchedi.com/article/7695040692598915646",
           "text": "欧盟对中国混动车“出手”了，四年内对欧出口或减半",
-          "heat": "285"
+          "heat": "286"
         },
         {
           "url": "https://www.dongchedi.com/article/7693365276487090713",
