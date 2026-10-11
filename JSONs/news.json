@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791740744588,
+  "timestamp": 1791741663219,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2880,6 +2880,11 @@
           "heat": "techflowpost.com"
         },
         {
+          "url": "https://www.techradar.com/pro/powering-the-ai-revolution-inside-the-grid-thermal-and-interconnect-challenges-limiting-data-center-growth",
+          "text": "Powering the AI revolution: Inside the grid, thermal, and interconnect challenges limiting data center growth",
+          "heat": "techradar.com"
+        },
+        {
           "url": "https://www.36kr.com/p/4020977744449666",
           "text": "麻省理工：靠访谈让 AI 模拟真人，这条路能走多远？",
           "heat": "36Kr"
@@ -2903,11 +2908,6 @@
           "url": "https://www.ithome.com/1/011/691.htm",
           "text": "奇瑞捷途全新旅行者 7 预告搭载骁龙 8255 座舱芯片，10 月 14 日上市",
           "heat": "IT 之家"
-        },
-        {
-          "url": "https://news.mydrivers.com/1/1156/1156601.htm",
-          "text": "GPU 价格预计还将明显上涨，整机商称拿货困难只能转嫁给消费者",
-          "heat": "快科技"
         }
       ]
     },
@@ -4222,6 +4222,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261011Q0A5U100",
+          "text": "郑钦文横扫安德烈耶娃夺中网女单冠军，完成职业生涯1000赛首冠，这个冠军的含金量有多高？郑钦文发挥有多出色？",
+          "heat": "粘粘有语"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261011Q060RY00",
           "text": "越南拆百年殖民建筑重建皇宫，圆明园能借鉴吗？保留废墟与复原哪个更有价值？",
           "heat": "贵重物品DR"
@@ -4240,11 +4245,6 @@
           "url": "https://new.qq.com/rain/a/20261010Q03R1U00",
           "text": "王仁君爆冷获飞天奖视帝，如何评价他的演技？还有哪些作品值得关注？",
           "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261011Q0A5U100",
-          "text": "郑钦文横扫安德烈耶娃夺中网女单冠军，完成职业生涯1000赛首冠，这个冠军的含金量有多高？郑钦文发挥有多出色？",
-          "heat": "粘粘有语"
         },
         {
           "url": "https://new.qq.com/rain/a/20261011Q053KB00",
@@ -13938,12 +13938,12 @@
         {
           "url": "https://www.dongchedi.com/article/7695040692598915646",
           "text": "欧盟对中国混动车“出手”了，四年内对欧出口或减半",
-          "heat": "256"
+          "heat": "258"
         },
         {
           "url": "https://www.dongchedi.com/article/7693365276487090713",
           "text": "2026款名爵MG 4X日常实用性测试报告",
-          "heat": "184"
+          "heat": "187"
         },
         {
           "url": "https://www.dongchedi.com/article/7694850268513419801",
