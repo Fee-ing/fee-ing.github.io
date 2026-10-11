@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791751546763,
+  "timestamp": 1791752463112,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2855,6 +2855,11 @@
           "heat": "techflowpost.com"
         },
         {
+          "url": "https://api3.cls.cn/share/article/2501649?os=web&sv=8.4.6&app=CailianpressWeb",
+          "text": "消息人士称，亚马逊正洽谈收购人工智能初创公司 Decart",
+          "heat": "财联社"
+        },
+        {
           "url": "https://www.techradar.com/pro/powering-the-ai-revolution-inside-the-grid-thermal-and-interconnect-challenges-limiting-data-center-growth",
           "text": "Powering the AI revolution: Inside the grid, thermal, and interconnect challenges limiting data center growth",
           "heat": "techradar.com"
@@ -2878,11 +2883,6 @@
           "url": "https://www.huxiu.com/article/4896611.html?f=rss",
           "text": "《第一性思考》14｜AI 干掉了实习生，十年后谁来当专家？",
           "heat": "虎嗅网"
-        },
-        {
-          "url": "https://news.mydrivers.com/1/1156/1156603.htm",
-          "text": "微软耗时数月改了 Copilot Logo！还发长文揭秘：结果根本没人发现",
-          "heat": "快科技"
         }
       ]
     },
@@ -4197,9 +4197,9 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261011Q0A5U100",
+          "url": "https://new.qq.com/rain/a/20261011Q0A6H100",
           "text": "郑钦文横扫安德烈耶娃夺中网女单冠军，完成职业生涯1000赛首冠，这个冠军的含金量有多高？郑钦文发挥有多出色？",
-          "heat": "粘粘有语"
+          "heat": "三棱镜"
         },
         {
           "url": "https://new.qq.com/rain/a/20261011Q060RY00",
@@ -10086,22 +10086,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48905589",
           "text": "你们最爱听的云长",
-          "heat": "1828"
+          "heat": "1859"
         },
         {
           "url": "http://www.acfun.cn/v/ac48904812",
           "text": "【柯基】《伴随军旗》｜朝鲜电影《军旗》主题曲",
-          "heat": "1208"
+          "heat": "1211"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884376",
           "text": "【短视频】唱这首歌时候的脑补…",
-          "heat": "1124"
+          "heat": "1125"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902797",
           "text": "【东方】Bad Apple!! 钢尺全自动弹奏装置完成了!!",
-          "heat": "700"
+          "heat": "717"
         },
         {
           "url": "http://www.acfun.cn/v/ac48906015",
@@ -10131,17 +10131,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48906258",
           "text": "【via冰阔落】2026年十月直播录像合集",
-          "heat": "202"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48905913",
-          "text": "EXTEND STEP HOOOOOPE! 番組イベント2026",
-          "heat": "270"
+          "heat": "224"
         },
         {
           "url": "http://www.acfun.cn/v/ac48906251",
           "text": "【贝学姐】2026年十月直播录像合集",
-          "heat": "317"
+          "heat": "367"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48905913",
+          "text": "EXTEND STEP HOOOOOPE! 番組イベント2026",
+          "heat": "285"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898137",
@@ -10174,6 +10174,11 @@
           "heat": "113"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48906252",
+          "text": "【付小远brenda】2026年十月直播录像合集",
+          "heat": "226"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48885949",
           "text": "バカみたいに(你就像个笨蛋一样)",
           "heat": "104"
@@ -10199,9 +10204,9 @@
           "heat": "26"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48906252",
-          "text": "【付小远brenda】2026年十月直播录像合集",
-          "heat": "209"
+          "url": "http://www.acfun.cn/v/ac48906248",
+          "text": "【小黑猫】2026年十月直播录像合集",
+          "heat": "159"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905820",
@@ -10227,11 +10232,6 @@
           "url": "http://www.acfun.cn/v/ac48896963",
           "text": "银河管弦乐团专辑第十二张",
           "heat": "50"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48904745",
-          "text": "2026-10-10 懒銀 直播录像",
-          "heat": "70"
         }
       ]
     },
@@ -13878,12 +13878,12 @@
         {
           "url": "https://www.dongchedi.com/article/7695040692598915646",
           "text": "欧盟对中国混动车“出手”了，四年内对欧出口或减半",
-          "heat": "265"
+          "heat": "279"
         },
         {
           "url": "https://www.dongchedi.com/article/7693365276487090713",
           "text": "2026款名爵MG 4X日常实用性测试报告",
-          "heat": "202"
+          "heat": "204"
         },
         {
           "url": "https://www.dongchedi.com/article/7694850268513419801",
