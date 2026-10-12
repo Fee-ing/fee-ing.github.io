@@ -52,13 +52,6 @@
   .side .links { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: -4px; }
   .links .link { display: inline-flex; align-items: center; gap: 4px; text-decoration: none; font-size: 11px; }
   .links .link:hover span, .links .link:focus-visible span { text-decoration: underline; }
-  /* Update: what is new since this version, newest first */
-  #updatedlg { max-width: 470px; }
-  #updatedlg .version { white-space: nowrap; }
-  .news { max-height: 240px; overflow: auto; margin: 0 0 8px; padding: 6px 8px; border: 1px solid var(--chrome-line); border-radius: 3px; }
-  .news b { display: block; }
-  .news p { margin: 0 0 8px; white-space: pre-line; }
-  .news p:last-child { margin-bottom: 0; }
   /* Settings: what applies to every app */
   #settingsdlg { max-width: 470px; }
   .st { margin: 0 0 10px; padding: 6px 10px 2px; border: 1px solid var(--chrome-line); border-radius: 3px; }
@@ -173,12 +166,11 @@
     </div>
     <div class="grow"></div>
     <div>
-      <button class="big" id="update" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="#1f8a4c"/><path d="M10 5v7.5M6.5 9.5l3.5 3.5 3.5-3.5" fill="none" stroke="#fff" stroke-width="2"/><path d="M6 15.5h8" stroke="#fff" stroke-width="1.6"/></svg>更新 Office 2003</button>
       <button class="big" id="install" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="16" height="12" rx="1.5" fill="#fff" stroke="#3b619c"/><path d="M10 5.5v6M7 9l3 3 3-3" fill="none" stroke="#1f8a4c" stroke-width="1.8"/><path d="M6 17.5h8" stroke="#3b619c"/></svg>安装 Office 2003</button>
       <div class="caching" id="caching" role="status" hidden><span id="cachingtext">正在更新缓存资源</span><progress id="cachingbar" max="1" value="0"></progress><span id="cachingsize"></span></div>
       <button class="big" id="cachingreload" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="#1f8a4c"/><path d="M14 7.2A4.6 4.6 0 1 0 14.6 11" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M14.8 4.4v3.6h-3.6" fill="none" stroke="#fff" stroke-width="1.8"/></svg>更新完成，请重新加载</button>
     </div>
-    <p class="note">文件只保存在这台电脑上；最近文件仅记录在本浏览器中。<br><span class="version"></span></p>
+    <p class="note">文件只保存在这台电脑上；最近文件仅记录在本浏览器中。</p>
     <p class="note links">
       <button class="link" id="settings" type="button"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="#5b6f8c" stroke-width="2.6" stroke-dasharray="2.2 2.2"/><circle cx="8" cy="8" r="4" fill="#dbe6f7" stroke="#3b619c" stroke-width="1.2"/><circle cx="8" cy="8" r="1.6" fill="#fff" stroke="#3b619c"/></svg><span>设置</span></button>
       <button class="link" id="themes" type="button"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13c1 0 1.4-.8 1-1.6-.5-1 .1-2 1.2-2h1.6a2.7 2.7 0 0 0 2.7-2.9C14.3 4.3 11.5 1.5 8 1.5z" fill="#fff" stroke="#a5781e"/><circle cx="5" cy="6.5" r="1.3" fill="#d9442b"/><circle cx="8.2" cy="4.6" r="1.3" fill="#f5b400"/><circle cx="11.3" cy="6.4" r="1.3" fill="#1f8a4c"/><circle cx="5.2" cy="10" r="1.3" fill="#2a6fd6"/></svg><span>主题</span></button>
@@ -202,15 +194,9 @@
   </main>
 </div>
 
-<dialog id="updatedlg">
-  <div class="dt">更新 Office 2003</div>
-  <div class="db">
-    <p>有更新的 Office 2003 版本可用。当前版本为 <span class="version"></span>。</p>
-    <div class="news" id="updatenews" hidden></div>
-    <p>现在下载吗？你的文档和最近文件都会保持原样。</p>
-    <form method="dialog"><button value="download">下载</button> <button value="later">稍后</button></form>
-  </div>
-</dialog>
+<!-- Embedded copy (tools-box): the desktop app's update dialog (#updatedlg), its "更新 Office 2003"
+     button and the daily update check are gone — VO.host.kind is always 'web' here (no Tauri host),
+     so none of it could ever run. Re-add them on the next sync if upstream changes this area. -->
 <dialog id="settingsdlg">
   <div class="dt">设置</div>
   <div class="db">
@@ -390,7 +376,6 @@
   window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvent = e; $('install').hidden = false; });
   window.addEventListener('appinstalled', () => { installEvent = null; $('install').hidden = true; });
   $('install').addEventListener('click', async () => { if (!installEvent) return; installEvent.prompt(); await installEvent.userChoice; installEvent = null; $('install').hidden = true; });
-  document.querySelectorAll('.version').forEach((el) => { el.textContent = VO.VERSION; });
   /* Themes: the suite's looks (common/looks.css); choosing one changes every open window of the suite */
   const BODY = '<div class="lk-body"><div class="lk-canvas"><div class="lk-page"><p></p><p></p><p></p><p></p><p></p><p></p></div></div>'
     + '<div class="lk-pane"><em></em><u></u><u></u><s></s><u></u></div></div><div class="lk-status"></div>';
@@ -429,23 +414,7 @@
   });
   $('cachingreload').addEventListener('click', () => location.reload());
 
-  /* Updates (desktop app): an Update button, or once a day a dialog, when updater/current.json asks for it */
-  const download = () => VO.host.openUrl(VO.updateUrl()).catch((e) => status(String(e)));
-  $('update').addEventListener('click', download);
-  $('updatedlg').addEventListener('close', () => { if ($('updatedlg').returnValue === 'download') download(); });
-  if (VO.host.kind === 'desktop') {
-    VO.checkUpdate().then(({ ask, news }) => {
-      if (!ask) return;
-      $('updatenews').replaceChildren(...news.flatMap((n) => [h('b', null, n.version), h('p', null, n.text)]));
-      $('updatenews').hidden = !news.length;
-      $('update').hidden = false;
-      const today = new Date().toDateString();
-      if (ask === 'dialog' && localStorage.getItem('vibeoffice.updateAsked') !== today) {
-        try { localStorage.setItem('vibeoffice.updateAsked', today); } catch (e) { /* asks again next time */ }
-        $('updatedlg').showModal();
-      }
-    }).catch((e) => console.info('update check:', e.message));   // offline: nothing to show
-  }
+  /* Updates (desktop app): gone — see the Embedded copy note above the dialogs. */
 
   /* Settings: what applies to every app. 界面大小 is the desktop app's zoom (VO.host); on the web the browser's own */
   const fontInfo = () => {
