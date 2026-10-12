@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Office 2003</title>
+<meta name="description" content="A free office suite that runs in your browser: a word processor, a spreadsheet and a presentation editor. Your files never leave your computer.">
+<meta name="theme-color" content="#2a64c8">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<!-- Embedded copy (tools-box): the apple-touch-icon, the web app manifest (manifest.webmanifest) and its
+     icons are gone — all of them only serve installing the suite as a standalone app, which cannot happen
+     while it is framed on another site. -->
+<script>try{var d=document.documentElement,l=localStorage.getItem('vibeoffice.look')||'classic';d.dataset.look=l;d.dataset.layout=l==='paper2016'?'ribbon':'bars'}catch(e){}</script>
+<link rel="stylesheet" href="common/looks.css">
+<style>
+  /* colours come from the look settings (common/looks.css); the app colours are the apps' own */
+  :root { --quire: #2a64c8; --ledger: #1f8a4c; --lectern: #e0682d; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; display: flex; flex-direction: column; background: var(--surface); color: var(--ink); font: 12px/1.4 var(--ui-font); }
+  button { font: inherit; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 1px dotted var(--ink); outline-offset: 1px; }
+  [hidden] { display: none !important; }
+
+  .shell { flex: 1; min-height: 0; display: flex; }
+
+  /* the start center's left side */
+  .side { flex: none; width: 250px; display: flex; flex-direction: column; gap: 14px; padding: 12px;
+    background: linear-gradient(var(--pane-a), var(--pane-b)); border-right: 1px solid var(--chrome-line); overflow: auto; }
+  .brand { display: flex; align-items: center; gap: 10px; padding: 0 6px 6px; }
+  .brand img { width: 44px; height: 44px; }
+  .brand b { font: bold 19px/1.1 "Trebuchet MS", var(--ui-font); color: var(--pane-ink); }
+  .brand small { display: block; color: var(--muted); font-size: 11px; }
+  .big { display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 8px; border: 1px solid transparent; border-radius: 3px;
+    background: none; text-align: left; cursor: pointer; color: var(--pane-ink); font-weight: bold; }
+  .big:hover, .big:focus-visible { background: var(--menu-hot); border-color: var(--card-hot-border); }
+  .big.on { background: linear-gradient(var(--surface), var(--start-on-b)); border-color: var(--tb-border); }
+  .big svg { flex: none; }
+  .sec h2 { margin: 0 0 4px; padding: 0 8px 3px; font-size: 12px; color: var(--pane-ink); border-bottom: 1px solid var(--start-rule); }
+  .new { display: flex; align-items: center; gap: 10px; padding: 5px 8px; border: 1px solid transparent; border-radius: 3px; color: var(--pane-link); }
+  .new:hover, .new:focus-visible { background: var(--menu-hot); border-color: var(--card-hot-border); }
+  .new span b { display: block; }
+  .new span small { color: var(--muted); }
+  .new:hover b { text-decoration: underline; }
+  .side .grow { flex: 1; }
+  .caching { padding: 2px 8px 4px; color: var(--muted); font-size: 11px; }
+  .caching progress { display: block; width: 100%; height: 8px; margin-top: 3px; accent-color: var(--sel); }
+  .caching #cachingsize { display: block; margin-top: 1px; text-align: right; }
+  .side .note { margin: 0; padding: 0 8px; color: var(--muted); font-size: 11px; }
+  .link { border: 0; background: none; padding: 0; color: var(--pane-link); cursor: pointer; text-decoration: underline; }
+  .side .links { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: -4px; }
+  .links .link { display: inline-flex; align-items: center; gap: 4px; text-decoration: none; font-size: 11px; }
+  .links .link:hover span, .links .link:focus-visible span { text-decoration: underline; }
+  /* Update: what is new since this version, newest first */
+  #updatedlg { max-width: 470px; }
+  #updatedlg .version { white-space: nowrap; }
+  .news { max-height: 240px; overflow: auto; margin: 0 0 8px; padding: 6px 8px; border: 1px solid var(--chrome-line); border-radius: 3px; }
+  .news b { display: block; }
+  .news p { margin: 0 0 8px; white-space: pre-line; }
+  .news p:last-child { margin-bottom: 0; }
+  /* Settings: what applies to every app */
+  #settingsdlg { max-width: 470px; }
+  .st { margin: 0 0 10px; padding: 6px 10px 2px; border: 1px solid var(--chrome-line); border-radius: 3px; }
+  .st legend { padding: 0 4px; font-weight: bold; }
+  .st p { color: var(--ink); }
+  /* Themes: one card per look, its preview drawn from that look's own settings (data-look on the card) */
+  #themesdlg { max-width: 560px; }
+  .looks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 12px; }
+  .lk-card { display: flex; flex-direction: column; gap: 4px; padding: 7px; border: 2px solid transparent; border-radius: 6px; background: none; text-align: left; cursor: pointer; }
+  .lk-card:hover { background: var(--menu-hot); }
+  .lk-card[aria-pressed="true"] { border-color: var(--sel); }
+  .lk-card small { color: var(--muted); }
+  .lk-mock { height: 132px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--chrome-line); border-radius: var(--ctl-radius);
+    background: var(--dock-b); color: var(--ink); font: 9px/1.2 var(--ui-font); pointer-events: none; margin-bottom: 3px; }
+  .lk-menu { display: flex; gap: 7px; padding: 3px 7px 2px; background: linear-gradient(90deg, var(--dock-a), var(--dock-b)); }
+  .lk-tb { display: flex; gap: 4px; align-items: center; width: 64%; height: 15px; margin: 0 4px 3px; padding: 0 5px; border: 1px solid var(--tb-border);
+    border-radius: var(--tray-radius); background: linear-gradient(var(--tb-a), var(--tb-b) 50%, var(--tb-c)); }
+  .lk-tb i { width: 7px; height: 7px; border-radius: 1px; background: #3b6ec9; }
+  .lk-tb i:nth-child(3n) { background: #2f8f45; }
+  .lk-tb i:nth-child(3n+2) { background: #e0a020; }
+  .lk-tb b { width: 11px; height: 11px; border-radius: var(--ctl-radius); background: linear-gradient(var(--chk-a), var(--chk-b)); }
+  .lk-rbar { display: flex; gap: 7px; align-items: flex-end; padding: 3px 7px 0; background: var(--rb-bg); color: var(--rb-tab-ink); }
+  .lk-rbar span { padding: 1px 3px 2px; }
+  .lk-rbar span:first-child { color: var(--rb-file-ink); font-weight: bold; }
+  .lk-rbar .on { margin-bottom: -1px; border: 1px solid var(--rb-line); border-bottom-color: var(--rb-panel); background: var(--rb-panel); color: var(--rb-tab-on-ink); }
+  .lk-rpanel { display: flex; height: 29px; padding: 3px 0 2px; border-top: 1px solid var(--rb-line); background: var(--rb-panel); }
+  .lk-rgrp { display: flex; flex-direction: column; justify-content: space-between; padding: 0 5px; border-right: 1px solid var(--rb-line); }
+  .lk-rgrp div { display: flex; gap: 3px; }
+  .lk-rgrp i { width: 7px; height: 7px; border-radius: 1px; background: #3b6ec9; }
+  .lk-rgrp i:nth-child(3n) { background: #2f8f45; }
+  .lk-rgrp i:nth-child(3n+2) { background: #e0a020; }
+  .lk-rgrp i.big { width: 13px; height: 13px; }
+  .lk-rgrp p { width: 20px; height: 2px; margin: 0 auto; background: var(--rb-label-ink); opacity: .6; }
+  .lk-body { flex: 1; min-height: 0; display: flex; border-top: 1px solid var(--chrome-line); }
+  .lk-canvas { flex: 1; display: flex; justify-content: center; padding-top: 7px; background: var(--canvas); }
+  .lk-page { width: 62%; display: flex; flex-direction: column; gap: 4px; padding: 7px 6px; background: #fff; box-shadow: 1px 1px 0 rgba(0,0,0,.3); }
+  .lk-page p { height: 2px; margin: 0; background: #c4c4c4; }
+  .lk-page p:first-child { width: 55%; height: 4px; background: #555; }
+  .lk-pane { width: 36%; display: flex; flex-direction: column; gap: 4px; padding: 6px 5px; border-left: 1px solid var(--chrome-line); background: linear-gradient(var(--pane-a), var(--pane-b)); }
+  .lk-pane em { width: 70%; height: 4px; background: var(--pane-ink); }
+  .lk-pane u { width: 85%; height: 3px; background: var(--pane-link); opacity: .55; }
+  .lk-pane s { height: 7px; border-radius: var(--ctl-radius); background: var(--sel); }
+  .lk-status { height: 9px; border-top: 1px solid var(--chrome-line); background: linear-gradient(var(--dock-a), var(--dock-b)); }
+
+  /* recent files */
+  main { flex: 1; min-width: 0; display: flex; flex-direction: column; position: relative; }
+  .bar { flex: none; display: flex; align-items: center; gap: 12px; padding: 14px 24px 10px; border-bottom: 1px solid var(--start-line); }
+  .bar h1 { margin: 0; font-size: 16px; color: var(--pane-ink); }
+  .bar .status { flex: 1; color: var(--error-ink); }
+  .grid { flex: 1; min-height: 0; overflow: auto; padding: 20px 24px; display: grid; gap: 18px 14px; align-content: start;
+    grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); }
+  .doc { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 8px; border: 1px solid transparent; border-radius: 3px; }
+  .doc:hover, .doc:focus-within { background: var(--menu-hot); border-color: var(--card-hot-border); }
+  .thumb { display: flex; align-items: center; justify-content: center; height: 132px; background: var(--card-thumb-bg); border: 1px solid var(--card-thumb-line); overflow: hidden; }
+  .thumb img { max-width: 100%; max-height: 100%; box-shadow: 0 1px 3px var(--tip-shadow-c); }
+  .thumb svg { height: 100%; }
+  .doc a { outline: none; }
+  .doc a::after { content: ""; position: absolute; inset: 0; }      /* the whole card opens the file */
+  .doc .name { font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .doc .meta { color: var(--muted); font-size: 11px; display: flex; align-items: center; gap: 5px; }
+  .doc .meta i { width: 8px; height: 8px; border-radius: 2px; }
+  .doc .unsaved { align-self: flex-start; padding: 0 5px; border-radius: 3px; background: var(--badge-bg); color: var(--badge-ink); font-size: 11px; font-weight: bold; }
+  .doc .alt { position: relative; z-index: 1; align-self: flex-start; font-size: 11px; color: var(--pane-link); text-decoration: underline; }
+  .doc .rm { position: absolute; top: 4px; right: 4px; z-index: 1; width: 20px; height: 20px; padding: 0; border: 1px solid transparent; border-radius: 3px;
+    background: var(--rm-bg); color: var(--ink-3); cursor: pointer; opacity: 0; line-height: 1; }
+  .doc:hover .rm, .doc:focus-within .rm { opacity: 1; }
+  .doc .rm:hover { border-color: var(--tb-border); background: var(--surface); }
+
+  .gallery { flex: 1; min-height: 0; overflow: auto; padding: 6px 24px 24px; }
+  .gallery h2 { display: flex; align-items: center; gap: 8px; margin: 18px 0 10px; font-size: 13px; color: var(--pane-ink); }
+  .gallery h2 small { font-weight: normal; color: var(--muted); }
+  .gallery .grid { padding: 0; overflow: visible; }
+  .empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 24px; text-align: center; color: var(--muted); }
+  .empty img { width: 96px; height: 96px; opacity: .9; margin-bottom: 8px; }
+  .empty b { font-size: 16px; color: var(--pane-ink); }
+
+  .drop { position: absolute; inset: 10px; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--sel); border-radius: 8px;
+    background: var(--drop-bg); font-size: 16px; font-weight: bold; color: var(--pane-ink); pointer-events: none; }
+
+  dialog { border: 1px solid var(--tb-border); padding: 0; max-width: 420px; box-shadow: 0 6px 20px var(--dlg-shadow-c); }
+  dialog .dt { padding: 6px 9px; color: var(--pane-ink); font-weight: bold; background: linear-gradient(var(--tb-a), var(--tb-b)); border-bottom: 1px solid var(--pane-line); }
+  dialog .db { padding: 12px 14px; }
+  dialog p { margin: 0 0 8px; }
+  dialog form { text-align: right; }
+  dialog .btn { padding: 0 10px; }
+  dialog form button, dialog .btn { min-width: 75px; height: 23px; border: 1px solid var(--tb-border); border-radius: 2px; background: linear-gradient(var(--btn-a), var(--btn-b)); box-shadow: inset 0 0 0 1px var(--btn-ring); }
+  dialog form button:hover, dialog .btn:hover { background: linear-gradient(var(--btn-a), var(--btn-hot-b)); }
+
+  @media (max-width: 700px) {
+    .shell { flex-direction: column; }
+    .side { width: auto; border-right: 0; border-bottom: 1px solid var(--chrome-line); padding: 10px; gap: 8px; }
+    .side .grow, .side .note:not(.links), .brand small { display: none; }
+    .side .links { margin-top: 0; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); padding: 14px; }
+    .thumb { height: 104px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Start">
+    <div>
+      <button class="big" id="open" type="button"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M1.5 5.5v11h14l3-8h-14l-3 8" fill="#ffd66b" stroke="#a5781e"/><path d="M1.5 16V3.5h5l1.5 2h6.5v3" fill="#f5c044" stroke="#a5781e"/></svg>打开文件…</button>
+      <button class="big on" id="recentbtn" type="button" aria-pressed="true"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="#fff" stroke="#3b619c" stroke-width="1.5"/><path d="M10 5v5l3.5 2" fill="none" stroke="#0b3fa8" stroke-width="1.6" stroke-linecap="round"/></svg>最近文件</button>
+      <button class="big" id="createbtn" type="button" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 1.5h9l4 4v13h-13z" fill="#fff" stroke="#3b619c"/><path d="M12.5 1.5v4h4" fill="#dbe6f7" stroke="#3b619c"/><circle cx="14" cy="14.5" r="4.5" fill="#1f8a4c"/><path d="M14 12v5M11.5 14.5h5" stroke="#fff" stroke-width="1.8"/></svg>新建文件</button>
+    </div>
+    <div class="sec">
+      <h2>应用</h2>
+      <a class="new" href="quire/index.html" data-go><span data-icon="quire"></span><span><b>Quire</b><small>文字处理器</small></span></a>
+      <a class="new" href="ledger/index.html" data-go><span data-icon="ledger"></span><span><b>Ledger</b><small>电子表格</small></span></a>
+      <a class="new" href="lectern/index.html" data-go><span data-icon="lectern"></span><span><b>Lectern</b><small>演示文稿</small></span></a>
+    </div>
+    <div class="grow"></div>
+    <div>
+      <button class="big" id="update" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="#1f8a4c"/><path d="M10 5v7.5M6.5 9.5l3.5 3.5 3.5-3.5" fill="none" stroke="#fff" stroke-width="2"/><path d="M6 15.5h8" stroke="#fff" stroke-width="1.6"/></svg>更新 Office 2003</button>
+      <button class="big" id="install" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="16" height="12" rx="1.5" fill="#fff" stroke="#3b619c"/><path d="M10 5.5v6M7 9l3 3 3-3" fill="none" stroke="#1f8a4c" stroke-width="1.8"/><path d="M6 17.5h8" stroke="#3b619c"/></svg>安装 Office 2003</button>
+      <div class="caching" id="caching" role="status" hidden><span id="cachingtext">正在更新缓存资源</span><progress id="cachingbar" max="1" value="0"></progress><span id="cachingsize"></span></div>
+      <button class="big" id="cachingreload" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="#1f8a4c"/><path d="M14 7.2A4.6 4.6 0 1 0 14.6 11" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M14.8 4.4v3.6h-3.6" fill="none" stroke="#fff" stroke-width="1.8"/></svg>更新完成，请重新加载</button>
+    </div>
+    <p class="note">文件只保存在这台电脑上；最近文件仅记录在本浏览器中。<br><span class="version"></span></p>
+    <p class="note links">
+      <button class="link" id="settings" type="button"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="#5b6f8c" stroke-width="2.6" stroke-dasharray="2.2 2.2"/><circle cx="8" cy="8" r="4" fill="#dbe6f7" stroke="#3b619c" stroke-width="1.2"/><circle cx="8" cy="8" r="1.6" fill="#fff" stroke="#3b619c"/></svg><span>设置</span></button>
+      <button class="link" id="themes" type="button"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13c1 0 1.4-.8 1-1.6-.5-1 .1-2 1.2-2h1.6a2.7 2.7 0 0 0 2.7-2.9C14.3 4.3 11.5 1.5 8 1.5z" fill="#fff" stroke="#a5781e"/><circle cx="5" cy="6.5" r="1.3" fill="#d9442b"/><circle cx="8.2" cy="4.6" r="1.3" fill="#f5b400"/><circle cx="11.3" cy="6.4" r="1.3" fill="#1f8a4c"/><circle cx="5.2" cy="10" r="1.3" fill="#2a6fd6"/></svg><span>主题</span></button>
+    </p>
+  </nav>
+
+  <main id="main">
+    <div class="bar">
+      <h1 id="viewtitle">最近文件</h1>
+      <span class="status" id="status" role="status"></span>
+      <button class="link" id="clear" type="button" hidden>清空最近文档</button>
+    </div>
+    <div class="grid" id="grid" hidden></div>
+    <div class="gallery" id="gallery" hidden></div>
+    <div class="empty" id="empty">
+      <img src="icons/icon.svg" alt="">
+      <b>欢迎使用 Office 2003。</b>
+      <span>把文档拖到这里，或在左侧选择一个应用开始新建。</span>
+    </div>
+    <div class="drop" id="drop" hidden>松开以打开文件</div>
+  </main>
+</div>
+
+<dialog id="updatedlg">
+  <div class="dt">更新 Office 2003</div>
+  <div class="db">
+    <p>有更新的 Office 2003 版本可用。当前版本为 <span class="version"></span>。</p>
+    <div class="news" id="updatenews" hidden></div>
+    <p>现在下载吗？你的文档和最近文件都会保持原样。</p>
+    <form method="dialog"><button value="download">下载</button> <button value="later">稍后</button></form>
+  </div>
+</dialog>
+<dialog id="settingsdlg">
+  <div class="dt">设置</div>
+  <div class="db">
+    <p>这些设置对 Office 2003 的每个应用都生效。</p>
+    <fieldset class="st"><legend>界面大小</legend>
+      <p id="scalerow" hidden><label for="uiscale">菜单、工具栏与文档的显示比例：</label>
+        <select id="uiscale"><option value="1">100 %</option><option value="1.25">125 %</option><option value="1.5">150 %</option><option value="2">200 %</option><option value="3">300 %</option><option value="4">400 %</option></select></p>
+      <p id="scaleweb">用浏览器的缩放即可：Ctrl 与 + 放大、Ctrl 与 − 缩小、Ctrl 与 0 恢复原大小（Mac 上是 ⌘）。</p>
+    </fieldset>
+    <fieldset class="st"><legend>本机字体</legend>
+      <p id="fontinfo"></p>
+      <p id="fontbtns"><button class="btn" id="fontload" type="button">读取本机字体列表</button> <button class="btn" id="fontforget" type="button">忘记该列表</button></p>
+    </fieldset>
+    <fieldset class="st"><legend>最近文件</legend>
+      <p id="recentinfo"></p>
+      <p><button class="btn" id="recentclear" type="button">清空最近文档</button></p>
+    </fieldset>
+    <form method="dialog"><button>确定</button></form>
+  </div>
+</dialog>
+<dialog id="themesdlg">
+  <div class="dt">主题</div>
+  <div class="db">
+    <p>选择 Office 2003 的外观，所有已打开的窗口都会随之变化。</p>
+    <div class="looks" id="looklist"></div>
+    <form method="dialog"><button>确定</button></form>
+  </div>
+</dialog>
+<input type="file" id="picker" hidden>
+<script src="common/suite.js"></script>
+<script>
+(function () {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  /* Safari's Lockdown Mode takes IndexedDB away (the name is undefined), which 最近文件, unsaved
+     versions and opening files from here need */
+  const noStorage = typeof indexedDB === 'undefined';
+  if (noStorage) alert('Office 2003 keeps 最近文件 and unsaved changes in this browser, and Safari\'s Lockdown Mode turns that off.\n\n' +
+    'To allow it for this site only: tap aA in the address bar, tap Website Settings, and turn off Lockdown Mode. Safari reloads the page.');
+  const h = (tag, attrs, ...kids) => {
+    const el = document.createElement(tag);
+    for (const k in attrs || {}) if (attrs[k] != null) el.setAttribute(k, attrs[k]);
+    el.append(...kids.filter((k) => k != null));
+    return el;
+  };
+  const COLOR = { quire: 'var(--quire)', ledger: 'var(--ledger)', lectern: 'var(--lectern)' };
+
+  /* app pictures: a page with lines, a grid, a slide; small for Create, large when a file has no thumbnail */
+  function picture(app, ext) {
+    const c = { quire: '#2a64c8', ledger: '#1f8a4c', lectern: '#e0682d' }[app];
+    let art;
+    if (app === 'ledger') art = `<rect x="14" y="22" width="52" height="54" fill="#fff" stroke="${c}"/><path d="M14 31h52M14 40h52M14 49h52M14 58h52M14 67h52M30 22v54M48 22v54" stroke="${c}" stroke-opacity=".55"/><rect x="14" y="22" width="52" height="9" fill="${c}" fill-opacity=".25"/>`;
+    else if (app === 'lectern') art = `<rect x="12" y="28" width="56" height="40" rx="2" fill="${c}" fill-opacity=".14" stroke="${c}"/><rect x="18" y="34" width="44" height="8" fill="${c}"/><path d="M20 50h40M20 57h30" stroke="${c}" stroke-width="3" stroke-linecap="round" stroke-opacity=".6"/>`;
+    else art = `<path d="M18 26h44M18 34h44M18 42h44M18 50h44M18 58h30" stroke="${c}" stroke-width="3" stroke-linecap="round"/>`;
+    const badge = ext ? `<rect x="40" y="76" width="38" height="16" rx="3" fill="${c}"/><text x="59" y="88" font-family="Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">${ext.toUpperCase().slice(0, 4)}</text>` : '';
+    return `<svg viewBox="0 0 80 100" width="${ext ? 80 : 24}" height="${ext ? 100 : 30}" aria-hidden="true"><path d="M4 2h54l18 18v76H4z" fill="#fff" stroke="#8ea3c4"/><path d="M58 2v18h18" fill="#e3ebf8" stroke="#8ea3c4"/>${art}${badge}</svg>`;
+  }
+  for (const el of document.querySelectorAll('[data-icon]')) el.innerHTML = picture(el.dataset.icon);
+
+  const status = (text) => { $('status').textContent = text || ''; };
+
+  /* links to apps open in a new window when installed, so this start page stays */
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-go]');
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    VO.go(a.href);
+  });
+
+  /* ---------- opening files: Open File..., drop, the operating system (installed app) */
+  async function openFile(file) {
+    status('');
+    if (!file) return;
+    if (!(await VO.handoff(file))) status(`Office 2003 无法打开“${file.name}”。它可以打开文档（.docx/.rtf）、电子表格（.xlsx/.csv）和演示文稿（.pptx）。`);
+  }
+  $('picker').accept = VO.accept();
+  $('open').addEventListener('click', () => { $('picker').value = ''; $('picker').click(); });
+  $('picker').addEventListener('change', () => openFile($('picker').files[0]));
+  let depth = 0;
+  const hasFiles = (e) => e.dataTransfer && [...e.dataTransfer.types].includes('Files');
+  document.addEventListener('dragenter', (e) => { if (!hasFiles(e)) return; depth++; $('drop').hidden = false; });
+  document.addEventListener('dragleave', () => { if (--depth <= 0) { depth = 0; $('drop').hidden = true; } });
+  document.addEventListener('dragover', (e) => { if (hasFiles(e)) e.preventDefault(); });
+  document.addEventListener('drop', (e) => { if (!hasFiles(e)) return; e.preventDefault(); depth = 0; $('drop').hidden = true; openFile(e.dataTransfer.files[0]); });
+  VO.host.onFiles((files) => openFile(files[0]));   // Open with, a double-click on a file
+
+  /* ---------- 最近文件 */
+  const day = (t) => new Date(t).toDateString();
+  const when = (t) => {
+    const time = new Date(t).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (day(t) === day(Date.now())) return '今天 ' + time;
+    if (day(t) === day(Date.now() - 86400000)) return '昨天 ' + time;
+    return new Date(t).toLocaleDateString([], { year: 'numeric', month: 'short', day: 'numeric' });
+  };
+  let urls = [];
+  async function render() {
+    let list = [];
+    if (!noStorage) try { list = await VO.recent.list(); } catch (e) { status('此浏览器中无法使用最近文件（' + e.message + ').'); }
+    if (view !== 'recent') return;   // switched to 新建文件 meanwhile
+    for (const u of urls) URL.revokeObjectURL(u);
+    urls = [];
+    const grid = $('grid');
+    grid.replaceChildren(...list.map((e) => {
+      const thumb = h('div', { class: 'thumb' });
+      if (e.thumb) { const u = URL.createObjectURL(e.thumb); urls.push(u); thumb.append(h('img', { src: u, alt: '' })); }
+      else thumb.innerHTML = picture(e.app, VO.ext(e.name));
+      /* a document with unsaved changes opens at its unsaved version; × then discards those changes */
+      const rm = h('button', { class: 'rm', type: 'button', title: e.draft ? 'Discard the unsaved changes' : '从列表中移除', 'aria-label': (e.draft ? '放弃对以下文档的未保存更改：' : '从列表中移除：') + e.name }, '×');
+      rm.addEventListener('click', async () => {
+        if (e.draft) { if (confirm(`Discard the unsaved changes to “${e.name}”?` + (e.file ? ' 已保存的版本仍保留在列表中。' : ''))) await VO.recent.discardDraft(e.key); }
+        else await VO.recent.remove(e.key);
+        render();
+      });
+      const app = VO.APPS[e.app] || { name: e.app };
+      const dot = h('i'); dot.style.background = COLOR[e.app] || '#888';
+      return h('div', { class: 'doc', title: `${e.name}\n${app.name}` + (e.file ? ` · ${(e.size / 1024).toFixed(0)} KB` : '') + ` · ${new Date(e.time).toLocaleString()}` + (e.draft ? '\nUnsaved changes' : '') },
+        thumb,
+        h('a', { class: 'name', href: VO.url(e.app, e.draft ? { recent: e.key, draft: true } : { recent: e.key }), 'data-go': '' }, e.name),
+        h('div', { class: 'meta' }, dot, app.name + ' · ' + when(e.time)),
+        e.draft ? h('span', { class: 'unsaved' }, e.file ? '未保存的更改' : '从未保存') : null,
+        e.draft && e.file ? h('a', { class: 'alt', href: VO.url(e.app, { recent: e.key }), 'data-go': '', title: '打开更改之前保存的版本' }, '已保存的版本') : null,
+        rm);
+    }));
+    grid.hidden = !list.length;
+    $('empty').hidden = !!list.length;
+    $('clear').hidden = !list.length;
+  }
+  const clearRecent = async () => {
+    if (!confirm('清空最近文件列表？电脑上的文件不会被删除。')) return false;
+    await VO.recent.clear(); render();
+    return true;
+  };
+  $('clear').addEventListener('click', clearRecent);
+  VO.onRecentChange(() => { if (view === 'recent') render(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && view === 'recent') render(); });
+
+  /* ---------- 新建文件: Blank and the templates of each app (common/templates.json, made by tools/templates.mjs) */
+  const KIND = { quire: '文档', ledger: '电子表格', lectern: '演示文稿' };
+  let gallery = null;
+  async function renderGallery() {
+    if (gallery) return;
+    gallery = $('gallery');
+    let cat = {};
+    try { cat = await (await fetch('common/templates.json')).json(); } catch (e) { status('模板加载失败。'); }
+    for (const app of Object.keys(KIND)) {
+      const list = cat[app] || [{ id: '', name: 'Blank', img: null }];
+      gallery.append(h('h2', null, h('span', { 'data-icon': app }), KIND[app], h('small', null, '· ' + VO.APPS[app].name)),
+        h('div', { class: 'grid' }, ...list.map((t) => {
+          const thumb = h('div', { class: 'thumb' });
+          if (t.img) thumb.append(h('img', { src: t.img, alt: '', loading: 'lazy' })); else thumb.innerHTML = picture(app);
+          return h('div', { class: 'doc', title: t.id ? `New ${VO.APPS[app].kind.toLowerCase()} from “${t.name}”` : `New blank ${VO.APPS[app].kind.toLowerCase()}` },
+            thumb, h('a', { class: 'name', href: VO.url(app, t.id ? { template: t.id } : { new: true }), 'data-go': '' }, t.name));
+        })));
+    }
+    for (const el of gallery.querySelectorAll('[data-icon]')) el.innerHTML = picture(el.dataset.icon);
+  }
+
+  /* ---------- the two views: 最近文件 (default) and 新建文件 (#create), so Back goes between them */
+  let view = '';
+  function show() {
+    view = location.hash === '#create' ? 'create' : 'recent';
+    $('viewtitle').textContent = view === 'create' ? '新建文件' : '最近文件';
+    $('recentbtn').classList.toggle('on', view === 'recent'); $('recentbtn').setAttribute('aria-pressed', view === 'recent');
+    $('createbtn').classList.toggle('on', view === 'create'); $('createbtn').setAttribute('aria-pressed', view === 'create');
+    status('');
+    if (view === 'create') { $('grid').hidden = $('empty').hidden = $('clear').hidden = true; $('gallery').hidden = false; renderGallery(); }
+    else { $('gallery').hidden = true; render(); }
+  }
+  $('recentbtn').addEventListener('click', () => { if (location.hash) history.pushState(null, '', location.pathname + location.search); show(); });
+  $('createbtn').addEventListener('click', () => { if (location.hash !== '#create') location.hash = 'create'; else show(); });
+  window.addEventListener('hashchange', show);
+  window.addEventListener('popstate', show);
+  show();
+
+  /* ---------- install, about */
+  let installEvent = null;
+  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvent = e; $('install').hidden = false; });
+  window.addEventListener('appinstalled', () => { installEvent = null; $('install').hidden = true; });
+  $('install').addEventListener('click', async () => { if (!installEvent) return; installEvent.prompt(); await installEvent.userChoice; installEvent = null; $('install').hidden = true; });
+  document.querySelectorAll('.version').forEach((el) => { el.textContent = VO.VERSION; });
+  /* Themes: the suite's looks (common/looks.css); choosing one changes every open window of the suite */
+  const BODY = '<div class="lk-body"><div class="lk-canvas"><div class="lk-page"><p></p><p></p><p></p><p></p><p></p><p></p></div></div>'
+    + '<div class="lk-pane"><em></em><u></u><u></u><s></s><u></u></div></div><div class="lk-status"></div>';
+  const MOCK = '<div class="lk-menu"><span>文件</span><span>编辑</span><span>视图</span><span>插入</span></div>'
+    + '<div class="lk-tb"><i></i><i></i><i></i><b></b><i></i><i></i><i></i></div>'
+    + BODY;
+  const grp = (icons) => '<div class="lk-rgrp"><div>' + icons + '</div><p></p></div>';
+  const RIBBON = '<div class="lk-rbar"><span>文件</span><span class="on">开始</span><span>插入</span><span>视图</span></div>'
+    + '<div class="lk-rpanel">' + grp('<i class="big"></i><i></i><i></i>') + grp('<i></i><i></i><i></i><i></i><i></i>') + grp('<i></i><i></i><i></i>') + grp('<i class="big"></i>') + '</div>'
+    + BODY;
+  const drawLooks = () => {
+    const list = $('looklist');
+    list.textContent = '';
+    for (const l of VO.look.list()) {
+      const mock = h('div', { class: 'lk-mock', 'data-look': l.id, 'aria-hidden': 'true' });
+      mock.innerHTML = l.layout === 'ribbon' ? RIBBON : MOCK;
+      const card = h('button', { class: 'lk-card', type: 'button', 'aria-pressed': String(l.id === VO.look.get()) }, mock, h('b', null, l.name), h('small', null, l.note));
+      card.addEventListener('click', () => VO.look.set(l.id));
+      list.append(card);
+    }
+  };
+  $('themes').addEventListener('click', () => { drawLooks(); $('themesdlg').showModal(); });
+
+  /* The web edition's service worker caching a version of the site (sw.js, 'vo-cache' from common/suite.js):
+     a progress bar above the GitHub button while it works, with the megabytes downloaded; after an update, a
+     button to reload this page in the new version (a first visit's page is already the cached version) */
+  const mb = (bytes) => (bytes / 1048576).toFixed(1);
+  window.addEventListener('vo-cache', (e) => {
+    const d = e.detail || {};
+    $('caching').hidden = d.state !== 'progress';
+    $('cachingreload').hidden = !(d.state === 'done' && d.update);
+    if (d.state !== 'progress') return;
+    $('cachingtext').textContent = d.update ? '正在更新缓存资源' : '正在缓存资源以供离线使用';
+    $('cachingsize').textContent = d.total ? `${mb(d.received || 0)} of ${mb(d.total)} MB` : d.received ? `${mb(d.received)} MB` : '';
+    $('cachingbar').value = d.progress || 0;
+  });
+  $('cachingreload').addEventListener('click', () => location.reload());
+
+  /* Updates (desktop app): an Update button, or once a day a dialog, when updater/current.json asks for it */
+  const download = () => VO.host.openUrl(VO.updateUrl()).catch((e) => status(String(e)));
+  $('update').addEventListener('click', download);
+  $('updatedlg').addEventListener('close', () => { if ($('updatedlg').returnValue === 'download') download(); });
+  if (VO.host.kind === 'desktop') {
+    VO.checkUpdate().then(({ ask, news }) => {
+      if (!ask) return;
+      $('updatenews').replaceChildren(...news.flatMap((n) => [h('b', null, n.version), h('p', null, n.text)]));
+      $('updatenews').hidden = !news.length;
+      $('update').hidden = false;
+      const today = new Date().toDateString();
+      if (ask === 'dialog' && localStorage.getItem('vibeoffice.updateAsked') !== today) {
+        try { localStorage.setItem('vibeoffice.updateAsked', today); } catch (e) { /* asks again next time */ }
+        $('updatedlg').showModal();
+      }
+    }).catch((e) => console.info('update check:', e.message));   // offline: nothing to show
+  }
+
+  /* Settings: what applies to every app. 界面大小 is the desktop app's zoom (VO.host); on the web the browser's own */
+  const fontInfo = () => {
+    const n = VO.localFonts.list().length;
+    $('fontbtns').hidden = !VO.localFonts.supported();
+    $('fontforget').hidden = !n;
+    $('fontload').textContent = n ? '重新读取本机字体列表' : '读取本机字体列表';
+    $('fontinfo').textContent = n ? `字体下拉框还会列出本机安装的 ${n} 种字体。`
+      : VO.localFonts.supported() ? '字体下拉框会列出常用 Office 字体和文档自带的字体；获得授权后还可以列出本机安装的字体。'
+        : '字体下拉框会列出常用 Office 字体和文档自带的字体。';
+  };
+  const recentInfo = async () => {
+    let list = [];
+    if (!noStorage) try { list = await VO.recent.list(); } catch (e) { /* shown as none */ }
+    const drafts = list.filter((e) => e.draft).length;
+    let size = '';
+    try { const est = navigator.storage && await navigator.storage.estimate(); if (est && est.usage) size = `，约 ${(est.usage / 1048576).toFixed(1)} MB`; } catch (e) { /* no estimate */ }
+    $('recentinfo').textContent = noStorage ? '此处无法使用最近文件。'
+      : !list.length ? '列表为空。'
+        : `共 ${list.length} 个文件${drafts ? `（${drafts} 个有未保存的更改）` : ''}${size}，保存在${VO.host.kind === 'desktop' ? '本机' : '本浏览器'}中。`;
+    $('recentclear').hidden = !list.length;
+  };
+  $('settings').addEventListener('click', async () => {
+    const scale = await VO.host.uiScale().catch(() => null);
+    $('scalerow').hidden = scale === null;
+    $('scaleweb').hidden = scale !== null;
+    if (scale !== null) $('uiscale').value = String(scale);
+    fontInfo();
+    await recentInfo();
+    $('settingsdlg').showModal();
+  });
+  $('uiscale').addEventListener('change', () => VO.host.setUiScale(+$('uiscale').value).catch((e) => status(String(e))));
+  $('fontload').addEventListener('click', async () => {
+    try { await VO.localFonts.load(); } catch (e) { $('fontinfo').textContent = '无法列出本机字体' + (e.name === 'NotAllowedError' || e.name === 'SecurityError' ? '：未授予权限。' : ': ' + (e.message || e)); return; }
+    fontInfo();
+  });
+  $('fontforget').addEventListener('click', () => { VO.localFonts.forget(); fontInfo(); });
+  $('recentclear').addEventListener('click', async () => { if (await clearRecent()) recentInfo(); });
+  window.addEventListener('vo-look', drawLooks);
+})();
+</script>
+</body>
+</html>
