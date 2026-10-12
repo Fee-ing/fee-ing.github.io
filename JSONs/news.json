@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791830744737,
+  "timestamp": 1791831662610,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3065,6 +3065,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://www.199it.com/archives/1838474.html",
+          "text": "Crunchbase：2026 上半年全球风险投资达 5100 亿美元",
+          "heat": "199IT"
+        },
+        {
           "url": "https://www.ithome.com/1/012/104.htm",
           "text": "AMD 发布新一代锐龙 AI Halo 开发者平台，升级 Max+ PRO 495 与至高 192GB 内存",
           "heat": "IT 之家"
@@ -3073,11 +3078,6 @@
           "url": "https://www.aibase.com/zh/news/31563",
           "text": "微软升级 Copilot Notebooks：支持任务委派、Office 文档编辑与交互式报告",
           "heat": "aibase"
-        },
-        {
-          "url": "https://ai.cnmo.com/news/820135.html",
-          "text": "微软总裁布拉德・史密斯：AI 监管还比不上牛奶和洗衣机",
-          "heat": "手机中国"
         }
       ]
     },
@@ -10536,22 +10536,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48907415",
           "text": "无名的人呐啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
-          "heat": "1442"
+          "heat": "1447"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902803",
           "text": "【东方/助眠】Bad Apple!!八音盒耐久 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "462"
+          "heat": "495"
         },
         {
           "url": "http://www.acfun.cn/v/ac48908634",
           "text": "物凄い！小莉和fufu",
-          "heat": "419"
+          "heat": "427"
         },
         {
           "url": "http://www.acfun.cn/v/ac48906077",
           "text": "【生贺作翻唱】️我 的 好 兄 弟 麻 油 氏 再 混 音️",
-          "heat": "414"
+          "heat": "425"
         },
         {
           "url": "http://www.acfun.cn/v/ac48908740",
@@ -10561,7 +10561,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48908708",
           "text": "RAISE A SUILEN「EXTREME EXPRESS」（邦邦 13th LIVE DAY3）",
-          "heat": "501"
+          "heat": "515"
         },
         {
           "url": "http://www.acfun.cn/v/ac48906424",
@@ -10679,9 +10679,9 @@
           "heat": "15"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48907789",
-          "text": "【FNF】StrikeLike Solioquy 官方实机演示",
-          "heat": "93"
+          "url": "http://www.acfun.cn/v/ac48908846",
+          "text": "【术曲八音盒●洛天依】忆红莲",
+          "heat": "13"
         }
       ]
     },
