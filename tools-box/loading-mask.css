@@ -70,7 +70,7 @@
   font-size: 14px;
   font-weight: 600;
   /* 冷灰文字：在彩色渐变与噪点上都有足够对比 */
-  color: rgba(60, 60, 80, 0.8);
+  color: #0f172b;
   letter-spacing: 0.5px;
   font-variant-numeric: tabular-nums;
   animation: lm-label-fade 1.2s ease-in-out infinite alternate;
