@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791911739650,
+  "timestamp": 1791912655760,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2990,6 +2990,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b",
+          "text": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17090",
           "text": "AI 真的能制造机器了？一家初创公司花六年造出微型继电器",
           "heat": "麻省理工科技评论"
@@ -3033,11 +3038,6 @@
           "url": "https://www.aibase.com/zh/news/31609",
           "text": "千问发布 AI 眼镜 N1、N1Pro 及 Bose 联名 AI 耳夹式耳机，开启主动 AI 新时代",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/jX1ndNxDJ94n6bUu.html",
-          "text": "字节跳动 Seed 单独设立大模型安全与对齐部门",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -10441,32 +10441,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48909572",
           "text": "心事藏在歌里，一首想自由送给所有身不由己的人",
-          "heat": "1730"
+          "heat": "1741"
         },
         {
           "url": "http://www.acfun.cn/v/ac48902821",
           "text": "【东方】Bad Apple!! 特斯拉线圈音乐",
-          "heat": "1004"
+          "heat": "1028"
         },
         {
           "url": "http://www.acfun.cn/v/ac48910546",
           "text": "【千璃Senri】Airhead",
-          "heat": "1093"
+          "heat": "1098"
         },
         {
           "url": "http://www.acfun.cn/v/ac48884381",
           "text": "【短视频】据说叹气要往上叹…",
-          "heat": "1101"
+          "heat": "1104"
         },
         {
           "url": "http://www.acfun.cn/v/ac48910189",
           "text": "261011 宋雨琦“二十七”广州音乐分享会 《Training Season 》",
-          "heat": "932"
+          "heat": "968"
         },
         {
           "url": "http://www.acfun.cn/v/ac48909803",
           "text": "李秀满的新女团 [A2O WORLD] A2O LITE  NEON  官方MV",
-          "heat": "730"
+          "heat": "753"
         },
         {
           "url": "http://www.acfun.cn/v/ac48910634",
@@ -10486,7 +10486,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48906120",
           "text": "AcFun名梗歌-日语版(CFAI-U.VC天晓音)",
-          "heat": "157"
+          "heat": "161"
         },
         {
           "url": "http://www.acfun.cn/v/ac48910988",
