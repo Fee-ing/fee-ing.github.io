@@ -9,7 +9,7 @@
          静态壳不必等 JS bundle 就能拿到样式；React 挂载后的 LoadingMask 继续复用
          同一份 CSS，因此「静态壳 → React」接管前后零换肤、零位移。 -->
     <link rel="stylesheet" href="/tools-box/loading-mask.css" />
-    <script type="module" crossorigin src="/tools-box/assets/index-590i8ygU.js"></script>
+    <script type="module" crossorigin src="/tools-box/assets/index-7GdbF1gA.js"></script>
     <link rel="modulepreload" crossorigin href="/tools-box/assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/jsx-runtime-BpzPEenQ.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/with-selector-DJ0JX1iX.js">
@@ -21,18 +21,18 @@
     <link rel="modulepreload" crossorigin href="/tools-box/assets/clsx-DB0hHKMi.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/dist-BFGQnjj0.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/bundle-mjs-DxdGK6Xj.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/utils-u_TnV1rB.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortal-BOwHkHJZ.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-DfqJo0tr.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/utils-D4rAWyr9.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortal-CSBtsJCD.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useSwipeDismiss-Dj7Vv3lw.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/triangle-alert-BfJ-SJel.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-C3ep8Rtd.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-iH_Zzhqc.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/popupStateMapping-CEF-hqwu.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/FloatingPortalLite-C-Mqnouf.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/useValueAsRef-CH42Pxrg.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-Dxl8byzm.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/safePolygon-BUk649v6.js">
     <link rel="modulepreload" crossorigin href="/tools-box/assets/floating-ui.react-dom-CRWPNd1i.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-DYh3nYng.js">
-    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-D6SJU595.js">
-    <link rel="stylesheet" crossorigin href="/tools-box/assets/index-BvNOMSwc.css">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/useBaseUiId-DZshr23M.js">
+    <link rel="modulepreload" crossorigin href="/tools-box/assets/usePositioner-DyLX7Fog.js">
+    <link rel="stylesheet" crossorigin href="/tools-box/assets/index-Dhg6XOU8.css">
   </head>
   <body style="margin:0;padding:0;box-sizing:border-box;overflow:hidden">
     <!-- 首屏静态加载壳：JS bundle 下载/执行期间展示。 -->
@@ -47,15 +47,33 @@
           <div class="lm-mask__blur"></div>
           <div class="lm-mask__shimmer"></div>
           <div class="lm-mask__noise"></div>
+          <!-- 流体背景画布：由下面同步加载的 loading-fluid.js 绘制。
+               脚本到位前这里是一片透明，看到的是上面三层 CSS 兜底皮肤；
+               WebGL 不可用 / 脚本未就位时同样如此（canvas 会被移除）。 -->
+          <canvas class="lm-mask__fluid" id="boot-fluid" aria-hidden="true"></canvas>
           <span class="lm-mask__label" id="boot-label">正在加载资源 0%</span>
         </div>
       </div>
     </div>
+    <!-- 流体背景引擎：与 loading-mask.css 同样的思路放在 public/，让「React 之前」的
+         静态壳和「React 之后」的 LoadingMask / 桌面壁纸共用同一个 WebGL 上下文。
+         刻意排在静态壳之后：脚本下载不挡首屏 HTML 解析，浏览器可以先用 CSS 兜底层
+         画出壳子，流体到位后再无缝接上。 -->
+    <script src="/tools-box/loading-fluid.js"></script>
     <!-- 静态壳的百分比：没有真实进度可读，用一条缓慢爬升的曲线制造「正在推进」的观感，
          爬到 70% 即停住 —— 与 React 侧 BootOverlay 的接管起点(70%)对齐，进度单调不回跳。
          classic script 在解析到此处即执行，早于下方 type=module 的入口。 -->
     <script>
       (function () {
+        // 流体背景：把静态壳的画布挂到共享引擎上。
+        // coverAll —— 本层不透明盖满整屏，引擎据此暂停其它 surface 的渲染。
+        var fluidCanvas = document.getElementById('boot-fluid');
+        if (fluidCanvas) {
+          var fluid = window.LoadingFluid && window.LoadingFluid.mount(fluidCanvas, { coverAll: true });
+          // 挂不上（无 WebGL / 老内核）就把画布摘掉，让 CSS 兜底层原样兜底
+          if (!fluid) fluidCanvas.parentNode.removeChild(fluidCanvas);
+        }
+
         var el = document.getElementById('boot-label');
         if (!el) return;
         var p = 0;
