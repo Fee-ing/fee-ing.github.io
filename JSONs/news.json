@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791996348091,
+  "timestamp": 1791997266908,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,9 +3035,19 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://huggingface.co/blog/allenai/hiro-acev2",
+          "text": "HiRO-ACEv2: Simulating extreme weather at 3 km resolution for a fraction of the cost",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
           "text": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
           "heat": "Google DeepMind"
+        },
+        {
+          "url": "https://simonwillison.net/2026/Oct/14/ai-is-mass-decompiling-games/",
+          "text": "AI is mass decompiling games. That's both awesome and scary.",
+          "heat": "Simon Willison"
         },
         {
           "url": "https://www.mittrchina.com/news/detail/17091",
@@ -3073,16 +3083,6 @@
           "url": "https://www.solidot.org/story?sid=85612",
           "text": "Linus Torvalds 用 LLM 辅助开发的补丁递交接受审查",
           "heat": "Solidot"
-        },
-        {
-          "url": "https://www.ithome.com/1/013/130.htm",
-          "text": "英特尔面向四至六代至强处理器推出推理微服务：自动检测硬件并配置 vLLM 参数",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.jiemian.com/article/15191180.html",
-          "text": "合并折戟叠加 AI 冲击，盖蒂图片社将通过破产重组私有化",
-          "heat": "界面"
         }
       ]
     },
@@ -4417,6 +4417,11 @@
           "heat": "拾光者"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261014Q0COWL00",
+          "text": "乌克兰无人机任务对星链的依赖有多高？如果长期限速，乌克兰还有哪些办法？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261013Q0AO1500",
           "text": "警方对“男子在悬空寺做引体向上”立案调查，他可能会被如何处罚？景区应该如何防范此类事件？",
           "heat": "贵重物品DR"
@@ -4424,11 +4429,6 @@
         {
           "url": "https://new.qq.com/rain/a/20261014Q0D36F00",
           "text": "34岁女业主在小区坠井遇难，井口铺有木板和假草皮，为什么在这里设置这样的“陷阱”？物业该负多大责任？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261014Q0COWL00",
-          "text": "乌克兰无人机任务对星链的依赖有多高？如果长期限速，乌克兰还有哪些办法？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -10531,17 +10531,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48912680",
           "text": "泡面头版《黑色柳丁》",
-          "heat": "1209"
+          "heat": "1210"
         },
         {
           "url": "http://www.acfun.cn/v/ac48912292",
           "text": "你看我声嘶力竭的呐喊着，你喊我的懦弱",
-          "heat": "1364"
+          "heat": "1370"
         },
         {
           "url": "http://www.acfun.cn/v/ac48913247",
           "text": "【绝望女神/翻唱】【橙路剧场版 ED 擁抱那片天空】",
-          "heat": "485"
+          "heat": "507"
         },
         {
           "url": "http://www.acfun.cn/v/ac48912428",
@@ -10549,19 +10549,24 @@
           "heat": "610"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48911976",
-          "text": "人是猫翻唱",
-          "heat": "381"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48884385",
           "text": "【短视频】集思广益求歌名～",
-          "heat": "538"
+          "heat": "574"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48913678",
+          "text": "【衣笠雪绘】说说说说你爱我 歌切day206《大舌头》",
+          "heat": "200"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48911976",
+          "text": "人是猫翻唱",
+          "heat": "407"
         },
         {
           "url": "http://www.acfun.cn/v/ac48911255",
           "text": "［朝鲜中字］千里马在奔驰（新版）",
-          "heat": "200"
+          "heat": "217"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898399",
@@ -10584,9 +10589,9 @@
           "heat": "94"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48913678",
-          "text": "【衣笠雪绘】说说说说你爱我 歌切day206《大舌头》",
-          "heat": "174"
+          "url": "http://www.acfun.cn/v/ac48912751",
+          "text": "明眸犹记，旧梦暖忆｜从此「渐渐忘记」",
+          "heat": "35"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898422",
@@ -10609,11 +10614,6 @@
           "heat": "41"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48912751",
-          "text": "明眸犹记，旧梦暖忆｜从此「渐渐忘记」",
-          "heat": "35"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48898407",
           "text": "【罗百吉&宝贝】妈妈爱谁(国语)",
           "heat": "90"
@@ -10631,7 +10631,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48912103",
           "text": "Ax14 - Promised Land（应许之地）（Frutiger Aero 专辑）",
-          "heat": "157"
+          "heat": "166"
         },
         {
           "url": "http://www.acfun.cn/v/ac48912337",
@@ -14378,7 +14378,7 @@
         {
           "url": "https://www.dongchedi.com/article/7694850268513419801",
           "text": "2027款领克07GT日常实用性测试报告",
-          "heat": "83"
+          "heat": "84"
         },
         {
           "url": "https://www.dongchedi.com/article/7695224832955089470",
