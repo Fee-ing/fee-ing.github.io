@@ -1,5 +1,5 @@
 {
-  "timestamp": 1791994547235,
+  "timestamp": 1791995456696,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10541,17 +10541,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48912680",
           "text": "泡面头版《黑色柳丁》",
-          "heat": "1199"
+          "heat": "1206"
         },
         {
           "url": "http://www.acfun.cn/v/ac48912292",
           "text": "你看我声嘶力竭的呐喊着，你喊我的懦弱",
-          "heat": "1359"
+          "heat": "1363"
         },
         {
           "url": "http://www.acfun.cn/v/ac48913247",
           "text": "【绝望女神/翻唱】【橙路剧场版 ED 擁抱那片天空】",
-          "heat": "461"
+          "heat": "477"
         },
         {
           "url": "http://www.acfun.cn/v/ac48912428",
@@ -10561,17 +10561,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48911976",
           "text": "人是猫翻唱",
-          "heat": "351"
+          "heat": "377"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48884385",
+          "text": "【短视频】集思广益求歌名～",
+          "heat": "445"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48911255",
+          "text": "［朝鲜中字］千里马在奔驰（新版）",
+          "heat": "200"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898399",
           "text": "郑明勋  KBS交响乐团 马勒《第五交响曲》",
           "heat": "144"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48911255",
-          "text": "［朝鲜中字］千里马在奔驰（新版）",
-          "heat": "170"
         },
         {
           "url": "http://www.acfun.cn/v/ac48911656",
@@ -10581,12 +10586,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48911748",
           "text": "【初音ミク・重音テト】えねみぃ【ピノキオピー】",
-          "heat": "268"
+          "heat": "288"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898383",
           "text": "【中国音乐地图之听见内蒙古 蒙古族民间歌曲集】旷野",
           "heat": "94"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48913678",
+          "text": "【衣笠雪绘】说说说说你爱我 歌切day206《大舌头》",
+          "heat": "166"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48898422",
+          "text": "【萧亚轩】U Make Me Wanna",
+          "heat": "108"
         },
         {
           "url": "http://www.acfun.cn/v/ac48911267",
@@ -10606,37 +10621,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48912751",
           "text": "明眸犹记，旧梦暖忆｜从此「渐渐忘记」",
-          "heat": "20"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48898422",
-          "text": "【萧亚轩】U Make Me Wanna",
-          "heat": "108"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48912257",
-          "text": "沙雕翻唱熊出没之神奇宝物片尾曲《咱不闹》隔壁某V转生大瓜填词版",
-          "heat": "45"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48912337",
-          "text": "离歌（节选）",
-          "heat": "66"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48912103",
-          "text": "Ax14 - Promised Land（应许之地）（Frutiger Aero 专辑）",
-          "heat": "157"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48911438",
-          "text": "2026-10-13 懒銀 直播录像",
-          "heat": "111"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48911543",
-          "text": "2026-10-13 牛铲铲 直播录像",
-          "heat": "88"
+          "heat": "35"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898407",
@@ -10647,6 +10632,31 @@
           "url": "http://www.acfun.cn/v/ac48898424",
           "text": "【大塚 愛】SMILY",
           "heat": "81"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48912257",
+          "text": "沙雕翻唱熊出没之神奇宝物片尾曲《咱不闹》隔壁某V转生大瓜填词版",
+          "heat": "45"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48912103",
+          "text": "Ax14 - Promised Land（应许之地）（Frutiger Aero 专辑）",
+          "heat": "157"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48912337",
+          "text": "离歌（节选）",
+          "heat": "66"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48911438",
+          "text": "2026-10-13 懒銀 直播录像",
+          "heat": "111"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48911543",
+          "text": "2026-10-13 牛铲铲 直播录像",
+          "heat": "88"
         },
         {
           "url": "http://www.acfun.cn/v/ac48913404",
@@ -10677,16 +10687,6 @@
           "url": "http://www.acfun.cn/v/ac48912982",
           "text": "【阿根廷/正义党】坎波拉竞选歌曲—一起向前进",
           "heat": "141"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48911735",
-          "text": "【一家Dumb Rock!】ピースフル・ピーシーズ！（Peaceful・Pieces!）【MV】",
-          "heat": "56"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48909604",
-          "text": "2020莫斯科军乐节",
-          "heat": "36"
         }
       ]
     },
@@ -14393,7 +14393,7 @@
         {
           "url": "https://www.dongchedi.com/article/7695224832955089470",
           "text": "百名车主评新车：2026款别克至境E7",
-          "heat": "65"
+          "heat": "66"
         },
         {
           "url": "https://www.dongchedi.com/article/7695581033810838040",
