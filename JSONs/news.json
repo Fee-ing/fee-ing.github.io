@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792098945569,
+  "timestamp": 1792099854764,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2885,6 +2885,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1",
+          "text": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
           "text": "Accelerating the search for antimicrobial peptides with Google Antigravity",
           "heat": "Google DeepMind"
@@ -2927,11 +2932,6 @@
         {
           "url": "https://www.mittrchina.com/news/detail/17098",
           "text": "鉴别论文灵感来自 AI 还是人类，DeepMind 科学家找到一种新方法",
-          "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/17097",
-          "text": "Gemini 4 挑战诺奖得主成果，数小时完成 5 种新酶设计",
           "heat": "麻省理工科技评论"
         }
       ]
@@ -4227,6 +4227,11 @@
           "heat": "孔明空城聊球"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261015Q06RKM00",
+          "text": "顾客自带十多份熟食被餐厅多收300元费用，合理吗？若自带菜引发食品卫生问题，责任会如何界定？",
+          "heat": "立娜说法"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261015Q06FMX00",
           "text": "多个行业协会撤销“大师”称号，“大师”“名师”头衔泛滥带来哪些乱象？这次能整治好吗？",
           "heat": "之乎者也小鱼儿"
@@ -4245,11 +4250,6 @@
           "url": "https://new.qq.com/rain/a/20261014Q035J700",
           "text": "患者送1.9元汽水后反手举报医生收礼，收一罐饮料算违规收礼吗？",
           "heat": "中医大课堂"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261015Q06RKM00",
-          "text": "顾客自带十多份熟食被餐厅多收300元费用，合理吗？若自带菜引发食品卫生问题，责任会如何界定？",
-          "heat": "立娜说法"
         },
         {
           "url": "https://new.qq.com/rain/a/20261014Q0493T00",
@@ -10216,12 +10216,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48914497",
           "text": "朋友说A站现在都没人了，我笑了，奇怪的视角《鲜花》",
-          "heat": "2451"
+          "heat": "2474"
         },
         {
           "url": "http://www.acfun.cn/v/ac48915120",
           "text": "【柯基】经典粤语歌曲《初恋情人》｜刘小慧",
-          "heat": "1173"
+          "heat": "1177"
         },
         {
           "url": "http://www.acfun.cn/v/ac48913497",
@@ -10309,6 +10309,11 @@
           "heat": "104"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48898431",
+          "text": "【苏芮】爱就这么来",
+          "heat": "137"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48898488",
           "text": "【M6 Music Live Session】Jenifer",
           "heat": "43"
@@ -10317,11 +10322,6 @@
           "url": "http://www.acfun.cn/v/ac48914191",
           "text": "【AZATOY】渴望被爱的怪物【MV】",
           "heat": "42"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48898431",
-          "text": "【苏芮】爱就这么来",
-          "heat": "137"
         },
         {
           "url": "http://www.acfun.cn/v/ac48915716",
