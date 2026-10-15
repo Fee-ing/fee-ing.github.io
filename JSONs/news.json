@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792091746384,
+  "timestamp": 1792092658752,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3070,6 +3070,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://www.gelonghui.com/live/2713537",
+          "text": "谷歌量子计算取得新突破：Willow 芯片错误率降低约 40 倍",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17098",
           "text": "鉴别论文灵感来自 AI 还是人类，DeepMind 科学家找到一种新方法",
           "heat": "麻省理工科技评论"
@@ -3078,11 +3083,6 @@
           "url": "https://www.mittrchina.com/news/detail/17097",
           "text": "Gemini 4 挑战诺奖得主成果，数小时完成 5 种新酶设计",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.leiphone.com/category/academic/ChIK9FvwSwlHmfFc.html",
-          "text": "上海 AI 实验室「书生-S2」大模型进入前沿数学研究流程：助力三维 Ghys 猜想证明并通过形式化验证",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -4447,6 +4447,11 @@
           "heat": "营养师Bruce"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261015Q08XOC00",
+          "text": "福建2100年“天下第一水松”濒危，当地称一直在救，这棵古树的树龄是怎么测算的？古树救护如何评估成本与收益？",
+          "heat": "做生态的杨永川"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261015Q07RGY00",
           "text": "苹果中国版AI定档12月上线，晚了2年才上靠什么吸引中国用户？国行版和海外版的AI功能差距会长期存在吗？",
           "heat": "拾光者"
@@ -4465,11 +4470,6 @@
           "url": "https://new.qq.com/rain/a/20261015Q0CHAU00",
           "text": "大麦称肖战演唱会天价票系黄牛炒作，黄牛为什么会“无票源炒作”？如何才能真正遏制炒票？",
           "heat": "不怕困难的王导演"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261015Q08XOC00",
-          "text": "福建2100年“天下第一水松”濒危，当地称一直在救，这棵古树的树龄是怎么测算的？古树救护如何评估成本与收益？",
-          "heat": "做生态的杨永川"
         },
         {
           "url": "https://new.qq.com/rain/a/20261015Q07QLQ00",
@@ -10096,7 +10096,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48914497",
           "text": "朋友说A站现在都没人了，我笑了，奇怪的视角《鲜花》",
-          "heat": "2408"
+          "heat": "2417"
         },
         {
           "url": "http://www.acfun.cn/v/ac48915120",
@@ -10149,24 +10149,24 @@
           "heat": "143"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48914060",
-          "text": "2026-10-14 牛铲铲 直播录像",
-          "heat": "105"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48913925",
           "text": "2026-10-14 骆怀瑜 直播录像",
           "heat": "118"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48898494",
-          "text": "【萧亚轩】You Make Me Wanna",
-          "heat": "96"
+          "url": "http://www.acfun.cn/v/ac48914060",
+          "text": "2026-10-14 牛铲铲 直播录像",
+          "heat": "105"
         },
         {
           "url": "http://www.acfun.cn/v/ac48913969",
           "text": "2026-10-14 懒銀 直播录像",
           "heat": "160"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48898494",
+          "text": "【萧亚轩】You Make Me Wanna",
+          "heat": "96"
         },
         {
           "url": "http://www.acfun.cn/v/ac48908207",
