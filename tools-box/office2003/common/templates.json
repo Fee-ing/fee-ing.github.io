@@ -1,133 +1,133 @@
 {
-   "quire": [
-      {
-         "id": "",
-         "name": "空白文档",
-         "img": "quire/templates/blank.jpg"
-      },
-      {
-         "id": "letter",
-         "name": "现代信函",
-         "img": "quire/templates/letter.jpg"
-      },
-      {
-         "id": "memo",
-         "name": "专业备忘录",
-         "img": "quire/templates/memo.jpg"
-      },
-      {
-         "id": "fax",
-         "name": "雅致传真",
-         "img": "quire/templates/fax.jpg"
-      },
-      {
-         "id": "resume",
-         "name": "现代简历",
-         "img": "quire/templates/resume.jpg"
-      },
-      {
-         "id": "report",
-         "name": "专业报告",
-         "img": "quire/templates/report.jpg"
-      },
-      {
-         "id": "agenda",
-         "name": "会议议程",
-         "img": "quire/templates/agenda.jpg"
-      },
-      {
-         "id": "minutes",
-         "name": "会议纪要",
-         "img": "quire/templates/minutes.jpg"
-      },
-      {
-         "id": "todo",
-         "name": "待办核对清单",
-         "img": "quire/templates/todo.jpg"
-      },
-      {
-         "id": "flyer",
-         "name": "活动传单",
-         "img": "quire/templates/flyer.jpg"
-      },
-      {
-         "id": "recipe",
-         "name": "食谱",
-         "img": "quire/templates/recipe.jpg"
-      }
-   ],
-   "ledger": [
-      {
-         "id": "",
-         "name": "空白工作簿",
-         "img": "ledger/templates/blank.jpg"
-      },
-      {
-         "id": "loan",
-         "name": "贷款分期偿还",
-         "img": "ledger/templates/loan.jpg"
-      },
-      {
-         "id": "expense",
-         "name": "费用报表",
-         "img": "ledger/templates/expense.jpg"
-      },
-      {
-         "id": "invoice",
-         "name": "销售发票",
-         "img": "ledger/templates/invoice.jpg"
-      },
-      {
-         "id": "timecard",
-         "name": "工时卡",
-         "img": "ledger/templates/timecard.jpg"
-      },
-      {
-         "id": "budget",
-         "name": "个人月度预算",
-         "img": "ledger/templates/budget.jpg"
-      },
-      {
-         "id": "tasks",
-         "name": "任务跟踪",
-         "img": "ledger/templates/tasks.jpg"
-      },
-      {
-         "id": "shopping",
-         "name": "购物清单",
-         "img": "ledger/templates/shopping.jpg"
-      },
-      {
-         "id": "schedule",
-         "name": "每周日程",
-         "img": "ledger/templates/schedule.jpg"
-      }
-   ],
-   "lectern": [
-      {
-         "id": "",
-         "name": "空白演示文稿",
-         "img": "lectern/templates/blank.jpg"
-      },
-      {
-         "id": "status",
-         "name": "项目状态报告",
-         "img": "lectern/templates/status.jpg"
-      },
-      {
-         "id": "meeting",
-         "name": "团队会议",
-         "img": "lectern/templates/meeting.jpg"
-      },
-      {
-         "id": "lesson",
-         "name": "课程",
-         "img": "lectern/templates/lesson.jpg"
-      },
-      {
-         "id": "event",
-         "name": "活动通知",
-         "img": "lectern/templates/event.jpg"
-      }
-   ]
+ "quire": [
+  {
+   "id": "",
+   "name": "空白文档",
+   "img": "quire/templates/blank.jpg"
+  },
+  {
+   "id": "letter",
+   "name": "现代型信函",
+   "img": "quire/templates/letter.jpg"
+  },
+  {
+   "id": "memo",
+   "name": "专业型备忘录",
+   "img": "quire/templates/memo.jpg"
+  },
+  {
+   "id": "fax",
+   "name": "典雅型传真",
+   "img": "quire/templates/fax.jpg"
+  },
+  {
+   "id": "resume",
+   "name": "现代型简历",
+   "img": "quire/templates/resume.jpg"
+  },
+  {
+   "id": "report",
+   "name": "专业型报告",
+   "img": "quire/templates/report.jpg"
+  },
+  {
+   "id": "agenda",
+   "name": "会议议程",
+   "img": "quire/templates/agenda.jpg"
+  },
+  {
+   "id": "minutes",
+   "name": "会议记录",
+   "img": "quire/templates/minutes.jpg"
+  },
+  {
+   "id": "todo",
+   "name": "待办清单",
+   "img": "quire/templates/todo.jpg"
+  },
+  {
+   "id": "flyer",
+   "name": "活动传单",
+   "img": "quire/templates/flyer.jpg"
+  },
+  {
+   "id": "recipe",
+   "name": "食谱",
+   "img": "quire/templates/recipe.jpg"
+  }
+ ],
+ "ledger": [
+  {
+   "id": "",
+   "name": "空白工作簿",
+   "img": "ledger/templates/blank.jpg"
+  },
+  {
+   "id": "loan",
+   "name": "贷款摊销",
+   "img": "ledger/templates/loan.jpg"
+  },
+  {
+   "id": "expense",
+   "name": "费用报表",
+   "img": "ledger/templates/expense.jpg"
+  },
+  {
+   "id": "invoice",
+   "name": "销售发票",
+   "img": "ledger/templates/invoice.jpg"
+  },
+  {
+   "id": "timecard",
+   "name": "工时卡",
+   "img": "ledger/templates/timecard.jpg"
+  },
+  {
+   "id": "budget",
+   "name": "个人月度预算",
+   "img": "ledger/templates/budget.jpg"
+  },
+  {
+   "id": "tasks",
+   "name": "任务跟踪表",
+   "img": "ledger/templates/tasks.jpg"
+  },
+  {
+   "id": "shopping",
+   "name": "购物清单",
+   "img": "ledger/templates/shopping.jpg"
+  },
+  {
+   "id": "schedule",
+   "name": "每周日程",
+   "img": "ledger/templates/schedule.jpg"
+  }
+ ],
+ "lectern": [
+  {
+   "id": "",
+   "name": "空白演示文稿",
+   "img": "lectern/templates/blank.jpg"
+  },
+  {
+   "id": "status",
+   "name": "项目状态报告",
+   "img": "lectern/templates/status.jpg"
+  },
+  {
+   "id": "meeting",
+   "name": "团队会议",
+   "img": "lectern/templates/meeting.jpg"
+  },
+  {
+   "id": "lesson",
+   "name": "课程",
+   "img": "lectern/templates/lesson.jpg"
+  },
+  {
+   "id": "event",
+   "name": "活动公告",
+   "img": "lectern/templates/event.jpg"
+  }
+ ]
 }

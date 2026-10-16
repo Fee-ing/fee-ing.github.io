@@ -4,7 +4,7 @@
  *
  * Coverage
  *   - All 43 actions in the Office "Clippit" agent data, under the same names
- *     (Congratulate, IdleRopePile, GetWizardy, Hearing_1, ...), and 15 extras of his own.
+ *     (Congratulate, IdleRopePile, GetWizardy, Hearing_1, ...), and 24 extras of his own (9 of them small idles).
  *   - All 35 Office 2003 MsoAnimationType constants, accepted as aliases
  *     (play('msoAnimationPrinting') plays Print).
  *
@@ -14,8 +14,10 @@
  *   scout.ask('What would you like to do?', ['Print it', 'Save it']).then(choice => …);
  *   scout.play('Searching');                          // any action name or Office constant
  *
- * The frame loop runs only while something moves: it stops once he is hidden and starts again with the
- * next action; freeze(true) stops it while he is shown (the window in the background).
+ * The frame loop runs only while something moves, as Microsoft Agent's sprite held its frame between animations:
+ * at rest he sits still and nothing is drawn but a blink now and then (every frame) and now and then a slow sway of
+ * the tail (about 10 frames a second, as a nap); it stops once he is hidden and starts again with the next action;
+ * freeze(true) stops it while he is shown (the window in the background).
  */
 (function (root) {
   'use strict';
@@ -63,23 +65,14 @@
   /* ------------------------------------------------------- rig constants */
   const UPPER = 24, FORE = 27;                 // front leg segment lengths
   const RWL = [87, 173], RWR = [113, 173];     // resting paw positions
-  /* Two camera angles. Actions are authored once in "front" coordinates; each view maps them.
-   * tq = three-quarter, body angled toward screen-left, head turned to the viewer (default). */
-  const VIEWS = {
-    front: {
-      head: -0, scene: 0, turn: 0, hr: 0, tail: [118, 156], tailAdd: 0, shadow: [100, 44],
-      sh: { L: [87, 122], R: [113, 122] }, d: { L: [0, 0], R: [0, 0] },
-      /* camera: screen = O + F*forward + U*up + L*lateral (forward points at the viewer here) */
-      cam: { O: [100, 172], F: [0, .27], U: [0, -1], L: [1, 0], floor: 176.5, D: [.96, .27, 0] },
-      hind3: { L: { lz: -21, side: -1, splay: 30, slot: 'back' }, R: { lz: 21, side: 1, splay: 30, slot: 'back', ear: [133, 84] } }
-    },
-    tq: {
-      head: -16, scene: -16, turn: -.3, hr: 3, tail: [150, 150], tailAdd: 6, shadow: [108, 54],
-      sh: { L: [69, 121], R: [87, 124] }, d: { L: [-18, -1.5], R: [-26, 2.5] },
-      /* forward points to screen-left and toward the viewer; the near side (+lateral) is screen-right */
-      cam: { O: [134, 173.5], F: [-.8, .16], U: [0, -1], L: [.6, .22], floor: 176.5, D: [.58, .27, .77] },
-      hind3: { L: { lz: -15, side: -1, splay: 12, slot: 'back', far: 1 }, R: { lz: 15, side: 1, splay: 12, slot: 'front', ear: [133, 84], roll: 4 } }
-    }
+  /* The camera: three-quarter, body angled toward screen-left, head turned to the viewer. Actions are authored in
+   * front-facing rig coordinates (forward toward the viewer); the camera maps them. */
+  const VIEW = {
+    head: -16, scene: -16, turn: -.3, hr: 3, tail: [150, 150], tailAdd: 6, shadow: [108, 54],
+    sh: { L: [69, 121], R: [87, 124] }, d: { L: [-18, -1.5], R: [-26, 2.5] },
+    /* forward points to screen-left and toward the viewer; the near side (+lateral) is screen-right */
+    cam: { O: [134, 173.5], F: [-.8, .16], U: [0, -1], L: [.6, .22], floor: 176.5, D: [.58, .27, .77] },
+    hind3: { L: { lz: -15, side: -1, splay: 12, slot: 'back', far: 1 }, R: { lz: 15, side: 1, splay: 12, slot: 'front', ear: [133, 84], roll: 4 } }
   };
   /* One canine hind leg, in rig units. Bones: femur, tibia, metatarsus (dogs stand on their toes,
    * so the hock is a lifted heel). Angles are the direction from the ball of the foot to the hock:
@@ -87,12 +80,17 @@
   const HIND3 = { hipY: 27, femur: 25, tibia: 27, meta: 13.5, ball: 12.5, metR: 3.4, reach: 22,
     sitHock: 174, standHock: 108, hangHock: 96, thA: 13.5, thW: 16, thS: 19, gas: 7.5, wK: 12, wH: 10, wM: 9 };
 
-  /* Where scene objects stand, in scene coordinates (the scene layer shifts with the view). */
-  const STAGE = {
-    front: { printer: [166, 176], easel: [160, 176], trash: [36, 176] },
-    tq: { printer: [42, 176], easel: [46, 176], trash: [44, 176] }
-  };
-  const stageOf = p => STAGE[p.view] || STAGE.front;
+  /* Where scene objects stand, in scene coordinates (the scene layer is shifted by the camera's scene). */
+  const STAGE = { printer: [42, 176], easel: [46, 176], trash: [44, 176] };
+
+  /** The head's outline, its chin moved by (dx, down) and its crown by up (<= 0), from 'M100 37C123 37 135 52 134 70C133 88 121 104
+   *  100 104C79 104 67 88 66 70C65 52 77 37 100 37Z' at rest; map (x, y) => [x, y] puts it in another space. */
+  function skullPath(dx, down, up, map) {
+    const P = (x, y) => { const q = map ? map(x, y) : [x, y]; return f(q[0]) + ' ' + f(q[1]); }, tx = dx * .5;
+    return `M${P(100 + tx, 37 + up)}C${P(123 + tx, 37 + up)} ${P(135, 52 + up * .5)} ${P(134, 70)}` +
+      `C${P(133 + dx * .5, 88 + down * .5)} ${P(121 + dx, 104 + down)} ${P(100 + dx, 104 + down)}` +
+      `C${P(79 + dx, 104 + down)} ${P(67 + dx * .5, 88 + down * .5)} ${P(66, 70)}C${P(65, 52 + up * .5)} ${P(77 + tx, 37 + up)} ${P(100 + tx, 37 + up)}Z`;
+  }
 
   /* ------------------------------------------------------------ the pose */
   function rest() {
@@ -275,7 +273,7 @@
       p.scale *= 1 + .07 * k; p.y += 3 * k;
       const knocks = [.75, 1.05, 1.35];
       const hit = knocks.reduce((m, a) => Math.max(m, bump(t, a - .12, a + .1)), 0);
-      p.wR = mix2(p.wR, [p.view === 'tq' ? 136 : 126, 100 + 4 * hit], k);
+      p.wR = mix2(p.wR, [136, 100 + 4 * hit], k);
       p.pawSR = 1 + .7 * k + .25 * hit; p.padsR = k;
       p.hr += 6 * k; both(p, 'brow', .6 * k); both(p, 'browT', .4 * k);
       both(p, 'ear', 10 * hit);
@@ -394,7 +392,7 @@
     cat: 'task', dur: 3.6, key: 2.05, office: ['msoAnimationCheckingSomething'],
     desc: 'A clipboard floats up turned toward him and a pencil ticks off each item while he reads down the list and nods.',
     pose(t, p) {
-      const tq = p.view === 'tq', side = tq ? -1 : 1;
+      const side = -1;   // toward his work, at screen-left
       const k = win(t, 0, .45, 3.15, 3.55);
       const grow = E.back(seg(t, 0, .5)) * (1 - E.in(seg(t, 3.15, 3.55)));
       const rows = [1.05, 1.65, 2.25], Y = [-8, 2, 12];
@@ -409,7 +407,7 @@
       p.faceY += 1.5 * nod; p.hy += 3 * nod; both(p, 'brow', -.2 * k);
       p.smile += .55 * seg(t, 2.35, 2.6) * k;
       both(p, 'ear', 6 * nod);
-      p.held = { layer: 'F', items: { clipboard: { s: 1.12 * grow, pos: { front: [152, 116], tq: [32, 116] }, t, yaw: { front: -45, tq: 45 }, tilt: 8, c: rows.map(a => seg(t, a, a + .14)), float: true } } };
+      p.held = { layer: 'F', items: { clipboard: { s: 1.12 * grow, pos: [32, 116], t, yaw: 45, tilt: 8, c: rows.map(a => seg(t, a, a + .14)), float: true } } };
       p.write = { on: 'clipboard', uv, lift: 3 * (1 - onPage) + 9 * (1 - seg(t, .55, .95)), r: 226, s: 1.15 * grow };
     }
   };
@@ -430,7 +428,7 @@
       p.eyeS += .2 * found; both(p, 'brow', .9 * found); both(p, 'ear', 40 * found);
       p.y -= 4 * bump(t, 2.7, 2.95); p.mouth += .35 * found; p.smile += .4 * found;
       p.wag = 6 + 24 * found; p.wagHz = 5;
-      const mx = p.view === 'tq' ? 86 : 100;
+      const mx = 86;
       p.props.floatMag = { x: mx + 26 * sweep * k, y: 164 + 2 * Math.sin(t * 2.3) - 6 * found, r: -10 * sweep * s, s: 1.1 * E.back(seg(t, 0, .45)) * (1 - E.in(seg(t, 3.3, 3.75))), t };
       p.props.sniff = { o: s, t, x: 100 + 7 * sweep * s, y: 92 + 10 * s };
       p.props.exclaim = { o: win(t, 2.72, 2.8, 3.2, 3.4), s: E.back(seg(t, 2.72, 2.95)) };
@@ -454,7 +452,7 @@
     cat: 'task', dur: 3.8, key: 2.0, office: ['msoAnimationWritingNotingSomething'],
     desc: 'A notepad floats up beside him, turned toward him, and a pencil writes three lines of notes by itself while he concentrates.',
     pose(t, p) {
-      const tq = p.view === 'tq', side = tq ? -1 : 1;
+      const side = -1;   // toward his work, at screen-left
       const k = win(t, 0, .45, 3.35, 3.75);
       const grow = E.back(seg(t, 0, .5)) * (1 - E.in(seg(t, 3.35, 3.75)));
       const W = [[1.0, 1.7], [1.8, 2.5], [2.6, 3.2]];
@@ -465,7 +463,7 @@
       p.lookX += (.7 * side + .25 * (q - .5)) * k; p.lookY += (.25 + .12 * line) * k;
       p.turn += .35 * side * k; p.hr += 4 * side * k;
       p.tongue = .5 * k; p.tongueX = 3 * side; both(p, 'browT', -.35 * k); p.browR += .2 * k;
-      p.held = { layer: 'F', items: { notepad: { s: 1.2 * grow, pos: { front: [150, 118], tq: [34, 118] }, t, yaw: { front: -45, tq: 45 }, tilt: 8, lines: prog, float: true } } };
+      p.held = { layer: 'F', items: { notepad: { s: 1.2 * grow, pos: [34, 118], t, yaw: 45, tilt: 8, lines: prog, float: true } } };
       p.write = { on: 'notepad', uv: [u, v], lift: 2.6 * (1 - writing) + 8 * (1 - seg(t, .55, .95)), r: 226 + 4 * wig * writing, s: 1.2 * grow };
     }
   };
@@ -474,10 +472,10 @@
     cat: 'task', dur: 3.8, key: 1.9, office: ['msoAnimationPrinting'],
     desc: 'A small printer pops up beside him and feeds out a page while he watches, then he gives it two approving nods.',
     pose(t, p) {
-      const tq = p.view === 'tq', dir = tq ? -1 : 1, at = stageOf(p).printer;
+      const dir = -1, at = STAGE.printer;
       const k = win(t, .15, .45, 3.3, 3.7);
       p.turn += .55 * dir * k; p.lookX += .9 * dir * k; p.lookY += .45 * k; p.hr += 4 * dir * k;
-      p[tq ? 'earL' : 'earR'] += 10 * bump(t, .6, .9);
+      p.earL += 10 * bump(t, .6, .9);
       const done = win(t, 2.3, 2.45, 3.1, 3.4);
       p.smile += .5 * done; p.wag = 6 + 22 * done; p.wagHz = 5;
       const nod = bump(t, 2.45, 2.7) + bump(t, 2.75, 3.0);
@@ -494,7 +492,7 @@
     cat: 'task', dur: 3.9, key: 1.95, office: ['msoAnimationSaving'],
     desc: 'A floppy disk floats down to him; he digs a hole in the mat and it sinks in for safekeeping, like a good bone.',
     pose(t, p) {
-      const cx = p.view === 'tq' ? 92 : 100;
+      const cx = 92;
       const k = win(t, 0, .3, 3.5, 3.9);
       const dig = win(t, 1.35, 1.5, 2.35, 2.5);
       const d = osc(t, 5);
@@ -522,7 +520,7 @@
     cat: 'task', dur: 4.1, key: 1.6, office: ['msoAnimationSendingMail'],
     desc: 'An envelope floats up to his nose; he licks it shut, a paw-print stamp drops onto it, and it sprouts wings and flies off.',
     pose(t, p) {
-      const cx = p.view === 'tq' ? 86 : 100;
+      const cx = 86;
       const k = win(t, 0, .3, 3.7, 4.1);
       const hover = win(t, .1, .4, 2.15, 2.3);
       const lick = win(t, .95, 1.05, 1.28, 1.4);
@@ -555,7 +553,7 @@
       const focus = win(t, .3, .5, .9, 1.0);
       both(p, 'browT', -.5 * focus); p.lidL = Math.max(p.lidL, .35 * focus); p.lidR = Math.max(p.lidR, .35 * focus);
       const lift = win(t, .55, .85, 2.45, 2.7);
-      const at = stageOf(p).trash, lidA = -75 * lift;
+      const at = STAGE.trash, lidA = -75 * lift;
       const whoa = win(t, .95, 1.05, 1.6, 1.9);
       p.eyeS += .18 * whoa; both(p, 'brow', .8 * whoa); p.mouth = Math.max(p.mouth, .45 * whoa); p.lean -= 3 * whoa;
       both(p, 'ear', 28 * bump(t, .95, 1.5));
@@ -581,7 +579,7 @@
       p.hy += 2.5 * Math.abs(osc(t, 1.5)) * type; p.hr += 3 * osc(t, .5) * type;
       p.lookY += .6 * k; p.faceY += 1.2 * k; p.smile += .45 * type; both(p, 'brow', .25 * type);
       p.wag = 10 * type;
-      const cx = p.view === 'tq' ? 74 : 100;
+      const cx = 74;
       p.props.techy = { o: 1 - off, y: -34 * (1 - E.back(on)) - 30 * E.in(off), glow: .5 + .5 * osc(t, 1), t };
       p.props.floatLaptop = { x: cx, y: 172 - 4 * E.out(seg(t, .3, .7)) + 1.6 * Math.sin(t * 2.3), s: E.back(seg(t, .3, .62)) * (1 - E.in(seg(t, 3.3, 3.65))), glow: type, t };
       p.props.binary = { o: type, t };
@@ -592,13 +590,13 @@
     cat: 'persona', dur: 4.0, key: 1.9, office: ['msoAnimationGetWizardy'],
     desc: 'A wizard hat appears in a puff; a wand floats up beside him, winds up and casts a burst of stars.',
     pose(t, p) {
-      const tq = p.view === 'tq', side = tq ? -1 : 1;
+      const side = -1;
       const k = win(t, .1, .4, 3.5, 3.95);
       const hat = E.back(seg(t, .15, .5)) * (1 - E.in(seg(t, 3.45, 3.8)));
       const raise = win(t, .7, 1.15, 1.35, 1.55);
       const swish = seg(t, 1.35, 1.6), hold = win(t, 1.35, 1.6, 2.9, 3.4);
       const wr = side * (t < 1.35 ? -20 * raise : lerp(-20, 75, E.out(swish)) * (1 - seg(t, 2.9, 3.4)));
-      const wx = tq ? 40 : 152, wy = 118 - 34 * raise + 2 * Math.sin(t * 2.4);
+      const wx = 40, wy = 118 - 34 * raise + 2 * Math.sin(t * 2.4);
       p.lookY -= .5 * raise; p.lookX += .8 * side * (hold + raise * .6); p.turn += .35 * side * hold;
       p.happy = .8 * win(t, 1.6, 1.7, 2.4, 2.6);
       both(p, 'brow', .8 * hold); p.smile += .6 * hold; p.mouth = .4 * win(t, 1.55, 1.65, 2.2, 2.5);
@@ -619,7 +617,7 @@
     cat: 'persona', dur: 4.3, key: 2.2, office: ['msoAnimationGetArtsy'],
     desc: 'Puts on a beret; a palette and brush float up and the brush paints a little bone on the easel while he directs, then he admires it.',
     pose(t, p) {
-      const tq = p.view === 'tq', dir = tq ? -1 : 1, EZ = stageOf(p).easel;
+      const dir = -1, EZ = STAGE.easel;
       const k = win(t, .1, .4, 3.8, 4.25);
       const gear = E.back(seg(t, .15, .5)) * (1 - E.in(seg(t, 3.75, 4.1)));
       const paint = win(t, .8, 1.0, 3.0, 3.2), admire = win(t, 3.0, 3.2, 3.7, 4.0);
@@ -711,7 +709,7 @@
       p.lookX += (.15 + .35 * glance) * k; p.lookY += .6 * glance; p.faceY += 1.5 * glance;
       p.hr -= 4 * k; p.wag = 0.01;
       const sigh = bump(t, 2.36, 2.76); p.mouth = .25 * sigh; p.sy *= 1 - .025 * sigh;
-      p.props.dust = { o: k, t, x: p.view === 'tq' ? 108 : 117, y: 178 };
+      p.props.dust = { o: k, t, x: 108, y: 178 };
     }
   };
 
@@ -849,7 +847,7 @@
       const line = ((t + 10) % .8) / .8;
       p.lookY += .45 * k; p.lookX += (-.5 + .95 * E.io(clamp(line * 1.15))) * read * .8 + (.4 - .9 * flip) * turning;
       p.faceY += 1.2 * k; p.hy += 1 * k; both(p, 'browT', .15 * k);
-      p.held = { layer: 'F', items: { book: { s: 1.12 * grow, pos: { front: [100, 128], tq: [52, 120] }, t, facing: 'dog', tilt: 30, flip: turning > 0 ? flip : -1, float: true } } };
+      p.held = { layer: 'F', items: { book: { s: 1.12 * grow, pos: [52, 120], t, facing: 'dog', tilt: 30, flip: turning > 0 ? flip : -1, float: true } } };
       blink(p, t, 1.62); blink(p, t, 3.22);
     }
   };
@@ -947,8 +945,92 @@
       p.props.scent = { o: k, t };
     }
   };
+  /* Small idles for while the user works: short, quiet, no props, each back at rest by its end. */
+  A.IdleEarFlick = {
+    cat: 'idle', extra: true, dur: 1.1, key: .2,
+    desc: 'Flicks one ear, then the other, as if a fly went past.',
+    pose(t, p) {
+      p.earL += 18 * bump(t, .08, .24) + 8 * bump(t, .24, .38);
+      p.earR += 15 * bump(t, .5, .66) + 6 * bump(t, .66, .8);
+      p.lookX -= .12 * win(t, .05, .2, .35, .5); p.lookX += .12 * win(t, .45, .6, .8, 1.0);
+    }
+  };
+  A.IdleLickChops = {
+    cat: 'idle', extra: true, dur: 1.2, key: .45,
+    desc: 'Licks his chops once, side to side.',
+    pose(t, p) {
+      const l = win(t, .2, .32, .66, .82);
+      p.mouth = Math.max(p.mouth, .22 * l); p.tongue = Math.max(p.tongue, .55 * l); p.tongueX = 3.5 * Math.sin(seg(t, .26, .76) * Math.PI * 2);
+      p.hy += 1.2 * l; p.smile += .15 * l; blink(p, t, .95);
+    }
+  };
+  A.IdleSlowBlink = {
+    cat: 'idle', extra: true, dur: 1.7, key: .75,
+    desc: 'Closes his eyes slowly and opens them again, content.',
+    pose(t, p) {
+      const k = win(t, .1, .6, .95, 1.5);
+      p.lidL = Math.max(p.lidL, k); p.lidR = Math.max(p.lidR, k); p.autoBlink = 0;
+      p.smile += .25 * k; p.hy += 1.5 * k; p.hr -= 2 * k;
+    }
+  };
+  A.IdleSettle = {
+    cat: 'idle', extra: true, dur: 2.0, key: .6,
+    desc: 'Shifts his weight on the mat and settles again.',
+    pose(t, p) {
+      const a = win(t, .1, .55, .85, 1.35), b = win(t, .85, 1.2, 1.5, 1.9);
+      p.lean += 3.5 * a - 1.5 * b; p.x += 1.5 * a - .7 * b; p.hr -= 2 * a - b;
+      squash(p, t, 1.3, .35, .035); blink(p, t, 1.45);
+    }
+  };
+  A.IdleTailThump = {
+    cat: 'idle', extra: true, dur: 1.8, key: .8,
+    desc: 'Thumps his tail a few lazy times, pleased with things.',
+    pose(t, p) {
+      const k = win(t, .1, .35, 1.25, 1.7);
+      p.wag = 2.5 + 12 * k; p.wagHz = 2.2; p.smile += .2 * k;
+      p.lidL = Math.max(p.lidL, .15 * k); p.lidR = Math.max(p.lidR, .15 * k);
+    }
+  };
+  A.IdleCurious = {
+    cat: 'idle', extra: true, dur: 2.0, key: .8,
+    desc: 'Tilts his head the other way, one brow up, curious, then straightens.',
+    pose(t, p) {
+      const k = win(t, .12, .5, 1.3, 1.8);
+      p.hr -= 9 * k; p.turn -= .1 * k; p.lookX -= .2 * k; p.lookY -= .1 * k;
+      p.browL += .45 * k; p.earL += 12 * k; p.earR -= 4 * k; blink(p, t, 1.05);
+    }
+  };
+  A.IdleLookAtYou = {
+    cat: 'idle', extra: true, dur: 1.9, key: .7,
+    desc: 'Turns to look at you for a moment with a small smile.',
+    pose(t, p) {
+      const k = win(t, .1, .45, 1.25, 1.75);
+      p.turn -= VIEW.turn * .9 * k; p.hr -= VIEW.hr * .5 * k; p.lookX = lerp(p.lookX, 0, k); p.lookY -= .05 * k;
+      p.smile += .35 * k; both(p, 'brow', .2 * k); both(p, 'ear', 4 * k); blink(p, t, .8);
+    }
+  };
+  A.IdleWatchWork = {
+    cat: 'idle', extra: true, dur: 2.2, key: 1.0,
+    desc: 'Glances over at your work and gives a small approving nod.',
+    pose(t, p) {
+      const k = win(t, .1, .45, 1.6, 2.05), n = bump(t, .95, 1.25) + .5 * bump(t, 1.25, 1.5);
+      p.lookX -= .65 * k; p.lookY -= .45 * k; p.turn -= .15 * k; p.hr -= 3 * k; p.faceY -= 1.5 * k;
+      p.hy += 3.5 * n; p.faceY += 1.5 * n; p.smile += .2 * k; blink(p, t, 1.7);
+    }
+  };
+  A.IdleYawn = {
+    cat: 'idle', extra: true, dur: 2.2, key: 1.0,
+    desc: 'Gives a small yawn, eyes squeezed shut, and settles again.',
+    pose(t, p) {
+      const k = win(t, .25, .75, 1.25, 1.8);
+      p.mouth = Math.max(p.mouth, .85 * k); p.tongue = Math.max(p.tongue, .25 * k); p.sy *= 1 + .025 * k;
+      p.lidL = Math.max(p.lidL, .9 * k); p.lidR = Math.max(p.lidR, .9 * k); p.autoBlink = 0;
+      p.hy -= 2 * k; p.faceY -= 2 * k; p.hr += 4 * k; both(p, 'ear', -6 * k);
+    }
+  };
   const EXTRAS = ['Acknowledge', 'Decline', 'Pleased', 'Sad', 'Surprised', 'Confused', 'Uncertain',
-    'Suggest', 'Read', 'Announce', 'Fetch', 'Shake', 'Beg', 'ChaseTail', 'SniffAir'];
+    'Suggest', 'Read', 'Announce', 'Fetch', 'Shake', 'Beg', 'ChaseTail', 'SniffAir',
+    'IdleEarFlick', 'IdleLickChops', 'IdleSlowBlink', 'IdleSettle', 'IdleTailThump', 'IdleCurious', 'IdleLookAtYou', 'IdleWatchWork', 'IdleYawn'];
 
   /* Canonical order of the Clippit agent's 43 actions. */
   const ORDER = ['Congratulate', 'LookRight', 'SendMail', 'Thinking', 'Explain', 'IdleRopePile', 'IdleAtom', 'Print', 'Hide',
@@ -968,14 +1050,26 @@
   /* Office 2003 MsoAnimationType → action. */
   const OFFICE = {};
   ORDER.forEach(n => (A[n].office || []).forEach(c => { OFFICE[c] = n; }));
-  const IDLES = ['Idle1_1', 'IdleAtom', 'IdleRopePile', 'IdleSideToSide', 'IdleHeadScratch', 'IdleFingerTap', 'IdleSnooze', 'IdleEyeBrowRaise'];
-  /* The floating assistant idles rarely and mostly quietly, so it doesn't pull focus from the page. */
-  const IDLE_POOL = [['Idle1_1', 6], ['LookDownLeft', 2], ['LookLeft', 2], ['LookUp', 1], ['LookRight', 1], ['IdleEyeBrowRaise', 2],
-    ['Hearing_1', 1], ['IdleHeadScratch', 1], ['IdleFingerTap', 1], ['IdleSideToSide', 1], ['IdleSnooze', 1], ['IdleAtom', .4], ['IdleRopePile', .4]];
-  function pickIdle() {
-    let r = Math.random() * IDLE_POOL.reduce((a, b) => a + b[1], 0);
-    for (const [n, w] of IDLE_POOL) { if ((r -= w) <= 0) return n; }
-    return 'Idle1_1';
+  /* Idling follows the user (userActive), so he doesn't pull focus from the page: while
+     they work, a small thing now and then; once they have been quiet a while, more and bigger; after five minutes
+     he naps until they are back. [quiet for (s), pause after his last act (s), what he does (weighted)] */
+  const SMALL = [['Idle1_1', 1.5], ['IdleEarFlick', 1.5], ['IdleSlowBlink', 1.5], ['IdleWatchWork', 1.5], ['IdleTailThump', 1], ['IdleSettle', 1],
+    ['IdleCurious', 1], ['IdleLookAtYou', 1], ['IdleLickChops', .8], ['IdleEyeBrowRaise', .5],
+    ['LookLeft', .8], ['LookDownLeft', .8], ['LookRight', .6], ['LookDownRight', .6], ['LookUpLeft', .6], ['LookDown', .5], ['LookUpRight', .4], ['LookUp', .3]];
+  const NAP = 'IdleSnooze';
+  const IDLE_STAGES = [
+    [0, [45, 90], SMALL],
+    [30, [8, 16], SMALL.concat([['Hearing_1', 1], ['IdleHeadScratch', 1], ['IdleYawn', 1], ['SniffAir', 1]])],
+    [120, [10, 20], [['Idle1_1', 2], ['IdleHeadScratch', 2], ['IdleFingerTap', 2], ['IdleSideToSide', 2], ['Hearing_1', 1], ['SniffAir', 1],
+      ['IdleEyeBrowRaise', 1], ['IdleAtom', 1], ['IdleRopePile', 1], ['IdleYawn', 1], ['IdleSettle', 1], ['IdleTailThump', 1]]],
+    [300, [2, 2], [[NAP, 1]]],
+  ];
+  /** a weighted pick, not one of `recent` (his last idles) while the pool has others */
+  function pickIdle(pool = IDLE_STAGES[1][2], recent = []) {
+    const fresh = pool.filter(it => recent.indexOf(it[0]) < 0), from = fresh.length ? fresh : pool;
+    let r = Math.random() * from.reduce((a, b) => a + b[1], 0);
+    for (const [n, w] of from) { if ((r -= w) <= 0) return n; }
+    return from[0][0];
   }
   const NOT_RANDOM = ['Show', 'Hide', 'GoodBye', 'Greeting', 'RestPose'];
 
@@ -1315,7 +1409,7 @@
       }
     },
     easel: {
-      layer: 'front', at: STAGE.front.easel,
+      layer: 'front', at: STAGE.easel,
       svg: `<path d="M-15 0L-5 -56M15 0L5 -56" stroke="${LINE}" stroke-width="4.8" stroke-linecap="round"/>
         <path d="M-15 0L-5 -56M15 0L5 -56" stroke="#b07a45" stroke-width="2.8" stroke-linecap="round"/>
         <rect x="-18" y="-54" width="36" height="31" rx="1.5" fill="#fffdf7" ${OL} stroke-width="1.8"/>
@@ -1663,7 +1757,7 @@
   /* ============================================================ CARDS
    * Flat objects that live in 3D: pages, boards, the laptop, the canvas. Each has front and back art
    * in its own local units (x right, y down, centred), placed on a plane facing the dog, the camera, or
-   * halfway between, then projected with the view's camera (an exact affine map for a plane).
+   * halfway between, then projected with the camera (an exact affine map for a plane).
    */
   const VE = 'vector-effect="non-scaling-stroke"';
   const OLv = (w = 1.8) => `stroke="${LINE}" stroke-width="${w}" stroke-linejoin="round" stroke-linecap="round" ${VE}`;
@@ -1783,9 +1877,8 @@
 
 
   /* ============================================================== DOG SVG */
-  function dogMarkup(u, view) {
-    const id = n => `scout${u}-${n}`;
-    const tq = view === 'tq', V = VIEWS[view] || VIEWS.front;
+  function dogMarkup(u) {
+    const id = n => `scout${u}-${n}`, V = VIEW;
     const ear = `
       <path d="M76 45C63 47 55.5 62 55.5 80C55.5 97 58.5 110 65 114.5C71.5 118.5 77.5 112 78.5 104C79.5 90 79.5 68 78.5 52C78 48 77.5 46 76 45Z" fill="${C.ear}" ${OL}/>
       <path d="M70 58C64.5 70 63.5 89 66.5 106" fill="none" stroke="${C.earD}" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>
@@ -1829,15 +1922,13 @@
             <path data-p="leg${S}Toes" fill="none" stroke="${LINE}" stroke-width="1.3" stroke-linecap="round"/>
           </g>`;
     };
-    const saddle = `<path d="M83 106C75 122 71 138 72 154C77 146 81 131 87 118Z" fill="${C.black}"/>`;
     const skull = 'M100 37C123 37 135 52 134 70C133 88 121 104 100 104C79 104 67 88 66 70C65 52 77 37 100 37Z';
-    const torso = 'M84 101C76 118 70 140 72 160C73 172 82 178 100 178C118 178 127 172 128 160C130 140 124 118 116 101Z';
     const tag = (x, y) => `<circle cx="${x}" cy="${y - 5.8}" r="2" fill="none" stroke="#9c874f" stroke-width="1.4"/>
           <circle cx="${x}" cy="${y}" r="5.4" fill="${C.tag}" ${OL} stroke-width="1.6"/>${pawPrint(x, y + .4, .62, C.tagD)}`;
     const FAR = '#efe7da';
     /* Three-quarter body: chest and front legs to the left, near haunch and tail to the right. */
     const torsoQ = 'M64 96C54 112 50 134 53 152C55 165 60 174 74 177L140 178C155 178 165 168 163 152C161 138 148 120 128 108C118 102 110 99 104 97Z';
-    const bodyBack = tq ? `
+    const bodyBack = `
           <g data-p="slotBack">${hindLeg('L', true)}</g>
           <path d="${torsoQ}" fill="${C.tan}"/>
           <path d="M102 97C112 99 120 103 128 108C148 120 161 138 163 152C163 156 162 160 160 163C152 152 140 142 128 136C114 129 104 120 100 108Z" fill="${C.black}"/>
@@ -1846,21 +1937,12 @@
           <path d="${torsoQ}" fill="none" ${OL}/>
           <path d="M57 98Q82 114 111 95L112 101.5Q82 121 56 104.5Z" fill="${C.collar}" ${OL}/>
           <path d="M61 102.5Q82 116.5 108 99.5" fill="none" stroke="${C.collarL}" stroke-width="1.1" stroke-dasharray="2 2"/>
-` : `
-          <g data-p="slotBack">${hindLeg('L')}${hindLeg('R')}</g>
-          <path d="${torso}" fill="${C.tan}"/>
-          ${saddle}<g transform="${MIR}">${saddle}</g>
-          <path d="M100 103C86 106 77 122 78 144C79 162 88 176 100 177C112 176 121 162 122 144C123 122 114 106 100 103Z" fill="${C.white}"/>
-          <path d="M91 152C91 163 94.5 171 100 174.5" fill="none" stroke="${C.whiteD}" stroke-width="3" stroke-linecap="round"/>
-          <path d="${torso}" fill="none" ${OL}/>
-          <path d="M79 101Q100 113 121 101L122 107.5Q100 120.5 78 107.5Z" fill="${C.collar}" ${OL}/>
-          <path d="M83 105.6Q100 115.4 117 105.6" fill="none" stroke="${C.collarL}" stroke-width="1.1" stroke-dasharray="2 2"/>
-          ${tag(100, 120)}`;
+`;
     const legShape = (name, fill) => `<path data-p="${name}F" fill="${fill}"/><path data-p="${name}S" fill="none" stroke="${C.whiteD}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path data-p="${name}O" fill="none" ${OL}/>`;
-    const armM = S => `<g data-p="arm${S}">${legShape('arm' + S, tq && S === 'L' ? FAR : C.white)}${paw(S, tq && S === 'L' ? FAR : C.white)}</g>`;
-    const bodyFront = `<g data-p="slotFront">${tq ? hindLeg('R') : ''}</g>
+    const armM = S => `<g data-p="arm${S}">${legShape('arm' + S, S === 'L' ? FAR : C.white)}${paw(S, S === 'L' ? FAR : C.white)}</g>`;
+    const bodyFront = `<g data-p="slotFront">${hindLeg('R')}</g>
           <g data-p="handL"></g><g data-p="handR"></g><g data-p="heldB"></g>
-          ${tq ? armM('L') + armM('R') + tag(80, 118.6) : armM('L') + armM('R')}
+          ${armM('L') + armM('R')}<g clip-path="url(#${id('tagC')})">${tag(80, 118.6)}</g>
           <g data-p="heldF"></g>
           <g data-p="handLF"></g><g data-p="handRF"></g>`;
 
@@ -1871,6 +1953,8 @@
         <clipPath id="${id('clipL')}"><ellipse cx="88" cy="66" rx="7.4" ry="8.2"/></clipPath>
         <clipPath id="${id('clipR')}"><ellipse cx="112" cy="66" rx="7.4" ry="8.2"/></clipPath>
         <clipPath id="${id('mouth')}"><path data-p="mclip"/></clipPath>
+        <!-- the tag hangs in front of the legs but behind the head (his chin, nose down): the head's shape is cut out of it -->
+        <clipPath id="${id('tagC')}"><path data-p="tagClip" clip-rule="evenodd"/></clipPath>
         <clipPath id="${id('floor')}"><rect x="-100" y="-200" width="400" height="382"/></clipPath>
       </defs>
       <g data-p="mat">
@@ -1893,10 +1977,10 @@
         <g data-p="body">
           ${bodyBack}
           <g data-p="head">
-            <path d="${skull}" fill="url(#${id('crown')})"/>
+            <path data-p="skull" d="${skull}" fill="url(#${id('crown')})"/>
             <g data-p="face">
-              <path d="M97 40C98.2 38.6 101.8 38.6 103 40C103.6 52 104.6 62 108 75L92 75C95.4 62 96.4 52 97 40Z" fill="${C.white}"/>
-              <path d="M100 71C113 71 121 79 121.5 88C121.5 98 112 103.2 100 103.2C88 103.2 78.5 98 78.5 88C79 79 87 71 100 71Z" fill="${C.white}"/>
+              <path data-p="blaze" d="M97 40C98.2 38.6 101.8 38.6 103 40C103.6 52 104.6 62 108 75L92 75C95.4 62 96.4 52 97 40Z" fill="${C.white}"/>
+              <path data-p="muzzle" d="M100 71C113 71 121 79 121.5 88C121.5 98 112 103.2 100 103.2C88 103.2 78.5 98 78.5 88C79 79 87 71 100 71Z" fill="${C.white}"/>
               <path d="M82 95C86 100 93 102.5 100 102.5C107 102.5 114 100 118 95" fill="none" stroke="${C.whiteD}" stroke-width="2.4" stroke-linecap="round"/>
               <g fill="#cdbfae"><circle cx="85.5" cy="88.5" r=".9"/><circle cx="83.5" cy="91.6" r=".9"/><circle cx="87.6" cy="92.6" r=".9"/><circle cx="114.5" cy="88.5" r=".9"/><circle cx="116.5" cy="91.6" r=".9"/><circle cx="112.4" cy="92.6" r=".9"/></g>
               <ellipse data-p="browL" cx="87" cy="55.5" rx="4.8" ry="2.7" fill="${C.pip}"/>
@@ -1904,7 +1988,6 @@
               ${eye('L', 88)}${eye('R', 112)}
               <path data-p="mopen" fill="${C.mouth}" ${OL} stroke-width="1.6" opacity="0"/>
               <ellipse data-p="tongueIn" cx="100" cy="98" rx="6" ry="3" fill="${C.tongue}" clip-path="url(#${id('mouth')})" opacity="0"/>
-              <g data-p="tongueOut" opacity="0"><path data-p="tongueP" fill="${C.tongue}" ${OL} stroke-width="1.5"/><path data-p="tongueL" fill="none" stroke="${C.tongueD}" stroke-width="1.2" stroke-linecap="round"/></g>
               <path data-p="mline" fill="none" stroke="${LINE}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M100 87.4V93.4" stroke="${LINE}" stroke-width="1.8" stroke-linecap="round"/>
               <g data-p="nose">
@@ -1912,7 +1995,8 @@
                 <ellipse cx="96.4" cy="78.6" rx="3.3" ry="1.4" fill="#fff" opacity=".5"/>
               </g>
             </g>
-            <path d="${skull}" fill="none" ${OL}/>
+            <path data-p="skullO" d="${skull}" fill="none" ${OL}/>
+            <g data-p="faceF"><g data-p="tongueOut" opacity="0"><path data-p="tongueP" fill="${C.tongue}" ${OL} stroke-width="1.5"/><path data-p="tongueL" fill="none" stroke="${C.tongueD}" stroke-width="1.2" stroke-linecap="round"/></g></g>
             <g data-p="earL">${ear}</g>
             <g transform="${MIR}"><g data-p="earR">${ear}</g></g>
             <g data-p="headL"></g>
@@ -1998,7 +2082,7 @@
   const scribbleY = (x, y, seed) => y + 1.3 * Math.sin(x * 2.1 + seed) * (Math.sin(x * .55 + seed * 2) > -.75 ? 1 : 0) - .5 * Math.sin(x * .8 + seed);
 
 
-  /** Outline of an ellipsoid under the view's projection: semi-axes already projected to 2D. */
+  /** Outline of an ellipsoid under the camera's projection: semi-axes already projected to 2D. */
   function ellipse2(c, axes) {
     let a = 0, b = 0, d = 0;
     for (const v of axes) { a += v[0] * v[0]; b += v[0] * v[1]; d += v[1] * v[1]; }
@@ -2047,17 +2131,38 @@
   }
 
   /* --------------------------------------------------------- the ticker */
-  const live = new Set();
-  let raf = 0, last = 0;
+  /* Each frame asks when the next is needed (_wait): now (an action, a blink, words), in SLOW_MS (the tail's sway at
+     rest, a nap) or when his next blink or sway is due; meanwhile nothing runs, but a look at the time every CHECK_MS
+     (idling follows the clock). Time asleep still counts on his clock (real), not in an action (dt). */
+  const live = new Set(), SLOW_MS = 90, CHECK_MS = 1000;
+  let raf = 0, nap = 0, last = 0, ticking = false;
   function frame(now) {
-    const dt = Math.min(.05, Math.max(0, (now - last) / 1000));
+    raf = 0;
+    const real = Math.max(0, (now - last) / 1000);
     last = now;
-    live.forEach(a => a._tick(dt));
-    raf = live.size ? requestAnimationFrame(frame) : 0;
+    ticking = true;
+    try { live.forEach(a => a._tick(Math.min(.15, real), real)); } finally { ticking = false; }
+    if (!live.size) return;
+    let wait = Infinity;
+    live.forEach(a => { wait = Math.min(wait, a._wait()); });
+    if (wait <= 0) raf = requestAnimationFrame(frame);
+    else nap = setTimeout(() => { nap = 0; raf = requestAnimationFrame(frame); }, Math.min(wait, CHECK_MS));
   }
-  function wake(a) { live.add(a); if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+  function wake(a) {
+    if (ticking) { live.add(a); return; }   // the frame under way asks it when it needs the next
+    if (nap) {   // asleep: the clocks catch up with the time slept, and the next frame comes now
+      clearTimeout(nap); nap = 0;
+      const now = performance.now();
+      live.forEach(x => { x._clock += Math.max(0, now - last) / 1000; });
+      last = now;
+    } else if (!raf) last = performance.now();
+    live.add(a);
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
 
   const BLEND = .2;
+  const EAR_IN = 2;   // the most an ear swings in over the face (degrees), however far an action turns it
+  const SWAY = { dur: 3.2, deg: 7, hz: .45 };   // the tail's slow sway at rest, now and then
   let UID = 0;
   const reduceMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -2070,24 +2175,23 @@
      * @param {HTMLElement} [opts.parent=document.body]
      * @param {number} [opts.size=168] rendered width in px
      * @param {number} [opts.x] [opts.y] desktop position in px (defaults to bottom-right)
-     * @param {boolean} [opts.idle=true] play idle actions when nothing else is queued (desktop)
+     * @param {boolean} [opts.idle=true] play idle actions when nothing else is queued, following the user (userActive) (desktop)
      * @param {string} [opts.label] what a screen reader says for him (desktop)
      * @param {function} [opts.onclick] () on a click that is not a drag, or Enter / Space (desktop)
      * @param {function} [opts.onmenu] (x, y) on a right-click, Shift+F10 or the menu key (desktop)
      * @param {function} [opts.onmoved] (x, y) when the user has dragged him somewhere (desktop)
      */
     constructor(opts = {}) {
-      this.o = Object.assign({ mode: 'desktop', view: 'tq', parent: null, size: 168, x: null, y: null, idle: true, balloon: true, label: 'Scout, the assistant' }, opts);
-      this.view = VIEWS[this.o.view] ? this.o.view : 'tq';
+      this.o = Object.assign({ mode: 'desktop', parent: null, size: 168, x: null, y: null, idle: true, balloon: true, label: 'Scout 助手' }, opts);
       const mode = this.o.mode;
       this.uid = ++UID;
       this.speed = 1;
       this.onframe = null; this.onend = null;
       this._q = []; this._running = false;
       this._cur = null; this._clock = 0; this._blend = 9; this._from = null; this._last = null;
-      this._nextBlink = 1.2 + Math.random() * 2; this._blinkT0 = -9;
+      this._nextBlink = 1.2 + Math.random() * 2; this._blinkT0 = -9; this._nextSway = 6 + Math.random() * 10; this._swayT0 = -99; this._wagPh = 0;
       this._talking = false; this._hidden = mode === 'desktop';
-      this._idleAt = 12 + Math.random() * 8; this._props = {}; this._move = null;
+      this._activeAt = 0; this._restAt = 0; this._idleR = Math.random(); this._recent = []; this._nx = null; this._props = {}; this._move = null;
 
       const el = this.el = document.createElement('div');
       el.className = 'scout-agent ' + (mode === 'desktop' ? 'is-desktop' : 'is-inline');
@@ -2095,7 +2199,7 @@
       this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       this.svg.setAttribute('viewBox', '-30 -30 260 235');
       this.svg.setAttribute('aria-hidden', 'true');
-      this.svg.innerHTML = dogMarkup(this.uid, this.view);
+      this.svg.innerHTML = dogMarkup(this.uid);
       el.appendChild(this.svg);
       this.P = {};
       this.svg.querySelectorAll('[data-p]').forEach(n => { this.P[n.getAttribute('data-p')] = n; });
@@ -2129,22 +2233,6 @@
       if (mode !== 'still') wake(this);
     }
 
-    /** Switch camera angle: 'tq' (three-quarter, default) or 'front'. */
-    setView(view) {
-      const v = VIEWS[view] ? view : 'tq';
-      if (v === this.view) return this;
-      this.view = v;
-      for (const k in this._props) this._props[k].wrap.remove();
-      this._props = {};
-      this.svg.innerHTML = dogMarkup(this.uid, v);
-      this.P = {};
-      this.svg.querySelectorAll('[data-p]').forEach(n => { this.P[n.getAttribute('data-p')] = n; });
-      this._from = null; this._blend = 9;
-      const c = this._cur;
-      this._render(this._compute(c ? c.t : 0), this.o.mode === 'still' ? (c ? c.t : this._still ? this._still.t : 0) : this._clock);
-      return this;
-    }
-    static get views() { return Object.keys(VIEWS); }
 
     /* ---------- catalogue ---------- */
     static get actions() { return ORDER.slice(); }
@@ -2157,10 +2245,21 @@
     hasAnimation(name) { return !!Scout.resolve(name); }
 
     /* ---------- queued API (each call waits its turn) ---------- */
-    /** Queue an action by Clippit name or Office constant. Resolves true when it completes. */
+    /** Queue an action by Clippit name or Office constant. Resolves true when it completes.
+     *  opts.interrupt: now, in place of everything. opts.next: as soon as the act under way ends, in place of any other
+     *  waiting this way (a newer one takes its place, resolving it false): an idle gives way at once, a nap ends
+     *  first with his waking up. */
     play(name, opts = {}) {
       if (opts.interrupt) { this.stop(); return this._playNow(name, opts); }
+      if (opts.next) return this._playNext(name, opts);
       return this._enqueue(() => this._playNow(name, opts));
+    }
+    /** The user did something (a key, a click): idling starts over from small things, and a nap ends. */
+    userActive() {
+      this._activeAt = this._clock;
+      const c = this._cur;
+      if (c && c.idle && c.loop) this.finish();
+      return this;
     }
     /** Pop in on the mat (no-op if already visible). */
     show(fast) {
@@ -2196,6 +2295,7 @@
     /** Clear the queue, stop the current action and close the balloon. */
     stop() {
       this._q.length = 0;
+      if (this._nx) { const nx = this._nx; this._nx = null; nx.res(false); }
       if (this._cur) this._endCurrent(false);
       this._closeBalloon();
       return this;
@@ -2206,8 +2306,14 @@
     setLoop(on) { if (this._cur) this._cur.loop = !!on; return this; }
     /** Finish only the current action early. */
     stopCurrent() { if (this._cur) this._endCurrent(false); return this; }
-    /** End a looping action gracefully: it plays its exit (e.g. Snooze wakes up) and then resolves. */
-    finish() { if (this._cur) { this._cur.loop = false; this._cur.stopAt = 0; } return this; }
+    /** End a looping action gracefully: it plays its exit now (e.g. Snooze wakes up) and then resolves. */
+    finish() {
+      const c = this._cur; if (!c || !c.loop) return this;
+      c.loop = false; c.stopAt = 0;
+      const sg = c.def.seg;
+      if (sg && c.t < sg[1]) { c.t = sg[1]; this._from = this._last; this._blend = 0; this._kick(); }
+      return this;
+    }
 
     /** Stop drawing and keep the frame on screen (the window is in the background), or carry on from it.
      *  Time stands still meanwhile: an action resumes where it was, queued calls wait their turn. */
@@ -2222,7 +2328,7 @@
     pause() { if (this._cur) this._cur.paused = true; return this; }
     resume() { if (this._cur) { this._cur.paused = false; this._kick(); } return this; }
     seek(t) { if (this._cur) { this._cur.t = clamp(t, 0, this._cur.def.dur); this._blend = 9; this._kick(); } return this; }
-    get current() { const c = this._cur; return c ? { name: c.name, t: c.t, dur: c.def.dur, paused: !!c.paused, loop: !!c.loop } : null; }
+    get current() { const c = this._cur; return c ? { name: c.name, t: c.t, dur: c.def.dur, paused: !!c.paused, loop: !!c.loop, idle: !!c.idle } : null; }
     get hidden() { return this._hidden; }
     /** Render a single frame of an action (no auto-blinking), e.g. for thumbnails. */
     pose(name, t) {
@@ -2247,7 +2353,20 @@
       if (this._running || !this._q.length) return;
       this._running = true;
       const { fn, res } = this._q.shift();
-      Promise.resolve().then(fn).then(v => { res(v); }, () => res(false)).then(() => { this._running = false; this._idleAt = this._clock + 16 + Math.random() * 16; this._pump(); });
+      Promise.resolve().then(fn).then(v => { res(v); }, () => res(false)).then(() => { this._running = false; this._restAt = this._clock; this._pump(); });
+    }
+    _playNext(name, opts) {
+      if (this._nx) { const old = this._nx; this._nx = null; old.res(false); }
+      const c = this._cur;
+      if (!c || (c.idle && !(c.name === NAP && c.t >= c.def.seg[0]))) return this._playNow(name, opts);
+      return new Promise(res => { this._nx = { name, opts, res }; if (c.idle) this.finish(); });
+    }
+    /* what waits for the act under way (play next), once it has ended; another started meanwhile: after that one */
+    _runNext() {
+      const nx = this._nx;
+      if (!nx || this._cur) return;
+      this._nx = null;
+      this._playNow(nx.name, nx.opts).then(nx.res);
     }
     _playNow(name, opts = {}) {
       let n = Scout.resolve(name);
@@ -2262,7 +2381,7 @@
       this._still = null;
       this._from = this._last; this._blend = 0;
       return new Promise(res => {
-        const c = this._cur = { name: n, def, t: clamp(opts.at || 0, 0, def.dur), loop: !!opts.loop, paused: !!opts.paused, res };
+        const c = this._cur = { name: n, def, t: clamp(opts.at || 0, 0, def.dur), loop: !!opts.loop, paused: !!opts.paused, idle: !!opts.idle, res };
         if (opts.duration > 0) { c.loop = true; c.stopAt = this._clock + opts.duration / 1000; }
         if (opts.until && typeof opts.until.then === 'function') { c.loop = true; opts.until.then(() => { if (this._cur === c) c.loop = false; }, () => { if (this._cur === c) c.loop = false; }); }
         this._kick();
@@ -2270,21 +2389,25 @@
     }
     _endCurrent(done) {
       const c = this._cur; if (!c) return;
-      this._cur = null;
+      this._cur = null; this._restAt = this._clock;
       this._from = this._last; this._blend = 0;
       if (done && c.def.hides) this._setHidden();
       if (this.onend) this.onend(c.name, done);
       c.res(done);
+      this._kick();
+      if (this._nx) Promise.resolve().then(() => this._runNext());
       if (this.o.mode === 'still' && !this._still) live.delete(this);
     }
     _kick() { if (!this._frozen) wake(this); }
-    _unhide() { this._hidden = false; this.el.classList.remove('is-hidden'); this._kick(); }
+    _unhide() { this._hidden = false; this.el.classList.remove('is-hidden'); this._drawnSteady = false; this._kick(); }
     _setHidden() { this._hidden = true; this.el.classList.add('is-hidden'); this._closeBalloon(); }
 
     /* ---------- internals: frame ---------- */
-    _tick(dt) {
-      this._clock += dt;
+    _tick(dt, real = dt) {
+      this._clock += real;
       this._blend += dt;
+      /* the tail's wag runs on a phase of its own, so a change of pace (a blend between actions) can't make it jump */
+      if (this._last) this._wagPh = (this._wagPh + Math.PI * 2 * this._last.wagHz * dt) % (Math.PI * 2);
       const c = this._cur;
       if (c && !c.paused) {
         c.t += dt * this.speed;
@@ -2297,19 +2420,55 @@
         }
       }
       if (this._move) this._stepMove();
-      if (this.o.mode === 'desktop' && this.o.idle && !this._cur && !this._running && !this._q.length && !this._hidden &&
-          !this._dragging && this._clock > this._idleAt && !reduceMotion()) {
-        this.play(pickIdle());
+      const clk = this._clock;
+      if (clk >= this._nextBlink) { this._blinkT0 = clk; this._nextBlink = clk + (Math.random() < .1 ? .32 : 4 + Math.random() * 5); }
+      if (clk >= this._nextSway) {
+        if (!this._cur && !reduceMotion()) this._swayT0 = clk;
+        this._nextSway = clk + SWAY.dur + 8 + Math.random() * 14;
       }
-      const p = this._compute(c ? c.t : 0);
-      this._render(p, this.o.mode === 'still' ? (c ? c.t : 0) : this._clock);
+      if (this.o.mode === 'desktop' && this.o.idle && !this._cur && !this._running && !this._q.length && !this._nx && !this._hidden &&
+          !this._dragging && !reduceMotion()) {
+        const st = this._idleStage(), due = this._restAt + lerp(st[1][0], st[1][1], this._idleR);
+        if (this._clock >= due) {
+          const n = pickIdle(st[2], this._recent);
+          this._recent = [n].concat(this._recent).slice(0, 2);
+          this._idleR = Math.random();
+          this.play(n, { idle: true, loop: n === NAP });
+        }
+      }
+      /* nothing moves: the frame on screen stays as it is */
+      const steady = this._steady();
+      if (!steady || !this._drawnSteady) {
+        const p = this._compute(c ? c.t : 0);
+        this._render(p, this.o.mode === 'still' ? (c ? c.t : 0) : this._clock);
+        this._drawnSteady = steady;
+      }
       if (this.onframe && c) this.onframe(c.name, c.t, c.def.dur);
       if (this.o.mode === 'still' && !this._cur) live.delete(this);
       else if (this._hidden && !this._cur && !this._move && this._blend >= BLEND) live.delete(this);
     }
+    _idleStage() {
+      const quiet = this._clock - this._activeAt;
+      let st = IDLE_STAGES[0];
+      for (const it of IDLE_STAGES) if (quiet >= it[0]) st = it;
+      return st;
+    }
+    /* at rest, nothing moving: no action, move, blend, words, balloon turning in, blink or sway */
+    _steady() {
+      const clk = this._clock;
+      return !this._cur && !this._still && !this._move && !this._talking && this._blend >= BLEND && !(this._bOpen && clk - this._bT0 < .4) &&
+        clk - this._blinkT0 >= .2 && clk - this._swayT0 >= SWAY.dur;
+    }
+    /* how soon he needs a frame (ms): 0 every frame; SLOW_MS for a nap or the tail's sway; at rest, his next blink or sway */
+    _wait() {
+      const c = this._cur, clk = this._clock;
+      if (this._steady()) return (Math.min(this._nextBlink, this._nextSway) - clk) * 1000;
+      if (this._move || this._talking || this._blend < BLEND || (this._bOpen && clk - this._bT0 < .4)) return 0;
+      if (c) return c.idle && c.loop && c.name === NAP && c.t >= c.def.seg[0] ? SLOW_MS : 0;
+      return clk - this._blinkT0 < .2 ? 0 : SLOW_MS;
+    }
     _compute(t) {
       const p = rest();
-      p.view = this.view;
       const c = this._cur;
       if (c) c.def.pose(c.t, p);
       else if (this._still) A[this._still.name].pose(this._still.t, p);
@@ -2319,24 +2478,20 @@
         for (const key of NUM_KEYS) p[key] = lerp(fr[key], p[key], k);
         p.wL = mix2(fr.wL, p.wL, k); p.wR = mix2(fr.wR, p.wR, k);
       }
-      if (this.o.mode !== 'still') this._auto(p);
+      if (this.o.mode !== 'still') { this._auto(p); p.wagPh = this._wagPh; }
       this._last = p;
       return p;
     }
     _auto(p) {
       const clk = this._clock;
-      if (clk >= this._nextBlink) {
-        this._blinkT0 = clk;
-        this._nextBlink = clk + (Math.random() < .15 ? .32 : 3 + Math.random() * 3.5);
-      }
       const bt = clk - this._blinkT0, b = bt < .17 ? Math.sin(bt / .17 * Math.PI) * p.autoBlink : 0;
       if (b > p.lidL) p.lidL = b;
       if (b > p.lidR) p.lidR = b;
-      p.breath = Math.sin(clk * Math.PI * 2 * .28);
       if (this._talking) p.mouth = Math.max(p.mouth, .18 + .5 * Math.abs(Math.sin(clk * 12.5)) * (.65 + .35 * Math.sin(clk * 3.1)));
-      if (!p.wag) { p.wag = 2.5; p.wagHz = .35; }
+      /* in an action the tail keeps a little wag (faded in from rest); at rest it is still but for a sway now and then */
+      if (this._cur) { if (!p.wag) { p.wag = 2.5 * (this._blend < BLEND ? E.io(this._blend / BLEND) : 1); p.wagHz = .35; } }
+      else if (clk - this._swayT0 < SWAY.dur) { p.wag = SWAY.deg * win(clk - this._swayT0, 0, .7, SWAY.dur - .9, SWAY.dur); p.wagHz = SWAY.hz; }
       if (!this._cur) {
-        p.hr += 1.2 * Math.sin(clk * Math.PI * 2 * .09);
         if (this._bOpen) {
           const k = Math.min(1, (clk - this._bT0) / .35);
           p.lookY -= .55 * this._bUp * k; p.lookX += .45 * this._bDir * k;
@@ -2352,7 +2507,7 @@
     }
 
     _render(p, time) {
-      const P = this.P, V = VIEWS[this.view] || VIEWS.front;
+      const P = this.P, V = VIEW;
       attr(P.mat, 'transform', `translate(100 181) scale(${f(p.mat)} ${f(.35 + .65 * clamp(p.mat, 0, 2))}) translate(-100 -181)`);
       attr(P.mat, 'opacity', f(clamp(p.matO)));
       const ss = clamp(1 - Math.max(0, -p.y) / 80, .3, 1) * p.scale;
@@ -2365,10 +2520,23 @@
       /* head */
       const hr = p.hr + V.hr, turn = clamp(p.turn + V.turn, -1.15, 1.15);
       attr(P.head, 'transform', `translate(${f(p.hx + V.head)} ${f(p.hy)}) rotate(${f(hr)} 100 104)`);
-      attr(P.face, 'transform', `translate(${f(turn * 7)} ${f(p.faceY)})`);
+      const faceT = `translate(${f(turn * 7)} ${f(p.faceY)})`;
+      attr(P.face, 'transform', faceT); attr(P.faceF, 'transform', faceT);
+      /* the head's outline follows the face from rest: the chin when it looks down or turns, the crown when it looks up,
+         so the face never slides under the outline */
+      const rel = turn - V.turn, sk = skullPath(rel * 7, Math.max(0, p.faceY), Math.min(0, p.faceY));
+      attr(P.skull, 'd', sk); attr(P.skullO, 'd', sk);
+      if (P.tagClip) {
+        const a = hr * Math.PI / 180, c = Math.cos(a), sn = Math.sin(a), ox = p.hx + V.head, oy = p.hy;
+        const toBody = (x, y) => [100 + (x - 100) * c - (y - 104) * sn + ox, 104 + (x - 100) * sn + (y - 104) * c + oy];
+        attr(P.tagClip, 'd', 'M-100 -100H300V300H-100Z' + skullPath(rel * 7, Math.max(0, p.faceY), Math.min(0, p.faceY), toBody));
+      }
       const grav = -hr * .55 - p.rot * .5 - p.lean * .5;
-      attr(P.earL, 'transform', `translate(${f(turn * 3.5)} 0) rotate(${f(p.earL + grav)} 76 48)`);
-      attr(P.earR, 'transform', `translate(${f(-turn * 3.5)} 0) rotate(${f(p.earR - grav)} 76 48)`);
+      /* an ear keeps pace with the face turning its way, so it doesn't cover the eye */
+      /* and hangs from the side of the head: it swings out freely, in hardly at all (not over the eye) */
+      const earIn = (a) => (a >= 0 ? a : -EAR_IN * (1 - Math.exp(a / EAR_IN)));
+      attr(P.earL, 'transform', `translate(${f(turn * 3.5 + Math.min(0, rel) * 3.5)} 0) rotate(${f(earIn(p.earL + grav))} 76 48)`);
+      attr(P.earR, 'transform', `translate(${f(-turn * 3.5 - Math.max(0, rel) * 3.5)} 0) rotate(${f(earIn(p.earR - grav))} 76 48)`);
       attr(P.browL, 'transform', `translate(0 ${f(-p.browL * 5.4)}) rotate(${f(-p.browTL * 20)} 87 55.5)`);
       attr(P.browR, 'transform', `translate(0 ${f(-p.browR * 5.4)}) rotate(${f(p.browTR * 20)} 113 55.5)`);
       const lx = clamp(p.lookX, -1, 1), ly = clamp(p.lookY, -1, 1), happy = clamp(p.happy);
@@ -2438,7 +2606,7 @@
       });
       this._drawHeld(held, V, p);
 
-      /* hind legs: a 3D leg posed in its own plane, then projected with this view's camera.
+      /* hind legs: a 3D leg posed in its own plane, then projected with the camera.
          hip -> femur (down and forward) -> stifle -> tibia (down and back) -> hock -> metatarsus -> paw.
          Sitting folds every joint: hock on the floor behind, metatarsus flat, paw under the knee.
          When the body rises the paws stay planted and the heels lift; past full reach the legs hang. */
@@ -2527,7 +2695,7 @@
       }
 
       /* tail */
-      const tp = tailPaths(p.tail + V.tailAdd + p.wag * Math.sin(Math.PI * 2 * p.wagHz * time), V.tail);
+      const tp = tailPaths(p.tail + V.tailAdd + p.wag * Math.sin(p.wagPh != null ? p.wagPh : Math.PI * 2 * p.wagHz * time), V.tail);
       attr(P.tailO, 'd', tp.all); attr(P.tailF, 'd', tp.all); attr(P.tailT, 'd', tp.tip);
 
       /* props */
@@ -2552,7 +2720,7 @@
     }
     /* ---------- items held in the paws ----------
        Each is a flat plane with an orientation in the scene (turned toward the dog, or facing him),
-       projected with this view's camera, so it reads as turned in both views. Its position comes from
+       projected with the camera, so it reads as turned. Its position comes from
        the paws on screen. */
     _heldFrames(p, V, arms) {
       const out = {}, h = p.held;
@@ -2573,18 +2741,17 @@
       for (const name in h.items) {
         const st = h.items[name], s = st.s == null ? 1 : st.s;
         if (s < .02) continue;
-        const byView = v => v && !Array.isArray(v) && typeof v === 'object' ? (v[this.view] != null ? v[this.view] : v.front) : v;
         /* orientation: turned `yaw` degrees from facing the viewer toward the dog, top tipped back `tilt` */
         let n;
         if (st.facing === 'dog') { const a = (st.tilt || 35) * D2R; n = [-Math.cos(a), Math.sin(a), 0]; }
         else {
-          const yaw = byView(st.yaw), base = Math.atan2(D[2], D[0]) + (yaw == null ? 45 : yaw) * D2R, a = (st.tilt || 0) * D2R;
+          const yaw = st.yaw, base = Math.atan2(D[2], D[0]) + (yaw == null ? 45 : yaw) * D2R, a = (st.tilt || 0) * D2R;
           n = v3.norm([Math.cos(base) * Math.cos(a), Math.sin(a), Math.sin(base) * Math.cos(a)]);
         }
         const fr = frame(n), pw = P2(fr.wd), pu = P2(fr.up);
         let C2;
         if (st.pos) {
-          const ps = byView(st.pos), tt = st.t || 0;
+          const ps = st.pos, tt = st.t || 0;
           C2 = [ps[0] + .8 * Math.sin(tt * 1.7), ps[1] + 1.8 * Math.sin(tt * 2.3)];
         } else if (st.anchor === 'L' || st.anchor === 'R') {
           const w = arms[st.anchor].W, at = st.at || [0, 0];
@@ -2716,6 +2883,7 @@
       b.classList.toggle('has-choices', choices.length > 0);
       this._placeBalloon(text, choices.length > 0);
       tx.textContent = ''; ch.hidden = true;
+      this._kick();
       b.classList.add('is-on'); this._bOpen = true; this._bT0 = this._clock;
       const words = text.split(/(\s+)/);
       let i = 0;
@@ -2723,7 +2891,7 @@
       return new Promise(res => {
         this._bDone = val => {
           clearTimeout(this._bTimer); clearInterval(this._bType);
-          this._talking = false; this._bOpen = false; this._bDone = null; this._bPick = null;
+          this._talking = false; this._bOpen = false; this._bDone = null; this._bPick = null; this._drawnSteady = false; this._kick();
           b.classList.remove('is-on'); res(val);
         };
         this._bPick = choices.length ? (n => { if (this._bDone) this._bDone(choices[n].value); }) : null;
@@ -2743,7 +2911,7 @@
     _closeBalloon() { if (this._bDone) this._bDone(this._bPick ? null : false); }
     _placeBalloon(text, withChoices) {
       const b = this.balloon, W = this.el.offsetWidth || this.o.size, H = this.el.offsetHeight || W * 235 / 260, sc = W / 260;
-      const V = VIEWS[this.view] || VIEWS.front;
+      const V = VIEW;
       const headX = (130 + V.head) * sc, headTop = 64 * sc;
       this._bText.textContent = text; this._bChoices.hidden = !withChoices;
       b.style.width = ''; b.style.left = '0px'; b.style.top = '0px'; b.style.bottom = 'auto'; b.classList.remove('is-below');
@@ -2776,6 +2944,7 @@
       if (this.o.mode !== 'desktop') return Promise.resolve(false);
       return new Promise(res => {
         const from = this._pos.slice(), dist = Math.hypot(x - from[0], y - from[1]);
+        this._kick();
         this._move = { from, to: [x, y], t0: this._clock, dur: Math.max(.3, ms / 1000), k: 0, hops: Math.max(1, Math.round(dist / 70)), dir: Math.sign(x - from[0]) || 0, res };
         this._kick();
       });
@@ -2820,7 +2989,7 @@
       const end = e => {
         if (!start) return;
         const s = start; start = null;
-        this._dragging = false; el.classList.remove('is-dragging'); this._idleAt = this._clock + 14;
+        this._dragging = false; el.classList.remove('is-dragging'); this._restAt = this._clock;
         if (e.type !== 'pointerup') return;
         if (s.moved) { if (o.onmoved) o.onmoved(this._pos[0], this._pos[1]); }
         else if (o.onclick) o.onclick();

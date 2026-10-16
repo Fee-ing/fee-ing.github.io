@@ -58,7 +58,7 @@
   OL.setLevel = function (n) {
     const paras = selectedTop();
     if (!paras.length) return;
-    E.edit(n ? 'Promote' : 'Demote to Body Text', () => {
+    E.edit(n ? L.N('升级') : '降为正文', () => {
       if (n) ensureHeading(n);
       O.setParaProps(paras, (pPr) => { if (n) pPr.style = 'Heading' + n; else { delete pPr.style; delete pPr.outline; } });
       return E.sel;
@@ -70,7 +70,7 @@
     if (!paras.length) return;
     /* list items in other views: Alt+Shift+arrows change list level */
     if (L.app.view !== 'outline' && paras.every((p) => !levelOf(p)) && L.lists && L.lists.info(paras[0])) { L.lists.shift(delta); return; }
-    E.edit(delta < 0 ? 'Promote' : 'Demote', () => {
+    E.edit(delta < 0 ? L.N('升级') : L.N('降级'), () => {
       for (const p of paras) {
         let lv = levelOf(p);
         if (!lv) {

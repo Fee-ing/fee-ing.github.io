@@ -242,8 +242,8 @@
     const body = h('div', { class: 'tiw' });
     const title = h('div', { class: 'tiw-step' });
     const content = h('div', { class: 'tiw-content' });
-    const preview = h('div', { class: 'tiw-preview', tabindex: '0' });
-    body.append(title, content, h('div', { class: 'tiw-cap', text: 'Preview of selected data:' }), preview);
+    const preview = h('div', { class: 'tiw-preview', tabindex: '0', translate: 'no' });
+    body.append(title, content, h('div', { class: 'tiw-cap', text: '选定数据预览：' }), preview);
     let selCol = 0;
     function renderPreview() {
       preview.textContent = '';
@@ -262,7 +262,7 @@
         const ruler = h('div', { class: 'tiw-ruler' });
         for (let i = 0; i <= w; i += 10) ruler.appendChild(h('span', { style: `left:${i * cw}px`, text: String(i) }));
         box.appendChild(ruler);
-        const pre = h('pre', { class: 'tiw-pre', text: ls.join('\n') });
+        const pre = h('pre', { class: 'tiw-pre', translate: 'no', text: ls.join('\n') });
         box.appendChild(pre);
         for (const b of st.breaks || []) box.appendChild(h('div', { class: 'tiw-break', style: `left:${b * cw + 4}px` }));
         box.addEventListener('click', (e) => {
@@ -284,7 +284,7 @@
         const hr = h('tr');
         for (let c = 0; c < ncol; c++) {
           const f = st.formats[c] || 'general';
-          const th = h('th', { class: c === selCol ? 'on' : '', text: f === 'general' ? 'General' : f === 'text' ? 'Text' : f === 'skip' ? 'Skip Column' : f });
+          const th = h('th', { class: c === selCol ? 'on' : '', text: f === 'general' ? '常规' : f === 'text' ? '文本' : f === 'skip' ? '跳过此列' : f });
           th.addEventListener('click', () => { selCol = c; sync3(); renderPreview(); });
           hr.appendChild(th);
         }
@@ -293,7 +293,7 @@
       for (const r of rows) {
         const tr = h('tr');
         for (let c = 0; c < ncol; c++) {
-          const td = h('td', { text: r[c] == null ? '' : r[c] });
+          const td = h('td', { translate: 'no', text: r[c] == null ? '' : r[c] });
           if (st.step === 3) { if (c === selCol) td.classList.add('on'); if (st.formats[c] === 'skip') td.classList.add('skip'); td.addEventListener('click', () => { selCol = c; sync3(); renderPreview(); }); }
           tr.appendChild(td);
         }
@@ -303,53 +303,53 @@
     }
     let sync3 = () => {};
     function step1() {
-      title.textContent = 'Text Import Wizard - Step 1 of 3';
+      title.textContent = L.t('文本导入向导 - 第 {0} 步，共 {1} 步', 1, 3);
       content.textContent = '';
-      content.appendChild(h('p', { text: 'The Text Wizard has determined that your data is ' + (st.fixed ? 'Fixed Width.' : 'Delimited.') }));
-      content.appendChild(h('p', { text: 'If this is correct, choose Next, or choose the data type that best describes your data.' }));
-      const g = ui.group('Original data type',
-        h('div', { class: 'tiw-dt' }, ui.radio('tiw-type', '&Delimited', !st.fixed, () => { st.fixed = false; renderPreview(); }), h('span', { class: 'tiw-hint', text: '- Characters such as commas or tabs separate each field.' })),
-        h('div', { class: 'tiw-dt' }, ui.radio('tiw-type', 'Fixed &width', st.fixed, () => { st.fixed = true; renderPreview(); }), h('span', { class: 'tiw-hint', text: '- Fields are aligned in columns with spaces between each field.' })));
+      content.appendChild(h('p', { text: st.fixed ? L.t('文本向导判定您的数据使用固定宽度。') : L.t('文本向导判定您的数据使用分隔符号。') }));
+      content.appendChild(h('p', { text: '如果正确，请选择“下一步”；否则，请选择最符合您数据的数据类型。' }));
+      const g = ui.group('原始数据类型',
+        h('div', { class: 'tiw-dt' }, ui.radio('tiw-type', '分隔符号(&D)', !st.fixed, () => { st.fixed = false; renderPreview(); }), h('span', { class: 'tiw-hint', text: '- 用逗号、制表符等字符分隔各字段。' })),
+        h('div', { class: 'tiw-dt' }, ui.radio('tiw-type', '固定宽度(&w)', st.fixed, () => { st.fixed = true; renderPreview(); }), h('span', { class: 'tiw-hint', text: '- 各字段按列对齐，字段之间以空格分隔。' })));
       content.appendChild(g);
       const start = ui.spin({ value: st.start, min: 1, max: Math.max(1, lines().length), step: 1, dec: 0, onChange: (v) => { st.start = Math.round(v); renderPreview(); } });
-      const encSel = ui.select([['auto', 'Detect automatically (' + decoded.encoding + ')'], ['utf-8', 'Unicode (UTF-8)'], ['windows-1252', 'Windows (ANSI)'], ['utf-16le', 'Unicode (UTF-16 LE)'], ['utf-16be', 'Unicode (UTF-16 BE)'], ['iso-8859-1', 'Western European (ISO)'], ['shift_jis', 'Japanese (Shift-JIS)'], ['gb18030', 'Chinese Simplified (GB18030)'], ['big5', 'Chinese Traditional (Big5)'], ['euc-kr', 'Korean (EUC-KR)'], ['windows-1251', 'Cyrillic (Windows)'], ['ibm866', 'MS-DOS (OEM 866)']], enc, (v) => { enc = v; decoded = CSV.decode(bytes, v === 'auto' ? null : v); renderPreview(); });
-      content.appendChild(h('div', { class: 'row' }, ui.field('Start import at &row:', start), ui.field('File &origin:', encSel)));
+      const encSel = ui.select([['auto', L.t('自动检测（{0}）', decoded.encoding)], ['utf-8', 'Unicode (UTF-8)'], ['windows-1252', 'Windows (ANSI)'], ['utf-16le', 'Unicode (UTF-16 LE)'], ['utf-16be', 'Unicode (UTF-16 BE)'], ['iso-8859-1', '西欧 (ISO)'], ['shift_jis', '日语 (Shift-JIS)'], ['gb18030', '简体中文 (GB18030)'], ['big5', '繁体中文 (Big5)'], ['euc-kr', '韩语 (EUC-KR)'], ['windows-1251', '西里尔文 (Windows)'], ['ibm866', 'MS-DOS (OEM 866)']], enc, (v) => { enc = v; decoded = CSV.decode(bytes, v === 'auto' ? null : v); renderPreview(); });
+      content.appendChild(h('div', { class: 'row' }, ui.field('导入起始行(&r)：', start), ui.field('文件原始格式(&o)：', encSel)));
       renderPreview();
     }
     function step2() {
-      title.textContent = 'Text Import Wizard - Step 2 of 3';
+      title.textContent = L.t('文本导入向导 - 第 {0} 步，共 {1} 步', 2, 3);
       content.textContent = '';
       if (st.fixed) {
         if (!st.breaks) st.breaks = CSV.guessBreaks(decoded.text);
-        content.appendChild(h('p', { text: 'This screen lets you set field widths (column breaks). Lines with arrows signify a column break. To CREATE a break line, click at the desired position. To DELETE a break line, click on it.' }));
+        content.appendChild(h('p', { text: '在此步骤中，可设置字段宽度（分列线）。带箭头的线表示列边界。单击所需位置可创建分列线；单击已有分列线可将其删除。' }));
         renderPreview();
         return;
       }
-      content.appendChild(h('p', { text: 'This screen lets you set the delimiters your data contains. You can see how your text is affected in the preview below.' }));
+      content.appendChild(h('p', { text: '在此步骤中，可设置数据使用的分隔符。下方预览会显示设置对文本的影响。' }));
       const d = st.delims;
       const other = h('input', { type: 'text', maxlength: '1', value: d.otherCh, style: 'width:24px' });
       other.addEventListener('input', () => { d.otherCh = other.value; d.other = !!other.value; oc.input.checked = d.other; renderPreview(); });
-      const oc = ui.check('&Other:', d.other, (v) => { d.other = v; renderPreview(); });
-      const g = ui.group('Delimiters',
-        h('div', { class: 'tiw-delims' }, ui.check('&Tab', d.tab, (v) => { d.tab = v; renderPreview(); }), ui.check('Se&micolon', d.semi, (v) => { d.semi = v; renderPreview(); }), ui.check('&Comma', d.comma, (v) => { d.comma = v; renderPreview(); }), ui.check('&Space', d.space, (v) => { d.space = v; renderPreview(); }), h('span', null, oc, other)));
-      content.appendChild(h('div', { class: 'row' }, g, h('div', { class: 'col' }, ui.check('Treat consecutive delimiters as &one', st.merge, (v) => { st.merge = v; renderPreview(); }),
-        ui.field('Text &qualifier:', ui.select([['"', '"'], ["'", "'"], ['', '{none}']], st.quote, (v) => { st.quote = v; renderPreview(); })))));
+      const oc = ui.check('其他(&O)：', d.other, (v) => { d.other = v; renderPreview(); });
+      const g = ui.group('分隔符号',
+        h('div', { class: 'tiw-delims' }, ui.check('制表符(&T)', d.tab, (v) => { d.tab = v; renderPreview(); }), ui.check('分号(&m)', d.semi, (v) => { d.semi = v; renderPreview(); }), ui.check('逗号(&C)', d.comma, (v) => { d.comma = v; renderPreview(); }), ui.check('空格(&S)', d.space, (v) => { d.space = v; renderPreview(); }), h('span', null, oc, other)));
+      content.appendChild(h('div', { class: 'row' }, g, h('div', { class: 'col' }, ui.check('将连续分隔符视为单个分隔符(&o)', st.merge, (v) => { st.merge = v; renderPreview(); }),
+        ui.field('文本识别符(&q)：', ui.select([['"', '"'], ["'", "'"], ['', '{无}']], st.quote, (v) => { st.quote = v; renderPreview(); })))));
       renderPreview();
     }
     function step3() {
-      title.textContent = 'Text Import Wizard - Step 3 of 3';
+      title.textContent = L.t('文本导入向导 - 第 {0} 步，共 {1} 步', 3, 3);
       content.textContent = '';
-      content.appendChild(h('p', { text: "This screen lets you select each column and set the Data Format. 'General' converts numeric values to numbers, date values to dates, and all remaining values to text." }));
+      content.appendChild(h('p', { text: "在此步骤中，可选择各列并设置数据格式。“常规”会将数值转换为数字、日期值转换为日期，其余值转换为文本。" }));
       const radios = [];
-      const dateSel = ui.select(['MDY', 'DMY', 'YMD', 'MYD', 'DYM', 'YDM'], 'MDY', (v) => { if (/^[MDY]{3}$/.test(st.formats[selCol] || '')) { st.formats[selCol] = v; renderPreview(); } });
+      const dateSel = ui.select(['MDY', 'DMY', 'YMD', 'MYD', 'DYM', 'YDM'], 'MDY', (v) => { if (/^[MDY]{3}$/.test(st.formats[selCol] || '')) { st.formats[selCol] = v; renderPreview(); } }, { translate: 'no' });
       const set = (f) => { st.formats[selCol] = f === 'date' ? dateSel.value : f; renderPreview(); };
-      radios.push(ui.radio('tiw-fmt', '&General', true, () => set('general')));
-      radios.push(ui.radio('tiw-fmt', '&Text', false, () => set('text')));
-      const dr = ui.radio('tiw-fmt', '&Date:', false, () => set('date'));
+      radios.push(ui.radio('tiw-fmt', '常规(&G)', true, () => set('general')));
+      radios.push(ui.radio('tiw-fmt', '文本(&T)', false, () => set('text')));
+      const dr = ui.radio('tiw-fmt', '日期(&D)：', false, () => set('date'));
       radios.push(dr);
-      radios.push(ui.radio('tiw-fmt', 'Do not import column (s&kip)', false, () => set('skip')));
+      radios.push(ui.radio('tiw-fmt', '不导入此列（跳过）(&k)', false, () => set('skip')));
       sync3 = () => { const f = st.formats[selCol] || 'general'; radios[0].input.checked = f === 'general'; radios[1].input.checked = f === 'text'; radios[2].input.checked = /^[MDY]{3}$/.test(f); radios[3].input.checked = f === 'skip'; if (/^[MDY]{3}$/.test(f)) dateSel.value = f; };
-      content.appendChild(ui.group('Column data format', radios[0], radios[1], h('div', { class: 'row' }, dr, dateSel), radios[3]));
+      content.appendChild(ui.group('列数据格式', radios[0], radios[1], h('div', { class: 'row' }, dr, dateSel), radios[3]));
       sync3();
       renderPreview();
     }
@@ -357,12 +357,12 @@
     return new Promise((resolve) => {
       let result = null;
       const d = ui.dialog({
-        title: 'Text Import Wizard - Step 1 of 3', body, width: 620,
+        title: L.t('文本导入向导 - 第 {0} 步，共 {1} 步', 1, 3), body, width: 620,
         buttons: [
-          { label: 'Cancel' },
-          { label: '< &Back', onClick: () => { if (st.step > 1) { st.step--; steps[st.step - 1](); upd(); } return false; } },
-          { label: '&Next >', onClick: () => { if (st.step < 3) { st.step++; steps[st.step - 1](); upd(); } return false; } },
-          { label: '&Finish', primary: true, onClick: () => {
+          { label: '取消' },
+          { label: '< 上一步(&B)', onClick: () => { if (st.step > 1) { st.step--; steps[st.step - 1](); upd(); } return false; } },
+          { label: '下一步 >(&N)', onClick: () => { if (st.step < 3) { st.step++; steps[st.step - 1](); upd(); } return false; } },
+          { label: '完成(&F)', primary: true, onClick: () => {
             const rows = parsedRows();
             const wb = CSV.toWorkbook(rows, { name, startRow: st.start - 1, colFormats: st.formats });
             wb.textImport = { encoding: decoded.encoding };
@@ -495,7 +495,7 @@
   CSV.writeHTML = function (wb) {
     const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const visible = wb.sheets.filter((s) => s.state === 'visible' && s.kind !== 'chartsheet');
-    let html = `<!DOCTYPE html>\n<html><head><meta charset="utf-8"><meta name="Generator" content="Ledger 2003"><title>${esc((wb.props && wb.props.title) || (wb.fileName || 'Book1').replace(/\.[^.]+$/, ''))}</title>` +
+    let html = `<!DOCTYPE html>\n<html><head><meta charset="utf-8"><meta name="Generator" content="Ledger"><title>${esc((wb.props && wb.props.title) || (wb.fileName || 'Book1').replace(/\.[^.]+$/, ''))}</title>` +
       '<style>body{font-family:Arial,sans-serif;font-size:10pt;margin:8px}h2{font:bold 11pt Tahoma,sans-serif;margin:16px 0 6px}td{padding:0 2px;border:1px solid #DADADA;font-size:10pt}nav a{margin-right:10px}</style></head><body>';
     if (visible.length > 1) html += '<nav>' + visible.map((s, i) => `<a href="#sheet${i + 1}">${esc(s.name)}</a>`).join('') + '</nav>';
     visible.forEach((s, i) => { html += `<h2 id="sheet${i + 1}">${esc(s.name)}</h2>` + CSV.htmlSheet(wb, s); });

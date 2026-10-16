@@ -40,31 +40,31 @@
   const MRU = () => L.store.get('fnMRU', ['SUM', 'AVERAGE', 'IF', 'HYPERLINK', 'COUNT', 'MAX', 'SIN', 'SUMIF', 'PMT', 'STDEV']);
   D.insertFunction = function (prefer) {
     const FI = L.fninfo;
-    let cat = prefer ? '全部' : '最近使用过的';
+    let cat = prefer ? 'All' : '最近使用';
     let pick = prefer || null;
-    const search = h('input', { type: 'text', placeholder: '输入要执行操作的简要说明，然后单击「转到」', style: 'flex:1;min-width:0' });
+    const search = h('input', { type: 'text', placeholder: '简要描述您要执行的操作，然后单击“转到”', style: 'flex:1;min-width:0' });
     const listBox = h('div');
-    const syntax = h('div', { class: 'if-syntax' }), desc = h('div', { class: 'if-desc' });
-    const describe = (name) => { const f = FI.get(name); syntax.textContent = f ? FI.syntax(f) : ''; desc.textContent = f ? f.desc : ''; };
+    const syntax = h('div', { class: 'if-syntax', translate: 'no' }), desc = h('div', { class: 'if-desc' });
+    const describe = (name) => { const f = FI.get(name); syntax.textContent = f ? FI.syntax(f) : ''; desc.textContent = f ? L.t(f.desc) : ''; };
     let lb;
     const draw = (names) => {
       listBox.textContent = '';
-      lb = D.list(names.map((n) => [n, n]), names.includes(pick) ? pick : names[0], (n) => { pick = n; describe(n); }, { class: 'lbox fnlist' });
+      lb = D.list(names.map((n) => [n, n]), names.includes(pick) ? pick : names[0], (n) => { pick = n; describe(n); }, { class: 'lbox fnlist', translate: 'no' });
       lb.ondbl = (n) => { pick = n; d.close(1); go(); };
       listBox.appendChild(lb);
       if (!names.includes(pick)) pick = names[0] || null;
       describe(pick);
     };
     const byCat = () => {
-      if (cat === '最近使用过的') return MRU().filter((n) => FI.get(n));
-      const all = FI.all().filter((f) => cat === '全部' || f.cat === cat).map((f) => f.name);
+      if (cat === 'Most Recently Used') return MRU().filter((n) => FI.get(n));
+      const all = FI.all().filter((f) => cat === 'All' || f.cat === cat).map((f) => f.name);
       return all.sort();
     };
-    const catSel = ui.select(FI.categories.map((c) => [c, c]), cat, (v) => { cat = v; draw(byCat()); });
+    const catSel = ui.select(FI.categories, cat, (v) => { cat = v; draw(byCat()); });
     const doSearch = () => {
-      const words = search.value.toLowerCase().split(/\W+/).filter((w) => w.length > 2);
+      const words = search.value.toLowerCase().split(/[^\p{L}\p{N}_]+/u).filter((w) => w.length > 2 || /[^\x00-\x7f]/.test(w));
       if (!words.length) return;
-      const scored = FI.all().map((f) => { const t = (f.name + ' ' + f.desc).toLowerCase(); let sc = 0; for (const w of words) { if (f.name.toLowerCase() === w) sc += 10; if (t.includes(w)) sc += 2; if (t.includes(w.replace(/s$/, ''))) sc += 1; } return [f.name, sc]; }).filter((x) => x[1] > 0).sort((a, b) => b[1] - a[1]).slice(0, 30).map((x) => x[0]);
+      const scored = FI.all().map((f) => { const t = (f.name + ' ' + f.desc + ' ' + L.t(f.desc)).toLowerCase(); let sc = 0; for (const w of words) { if (f.name.toLowerCase() === w) sc += 10; if (t.includes(w)) sc += 2; if (t.includes(w.replace(/s$/, ''))) sc += 1; } return [f.name, sc]; }).filter((x) => x[1] > 0).sort((a, b) => b[1] - a[1]).slice(0, 30).map((x) => x[0]);
       catSel.value = 'Recommended';
       draw(scored.length ? scored : []);
     };
@@ -75,7 +75,7 @@
       const list = MRU().filter((n) => n !== pick); list.unshift(pick); L.store.set('fnMRU', list.slice(0, 10));
       D.functionArgs(pick, true);
     };
-    const d = ui.dialog({ title: '插入函数', width: 460, body: h('div', { class: 'col' }, h('label', { text: '搜索函数:' }), h('div', { class: 'row', style: 'gap:6px' }, search, ui.button('&Go', doSearch)), ui.field('或选择类别(&C):', catSel), h('label', { text: '选择函数(&N):' }), listBox, syntax, desc),
+    const d = ui.dialog({ title: '插入函数', width: 460, body: h('div', { class: 'col' }, h('label', { text: '搜索函数：' }), h('div', { class: 'row', style: 'gap:6px' }, search, ui.button('转到(&G)', doSearch)), ui.field('或选择类别(&c)：', catSel), h('label', { text: '选择函数(&n)：' }), listBox, syntax, desc),
       buttons: [{ label: '确定', primary: true, onClick: () => go() }, { label: '取消' }] });
   };
 
@@ -105,21 +105,21 @@
       const out = h('span', { class: 'fa-val' });
       const upd = () => { const t = inp.value.trim(); out.textContent = t ? '= ' + show(evalText(t)) : nm.startsWith('[') ? '' : '= '; refresh(); };
       inp.addEventListener('input', upd);
-      inp.addEventListener('focus', () => { help.textContent = ''; help.append(h('b', { text: nm.replace(/[[\]]/g, '').replace(/^./, (c) => c.toUpperCase()) + ' ' }), document.createTextNode(FI.argHelp(nm) || '')); if (repeating && i === inputs.length - 1) addRow(i + 1, ''); });
-      const label = h('label', { class: nm.startsWith('[') ? 'opt' : 'req', text: nm.replace(/[[\]]/g, '').replace(/^./, (c) => c.toUpperCase()) });
+      inp.addEventListener('focus', () => { help.textContent = ''; help.append(h('b', { translate: 'no', text: nm.replace(/[[\]]/g, '').replace(/^./, (c) => c.toUpperCase()) + ' ' }), document.createTextNode(L.t(FI.argHelp(nm)) || '')); if (repeating && i === inputs.length - 1) addRow(i + 1, ''); });
+      const label = h('label', { class: nm.startsWith('[') ? 'opt' : 'req', translate: 'no', text: nm.replace(/[[\]]/g, '').replace(/^./, (c) => c.toUpperCase()) });
       const rb = D.refBox ? null : null;
       void rb;
       rows.appendChild(h('div', { class: 'fa-row' }, label, inp, out));
       inputs.push(inp);
       upd();
     };
+    const callText = () => { const args = inputs.map((i) => i.value.trim()); while (args.length && !args[args.length - 1] && args.length > base.filter((a) => !a.startsWith('[')).length) args.pop(); return f.name + '(' + args.join(',') + ')'; };
     const n0 = Math.max(base.length, preset.length, 1);
     for (let i = 0; i < n0; i++) addRow(i, preset[i]);
-    const callText = () => { const args = inputs.map((i) => i.value.trim()); while (args.length && !args[args.length - 1] && args.length > base.filter((a) => !a.startsWith('[')).length) args.pop(); return f.name + '(' + args.join(',') + ')'; };
-    function refresh() { if (!inputs.length) return; const v = evalText(callText()); total.textContent = 'Formula result = ' + (v == null ? '' : show(v)); result.textContent = '= ' + (v == null ? '' : show(v)); }
+    function refresh() { if (!inputs.length) return; const v = evalText(callText()); total.textContent = L.t('公式结果 = {0}', v == null ? '' : show(v)); result.textContent = '= ' + (v == null ? '' : show(v)); }
     refresh();
-    help.textContent = f.desc;
-    ui.dialog({ title: '函数参数', width: 520, body: h('div', { class: 'col' }, h('b', { text: f.name }), rows, result, h('div', { class: 'fa-desc', text: f.desc }), help, total),
+    help.textContent = L.t(f.desc);
+    ui.dialog({ title: '函数参数', width: 520, body: h('div', { class: 'col' }, h('b', { translate: 'no', text: f.name }), rows, result, h('div', { class: 'fa-desc', text: f.desc }), help, total),
       buttons: [{ label: '确定', primary: true, onClick: () => {
         const call = callText();
         if (ed.active) {
@@ -145,9 +145,9 @@
   const visibleNames = (w) => w.names.filter((n) => !n.hidden && !/^_xlnm\./i.test(n.name));
   const qualified = (w, n) => (n.scope != null && w.sheets[n.scope] ? F.quoteSheet(w.sheets[n.scope].name) + '!' : '') + n.name;
   D.validName = function (name) {
-    if (!/^[A-Za-z_\\À-￿][\w.\\À-￿]*$/.test(name)) return 'The name that you entered is not valid.';
-    if (/^[A-Za-z]{1,3}\d+$/.test(name) || /^R\d*C\d*$/i.test(name) || /^[rRcC]$/.test(name)) return 'The name that you entered is not valid.\n\nReasons for this can include:\n• The name does not begin with a letter or an underscore\n• The name contains a space or other invalid characters\n• The name conflicts with an Excel built-in name or the name of another object in the workbook';
-    if (name.length > 255) return 'The name is too long.';
+    if (!/^[A-Za-z_\\À-￿][\w.\\À-￿]*$/.test(name)) return '您输入的名称无效。';
+    if (/^[A-Za-z]{1,3}\d+$/.test(name) || /^R\d*C\d*$/i.test(name) || /^[rRcC]$/.test(name)) return '您输入的名称无效。\n\n可能的原因包括：\n• 名称未以字母或下划线开头\n• 名称包含空格或其他无效字符\n• 名称与 Excel 内置名称或工作簿中其他对象的名称冲突';
+    if (name.length > 255) return '名称过长。';
     return null;
   };
   D.defineName = function () {
@@ -157,7 +157,7 @@
     const refIn = D.refBox(F.quoteSheet(s.name) + '!' + F.absRangeName(G().range()), 300);
     const comment = h('input', { type: 'text', style: 'width:100%' });
     const box = h('div');
-    const draw = () => { box.textContent = ''; const lb = D.list(names.filter((n) => !n.hidden && !/^_xlnm\./i.test(n.name)).map((n) => [qualified(w, n), qualified(w, n)]), null, (q) => { const n = names.find((x) => qualified(w, x) === q); nameIn.value = q; refIn.input.value = '=' + String(n.ref).replace(/^=/, ''); comment.value = n.comment || ''; }, { class: 'lbox short' }); box.appendChild(lb); };
+    const draw = () => { box.textContent = ''; const lb = D.list(names.filter((n) => !n.hidden && !/^_xlnm\./i.test(n.name)).map((n) => [qualified(w, n), qualified(w, n)]), null, (q) => { const n = names.find((x) => qualified(w, x) === q); nameIn.value = q; refIn.input.value = '=' + String(n.ref).replace(/^=/, ''); comment.value = n.comment || ''; }, { class: 'lbox short', translate: 'no' }); box.appendChild(lb); };
     draw();
     /* a name for the active cell's label, as Excel proposes */
     const sel = G().sel();
@@ -173,33 +173,33 @@
       const err = D.validName(nm);
       if (err) { ui.msg(err, { icon: 'warn' }); return false; }
       let ref = refIn.input.value.trim().replace(/^=/, '');
-      try { F.parse(ref); } catch (e) { ui.msg('输入的公式有错误。', { icon: 'warn' }); return false; }
+      try { F.parse(ref); } catch (e) { ui.msg('您输入的公式有错误。', { icon: 'warn' }); return false; }
       ref = F.toStore(ref);
       names = names.filter((x) => !(x.name.toLowerCase() === nm.toLowerCase() && (x.scope == null ? null : x.scope) === scope));
       names.push({ name: nm, ref, scope, comment: comment.value || undefined });
       draw();
       return true;
     };
-    ui.dialog({ title: '定义名称', width: 380, body: h('div', { class: 'col' }, h('label', { text: '工作簿中的名称(&W):' }), nameIn, box, ui.field('批注(&M):', comment), ui.field('引用位置(&R):', refIn)),
+    ui.dialog({ title: '定义名称', width: 380, body: h('div', { class: 'col' }, h('label', { text: '工作簿中的名称(&w)：' }), nameIn, box, ui.field('批注(&m)：', comment), ui.field('引用位置(&R)：', refIn)),
       buttons: [{ label: '添加(&A)', onClick: () => { add(); return false; } }, { label: '删除(&D)', onClick: () => { const q = nameIn.value.trim(); names = names.filter((x) => qualified(w, x) !== q && !(x.scope == null && x.name === q)); nameIn.value = ''; draw(); return false; } },
-        { label: '确定', primary: true, onClick: () => { if (nameIn.value.trim() && !names.some((x) => qualified(w, x) === nameIn.value.trim())) { if (add() === false) return false; } tryRun(() => { O.tx(w, 'Define Name', () => O.setNames(w, names)); }); } }, { label: '关闭' }] });
+        { label: '确定', primary: true, onClick: () => { if (nameIn.value.trim() && !names.some((x) => qualified(w, x) === nameIn.value.trim())) { if (add() === false) return false; } tryRun(() => { O.tx(w, '定义名称', () => O.setNames(w, names)); }); } }, { label: '关闭' }] });
   };
   D.pasteName = function () {
     const w = wb();
     const names = visibleNames(w);
     if (!names.length) { ui.msg('此工作簿中没有定义名称。', { icon: 'info' }); return; }
     let pick = qualified(w, names[0]);
-    const lb = D.list(names.map((n) => [qualified(w, n), qualified(w, n)]), pick, (v) => { pick = v; });
+    const lb = D.list(names.map((n) => [qualified(w, n), qualified(w, n)]), pick, (v) => { pick = v; }, { translate: 'no' });
     const insert = () => { const ed = E(); if (ed.active) ed.insertText(pick); else { ed.begin('enter', '=' + pick); } };
-    const d = ui.dialog({ title: '粘贴名称', width: 300, body: h('div', { class: 'col' }, h('label', { text: '粘贴名称(&N)' }), lb),
-      buttons: [{ label: '粘贴列表(&L)', onClick: () => { tryRun(() => { const s = sh(), sel = G().sel(); O.tx(w, 'Paste List', () => names.forEach((n, i) => { O.put(s, sel.r + i, sel.c, { v: qualified(w, n) }); O.put(s, sel.r + i, sel.c + 1, { v: '=' + F.display(String(n.ref).replace(/^=/, '')) }); })); }); } }, { label: '确定', primary: true, onClick: () => insert() }, { label: '取消' }] });
+    const d = ui.dialog({ title: '粘贴名称', width: 300, body: h('div', { class: 'col' }, h('label', { text: '粘贴名称(&n)' }), lb),
+      buttons: [{ label: '粘贴列表(&L)', onClick: () => { tryRun(() => { const s = sh(), sel = G().sel(); O.tx(w, '粘贴列表', () => names.forEach((n, i) => { O.put(s, sel.r + i, sel.c, { v: qualified(w, n) }); O.put(s, sel.r + i, sel.c + 1, { v: '=' + F.display(String(n.ref).replace(/^=/, '')) }); })); }); } }, { label: '确定', primary: true, onClick: () => insert() }, { label: '取消' }] });
     lb.ondbl = () => { d.close(1); insert(); };
   };
   D.createNames = function () {
     const s = sh(), w = wb();
     const rg = O.clip(s, G().range());
     const st = { top: typeof s.val(rg.r1, rg.c1 + (rg.c2 > rg.c1 ? 1 : 0)) === 'string', left: typeof s.val(rg.r1 + (rg.r2 > rg.r1 ? 1 : 0), rg.c1) === 'string', bottom: false, right: false };
-    ui.dialog({ title: '指定名称', width: 260, body: ui.group('名称创建于', ui.check('首行(&T)', st.top, (v) => { st.top = v; }), ui.check('左列(&L)', st.left, (v) => { st.left = v; }), ui.check('末行(&B)', false, (v) => { st.bottom = v; }), ui.check('右列(&R)', false, (v) => { st.right = v; })),
+    ui.dialog({ title: '创建名称', width: 260, body: ui.group('名称来源', ui.check('最上行(&T)', st.top, (v) => { st.top = v; }), ui.check('最左列(&L)', st.left, (v) => { st.left = v; }), ui.check('最下行(&B)', false, (v) => { st.bottom = v; }), ui.check('最右列(&R)', false, (v) => { st.right = v; })),
       buttons: [{ label: '确定', primary: true, onClick: () => tryRun(() => {
         let names = w.names.slice();
         const mk = (label, ref) => { let nm = String(label == null ? '' : label).trim().replace(/\s+/g, '_').replace(/[^\w.\\]/g, ''); if (!nm) return; if (/^\d/.test(nm) || D.validName(nm)) nm = '_' + nm; names = names.filter((x) => !(x.name.toLowerCase() === nm.toLowerCase() && x.scope == null)); names.push({ name: nm, ref: F.quoteSheet(s.name) + '!' + F.absRangeName(ref), scope: null }); };
@@ -208,7 +208,7 @@
         if (st.bottom) for (let c = c1; c <= c2; c++) mk(s.val(rg.r2, c), { r1, c1: c, r2, c2: c });
         if (st.left) for (let r = r1; r <= r2; r++) mk(s.val(r, rg.c1), { r1: r, c1, r2: r, c2 });
         if (st.right) for (let r = r1; r <= r2; r++) mk(s.val(r, rg.c2), { r1: r, c1, r2: r, c2 });
-        O.tx(w, 'Create Names', () => O.setNames(w, names));
+        O.tx(w, '创建名称', () => O.setNames(w, names));
       }) }, { label: '取消' }] });
   };
   D.applyNames = function () {
@@ -216,12 +216,12 @@
     const names = visibleNames(w).filter((n) => { try { const a = F.parse(String(n.ref)); return a.t === 'ref' || a.t === 'area'; } catch (e) { return false; } });
     if (!names.length) { ui.msg('没有引用单元格的名称。', { icon: 'info' }); return; }
     const picked = new Set(names.map((n) => n.name));
-    const box = h('div', { class: 'lbox checks' }, ...names.map((n) => ui.check(n.name, true, (v) => { if (v) picked.add(n.name); else picked.delete(n.name); })));
-    ui.dialog({ title: '应用名称', width: 300, body: h('div', { class: 'col' }, h('label', { text: '应用名称(&N):' }), box), buttons: [{ label: '确定', primary: true, onClick: () => tryRun(() => {
+    const box = h('div', { class: 'lbox checks', translate: 'no' }, ...names.map((n) => ui.check(n.name, true, (v) => { if (v) picked.add(n.name); else picked.delete(n.name); })));
+    ui.dialog({ title: '应用名称', width: 300, body: h('div', { class: 'col' }, h('label', { text: '应用名称(&n)：' }), box), buttons: [{ label: '确定', primary: true, onClick: () => tryRun(() => {
       const targets = names.filter((n) => picked.has(n.name)).map((n) => { const a = F.parse(String(n.ref)); return { name: n.name, a, sheet: (a.sheet || s.name).toLowerCase() }; });
       let rg = O.clip(s, G().range());
       if (rg.r1 === rg.r2 && rg.c1 === rg.c2) rg = { r1: 0, c1: 0, r2: s.maxR, c2: s.maxC };
-      O.tx(w, 'Apply Names', () => {
+      O.tx(w, '应用名称', () => {
         s.each(rg.r1, rg.c1, rg.r2, rg.c2, (cl, r, c) => {
           if (cl.f == null) return;
           let changed = false;
@@ -268,14 +268,14 @@
       if ((n.t === 'op' || n.t === 'un' || n.t === 'pct' || n.t === 'paren') && kidsOf.every((k) => isLit(k) || k.t === 'area')) return n;
       return null;
     };
-    const text = h('div', { class: 'ev-text' });
+    const text = h('div', { class: 'ev-text', translate: 'no' });
     const render = (mark) => {
       text.textContent = '';
       const full = F.toText(ast);
       if (!mark) { text.textContent = '=' + full; return; }
       const part = F.toText(mark);
       const i = full.indexOf(part);
-      text.append(document.createTextNode('=' + full.slice(0, Math.max(0, i))), h('u', { text: part }), document.createTextNode(i >= 0 ? full.slice(i + part.length) : ''));
+      text.append(document.createTextNode('=' + full.slice(0, Math.max(0, i))), h('u', { translate: 'no', text: part }), document.createTextNode(i >= 0 ? full.slice(i + part.length) : ''));
     };
     let cur = next(ast);
     render(cur);
@@ -289,10 +289,10 @@
       ast = target === ast ? rep : F.map(ast, (n) => (n === target ? rep : null));
       cur = isLit(ast) ? null : next(ast);
       render(cur);
-      if (!cur) d.buttons[0].textContent = 'Restart';
+      if (!cur) d.buttons[0].textContent = L.t('重新开始');
       return false;
     } };
-    const d = ui.dialog({ title: '公式求值', width: 520, body: h('div', { class: 'col' }, h('div', { class: 'row', style: 'gap:16px' }, h('div', null, h('div', { class: 'hint', text: '引用:' }), h('b', { text: F.quoteSheet(s.name) + '!' + F.cellName(sel.r, sel.c, true, true) })), h('div', { style: 'flex:1' }, h('div', { class: 'hint', text: '求值:' }), text)), h('div', { class: 'hint', text: '若要显示带下划线表达式的结果，请单击「求值」。最近一次结果会以斜体显示。' })),
+    const d = ui.dialog({ title: '公式求值', width: 520, body: h('div', { class: 'col' }, h('div', { class: 'row', style: 'gap:16px' }, h('div', null, h('div', { class: 'hint', text: '引用：' }), h('b', { translate: 'no', text: F.quoteSheet(s.name) + '!' + F.cellName(sel.r, sel.c, true, true) })), h('div', { style: 'flex:1' }, h('div', { class: 'hint', text: '求值：' }), text)), h('div', { class: 'hint', text: '单击“求值”可显示带下划线表达式的结果。最近的结果以斜体显示。' })),
       buttons: [evalBtn, { label: '关闭' }] });
   };
 
@@ -307,11 +307,11 @@
     let sel = -1;
     const draw = () => {
       tbl.textContent = '';
-      tbl.appendChild(h('tr', null, ...['Book', '工作表', 'Name', 'Cell', 'Value', 'Formula'].map((t) => h('th', { text: t }))));
+      tbl.appendChild(h('tr', null, ...[L.N('工作簿'), L.N('工作表'), L.N('名称'), L.N('单元格'), L.N('值'), L.N('公式')].map((t) => h('th', { text: t }))));
       w._watches.forEach((x, i) => {
         if (!w.sheets.includes(x.sh)) return;
         const cl = x.sh.get(x.r, x.c);
-        const tr = h('tr', { class: i === sel ? 'on' : '' }, h('td', { text: A().books[A().cur].name }), h('td', { text: x.sh.name }), h('td', { text: '' }), h('td', { text: F.cellName(x.r, x.c, true, true) }), h('td', { text: L.csv.cellText(x.sh, x.r, x.c) }), h('td', { text: cl && cl.f != null ? '=' + F.display(cl.f) : '' }));
+        const tr = h('tr', { class: i === sel ? 'on' : '' }, h('td', { translate: 'no', text: A().books[A().cur].name }), h('td', { translate: 'no', text: x.sh.name }), h('td', { translate: 'no', text: '' }), h('td', { translate: 'no', text: F.cellName(x.r, x.c, true, true) }), h('td', { translate: 'no', text: L.csv.cellText(x.sh, x.r, x.c) }), h('td', { translate: 'no', text: cl && cl.f != null ? '=' + F.display(cl.f) : '' }));
         tr.addEventListener('click', () => { sel = i; draw(); });
         tr.addEventListener('dblclick', () => { const k = w.sheets.indexOf(x.sh); if (k !== w.active) A().activateSheet(k); G().select(x.r, x.c); });
         tbl.appendChild(tr);
@@ -325,8 +325,8 @@
   };
 
   /* ================================================================ Error Checking */
-  const ERRDESC = { '#DIV/0!': 'Divide by Zero Error', '#N/A': 'Value Not Available Error', '#NAME?': 'Invalid Name Error', '#NULL!': 'Null Error', '#NUM!': 'Number Error', '#REF!': 'Invalid Cell Reference Error', '#VALUE!': 'Error in Value', '#SPILL!': 'Spill Range Isn\'t Blank', '#CALC!': 'Calculation Error' };
-  const ERRHELP = { '#DIV/0!': 'The formula or function used is dividing by zero or empty cells.', '#N/A': 'A value is not available to the formula or function.', '#NAME?': 'The formula contains unrecognized text.', '#NULL!': 'The intersection of two areas is empty.', '#NUM!': 'A formula or function contains invalid numeric values.', '#REF!': 'A cell reference is not valid.', '#VALUE!': 'A value used in the formula is of the wrong data type.' };
+  const ERRDESC = { '#DIV/0!': '除数为零错误', '#N/A': '值不可用错误', '#NAME?': '无效的名称错误', '#NULL!': '空交集错误', '#NUM!': '数值错误', '#REF!': '无效的单元格引用错误', '#VALUE!': '值错误', '#SPILL!': '溢出区域非空', '#CALC!': '计算错误' };
+  const ERRHELP = { '#DIV/0!': '所用公式或函数的除数为零或空单元格。', '#N/A': '公式或函数所需的值不可用。', '#NAME?': '公式包含无法识别的文本。', '#NULL!': '两个区域的交集为空。', '#NUM!': '公式或函数包含无效的数值。', '#REF!': '单元格引用无效。', '#VALUE!': '公式中使用的值的数据类型错误。' };
   D.errorChecking = function () {
     const s = sh(), w = wb();
     const ignored = (w._ignoredErr || (w._ignoredErr = new Set()));
@@ -341,33 +341,33 @@
     }); });
     const sel = G().sel();
     let i = Math.max(0, list.findIndex((x) => x.r > sel.r || (x.r === sel.r && x.c >= sel.c)));
-    if (!list.length) { ui.msg('整张工作表的错误检查已完成。', { icon: 'info' }); return; }
-    const head = h('b'), formula = h('div', { class: 'ev-text' }), title = h('div', { style: 'font-weight:bold' }), desc = h('div');
+    if (!list.length) { ui.msg('整个工作表的错误检查已完成。', { icon: 'info' }); return; }
+    const head = h('b'), formula = h('div', { class: 'ev-text', translate: 'no' }), title = h('div', { style: 'font-weight:bold' }), desc = h('div');
     const showI = () => {
       const x = list[i];
       G().select(x.r, x.c);
       const cl = s.get(x.r, x.c);
-      head.textContent = 'Error in cell ' + F.cellName(x.r, x.c) + ':';
+      head.textContent = L.t('单元格 {0} 中的错误：', F.cellName(x.r, x.c));
       formula.textContent = cl && cl.f != null ? '=' + F.display(cl.f) : String(cl ? cl.v : '');
-      title.textContent = x.kind === 'numtext' ? 'Number Stored as Text' : ERRDESC[x.kind] || 'Error';
-      desc.textContent = x.kind === 'numtext' ? 'The number in this cell is formatted as text or preceded by an apostrophe.' : ERRHELP[x.kind] || '';
-      fixBtn.textContent = x.kind === 'numtext' ? 'Convert to Number' : 'Show Calculation Steps...';
+      title.textContent = x.kind === 'numtext' ? L.t('以文本形式存储的数字') : L.t(ERRDESC[x.kind] || L.N('错误'));
+      desc.textContent = x.kind === 'numtext' ? L.t('此单元格中的数字设置为文本格式，或前面有单引号。') : L.t(ERRHELP[x.kind] || '');
+      fixBtn.textContent = x.kind === 'numtext' ? L.t('转换为数字') : L.t('显示计算步骤...');
     };
     const fixBtn = ui.button('显示计算步骤...', () => {
       const x = list[i];
-      if (x.kind === 'numtext') { tryRun(() => O.tx(w, 'Convert to Number', () => O.enter(s, x.r, x.c, String(s.val(x.r, x.c)).trim()))); list.splice(i, 1); if (!list.length) { d.close(0); ui.msg('整张工作表的错误检查已完成。', { icon: 'info' }); return; } i = Math.min(i, list.length - 1); showI(); }
+      if (x.kind === 'numtext') { tryRun(() => O.tx(w, '转换为数字', () => O.enter(s, x.r, x.c, String(s.val(x.r, x.c)).trim()))); list.splice(i, 1); if (!list.length) { d.close(0); ui.msg('整个工作表的错误检查已完成。', { icon: 'info' }); return; } i = Math.min(i, list.length - 1); showI(); }
       else D.evaluateFormula();
     }, { style: 'width:100%' });
     const btn = (label, fn) => ui.button(label, fn, { style: 'width:100%' });
     const d = ui.dialog({ title: '错误检查', width: 480, modeless: true, body: h('div', { class: 'row', style: 'gap:12px;align-items:flex-start' }, h('div', { class: 'col', style: 'flex:1' }, head, formula, title, desc),
-      h('div', { class: 'col', style: 'width:170px' }, btn('Help on this error', () => { L.panes.helpQuery = 'formulas'; L.panes.task.show('help'); }), fixBtn, btn('Ignore Error', () => { const x = list[i]; ignored.add(s.id + ':' + x.r + ':' + x.c); list.splice(i, 1); if (!list.length) { d.close(0); ui.msg('整张工作表的错误检查已完成。', { icon: 'info' }); return; } i = Math.min(i, list.length - 1); showI(); }), btn('Edit in Formula Bar', () => { d.close(0); E().begin('edit'); }))),
-      buttons: [{ label: '上一步(&P)', onClick: () => { i = (i - 1 + list.length) % list.length; showI(); return false; } }, { label: '下一步(&N)', primary: true, onClick: () => { i = (i + 1) % list.length; showI(); return false; } }, { label: '关闭' }] });
+      h('div', { class: 'col', style: 'width:170px' }, btn('有关此错误的帮助', () => { L.panes.helpQuery = 'formulas'; L.panes.task.show('help'); }), fixBtn, btn('忽略错误', () => { const x = list[i]; ignored.add(s.id + ':' + x.r + ':' + x.c); list.splice(i, 1); if (!list.length) { d.close(0); ui.msg('整个工作表的错误检查已完成。', { icon: 'info' }); return; } i = Math.min(i, list.length - 1); showI(); }), btn('在编辑栏中编辑', () => { d.close(0); E().begin('edit'); }))),
+      buttons: [{ label: '上一个(&P)', onClick: () => { i = (i - 1 + list.length) % list.length; showI(); return false; } }, { label: '下一步(&N)', primary: true, onClick: () => { i = (i + 1) % list.length; showI(); return false; } }, { label: '关闭' }] });
     showI();
   };
 
   /* ================================================================ Page Setup */
-  const HF_PRESETS = ['', '&P', 'Page &P', 'Page &P of &N', '&A', '&F', '&A, Page &P', '&F, Page &P', '&D', 'Confidential, &D, Page &P', '&F, &A', 'Prepared by &[User] &D, Page &P'];
-  const hfLabel = (code, s) => { if (!code) return '(none)'; const p = L.print.parseHF(code.replace('&[User]', A().opts.userName || ''), { page: 1, pages: 1, sheet: s.name, file: A().books[A().cur].name }); return ['l', 'c', 'r'].map((k) => p[k].map((x) => x.text).join('')).filter(Boolean).join(', '); };
+  const HF_PRESETS = ['', '&P', '第 &P 页', '第 &P 页，共 &N 页', '&A', '&F', '&A，第 &P 页', '&F，第 &P 页', '&D', '机密，&D，第 &P 页', '&F, &A', '由 &[User] 编制，&D，第 &P 页'];
+  const hfLabel = (code, s) => { if (!code) return L.t('（无）'); const p = L.print.parseHF(code.replace('&[User]', A().opts.userName || ''), { page: 1, pages: 1, sheet: s.name, file: A().books[A().cur].name }); return ['l', 'c', 'r'].map((k) => p[k].map((x) => x.text).join('')).filter(Boolean).join(', '); };
   D.pageSetup = function (tab) {
     const s = sh(), w = wb();
     const p = JSON.parse(JSON.stringify(s.print));
@@ -377,33 +377,34 @@
     let area = getName('_xlnm.print_area');
     const titles = L.print.titles(s);
     /* page */
-    const adj = ui.spin({ value: p.scale || 100, min: 10, max: 400, step: 5, dec: 0, unit: '% normal size', onChange: (v) => { p.scale = Math.round(v); } });
+    const adj = ui.spin({ value: p.scale || 100, min: 10, max: 400, step: 5, dec: 0, fmt: (v) => L.t('正常大小的 {0}%', Math.round(v)), onChange: (v) => { p.scale = Math.round(v); } });
     const fitW = ui.spin({ value: p.fitW == null ? 1 : p.fitW, min: 0, max: 32767, step: 1, dec: 0, onChange: (v) => { p.fitW = Math.round(v) || null; } });
     const fitH = ui.spin({ value: p.fitH == null ? 1 : p.fitH, min: 0, max: 32767, step: 1, dec: 0, onChange: (v) => { p.fitH = Math.round(v) || null; } });
-    const first = h('input', { type: 'text', value: p.firstPage != null ? String(p.firstPage) : 'Auto', style: 'width:70px' });
+    const first = h('input', { type: 'text', value: p.firstPage != null ? String(p.firstPage) : L.t('自动'), style: 'width:70px' });
     const pageTab = h('div', { class: 'col' },
-      ui.group('方向', h('div', { class: 'row', style: 'gap:24px' }, ui.radio('ps-o', '纵向(&T)', p.orientation !== 'landscape', () => { p.orientation = 'portrait'; }), ui.radio('ps-o', '横向(&L)', p.orientation === 'landscape', () => { p.orientation = 'landscape'; }))),
-      ui.group('缩放', h('div', { class: 'row', style: 'gap:8px' }, ui.radio('ps-s', '调整值(&A):', !p.fit, () => { p.fit = false; }), adj), h('div', { class: 'row', style: 'gap:8px;flex-wrap:wrap' }, ui.radio('ps-s', '调整为(&F):', !!p.fit, () => { p.fit = true; }), fitW, h('span', { text: '页宽 ×' }), fitH, h('span', { text: '高' }))),
-      ui.field('纸张大小(&Z):', ui.select(Object.keys(L.print.PAPERS).map((k) => [k, L.print.PAPERS[k][0] + ' (' + L.print.PAPERS[k][1] + ' x ' + L.print.PAPERS[k][2] + ' in)']), p.paper || 1, (v) => { p.paper = +v; })),
-      ui.field('打印质量(&Q):', ui.select(['600 dpi', '300 dpi', '150 dpi'], '600 dpi')),
-      ui.field('起始页码(&R):', first));
+      ui.group('方向', h('div', { class: 'row', style: 'gap:24px' }, ui.radio('ps-o', '纵向(&t)', p.orientation !== 'landscape', () => { p.orientation = 'portrait'; }), ui.radio('ps-o', '横向(&L)', p.orientation === 'landscape', () => { p.orientation = 'landscape'; }))),
+      ui.group('缩放', h('div', { class: 'row', style: 'gap:8px' }, ui.radio('ps-s', '缩放比例(&A)：', !p.fit, () => { p.fit = false; }), adj), h('div', { class: 'row', style: 'gap:8px;flex-wrap:wrap' }, ui.radio('ps-s', '调整为(&F)：', !!p.fit, () => { p.fit = true; }), fitW, h('span', { text: '页宽，乘以' }), fitH, h('span', { text: '页高' }))),
+      ui.field('纸张大小(&z)：', ui.select(Object.keys(L.print.PAPERS).map((k) => [k, L.t('{0}（{1} × {2} 英寸）', L.t(L.print.PAPERS[k][0]), L.print.PAPERS[k][1], L.print.PAPERS[k][2])]), p.paper || 1, (v) => { p.paper = +v; })),
+      ui.field('打印质量(&q)：', ui.select(['600 dpi', '300 dpi', '150 dpi'], '600 dpi', null, { translate: 'no' })),
+      ui.field('起始页码(&r)：', first));
     /* margins */
     const mspin = (k) => ui.spin({ value: p.margins[k], min: 0, max: 20, step: 0.25, unit: '', onChange: (v) => { p.margins[k] = v; } });
-    const marTab = h('div', { class: 'col' }, h('div', { class: 'ps-margins' }, ui.field('&Top:', mspin('t')), ui.field('页眉(&E):', mspin('header')), ui.field('&Left:', mspin('l')), ui.field('&Right:', mspin('r')), ui.field('&Bottom:', mspin('b')), ui.field('页脚(&F):', mspin('footer'))),
-      ui.group('页面居中', ui.check('水平(&Z)', !!p.hCenter, (v) => { p.hCenter = v; }), ui.check('垂直(&V)', !!p.vCenter, (v) => { p.vCenter = v; })), h('div', { class: 'hint', text: '页边距单位为英寸。' }));
+    const marTab = h('div', { class: 'col' }, h('div', { class: 'ps-margins' }, ui.field('顶端(&T)：', mspin('t')), ui.field('页眉(&e)：', mspin('header')), ui.field('左(&L)：', mspin('l')), ui.field('右(&R)：', mspin('r')), ui.field('底端(&B)：', mspin('b')), ui.field('页脚(&F)：', mspin('footer'))),
+      ui.group('居中方式', ui.check('水平(&z)', !!p.hCenter, (v) => { p.hCenter = v; }), ui.check('垂直(&V)', !!p.vCenter, (v) => { p.vCenter = v; })), h('div', { class: 'hint', text: '页边距单位为英寸。' }));
     /* header / footer */
-    const hfSel = (key) => { const opts = HF_PRESETS.slice(); if (p[key] && !opts.includes(p[key])) opts.unshift(p[key]); const sel = ui.select(opts.map((c) => [c, hfLabel(c, s)]), p[key] || '', (v) => { p[key] = v; prevH.textContent = hfLabel(p.header, s); prevF.textContent = hfLabel(p.footer, s); }); return sel; };
-    const prevH = h('div', { class: 'hf-prev', text: hfLabel(p.header, s) }), prevF = h('div', { class: 'hf-prev', text: hfLabel(p.footer, s) });
+    /* the headers and footers are the sheet's own text: shown as they print */
+    const hfSel = (key) => { const opts = HF_PRESETS.slice(); if (p[key] && !opts.includes(p[key])) opts.unshift(p[key]); const sel = ui.select(opts.map((c) => [c, hfLabel(c, s)]), p[key] || '', (v) => { p[key] = v; prevH.textContent = hfLabel(p.header, s); prevF.textContent = hfLabel(p.footer, s); }, { translate: 'no' }); return sel; };
+    const prevH = h('div', { class: 'hf-prev', translate: 'no', text: hfLabel(p.header, s) }), prevF = h('div', { class: 'hf-prev', translate: 'no', text: hfLabel(p.footer, s) });
     const hSel = hfSel('header'), fSel = hfSel('footer');
-    const custom = (key) => D.customHF(p[key] || '', key === 'header' ? 'Header' : 'Footer', (code) => { p[key] = code; const sel = key === 'header' ? hSel : fSel; if (!Array.from(sel.options).some((o) => o.value === code)) sel.insertBefore(h('option', { value: code, text: hfLabel(code, s) }), sel.firstChild); sel.value = code; prevH.textContent = hfLabel(p.header, s); prevF.textContent = hfLabel(p.footer, s); });
-    const hfTab = h('div', { class: 'col' }, prevH, ui.field('页眉(&A):', hSel), h('div', { class: 'row', style: 'gap:8px' }, ui.button('自定义页眉(&C)...', () => custom('header')), ui.button('自定义页脚(&U)...', () => custom('footer'))), ui.field('页脚(&F):', fSel), prevF,
-      ui.check('奇偶页不同(&O)', !!p.diffOddEven, (v) => { p.diffOddEven = v; }), ui.check('Different first &page', !!p.diffFirst, (v) => { p.diffFirst = v; }), ui.check('随文档缩放', p.hfScale !== false, (v) => { p.hfScale = v; }), ui.check('与页边距对齐', p.hfAlign !== false, (v) => { p.hfAlign = v; }));
+    const custom = (key) => D.customHF(p[key] || '', key === 'header' ? L.N('页眉') : L.N('页脚'), (code) => { p[key] = code; const sel = key === 'header' ? hSel : fSel; if (!Array.from(sel.options).some((o) => o.value === code)) sel.insertBefore(h('option', { value: code, translate: 'no', text: hfLabel(code, s) }), sel.firstChild); sel.value = code; prevH.textContent = hfLabel(p.header, s); prevF.textContent = hfLabel(p.footer, s); });
+    const hfTab = h('div', { class: 'col' }, prevH, ui.field('页眉(&a)：', hSel), h('div', { class: 'row', style: 'gap:8px' }, ui.button('自定义页眉(&C)...', () => custom('header')), ui.button('自定义页脚(&u)...', () => custom('footer'))), ui.field('页脚(&F)：', fSel), prevF,
+      ui.check('奇偶页不同(&o)', !!p.diffOddEven, (v) => { p.diffOddEven = v; }), ui.check('首页不同(&p)', !!p.diffFirst, (v) => { p.diffFirst = v; }), ui.check('随文档缩放', p.hfScale !== false, (v) => { p.hfScale = v; }), ui.check('与页边距对齐', p.hfAlign !== false, (v) => { p.hfAlign = v; }));
     /* sheet */
     const areaIn = D.refBox(area, 220), rowsIn = D.refBox(titles.rows ? '$' + (titles.rows.r1 + 1) + ':$' + (titles.rows.r2 + 1) : '', 160), colsIn = D.refBox(titles.cols ? '$' + F.colName(titles.cols.c1) + ':$' + F.colName(titles.cols.c2) : '', 160);
-    const sheetTab = h('div', { class: 'col' }, ui.field('打印区域(&A):', areaIn), ui.group('打印标题', ui.field('顶端标题行(&R):', rowsIn), ui.field('左端标题列(&C):', colsIn)),
-      ui.group('Print', h('div', { class: 'ps-print' }, ui.check('网格线(&G)', !!p.gridLines, (v) => { p.gridLines = v; }), ui.check('黑白(&B)', !!p.bw, (v) => { p.bw = v; }), ui.check('草稿质量(&Q)', !!p.draft, (v) => { p.draft = v; }), ui.check('行号列标(&M)', !!p.headings, (v) => { p.headings = v; }),
-        ui.field('批注(&M):', ui.select([['none', '（无）'], ['atEnd', '工作表末尾'], ['asDisplayed', '按工作表中显示的']], p.comments || 'none', (v) => { p.comments = v; })), ui.field('单元格错误显示为(&E):', ui.select([['displayed', 'displayed'], ['blank', '<blank>'], ['dash', '--'], ['NA', '#N/A']], p.errors || 'displayed', (v) => { p.errors = v; })))),
-      ui.group('打印顺序', ui.radio('ps-po', '先列后行(&D)', p.pageOrder !== 'overThenDown', () => { p.pageOrder = 'downThenOver'; }), ui.radio('ps-po', '先行后列(&V)', p.pageOrder === 'overThenDown', () => { p.pageOrder = 'overThenDown'; })));
+    const sheetTab = h('div', { class: 'col' }, ui.field('打印区域(&a)：', areaIn), ui.group('打印标题', ui.field('顶端标题行(&R)：', rowsIn), ui.field('左端标题列(&C)：', colsIn)),
+      ui.group('打印', h('div', { class: 'ps-print' }, ui.check('网格线(&G)', !!p.gridLines, (v) => { p.gridLines = v; }), ui.check('黑白(&B)', !!p.bw, (v) => { p.bw = v; }), ui.check('草稿品质(&q)', !!p.draft, (v) => { p.draft = v; }), ui.check('行列标题(&m)', !!p.headings, (v) => { p.headings = v; }),
+        ui.field('批注(&m)：', ui.select([['none', '（无）'], ['atEnd', '工作表末尾'], ['asDisplayed', '如工作表所示']], p.comments || 'none', (v) => { p.comments = v; })), ui.field('单元格错误显示为(&e)：', ui.select([['displayed', '已显示'], ['blank', '<空白>'], ['dash', '--'], ['NA', '#N/A']], p.errors || '已显示', (v) => { p.errors = v; })))),
+      ui.group('打印顺序', ui.radio('ps-po', '先列后行(&D)', p.pageOrder !== 'overThenDown', () => { p.pageOrder = 'downThenOver'; }), ui.radio('ps-po', '先行后列(&v)', p.pageOrder === 'overThenDown', () => { p.pageOrder = 'overThenDown'; })));
     const apply = () => {
       p.firstPage = /^\d+$/.test(first.value.trim()) ? +first.value.trim() : null;
       const names = w.names.filter((n) => !(n.scope === idx && /^_xlnm\.(print_area|print_titles)$/i.test(n.name)));
@@ -416,13 +417,13 @@
       if (rr) tparts.push(/!/.test(rr) ? rr : q + '!' + rr);
       if (tparts.length) names.push({ name: '_xlnm.Print_Titles', ref: tparts.join(','), scope: idx });
       try { for (const n of names) if (/^_xlnm/.test(n.name)) F.parse(n.ref); } catch (e) { ui.msg('引用无效。', { icon: 'warn' }); return false; }
-      tryRun(() => O.tx(w, 'Page Setup', () => { O.setPrint(s, p); O.setNames(w, names); }));
+      tryRun(() => O.tx(w, '页面设置', () => { O.setPrint(s, p); O.setNames(w, names); }));
       L.print.computeBreaks(s);
       return true;
     };
     return new Promise((res) => {
       ui.dialog({ title: '页面设置', width: 470, body: ui.tabs([{ label: '页面', body: pageTab }, { label: '页边距', body: marTab }, { label: '页眉/页脚', body: hfTab }, { label: '工作表', body: sheetTab }], tab || 0),
-        buttons: [{ label: '打印(&P)...', onClick: () => { if (apply() === false) return false; setTimeout(() => D.print(), 0); } }, { label: '打印预览(&W)', onClick: () => { if (apply() === false) return false; setTimeout(() => L.print.preview(), 0); } }, { label: '确定', primary: true, onClick: () => apply() }, { label: '取消' }] }).done.then(res);
+        buttons: [{ label: '打印(&P)...', onClick: () => { if (apply() === false) return false; setTimeout(() => D.print(), 0); } }, { label: '打印预览(&w)', onClick: () => { if (apply() === false) return false; setTimeout(() => L.print.preview(), 0); } }, { label: '确定', primary: true, onClick: () => apply() }, { label: '取消' }] }).done.then(res);
     });
   };
   /** Custom Header / Footer: three sections with the field buttons */
@@ -437,10 +438,10 @@
     for (const k in areas) areas[k].addEventListener('focus', () => { last = areas[k]; });
     const ins = (t) => { const a = last; const s0 = a.selectionStart, s1 = a.selectionEnd; a.value = a.value.slice(0, s0) + t + a.value.slice(s1); a.focus(); a.setSelectionRange(s0 + t.length, s0 + t.length); };
     const fb = (label, t) => h('button', { type: 'button', class: 'btn small', text: label, onclick: () => ins(t) });
-    const font = () => { const f = h('input', { type: 'text', value: 'Arial', style: 'width:110px' }); const st = ui.select(['Regular', 'Bold', 'Italic', 'Bold Italic'], 'Regular'); const sz = h('input', { type: 'text', value: '10', style: 'width:40px' }); ui.dialog({ title: '字体', width: 320, body: h('div', { class: 'row', style: 'gap:8px' }, ui.field('Font:', f), ui.field('Style:', st), ui.field('大小:', sz)), buttons: [{ label: '确定', primary: true, onClick: () => ins(`&"${f.value},${st.value}"&${parseInt(sz.value, 10) || 10}`) }, { label: '取消' }] }); };
-    ui.dialog({ title: kind, width: 560, body: h('div', { class: 'col' }, h('div', { class: 'hint', text: '设置文字格式：选定文字，然后选择字体按钮。若要插入页码、日期、时间、文件路径、文件名或工作表标签名：把插入点放在编辑框中，然后选择相应的按钮。' }),
-      h('div', { class: 'row', style: 'gap:4px;flex-wrap:wrap' }, h('button', { type: 'button', class: 'btn small', text: 'A（字体）', onclick: font }), fb('Page #', '&P'), fb('Pages', '&N'), fb('Date', '&D'), fb('Time', '&T'), fb('Path & File', '&Z&F'), fb('File', '&F'), fb('Tab', '&A')),
-      h('div', { class: 'hf-secs' }, ui.field('左部(&L):', areas.l), ui.field('中部(&C):', areas.c), ui.field('右部(&R):', areas.r))),
+    const font = () => { const f = h('input', { type: 'text', value: 'Arial', style: 'width:110px' }); const st = ui.select([['Regular', L.N('常规')], ['Bold', L.N('加粗')], ['Italic', L.N('倾斜')], ['Bold Italic', '加粗、倾斜']], 'Regular'); const sz = h('input', { type: 'text', value: '10', style: 'width:40px' }); ui.dialog({ title: '字体', width: 320, body: h('div', { class: 'row', style: 'gap:8px' }, ui.field('字体：', f), ui.field('样式：', st), ui.field('大小：', sz)), buttons: [{ label: '确定', primary: true, onClick: () => ins(`&"${f.value},${st.value}"&${parseInt(sz.value, 10) || 10}`) }, { label: '取消' }] }); };
+    ui.dialog({ title: kind, width: 560, body: h('div', { class: 'col' }, h('div', { class: 'hint', text: '设置文字格式：选择文字后单击字体按钮。插入页码、日期、时间、文件路径、文件名或工作表标签名：在编辑框中定位插入点，再单击相应按钮。' }),
+      h('div', { class: 'row', style: 'gap:4px;flex-wrap:wrap' }, h('button', { type: 'button', class: 'btn small', text: 'A（字体）', onclick: font }), fb('页码', '&P'), fb(L.N('页'), '&N'), fb(L.N('日期'), '&D'), fb(L.N('时间'), '&T'), fb('路径和文件名', '&Z&F'), fb(L.N('文件'), '&F'), fb(L.N('制表符'), '&A')),
+      h('div', { class: 'hf-secs' }, ui.field('左侧部分(&L)：', areas.l), ui.field('中间部分(&C)：', areas.c), ui.field('右侧部分(&R)：', areas.r))),
     buttons: [{ label: '确定', primary: true, onClick: () => { const out = (areas.l.value ? '&L' + areas.l.value : '') + (areas.c.value ? '&C' + areas.c.value : '') + (areas.r.value ? '&R' + areas.r.value : ''); done(out); } }, { label: '取消' }] });
   };
 
@@ -452,12 +453,12 @@
     to.value = String(Math.max(1, items.length));
     return new Promise((res) => {
       ui.dialog({ title: '打印', width: 440, body: h('div', { class: 'col' },
-        ui.group('Printer', ui.field('&Name:', ui.select([['pdf', 'Ledger PDF 打印机']], 'pdf')), h('div', { class: 'hint', text: 'Ledger 通过创建 PDF 来打印，可在任意打印机上打开并打印。' })),
+        ui.group('打印机', ui.field('名称(&N)：', ui.select([['pdf', 'Ledger PDF 生成器']], 'pdf')), h('div', { class: 'hint', text: 'Ledger 通过创建 PDF 进行打印，您可以打开该 PDF 并使用任意打印机打印。' })),
         h('div', { class: 'row', style: 'gap:10px;align-items:stretch' },
-          ui.group('打印范围', ui.radio('pr-r', '&All', true, () => { st.range = 'all'; }), h('div', { class: 'row', style: 'gap:6px' }, ui.radio('pr-r', '页(&G)', false, () => { st.range = 'pages'; }), h('span', { text: '发件人:' }), from, h('span', { text: 'To:' }), to)),
-          ui.group('打印内容', ui.radio('pr-w', '选定区域(&N)', false, () => { st.what = 'selection'; }), ui.radio('pr-w', '活动工作表(&H)', true, () => { st.what = 'sheets'; }), ui.radio('pr-w', '整个工作簿(&E)', false, () => { st.what = 'workbook'; }))),
-        ui.field('Number of &copies:', ui.spin({ value: 1, min: 1, max: 99, step: 1, dec: 0 }))),
-      buttons: [{ label: '预览(&V)', onClick: () => { setTimeout(() => L.print.preview(), 0); } }, { label: '确定', primary: true, onClick: () => { const o = { what: st.what }; if (st.range === 'pages') { o.from = parseInt(from.value, 10) || 1; o.to = parseInt(to.value, 10) || o.from; } L.print.exportPDF(o); } }, { label: '取消' }] }).done.then(res);
+          ui.group('打印范围', ui.radio('pr-r', '全部(&A)', true, () => { st.range = 'all'; }), h('div', { class: 'row', style: 'gap:6px' }, ui.radio('pr-r', '页(&g)', false, () => { st.range = 'pages'; }), h('span', { text: '从：' }), from, h('span', { text: '到：' }), to)),
+          ui.group('打印内容', ui.radio('pr-w', '选区(&n)', false, () => { st.what = 'selection'; }), ui.radio('pr-w', '选定工作表(&h)', true, () => { st.what = 'sheets'; }), ui.radio('pr-w', '整个工作簿(&E)', false, () => { st.what = 'workbook'; }))),
+        ui.field('打印份数(&c)：', ui.spin({ value: 1, min: 1, max: 99, step: 1, dec: 0 }))),
+      buttons: [{ label: '预览(&v)', onClick: () => { setTimeout(() => L.print.preview(), 0); } }, { label: '确定', primary: true, onClick: () => { const o = { what: st.what }; if (st.range === 'pages') { o.from = parseInt(from.value, 10) || 1; o.to = parseInt(to.value, 10) || o.from; } L.print.exportPDF(o); } }, { label: '取消' }] }).done.then(res);
     });
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -19,6 +19,7 @@
     beforeExec() {},
     refocus() { if (L.ed) L.ed.refocus(); },
     commitEdit() { if (L.ed && L.ed.textSave) L.ed.textSave(); },
+    ownsText: (el) => !!(L.ed && L.ed.scroller && L.ed.scroller.contains(el)),   /* the slide's text, not the notes */
   };
   /* colour menus offer the design's theme colours first */
   ui.currentDesign = () => (L.ed && L.ed.slide && L.pres ? M.design(L.pres, L.ed.slide()) : null);
@@ -66,22 +67,22 @@
       {
         label: '视图(&V)', items: () => ['viewNormal', 'viewSorter', 'showFromStart', 'viewNotes', '-',
           { label: '母版(&M)', sub: ['viewMaster'] },
-          { label: '颜色/灰度(&L)', sub: ['viewColor', 'viewGray', 'viewBW'] }, '-',
+          { label: '颜色/灰度(&l)', sub: ['viewColor', 'viewGray', 'viewBW'] }, '-',
           'taskPane', 'slidesPane', { label: '工具栏(&T)', sub: ['tb_standard', 'tb_formatting', 'tb_drawing', 'tb_outlining', 'tb_picture', 'tb_tables', 'tb_wordart'] }, 'ruler', 'gridGuides', '-', 'headerFooter', '-', 'zoomDlg'],
       },
       {
         label: '插入(&I)', items: ['newSlide', 'duplicateSlide', '-', 'insertSlideNumber', 'insertDateTime', 'insertSymbol', '-', 'slidesFromFiles', 'slidesFromOutline', '-',
-          { label: '图片(&P)', icon: 'picture', sub: ['insertClipArt', 'insertPicture', 'photoAlbum', '-', { label: '自选图形(&U)', icon: 'autoshapes', run: () => openAutoShapes() }, 'insertWordArt'] },
+          { label: '图片(&P)', icon: 'picture', sub: ['insertClipArt', 'insertPicture', 'photoAlbum', '-', { label: '自选图形(&A)', icon: 'autoshapes', run: () => openAutoShapes() }, 'insertWordArt'] },
           'insertDiagram', 'textBox', 'insertMedia', 'insertChart', 'insertTable', '-', 'hyperlink'],
       },
-      { label: '格式(&O)', items: ['fontDlg', 'bulletsDlg', { label: '对齐(&A)', sub: ['alignLeft', 'alignCenter', 'alignRight', 'justify'] }, 'lineSpacing', 'changeCase', 'replaceFonts', '-', 'slideDesign', 'slideLayout', 'background', '-', 'formatObject'] },
+      { label: '格式(&o)', items: ['fontDlg', 'bulletsDlg', { label: '对齐方式(&A)', sub: ['alignLeft', 'alignCenter', 'alignRight', 'justify'] }, 'lineSpacing', 'changeCase', 'replaceFonts', '-', 'slideDesign', 'slideLayout', 'background', '-', 'formatObject'] },
       { label: '工具(&T)', items: ['spelling', '-', 'autocorrectDlg', '-', 'optionsDlg'] },
       {
-        label: '幻灯片放映(&D)', items: () => ['showFromStart', 'setupShow', 'rehearse', '-',
-          { label: '动作按钮(&I)', sub: [{ custom: (close) => shapeGrid(L.geom.MENU['Action Buttons'], close) }] }, 'actionSettings', '-',
+        label: '幻灯片放映(&d)', items: () => ['showFromStart', 'setupShow', 'rehearse', '-',
+          { label: '动作按钮(&i)', sub: [{ custom: (close) => shapeGrid(L.geom.MENU['动作按钮'], close) }] }, 'actionSettings', '-',
           'animSchemes', 'customAnim', 'transitionPane', '-', 'hideSlide'],
       },
-      { label: '窗口(&W)', items: () => [{ label: '&1 ' + A.fileName, checked: () => true, run: () => {} }] },
+      { label: '窗口(&W)', items: () => [{ label: '&1 ' + A.fileName.replace(/&/g, '&&'), raw: true, checked: () => true, run: () => {} }] },
       { label: '帮助(&H)', items: ['help', 'showAssistant', '-', 'gettingStarted', '-', 'about'] },
     ];
     void autoShapeSub;
@@ -103,9 +104,9 @@
   function openAutoShapes(at) {
     const r = at || (L.$('[data-as]') ? L.$('[data-as]').getBoundingClientRect() : { left: 100, bottom: 100 });
     ui.openMenu([
-      { label: '&Lines', icon: 'line', sub: ['drawLine', 'drawArrow', 'drawDblArrow', 'drawCurve', 'drawFreeform', 'drawScribble'] },
-      { label: '连接符(&N)', icon: 'elbow', sub: [{ label: '直线连接符', icon: 'line', run: () => E.setTool({ kind: 'line', geom: 'straightConnector1' }) }, 'drawElbow', 'drawCurvedConn', { label: '肘形箭头连接符', icon: 'elbow', run: () => E.setTool({ kind: 'line', geom: 'bentConnector3', arrows: 'end' }) }] },
-      ...['Basic Shapes', 'Block Arrows', 'Flowchart', 'Stars and Banners', 'Callouts', 'Action Buttons'].map((g) => ({ label: g.replace(/^(\w)/, '&$1'), icon: { 'Basic Shapes': 'autoshapes', 'Block Arrows': 'arrowStyle', Flowchart: 'diagram', 'Stars and Banners': 'animation', Callouts: 'comment', 'Action Buttons': 'actionSettings' }[g], sub: [{ custom: (close) => shapeGrid(L.geom.MENU[g], close) }] })),
+      { label: '线条(&L)', icon: 'line', sub: ['drawLine', 'drawArrow', 'drawDblArrow', 'drawCurve', 'drawFreeform', 'drawScribble'] },
+      { label: '连接符(&n)', icon: 'elbow', sub: [{ label: '直线连接符', icon: 'line', run: () => E.setTool({ kind: 'line', geom: 'straightConnector1' }) }, 'drawElbow', 'drawCurvedConn', { label: '肘形箭头连接符', icon: 'elbow', run: () => E.setTool({ kind: 'line', geom: 'bentConnector3', arrows: 'end' }) }] },
+      ...[['基本形状', '基本形状(&B)'], ['箭头总汇', '箭头总汇(&B)'], ['流程图', '流程图(&F)'], ['星与旗帜', '星与旗帜(&S)'], ['标注', '标注(&C)'], ['动作按钮', '动作按钮(&A)']].map(([g, label]) => ({ label, icon: { '基本形状': 'autoshapes', '箭头总汇': 'arrowStyle', Flowchart: 'diagram', '星与旗帜': 'animation', Callouts: 'comment', '动作按钮': 'actionSettings' }[g], sub: [{ custom: (close) => shapeGrid(L.geom.MENU[g], close) }] })),
       '-', { label: '其他自选图形(&M)...', icon: 'clipart', run: () => L.panes.task.show('clipart') },
     ], { left: r.left, bottom: r.bottom }, { selectFirst: !at });
   }
@@ -124,7 +125,7 @@
   }
   const lineSVG = (w, dash, extra) => `<svg width="90" height="14" viewBox="0 0 90 14"><path d="M2 7h86" stroke="#000" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ''} fill="none"/>${extra || ''}</svg>`;
   function lineStyleMenu(r) {
-    ui.openMenu([{ custom: (close) => listPanel(WEIGHTS.map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: w + ' pt', run: () => A.setLineProp({ w }) })).concat([{ label: 'More Lines...', run: () => ui.exec('formatObject', 'Colors and Lines') }]), close) }], r);
+    ui.openMenu([{ custom: (close) => listPanel(WEIGHTS.map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: L.t('{0} 磅', w), run: () => A.setLineProp({ w }) })).concat([{ label: '其他线条...', run: () => ui.exec('formatObject', '颜色与线条') }]), close) }], r);
   }
   function dashMenu(r) {
     ui.openMenu([{ custom: (close) => listPanel(L.dlg.DASHES.map(([k, n]) => ({ html: lineSVG(2, (L.render.dashArray(k, 2) || '').replace(/,/g, ' ')), label: n, run: () => A.setLineProp({ dash: k }) })), close) }], r);
@@ -134,7 +135,7 @@
   ];
   function arrowMenu(r) {
     const head = (t, x, dir) => !t ? '' : t === 'oval' ? `<circle cx="${x}" cy="7" r="3"/>` : t === 'diamond' ? `<path d="M${x - 4} 7l4-4 4 4-4 4z"/>` : t === 'arrow' ? `<path d="M${x - dir * 6} 2l${dir * 6} 5-${dir * 6} 5" fill="none" stroke="#000" stroke-width="1.5"/>` : `<path d="M${x} 7l${-dir * 8} -4v8z"/>`;
-    ui.openMenu([{ custom: (close) => listPanel(ARROW_PRESETS.map(([a, b]) => ({ html: `<svg width="90" height="14" viewBox="0 0 90 14" fill="#000"><path d="M6 7h78" stroke="#000" stroke-width="1.5"/>${head(a, 4, -1)}${head(b, 86, 1)}</svg>`, run: () => A.setLineProp({ head: a, tail: b }) })).concat([{ label: '其他箭头...', run: () => ui.exec('formatObject', 'Colors and Lines') }]), close) }], r);
+    ui.openMenu([{ custom: (close) => listPanel(ARROW_PRESETS.map(([a, b]) => ({ html: `<svg width="90" height="14" viewBox="0 0 90 14" fill="#000"><path d="M6 7h78" stroke="#000" stroke-width="1.5"/>${head(a, 4, -1)}${head(b, 86, 1)}</svg>`, run: () => A.setLineProp({ head: a, tail: b }) })).concat([{ label: '其他箭头...', run: () => ui.exec('formatObject', '颜色与线条') }]), close) }], r);
   }
   const SHADOWS = [null, [3, 3], [-3, 3], [3, -3], [-3, -3], [0, 4], [4, 0], [6, 6], [-6, 6], [2, 2, 4], [0, 6, 6], [5, 5, 3]];
   function shadowMenu(r) {
@@ -142,7 +143,7 @@
       custom: (close) => {
         const g = h('div', { class: 'shape-grid', style: 'grid-template-columns:repeat(4,30px)' });
         SHADOWS.forEach((s) => {
-          const b = h('button', { type: 'button', style: 'width:30px;height:30px', 'aria-label': s ? 'Shadow style' : 'No Shadow', 'data-tip': s ? 'Shadow Style' : 'No Shadow', html: s ? `<svg width="24" height="24"><rect x="${6 + s[0] / 1.5}" y="${6 + s[1] / 1.5}" width="12" height="12" fill="#888" ${s[2] ? 'filter="blur(1px)"' : ''}/><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/></svg>` : '<svg width="24" height="24"><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/><path d="M3 21L21 3" stroke="#d33" /></svg>' });
+          const b = h('button', { type: 'button', style: 'width:30px;height:30px', 'aria-label': s ? '阴影样式' : '无阴影', 'data-tip': s ? '阴影样式' : '无阴影', html: s ? `<svg width="24" height="24"><rect x="${6 + s[0] / 1.5}" y="${6 + s[1] / 1.5}" width="12" height="12" fill="#888" ${s[2] ? 'filter="blur(1px)"' : ''}/><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/></svg>` : '<svg width="24" height="24"><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/><path d="M3 21L21 3" stroke="#d33" /></svg>' });
           b.addEventListener('click', () => { close(); A.setShadow(s ? { c: '#000000', a: 0.5, dx: s[0], dy: s[1], blur: s[2] || 0 } : null); });
           g.appendChild(b);
         });
@@ -153,11 +154,11 @@
   function drawMenu(r) {
     ui.openMenu([
       'group', 'ungroup', 'regroup', '-',
-      { label: '顺序(&O)', sub: ['bringFront', 'sendBack', 'bringForward', 'sendBackward'] }, 'gridGuides',
-      { label: 'Nud&ge', sub: ['nudgeUp', 'nudgeDown', 'nudgeLeft', 'nudgeRight'] },
+      { label: '叠放次序(&O)', sub: ['bringFront', 'sendBack', 'bringForward', 'sendBackward'] }, 'gridGuides',
+      { label: '微移(&g)', sub: ['nudgeUp', 'nudgeDown', 'nudgeLeft', 'nudgeRight'] },
       { label: '对齐或分布(&A)', sub: ['alignL', 'alignC', 'alignR', 'alignT', 'alignM', 'alignB', '-', 'distH', 'distV', '-', 'alignToSlide'] },
-      { label: 'Rotate or Fl&ip', sub: ['freeRotate', 'rotateLeft', 'rotateRight', '-', 'flipH', 'flipV'] }, '-',
-      { label: '更改自选图形(&H)', enabled: () => E.selected().some((s) => s.type === 'shape' || s.type === 'text'), sub: ['Basic Shapes', 'Block Arrows', 'Flowchart', 'Stars and Banners', 'Callouts', 'Action Buttons'].map((g) => ({ label: g, sub: [{ custom: (close) => { const el = shapeGrid(L.geom.MENU[g], close); L.$$('button', el).forEach((b, i) => { const nb = b.cloneNode(true); nb.addEventListener('click', () => { close(); A.changeAutoShape(L.geom.MENU[g][i]); }); b.replaceWith(nb); }); return el; } }] })) },
+      { label: '旋转或翻转(&i)', sub: ['freeRotate', 'rotateLeft', 'rotateRight', '-', 'flipH', 'flipV'] }, '-',
+      { label: '更改自选图形(&h)', enabled: () => E.selected().some((s) => s.type === 'shape' || s.type === 'text'), sub: ['基本形状', '箭头总汇', L.N('流程图'), '星与旗帜', L.N('标注'), '动作按钮'].map((g) => ({ label: g, sub: [{ custom: (close) => { const el = shapeGrid(L.geom.MENU[g], close); L.$$('button', el).forEach((b, i) => { const nb = b.cloneNode(true); nb.addEventListener('click', () => { close(); A.changeAutoShape(L.geom.MENU[g][i]); }); b.replaceWith(nb); }); return el; } }] })) },
       'setDefaults',
     ], r);
   }
@@ -179,14 +180,14 @@
   }
   /* the toolbars' boxes and menus, also used by the ribbon (js/ribbon.js): each call makes a new box */
   A.parts = {
-    font: (o) => ui.combo(Object.assign({ id: 'tb-font', width: 136, tip: 'Font', options: () => { const d = E.slide() && L.pres.designs[E.slide().design]; return L.fontSections({ major: d?.fonts?.major, minor: d?.fonts?.minor }); }, preview: (v) => `font-family:${L.fontStack(v)};font-size:13px`, note: L.fontNote, listCls: 'fonts', value: () => { const s = textState(); return s ? s.font : ''; }, enabled: () => !!textState(), onChange: (v) => A.setFontName(v) }, o)),
-    size: (o) => ui.combo(Object.assign({ id: 'tb-size', width: 44, tip: 'Font Size', options: () => L.SIZE_LIST, value: () => { const s = textState(); return s && s.sz ? String(L.round(s.sz, 1)) : ''; }, enabled: () => !!textState(), onChange: (v) => A.setFontSize(parseFloat(v)) }, o)),
-    zoom: (o) => ui.combo(Object.assign({ id: 'tb-zoom', width: 52, tip: 'Zoom', options: () => ['Fit', '400%', '200%', '150%', '100%', '75%', '66%', '50%', '33%', '25%'], value: () => (E.zoom === 'fit' ? 'Fit' : E.zoomPct() + '%'), onChange: (v) => { if (/fit/i.test(v)) E.setZoom('fit'); else { const n = parseFloat(v); if (n > 0) E.setZoom(n / 100); } } }, o)),
+    font: (o) => ui.combo(Object.assign({ id: 'tb-font', width: 136, tip: '字体', options: () => { const d = E.slide() && L.pres.designs[E.slide().design]; return L.fontSections({ major: d?.fonts?.major, minor: d?.fonts?.minor }); }, preview: (v) => `font-family:${L.fontStack(v)};font-size:13px`, note: L.fontNote, listCls: 'fonts', value: () => { const s = textState(); return s ? s.font : ''; }, enabled: () => !!textState(), onChange: (v) => A.setFontName(v) }, o)),
+    size: (o) => ui.combo(Object.assign({ id: 'tb-size', width: 44, tip: '字号', options: () => L.SIZE_LIST, value: () => { const s = textState(); return s && s.sz ? String(L.round(s.sz, 1)) : ''; }, enabled: () => !!textState(), onChange: (v) => A.setFontSize(parseFloat(v)) }, o)),
+    zoom: (o) => ui.combo(Object.assign({ id: 'tb-zoom', width: 64, tip: '缩放', options: () => [L.t('适应'), '400%', '200%', '150%', '100%', '75%', '66%', '50%', '33%', '25%'], value: () => (E.zoom === 'fit' ? L.t('适应') : E.zoomPct() + '%'), onChange: (v) => { if (/fit/i.test(v) || v === L.t('适应')) E.setZoom('fit'); else { const n = parseFloat(v); if (n > 0) E.setZoom(n / 100); } } }, o)),
   };
   A.menus = {
     color: (kind) => colorDD(kind), autoShapes: (r) => openAutoShapes(r), draw: (r) => drawMenu(r), lineStyle: (r) => lineStyleMenu(r), dash: (r) => dashMenu(r), arrow: (r) => arrowMenu(r), shadow: (r) => shadowMenu(r),
-    picColor: (r) => ui.openMenu([{ label: '&Automatic', run: () => A.picMode('') }, { label: '灰度(&G)', run: () => A.picMode('gray') }, { label: '黑白(&B)', run: () => A.picMode('bw') }, { label: '&Washout', run: () => A.picMode('wash') }], r),
-    tableBorders: (r) => ui.openMenu([{ custom: (close) => { const g = h('div', { class: 'shape-grid', style: 'grid-template-columns:repeat(4,24px)' }); for (const [k, ic, n] of [['all', 'bordersAll', 'All Borders'], ['out', 'bordersOut', 'Outside Borders'], ['in', 'bordersIn', 'Inside Borders'], ['none', 'bordersNone', 'No Border'], ['t', 'bordersTop', 'Top Border'], ['b', 'bordersBottom', 'Bottom Border'], ['l', 'bordersLeft', 'Left Border'], ['r', 'bordersRight', 'Right Border']]) { const bt = h('button', { type: 'button', 'data-tip': n, 'aria-label': n, html: L.icons.get(ic) }); bt.addEventListener('click', () => { close(); A.tableBorders(k); }); g.appendChild(bt); } return g; } }], r),
+    picColor: (r) => ui.openMenu([{ label: '自动(&A)', run: () => A.picMode('') }, { label: '灰度(&G)', run: () => A.picMode('gray') }, { label: '黑白(&B)', run: () => A.picMode('bw') }, { label: '冲蚀(&W)', run: () => A.picMode('wash') }], r),
+    tableBorders: (r) => ui.openMenu([{ custom: (close) => { const g = h('div', { class: 'shape-grid', style: 'grid-template-columns:repeat(4,24px)' }); for (const [k, ic, n] of [['all', 'bordersAll', '所有框线'], ['out', 'bordersOut', '外侧框线'], ['in', 'bordersIn', '内部框线'], ['none', 'bordersNone', '无框线'], ['t', 'bordersTop', '上框线'], ['b', 'bordersBottom', '下框线'], ['l', 'bordersLeft', '左框线'], ['r', 'bordersRight', '右框线']]) { const bt = h('button', { type: 'button', 'data-tip': n, 'aria-label': n, html: L.icons.get(ic) }); bt.addEventListener('click', () => { close(); A.tableBorders(k); }); g.appendChild(bt); } return g; } }], r),
     tableFill: (r, b) => ui.colorMenu(b, { mode: 'fill', effects: true }, async (v) => { if (v && v.none) A.tableFill({ t: 'none' }); else if (v && v.effects) { const f = await L.dlg.fillEffects({ t: 'solid', c: 'accent1' }); if (f) A.tableFill(f); } else if (typeof v === 'string') A.tableFill({ t: 'solid', c: v, a: 1 }); }),
     waShape: (r) => ui.openMenu(L.render.WARPS.map(([k, n]) => ({ label: n, run: () => A.waSet({ warp: k }), checked: () => { const s = E.primary(); return !!(s && s.wa && (s.wa.warp || 'textPlain') === k); } })), r),
   };
@@ -194,40 +195,40 @@
     const host = L.$('#toolbars');
     const fontCombo = A.parts.font(), sizeCombo = A.parts.size(), zoomCombo = A.parts.zoom();
     A.toolbarsEl = {
-      standard: ui.toolbar('standard', 'Standard', ['new', 'open', 'save', '|', 'print', 'printPreview', 'spelling', '|', 'cut', 'copy', 'paste', 'painter', '|', 'undo', 'redo', '|', 'insertChart', 'insertTable', ui.tbButton('tb_tables', { icon: 'tablesBorders' }), 'hyperlink', '|', 'expandAll', 'showFormatting', 'showGrid', ui.tbSplit('viewGray', (r) => ui.openMenu(['viewColor', 'viewGray', 'viewBW'], r)), zoomCombo, 'help']),
-      formatting: ui.toolbar('formatting', '设置格式', [fontCombo, sizeCombo, 'bold', 'italic', 'underline', 'shadowText', '|', 'alignLeft', 'alignCenter', 'alignRight', '|', 'numbering', 'bullets', '|', 'growFont', 'shrinkFont', '|', 'promote', 'demote', '|', ui.tbSplit('fontColor', colorDD('font')), '|', ui.tbButton('slideDesign', { label: 'Design' }), ui.tbButton('newSlide', { label: '新幻灯片' })]),
-      outlining: ui.toolbar('outlining', 'Outlining', ['promote', 'demote', 'moveParaUp', 'moveParaDown', '|', 'summarySlide', 'showFormatting']),
-      picture: ui.toolbar('picture', 'Picture', ['insertPicture', ui.tbDrop('', 'colorPic', A.menus.picColor, 'Color'), 'picMoreContrast', 'picLessContrast', 'picMoreBright', 'picLessBright', '|', 'picCrop', 'rotateLeft', ui.tbDrop('', 'lineStyle', lineStyleMenu, 'Line Style'), '|', ui.tbButton('formatObject', { icon: 'formatPicture' }), 'picTransparent', 'picReset']),
-      tables: ui.toolbar('tables', 'Tables and Borders', [ui.tbDrop('', 'dashStyle', (r) => ui.openMenu([{ custom: (close) => listPanel(L.dlg.DASHES.map(([k, n]) => ({ html: lineSVG(2, (L.render.dashArray(k, 2) || '').replace(/,/g, ' ')), label: n, run: () => { A.tblBorder.dash = k; } })), close) }], r), 'Border Style'),
-        ui.tbDrop('', 'lineStyle', (r) => ui.openMenu([{ custom: (close) => listPanel(WEIGHTS.map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: w + ' pt', run: () => { A.tblBorder.w = w; } })), close) }], r), 'Border Width'),
-        ui.tbDrop('', 'lineColor', (r, b) => ui.colorMenu(b, { mode: 'plain', grid: true }, (v) => { if (typeof v === 'string') A.tblBorder.c = v; }), 'Border Color'),
-        ui.tbDrop('', 'bordersAll', A.menus.tableBorders, 'Borders'),
-        ui.tbDrop('', 'fillColor', A.menus.tableFill, 'Fill Color'),
-        '|', ui.tbDrop('Table', null, (r) => ui.openMenu(['insertTable', '-', 'colLeft', 'colRight', 'rowAbove', 'rowBelow', '-', 'deleteCols', 'deleteRows', '-', 'mergeCells', 'splitCell', '-', 'selectTable', '-', 'tableBordersFill'], r), 'Table'),
+      standard: ui.toolbar('standard', '常用', ['new', 'open', 'save', '|', 'print', 'printPreview', 'spelling', '|', 'cut', 'copy', 'paste', 'painter', '|', 'undo', 'redo', '|', 'insertChart', 'insertTable', ui.tbButton('tb_tables', { icon: 'tablesBorders' }), 'hyperlink', '|', 'expandAll', 'showFormatting', 'showGrid', ui.tbSplit('viewGray', (r) => ui.openMenu(['viewColor', 'viewGray', 'viewBW'], r)), zoomCombo, 'help']),
+      formatting: ui.toolbar('formatting', '格式设置', [fontCombo, sizeCombo, 'bold', 'italic', 'underline', 'shadowText', '|', 'alignLeft', 'alignCenter', 'alignRight', '|', 'numbering', 'bullets', '|', 'growFont', 'shrinkFont', '|', 'promote', 'demote', '|', ui.tbSplit('fontColor', colorDD('font')), '|', ui.tbButton('slideDesign', { label: '设计' }), ui.tbButton('newSlide', { label: '新建幻灯片' })]),
+      outlining: ui.toolbar('outlining', '大纲', ['promote', 'demote', 'moveParaUp', 'moveParaDown', '|', 'summarySlide', 'showFormatting']),
+      picture: ui.toolbar('picture', '图片', ['insertPicture', ui.tbDrop('', 'colorPic', A.menus.picColor, '颜色'), 'picMoreContrast', 'picLessContrast', 'picMoreBright', 'picLessBright', '|', 'picCrop', 'rotateLeft', ui.tbDrop('', 'lineStyle', lineStyleMenu, '线型'), '|', ui.tbButton('formatObject', { icon: 'formatPicture' }), 'picTransparent', 'picReset']),
+      tables: ui.toolbar('tables', '表格和边框', [ui.tbDrop('', 'dashStyle', (r) => ui.openMenu([{ custom: (close) => listPanel(L.dlg.DASHES.map(([k, n]) => ({ html: lineSVG(2, (L.render.dashArray(k, 2) || '').replace(/,/g, ' ')), label: n, run: () => { A.tblBorder.dash = k; } })), close) }], r), '边框样式'),
+        ui.tbDrop('', 'lineStyle', (r) => ui.openMenu([{ custom: (close) => listPanel(WEIGHTS.map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: L.t('{0} 磅', w), run: () => { A.tblBorder.w = w; } })), close) }], r), '边框宽度'),
+        ui.tbDrop('', 'lineColor', (r, b) => ui.colorMenu(b, { mode: 'plain', grid: true }, (v) => { if (typeof v === 'string') A.tblBorder.c = v; }), '边框颜色'),
+        ui.tbDrop('', 'bordersAll', A.menus.tableBorders, '边框'),
+        ui.tbDrop('', 'fillColor', A.menus.tableFill, '填充颜色'),
+        '|', ui.tbDrop('表格', null, (r) => ui.openMenu(['insertTable', '-', 'colLeft', 'colRight', 'rowAbove', 'rowBelow', '-', 'deleteCols', 'deleteRows', '-', 'mergeCells', 'splitCell', '-', 'selectTable', '-', 'tableBordersFill'], r), '表格'),
         'mergeCells', 'splitCell', '|', 'cellTop', 'cellMiddle', 'cellBottom', '|', 'distRows', 'distCols']),
-      wordart: ui.toolbar('wordart', 'LettersArt', ['insertWordArt', ui.tbButton('wordartEdit', { label: 'Edit Text...' }), 'wordartGallery', ui.tbButton('formatObject', { icon: 'formatPicture' }),
-        ui.tbDrop('', 'waShape', A.menus.waShape, 'LettersArt Shape'),
+      wordart: ui.toolbar('wordart', 'LettersArt', ['insertWordArt', ui.tbButton('wordartEdit', { label: '编辑文字...' }), 'wordartGallery', ui.tbButton('formatObject', { icon: 'formatPicture' }),
+        ui.tbDrop('', 'waShape', A.menus.waShape, 'LettersArt 形状'),
         'waSameHeight', 'waVertical',
-        ui.tbDrop('', 'alignCenter', (r) => ui.openMenu([['l', '左对齐(&L)'], ['ctr', '居中(&C)'], ['r', '右对齐(&R)']].map(([k, n]) => ({ label: n, run: () => A.waSet({ algn: k }) })), r), 'LettersArt Alignment'),
-        ui.tbDrop('', 'charSpacing', (r) => ui.openMenu([[-3, '&Very Tight'], [-1.5, '&Tight'], [0, '普通(&N)'], [2, '&Loose'], [4, 'V&ery Loose']].map(([k, n]) => ({ label: n, run: () => A.waSet({ spc: k }) })), r), 'LettersArt Character Spacing')]),
-      master: ui.toolbar('master', 'Slide Master View', ['insertTitleMaster', 'deleteTitleMaster', '|', ui.tbButton('closeMaster', { label: '关闭母版视图' })]),
-      sorter: ui.toolbar('sorter', 'Slide Sorter', ['hideSlide', 'rehearse', '|', 'summarySlide', 'speakerNotes', '|', ui.tbButton('transitionPane', { label: '切换' }), ui.tbButton('slideDesign', { label: 'Design' }), ui.tbButton('newSlide', { label: '新幻灯片' })]),
+        ui.tbDrop('', 'alignCenter', (r) => ui.openMenu([['l', '左对齐(&L)'], ['ctr', '居中(&C)'], ['r', '右对齐(&R)']].map(([k, n]) => ({ label: n, run: () => A.waSet({ algn: k }) })), r), 'LettersArt 对齐方式'),
+        ui.tbDrop('', 'charSpacing', (r) => ui.openMenu([[-3, '很紧密(&V)'], [-1.5, '紧密(&T)'], [0, '普通(&N)'], [2, '稀疏(&L)'], [4, '很稀疏(&e)']].map(([k, n]) => ({ label: n, run: () => A.waSet({ spc: k }) })), r), 'LettersArt 字符间距')]),
+      master: ui.toolbar('master', '幻灯片母版视图', ['insertTitleMaster', 'deleteTitleMaster', '|', ui.tbButton('closeMaster', { label: '关闭母版视图' })]),
+      sorter: ui.toolbar('sorter', '幻灯片浏览', ['hideSlide', 'rehearse', '|', 'summarySlide', 'speakerNotes', '|', ui.tbButton('transitionPane', { label: '切换' }), ui.tbButton('slideDesign', { label: '设计' }), ui.tbButton('newSlide', { label: '新建幻灯片' })]),
     };
     const row1 = h('div', { class: 'tb-row' }, A.toolbarsEl.standard);
     const row2 = h('div', { class: 'tb-row' }, A.toolbarsEl.formatting, A.toolbarsEl.outlining);
     /* SmartArt (js/diagram.js): the Diagram toolbar of a selected diagram */
     const DGM = () => L.diagram;
-    A.toolbarsEl.diagram = ui.toolbar('diagram', 'Diagram', [ui.tbSplit('diagramAddShape', (r) => ui.openMenu(['diagramAddAfter', 'diagramAddBefore', 'diagramAddAbove', 'diagramAddBelow'], r)), 'diagramPromote', 'diagramDemote', 'diagramMoveUp', 'diagramMoveDown', '|',
-      ui.tbDrop('&Layout', 'layout', (r) => DGM().layoutMenu(r), 'Change Layout'), ui.tbDrop('', 'colorPic', (r) => DGM().colorsMenu(r), 'Change Colors'), ui.tbDrop('', 'themes', (r) => DGM().styleMenu(r), 'IntelliArt Styles'), '|', 'diagramTextPane', 'diagramReset', 'diagramToShapes']);
+    A.toolbarsEl.diagram = ui.toolbar('diagram', '图示', [ui.tbSplit('diagramAddShape', (r) => ui.openMenu(['diagramAddAfter', 'diagramAddBefore', 'diagramAddAbove', 'diagramAddBelow'], r)), 'diagramPromote', 'diagramDemote', 'diagramMoveUp', 'diagramMoveDown', '|',
+      ui.tbDrop('布局(&L)', 'layout', (r) => DGM().layoutMenu(r), '更改布局'), ui.tbDrop('', 'colorPic', (r) => DGM().colorsMenu(r), '更改颜色'), ui.tbDrop('', 'themes', (r) => DGM().styleMenu(r), 'IntelliArt 样式'), '|', 'diagramTextPane', 'diagramReset', 'diagramToShapes']);
     const row3 = h('div', { class: 'tb-row' }, A.toolbarsEl.picture, A.toolbarsEl.tables, A.toolbarsEl.wordart, A.toolbarsEl.diagram, A.toolbarsEl.master, A.toolbarsEl.sorter);
     host.append(row1, row2, row3);
     A.tbRows = [row1, row2, row3];
     /* drawing toolbar */
-    const asBtn = ui.tbDrop('A&utoShapes', null, (r) => openAutoShapes(r), 'AutoShapes');
+    const asBtn = ui.tbDrop('自选图形(&u)', null, (r) => openAutoShapes(r), '自选图形');
     asBtn.setAttribute('data-as', '1');
-    A.toolbarsEl.drawing = ui.toolbar('drawing', 'Drawing', [ui.tbDrop('D&raw', null, drawMenu, 'Draw'), 'select', '|', asBtn, 'drawLine', 'drawArrow', 'drawRect', 'drawOval', 'textBox', 'insertWordArt', 'insertDiagram', 'insertClipArt', 'insertPicture', '|',
+    A.toolbarsEl.drawing = ui.toolbar('drawing', '绘图', [ui.tbDrop('绘制(&r)', null, drawMenu, '绘制'), 'select', '|', asBtn, 'drawLine', 'drawArrow', 'drawRect', 'drawOval', 'textBox', 'insertWordArt', 'insertDiagram', 'insertClipArt', 'insertPicture', '|',
       ui.tbSplit('fillColor', colorDD('fill')), ui.tbSplit('lineColor', colorDD('line')), ui.tbSplit('fontColor', colorDD('font')), '|',
-      ui.tbDrop('', 'lineStyle', lineStyleMenu, 'Line Style'), ui.tbDrop('', 'dashStyle', dashMenu, 'Dash Style'), ui.tbDrop('', 'arrowStyle', arrowMenu, 'Arrow Style'), ui.tbDrop('', 'shadowStyle', shadowMenu, 'Shadow Style')]);
+      ui.tbDrop('', 'lineStyle', lineStyleMenu, '线型'), ui.tbDrop('', 'dashStyle', dashMenu, '虚线线型'), ui.tbDrop('', 'arrowStyle', arrowMenu, '箭头样式'), ui.tbDrop('', 'shadowStyle', shadowMenu, '阴影样式')]);
     L.$('#drawrow').appendChild(A.toolbarsEl.drawing);
     /* view buttons */
     const vb = L.$('#viewbar');
@@ -260,6 +261,7 @@
   A.toggleToolbar = (id) => { const v = A.opts.toolbars[id]; A.opts.toolbars[id] = v === true ? (['picture', 'tables', 'wordart', 'diagram'].includes(id) ? false : false) : true; A.saveOpts(); A.updateToolbars(); };
   A.updateToolbars = function () {
     if (!A.toolbarsEl) return;
+    if (E.holdLayout && E.holdLayout(A.updateToolbars)) return;   /* not under a press on the slide (editor.js) */
     for (const id of ['standard', 'formatting', 'drawing', 'outlining', 'picture', 'tables', 'wordart', 'diagram']) A.toolbarsEl[id].hidden = !A.tbShown(id) || (A.view === 'preview');
     A.toolbarsEl.outlining.hidden = !(A.opts.toolbars.outlining === true || (L.panes.left.tab === 'outline' && A.view === 'normal' && A.opts.toolbars.outlining !== false && false));
     A.toolbarsEl.master.hidden = A.view !== 'master';
@@ -276,24 +278,23 @@
     A.sbSlide = h('div', { class: 'sb-cell fit', 'aria-live': 'polite' });
     A.sbMsg = h('div', { class: 'sb-cell grow' });
     A.sbDesign = h('div', { class: 'sb-cell fit' });
-    A.sbLang = h('div', { class: 'sb-cell fit', text: 'English (U.S.)' });
-    const zr = h('input', { type: 'range', min: 10, max: 400, value: 100, id: 'sb-zoom', 'aria-label': 'Zoom' });
+    A.sbLang = h('div', { class: 'sb-cell fit', text: '英语（美国）' });
+    const zr = h('input', { type: 'range', min: 10, max: 400, value: 100, id: 'sb-zoom', 'aria-label': '缩放' });
     zr.addEventListener('input', () => E.setZoom(zr.value / 100));
     A.sbZoom = h('div', { class: 'sb-cell fit sb-zoom' }, h('span', { text: '100%' }), zr);
     sb.append(A.sbSlide, A.sbDesign, A.sbMsg, A.sbLang, A.sbZoom);
     L.bus.on('zoom', () => { A.sbZoom.firstChild.textContent = E.zoomPct() + '%'; zr.value = E.zoomPct(); ui.refresh(); });
   }
-  A.status = (msg) => { if (!A.sbMsg) return; A.sbMsg.textContent = msg; clearTimeout(statusTimer); statusTimer = setTimeout(() => { A.sbMsg.textContent = ''; }, 3000); };
+  A.status = (msg) => { if (!A.sbMsg) return; A.sbMsg.textContent = L.t(msg); clearTimeout(statusTimer); statusTimer = setTimeout(() => { A.sbMsg.textContent = ''; }, 3000); };
   A.updateStatus = function () {
     if (!A.sbSlide) return;
     const n = L.pres.slides.length;
-    if (A.view === 'master') A.sbSlide.textContent = E.masterKind === 'title' ? 'Title Master' : 'Slide Master';
-    else if (A.view === 'sorter') A.sbSlide.textContent = 'Slide Sorter';
-    else A.sbSlide.textContent = n ? `Slide ${E.idx + 1} of ${n}` : 'No slides';
-    const d = E.design();
-    A.sbDesign.textContent = d ? d.name : '';
+    if (A.view === 'master') A.sbSlide.textContent = E.masterKind === 'title' ? L.t('标题母版') : L.t('幻灯片母版');
+    else if (A.view === 'sorter') A.sbSlide.textContent = L.t('幻灯片浏览');
+    else A.sbSlide.textContent = n ? L.t('第 {0} 张幻灯片，共 {1} 张', E.idx + 1, n) : L.t('无幻灯片');
+    A.sbDesign.textContent = M.designName(E.design());
   };
-  A.updateTitle = () => { document.title = `${A.fileName} - Lectern 2003`; };
+  A.updateTitle = () => { document.title = `${A.fileName} - Lectern`; };
 
   /* ================= views ================= */
   A.setView = function (v) {
@@ -359,7 +360,7 @@
   };
   async function confirmDiscard() {
     if (!L.hist.dirty) return true;
-    const r = await ui.msg(`是否保存对 ${A.fileName} 的更改？`, { icon: 'warn', buttons: ['是(&Y)', '否(&N)', '取消'] });
+    const r = await ui.msg(L.t('要保存对 {0} 所做的更改吗？', A.fileName), { icon: 'warn', buttons: ['是(&Y)', '否(&N)', '取消'] });
     if (r === 0) return await A.save() === 'saved';
     if (r === 1 && window.VO) VO.discard(L.pres);   // its unsaved version goes too
     return r === 1;
@@ -391,12 +392,12 @@
   };
   A.openFile = async function (file) {
     if (/\.txt$/i.test(file.name)) { if (!(await confirmDiscard())) return; const text = await L.readAsText(file); const pres = M.newPresentation(Object.assign({ design: 'default', empty: true }, A.newSize())); A.loadPres(pres, file.name.replace(/\.txt$/i, '')); A.outlineToSlides(text, 0); return; }
-    if (/\.ppt$/i.test(file.name)) { ui.msg(`${file.name} 是较旧的 PowerPoint 97–2003 二进制格式。请先用 PowerPoint、Keynote、Google 幻灯片或 LibreOffice 打开并另存为 .pptx，再在此打开该 .pptx。`, { icon: 'warn' }); return; }
+    if (/\.ppt$/i.test(file.name)) { ui.msg(L.t('{0} 使用旧版二进制 PowerPoint 97–2003 格式。请在 PowerPoint、Keynote、Google Slides 或 LibreOffice 中打开并保存为 .pptx，再在这里打开该 .pptx 文件。', file.name), { icon: 'warn' }); return; }
     if (!(await confirmDiscard())) return;
-    ui.busy(true, `Opening ${file.name}...`);
+    ui.busy(true, L.t('正在打开 {0}...', file.name));
     try {
       const buf = await L.readAsArrayBuffer(file);
-      const progress = (i, n) => ui.busy(true, `Opening ${file.name}... (slide ${i} of ${n})`);
+      const progress = (i, n) => ui.busy(true, L.t('正在打开 {0}...（第 {1} 张幻灯片，共 {2} 张）', file.name, i, n));
       let pres = null, password, wrong = false;
       for (;;) {
         try { pres = await L.pptx.read(buf, { progress, password }); break; } catch (e) {
@@ -406,7 +407,7 @@
           wrong = e.code === 'badpassword';
           password = await ui.password(file.name, wrong);
           if (password == null) return;
-          ui.busy(true, `Opening ${file.name}...`);
+          ui.busy(true, L.t('正在打开 {0}...', file.name));
         }
       }
       if (!pres.slides.length) pres.slides.push(M.newSlide(pres, 'title', Object.keys(pres.designs)[0]));
@@ -416,13 +417,13 @@
       ui.busy(false);
       if (pres.repaired) {
         const lost = pres.repaired.parts.filter((p) => /slides\/slide\d+\.xml$/.test(p)).length;
-        ui.msg(`${L.APP} 发现 ${file.name} 中的内容有问题，已修复此演示文稿。` + (lost ? `\n${lost} slide${lost > 1 ? 's' : ''} could not be recovered.` : '\nCheck the slides before you save over the original.'), { icon: 'warn' });
+        ui.msg(L.t('{0} 发现 {1} 中的内容有问题，并已修复演示文稿。', L.APP, file.name) + '\n' + (lost > 1 ? L.t('{0} 张幻灯片无法恢复。', lost) : lost ? L.t('有 1 张幻灯片无法恢复。') : L.t('覆盖原文件之前，请检查幻灯片。')), { icon: 'warn' });
       } else if (/\.pps[xm]$/i.test(file.name)) L.show.start({ from: 0 });
     } catch (e) {
       ui.busy(false);
       console.error(e);
-      if (e && e.code === 'ole') ui.msg(e.message, { icon: 'warn' });
-      else ui.msg(`${L.APP} 无法读取 ${file.name}。${e && e.message ? e.message : ''}\n请确认该文件是 PowerPoint 2007 或更高版本的演示文稿（.pptx）。`, { icon: 'error' });
+      if (e && e.code === 'ole') ui.msg(L.t(e.message), { icon: 'warn' });
+      else ui.msg(L.t('{0} 无法读取 {1}。{2}\n请确认该文件是 PowerPoint 2007 或更高版本的演示文稿 (.pptx)。', L.APP, file.name, e && e.message ? L.t(e.message) : ''), { icon: 'error' });
     }
   };
   A.save = async function () {
@@ -440,7 +441,7 @@
     name = name || A.fileName;
     if (TE.active()) TE.sync();
     if (L.panes.left.tab === 'outline') L.panes.left.commitOutline();
-    ui.busy(true, 'Saving...');
+    ui.busy(true, '正在保存...');
     try {
       let blob, ext = type;
       if (/^(pptx|pptm|ppsx|ppsm|potx|potm)$/.test(type)) blob = await L.pptx.write(L.pres, { format: type });
@@ -454,12 +455,12 @@
       if (losses === null) return 'declined';
       const r = await L.saveFile(`${name}.${ext}`, blob);
       if (r === 'saved') L.opc.acknowledge(L.pres, losses);
-      if (r === 'saved' && /^(pptx|pptm|ppsx|ppsm|potx|potm)$/.test(type)) { A.fileName = name; A.fileType = type; A.saved = true; A.updateTitle(); L.hist.dirty = false; A.status(`Saved ${name}.${ext}`); if (window.VO) VO.saved(`${name}.${ext}`, blob, L.pres); }
+      if (r === 'saved' && /^(pptx|pptm|ppsx|ppsm|potx|potm)$/.test(type)) { A.fileName = name; A.fileType = type; A.saved = true; A.updateTitle(); L.hist.dirty = false; A.status(L.t('已保存 {0}', `${name}.${ext}`)); if (window.VO) VO.saved(`${name}.${ext}`, blob, L.pres); }
       return r;
     } catch (e) {
       ui.busy(false);
       console.error(e);
-      ui.msg(`文件无法保存：${e.message || e}`, { icon: 'error' });
+      ui.msg(L.t('无法保存文件：{0}', e.message || e), { icon: 'error' });
     }
   };
   A.outlineText = function () {
@@ -504,7 +505,7 @@
     g.drawImage(img, 0, 0, w, hh);
     return c;
   };
-  const canvasBlob = (c, type, q) => new Promise((res, rej) => { try { c.toBlob((b) => (b ? res(b) : rej(new Error('This browser blocked the image export.'))), type, q); } catch (e) { rej(new Error('This browser blocked the image export.')); } });
+  const canvasBlob = (c, type, q) => new Promise((res, rej) => { try { c.toBlob((b) => (b ? res(b) : rej(new Error(L.t('浏览器阻止了图像导出。')))), type, q); } catch (e) { rej(new Error(L.t('浏览器阻止了图像导出。'))); } });
   A.slideCanvas = function (slide, width, map) {
     const pres = L.pres;
     const el = L.render.slide(pres, slide, { mode: 'thumb', index: pres.slides.indexOf(slide) });
@@ -521,7 +522,7 @@
       const css = slideCSS(true);
       let n = 0;
       for (const p of els) {
-        ui.busy(true, `Creating PDF... (page ${++n} of ${els.length})`);
+        ui.busy(true, L.t('正在创建 PDF...（第 {0} 页，共 {1} 页）', ++n, els.length));
         const w = p.offsetWidth, hh = p.offsetHeight;
         const clone = p.cloneNode(true);
         clone.style.margin = '0'; clone.style.boxShadow = 'none'; clone.style.position = 'relative';
@@ -534,7 +535,7 @@
       const slides = L.pres.slides.filter((s) => !s.hidden);
       let n = 0;
       for (const s of slides) {
-        ui.busy(true, `Creating PDF... (slide ${++n} of ${slides.length})`);
+        ui.busy(true, L.t('正在创建 PDF...（第 {0} 张幻灯片，共 {1} 张）', ++n, slides.length));
         const c = await A.slideCanvas(s, Math.round(L.pres.W * 2.5), map);
         pages.push({ jpeg: await jpeg(c), iw: c.width, ih: c.height, pw: L.pres.W, ph: L.pres.H });
       }
@@ -542,9 +543,9 @@
     return L.buildPDF(pages, { title: L.pres.props.title || A.fileName, author: L.pres.props.author || '' });
   };
   A.previewPDF = async function () {
-    ui.busy(true, '正在创建 PDF…');
-    try { const blob = await A.buildPDF('preview'); ui.busy(false); await L.saveFile(`${A.fileName} (${{ slides: '幻灯片', handouts: '讲义', notes: '备注页', outline: '大纲' }[A.printOpts.what] || 'Print'}).pdf`, blob); }
-    catch (e) { ui.busy(false); console.error(e); ui.msg('无法创建 PDF：' + (e.message || e), { icon: 'error' }); }
+    ui.busy(true, '正在创建 PDF...');
+    try { const blob = await A.buildPDF('preview'); ui.busy(false); await L.saveFile(`${A.fileName} (${{ slides: 'Slides', handouts: 'Handouts', notes: 'Notes', outline: 'Outline' }[A.printOpts.what] || 'Print'}).pdf`, blob); }
+    catch (e) { ui.busy(false); console.error(e); ui.msg(L.t('无法创建 PDF：{0}', e.message || e), { icon: 'error' }); }
   };
   A.buildWebPage = async function () {
     const pres = L.pres;
@@ -590,7 +591,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const pres = L.pres;
     const cur = pres.slides[E.idx];
     const design = cur ? cur.design : Object.keys(pres.designs)[0];
-    L.hist.push('新幻灯片');
+    L.hist.push('新建幻灯片');
     const s = M.newSlide(pres, layout || 'text', design);
     const i = at != null ? at : pres.slides.length ? Math.max(...selIdx(), E.idx) + 1 : 0;
     M.insertSlides(pres, i, [s]);
@@ -608,7 +609,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.duplicateSlides = function () {
     const idxs = selIdx();
     if (!idxs.length) return;
-    L.hist.push('Duplicate Slide');
+    L.hist.push('复制幻灯片');
     const copies = idxs.map((i) => M.dupSlide(L.pres.slides[i]));
     const at = Math.max(...idxs) + 1;
     M.insertSlides(L.pres, at, copies);
@@ -620,7 +621,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const idxs = selIdx();
     if (!idxs.length) return;
     if (TE.active()) TE.detach(true);
-    L.hist.push('Delete Slide');
+    L.hist.push('删除幻灯片');
     for (const i of idxs.slice().sort((a, b) => b - a)) L.pres.slides.splice(i, 1);
     const n = L.pres.slides.length;
     const ni = Math.min(idxs[0], n - 1);
@@ -641,7 +642,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     t = L.clamp(t, 0, rest.length);
     const next = rest.slice(0, t).concat(moving, rest.slice(t));
     if (next.every((s, i) => s === before[i])) return;
-    L.hist.push('Move Slide');
+    L.hist.push('移动幻灯片');
     L.preserve.joinSection(pres, rest, t, moving);
     pres.slides = next;
     A.slideSel = new Set(moving.map((s) => next.indexOf(s)));
@@ -652,7 +653,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.toggleHidden = function () {
     const ss = A.selectedSlides();
     if (!ss.length) return;
-    L.hist.push('Hide Slide');
+    L.hist.push('隐藏幻灯片');
     const v = !ss[0].hidden;
     for (const s of ss) s.hidden = v;
     L.bus.emit('slides-changed');
@@ -662,7 +663,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const ss = A.selectedSlides();
     if (!ss.length) { A.insertSlide(key); return; }
     if (TE.active()) TE.end();
-    L.hist.push('Slide Layout');
+    L.hist.push('幻灯片版式');
     for (const s of ss) M.applyLayout(L.pres, s, key);
     void reapply;
     E.sel = [];
@@ -671,7 +672,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   };
   A.applyDesign = function (key, all) {
     if (TE.active()) TE.end();
-    L.hist.push('Apply Design Template');
+    L.hist.push('应用设计模板');
     M.applyDesign(L.pres, key, all ? null : A.selectedSlides());
     if (A.view === 'master') E.buildMaster();
     E.render();
@@ -679,7 +680,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     L.panes.task.refresh('design');
   };
   A.applyColorScheme = function (cs, all) {
-    L.hist.push('Color Scheme');
+    L.hist.push('配色方案');
     const targets = all ? L.pres.slides : A.selectedSlides();
     const ids = new Set(targets.map((s) => s.design));
     if (all) for (const id of ids) L.pres.designs[id].colors = Object.assign({}, L.pres.designs[id].colors, L.clone(cs));
@@ -699,14 +700,14 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const cs = L.clone(d.colors);
     const rows = M.SCHEME_SLOTS.map(([k, label]) => {
       const p = L.dlg.colorPick(cs[k], (c) => { cs[k] = c[0] === '#' ? c : M.resolveColor(c, d); });
-      return ui.field(label + ':', p, { cls: 'wide' });
+      return ui.field(label, p, { cls: 'wide' });   /* named as in Office's list of scheme colours, without a colon */
     });
     ui.dialog({ title: '编辑配色方案', body: h('div', { class: 'col' }, ...rows), width: 360, buttons: [{ label: '应用(&A)', primary: true, onClick: () => A.applyColorScheme(cs, true) }, { label: '取消' }] });
   };
   A.browseDesign = async function () {
     const files = await L.pickFiles('.pptx,.potx,.ppsx');
     if (!files[0]) return;
-    ui.busy(true, 'Reading design...');
+    ui.busy(true, '正在读取设计...');
     try {
       const src = await L.pptx.read(await L.readAsArrayBuffer(files[0]));
       ui.busy(false);
@@ -714,13 +715,13 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       if (!d) return;
       d.id = L.uid('dsn');
       d.name = files[0].name.replace(/\.\w+$/, '');
-      L.hist.push('Apply Design Template');
+      L.hist.push('应用设计模板');
       L.pres.designs[d.id] = d;
       for (const s of L.pres.slides) A.moveToDesign(s, d);
       M.gcDesigns(L.pres);
       E.render();
       L.bus.emit('slides-changed', { design: true });
-    } catch (e) { ui.busy(false); ui.msg('That design could not be read: ' + e.message, { icon: 'error' }); }
+    } catch (e) { ui.busy(false); ui.msg(L.t('无法读取此设计：{0}', e.message), { icon: 'error' }); }
   };
   /** move a slide to a design, relocating untouched placeholders */
   A.moveToDesign = function (s, d) {
@@ -738,7 +739,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   };
   A.applyAnimScheme = function (def, all) {
     const targets = all ? L.pres.slides : A.selectedSlides();
-    L.hist.push('Animation Scheme');
+    L.hist.push('动画方案');
     for (const s of targets) {
       const ph = (t) => s.shapes.find((x) => x.ph && t.includes(x.ph.type));
       const title = ph(['title', 'ctrTitle']), body = ph(['body', 'obj', 'subTitle']);
@@ -758,23 +759,23 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   };
   A.setTransition = function (fn) {
     const ss = A.view === 'sorter' ? A.selectedSlides() : A.selectedSlides().length ? A.selectedSlides() : [E.slide()];
-    L.hist.push('Slide Transition', 'trans');
+    L.hist.push('幻灯片切换', 'trans');
     for (const s of ss) { if (!s) continue; s.trans = Object.assign({ type: 'none', spd: 'fast', click: true, after: null }, s.trans); fn(s); }
     L.bus.emit('slides-changed', { trans: true });
   };
   A.transitionToAll = function () {
     const src = E.slide();
     if (!src) return;
-    L.hist.push('Apply Transition to All');
+    L.hist.push('将切换应用于所有幻灯片');
     for (const s of L.pres.slides) s.trans = L.clone(src.trans);
     L.bus.emit('slides-changed', { trans: true });
-    A.status('Transition applied to all slides');
+    A.status('已将切换效果应用于所有幻灯片');
   };
   A.addAnimation = function (cls, eff) {
     const slide = E.slide();
     const shapes = E.selected();
     if (!slide || !shapes.length) return;
-    L.hist.push('Add Effect');
+    L.hist.push('添加效果');
     let last = null;
     for (const sh of shapes) {
       const top = E.topOf(sh.id) || sh;
@@ -823,7 +824,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const pres = L.pres;
     if (Math.abs(W - pres.W) < 0.5 && Math.abs(H - pres.H) < 0.5) return;
     if (TE.active()) TE.end();
-    L.hist.push('Page Setup');
+    L.hist.push('页面设置');
     const oW = pres.W, oH = pres.H;
     const sx = W / oW, sy = H / oH, k = Math.min(sx, sy);
     const ox = (W - oW * k) / 2, oy = (H - oH * k) / 2;
@@ -879,24 +880,24 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   };
   A.insertTitleMaster = function () {
     const d = E.design();
-    L.hist.push('Insert Title Master');
+    L.hist.push('插入标题母版');
     d.titleDeco = L.clone(d.deco).map((x) => Object.assign(x, { id: L.uid('d') }));
     E.masterKind = 'title'; E.buildMaster(); E.render(); L.panes.left.render();
   };
   A.deleteTitleMaster = function () {
     const d = E.design();
-    L.hist.push('Delete Title Master');
+    L.hist.push('删除标题母版');
     d.titleDeco = null; d.titleBg = null;
     E.masterKind = 'slide'; E.buildMaster(); E.render(); L.panes.left.render();
   };
   A.summarySlide = function () {
     const ss = A.selectedSlides().length > 1 ? A.selectedSlides() : L.pres.slides;
     const titles = ss.map((s) => M.slideTitle(s)).filter(Boolean);
-    if (!titles.length) { ui.msg('选定的幻灯片没有可用于摘要的标题。'); return; }
+    if (!titles.length) { ui.msg('选定的幻灯片没有可用于生成摘要的标题。'); return; }
     const at = L.pres.slides.indexOf(ss[0]);
     const s = A.insertSlide('text', Math.max(0, at));
     const t = s.shapes.find((x) => x.ph.type === 'title'), b = s.shapes.find((x) => x.ph.type === 'body');
-    T.setPlain(t.tx, 'Summary Slide');
+    T.setPlain(t.tx, '摘要幻灯片');
     b.tx.ps = titles.map((x) => T.para(x));
     E.render(); L.bus.emit('slides-changed');
   };
@@ -905,11 +906,11 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     if (!s) return;
     const ta = h('textarea', { id: 'sn-text', rows: 10, style: 'width:100%' });
     ta.value = s.notes || '';
-    ui.dialog({ title: '演讲者备注', body: h('div', { class: 'col' }, h('label', { for: 'sn-text', text: `幻灯片 ${E.idx + 1}:` }), ta), width: 420, buttons: [{ label: '关闭', primary: true, onClick: () => { if (ta.value !== (s.notes || '')) { L.hist.push('Notes'); s.notes = ta.value; L.panes.notes.render(); } } }] });
+    ui.dialog({ title: '演讲者备注', body: h('div', { class: 'col' }, h('label', { for: 'sn-text', text: L.t('幻灯片 {0}：', E.idx + 1) }), ta), width: 420, buttons: [{ label: '关闭', primary: true, onClick: () => { if (ta.value !== (s.notes || '')) { L.hist.push(L.N('备注')); s.notes = ta.value; L.panes.notes.render(); } } }] });
   };
   A.outlineToSlides = function (text, at) {
     const lines = String(text).replace(/\r/g, '').split('\n');
-    L.hist.push('Slides from Outline');
+    L.hist.push('幻灯片（从大纲）');
     let cur = null, i = at != null ? at : L.pres.slides.length;
     const did = (L.pres.slides[E.idx] || {}).design || Object.keys(L.pres.designs)[0];
     for (const raw of lines) {
@@ -928,7 +929,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     A.outlineToSlides(await L.readAsText(f[0]), E.idx + 1);
   };
   A.insertSlidesFrom = function (src, idxs, keep) {
-    L.hist.push('Insert Slides');
+    L.hist.push('插入幻灯片');
     const cur = E.slide();
     const target = cur ? L.pres.designs[cur.design] : Object.values(L.pres.designs)[0];
     const at = E.idx + 1;
@@ -953,7 +954,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   };
   A.loadSample = async function () {
     if (L.hist.dirty && !(await confirmDiscard())) return;
-    A.loadPres(buildSample(), 'Harbor & Pine — 2027 Expansion (sample)');
+    A.loadPres(buildSample(), 'Harbor & Pine — 2027 年扩展计划（示例）');
   };
 
   /* ================= shape operations ================= */
@@ -961,7 +962,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const shapes = E.selected();
     if (!shapes.length) return;
     if (L.diagram && L.diagram.deleteKids(shapes)) return;
-    E.commit('Clear', () => {
+    E.commit(L.N('清除'), () => {
       const slide = E.slide();
       for (const sh of shapes) {
         const f = E.find(sh.id);
@@ -978,7 +979,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.duplicateSel = function () {
     const shapes = E.selected().filter((s) => !E.find(s.id).parent);
     if (!shapes.length) return;
-    E.commit('Duplicate', () => {
+    E.commit(L.N('创建副本'), () => {
       const slide = E.slide();
       E.sel = M.dupMany(shapes).map((c) => { M.translate(c, 12, 12); slide.shapes.push(c); return c.id; });
     });
@@ -991,7 +992,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.group = function () {
     const shapes = E.selected().filter((s) => !E.find(s.id).parent);
     if (shapes.length < 2) return;
-    E.commit('Group', () => {
+    E.commit(L.N('组合'), () => {
       const slide = E.slide();
       const order = slide.shapes.filter((s) => shapes.includes(s));
       const at = slide.shapes.indexOf(order[order.length - 1]);
@@ -1007,7 +1008,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.ungroup = function () {
     const groups = E.selected().filter((s) => s.type === 'group');
     if (!groups.length) return;
-    E.commit('Ungroup', () => {
+    E.commit(L.N('取消组合'), () => {
       const slide = E.slide();
       const out = [];
       for (const g of groups) {
@@ -1034,7 +1035,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.order = function (op) {
     const shapes = E.selected();
     if (!shapes.length) return;
-    E.commit('Order', () => {
+    E.commit(L.N('叠放次序'), () => {
       for (const sh of op === 'front' || op === 'forward' ? shapes.slice().reverse() : shapes) {
         const f = E.find(sh.id);
         const list = f.list;
@@ -1051,7 +1052,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const toSlide = A.opts.alignToSlide || shapes.length === 1;
     const bb = (s) => (s.type === 'group' ? M.groupBounds(s) : L.rotBounds(s));
     const ref = toSlide ? { x: 0, y: 0, w: L.pres.W, h: L.pres.H } : L.unionBounds(shapes.map(bb));
-    E.commit('Align', () => {
+    E.commit(L.N('对齐'), () => {
       for (const s of shapes) {
         const b = bb(s);
         let dx = 0, dy = 0;
@@ -1070,7 +1071,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const ref = A.opts.alignToSlide ? { x: 0, y: 0, w: L.pres.W, h: L.pres.H } : L.unionBounds(items.map((i) => i.b));
     const total = items.reduce((a, i) => a + (axis === 'h' ? i.b.w : i.b.h), 0);
     const gap = ((axis === 'h' ? ref.w : ref.h) - total) / Math.max(1, items.length - 1);
-    E.commit('Distribute', () => {
+    E.commit(L.N('分布'), () => {
       let pos = axis === 'h' ? ref.x : ref.y;
       for (const it of items) {
         if (axis === 'h') M.translate(it.s, pos - it.b.x, 0); else M.translate(it.s, 0, pos - it.b.y);
@@ -1078,8 +1079,8 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       }
     });
   };
-  A.rotate = (deg) => { if (!E.selected().every(M.canRotate)) return; E.commit('Rotate', () => { for (const s of E.selected()) { if (s.type === 'line') { const [a, b] = L.geom.lineEnds(s); const cx = s.x + s.w / 2, cy = s.y + s.h / 2; L.geom.setLineEnds(s, L.rotPt(a[0], a[1], cx, cy, deg), L.rotPt(b[0], b[1], cx, cy, deg)); } else s.rot = (((s.rot || 0) + deg) % 360 + 360) % 360; } }); };
-  A.flip = (axis) => { if (!E.selected().every(M.canRotate)) return; E.commit('Flip', () => {
+  A.rotate = (deg) => { if (!E.selected().every(M.canRotate)) return; E.commit(L.N('旋转'), () => { for (const s of E.selected()) { if (s.type === 'line') { const [a, b] = L.geom.lineEnds(s); const cx = s.x + s.w / 2, cy = s.y + s.h / 2; L.geom.setLineEnds(s, L.rotPt(a[0], a[1], cx, cy, deg), L.rotPt(b[0], b[1], cx, cy, deg)); } else s.rot = (((s.rot || 0) + deg) % 360 + 360) % 360; } }); };
+  A.flip = (axis) => { if (!E.selected().every(M.canRotate)) return; E.commit(L.N('翻转'), () => {
     for (const s of E.selected()) {
       if (s.type === 'group') { const g = s; for (const k of g.kids) { if (axis === 'h') { k.x = g.x + g.w - (k.x - g.x) - k.w; k.flipH = !k.flipH; } else { k.y = g.y + g.h - (k.y - g.y) - k.h; k.flipV = !k.flipV; } k.rot = k.rot ? 360 - k.rot : 0; } continue; }
       if (axis === 'h') s.flipH = !s.flipH; else s.flipV = !s.flipV;
@@ -1090,7 +1091,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const step = fine ? 1 : E.grid.snap ? E.grid.size : 1;
     const shapes = E.selected();
     if (!shapes.length) return;
-    L.hist.push('Nudge', 'nudge');
+    L.hist.push(L.N('微移'), 'nudge');
     for (const s of shapes) { M.translate(s, dx * step, dy * step); const f = E.find(s.id); if (f.parent) E.fitGroup(f.parent); }
     if (E.view === 'master') E.syncMaster();
     if (shapes.length === 1 && !E.find(shapes[0].id).parent) E.renderShape(shapes[0].id); else E.render();
@@ -1101,10 +1102,10 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     if (!s) return;
     if (s.type === 'line') L.pres.lineDefaults = { line: L.clone(s.line) };
     else L.pres.shapeDefaults = { fill: L.clone(s.fill), line: L.clone(s.line), shadow: L.clone(s.shadow) };
-    A.status('AutoShape defaults set');
+    A.status('已设置自选图形默认值');
   };
   A.changeAutoShape = function (geom) {
-    E.commit('Change AutoShape', () => { for (const s of E.selected()) if (s.type === 'shape' || s.type === 'text') { s.geom = geom; delete s.path; s.adj = L.clone(L.geom.get(geom).adj); if (!s.adj) delete s.adj; if (s.type === 'text') s.type = 'shape'; } });
+    E.commit('更改自选图形', () => { for (const s of E.selected()) if (s.type === 'shape' || s.type === 'text') { s.geom = geom; delete s.path; s.adj = L.clone(L.geom.get(geom).adj); if (!s.adj) delete s.adj; if (s.type === 'text') s.type = 'shape'; } });
   };
   /* fills & lines */
   A.lastFillHex = () => M.resolveColor(A.lastFill, E.design());
@@ -1115,7 +1116,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const shapes = E.selected();
     if (!shapes.length) return;
     if (shapes.length === 1 && shapes[0].type === 'table') { A.tableFill(f); return; }
-    E.commit('Fill Color', () => {
+    E.commit('填充颜色', () => {
       for (const s of shapes) {
         if (s.type === 'wordart') { s.wa.fill = L.clone(f); continue; }
         if (s.type === 'line') continue;
@@ -1128,7 +1129,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.applyLineColor = function (c) {
     const shapes = E.selected();
     if (!shapes.length) return;
-    E.commit('Line Color', () => {
+    E.commit('线条颜色', () => {
       for (const s of shapes) {
         const tgt = s.type === 'wordart' ? s.wa : s;
         if (!c) { tgt.line = { t: 'none', w: (tgt.line && tgt.line.w) || 0.75 }; continue; }
@@ -1140,7 +1141,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.setLineProp = function (p) {
     const shapes = E.selected();
     if (!shapes.length) return;
-    E.commit('Line Style', () => {
+    E.commit('线型', () => {
       for (const s of shapes) {
         const tgt = s.type === 'wordart' ? s.wa : s;
         if (!tgt.line || tgt.line.t === 'none') tgt.line = { c: 'tx1', w: 0.75, dash: 'solid' };
@@ -1150,35 +1151,35 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       }
     });
   };
-  A.setShadow = (sh) => E.commit('Shadow', () => { for (const s of E.selected()) { if (s.type === 'wordart') s.wa.shadow = L.clone(sh); else s.shadow = L.clone(sh); } });
+  A.setShadow = (sh) => E.commit(L.N('阴影'), () => { for (const s of E.selected()) { if (s.type === 'wordart') s.wa.shadow = L.clone(sh); else s.shadow = L.clone(sh); } });
   /* text formatting */
   A.applyFontColor = function (c) {
-    L.fmt.run((r) => { const n = Object.assign({}, r); if (c) n.color = c; else delete n.color; delete n.fill; return n; }, 'Font Color', (wa) => { wa.fill = c ? { t: 'solid', c, a: 1 } : { t: 'solid', c: 'tx1', a: 1 }; });
+    L.fmt.run((r) => { const n = Object.assign({}, r); if (c) n.color = c; else delete n.color; delete n.fill; return n; }, '字体颜色', (wa) => { wa.fill = c ? { t: 'solid', c, a: 1 } : { t: 'solid', c: 'tx1', a: 1 }; });
   };
-  A.setFontName = (v) => { if (!v) return; L.addRecentFont(v); L.fmt.run((r) => Object.assign({}, r, { font: v }), 'Font', (wa) => { wa.font = v; }); };
-  A.setFontSize = (v) => { if (!(v > 0)) return; v = L.clamp(v, 1, 4000); L.fmt.run((r) => Object.assign({}, r, { sz: v }), 'Font Size'); };
+  A.setFontName = (v) => { if (!v) return; L.addRecentFont(v); L.fmt.run((r) => Object.assign({}, r, { font: v }), L.N('字体'), (wa) => { wa.font = v; }); };
+  A.setFontSize = (v) => { if (!(v > 0)) return; v = L.clamp(v, 1, 4000); L.fmt.run((r) => Object.assign({}, r, { sz: v }), '字号'); };
   A.toggleRun = function (key) {
     const st = L.fmt.state();
     if (!st) return;
     const on = !st[key];
-    const label = { b: 'Bold', i: 'Italic', u: 'Underline', shd: 'Shadow' }[key];
+    const label = { b: L.N('加粗'), i: L.N('倾斜'), u: L.N('下划线'), shd: L.N('阴影') }[key];
     L.fmt.run((r) => { const n = Object.assign({}, r); if (key === 'u') { if (on) n.u = 'sng'; else n.u = 'none'; } else n[key] = on ? true : false; return n; }, label, (wa) => { if (key === 'b' || key === 'i') wa[key] = on; if (key === 'shd') wa.shadow = on ? { c: '#000000', a: 0.4, dx: 3, dy: 3, blur: 0 } : null; });
   };
   A.toggleBaseline = function (v) {
     const st = L.fmt.state();
     const cur = st && st.r && st.r.base;
-    L.fmt.run((r) => { const n = Object.assign({}, r); if (cur === v) delete n.base; else n.base = v; return n; }, v > 0 ? 'Superscript' : 'Subscript');
+    L.fmt.run((r) => { const n = Object.assign({}, r); if (cur === v) delete n.base; else n.base = v; return n; }, v > 0 ? L.N('上标') : L.N('下标'));
   };
   A.setAlign = (a) => {
     if (!TE.active() && E.selected().some((s) => s.type === 'wordart')) { A.waSet({ algn: a }); return; }
-    L.fmt.para((p) => { p.pp = Object.assign({}, p.pp, { algn: a }); }, 'Alignment');
+    L.fmt.para((p) => { p.pp = Object.assign({}, p.pp, { algn: a }); }, L.N('对齐方式'));
   };
   A.stepFont = function (d) {
     const st = L.fmt.state();
     if (!st) return;
     const list = L.SIZE_LIST;
     const step = (sz) => { if (d > 0) return list.find((x) => x > sz + 0.01) || Math.round(sz * 1.1); const s = list.slice().reverse().find((x) => x < sz - 0.01); return s || Math.max(1, Math.round(sz * 0.9)); };
-    L.fmt.run((r) => Object.assign({}, r, { sz: step(r.sz || st.sz || 18) }), d > 0 ? 'Increase Font Size' : 'Decrease Font Size');
+    L.fmt.run((r) => Object.assign({}, r, { sz: step(r.sz || st.sz || 18) }), d > 0 ? '增大字号' : '减小字号');
   };
   A.toggleBullets = function (kind) {
     const st = L.fmt.state();
@@ -1192,10 +1193,10 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       if (!off && cls === 'other' && !(p.pp.marL > 0)) { p.pp.marL = 27 + (p.lvl || 0) * 36; p.pp.indent = -27; }
       if (off && cls === 'other') { delete p.pp.marL; delete p.pp.indent; }
       if (bu.t === 'char' && (!bu.ch || bu.ch === 'undefined')) bu.ch = '•';
-    }, kind === 'num' ? 'Numbering' : 'Bullets');
+    }, kind === 'num' ? L.N('编号') : L.N('项目符号'));
   };
   A.indent = function (d) {
-    L.fmt.para((p) => { p.lvl = L.clamp((p.lvl || 0) + d, 0, 8); }, d > 0 ? 'Demote' : 'Promote');
+    L.fmt.para((p) => { p.lvl = L.clamp((p.lvl || 0) + d, 0, 8); }, d > 0 ? L.N('降级') : L.N('升级'));
     if (L.panes.left.tab === 'outline') L.panes.left.render();
   };
   A.moveParas = function (d) {
@@ -1205,7 +1206,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const s = T.norm(TE.currentSel());
     const ps = t.tx.ps;
     if ((d < 0 && s.p0 === 0) || (d > 0 && s.p1 >= ps.length - 1)) return;
-    L.hist.push('Move Paragraph');
+    L.hist.push('移动段落');
     const block = ps.splice(s.p0, s.p1 - s.p0 + 1);
     ps.splice(s.p0 + d, 0, ...block);
     TE.rerender({ p0: s.p0 + d, o0: s.o0, p1: s.p1 + d, o1: s.o1 });
@@ -1213,7 +1214,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.insertField = function (f) {
     A.ensureTextTarget();
     if (!TE.active()) return;
-    L.hist.push('Insert ' + (f === 'slidenum' ? 'Slide Number' : 'Date'));
+    L.hist.push(f === 'slidenum' ? '插入幻灯片编号' : '插入日期');
     TE.insertField(f);
   };
   /** make sure there's an active text editing target; returns true if editing */
@@ -1237,14 +1238,14 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     el: () => E.scroller,
     pick: () => E.pickFormat(),
     apply: (fmt, id) => (id ? E.paintShape(id, fmt) : E.paintText(fmt)),
-    hint: '单击对象或选定文字以应用格式。',
+    hint: '单击对象或选择文字以应用格式。',
     status: (t) => A.status(t),
   });
   A.spelling = function () {
     A.opts.spell = true;
     A.saveOpts();
     L.$$('[contenteditable="true"]').forEach((el) => { el.spellcheck = true; });
-    ui.msg('拼写检查会随输入进行：编辑文本时，拼错的单词下方会显示红色波浪线。\n按住 Shift 键并右键单击被标记的单词，可查看浏览器的建议。', { title: '拼写', icon: 'info' });
+    ui.msg('键入时会检查拼写：编辑文字时，拼写错误的单词下方会显示红色波浪线。\n按住 Shift 并右键单击标记的单词，可查看浏览器提供的建议。', { title: '拼写', icon: 'info' });
   };
 
   /* ================= pictures ================= */
@@ -1258,7 +1259,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     if (!slide) return;
     const ph = phId ? E.shape(phId) : null;
     const ids = [];
-    L.hist.push('Insert Picture');
+    L.hist.push('插入图片');
     let k = 0;
     for (const f of files) {
       let view = null;
@@ -1290,13 +1291,13 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const s = E.primary();
     if (s && !ph) { const size = 180; s.x = (L.pres.W - size) / 2; s.y = (L.pres.H - size) / 2; s.w = size; s.h = size; E.render(); }
   };
-  A.picMode = (m) => E.commit('Picture Color', () => { for (const s of E.selected()) if (s.type === 'image') { s.img = Object.assign({}, s.img); if (m) s.img.mode = m; else delete s.img.mode; } });
-  A.picAdjust = (k, d) => E.commit(k === 'bright' ? 'Brightness' : 'Contrast', () => { for (const s of E.selected()) if (s.type === 'image') { s.img = Object.assign({}, s.img); s.img[k] = L.clamp(L.round((s.img[k] || 0) + d, 2), -1, 1); } });
-  A.picReset = () => E.commit('Reset Picture', () => { for (const s of E.selected()) if (s.type === 'image') { s.img = {}; s.crop = { l: 0, t: 0, r: 0, b: 0 }; } });
+  A.picMode = (m) => E.commit('图片颜色', () => { for (const s of E.selected()) if (s.type === 'image') { s.img = Object.assign({}, s.img); if (m) s.img.mode = m; else delete s.img.mode; } });
+  A.picAdjust = (k, d) => E.commit(k === 'bright' ? L.N('亮度') : L.N('对比度'), () => { for (const s of E.selected()) if (s.type === 'image') { s.img = Object.assign({}, s.img); s.img[k] = L.clamp(L.round((s.img[k] || 0) + d, 2), -1, 1); } });
+  A.picReset = () => E.commit('重置图片', () => { for (const s of E.selected()) if (s.type === 'image') { s.img = {}; s.crop = { l: 0, t: 0, r: 0, b: 0 }; } });
   A.picTransparentTool = function () {
     const s = E.primary();
     if (!s || s.type !== 'image') return;
-    A.status('Click the color in the picture you want to make transparent.');
+    A.status('单击图片中要设为透明的颜色。');
     const el = E.elOf(s.id);
     const once = async (e) => {
       E.scroller.removeEventListener('pointerdown', once, true);
@@ -1312,13 +1313,13 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       const g = c.getContext('2d');
       g.drawImage(im, 0, 0);
       let data;
-      try { data = g.getImageData(0, 0, c.width, c.height); } catch (er) { ui.msg('此图片无法编辑。'); return; }
+      try { data = g.getImageData(0, 0, c.width, c.height); } catch (er) { ui.msg('无法编辑此图片。'); return; }
       const px = (Math.floor(ny * c.height) * c.width + Math.floor(nx * c.width)) * 4;
       const hex = L.color.rgbToHex(data.data[px], data.data[px + 1], data.data[px + 2]);
       /* as in PowerPoint the picture itself is kept; the colour is recorded and shows through */
       const view = await L.media.withTransparent(s.media, hex, 8);
       if (!view) return;
-      E.commit('Set Transparent Color', () => { s.img = Object.assign({}, s.img, { clear: hex, view }); });
+      E.commit('设置透明色', () => { s.img = Object.assign({}, s.img, { clear: hex, view }); });
     };
     E.scroller.addEventListener('pointerdown', once, true);
   };
@@ -1330,7 +1331,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const ph = phId ? E.shape(phId) : null;
     const d = E.design();
     const box = ph || d.ph.body;
-    L.hist.push('Insert Table');
+    L.hist.push('插入表格');
     const t = M.newTable(L.pres, slide, rows, cols, box.x, box.y, box.w);
     t.y = ph ? ph.y : box.y;
     if (ph) { t.ph = L.clone(ph.ph); slide.shapes.splice(slide.shapes.indexOf(ph), 1, t); }
@@ -1363,7 +1364,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const { sh } = c;
     const snap = TE.active() ? TE.snapshot() : null;
     if (snap) TE.detach();
-    L.hist.push('Table');
+    L.hist.push(L.N('表格'));
     const t = sh.tbl;
     switch (op) {
       case 'rowAbove': for (let i = c.r0; i <= c.r1; i++) A.tableAddRow(sh, c.r0, false); break;
@@ -1400,7 +1401,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       case 'split': {
         const cell = t.rows[c.r0].cells[c.c0];
         const gs = cell.gs || 1, rs = cell.rs || 1;
-        if (gs === 1 && rs === 1) { L.hist.undo.pop(); if (snap) TE.resume(snap); ui.msg('拆分单元格可将合并单元格拆回原来的单元格。请先选定一个合并单元格。'); return; }
+        if (gs === 1 && rs === 1) { L.hist.undo.pop(); if (snap) TE.resume(snap); ui.msg('“拆分单元格”可将合并的单元格还原为原来的各单元格。请先选择合并单元格。'); return; }
         for (let r = c.r0; r < c.r0 + rs; r++) for (let q = c.c0; q < c.c0 + gs; q++) { const x = t.rows[r] && t.rows[r].cells[q]; if (x) { delete x.hm; delete x.vm; } }
         delete cell.gs; delete cell.rs;
         break;
@@ -1424,7 +1425,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const none = { t: 'none', w: 1 };
     const snap = TE.active() ? TE.snapshot() : null;
     if (snap) TE.detach();
-    L.hist.push('Borders');
+    L.hist.push(L.N('边框'));
     const t = c.sh.tbl;
     for (let r = c.r0; r <= c.r1; r++) for (let q = c.c0; q <= c.c1; q++) {
       const cell = t.rows[r].cells[q];
@@ -1447,7 +1448,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     if (!c) return;
     const snap = TE.active() ? TE.snapshot() : null;
     if (snap) TE.detach();
-    L.hist.push('Fill Color');
+    L.hist.push('填充颜色');
     for (let r = c.r0; r <= c.r1; r++) for (let q = c.c0; q <= c.c1; q++) c.sh.tbl.rows[r].cells[q].fill = L.clone(f);
     E.render({ keepEdit: false });
     if (snap) TE.resume(snap);
@@ -1457,12 +1458,12 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const c = tableCtx();
     if (!c) return;
     const bc = L.dlg.colorPick(A.tblBorder.c, (v) => { A.tblBorder.c = v; });
-    const bw = ui.select(L.dlg.LINE_WEIGHTS.map((w) => [w, w + ' pt']), A.tblBorder.w, (v) => { A.tblBorder.w = +v; });
+    const bw = ui.select(L.dlg.LINE_WEIGHTS.map((w) => [w, L.t('{0} 磅', w)]), A.tblBorder.w, (v) => { A.tblBorder.w = +v; });
     const bs = ui.select(L.dlg.DASHES, A.tblBorder.dash, (v) => { A.tblBorder.dash = v; });
     const btns = h('div', { class: 'row' }, ...[['all', 'bordersAll'], ['out', 'bordersOut'], ['in', 'bordersIn'], ['none', 'bordersNone'], ['t', 'bordersTop'], ['b', 'bordersBottom'], ['l', 'bordersLeft'], ['r', 'bordersRight']].map(([k, ic]) => { const b = h('button', { type: 'button', class: 'btn small', html: L.icons.get(ic), 'aria-label': k }); b.addEventListener('click', () => A.tableBorders(k)); return b; }));
     const cf = L.dlg.fillPicker({ t: 'none' }, 'fill', (f) => A.tableFill(f));
-    const anchor = ui.select([['t', 'Top'], ['ctr', '中部'], ['b', 'Bottom']], 't', (v) => A.tableCmd('anchor', v));
-    const tabs = ui.tabs([{ label: 'Borders', body: h('div', { class: 'col' }, ui.field('样式(&S):', bs), ui.field('&Color:', bc), ui.field('&Width:', bw), h('label', { text: '单击按钮以应用边框:' }), btns) }, { label: 'Fill', body: h('div', { class: 'col' }, ui.field('填充颜色(&C):', cf)) }, { label: 'Text Box', body: h('div', { class: 'col' }, ui.field('文字对齐(&A):', anchor)) }]);
+    const anchor = ui.select([['t', '顶端'], ['ctr', '中部'], ['b', '底端']], 't', (v) => A.tableCmd('anchor', v));
+    const tabs = ui.tabs([{ label: '边框', body: h('div', { class: 'col' }, ui.field('样式(&S)：', bs), ui.field('颜色(&C)：', bc), ui.field('宽度(&W)：', bw), h('label', { text: '单击按钮可应用边框：' }), btns) }, { label: '填充', body: h('div', { class: 'col' }, ui.field('填充颜色(&c)：', cf)) }, { label: '文本框', body: h('div', { class: 'col' }, ui.field('文本对齐方式(&a)：', anchor)) }]);
     ui.dialog({ title: '设置表格格式', body: tabs, width: 380, buttons: [{ label: '确定', primary: true }] });
   };
 
@@ -1472,26 +1473,26 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     if (!slide) return;
     const ph = phId ? E.shape(phId) : null;
     const box = ph || { x: L.pres.W * 0.2, y: L.pres.H * 0.22, w: L.pres.W * 0.6, h: L.pres.H * 0.6 };
-    L.hist.push('Insert Chart');
+    L.hist.push('插入图表');
     const sh = { id: L.uid('s'), type: 'chart', name: 'Chart ' + (slide.shapes.length + 1), x: box.x, y: box.y, w: box.w, h: box.h, rot: 0, chart: L.chart.sample() };
     sh.chart.series.forEach((s, i) => { s.color = L.chart.PALETTE[i]; });
     if (ph) { sh.ph = L.clone(ph.ph); slide.shapes.splice(slide.shapes.indexOf(ph), 1, sh); } else slide.shapes.push(sh);
     E.sel = [sh.id];
     E.render(); E.touched();
-    L.chart.edit(sh, (c) => E.commit('Chart', () => { sh.chart = c; }));
+    L.chart.edit(sh, (c) => E.commit(L.N('图表'), () => { sh.chart = c; }));
   };
-  ui.cmd('editChart', { label: '编辑图表数据...', icon: 'chart', enabled: () => { const s = E.primary(); return !!s && s.type === 'chart'; }, run: () => { const s = E.primary(); L.chart.edit(s, (c) => E.commit('Chart', () => { s.chart = c; })); } });
+  ui.cmd('editChart', { label: '编辑图表数据...', icon: 'chart', enabled: () => { const s = E.primary(); return !!s && s.type === 'chart'; }, run: () => { const s = E.primary(); L.chart.edit(s, (c) => E.commit(L.N('图表'), () => { s.chart = c; })); } });
   A.insertWordArtDialog = function () {
     L.dlg.wordartGallery((idx) => {
       const st = L.dlg.WA_STYLES[idx];
-      L.dlg.wordartText({ text: 'Your Text Here', font: st.font, b: st.b }, (o) => {
+      L.dlg.wordartText({ text: '在此输入文字', font: st.font, b: st.b }, (o) => {
         const slide = E.slide();
         if (!slide) return;
         const lines = o.text.split('\n');
         const maxLen = Math.max(...lines.map((x) => x.length), 1);
         const hh = Math.min(L.pres.H * 0.6, o.size * 1.5 * lines.length);
         const w = Math.min(L.pres.W * 0.85, maxLen * o.size * 0.75);
-        L.hist.push('Insert LettersArt');
+        L.hist.push('插入 LettersArt');
         const sh = { id: L.uid('s'), type: 'wordart', name: 'LettersArt ' + (slide.shapes.length + 1), x: (L.pres.W - w) / 2, y: (L.pres.H - hh) / 2, w, h: hh, rot: 0, wa: Object.assign(L.clone(st), { text: o.text, font: o.font, b: o.b, i: o.i, style: idx }) };
         slide.shapes.push(sh);
         E.sel = [sh.id];
@@ -1502,20 +1503,20 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.editWordArt = function () {
     const s = E.primary();
     if (!s || s.type !== 'wordart') return;
-    L.dlg.wordartText(s.wa, (o) => E.commit('Edit LettersArt Text', () => { Object.assign(s.wa, { text: o.text, font: o.font, b: o.b, i: o.i }); }));
+    L.dlg.wordartText(s.wa, (o) => E.commit('编辑 LettersArt 文字', () => { Object.assign(s.wa, { text: o.text, font: o.font, b: o.b, i: o.i }); }));
   };
   A.wordartRestyle = function () {
     const s = E.primary();
-    L.dlg.wordartGallery((idx) => E.commit('LettersArt Style', () => { for (const x of E.selected()) if (x.type === 'wordart') { const st = L.clone(L.dlg.WA_STYLES[idx]); x.wa = Object.assign(x.wa, { fill: st.fill, line: st.line, shadow: st.shadow, warp: st.warp, style: idx }); } }), s && s.wa ? s.wa.style : 0);
+    L.dlg.wordartGallery((idx) => E.commit('LettersArt 样式', () => { for (const x of E.selected()) if (x.type === 'wordart') { const st = L.clone(L.dlg.WA_STYLES[idx]); x.wa = Object.assign(x.wa, { fill: st.fill, line: st.line, shadow: st.shadow, warp: st.warp, style: idx }); } }), s && s.wa ? s.wa.style : 0);
   };
   A.waSet = (o) => E.commit('LettersArt', () => { for (const s of E.selected()) if (s.type === 'wordart') Object.assign(s.wa, o); });
   A.waToggle = (k) => E.commit('LettersArt', () => { for (const s of E.selected()) if (s.type === 'wordart') s.wa[k] = !s.wa[k]; });
   A.createPhotoAlbum = async function (pics, layout, frame, caps) {
     const pres = L.pres;
     const did = (pres.slides[E.idx] || pres.slides[0] || {}).design || Object.keys(pres.designs)[0];
-    L.hist.push('Photo Album');
+    L.hist.push('相册');
     const t = M.newSlide(pres, 'title', did);
-    T.setPlain(t.shapes[0].tx, 'Photo Album');
+    T.setPlain(t.shapes[0].tx, '相册');
     T.setPlain(t.shapes[1].tx, 'by ' + (pres.props.author || 'Lectern'));
     M.insertSlides(pres, pres.slides.length, [t]);
     const per = layout === 'fit' || /^1/.test(layout) ? 1 : /^2/.test(layout) ? 2 : 4;
@@ -1550,13 +1551,14 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   };
 
   /* ================= AutoContent wizard ================= */
+  /* presentation type (shown in the UI's language) → its slides, [title, bullets] (content: English, as the templates') */
   const AUTOCONTENT = {
-    'Recommending a Strategy': [['Recommending a Strategy', ['Your name', 'Date']], ['Vision Statement', ['Where we want to be in three years', '客户眼中的成功是什么样']], ['Goals', ['Goal and its measure', '目标及其衡量指标', 'Goal and its measure']], ['Today\'s Situation', ['Strengths we build on', '需要弥合的差距', 'What competitors are doing']], ['Options', ['Option A — cost, benefit, risk', '方案 B —— 成本、收益、风险', 'Option C — cost, benefit, risk']], ['Recommendation', ['The option we propose and why', '成本是多少', 'How we will know it is working']], ['Next Steps', ['Decision needed today', '负责人和日期', 'When we report back']]],
-    'Project Overview': [['Project Overview', ['Project lead', 'Date']], ['Objectives', ['What the project will deliver', '谁受益']], ['Scope', ['In scope', '范围之外']], ['Timeline', ['Milestone and date', '里程碑和日期', 'Milestone and date']], ['Team and Roles', ['Sponsor', '前导', 'Contributors']], ['Risks', ['Risk — likelihood — mitigation', '风险 —— 可能性 —— 应对措施']], ['Status Reporting', ['How often we report', '在哪里获取更新']]],
-    'Status Report': [['Status Report', ['Team or project', '报告期']], ['Summary', ['Overall status: on track / at risk / off track', '上次报告以来的要点']], ['Progress', ['Completed', 'In progress', 'Not started']], ['Issues', ['Issue — impact — help needed']], ['Next Period', ['Planned work', '需决定事项']]],
-    'Brainstorming Session': [['Brainstorming Session', ['Facilitator', 'Date']], ['Ground Rules', ['Every idea counts', '集思广益', 'Quantity first, judgment later']], ['The Question', ['State the problem in one sentence']], ['Ideas', ['', '', '']], ['Grouping the Ideas', ['Theme', 'Theme', 'Theme']], ['Next Steps', ['Ideas to explore', '负责人和日期']]],
-    'Training': [['Training', ['Instructor', 'Date']], ['Learning Objectives', ['After this session you will be able to...', '...', '...']], ['Agenda', ['Topic one', '议题二', 'Practice', 'Review']], ['Topic One', ['Key concept', '示例', 'Try it']], ['Topic Two', ['Key concept', '示例', 'Try it']], ['Review', ['What we covered', '在哪里了解更多', 'Questions']]],
-    'Selling a Product or Service': [['Product Name', ['Presenter', 'Date']], ['The Problem', ['What customers struggle with today']], ['Our Solution', ['What it does', '有何不同']], ['Benefits', ['Saves time', '节省成本', 'Reduces risk']], ['Pricing', ['Plans and options']], ['Getting Started', ['How to buy', '联系人']]],
+    [L.N('策略建议')]: [['策略建议', ['Your name', 'Date']], ['Vision Statement', ['Where we want to be in three years', 'What success looks like for customers']], ['Goals', ['Goal and its measure', 'Goal and its measure', 'Goal and its measure']], ['Today\'s Situation', ['Strengths we build on', 'Gaps we need to close', 'What competitors are doing']], ['选项', ['Option A — cost, benefit, risk', 'Option B — cost, benefit, risk', 'Option C — cost, benefit, risk']], ['Recommendation', ['The option we propose and why', 'What it will cost', 'How we will know it is working']], ['Next Steps', ['Decision needed today', 'Owners and dates', 'When we report back']]],
+    [L.N('项目概述')]: [['项目概述', ['Project lead', 'Date']], ['Objectives', ['What the project will deliver', 'Who benefits']], ['Scope', ['In scope', 'Out of scope']], ['Timeline', ['Milestone and date', 'Milestone and date', 'Milestone and date']], ['Team and Roles', ['Sponsor', 'Lead', 'Contributors']], ['Risks', ['Risk — likelihood — mitigation', 'Risk — likelihood — mitigation']], ['Status Reporting', ['How often we report', 'Where to find updates']]],
+    [L.N('状态报告')]: [['状态报告', ['Team or project', 'Reporting period']], ['摘要', ['Overall status: on track / at risk / off track', 'Highlights since last report']], ['Progress', ['Completed', 'In progress', 'Not started']], ['Issues', ['Issue — impact — help needed']], ['Next Period', ['Planned work', 'Decisions needed']]],
+    [L.N('头脑风暴会议')]: [['头脑风暴会议', ['Facilitator', 'Date']], ['Ground Rules', ['Every idea counts', 'Build on others\' ideas', 'Quantity first, judgment later']], ['The Question', ['State the problem in one sentence']], ['Ideas', ['', '', '']], ['Grouping the Ideas', ['主题', '主题', '主题']], ['Next Steps', ['Ideas to explore', 'Owners and dates']]],
+    [L.N('培训')]: [['培训', ['Instructor', 'Date']], ['Learning Objectives', ['After this session you will be able to...', '...', '...']], ['Agenda', ['Topic one', 'Topic two', 'Practice', 'Review']], ['Topic One', ['Key concept', 'Example', 'Try it']], ['Topic Two', ['Key concept', 'Example', 'Try it']], ['Review', ['What we covered', 'Where to learn more', 'Questions']]],
+    [L.N('推销产品或服务')]: [['Product Name', ['Presenter', 'Date']], ['The Problem', ['What customers struggle with today']], ['Our Solution', ['What it does', 'How it is different']], ['Benefits', ['Saves time', 'Saves money', 'Reduces risk']], ['Pricing', ['Plans and options']], ['入门', ['How to buy', 'Who to contact']]],
   };
   A.autoContent = function () {
     const types = Object.keys(AUTOCONTENT);
@@ -1565,9 +1567,9 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const title = h('input', { type: 'text', id: 'ac-title', style: 'width:240px', placeholder: '演示文稿标题' });
     const footer = h('input', { type: 'text', id: 'ac-footer', style: 'width:240px', placeholder: '页脚（可选）' });
     const dsn = ui.select(M.DESIGNS.map((d) => [d.key, d.name]), 'azure');
-    const num = ui.check('幻灯片编号(&N)', true), date = ui.check('上次更新日期(&D)', false);
+    const num = ui.check('幻灯片编号(&n)', true), date = ui.check('上次更新日期(&D)', false);
     ui.dialog({
-      title: '内容提示向导', body: h('div', { class: 'row' }, h('div', { class: 'col' }, h('label', { for: 'ac-type', text: '演示文稿类型:' }), list), h('div', { class: 'col' }, ui.field('&Title:', title), ui.field('&Footer:', footer), ui.field('设计(&E):', dsn), num, date)), width: 560, buttons: [{
+      title: '内容提示向导', body: h('div', { class: 'row' }, h('div', { class: 'col' }, h('label', { for: 'ac-type', text: '演示文稿类型：' }), list), h('div', { class: 'col' }, ui.field('标题(&T)：', title), ui.field('页脚(&F)：', footer), ui.field('设计(&e)：', dsn), num, date)), width: 560, buttons: [{
         label: '完成(&F)', primary: true, onClick: async () => {
           if (!(await confirmDiscard())) return;
           const spec = AUTOCONTENT[list.value];
@@ -1600,7 +1602,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.copyShapes = function (cut) {
     const shapes = E.selected().filter((s) => !(E.find(s.id) && E.find(s.id).parent && false));
     if (!shapes.length) return null;
-    const c = { kind: 'shapes', shapes: L.clone(shapes), design: E.design().id, label: (shapes.length > 1 ? shapes.length + ' objects: ' : '') + (clipText(shapes) || shapes[0].name), text: clipText(shapes) };
+    const c = { kind: 'shapes', shapes: L.clone(shapes), design: E.design().id, label: shapes.length > 1 ? L.t('{0} 个对象：{1}', shapes.length, clipText(shapes) || shapes[0].name) : clipText(shapes) || shapes[0].name, text: clipText(shapes) };
     pushClip(c);
     if (cut) A.deleteSel();
     return c;
@@ -1610,7 +1612,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     if (!ss.length) return null;
     const designs = {};
     for (const s of ss) designs[s.design] = L.clone(L.pres.designs[s.design]);
-    const c = { kind: 'slides', slides: L.clone(ss), designs, label: ss.length + ' slide' + (ss.length > 1 ? 's' : '') + ': ' + (M.slideTitle(ss[0]) || 'Untitled'), text: ss.map((s) => M.allText(s)).join('\n\n') };
+    const c = { kind: 'slides', slides: L.clone(ss), designs, label: ss.length > 1 ? L.t('{0} 张幻灯片：{1}', ss.length, M.slideTitle(ss[0]) || L.t('无标题')) : L.t('1 张幻灯片：{0}', M.slideTitle(ss[0]) || L.t('无标题')), text: ss.map((s) => M.allText(s)).join('\n\n') };
     pushClip(c);
     if (cut) A.deleteSlides();
     return c;
@@ -1634,12 +1636,12 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   A.pasteItem = function (c) {
     if (!c) return;
     if (c.kind === 'text') {
-      if (TE.active()) { L.hist.push('Paste'); TE.insertText(c.text); return; }
+      if (TE.active()) { L.hist.push(L.N('粘贴')); TE.insertText(c.text); return; }
       return A.pasteText(c.text);
     }
     if (c.kind === 'slides') {
       const at = (A.view === 'sorter' || A.focusArea === 'slides') && A.slideSel.size ? Math.max(...A.slideSel) + 1 : E.idx + 1;
-      L.hist.push('Paste Slides');
+      L.hist.push('粘贴幻灯片');
       const added = c.slides.map((s) => { const d = M.dupSlide(s); if (!L.pres.designs[d.design]) L.pres.designs[d.design] = L.clone(c.designs[s.design]); return d; });
       M.insertSlides(L.pres, at, added);
       A.slideSel = new Set(added.map((_, k) => at + k));
@@ -1648,10 +1650,10 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       return;
     }
     if (c.kind === 'shapes') {
-      if (TE.active()) { L.hist.push('Paste'); TE.insertText(c.text || ''); return; }
+      if (TE.active()) { L.hist.push(L.N('粘贴')); TE.insertText(c.text || ''); return; }
       const slide = E.slide();
       if (!slide) return;
-      E.commit('Paste', () => {
+      E.commit(L.N('粘贴'), () => {
         const ids = [];
         for (const d of M.dupMany(c.shapes)) {
           const clash = slide.shapes.some((x) => Math.abs(x.x - d.x) < 1 && Math.abs(x.y - d.y) < 1);
@@ -1668,7 +1670,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const slide = E.slide();
     if (!slide || !text) return;
     const lines = text.replace(/\r/g, '').split('\n');
-    L.hist.push('Paste');
+    L.hist.push(L.N('粘贴'));
     const tb = M.newTextBox(L.pres, slide, L.pres.W * 0.1, L.pres.H * 0.3, L.pres.W * 0.8, 40, true);
     tb.tx.ps = lines.map((l) => T.para(l));
     slide.shapes.push(tb);
@@ -1680,8 +1682,8 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const c = A.clip;
     if (!c) return;
     let mode = 'native';
-    const body = h('div', { class: 'col' }, h('div', { text: 'Source: ' + c.label.slice(0, 60) }), ui.radio('ps', '&Paste as ' + (c.kind === 'slides' ? 'slides' : 'Lectern objects'), true, () => { mode = 'native'; }), ui.radio('ps', '粘贴为无格式文本(&U)', false, () => { mode = 'text'; }));
-    ui.dialog({ title: '选择性粘贴', body, width: 360, buttons: [{ label: '确定', primary: true, onClick: () => (mode === 'text' ? (TE.active() ? (L.hist.push('Paste'), TE.insertText(c.text || '')) : A.pasteText(c.text || '')) : A.pasteItem(c)) }, { label: '取消' }] });
+    const body = h('div', { class: 'col' }, h('div', { text: L.t('来源：{0}', c.label.slice(0, 60)), translate: 'no' }), ui.radio('ps', c.kind === 'slides' ? '粘贴为幻灯片(&P)' : '粘贴为 Lectern 对象(&P)', true, () => { mode = 'native'; }), ui.radio('ps', '粘贴为无格式文本(&U)', false, () => { mode = 'text'; }));
+    ui.dialog({ title: '选择性粘贴', body, width: 360, buttons: [{ label: '确定', primary: true, onClick: () => (mode === 'text' ? (TE.active() ? (L.hist.push(L.N('粘贴')), TE.insertText(c.text || '')) : A.pasteText(c.text || '')) : A.pasteItem(c)) }, { label: '取消' }] });
   };
   let pendingClip = null;
   document.addEventListener('copy', (e) => onClipEvent(e, 'copy'));
@@ -1714,7 +1716,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     }
     if (A.clip && (marker === A.clip.id || (text && text === A.clip.text))) { A.pasteItem(A.clip); return; }
     if (files.length) { A.insertPictureFiles(files); return; }
-    if (text) { const sel = E.primary(); if (sel && sel.tx && E.sel.length === 1) { TE.begin(sel.id, { atEnd: true }); L.hist.push('Paste'); TE.insertText(text); } else A.pasteText(text); }
+    if (text) { const sel = E.primary(); if (sel && sel.tx && E.sel.length === 1) { TE.begin(sel.id, { atEnd: true }); L.hist.push(L.N('粘贴')); TE.insertText(text); } else A.pasteText(text); }
   });
 
   /* ================= context menus ================= */
@@ -1723,13 +1725,13 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     const items = ['cut', 'copy', 'paste', '-'];
     if (s && s.type === 'wordart') items.push('wordartEdit', 'wordartGallery');
     else if (s && s.type === 'chart') items.push('editChart');
-    else if (s && (s.tx || s.type === 'shape')) items.push({ label: '编辑文本(&E)', run: () => TE.begin(s.id, { atEnd: true }) });
+    else if (s && (s.tx || s.type === 'shape')) items.push({ label: '编辑文字(&E)', run: () => TE.begin(s.id, { atEnd: true }) });
     if (s && s.type === 'table') items.push({ label: '表格(&T)', sub: ['colLeft', 'colRight', 'rowAbove', 'rowBelow', '-', 'deleteCols', 'deleteRows', '-', 'mergeCells', 'splitCell', '-', 'tableBordersFill'] });
-    items.push('-', { label: '组合(&G)', sub: ['group', 'ungroup', 'regroup'] }, { label: '顺序(&O)', sub: ['bringFront', 'sendBack', 'bringForward', 'sendBackward'] }, '-', 'setDefaults', 'customAnim', 'actionSettings', 'formatObject', 'hyperlink');
+    items.push('-', { label: '组合(&G)', sub: ['group', 'ungroup', 'regroup'] }, { label: '叠放次序(&O)', sub: ['bringFront', 'sendBack', 'bringForward', 'sendBackward'] }, '-', 'setDefaults', 'customAnim', 'actionSettings', 'formatObject', 'hyperlink');
     ui.contextMenu(e, items);
   };
   A.contextSlide = (e) => ui.contextMenu(e, ['cut', 'copy', 'paste', '-', 'ruler', 'gridGuides', '-', 'slideDesign', 'slideLayout', 'background', '-', 'transitionPane', 'newSlide']);
-  A.contextText = (e) => ui.contextMenu(e, ['cut', 'copy', 'paste', '-', 'fontDlg', 'bulletsDlg', 'lineSpacing', '-', 'hyperlink', '-', { label: '退出文本编辑', run: () => { const id = TE.target().sh.id; TE.end(); E.select([id]); } }]);
+  A.contextText = (e) => ui.contextMenu(e, ['cut', 'copy', 'paste', '-', 'fontDlg', 'bulletsDlg', 'lineSpacing', '-', 'hyperlink', '-', { label: '退出文字编辑', run: () => { const id = TE.target().sh.id; TE.end(); E.select([id]); } }]);
   A.contextThumb = (e) => ui.contextMenu(e, ['cut', 'copy', 'paste', '-', 'newSlide', 'deleteSlide', 'duplicateSlide', '-', 'slideDesign', 'slideLayout', 'background', 'transitionPane', '-', 'hideSlide']);
 
   /* ================= keyboard ================= */
@@ -1857,7 +1859,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       if (s.tx || s.type === 'shape') {
         e.preventDefault();
         TE.begin(s.id, { selectAll: true });
-        if (TE.active()) { L.hist.push('键入'); TE.insertText(e.key); }
+        if (TE.active()) { L.hist.push(L.N('键入')); TE.insertText(e.key); }
       }
     }
   });
@@ -1866,7 +1868,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   function setupDrop() {
     let hint = null, depth = 0;
     const app = L.$('#app');
-    app.addEventListener('dragenter', (e) => { if (!e.dataTransfer || !Array.from(e.dataTransfer.types || []).includes('Files')) return; depth++; if (!hint) { hint = h('div', { class: 'drop-hint', text: '拖入 .pptx 即可打开，拖入图片即可插入' }); document.body.appendChild(hint); } });
+    app.addEventListener('dragenter', (e) => { if (!e.dataTransfer || !Array.from(e.dataTransfer.types || []).includes('Files')) return; depth++; if (!hint) { hint = h('div', { class: 'drop-hint', text: '将 .pptx 文件拖到此处可打开，将图片拖到此处可插入' }); document.body.appendChild(hint); } });
     app.addEventListener('dragleave', () => { depth--; if (depth <= 0 && hint) { hint.remove(); hint = null; depth = 0; } });
     app.addEventListener('dragover', (e) => { if (e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files')) e.preventDefault(); });
     app.addEventListener('drop', (e) => {
@@ -1886,127 +1888,221 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
   /* ================= splitters ================= */
   function setupSplitters() {
     const sl = L.$('#split-left'), sn = L.$('#split-notes');
+    /* splitter drags (common/ui.js ui.drag): they follow the pointer at once; Esc or a lost release puts the pane back */
     sl.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
       e.preventDefault();
-      sl.setPointerCapture(e.pointerId);
-      const x0 = e.clientX, w0 = L.$('#leftpane').offsetWidth;
-      const mv = (ev) => { const w = L.clamp(w0 + ev.clientX - x0, 110, 420); L.$('#leftpane').style.width = w + 'px'; A.opts.leftW = w; };
-      const up = () => { sl.removeEventListener('pointermove', mv); sl.removeEventListener('pointerup', up); L.panes.left.render(); E.layout(); A.saveOpts(); };
-      sl.addEventListener('pointermove', mv); sl.addEventListener('pointerup', up);
+      const w0 = L.$('#leftpane').offsetWidth, was = A.opts.leftW;
+      const size = (w) => { L.$('#leftpane').style.width = w + 'px'; };
+      ui.drag(e, {
+        threshold: 0,
+        move: (ev, d) => { const w = L.clamp(w0 + d.dx, 110, 420); size(w); A.opts.leftW = w; },
+        up: (ev, d) => { if (!d.moved) return; L.panes.left.render(); E.layout(); A.saveOpts(); },
+        cancel: () => { size(w0); A.opts.leftW = was; E.layout(); },
+      });
     });
     sn.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
       e.preventDefault();
-      sn.setPointerCapture(e.pointerId);
-      const y0 = e.clientY, h0 = L.$('#notes').offsetHeight;
-      const mv = (ev) => { const hh = L.clamp(h0 - (ev.clientY - y0), 24, 420); L.$('#notes').style.height = hh + 'px'; A.opts.notesH = hh; };
-      const up = () => { sn.removeEventListener('pointermove', mv); sn.removeEventListener('pointerup', up); E.layout(); A.saveOpts(); };
-      sn.addEventListener('pointermove', mv); sn.addEventListener('pointerup', up);
+      const h0 = L.$('#notes').offsetHeight, was = A.opts.notesH;
+      const size = (hh) => { L.$('#notes').style.height = hh + 'px'; };
+      ui.drag(e, {
+        threshold: 0,
+        move: (ev, d) => { const hh = L.clamp(h0 - d.dy, 24, 420); size(hh); A.opts.notesH = hh; },
+        up: (ev, d) => { if (!d.moved) return; E.layout(); A.saveOpts(); },
+        cancel: () => { size(h0); A.opts.notesH = was; E.layout(); },
+      });
     });
   }
 
   /* ================= sample presentation ================= */
+  /* Harbor & Pine Coffee's expansion plan, 16:9 on the Evergreen design: a drawn title picture, figures, a chart,
+     a table, a timeline of shapes, an IntelliArt funnel, builds and transitions */
   function buildSample() {
-    const pres = M.newPresentation({ design: 'azure', empty: true });
-    const did = Object.keys(pres.designs)[0];
+    const pres = M.newPresentation({ design: 'evergreen', empty: true, w: 960, h: 540 });
+    const did = Object.keys(pres.designs)[0], design = pres.designs[did];
+    const W = pres.W, H = pres.H, P = T.para, MJ = '+mj', GREY = '#7A7068';
     pres.props.title = 'Harbor & Pine Coffee — 2027 Expansion Plan (sample)';
     pres.props.author = 'Sample';
-    const add = (layout) => { const s = M.newSlide(pres, layout, did); pres.slides.push(s); return s; };
     const ph = (s, t) => s.shapes.find((x) => x.ph && x.ph.type === t);
-    /* 1 */
-    let s = add('title');
-    T.setPlain(ph(s, 'ctrTitle').tx, 'Harbor & Pine Coffee');
-    ph(s, 'subTitle').tx.ps = [T.para('2027 Expansion Plan'), T.para('Sample presentation · Board review, October 2026', null, { sz: 18, i: true })];
-    s.trans = { type: 'fade', spd: 'med', click: true, after: null };
-    s.notes = 'This is a sample deck. Open your own .pptx from File ▸ Open, or start fresh with File ▸ New.';
-    /* 2 */
-    s = add('text');
-    T.setPlain(ph(s, 'title').tx, 'Where we stand today');
-    const b = ph(s, 'body');
-    b.tx.ps = T.fromLines(['14 cafés across three coastal cities', '同店销售额同比增长 11%', '\tMorning traffic is the strongest daypart', 'Wholesale beans now 22% of revenue', 'Roastery running at 64% of capacity']);
-    s.anims = [{ id: L.uid('a'), sid: b.id, cls: 'entr', eff: 'fade', start: 'click', dur: 500, delay: 0, by: 'para' }];
-    s.trans = { type: 'push', dir: 'u', spd: 'med', click: true, after: null };
-    s.notes = 'Lead with momentum: comparable-store growth and a roastery with headroom.';
-    /* 3 */
-    s = add('chart');
-    T.setPlain(ph(s, 'title').tx, 'Revenue by region ($K)');
-    const cp = ph(s, 'chart');
-    const chart = { id: L.uid('s'), type: 'chart', name: 'Chart 2', ph: L.clone(cp.ph), x: cp.x, y: cp.y, w: cp.w, h: cp.h, rot: 0, chart: { kind: 'col', title: '', legend: 'b', gridY: true, labels: false, fsz: 12, cats: ['Q1', 'Q2', 'Q3', 'Q4'], series: [{ name: 'Portland', vals: [410, 455, 520, 560], color: '#4A7BC8' }, { name: 'Seattle', vals: [380, 402, 446, 490], color: '#E0A526' }, { name: 'Monterey', vals: [120, 138, 171, 205], color: '#2D6BB5' }] } };
-    s.shapes.splice(s.shapes.indexOf(cp), 1, chart);
-    s.anims = [{ id: L.uid('a'), sid: chart.id, cls: 'entr', eff: 'wipe', dir: 'b', start: 'after', dur: 1000, delay: 0, by: 'all' }];
-    s.trans = { type: 'wipe', dir: 'r', spd: 'med', click: true, after: null };
-    /* 4 */
-    s = add('table');
-    T.setPlain(ph(s, 'title').tx, 'Rollout schedule');
-    const tp = ph(s, 'tbl');
-    const t = M.newTable(pres, s, 5, 4, tp.x, tp.y, tp.w);
-    t.ph = L.clone(tp.ph);
-    const data = [['Phase', '市场', 'New stores', 'Opens'], ['1', 'Tacoma, WA', '2', 'March 2027'], ['2', 'Santa Cruz, CA', '3', 'June 2027'], ['3', 'Bend, OR', '2', 'September 2027'], ['4', 'Boise, ID', '3', 'January 2028']];
-    data.forEach((row, ri) => row.forEach((v, ci) => {
-      const cell = t.tbl.rows[ri].cells[ci];
-      cell.tx.ps = [T.para(v, { algn: ci === 0 || ci === 2 ? 'ctr' : 'l' }, ri === 0 ? { sz: 20, b: true, color: 'lt1' } : { sz: 20 })];
-      cell.fill = ri === 0 ? { t: 'solid', c: 'accent1', a: 1 } : ri % 2 ? { t: 'solid', c: '#E4ECF8', a: 1 } : { t: 'solid', c: '#FFFFFF', a: 1 };
-      for (const k of ['l', 'r', 't', 'b']) cell.bd[k] = { c: '#9BB7E3', w: 1, dash: 'solid' };
-      cell.tx.anchor = 'ctr';
-    }));
-    t.tbl.rows.forEach((r) => { r.h = 46; });
-    t.h = 46 * 5;
-    t.tbl.cols = [tp.w * 0.14, tp.w * 0.38, tp.w * 0.2, tp.w * 0.28];
-    s.shapes.splice(s.shapes.indexOf(tp), 1, t);
-    s.trans = { type: 'cover', dir: 'l', spd: 'med', click: true, after: null };
-    s.notes = 'Ten new stores over five quarters; each phase starts only after the prior one is cash-positive.';
-    /* 5 */
-    s = add('titleOnly');
-    T.setPlain(ph(s, 'title').tx, 'From lease to first pour');
-    const steps = [['Site & lease', '8 周'], ['Build-out', '12 周'], ['Hire & train', '4 周'], ['Soft open', '2 周']];
-    const W = pres.W, bw = W * 0.22, gap = W * 0.01, x0 = (W - (bw * 4 + gap * 3)) / 2, y0 = pres.H * 0.42;
-    steps.forEach(([label, dur], i) => {
-      const sh = M.newShape(pres, s, i === 0 ? 'homePlate' : 'chevron', x0 + i * (bw + gap), y0, bw, pres.H * 0.16);
-      sh.fill = { t: 'grad', stops: [{ p: 0, c: L.color.lighten('#4A7BC8', 0.25), a: 1 }, { p: 1, c: '#2A4E8F', a: 1 }], ang: 90, path: 'lin' };
-      sh.line = { t: 'none', w: 0.75 };
-      sh.tx.ps = [T.para(label, { algn: 'ctr' }, { sz: 15, b: true, color: 'lt1' })];
-      sh.tx.ins = [4, 3.6, 4, 3.6];
+    const add = (layout, title, trans) => {
+      const s = M.newSlide(pres, layout, did);
+      pres.slides.push(s);
+      if (title) T.setPlain(ph(s, 'title').tx, title);
+      s.trans = Object.assign({ type: 'fade', spd: 'med', click: true, after: null }, trans);
+      return s;
+    };
+    const solid = (c, a) => ({ t: 'solid', c, a: a == null ? 1 : a });
+    /** a shape without an outline; o: more of its properties (tx, adj, shadow…) */
+    const shape = (s, geom, x, y, w, h, fill, o) => {
+      const sh = Object.assign(M.newShape(pres, s, geom, x, y, w, h), { fill, line: { t: 'none' } }, o);
       s.shapes.push(sh);
-      const tb = M.newTextBox(pres, s, x0 + i * (bw + gap), y0 + pres.H * 0.18, bw, 30, true);
-      tb.tx.ps = [T.para(dur, { algn: 'ctr' }, { sz: 16, color: 'accent1', i: true })];
+      return sh;
+    };
+    /** a text box that keeps its size */
+    const text = (s, x, y, w, h, ps, o) => {
+      const tb = M.newTextBox(pres, s, x, y, w, h, true);
+      Object.assign(tb.tx, { ps, autofit: 'none', ins: [0, 0, 0, 0] }, o);
       s.shapes.push(tb);
-      s.anims.push({ id: L.uid('a'), sid: sh.id, cls: 'entr', eff: 'wipe', dir: 'l', start: i === 0 ? 'click' : 'after', dur: 500, delay: 0, by: 'all' });
-      s.anims.push({ id: L.uid('a'), sid: tb.id, cls: 'entr', eff: 'fade', start: 'with', dur: 500, delay: 200, by: 'all' });
+      return tb;
+    };
+    const group = (s, name, kids) => {
+      for (const k of kids) s.shapes.splice(s.shapes.indexOf(k), 1);
+      const g = { id: L.uid('s'), type: 'group', name, rot: 0, kids };
+      Object.assign(g, M.groupBounds(g));
+      s.shapes.push(g);
+      return g;
+    };
+    const line = (s, x1, y1, x2, y2, ln) => { const l = M.newLine(pres, s, 'line', [x1, y1], [x2, y2]); l.line = ln; s.shapes.push(l); return l; };
+    const anim = (s, sh, eff, start, o) => s.anims.push(Object.assign({ id: L.uid('a'), sid: sh.id, cls: 'entr', eff, start, dur: 500, delay: 0, by: 'all' }, o));
+
+    /* 1: the title, beside a copper sun setting behind the pines into the harbour */
+    let s = add('title');
+    ph(s, 'ctrTitle').tx.ps = [P('Harbor & Pine Coffee', null, { sz: 48 })];
+    ph(s, 'subTitle').tx.ps = [P('2027 Expansion Plan', null, { sz: 26 }), P('Ten new cafés in four markets', { spcBef: { pts: 6 } }, { sz: 16, color: GREY })];
+    text(s, W * 0.06, H * 0.2, W * 0.48, 22, [P('Board review · October 2026', null, { sz: 13, b: true, color: 'accent2', spc: 2, cap: 'all' })]);
+    text(s, W * 0.06, H * 0.86, W * 0.48, 20, [P('Sample presentation', null, { sz: 12, color: GREY })]);
+    const px = W * 0.606, pw = W - px, cx = px + pw * 0.48, hz = H * 0.62;
+    const sun = shape(s, 'ellipse', cx - 96, hz - 140, 192, 192, { t: 'grad', stops: [{ p: 0, c: '#F2C77F', a: 1 }, { p: 1, c: '#C9803A', a: 1 }], ang: 90, path: 'lin' });
+    sun.name = 'Sun';
+    const water = shape(s, 'rect', px, hz, pw, H - hz, solid('#17322B'));
+    water.name = 'Harbour';
+    const glints = [[150, 0.6], [112, 0.5], [80, 0.42], [52, 0.34], [28, 0.26], [12, 0.2]].map(([w, a], i) => shape(s, 'rect', cx - w / 2, hz + 14 + i * 15, w, 3, solid('#F2C77F', a)));
+    group(s, 'Reflection', glints);
+    const pine = (x, h) => {
+      const w = h * 0.46, top = hz - h, kids = [0, 1, 2].map((i) => shape(s, 'triangle', x - (w * (0.5 + 0.25 * i)) / 2, top + i * h * 0.26, w * (0.5 + 0.25 * i), h * 0.42, solid('#10241E')));
+      kids.push(shape(s, 'rect', x - w * 0.06, hz - h * 0.08, w * 0.12, h * 0.08, solid('#10241E')));
+      return kids;
+    };
+    group(s, 'Pines', [...pine(px + 34, 150), ...pine(px + 72, 104), ...pine(W - 76, 176), ...pine(W - 34, 120)]);
+    s.notes = 'This is a sample deck. Open your own .pptx from File ▸ Open, or start fresh with File ▸ New.';
+
+    /* 2: four figures as cards */
+    s = add('titleOnly', 'Where we stand today', { type: 'push', dir: 'u' });
+    const figs = [['14', 'cafés in three coastal cities', 'Portland, Seattle and Monterey', 'accent1'], ['+11%', 'same-store sales, year over year', 'Mornings are the strongest daypart', 'accent2'],
+      ['22%', 'of revenue from wholesale beans', 'Up from 15% in 2025', 'hlink'], ['64%', 'of the roastery’s capacity in use', 'Room to supply ten more cafés', 'accent6']];
+    const cw = (W * 0.9 - 3 * 18) / 4;
+    figs.forEach(([big, label, note, c], i) => {
+      const x = W * 0.05 + i * (cw + 18);
+      const card = shape(s, 'rect', x, 178, cw, 178, solid('#FFFFFF'), { line: { c: '#E4DBCD', w: 0.75, dash: 'solid' }, name: 'Figure ' + (i + 1) });
+      card.tx = T.body([P(big, { algn: 'l' }, { font: MJ, sz: 48, color: c }), P(label, { algn: 'l', spcBef: { pts: 4 } }, { sz: 17, color: 'tx1' }), P(note, { algn: 'l', spcBef: { pts: 12 } }, { sz: 13, color: GREY })], { anchor: 't', wrap: true, autofit: 'none', ins: [18, 26, 16, 12] });
+      const bar = shape(s, 'rect', x, 178, cw, 5, solid(c));
+      const g = group(s, 'Figure ' + (i + 1), [card, bar]);
+      anim(s, g, 'fade', i ? 'after' : 'click', { dur: 400 });
     });
-    const total = M.newTextBox(pres, s, x0, y0 + pres.H * 0.3, bw * 4 + gap * 3, 30, true);
-    total.tx.ps = [T.para('About 26 weeks from signed lease to opening day', { algn: 'ctr' }, { sz: 18 })];
-    s.shapes.push(total);
-    s.trans = { type: 'fade', spd: 'med', click: true, after: null };
-    /* 6: a SmartArt diagram (js/diagram.js) */
-    s = add('text');
-    T.setPlain(ph(s, 'title').tx, 'How we choose a city');
-    const fn = L.diagram.make(pres, s, ph(s, 'body'), 'funnel', ['40 markets screened', '已访问 12 处', '5 shortlisted', '4 chosen']);
-    s.anims = [{ id: L.uid('a'), sid: fn.id, cls: 'entr', eff: 'fade', start: 'click', dur: 500, delay: 0, by: 'all' }];
-    s.trans = { type: 'fade', spd: 'med', click: true, after: null };
+    text(s, W * 0.05, 390, W * 0.9, 60, [P('Steady growth and a roastery with room to spare: the right moment to expand.', null, { font: MJ, sz: 20, i: true, color: 'tx2' })]);
+    s.notes = 'Lead with momentum: comparable-store growth and a roastery with headroom.';
+
+    /* 3: a chart and what it says */
+    s = add('titleOnly', 'Revenue by region', { type: 'wipe', dir: 'r' });
+    text(s, W * 0.05, 112, W * 0.6, 22, [P('Quarterly revenue in 2026, $ thousands', null, { sz: 14, color: GREY })]);
+    const ser = (i, name, vals, c) => ({ g: 0, idx: i, order: i, name, vals, fill: solid(c), color: M.resolveColor(c, design) });
+    const axis = (o) => Object.assign({ del: false, tick: 'none', lblPos: 'nextTo', crosses: 'autoZero' }, o);
+    const chart = { id: L.uid('s'), type: 'chart', name: 'Revenue chart', x: W * 0.04, y: 140, w: W * 0.6, h: 330, rot: 0, chart: {
+      v: 2, style: 2, kind: 'col', cats: ['Q1', 'Q2', 'Q3', 'Q4'],
+      groups: [{ type: 'bar', dir: 'col', grouping: 'clustered', gap: 80, overlap: -10, vary: false, axIds: ['1', '2'], si: [0, 1, 2] }],
+      series: [ser(0, 'Portland', [410, 455, 520, 560], 'accent1'), ser(1, 'Seattle', [380, 402, 446, 490], 'accent2'), ser(2, 'Monterey', [120, 138, 171, 205], 'accent3')],
+      ax: { c: axis({ kind: 'cat', id: '1', cross: '2', pos: 'b', line: { c: '#CFC4B4', w: 1 }, tx: { sz: 13, color: GREY } }),
+        v: axis({ kind: 'val', id: '2', cross: '1', pos: 'l', between: true, grid: { c: '#E8E0D4', w: 0.75 }, line: { t: 'none' }, tx: { sz: 12, color: GREY } }) },
+      gridY: true, fsz: 12, font: '+mn', textColor: 'tx1', title: '', legend: 't', legendTx: { sz: 13 },
+    } };
+    s.shapes.push(chart);
+    anim(s, chart, 'wipe', 'click', { dir: 'b', dur: 1000 });
+    const said = shape(s, 'rect', W * 0.68, 168, W * 0.27, 250, solid('#F2ECE3'), { name: 'Takeaways' });
+    said.tx = T.body([P('+38%', { algn: 'l' }, { font: MJ, sz: 54, color: 'accent2' }), P('revenue growth from Q1 to Q4', { algn: 'l' }, { sz: 16, color: 'tx1' }),
+      P('Monterey, our newest café, grew fastest: +71% in a year.', { algn: 'l', spcBef: { pts: 22 } }, { sz: 15, color: 'tx1' }),
+      P('Portland is still the largest market, at $560K a quarter.', { algn: 'l', spcBef: { pts: 12 } }, { sz: 15, color: 'tx1' })], { anchor: 't', wrap: true, autofit: 'none', ins: [22, 22, 20, 16] });
+    anim(s, said, 'fade', 'after');
+    s.notes = 'All three regions grew every quarter; Monterey proves the model works in a smaller city.';
+
+    /* 4: a table and its total */
+    s = add('table', 'Where we open next', { type: 'cover', dir: 'l' });
+    const tp = ph(s, 'tbl');
+    const rows = [['Phase', 'Market', 'New cafés', 'Opens'], ['1', 'Tacoma, WA', '2', 'March 2027'], ['2', 'Santa Cruz, CA', '3', 'June 2027'], ['3', 'Bend, OR', '2', 'September 2027'], ['4', 'Boise, ID', '3', 'January 2028']];
+    const t = M.newTable(pres, s, rows.length, 4, tp.x, 150, W * 0.56);
+    t.ph = L.clone(tp.ph);
+    rows.forEach((row, ri) => row.forEach((v, ci) => {
+      const cell = t.tbl.rows[ri].cells[ci];
+      const rp = ri === 0 ? { sz: 15, b: true, color: 'bg1' } : ci === 0 ? { font: MJ, sz: 18, b: true, color: 'accent2' } : { sz: 17, color: 'tx1' };
+      cell.tx.ps = [P(v, { algn: ci === 0 || ci === 2 ? 'ctr' : 'l' }, rp)];
+      cell.tx.anchor = 'ctr';
+      cell.tx.ins = [10, 3.6, 10, 3.6];
+      cell.fill = ri === 0 ? solid('accent1') : ri % 2 ? solid('#FFFFFF') : solid('#F2ECE3');
+      for (const k of ['l', 'r', 't']) cell.bd[k] = { t: 'none' };
+      cell.bd.b = ri === 0 ? { t: 'none' } : { c: '#E4DBCD', w: 1, dash: 'solid' };
+    }));
+    t.tbl.rows.forEach((r) => { r.h = 52; });
+    t.h = 52 * rows.length;
+    t.tbl.cols = [0.15, 0.39, 0.2, 0.26].map((f) => t.w * f);
+    s.shapes.splice(s.shapes.indexOf(tp), 1, t);
+    const ten = text(s, W * 0.68, 160, W * 0.27, 250, [P('10', null, { font: MJ, sz: 88, color: 'accent2' }), P('new cafés by January 2028', null, { sz: 18, color: 'tx1' }),
+      P('Each phase starts only when the one before it pays its way.', { spcBef: { pts: 18 } }, { sz: 15, color: GREY })]);
+    anim(s, ten, 'fade', 'click');
+    s.notes = 'Ten new cafés over five quarters; each phase starts only after the prior one is cash-positive.';
+
+    /* 5: a timeline drawn with shapes */
+    s = add('titleOnly', 'From lease to first pour');
+    const x0 = 290, k = (W * 0.95 - 24 - x0) / 26, y0 = 196, rh = 60;
+    const steps = [['Site & lease', 'Find the corner, sign the lease', 0, 8, 'accent1'], ['Build-out', 'Design, permits and construction', 8, 12, 'accent2'],
+      ['Hire & train', 'Baristas train at a sister café', 20, 4, 'hlink'], ['Soft open', 'Friends and neighbours first', 24, 2, 'accent6']];
+    for (let wk = 0; wk <= 24; wk += 4) {
+      line(s, x0 + wk * k, 178, x0 + wk * k, y0 + rh * 4 - 8, { c: '#E4DBCD', w: 0.75, dash: 'solid' });
+      text(s, x0 + wk * k - 30, 152, 60, 18, [P(wk ? String(wk) : 'Week 0', { algn: 'ctr' }, { sz: 12, color: GREY })]);
+    }
+    steps.forEach(([name, what, from, weeks, c], i) => {
+      const y = y0 + i * rh;
+      text(s, W * 0.05, y + 4, x0 - W * 0.05 - 20, rh - 8, [P(name, null, { font: MJ, sz: 18, color: 'tx2' }), P(what, null, { sz: 12, color: GREY })]);
+      const bar = shape(s, 'roundRect', x0 + from * k, y + 12, weeks * k, 28, solid(c), { adj: { adj: 50000 }, name: name });
+      /* how long, after the bar, or before it where the bar runs up to opening day */
+      const after = from + weeks <= 20;
+      const len = text(s, after ? x0 + (from + weeks) * k + 8 : x0 + from * k - 88, y + 17, 80, 20, [P(weeks + ' weeks', { algn: after ? 'l' : 'r' }, { sz: 13, b: true, color: c })]);
+      anim(s, bar, 'wipe', i ? 'after' : 'click', { dir: 'l' });
+      anim(s, len, 'fade', 'with', { delay: 200 });
+    });
+    const open = x0 + 26 * k;
+    line(s, open, 170, open, y0 + rh * 4, { c: 'accent2', w: 1.5, dash: 'dash' });
+    text(s, open - 70, y0 + rh * 4 + 6, 140, 40, [P('Opening day', { algn: 'ctr' }, { sz: 14, b: true, color: 'accent2' }), P('week 26', { algn: 'ctr' }, { sz: 12, color: GREY })]);
+    s.notes = 'About 26 weeks from signed lease to opening day. Build-out is the long pole; we start hiring before it ends.';
+
+    /* 6: an IntelliArt funnel (js/diagram.js) beside the tests a city has to pass */
+    s = add('titleOnly', 'How we choose a city');
+    const fn = L.diagram.make(pres, s, { x: W * 0.05, y: 140, w: W * 0.42, h: 330 }, 'funnel', ['40 markets screened', '12 visited', '5 shortlisted', '4 chosen'], { colors: 'accent1-range', style: 'flat' });
+    anim(s, fn, 'fade', 'click');
+    const tests = [['Foot traffic', 'At least 4,000 people pass the site on a weekday morning.'], ['Rent', 'Under 9% of the sales we forecast for the site.'], ['Fresh beans', 'Within two hours of the roastery, so beans arrive the day they are roasted.']];
+    tests.forEach(([head, why], i) => {
+      const y = 158 + i * 100;
+      const n = shape(s, 'ellipse', W * 0.53, y, 34, 34, solid('accent2'), { name: 'Test ' + (i + 1) });
+      n.tx = T.body([P(String(i + 1), { algn: 'ctr' }, { font: MJ, sz: 16, b: true, color: 'bg1' })], { anchor: 'ctr', wrap: false, autofit: 'none', ins: [0, 0, 0, 0] });
+      const tb = text(s, W * 0.53 + 50, y + 2, W * 0.42 - 50, 80, [P(head, null, { font: MJ, sz: 20, color: 'tx2' }), P(why, { spcBef: { pts: 4 } }, { sz: 15, color: 'tx1' })]);
+      const g = group(s, head, [n, tb]);
+      anim(s, g, 'fade', 'after');
+    });
     s.notes = 'Each city has to clear foot traffic, rent and a roastery-delivery radius before we visit.';
-    /* 7 */
-    s = add('text');
-    T.setPlain(ph(s, 'title').tx, 'What we need from the board');
-    const b6 = ph(s, 'body');
-    b6.tx.ps = T.fromLines(['Approve the $4.2M capital plan', '第二季度批准第二台烘焙机', 'Name an executive sponsor for Boise']);
-    b6.w = pres.W * 0.62;
-    const call = M.newShape(pres, s, 'wedgeRoundRectCallout', pres.W * 0.7, pres.H * 0.3, pres.W * 0.25, pres.H * 0.2);
-    call.adj = { adj1: -62000, adj2: 48000 };
-    call.fill = { t: 'solid', c: 'accent2', a: 1 };
-    call.line = { c: '#9A6B00', w: 1, dash: 'solid' };
-    call.shadow = { c: '#000000', a: 0.3, dx: 3, dy: 3, blur: 4 };
-    call.tx.ps = [T.para('Decision needed today', { algn: 'ctr' }, { sz: 20, b: true, color: 'dk1' })];
-    s.shapes.push(call);
-    s.anims = [{ id: L.uid('a'), sid: b6.id, cls: 'entr', eff: 'flyIn', dir: 'l', start: 'click', dur: 500, delay: 0, by: 'para' }, { id: L.uid('a'), sid: call.id, cls: 'entr', eff: 'zoom', start: 'after', dur: 500, delay: 250, by: 'all' }, { id: L.uid('a'), sid: call.id, cls: 'emph', eff: 'teeter', start: 'after', dur: 1000, delay: 0, by: 'all' }];
-    s.trans = { type: 'push', dir: 'l', spd: 'med', click: true, after: null };
-    /* 8 */
-    s = add('blank');
-    const wa = { id: L.uid('s'), type: 'wordart', name: 'LettersArt 1', x: pres.W * 0.15, y: pres.H * 0.3, w: pres.W * 0.7, h: pres.H * 0.32, rot: 0, wa: Object.assign(L.clone(L.dlg.WA_STYLES[4]), { text: '谢谢', font: 'Arial Black', b: true, warp: 'textArchUp', style: 4 }) };
-    s.shapes.push(wa);
-    const q = M.newTextBox(pres, s, pres.W * 0.15, pres.H * 0.66, pres.W * 0.7, 36, true);
-    q.tx.ps = [T.para('Questions? expansion@harborandpine.example', { algn: 'ctr' }, { sz: 20, color: 'tx1' })];
-    s.shapes.push(q);
-    s.anims = [{ id: L.uid('a'), sid: wa.id, cls: 'entr', eff: 'zoom', start: 'after', dur: 750, delay: 0, by: 'all' }];
-    s.trans = { type: 'circle', spd: 'med', click: true, after: null };
+
+    /* 7: the asks, built paragraph by paragraph, and the figure that matters */
+    s = add('text', 'What we need from the board', { type: 'push', dir: 'l' });
+    const b = ph(s, 'body');
+    b.w = W * 0.56;
+    b.tx.ps = T.fromLines([['Approve the $4.2M capital plan', 'Ten cafés over five quarters, from operating cash and a credit line'], ['Green-light a second roaster in Q2', 'Doubles capacity before the third phase opens'], ['Name an executive sponsor for Boise', 'Our first market away from the coast']]
+      .flatMap(([ask, why]) => [{ t: ask, rp: { sz: 24, color: 'tx2' }, pp: { spcBef: { pts: 18 } } }, { t: why, lvl: 1, rp: { sz: 16, color: GREY }, pp: { spcBef: { pts: 4 }, marL: 27, indent: 0, bu: { t: 'none' } } }]));
+    const card = shape(s, 'rect', W * 0.65, 160, W * 0.3, 262, solid('tx2'), { name: 'Capital plan' });
+    card.tx = T.body([P('$4.2M', { algn: 'l' }, { font: MJ, sz: 60, color: 'accent5' }), P('capital plan, 2027–28', { algn: 'l' }, { sz: 18, color: 'bg1' }),
+      P('Paid back in three and a half years', { algn: 'l', spcBef: { pts: 16 } }, { sz: 14, color: 'accent3' })], { anchor: 'b', wrap: true, autofit: 'none', ins: [24, 20, 20, 26] });
+    const pill = shape(s, 'roundRect', W * 0.65 + 24, 184, 190, 32, solid('accent2'), { adj: { adj: 50000 }, name: 'Decision needed today' });
+    pill.tx = T.body([P('Decision needed today', { algn: 'ctr' }, { sz: 14, b: true, color: 'bg1' })], { anchor: 'ctr', wrap: false, autofit: 'none', ins: [8, 0, 8, 0] });
+    s.anims = [{ id: L.uid('a'), sid: b.id, cls: 'entr', eff: 'flyIn', dir: 'l', start: 'click', dur: 500, delay: 0, by: 'para' }];
+    anim(s, card, 'zoom', 'after', { delay: 250 });
+    anim(s, pill, 'zoom', 'with', { delay: 250 });
+    s.anims.push({ id: L.uid('a'), sid: pill.id, cls: 'emph', eff: 'teeter', start: 'after', dur: 1000, delay: 0, by: 'all' });
+
+    /* 8: thanks, on the pine of the title slide */
+    s = add('blank', null, { type: 'circle' });
+    s.bg = solid('tx2');
+    s.hideMaster = true;
+    const thanks = text(s, W * 0.1, H * 0.3, W * 0.8, 90, [P('Thank you', { algn: 'ctr' }, { font: MJ, sz: 66, color: 'bg1' })], { anchor: 'b' });
+    shape(s, 'rect', W / 2 - 24, H * 0.5, 48, 4, solid('accent2'), { name: 'Rule' });
+    text(s, W * 0.1, H * 0.55, W * 0.8, 30, [P('Questions? expansion@harborandpine.example', { algn: 'ctr' }, { sz: 20, color: 'accent5' })]);
+    anim(s, thanks, 'zoom', 'after', { dur: 750 });
     pres.hf = Object.assign(pres.hf, { num: true, notOnTitle: true });
     return pres;
   }
@@ -2077,10 +2173,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
     setupSplitters();
     setupDrop();
     wire();
-    A.loadPres(L.pres, blank ? 'Presentation1' : 'Harbor & Pine — 2027 Expansion (sample)');
-    /* Embedded copy (tools-box): see quire/js/app.js — a presentation created from the Start Center is
-       unsaved work, so it is born dirty: closing asks to save, and saving puts it in Recent Files. */
-    if (blank) { L.hist.dirty = true; A.updateTitle(); }
+    A.loadPres(L.pres, blank ? 'Presentation1' : 'Harbor & Pine — 2027 年扩展计划（示例）');
     const wantTask = A.opts.taskOpen;
     L.panes.task.show('getting-started');
     if (!wantTask) { L.$('#taskpane').hidden = true; A.opts.taskOpen = false; }
@@ -2094,7 +2187,7 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
         await A.openFile(f);
         if (o?.draft) L.opc.recoverLosses(L.pres, o.lossState);
         /* an unsaved version: the changes are not saved yet, and a never-saved presentation still needs Save As */
-        if (o && o.draft) { L.hist.dirty = true; A.saved = !!o.saved; A.fileName = o.name.replace(/\.(pptx|ppsx|potx|pptm|ppsm|potm)$/i, ''); A.updateTitle(); A.status('Recovered the unsaved changes. Save the presentation to keep them.'); ui.refresh(); }
+        if (o && o.draft) { L.hist.dirty = true; A.saved = !!o.saved; A.fileName = o.name.replace(/\.(pptx|ppsx|potx|pptm|ppsm|potm)$/i, ''); A.updateTitle(); A.status('已恢复未保存的更改。请保存演示文稿以保留这些更改。'); ui.refresh(); }
       },
       snapshot: (p) => L.pptx.write(p, { format: L.opc.formats[A.fileType] ? A.fileType : p.ooxmlFormat || 'pptx' }),
       docInfo: () => ({ name: A.fileName + '.' + (A.fileType || L.pres.ooxmlFormat || 'pptx'), lossState: L.opc.lossState(L.pres) }),
@@ -2105,11 +2198,10 @@ addEventListener('resize',fit);fit();show(0);<\/script></body></html>`], { type:
       message: (t) => ui.msg(t, { icon: 'warn' }),
       templates: () => L.templates.list().map(({ id, name }) => ({ id, name })),
     });
-    /* Embedded copy (tools-box): the autosave hooks exist only once VO.attach has run, so the draft of a
-       presentation created from the Start Center is scheduled here rather than next to A.loadPres above. */
-    if (blank) VO.changed(L.pres);
   };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => A.init());
-  else A.init();
+  /* Embedded copy (tools-box): no i18n runtime — the text is already Chinese (common/text.js) */
+  const boot = () => A.init();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();

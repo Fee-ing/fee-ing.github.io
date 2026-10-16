@@ -11,6 +11,8 @@
   const FD = (L.find = {});
   const doc = () => D.doc;
   const A = () => L.app;
+  /* what the Find and Replace dialog shows: it stays open and keeps the keyboard (Enter is Find Next again) */
+  const KEEP = { focus: false };
 
   /* ---------- story text with paragraph marks ---------- */
   function storyText(story) {
@@ -61,7 +63,7 @@
       if (c === '>') { out += '(?<=[\\p{L}\\p{N}_])(?![\\p{L}\\p{N}_])'; continue; }
       if (c === '[') {
         const j = src.indexOf(']', i + 1);
-        if (j < 0) throw new Error('The Find What text contains a Pattern Match expression which is not valid.');
+        if (j < 0) throw new Error('“查找内容”中的模式匹配表达式无效。');
         let body = src.slice(i + 1, j);
         const neg = body[0] === '!';
         if (neg) body = body.slice(1);
@@ -69,7 +71,7 @@
         i = j;
         continue;
       }
-      if (c === '{') { const j = src.indexOf('}', i); if (j < 0) throw new Error('Invalid {} expression.'); out += src.slice(i, j + 1).replace(/;/g, ','); i = j; continue; }
+      if (c === '{') { const j = src.indexOf('}', i); if (j < 0) throw new Error(L.N('无效的 {} 表达式。')); out += src.slice(i, j + 1).replace(/;/g, ','); i = j; continue; }
       if (c === '(' || c === ')' || c === '|') { out += c; continue; }
       out += esc(c);
     }
@@ -89,7 +91,7 @@
     if (o.wholeWord && !o.wildcards && !o.allForms && !o.soundsLike && /^[\p{L}\p{N}_]/u.test(o.text) && /[\p{L}\p{N}_]$/u.test(o.text)) src = '(?<![\\p{L}\\p{N}_])' + src + '(?![\\p{L}\\p{N}_])';
     const flags = 'gu' + (o.matchCase || o.wildcards ? '' : 'i');
     let re;
-    try { re = new RegExp(src, flags); } catch (e) { throw new Error('The Find What text contains a Pattern Match expression which is not valid.'); }
+    try { re = new RegExp(src, flags); } catch (e) { throw new Error('“查找内容”中的模式匹配表达式无效。'); }
     const sx = o.soundsLike ? soundex(o.text) : null;
     return { re, filter: (m) => (!sx || soundex(m[0]) === sx) };
   };
@@ -199,7 +201,7 @@
   }
   FD.replaceAll = function (o) {
     let n = 0;
-    E.edit('Replace All', () => {
+    E.edit('全部替换', () => {
       for (const story of storiesFor(o)) {
         const { matches } = FD.all(o, story);
         for (let i = matches.length - 1; i >= 0; i--) { replaceHit(o, matches[i]); n++; }
@@ -217,7 +219,7 @@
       const [a, b] = E.range();
       const s = fromPos(st, a), e = fromPos(st, b);
       const hit = matches.find((x) => x.s === s && x.e === e);
-      if (hit) E.edit('Replace', () => replaceHit(o, hit));
+      if (hit) E.edit(L.N('替换'), () => replaceHit(o, hit));
     }
     return FD.next(Object.assign({}, o, { dir: o.dir === 'up' ? 'up' : 'down' }));
   };
@@ -243,7 +245,10 @@
   L.bus.on('layout-done', () => { if (FD.hlOpts) setTimeout(() => { try { FD.highlightAll(FD.hlOpts); } catch (e) { FD.clearHighlight(); } }, 0); });
 
   /* ---------- Go To ---------- */
-  const GOTO = [['page', 'Page'], ['section', 'Section'], ['line', 'Line'], ['bookmark', 'Bookmark'], ['comment', 'Comment'], ['footnote', 'Footnote'], ['endnote', 'Endnote'], ['field', 'Field'], ['table', 'Table'], ['graphic', 'Graphic'], ['equation', 'Equation'], ['heading', 'Heading']];
+  /* [kind, name, the box's label] */
+  const GOTO = [['page', L.N('页面'), L.N('输入页码：')], ['section', L.N('节'), L.N('输入节号：')], ['line', L.N('线条'), L.N('输入行号：')], ['bookmark', L.N('书签'), L.N('输入书签名：')], ['comment', L.N('批注'), L.N('输入批注编号：')],
+    ['footnote', L.N('脚注'), L.N('输入脚注编号：')], ['endnote', L.N('尾注'), L.N('输入尾注编号：')], ['field', L.N('域'), L.N('输入域编号：')], ['table', L.N('表格'), L.N('输入表格编号：')], ['graphic', L.N('图形'), L.N('输入图形编号：')],
+    ['equation', L.N('公式'), L.N('输入公式编号：')], ['heading', L.N('标题'), L.N('输入标题编号：')]];
   FD.goto = function (kind, val, dir) {
     const d = doc();
     const rel = /^[+-]/.test(val);
@@ -255,7 +260,7 @@
       i = L.clamp(i, 0, LY.pages.length - 1);
       const pg = LY.pages[i];
       const f = pg && pg.body.querySelector('.p');
-      if (f) { const p = D.byId(d, +f.dataset.pid); A().gotoPos(D.pos(p, +f.dataset.from || 0)); pg.el.scrollIntoView({ block: 'start' }); }
+      if (f) { const p = D.byId(d, +f.dataset.pid); A().gotoPos(D.pos(p, +f.dataset.from || 0), null, KEEP); pg.el.scrollIntoView({ block: 'start' }); }
       return true;
     }
     if (kind === 'line') {
@@ -265,21 +270,21 @@
         let count = 0;
         for (const pg of LY.pages) for (const f of pg.el.querySelectorAll('.pg-body .p')) {
           const lines = LY.lines(f, f.getBoundingClientRect().top, LY.zoom);
-          if (count + lines.length >= target) { const ln = lines[target - count - 1]; const p = D.byId(d, +f.dataset.pid); A().gotoPos(D.pos(p, ln ? ln.o : 0)); return true; }
+          if (count + lines.length >= target) { const ln = lines[target - count - 1]; const p = D.byId(d, +f.dataset.pid); A().gotoPos(D.pos(p, ln ? ln.o : 0), null, KEEP); return true; }
           count += lines.length;
         }
       }
       return false;
     }
     if (kind === 'bookmark') { if (val) return A().gotoBookmark(val); return false; }
-    const map = { section: 'section', comment: 'comment', footnote: 'footnote', endnote: 'endnote', field: 'field', table: 'table', graphic: 'graphic', heading: 'heading', equation: 'field' };
+    const map = { section: 'section', comment: 'comment', footnote: 'footnote', endnote: 'endnote', field: 'field', table: 'table', graphic: 'graphic', heading: '标题', equation: 'field' };
     if (val && !rel && n > 0 && kind !== 'section') {
       /* nth item */
       E.setSel(D.pos(D.firstPara(d.main.blocks), 0));
       for (let k = 0; k < n; k++) L.panes.browseTo(map[kind], 1);
       return true;
     }
-    if (kind === 'section' && val) { const secs = D.sections(d); const s = secs[L.clamp((rel ? 0 : n) - 1, 0, secs.length - 1)]; const b0 = d.main.blocks[s.from]; const p = b0.t === 'p' ? b0 : D.firstPara([b0]); A().gotoPos(D.pos(p, 0)); return true; }
+    if (kind === 'section' && val) { const secs = D.sections(d); const s = secs[L.clamp((rel ? 0 : n) - 1, 0, secs.length - 1)]; const b0 = d.main.blocks[s.from]; const p = b0.t === 'p' ? b0 : D.firstPara([b0]); A().gotoPos(D.pos(p, 0), null, KEEP); return true; }
     L.panes.browseTo(map[kind], dir || (rel && n < 0 ? -1 : 1));
     return true;
   };
@@ -298,44 +303,44 @@
     fillHist();
     const fmtNote = h('div', { class: 'tp-note fr-fmt' });
     const rfmtNote = h('div', { class: 'tp-note fr-fmt' });
-    const showFmt = () => { fmtNote.textContent = state.format ? 'Format: ' + describe(state.format) : ''; rfmtNote.textContent = state.replaceFormat ? 'Format: ' + describe(state.replaceFormat) : ''; };
-    const hlChk = ui.check('突出显示找到的所有项目(&H):', state.highlight, (v) => { state.highlight = v; });
-    const scope = ui.select([['main', 'Main Document'], ['all', 'All stories (headers, notes, comments)']], state.scope, (v) => { state.scope = v; }, { id: 'fr-scope' });
+    const showFmt = () => { fmtNote.textContent = state.format ? L.t('格式：{0}', describe(state.format)) : ''; rfmtNote.textContent = state.replaceFormat ? L.t('格式：{0}', describe(state.replaceFormat)) : ''; };
+    const hlChk = ui.check('突出显示在以下范围中找到的所有项目(&H)：', state.highlight, (v) => { state.highlight = v; });
+    const scope = ui.select([['main', '主文档'], ['all', '所有正文区域（页眉、注释、批注）']], state.scope, (v) => { state.scope = v; }, { id: 'fr-scope' });
     const opt = (k, l) => ui.check(l, state[k], (v) => { state[k] = v; if (k === 'wildcards' && v) { soundsChk.input.checked = state.soundsLike = false; formsChk.input.checked = state.allForms = false; } });
-    const caseChk = opt('matchCase', '区分大小写(&H)'), wholeChk = opt('wholeWord', '全字匹配(&Y)'), wildChk = opt('wildcards', '使用通配符(&D)'), soundsChk = opt('soundsLike', '同音（英语）(&K)'), formsChk = opt('allForms', '查找单词的所有形式（英语）(&W)');
-    const dir = ui.select([['all', 'All'], ['down', 'Down'], ['up', 'Up']], state.dir, (v) => { state.dir = v; }, { id: 'fr-dir' });
-    const more = h('div', { class: 'col', hidden: !state.more }, ui.group('搜索选项', G.f('Search:', dir), caseChk, wholeChk, wildChk, soundsChk, formsChk), h('div', { class: 'tp-btns' }, ui.button('无格式(&O)', () => { if (curTab === 1 && document.activeElement === replIn) state.replaceFormat = null; else { state.format = null; state.replaceFormat = null; } showFmt(); }, { class: 'btn small' }), ui.button('格式(&O) ▾', (e) => formatMenu(e.currentTarget, document.activeElement === replIn ? 'replaceFormat' : curTab === 1 && state.lastFocus === 'repl' ? 'replaceFormat' : 'format'), { class: 'btn small' }), ui.button('特殊格式(&E) ▾', (e) => specialMenu(e.currentTarget, state.lastFocus === 'repl' ? replIn : findIn), { class: 'btn small' })));
+    const caseChk = opt('matchCase', '区分大小写(&h)'), wholeChk = opt('wholeWord', '全字匹配(&y)'), wildChk = opt('wildcards', '使用通配符(&d)'), soundsChk = opt('soundsLike', '同音（英语）(&k)'), formsChk = opt('allForms', '查找单词的所有形式（英语）(&w)');
+    const dir = ui.select([['all', '全部'], ['down', '向下'], ['up', '向上']], state.dir, (v) => { state.dir = v; }, { id: 'fr-dir' });
+    const more = h('div', { class: 'col', hidden: !state.more }, ui.group('搜索选项', G.f('搜索：', dir), caseChk, wholeChk, wildChk, soundsChk, formsChk), h('div', { class: 'tp-btns' }, ui.button('无格式(&o)', () => { if (curTab === 1 && document.activeElement === replIn) state.replaceFormat = null; else { state.format = null; state.replaceFormat = null; } showFmt(); }, { class: 'btn small' }), ui.button('格式 ▾(&o)', (e) => formatMenu(e.currentTarget, document.activeElement === replIn ? 'replaceFormat' : curTab === 1 && state.lastFocus === 'repl' ? 'replaceFormat' : 'format'), { class: 'btn small' }), ui.button('特殊 ▾(&e)', (e) => specialMenu(e.currentTarget, state.lastFocus === 'repl' ? replIn : findIn), { class: 'btn small' })));
     findIn.addEventListener('focus', () => { state.lastFocus = 'find'; });
     replIn.addEventListener('focus', () => { state.lastFocus = 'repl'; });
-    const moreBtn = ui.button(state.more ? '<< 更少(&L)' : '更多(&M) >>', () => { state.more = !state.more; more.hidden = !state.more; moreBtn.innerHTML = state.more ? '&lt;&lt; <u>更</u>少' : '<u>更</u>多 &gt;&gt;'; });
+    const moreBtn = ui.button(state.more ? '<< 简略(&L)' : '更多 >>(&M)', () => { state.more = !state.more; more.hidden = !state.more; moreBtn.innerHTML = ui.ampHTML(state.more ? '<< 简略(&L)' : '更多 >>(&M)'); });
     /* Go To */
-    const gotoKind = G.listBox(GOTO.map(([v, l]) => ({ value: v, label: l })), 'page', { height: 150, onChange: (v) => { gotoLbl.textContent = 'Enter ' + GOTO.find((x) => x[0] === v)[1].toLowerCase() + (v === 'bookmark' ? ' name:' : ' number:'); gotoBtn.innerHTML = gotoIn.value ? '<u>定</u>位' : '<u>下</u>一个'; } });
-    const gotoLbl = h('label', { for: 'fr-goto', text: '输入页码:' });
+    const gotoKind = G.listBox(GOTO.map(([v, l]) => ({ value: v, label: l })), 'page', { height: 150, onChange: (v) => { gotoLbl.textContent = L.t(GOTO.find((x) => x[0] === v)[2]); gotoBtn.innerHTML = ui.ampHTML(gotoIn.value ? '定位(&T)' : '下一步(&t)'); } });
+    const gotoLbl = h('label', { for: 'fr-goto', text: '输入页码：' });
     const gotoIn = h('input', { type: 'text', id: 'fr-goto', style: 'width:100%' });
-    const gotoBtn = ui.button('下一个(&T)', () => FD.goto(gotoKind.get(), gotoIn.value.trim(), 1));
-    gotoIn.addEventListener('input', () => { gotoBtn.innerHTML = gotoIn.value ? '<u>定</u>位' : '<u>下</u>一个'; });
-    const prevBtn = ui.button('上一个(&V)', () => FD.goto(gotoKind.get(), '', -1));
-    const findBody = h('div', { class: 'col' }, h('div', { class: 'row', style: 'align-items:center;flex-wrap:nowrap' }, h('label', { for: 'fr-find', html: '<u>查</u>找内容:', style: 'width:80px' }), findIn), fmtNote);
+    const gotoBtn = ui.button('下一步(&t)', () => FD.goto(gotoKind.get(), gotoIn.value.trim(), 1));
+    gotoIn.addEventListener('input', () => { gotoBtn.innerHTML = ui.ampHTML(gotoIn.value ? '定位(&T)' : '下一步(&t)'); });
+    const prevBtn = ui.button('上一个(&v)', () => FD.goto(gotoKind.get(), '', -1));
+    const findBody = h('div', { class: 'col' }, h('div', { class: 'row', style: 'align-items:center;flex-wrap:nowrap' }, h('label', { for: 'fr-find', html: ui.ampHTML('查找内容(&n)：'), style: 'width:80px' }), findIn), fmtNote);
     const findTabBody = h('div', { class: 'col' });
     const replTabBody = h('div', { class: 'col' });
-    const gotoTabBody = h('div', { class: 'row' }, h('div', { class: 'col', style: 'width:140px' }, h('label', { text: '定位目标(&O):' }), gotoKind), h('div', { class: 'col', style: 'flex:1;min-width:150px' }, gotoLbl, gotoIn, h('div', { class: 'tp-note', text: '输入 + 和 − 可相对于当前位置移动。例如 +4 表示向前移动四项。' })));
-    const replRow = h('div', { class: 'col' }, h('div', { class: 'row', style: 'align-items:center;flex-wrap:nowrap' }, h('label', { for: 'fr-repl', html: '<u>替</u>换为:', style: 'width:80px' }), replIn), rfmtNote);
+    const gotoTabBody = h('div', { class: 'row' }, h('div', { class: 'col', style: 'width:140px' }, h('label', { html: ui.ampHTML('定位目标(&o)：') }), gotoKind), h('div', { class: 'col', style: 'flex:1;min-width:150px' }, gotoLbl, gotoIn, h('div', { class: 'tp-note', text: '输入 + 或 − 可相对当前位置移动。例如，+4 表示向后移动四个项目。' })));
+    const replRow = h('div', { class: 'col' }, h('div', { class: 'row', style: 'align-items:center;flex-wrap:nowrap' }, h('label', { for: 'fr-repl', html: ui.ampHTML('替换为(&p)：'), style: 'width:80px' }), replIn), rfmtNote);
     let curTab = mode === 'replace' ? 1 : mode === 'goto' ? 2 : 0;
     let dlg = null;
     const foot = h('div', { class: 'tp-btns', style: 'justify-content:flex-end;margin-top:8px' });
-    const bFind = ui.button('查找下一个(&F)', () => findNext(), { class: 'btn primary' });
+    const bFind = ui.button('查找下一处(&F)', () => findNext(), { class: 'btn primary' });
     const bRepl = ui.button('替换(&R)', () => replace());
     const bAll = ui.button('全部替换(&A)', () => replaceAll());
-    const bClose = ui.button('取消', () => dlg && dlg.close(null));
+    const bClose = ui.button('Cancel', () => dlg && dlg.close(null));
     function setButtons(t) {
       L.clear(foot);
-      if (t === 2) foot.append(prevBtn, gotoBtn, ui.button('关闭', () => dlg && dlg.close(null)));
+      if (t === 2) foot.append(prevBtn, gotoBtn, ui.button('Close', () => dlg && dlg.close(null)));
       else { if (t === 1) foot.append(moreBtn, bRepl, bAll, bFind, bClose); else foot.append(moreBtn, bFind, bClose); }
       more.hidden = t === 2 || !state.more;
     }
     const tabs = ui.tabs([
-      { label: '查找(&D)', body: findTabBody, onShow: () => { findTabBody.append(findBody, h('div', { class: 'row', style: 'align-items:center' }, hlChk, scope)); setButtons(0); curTab = 0; setTimeout(() => findIn.focus(), 0); } },
-      { label: '替换(&P)', body: replTabBody, onShow: () => { replTabBody.append(findBody, replRow); setButtons(1); curTab = 1; setTimeout(() => findIn.focus(), 0); } },
+      { label: '查找(&d)', body: findTabBody, onShow: () => { findTabBody.append(findBody, h('div', { class: 'row', style: 'align-items:center' }, hlChk, scope)); setButtons(0); curTab = 0; setTimeout(() => findIn.focus(), 0); } },
+      { label: '替换(&p)', body: replTabBody, onShow: () => { replTabBody.append(findBody, replRow); setButtons(1); curTab = 1; setTimeout(() => findIn.focus(), 0); } },
       { label: '定位(&G)', body: gotoTabBody, onShow: () => { setButtons(2); curTab = 2; setTimeout(() => gotoIn.focus(), 0); } },
     ], mode === 'replace' ? 1 : mode === 'goto' ? 2 : 0);
     const opts = () => Object.assign({}, state, { text: findIn.value, replace: replIn.value });
@@ -343,18 +348,20 @@
     const findNext = () => {
       remember();
       try {
-        if (state.highlight && curTab === 0) { const n = FD.highlightAll(opts()); A().status(n < 0 ? 'Highlighting is not supported in this browser.' : `Quire found ${n} item${n === 1 ? '' : 's'} matching this criteria.`); if (n > 0) { const hit = FD.next(opts()); if (hit) A().gotoPos(hit.a, hit.b); } return; }
+        if (state.highlight && curTab === 0) { const n = FD.highlightAll(opts()); A().status(n < 0 ? '此浏览器不支持突出显示。' : n === 1 ? L.t('Quire 找到 {0} 个符合此条件的项目。', n) : L.t('Quire 找到 {0} 个符合此条件的项目。', n)); if (n > 0) { const hit = FD.next(opts()); if (hit) A().gotoPos(hit.a, hit.b, KEEP); } return; }
         FD.wrapped = false;
         const hit = FD.next(opts());
-        if (!hit) { ui.msg(`Quire has finished searching the document. The search item was not found.`, { icon: 'info' }); return; }
-        A().gotoPos(hit.a, hit.b);
-        if (FD.wrapped) A().status('Quire reached the end of the document and continued from the beginning.');
+        if (!hit) { ui.msg(`Quire 已完成文档搜索，未找到搜索项。`, { icon: 'info' }); return; }
+        A().gotoPos(hit.a, hit.b, KEEP);
+        if (FD.wrapped) A().status('Quire 已到达文档结尾，并从开头继续搜索。');
       } catch (e) { if (e.message !== 'empty') ui.msg(e.message, { icon: 'warn' }); }
     };
-    const replace = () => { remember(); try { const hit = FD.replaceOne(opts()); if (hit) A().gotoPos(hit.a, hit.b); else ui.msg('Quire has finished searching the document.', { icon: 'info' }); } catch (e) { if (e.message !== 'empty') ui.msg(e.message, { icon: 'warn' }); } };
-    const replaceAll = () => { remember(); try { const n = FD.replaceAll(opts()); ui.msg(n ? `Quire has completed its search of the document and has made ${n} replacement${n === 1 ? '' : 's'}.` : 'Quire has finished searching the document. The search item was not found.', { icon: 'info' }); } catch (e) { if (e.message !== 'empty') ui.msg(e.message, { icon: 'warn' }); } };
+    /* the dialog keeps the keyboard where it was (an edit in the page takes it there) */
+    const keepKeys = (fn) => () => { const back = document.activeElement; fn(); if (back && dlg && dlg.el.contains(back) && document.activeElement !== back) back.focus(); };
+    const replace = keepKeys(() => { remember(); try { const hit = FD.replaceOne(opts()); if (hit) A().gotoPos(hit.a, hit.b, KEEP); else ui.msg('Quire 已完成文档搜索。', { icon: 'info' }); } catch (e) { if (e.message !== 'empty') ui.msg(e.message, { icon: 'warn' }); } });
+    const replaceAll = () => { remember(); try { const n = FD.replaceAll(opts()); ui.msg(n === 1 ? L.t('Quire 已完成文档搜索，共替换 {0} 处。', n) : n ? L.t('Quire 已完成文档搜索，共替换 {0} 处。', n) : 'Quire 已完成文档搜索，未找到搜索项。', { icon: 'info' }); } catch (e) { if (e.message !== 'empty') ui.msg(e.message, { icon: 'warn' }); } };
     const body = h('div', { class: 'col' }, tabs, more, foot);
-    dlg = ui.dialog({ title: '查找和替换', width: 470, body, modeless: true, buttons: [], focus: mode === 'goto' ? gotoIn : findIn, onClose: () => { open = null; FD.clearHighlight(); } });
+    dlg = ui.dialog({ title: '查找和替换', width: 470, body, modeless: true, buttons: [], focus: mode === 'goto' ? gotoIn : findIn, onClose: () => { open = null; FD.clearHighlight(); E.refocus(); } });   /* the found text is the page's selection again */
     dlg.el.querySelector('.dlg-foot').remove();
     dlg.el.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); if (curTab === 2) gotoBtn.click(); else bFind.click(); }
@@ -364,16 +371,16 @@
     open = { select: (m) => { tabs.select(m === 'replace' ? 1 : m === 'goto' ? 2 : 0); }, dlg };
     function describe(f) {
       const parts = [];
-      if (f.rPr) for (const [k, v] of Object.entries(f.rPr)) parts.push(k === 'font' ? '字体: ' + v : k === 'sz' ? v + ' pt' : k === 'b' ? (v ? '加粗' : '不加粗') : k === 'i' ? (v ? '倾斜' : '不倾斜') : k === 'u' ? (v && v !== 'none' ? 'Underline' : 'No underline') : k === 'color' ? 'Font color: ' + v : k);
-      if (f.style) parts.push('Style: ' + D.styleDisplayName(doc().styles[f.style]));
-      if (f.highlight != null) parts.push(f.highlight ? 'Highlight' : 'Not Highlight');
+      if (f.rPr) for (const [k, v] of Object.entries(f.rPr)) parts.push(k === 'font' ? L.t('字体：{0}', v) : k === 'sz' ? v + ' pt' : k === 'b' ? (v ? L.t('加粗') : L.t('非加粗')) : k === 'i' ? (v ? L.t('倾斜') : L.t('非倾斜')) : k === 'u' ? (v && v !== 'none' ? L.t('下划线') : L.t('无下划线')) : k === 'color' ? L.t('字体颜色：{0}', v) : k);
+      if (f.style) parts.push(L.t('样式：{0}', D.styleDisplayName(doc().styles[f.style])));
+      if (f.highlight != null) parts.push(f.highlight ? L.t('突出显示') : L.t('非突出显示'));
       return parts.join(', ');
     }
     function formatMenu(anchor, key) {
       const cur = state[key] || {};
       ui.openMenu([
-        { label: '字体(&F)...', run: () => G.font({ target: Object.assign({}, cur.rPr || {}), sample: 'Sample', onOK: (r) => { const rr = Object.assign({}, cur.rPr || {}, r); for (const k in rr) if (rr[k] === undefined) delete rr[k]; state[key] = Object.assign({}, cur, { rPr: rr }); showFmt(); } }) },
-        { label: '样式(&S)...', run: () => { const ids = Object.keys(doc().styles).filter((k) => ['paragraph', 'character'].includes(doc().styles[k].type)).sort(); const lb = G.listBox(ids.map((k) => ({ value: k, label: D.styleDisplayName(doc().styles[k]) })), cur.style || 'Normal', { height: 180 }); ui.dialog({ title: key === 'format' ? 'Find Style' : 'Replace Style', width: 280, body: lb, buttons: [{ label: 'OK', primary: true, onClick: () => { state[key] = Object.assign({}, cur, { style: lb.get() }); showFmt(); } }, { label: '取消' }] }); } },
+        { label: '字体(&F)...', run: () => G.font({ target: Object.assign({}, cur.rPr || {}), sample: L.t('示例'), onOK: (r) => { const rr = Object.assign({}, cur.rPr || {}, r); for (const k in rr) if (rr[k] === undefined) delete rr[k]; state[key] = Object.assign({}, cur, { rPr: rr }); showFmt(); } }) },
+        { label: '样式(&S)...', run: () => { const ids = Object.keys(doc().styles).filter((k) => ['paragraph', 'character'].includes(doc().styles[k].type)).sort(); const lb = G.listBox(ids.map((k) => ({ value: k, label: D.styleDisplayName(doc().styles[k]) })), cur.style || 'Normal', { height: 180, translate: 'no' }); ui.dialog({ title: key === 'format' ? '查找样式' : '替换样式', width: 280, body: lb, buttons: [{ label: '确定', primary: true, onClick: () => { state[key] = Object.assign({}, cur, { style: lb.get() }); showFmt(); } }, { label: '取消' }] }); } },
         { label: '突出显示(&H)', run: () => { state[key] = Object.assign({}, cur, { highlight: cur.highlight === true ? false : true }); showFmt(); } },
       ], anchor.getBoundingClientRect());
     }
@@ -381,9 +388,9 @@
       const ins = (code) => { const s = input.selectionStart ?? input.value.length, e = input.selectionEnd ?? s; input.value = input.value.slice(0, s) + code + input.value.slice(e); input.focus(); input.setSelectionRange(s + code.length, s + code.length); };
       const isRepl = input === replIn;
       const wild = state.wildcards;
-      const items = isRepl ? [['^p', 'Paragraph Mark'], ['^t', 'Tab Character'], ['^^', 'Caret Character'], ['^&', 'Find What Text'], ['^c', 'Clipboard Contents'], ['^+', 'Em Dash'], ['^=', 'En Dash'], ['^l', 'Manual Line Break'], ['^m', 'Manual Page Break'], ['^n', 'Column Break'], ['^~', 'Nonbreaking Hyphen'], ['^s', 'Nonbreaking Space'], ['^-', 'Optional Hyphen']].concat(wild ? [['\\1', 'Find What Expression']] : [])
-        : wild ? [['?', 'Any Character'], ['[-]', 'Character in Range'], ['<', 'Beginning of Word'], ['>', 'End of Word'], ['()', 'Expression'], ['[!]', 'Not'], ['{,}', 'Num Occurrences'], ['@', 'Previous 1 or More'], ['*', '0 or More Characters'], ['^t', 'Tab Character'], ['^p', 'Paragraph Mark'], ['^l', 'Manual Line Break'], ['^m', 'Manual Page Break']]
-          : [['^p', 'Paragraph Mark'], ['^t', 'Tab Character'], ['^?', 'Any Character'], ['^#', 'Any Digit'], ['^$', 'Any Letter'], ['^^', 'Caret Character'], ['^+', 'Em Dash'], ['^=', 'En Dash'], ['^g', 'Graphic'], ['^l', 'Manual Line Break'], ['^m', 'Manual Page Break'], ['^n', 'Column Break'], ['^~', 'Nonbreaking Hyphen'], ['^s', 'Nonbreaking Space'], ['^-', 'Optional Hyphen'], ['^w', 'White Space']];
+      const items = isRepl ? [['^p', '段落标记'], ['^t', '制表符'], ['^^', '脱字号'], ['^&', '查找内容文本'], ['^c', '剪贴板内容'], ['^+', '长划线'], ['^=', '短划线'], ['^l', '手动换行符'], ['^m', '手动分页符'], ['^n', '分栏符'], ['^~', '不间断连字符'], ['^s', '不间断空格'], ['^-', '可选连字符']].concat(wild ? [['\\1', '查找内容表达式']] : [])
+        : wild ? [['?', '任意字符'], ['[-]', '范围内的字符'], ['<', '单词开头'], ['>', '单词结尾'], ['()', L.N('表达式')], ['[!]', L.N('非')], ['{,}', '出现次数'], ['@', '前一个或多个'], ['*', L.N('零个或多个字符')], ['^t', '制表符'], ['^p', '段落标记'], ['^l', '手动换行符'], ['^m', '手动分页符']]
+          : [['^p', '段落标记'], ['^t', '制表符'], ['^?', '任意字符'], ['^#', '任意数字'], ['^$', '任意字母'], ['^^', '脱字号'], ['^+', '长划线'], ['^=', '短划线'], ['^g', L.N('图形')], ['^l', '手动换行符'], ['^m', '手动分页符'], ['^n', '分栏符'], ['^~', '不间断连字符'], ['^s', '不间断空格'], ['^-', '可选连字符'], ['^w', '空白字符']];
       ui.openMenu(items.map(([c, l]) => ({ label: l, run: () => ins(c) })), anchor.getBoundingClientRect());
     }
   };

@@ -154,7 +154,7 @@
     const f = x.table ? x.table.filter || (x.table.filter = { cols: [] }) : s.autoFilter;
     const old = JSON.parse(JSON.stringify(f));
     const apply = (nf) => { if (x.table) x.table.filter = nf; else s.autoFilter = nf; };
-    O.structural(s, 'Filter', () => {
+    O.structural(s, L.N('筛选'), () => {
       const nf = JSON.parse(JSON.stringify(f));
       nf.cols = nf.cols.filter((q) => q.col !== col);
       if (crit) nf.cols.push(Object.assign({ col }, crit));
@@ -168,7 +168,7 @@
     G().paint(); G().syncObjects();
     L.app.updateStatus && L.app.updateStatus();
     const shown = countVisible(s, x);
-    if (L.app.status) L.app.status(crit ? `${shown.vis} of ${shown.total} records found` : '');
+    if (L.app.status) L.app.status(crit ? L.t('找到 {0} 条记录，共 {1} 条', shown.vis, shown.total) : '');
   };
   function countVisible(s, x) {
     const ref = x.table ? x.table.ref : (x.table ? null : s.autoFilter && s.autoFilter.ref) || x.ref;
@@ -189,7 +189,7 @@
     const t = wb.tableAt(s, sel.r, sel.c);
     if (t) {
       const was = t.autoFilter !== false;
-      O.structural(s, 'AutoFilter', () => {
+      O.structural(s, L.N('自动筛选'), () => {
         if (was && t.filter) { t.filter.cols = []; FL.applyRows(s, t.ref, t.filter); }
         t.autoFilter = !was;
         wb.undo.op(() => { t.autoFilter = was; }, () => { t.autoFilter = !was; });
@@ -197,7 +197,7 @@
       G().paint(); G().syncObjects(); return;
     }
     if (s.autoFilter) {
-      O.structural(s, 'AutoFilter', () => {
+      O.structural(s, L.N('自动筛选'), () => {
         s.rows.forEach((row) => { if (row && row.filtered) { delete row.hidden; delete row.filtered; } });
         s.autoFilter = null;
         LY.invalidate(s);
@@ -209,16 +209,16 @@
     const single = rg.r1 === rg.r2 && rg.c1 === rg.c2;
     if (single) rg = O.currentRegion(s, sel.r, sel.c);
     if (rg.r1 === rg.r2 && rg.c1 === rg.c2 && !(s.get(rg.r1, rg.c1) && s.get(rg.r1, rg.c1).v != null)) {
-      ui.msg('No list was found. Select a single cell within your list, and then click the command again.', { icon: 'warn' });
+      ui.msg('未找到列表。请在列表中选择单个单元格，然后再次单击此命令。', { icon: 'warn' });
       return;
     }
     if (single && !O.guessHeader(s, rg) && rg.r1 > 0) { /* Excel uses the region's first row as headers regardless */ }
-    O.structural(s, 'AutoFilter', () => { s.autoFilter = { ref: rg, cols: [] }; });
+    O.structural(s, L.N('自动筛选'), () => { s.autoFilter = { ref: rg, cols: [] }; });
     G().paint(); G().syncObjects();
   };
   FL.showAll = function () {
     const s = sh();
-    O.structural(s, 'Show All', () => {
+    O.structural(s, '全部显示', () => {
       if (s.autoFilter) s.autoFilter.cols = s.autoFilter.cols.filter((q) => !hasCriteria(q));
       for (const t of G().wb.tables) if (t.sheet === s && t.filter) t.filter.cols = [];
       s.rows.forEach((row) => { if (row && row.filtered) { delete row.hidden; delete row.filtered; } });
@@ -255,17 +255,20 @@
     if (G().guardProtect && G().guardProtect('autoFilter', true)) return;
     const { list, blanks, ref, col } = entries(s, x, c);
     const fc = (x.f.cols || []).find((q) => q.col === col);
-    const cur = fc && fc.values && fc.values.length === 1 && !fc.blank ? fc.values[0] : fc && fc.blank && !(fc.values && fc.values.length) ? '(Blanks)' : fc && fc.custom && fc.custom.list.length === 1 && fc.custom.list[0].op === 'notEqual' && fc.custom.list[0].val === ' ' ? '(NonBlanks)' : !hasCriteria(fc) ? '（全部）' : null;
-    const items = ['（升序）', '（降序）', '（全部）', '（前 10 项...）', '（自定义...）'].concat(list.slice(0, 1000));
+    const cur = fc && fc.values && fc.values.length === 1 && !fc.blank ? fc.values[0] : fc && fc.blank && !(fc.values && fc.values.length) ? '(Blanks)' : fc && fc.custom && fc.custom.list.length === 1 && fc.custom.list[0].op === 'notEqual' && fc.custom.list[0].val === ' ' ? '(NonBlanks)' : !hasCriteria(fc) ? '(All)' : null;
+    /* the commands at the top and bottom are ids, shown in Chinese; the rest are the column's entries */
+    const AF_LABELS = { '(Sort Ascending)': '（升序排序）', '(Sort Descending)': '（降序排序）', '(All)': '（全部）', '(Top 10...)': '（前 10 项...）', '(Custom...)': '（自定义...）', '(Blanks)': '（空白）', '(NonBlanks)': '（非空白）' };
+    const items = ['(Sort Ascending)', '(Sort Descending)', '(All)', '(Top 10...)', '(Custom...)'].concat(list.slice(0, 1000));
     if (list.length > 1000) items.push('…');
     if (blanks) items.push('(Blanks)', '(NonBlanks)');
+    const shownAs = items.map((t, i) => (i < 5 || (blanks && i >= items.length - 2) ? AF_LABELS[t] || t : t));
     const r = btn.getBoundingClientRect();
     const box = h('div', { class: 'af-list', role: 'listbox', tabindex: '-1' });
     const q = G().cellRect(ref.r1, c);
     box.style.minWidth = Math.max(q.w + 2, 120) + 'px';
     let act = -1;
     const rows = items.map((t, i) => {
-      const el = h('div', { class: 'af-item' + (t === cur ? ' cur' : ''), role: 'option', text: t });
+      const el = h('div', { class: 'af-item' + (t === cur ? ' cur' : ''), role: 'option', translate: 'no', text: shownAs[i] });
       el.addEventListener('pointerenter', () => setAct(i));
       el.addEventListener('click', () => choose(t));
       box.appendChild(el);
@@ -279,15 +282,15 @@
       else if (e.key === 'ArrowDown') { e.preventDefault(); e.stopPropagation(); setAct(Math.min(rows.length - 1, act + 1)); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); e.stopPropagation(); setAct(Math.max(0, act - 1)); }
       else if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); if (act >= 0) choose(items[act]); }
-      else if (e.key.length === 1) { const k = e.key.toLowerCase(); const i = items.findIndex((t, j) => j > act && t.toLowerCase().startsWith(k)); const i2 = i >= 0 ? i : items.findIndex((t) => t.toLowerCase().startsWith(k)); if (i2 >= 0) setAct(i2); e.preventDefault(); e.stopPropagation(); }
+      else if (e.key.length === 1) { const k = e.key.toLowerCase(); const i = shownAs.findIndex((t, j) => j > act && t.toLowerCase().startsWith(k)); const i2 = i >= 0 ? i : shownAs.findIndex((t) => t.toLowerCase().startsWith(k)); if (i2 >= 0) setAct(i2); e.preventDefault(); e.stopPropagation(); }
     }
     function choose(t) {
       close();
       const dataRef = { r1: ref.r1, c1: ref.c1, r2: Math.min(ref.r2, Math.max(s.maxR, ref.r1)), c2: ref.c2 };
-      if (t === '（升序）' || t === '（降序）') { try { O.sort(s, dataRef, [{ index: col, desc: t === '（降序）' }], { header: true }); } catch (e) { L.app.error(e); } G().paint(); return; }
-      if (t === '（全部）') { FL.setCriterion(x, col, null); return; }
-      if (t === '（前 10 项...）') { FL.top10Dialog().then((o) => { if (o) FL.setCriterion(x, col, { top10: o }); }); return; }
-      if (t === '（自定义...）') { FL.customDialog(s, x, c, fc).then((o) => { if (o) FL.setCriterion(x, col, { custom: o }); }); return; }
+      if (t === '(Sort Ascending)' || t === '(Sort Descending)') { try { O.sort(s, dataRef, [{ index: col, desc: t === '(Sort Descending)' }], { header: true }); } catch (e) { L.app.error(e); } G().paint(); return; }
+      if (t === '(All)') { FL.setCriterion(x, col, null); return; }
+      if (t === '(Top 10...)') { FL.top10Dialog().then((o) => { if (o) FL.setCriterion(x, col, { top10: o }); }); return; }
+      if (t === '(Custom...)') { FL.customDialog(s, x, c, fc).then((o) => { if (o) FL.setCriterion(x, col, { custom: o }); }); return; }
       if (t === '(Blanks)') { FL.setCriterion(x, col, { blank: true, values: [] }); return; }
       if (t === '(NonBlanks)') { FL.setCriterion(x, col, { custom: { and: false, list: [{ op: 'notEqual', val: ' ' }] } }); return; }
       if (t === '…') return;
@@ -304,8 +307,8 @@
   };
 
   /* ------------------------------------------------------------ dialogs */
-  const OPS = [['equal', 'equals'], ['notEqual', 'does not equal'], ['greaterThan', 'is greater than'], ['greaterThanOrEqual', 'is greater than or equal to'], ['lessThan', 'is less than'], ['lessThanOrEqual', 'is less than or equal to'],
-    ['begins', 'begins with'], ['notBegins', 'does not begin with'], ['ends', 'ends with'], ['notEnds', 'does not end with'], ['contains', 'contains'], ['notContains', 'does not contain']];
+  const OPS = [['equal', L.N('等于')], ['notEqual', L.N('不等于')], ['greaterThan', L.N('大于')], ['greaterThanOrEqual', L.N('大于或等于')], ['lessThan', L.N('小于')], ['lessThanOrEqual', L.N('小于或等于')],
+    ['begins', L.N('开头是')], ['notBegins', L.N('开头不是')], ['ends', L.N('结尾是')], ['notEnds', L.N('结尾不是')], ['contains', L.N('包含')], ['notContains', L.N('不包含')]];
   /** stored {op,val} → dialog operator + text */
   function toDialog(cond) {
     let op = cond.op || 'equal', v = cond.val == null ? '' : String(cond.val);
@@ -343,25 +346,25 @@
     };
     const a = mk(0), b = mk(1);
     const dl = h('datalist', { id: 'af-vals' }, ...ent.slice(0, 500).map((v) => h('option', { value: v })));
-    const and = ui.radio('af-andor', '&And', !(fc && fc.custom && !fc.custom.and) || !(fc && fc.custom), null);
-    const or = ui.radio('af-andor', '&Or', !!(fc && fc.custom && !fc.custom.and && fc.custom.list.length > 1), null);
+    const and = ui.radio('af-andor', '与(&A)', !(fc && fc.custom && !fc.custom.and) || !(fc && fc.custom), null);
+    const or = ui.radio('af-andor', '或(&O)', !!(fc && fc.custom && !fc.custom.and && fc.custom.list.length > 1), null);
     const head = s.val(x.ref.r1, c);
-    const body = h('div', { class: 'col' }, h('div', { text: 'Show rows where:' }), h('b', { text: head == null ? L.formula.colName(c) : String(head) }), a.row, h('div', { class: 'row', style: 'gap:16px;margin-left:24px' }, and, or), b.row, dl,
-      h('div', { class: 'hint', text: 'Use ? to represent any single character\nUse * to represent any series of characters', style: 'white-space:pre-line;margin-top:6px' }));
+    const body = h('div', { class: 'col' }, h('div', { text: '显示满足以下条件的行：' }), h('b', { translate: 'no', text: head == null ? L.formula.colName(c) : String(head) }), a.row, h('div', { class: 'row', style: 'gap:16px;margin-left:24px' }, and, or), b.row, dl,
+      h('div', { class: 'hint', text: '用 ? 表示任意单个字符\n用 * 表示任意多个字符', style: 'white-space:pre-line;margin-top:6px' }));
     let res = null;
-    return ui.dialog({ title: 'Custom AutoFilter', body, width: 480, buttons: [{ label: 'OK', primary: true, onClick: () => {
+    return ui.dialog({ title: '自定义自动筛选方式', body, width: 480, buttons: [{ label: '确定', primary: true, onClick: () => {
       const list = [];
       if (a.opSel.value) list.push(fromDialog(a.opSel.value, a.inp.value));
       if (b.opSel.value) list.push(fromDialog(b.opSel.value, b.inp.value));
       if (list.length) res = { and: and.input.checked, list };
-    } }, { label: 'Cancel' }] }).done.then(() => res);
+    } }, { label: '取消' }] }).done.then(() => res);
   };
   FL.top10Dialog = function () {
-    const tb = ui.select([['top', 'Top'], ['bottom', 'Bottom']], 'top');
+    const tb = ui.select([['top', '顶端'], ['bottom', '底端']], 'top');
     const n = ui.spin({ value: 10, min: 1, max: 500, step: 1, dec: 0 });
-    const kind = ui.select([['items', 'Items'], ['percent', 'Percent']], 'items');
+    const kind = ui.select([['items', '项目'], ['percent', '百分比']], 'items');
     let res = null;
-    return ui.dialog({ title: 'Top 10 AutoFilter', width: 330, body: h('div', { class: 'col' }, h('div', { text: 'Show' }), h('div', { class: 'row', style: 'gap:8px' }, tb, n, kind)), buttons: [{ label: 'OK', primary: true, onClick: () => { res = { top: tb.value === 'top', percent: kind.value === 'percent', val: Math.round(n.get()) }; } }, { label: 'Cancel' }] }).done.then(() => res);
+    return ui.dialog({ title: '自动筛选前 10 个', width: 330, body: h('div', { class: 'col' }, h('div', { text: '显示' }), h('div', { class: 'row', style: 'gap:8px' }, tb, n, kind)), buttons: [{ label: '确定', primary: true, onClick: () => { res = { top: tb.value === 'top', percent: kind.value === 'percent', val: Math.round(n.get()) }; } }, { label: '取消' }] }).done.then(() => res);
   };
 
   /* ------------------------------------------------------------ advanced filter */
@@ -377,7 +380,7 @@
     if (critRg && C.dbSelect) {
       const ctx = C.ctx(s.wb, s, listRg.r1, listRg.c1);
       const res = C.dbSelect(ctx, new C.Ref(s, listRg.r1, listRg.c1, listRg.r2, listRg.c2), undefined, new C.Ref(critSheet, critRg.r1, critRg.c1, critRg.r2, critRg.c2));
-      if (M.isErr(res)) throw new Error('The extract range has a missing or illegal field name.');
+      if (M.isErr(res)) throw new Error('提取区域中的字段名缺失或不合法。');
       const ok = new Set(res.rows);
       pass = (r) => ok.has(r);
     }
@@ -390,13 +393,13 @@
     }
     if (opts.copyTo) {
       const dst = opts.copyTo.sheet || s;
-      O.tx(s.wb, 'Advanced Filter', () => {
+      O.tx(s.wb, '高级筛选', () => {
         const rowsOut = [listRg.r1].concat(keep);
         rowsOut.forEach((r, k) => { for (let c = listRg.c1; c <= listRg.c2; c++) { const cl = s.get(r, c); const v = valOf(s, r, c); O.put(dst, opts.copyTo.r + k, opts.copyTo.c + c - listRg.c1, v == null && !(cl && cl.s) ? null : { v, s: cl ? cl.s : undefined }); } });
       });
       return keep.length;
     }
-    O.structural(s, 'Advanced Filter', () => {
+    O.structural(s, '高级筛选', () => {
       const set = new Set(keep);
       for (let r = listRg.r1 + 1; r <= listRg.r2; r++) {
         if (set.has(r)) { const row = s.rows[r]; if (row && row.filtered) { delete row.hidden; delete row.filtered; } }

@@ -96,7 +96,7 @@
   const LAYOUTS = [];
   const def = (id, name, cat, desc, make, extra) => LAYOUTS.push(Object.assign({ id, name, cat, desc, make }, extra || {}));
 
-  def('blockList', 'Basic Block List', 'list', 'Blocks of equal size, in rows; sub-items become bullets inside each block.', (items, box) => {
+  def('blockList', '基本块列表', 'list', '大小相同的块按行排列；子项目在各块内显示为项目符号列表。', (items, box) => {
     const n = Math.max(1, items.length), a = 0.6, g = 0.1;
     let best = null;
     for (let c = 1; c <= n; c++) {
@@ -114,7 +114,7 @@
     });
   });
 
-  def('verticalBullet', 'Vertical Bullet List', 'list', 'Items stacked in bars, each with its sub-items as a bulleted list below.', (items, box) => {
+  def('verticalBullet', '垂直项目符号列表', 'list', '项目以条形堆叠，各项目的子项以项目符号列在下方。', (items, box) => {
     const n = Math.max(1, items.length), kidH = 0.5, g = 0.12;
     const weight = items.reduce((s, it) => s + 1 + (it.kids && it.kids.length ? kidH * it.kids.length + 0.1 : 0), 0) + (n - 1) * g;
     const u = Math.min(box.h / weight, box.w * 0.3);
@@ -134,7 +134,7 @@
     return out;
   }, { levels: 2 });
 
-  def('process', 'Basic Process', 'process', 'Steps in a row, joined by arrows.', (items, box) => {
+  def('process', '基本流程', 'process', '步骤横向排列，以箭头连接。', (items, box) => {
     const n = Math.max(1, items.length), a = 0.6, g = 0.4;
     const w = rowUnit(box, n, a, g), h = a * w;
     const left = box.x + (box.w - (n * w + (n - 1) * g * w)) / 2, y = box.y + (box.h - h) / 2;
@@ -150,7 +150,7 @@
     return out;
   });
 
-  def('chevron', 'Basic Chevron Process', 'process', 'Steps as chevrons pointing onward.', (items, box) => {
+  def('chevron', '基本 V 形流程', 'process', '步骤以向前指的 V 形排列。', (items, box) => {
     const n = Math.max(1, items.length), a = 0.4, step = 0.84;
     const w = Math.min(box.w / (1 + (n - 1) * step), box.h / a), h = a * w;
     const left = box.x + (box.w - (w + (n - 1) * step * w)) / 2, y = box.y + (box.h - h) / 2;
@@ -160,7 +160,7 @@
     });
   });
 
-  def('cycle', 'Basic Cycle', 'cycle', 'Stages that repeat, in a circle with arrows between them.', (items, box) => {
+  def('cycle', '基本循环', 'cycle', '重复的阶段呈圆形排列，阶段间以箭头连接。', (items, box) => {
     const n = Math.max(1, items.length), S = Math.min(box.w, box.h), cx = box.x + box.w / 2, cy = box.y + box.h / 2;
     if (n === 1) { const d = S; return [node(items[0], 0, 1, 'ellipse', cx - d / 2, cy - d / 2, d, d, { text: { lines: linesOf(items[0], false), box: tb(cx - d * 0.35, cy - d * 0.35, d * 0.7, d * 0.7), anchor: 'ctr', align: 'ctr' } })]; }
     const k = Math.min(1.05, 1.55 * Math.sin(Math.PI / n));   // node diameter ÷ circle radius
@@ -180,7 +180,7 @@
     return out;
   });
 
-  def('radial', 'Basic Radial', 'cycle', 'A central idea with the items that relate to it around it.', (items, box) => {
+  def('radial', '基本射线', 'cycle', '中心想法及其周围的相关项目。', (items, box) => {
     if (!items.length) return [];
     const centre = items[0], around = centre.kids && centre.kids.length ? centre.kids : items.slice(1);
     const n = around.length, S = Math.min(box.w, box.h), cx = box.x + box.w / 2, cy = box.y + box.h / 2;
@@ -250,11 +250,11 @@
     for (const sh of out) if (sh.role === 'node') { sh.colorCnt = count; if (o.byLevel) { sh.colorIdx = sh.level; sh.colorCnt = D; } }
     return out;
   }
-  def('orgChart', 'Organization Chart', 'hierarchy', 'People or units and who reports to whom, top down.', (items, box) => tree(items, box, {}), { levels: 9, tree: true });
-  def('hierarchy', 'Hierarchy', 'hierarchy', 'Levels from the top down, each joined straight to the one above.', (items, box) => tree(items, box, { geom: 'roundRect', adj: [10000], straight: true, byLevel: true, aspect: 0.6 }), { levels: 9, tree: true });
-  def('hHierarchy', 'Horizontal Hierarchy', 'hierarchy', 'A tree that grows from left to right.', (items, box) => tree(items, box, { across: true, geom: 'roundRect', adj: [10000], aspect: 0.5, gapY: 0.35 }), { levels: 9, tree: true });
+  def('orgChart', '组织结构图', 'hierarchy', '由上至下显示人员或部门及其汇报关系。', (items, box) => tree(items, box, {}), { levels: 9, tree: true });
+  def('hierarchy', '层次结构', 'hierarchy', '层级由上至下排列，每级直接连接上一级。', (items, box) => tree(items, box, { geom: 'roundRect', adj: [10000], straight: true, byLevel: true, aspect: 0.6 }), { levels: 9, tree: true });
+  def('hHierarchy', '水平层次结构', 'hierarchy', '从左向右展开的树状图。', (items, box) => tree(items, box, { across: true, geom: 'roundRect', adj: [10000], aspect: 0.5, gapY: 0.35 }), { levels: 9, tree: true });
 
-  def('pyramid', 'Basic Pyramid', 'pyramid', 'Levels that build on one another, broadest at the bottom.', (items, box) => {
+  def('pyramid', '基本棱锥', 'pyramid', '各层逐级叠加，底层最宽。', (items, box) => {
     const n = Math.max(1, items.length), a = 0.87;   // height ÷ base
     const base = Math.min(box.w, box.h / a), H = base * a, gap = n > 1 ? H * 0.015 : 0;
     /* the apex is taller than the other layers, so its text need not be much smaller than theirs */
@@ -275,7 +275,7 @@
     });
   });
 
-  def('venn', 'Basic Venn', 'relationship', 'Overlapping circles for ideas that share something.', (items, box) => {
+  def('venn', '基本维恩图', 'relationship', '用重叠的圆形表示具有共同点的想法。', (items, box) => {
     const n = Math.max(1, items.length), S = Math.min(box.w, box.h), cx = box.x + box.w / 2, cy = box.y + box.h / 2;
     const k = n === 1 ? 0 : n === 2 ? 0.35 : 0.375 / Math.sin(Math.PI / n);   // centre distance ÷ diameter
     const d = S / (1 + 2 * k), r = k * d;
@@ -288,7 +288,7 @@
     });
   });
 
-  def('target', 'Basic Target', 'relationship', 'Rings inside rings, from the whole to the core.', (items, box) => {
+  def('target', '基本靶心', 'relationship', '层层嵌套的圆环，由整体深入核心。', (items, box) => {
     const n = Math.max(1, items.length), S = Math.min(box.w, box.h), cx = box.x + box.w / 2, cy = box.y + box.h / 2;
     return items.map((it, i) => {
       const d = S * (n - i) / n, inner = S * (n - i - 1) / n;
@@ -302,7 +302,7 @@
   const child = (it, i, n, x, y, w, h, inset, extra) => Object.assign({ role: 'child', geom: 'rect', tint: true, x, y, w, h, rot: 0, itemId: it.id, level: 1, styleLbl: 'alignAcc1', colorIdx: i, colorCnt: n,
     text: { lines: kidLines(it), box: tb(x + inset, y, w - inset * 1.2, h), anchor: 't', align: 'l' } }, extra || {});
   const hasKids = (it) => !!(it.kids && it.kids.length);
-  def('stackedList', 'Stacked List', 'list', 'Each item in a circle, its sub-items on a card beside it.', (items, box) => {
+  def('stackedList', '堆积列表', 'list', '每个项目置于圆形中，其子项目列在旁边的卡片上。', (items, box) => {
     const n = Math.max(1, items.length), g = 0.15, rh = Math.min(box.h / (n + (n - 1) * g), box.w * 0.3);
     let y = box.y + (box.h - (n * rh + (n - 1) * g * rh)) / 2;
     const out = [];
@@ -314,7 +314,7 @@
     });
     return out;
   }, { levels: 2 });
-  def('hBullet', 'Horizontal Bullet List', 'list', 'Columns, each with a heading and its sub-items as bullets.', (items, box) => {
+  def('hBullet', '水平项目符号列表', 'list', '每列包含一个标题，子项目以项目符号列出。', (items, box) => {
     const n = Math.max(1, items.length), g = 0.06, cw = box.w / (n + (n - 1) * g), hh = Math.min(box.h * 0.3, cw * 0.6);
     const out = [];
     items.forEach((it, i) => {
@@ -324,7 +324,7 @@
     });
     return out;
   }, { levels: 2 });
-  def('linedList', 'Lined List', 'list', 'Items under rules, with their sub-items to the right.', (items, box) => {
+  def('linedList', '线条列表', 'list', '项目置于横线下方，子项目列在右侧。', (items, box) => {
     const n = Math.max(1, items.length), rh = box.h / n, out = [];
     items.forEach((it, i) => {
       const y = box.y + i * rh;
@@ -334,7 +334,7 @@
     });
     return out;
   }, { levels: 2 });
-  def('vBox', 'Vertical Box List', 'list', 'A labelled box for each item, holding its sub-items.', (items, box) => {
+  def('vBox', '垂直框列表', 'list', '每个项目各占一个带标签的方框，子项目置于其中。', (items, box) => {
     const n = Math.max(1, items.length), tabH = 0.38, g = 0.1;
     const u = box.h / (n * (1 + tabH * 0.5) + (n - 1) * g);
     let y = box.y + (box.h - u * (n * (1 + tabH * 0.5) + (n - 1) * g)) / 2;
@@ -350,20 +350,20 @@
 
   /* ---------------------------------------------------------------- more processes */
   const arrowAt = (it, i, n, cx, cy, len, thick, rot) => ({ role: 'arrow', geom: 'rightArrow', adj: [60000, 50000], x: cx - len / 2, y: cy - thick / 2, w: len, h: thick, rot: rot || 0, itemId: it.id, level: 0, styleLbl: 'sibTrans2D1', colorIdx: i, colorCnt: n });
-  def('stepUp', 'Step Up Process', 'process', 'Steps that climb, each a little higher than the last.', (items, box) => {
+  def('stepUp', '递增流程', 'process', '步骤逐级上升，每步略高于前一步。', (items, box) => {
     const n = Math.max(1, items.length), g = 0.1, w = box.w / (n + (n - 1) * g), rise = 0.55;
     const h = Math.min(box.h / (1 + (n - 1) * rise), w * 0.9);
     const y0 = box.y + (box.h - h * (1 + (n - 1) * rise)) / 2 + h * (n - 1) * rise;
     return items.map((it, i) => node(it, i, n, 'roundRect', box.x + i * w * (1 + g), y0 - i * h * rise, w, h, { adj: [10000] }));
   });
-  def('continuousArrow', 'Continuous Arrow Process', 'process', 'Steps along one arrow, for a flow that keeps going.', (items, box) => {
+  def('continuousArrow', '连续箭头流程', 'process', '各步骤沿同一箭头排列，表示不断推进的流程。', (items, box) => {
     const n = Math.max(1, items.length), ah = Math.min(box.h, box.w * 0.32), ay = box.y + (box.h - ah) / 2;
     const out = [{ role: 'arrow', big: true, geom: 'rightArrow', adj: [70000, 50000], x: box.x, y: ay, w: box.w, h: ah, rot: 0, itemId: items[0] ? items[0].id : null, level: 0, styleLbl: 'sibTrans2D1', colorIdx: 0, colorCnt: 1 }];
     const span = box.w - ah * 0.6, g = 0.12, w = span / (n + (n - 1) * g), h = ah * 0.5;
     items.forEach((it, i) => out.push(node(it, i, n, 'roundRect', box.x + i * w * (1 + g), ay + (ah - h) / 2, w, h, { adj: [16667] })));
     return out;
   });
-  def('vProcess', 'Vertical Process', 'process', 'Steps from top to bottom, joined by arrows.', (items, box) => {
+  def('vProcess', '垂直流程', 'process', '步骤从上到下排列，以箭头连接。', (items, box) => {
     const n = Math.max(1, items.length), g = 0.5, h = box.h / (n + (n - 1) * g), w = Math.min(box.w, h * 7), x = box.x + (box.w - w) / 2;
     const out = [];
     items.forEach((it, i) => {
@@ -373,7 +373,7 @@
     });
     return out;
   });
-  def('timeline', 'Basic Timeline', 'process', 'Events along a line, in order.', (items, box) => {
+  def('timeline', '基本时间线', 'process', '按顺序沿直线排列的事件。', (items, box) => {
     const n = Math.max(1, items.length), cy = box.y + box.h / 2, lineH = Math.min(box.h * 0.12, 24);
     const out = [{ role: 'arrow', big: true, geom: 'rightArrow', adj: [50000, 60000], x: box.x, y: cy - lineH / 2, w: box.w, h: lineH, rot: 0, itemId: items[0] ? items[0].id : null, level: 0, styleLbl: 'sibTrans2D1', colorIdx: 0, colorCnt: 1 }];
     const step = (box.w - lineH * 1.5) / n, d = Math.min(lineH * 1.1, step * 0.4), lh = box.h / 2 - d;
@@ -388,7 +388,7 @@
   });
 
   /* ---------------------------------------------------------------- more cycles and relationships */
-  def('continuousCycle', 'Continuous Cycle', 'cycle', 'Stages around a ring, for something that never stops.', (items, box) => {
+  def('continuousCycle', '连续循环', 'cycle', '各阶段围绕圆环排列，表示持续进行的过程。', (items, box) => {
     const n = Math.max(1, items.length), S = Math.min(box.w, box.h), cx = box.x + box.w / 2, cy = box.y + box.h / 2;
     const k = Math.min(0.9, 1.6 * Math.sin(Math.PI / Math.max(n, 2)));
     const nw = (S / (2 + k * 0.6)) * k, nh = nw * 0.6, R = (S - nh) / 2;
@@ -400,7 +400,7 @@
     });
     return out;
   });
-  def('linearVenn', 'Linear Venn', 'relationship', 'Overlapping circles in a row, for ideas that follow on.', (items, box) => {
+  def('linearVenn', '线性维恩图', 'relationship', '用横向排列的重叠圆形表示相继发展的想法。', (items, box) => {
     const n = Math.max(1, items.length), ov = 0.75, d = Math.min(box.h, box.w / (1 + (n - 1) * ov));
     const x0 = box.x + (box.w - d * (1 + (n - 1) * ov)) / 2, y = box.y + (box.h - d) / 2;
     return items.map((it, i) => {
@@ -408,7 +408,7 @@
       return node(it, i, n, 'ellipse', x, y, d, d, { styleLbl: 'vennNode1', alpha: 0.5, text: { lines: linesOf(it, false), box: tb(x + d * mid, y + d * 0.3, d * 0.6, d * 0.4), anchor: 'ctr', align: 'ctr' } });
     });
   });
-  def('funnel', 'Funnel', 'relationship', 'Ideas that narrow down through layers to one result at the bottom.', (items, box) => {
+  def('funnel', '漏斗', 'relationship', '思路逐层收敛，最终汇成底部的一个结果。', (items, box) => {
     if (!items.length) return [];
     const n = items.length, layers = n > 1 ? items.slice(0, -1) : [], last = items[n - 1];
     const W = Math.min(box.w, box.h * 1.15), x0 = box.x + (box.w - W) / 2, d = W * 0.3;
@@ -423,7 +423,7 @@
     out.push(node(last, n - 1, n, 'ellipse', cx - d / 2, y, d, d, { text: { lines: linesOf(last, false), box: tb(cx - d * 0.354, y + d * 0.146, d * 0.708, d * 0.708), anchor: 'ctr', align: 'ctr' } }));
     return out;
   });
-  def('matrix', 'Basic Matrix', 'matrix', 'Items in a grid of equal quarters, for comparing them side by side.', (items, box) => {
+  def('matrix', '基本矩阵', 'matrix', '项目置于四等分网格中，便于并排比较。', (items, box) => {
     const n = Math.max(1, items.length), c = Math.ceil(Math.sqrt(n)), r = Math.ceil(n / c), g = 0.05;
     const s = Math.min(box.w / (c + (c - 1) * g), box.h / (r + (r - 1) * g)) , w = Math.min(box.w / (c + (c - 1) * g), s * 1.6);
     const x0 = box.x + (box.w - (c * w + (c - 1) * g * s)) / 2, y0 = box.y + (box.h - (r * s + (r - 1) * g * s)) / 2;
@@ -433,7 +433,7 @@
   /* ---------------------------------------------------------------- more pyramids */
   /* drawn as outlines (geom 'poly', points in the slide), so their text stays upright everywhere */
   const poly = (pts) => ({ geom: 'poly', poly: pts, x: Math.min(...pts.map((q) => q[0])), y: Math.min(...pts.map((q) => q[1])), w: Math.max(...pts.map((q) => q[0])) - Math.min(...pts.map((q) => q[0])), h: Math.max(...pts.map((q) => q[1])) - Math.min(...pts.map((q) => q[1])) });
-  def('invertedPyramid', 'Inverted Pyramid', 'pyramid', 'Levels from the broadest at the top to the narrowest at the bottom.', (items, box) => {
+  def('invertedPyramid', '倒棱锥', 'pyramid', '层级由上至下排列，上宽下窄。', (items, box) => {
     const n = Math.max(1, items.length), a = 0.87;
     const base = Math.min(box.w, box.h / a), H = base * a, gap = n > 1 ? H * 0.015 : 0;
     const wt = (i) => (i === n - 1 && n > 1 ? 1.7 : 1), unit = (H - (n - 1) * gap) / items.reduce((s, _, i) => s + wt(i), 0) || H;
@@ -449,7 +449,7 @@
       return node(it, i, n, 'poly', g.x, g.y, g.w, g.h, { poly: g.poly, text: { lines: linesOf(it, false), box: tb(cx - tw / 2, yTop, tw, th), anchor: 'ctr', align: 'ctr' } });
     });
   });
-  def('pyramidList', 'Pyramid List', 'pyramid', 'Items on cards laid over a pyramid, from the top down.', (items, box) => {
+  def('pyramidList', '棱锥列表', 'pyramid', '项目由上至下置于覆盖棱锥的卡片上。', (items, box) => {
     const n = Math.max(1, items.length), a = 0.87, base = Math.min(box.w, box.h / a), H = base * a, x0 = box.x + (box.w - base) / 2, y0 = box.y + (box.h - H) / 2;
     const out = [{ role: 'bg', geom: 'triangle', adj: [50000], x: x0, y: y0, w: base, h: H, rot: 0, itemId: items[0] ? items[0].id : null, level: 0, styleLbl: 'bgShp', colorIdx: 0, colorCnt: 1 }];
     const top = y0 + H * 0.28, avail = H * 0.7, g = 0.15, h = avail / (n + (n - 1) * g), w = base * 0.5;
@@ -461,7 +461,8 @@
   const CAT_ORDER = ['list', 'process', 'cycle', 'hierarchy', 'relationship', 'matrix', 'pyramid'];
   LAYOUTS.sort((p, q) => CAT_ORDER.indexOf(p.cat) - CAT_ORDER.indexOf(q.cat));
   SA.LAYOUTS = LAYOUTS;
-  SA.CATEGORIES = [['list', 'List'], ['process', 'Process'], ['cycle', 'Cycle'], ['hierarchy', 'Hierarchy'], ['relationship', 'Relationship'], ['matrix', 'Matrix'], ['pyramid', 'Pyramid']];
+  const N = (x) => x;   // UI text, translated where it is shown (common/i18n.js)
+  SA.CATEGORIES = [['list', N('列表')], ['process', N('流程')], ['cycle', N('循环')], ['hierarchy', N('层次结构')], ['relationship', N('关系')], ['matrix', N('矩阵')], ['pyramid', N('棱锥')]];
   SA.get = (id) => LAYOUTS.find((l) => l.id === id) || null;
 
   /** the shapes of a diagram: layout id, items, box in points */

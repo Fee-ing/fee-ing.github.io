@@ -187,6 +187,7 @@ input, select, textarea { font: inherit; color: var(--ink); }
 
 /* ---------- dialogs ---------- */
 .dlg-overlay { position: fixed; inset: 0; z-index: 2000; background: var(--overlay); }
+.menu.over-dlg { z-index: 2100; }
 .dlg { position: absolute; background: var(--dlg); border: 1px solid var(--tb-border); box-shadow: 0 6px 20px var(--dlg-shadow-c); padding: 0; max-height: calc(100% - 8px); display: flex; flex-direction: column; color: var(--dlg-ink); }
 .dlg-title { height: 26px; margin: 0 0 3px; padding: 0 2px 0 9px; display: flex; align-items: center; gap: 2px; color: var(--pane-ink); font: bold 11px/1 var(--ui-font); cursor: default; user-select: none;
   background: linear-gradient(var(--tb-a), var(--tb-b)); border-bottom: 1px solid var(--pane-line); }

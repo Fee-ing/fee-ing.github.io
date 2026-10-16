@@ -122,40 +122,40 @@
   const G = {};
   const def = (name, label, fn, opts) => { G[name] = Object.assign({ name, label, fn }, opts || {}); };
 
-  def('rect', 'Rectangle', (w, h) => one(P([[0, 0], [w, 0], [w, h], [0, h]])));
-  def('roundRect', 'Rounded Rectangle', (w, h, a) => one(rrect(0, 0, w, h, (ss(w, h) * a.adj) / 100000)), {
+  def('rect', '矩形', (w, h) => one(P([[0, 0], [w, 0], [w, h], [0, h]])));
+  def('roundRect', '圆角矩形', (w, h, a) => one(rrect(0, 0, w, h, (ss(w, h) * a.adj) / 100000)), {
     adj: { adj: 16667 },
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj) / 100000, 0], set: (x, y, w, h) => ({ adj: L.clamp((x / ss(w, h)) * 100000, 0, 50000) }) }],
   });
-  def('ellipse', 'Oval', (w, h) => one(ell(w / 2, h / 2, w / 2, h / 2)), { text: (w, h) => [w * 0.146, h * 0.146, w * 0.854, h * 0.854] });
-  def('triangle', 'Isosceles Triangle', (w, h, a) => one(P([[(w * a.adj) / 100000, 0], [w, h], [0, h]])), {
+  def('ellipse', '椭圆', (w, h) => one(ell(w / 2, h / 2, w / 2, h / 2)), { text: (w, h) => [w * 0.146, h * 0.146, w * 0.854, h * 0.854] });
+  def('triangle', '等腰三角形', (w, h, a) => one(P([[(w * a.adj) / 100000, 0], [w, h], [0, h]])), {
     adj: { adj: 50000 }, text: (w, h) => [w / 4, h / 2, (w * 3) / 4, h],
     handles: [{ pos: (w, h, a) => [(w * a.adj) / 100000, 0], set: (x, y, w) => ({ adj: L.clamp((x / w) * 100000, 0, 100000) }) }],
   });
-  def('rtTriangle', 'Right Triangle', (w, h) => one(P([[0, 0], [w, h], [0, h]])), { text: (w, h) => [w / 12, h * 7 / 12, w * 7 / 12, h * 11 / 12] });
-  def('parallelogram', 'Parallelogram', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w, 0], [w - x, h], [0, h]])); }, {
+  def('rtTriangle', '直角三角形', (w, h) => one(P([[0, 0], [w, h], [0, h]])), { text: (w, h) => [w / 12, h * 7 / 12, w * 7 / 12, h * 11 / 12] });
+  def('parallelogram', '平行四边形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w, 0], [w - x, h], [0, h]])); }, {
     adj: { adj: 25000 },
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj) / 100000, 0], set: (x, y, w, h) => ({ adj: L.clamp((x / ss(w, h)) * 100000, 0, (w / ss(w, h)) * 100000) }) }],
   });
-  def('trapezoid', 'Trapezoid', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[0, h], [x, 0], [w - x, 0], [w, h]])); }, {
+  def('trapezoid', '梯形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[0, h], [x, 0], [w - x, 0], [w, h]])); }, {
     adj: { adj: 25000 },
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj) / 100000, 0], set: (x, y, w, h) => ({ adj: L.clamp((x / ss(w, h)) * 100000, 0, (w / 2 / ss(w, h)) * 100000) }) }],
   });
-  def('diamond', 'Diamond', (w, h) => one(P([[w / 2, 0], [w, h / 2], [w / 2, h], [0, h / 2]])), { text: (w, h) => [w / 4, h / 4, (w * 3) / 4, (h * 3) / 4] });
-  def('pentagon', 'Regular Pentagon', (w, h) => one(P([[w / 2, 0], [w, h * 0.382], [w * 0.809, h], [w * 0.191, h], [0, h * 0.382]])));
-  def('hexagon', 'Hexagon', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w - x, 0], [w, h / 2], [w - x, h], [x, h], [0, h / 2]])); }, {
+  def('diamond', '菱形', (w, h) => one(P([[w / 2, 0], [w, h / 2], [w / 2, h], [0, h / 2]])), { text: (w, h) => [w / 4, h / 4, (w * 3) / 4, (h * 3) / 4] });
+  def('pentagon', '正五边形', (w, h) => one(P([[w / 2, 0], [w, h * 0.382], [w * 0.809, h], [w * 0.191, h], [0, h * 0.382]])));
+  def('hexagon', '六边形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w - x, 0], [w, h / 2], [w - x, h], [x, h], [0, h / 2]])); }, {
     adj: { adj: 25000 },
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj) / 100000, 0], set: (x, y, w, h) => ({ adj: L.clamp((x / ss(w, h)) * 100000, 0, (w / 2 / ss(w, h)) * 100000) }) }],
   });
-  def('octagon', 'Octagon', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w - x, 0], [w, x], [w, h - x], [w - x, h], [x, h], [0, h - x], [0, x]])); }, {
+  def('octagon', '八边形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w - x, 0], [w, x], [w, h - x], [w - x, h], [x, h], [0, h - x], [0, x]])); }, {
     adj: { adj: 29289 },
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj) / 100000, 0], set: (x, y, w, h) => ({ adj: L.clamp((x / ss(w, h)) * 100000, 0, 50000) }) }],
   });
-  def('plus', 'Cross', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w - x, 0], [w - x, x], [w, x], [w, h - x], [w - x, h - x], [w - x, h], [x, h], [x, h - x], [0, h - x], [0, x], [x, x]])); }, {
+  def('plus', '十字形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[x, 0], [w - x, 0], [w - x, x], [w, x], [w, h - x], [w - x, h - x], [w - x, h], [x, h], [x, h - x], [0, h - x], [0, x], [x, x]])); }, {
     adj: { adj: 25000 },
     handles: [{ pos: (w, h, a) => [0, (ss(w, h) * a.adj) / 100000], set: (x, y, w, h) => ({ adj: L.clamp((y / ss(w, h)) * 100000, 0, 50000) }) }],
   });
-  def('can', 'Can', (w, h, a) => {
+  def('can', '圆柱体', (w, h, a) => {
     const e = (ss(w, h) * a.adj) / 100000, r = e / 2;
     return [
       { d: `M0,${n(r)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w)},${n(r)} V${n(h - r)} A${n(w / 2)},${n(r)} 0 0 1 0,${n(h - r)} Z`, fill: 'norm', stroke: true },
@@ -165,7 +165,7 @@
     adj: { adj: 25000 }, text: (w, h, a) => [0, (ss(w, h) * a.adj) / 100000, w, h - (ss(w, h) * a.adj) / 200000],
     handles: [{ pos: (w, h, a) => [w / 2, (ss(w, h) * a.adj) / 100000], set: (x, y, w, h) => ({ adj: L.clamp((y / ss(w, h)) * 100000, 0, (h / ss(w, h)) * 100000) }) }],
   });
-  def('cube', 'Cube', (w, h, a) => {
+  def('cube', '立方体', (w, h, a) => {
     const d = (ss(w, h) * a.adj) / 100000;
     return [
       { d: P([[0, d], [w - d, d], [w - d, h], [0, h]]), fill: 'norm', stroke: true },
@@ -176,7 +176,7 @@
     adj: { adj: 25000 }, text: (w, h, a) => { const d = (ss(w, h) * a.adj) / 100000; return [0, d, w - d, h]; },
     handles: [{ pos: (w, h, a) => [0, (ss(w, h) * a.adj) / 100000], set: (x, y, w, h) => ({ adj: L.clamp((y / ss(w, h)) * 100000, 0, 100000) }) }],
   });
-  def('bevel', 'Bevel', (w, h, a) => {
+  def('bevel', '棱台', (w, h, a) => {
     const d = (ss(w, h) * a.adj) / 100000;
     return [
       { d: P([[d, d], [w - d, d], [w - d, h - d], [d, h - d]]), fill: 'norm', stroke: true },
@@ -189,34 +189,34 @@
     adj: { adj: 12500 }, text: (w, h, a) => { const d = (ss(w, h) * a.adj) / 100000; return [d, d, w - d, h - d]; },
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj) / 100000, h / 2], set: (x, y, w, h) => ({ adj: L.clamp((x / ss(w, h)) * 100000, 0, 50000) }) }],
   });
-  def('foldedCorner', 'Folded Corner', (w, h, a) => {
+  def('foldedCorner', '折角形', (w, h, a) => {
     const d = (ss(w, h) * a.adj) / 100000;
     return [
       { d: P([[0, 0], [w, 0], [w, h - d], [w - d, h], [0, h]]), fill: 'norm', stroke: true },
       { d: P([[w - d, h], [w - d * 0.8, h - d * 0.8], [w, h - d]]), fill: 'darkenLess', stroke: true },
     ];
   }, { adj: { adj: 16667 } });
-  def('frame', 'Frame', (w, h, a) => {
+  def('frame', '框架', (w, h, a) => {
     const t = (ss(w, h) * a.adj1) / 100000;
     return [{ d: P([[0, 0], [w, 0], [w, h], [0, h]]) + ' ' + P([[t, t], [t, h - t], [w - t, h - t], [w - t, t]]), fill: 'norm', stroke: true, rule: 'evenodd' }];
   }, {
     adj: { adj1: 12500 },
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj1) / 100000, 0], set: (x, y, w, h) => ({ adj1: L.clamp((x / ss(w, h)) * 100000, 0, 50000) }) }],
   });
-  def('donut', 'Donut', (w, h, a) => {
+  def('donut', '同心圆', (w, h, a) => {
     const t = (ss(w, h) * a.adj) / 100000;
     return [{ d: ell(w / 2, h / 2, w / 2, h / 2) + ' ' + ell(w / 2, h / 2, Math.max(0, w / 2 - t), Math.max(0, h / 2 - t)), fill: 'norm', stroke: true, rule: 'evenodd' }];
   }, {
     adj: { adj: 25000 }, text: (w, h) => [w * 0.146, h * 0.146, w * 0.854, h * 0.854],
     handles: [{ pos: (w, h, a) => [(ss(w, h) * a.adj) / 100000, h / 2], set: (x, y, w, h) => ({ adj: L.clamp((x / ss(w, h)) * 100000, 0, 50000) }) }],
   });
-  def('noSmoking', '"No" Symbol', (w, h, a) => {
+  def('noSmoking', '禁止符', (w, h, a) => {
     const t = (ss(w, h) * a.adj) / 100000, rx = w / 2 - t, ry = h / 2 - t;
     const k = Math.SQRT1_2, ox = (t / 2) * k * 1.4;
     const band = P([[w / 2 - rx * k - ox, h / 2 - ry * k + ox], [w / 2 - rx * k + ox, h / 2 - ry * k - ox], [w / 2 + rx * k + ox, h / 2 + ry * k - ox], [w / 2 + rx * k - ox, h / 2 + ry * k + ox]]);
     return [{ d: ell(w / 2, h / 2, w / 2, h / 2) + ' ' + ell(w / 2, h / 2, rx, ry), fill: 'norm', stroke: true, rule: 'evenodd' }, { d: band, fill: 'norm', stroke: true }];
   }, { adj: { adj: 18750 } });
-  def('smileyFace', 'Smiley Face', (w, h, a) => {
+  def('smileyFace', '笑脸', (w, h, a) => {
     const sm = (h * a.adj) / 100000;
     return [
       { d: ell(w / 2, h / 2, w / 2, h / 2), fill: 'norm', stroke: true },
@@ -227,9 +227,9 @@
     adj: { adj: 4653 },
     handles: [{ pos: (w, h, a) => [w / 2, h * 0.7 + (h * a.adj * 2) / 100000], set: (x, y, w, h) => ({ adj: L.clamp(((y - h * 0.7) / 2 / h) * 100000, -4653, 4653) }) }],
   });
-  def('heart', 'Heart', (w, h) => one(`M${n(w / 2)},${n(h * 0.25)} C${n(w / 2)},${n(h * 0.1)} ${n(w * 0.36)},0 ${n(w * 0.24)},0 C${n(w * 0.1)},0 0,${n(h * 0.13)} 0,${n(h * 0.3)} C0,${n(h * 0.58)} ${n(w * 0.3)},${n(h * 0.76)} ${n(w / 2)},${n(h)} C${n(w * 0.7)},${n(h * 0.76)} ${n(w)},${n(h * 0.58)} ${n(w)},${n(h * 0.3)} C${n(w)},${n(h * 0.13)} ${n(w * 0.9)},0 ${n(w * 0.76)},0 C${n(w * 0.64)},0 ${n(w / 2)},${n(h * 0.1)} ${n(w / 2)},${n(h * 0.25)} Z`));
-  def('lightningBolt', 'Lightning Bolt', (w, h) => one(poly21600(w, h, [[8458, 0], [12860, 6080], [11050, 6797], [16080, 12382], [14394, 12877], [21600, 21600], [10012, 14915], [12222, 13987], [5022, 9705], [7602, 8382], [0, 3890]])));
-  def('sun', 'Sun', (w, h, a) => {
+  def('heart', '心形', (w, h) => one(`M${n(w / 2)},${n(h * 0.25)} C${n(w / 2)},${n(h * 0.1)} ${n(w * 0.36)},0 ${n(w * 0.24)},0 C${n(w * 0.1)},0 0,${n(h * 0.13)} 0,${n(h * 0.3)} C0,${n(h * 0.58)} ${n(w * 0.3)},${n(h * 0.76)} ${n(w / 2)},${n(h)} C${n(w * 0.7)},${n(h * 0.76)} ${n(w)},${n(h * 0.58)} ${n(w)},${n(h * 0.3)} C${n(w)},${n(h * 0.13)} ${n(w * 0.9)},0 ${n(w * 0.76)},0 C${n(w * 0.64)},0 ${n(w / 2)},${n(h * 0.1)} ${n(w / 2)},${n(h * 0.25)} Z`));
+  def('lightningBolt', '闪电形', (w, h) => one(poly21600(w, h, [[8458, 0], [12860, 6080], [11050, 6797], [16080, 12382], [14394, 12877], [21600, 21600], [10012, 14915], [12222, 13987], [5022, 9705], [7602, 8382], [0, 3890]])));
+  def('sun', '太阳', (w, h, a) => {
     const r = 0.5 - a.adj / 100000 - 0.06;
     const parts = [{ d: ell(w / 2, h / 2, w * r, h * r), fill: 'norm', stroke: true }];
     let rays = '';
@@ -243,47 +243,47 @@
     parts.push({ d: rays, fill: 'norm', stroke: true });
     return parts;
   }, { adj: { adj: 25000 } });
-  def('moon', 'Moon', (w, h, a) => one(`M${n(w)},0 A${n(w)},${n(h / 2)} 0 0 0 ${n(w)},${n(h)} A${n((w * a.adj) / 100000)},${n(h / 2)} 0 0 1 ${n(w)},0 Z`), {
+  def('moon', '月亮', (w, h, a) => one(`M${n(w)},0 A${n(w)},${n(h / 2)} 0 0 0 ${n(w)},${n(h)} A${n((w * a.adj) / 100000)},${n(h / 2)} 0 0 1 ${n(w)},0 Z`), {
     adj: { adj: 50000 },
     handles: [{ pos: (w, h, a) => [w - (w * a.adj) / 100000, h / 2], set: (x, y, w) => ({ adj: L.clamp(((w - x) / w) * 100000, 0, 87500) }) }],
   });
-  def('arc', 'Arc', (w, h, a) => {
+  def('arc', '弧形', (w, h, a) => {
     const st = a.adj1 / 60000, en = a.adj2 / 60000;
     const p0 = ePt(w, h, st), p1 = ePt(w, h, en);
     const sw = (((en - st) % 360) + 360) % 360;
     return [{ d: `M${n(p0[0])},${n(p0[1])} A${n(w / 2)},${n(h / 2)} 0 ${sw > 180 ? 1 : 0} 1 ${n(p1[0])},${n(p1[1])}`, fill: 'none', stroke: true, open: true }];
   }, { noFill: true, adj: { adj1: 16200000, adj2: 0 } });
-  def('wave', 'Wave', (w, h, a) => {
+  def('wave', '波浪', (w, h, a) => {
     const am = (h * a.adj1) / 100000;
     return one(`M0,${n(am)} C${n(w / 3)},${n(-am)} ${n((w * 2) / 3)},${n(am * 3)} ${n(w)},${n(am)} V${n(h - am)} C${n((w * 2) / 3)},${n(h + am)} ${n(w / 3)},${n(h - am * 3)} 0,${n(h - am)} Z`);
   }, { adj: { adj1: 12500 } });
 
   /* block arrows */
-  def('rightArrow', 'Right Arrow', (w, h, a) => {
+  def('rightArrow', '右箭头', (w, h, a) => {
     const t = (h * a.adj1) / 200000, hx = w - (ss(w, h) * a.adj2) / 100000;
     return one(P([[0, h / 2 - t], [hx, h / 2 - t], [hx, 0], [w, h / 2], [hx, h], [hx, h / 2 + t], [0, h / 2 + t]]));
   }, { adj: { adj1: 50000, adj2: 50000 }, handles: arrowHandles('r') });
-  def('leftArrow', 'Left Arrow', (w, h, a) => {
+  def('leftArrow', '左箭头', (w, h, a) => {
     const t = (h * a.adj1) / 200000, hx = (ss(w, h) * a.adj2) / 100000;
     return one(P([[w, h / 2 - t], [hx, h / 2 - t], [hx, 0], [0, h / 2], [hx, h], [hx, h / 2 + t], [w, h / 2 + t]]));
   }, { adj: { adj1: 50000, adj2: 50000 }, handles: arrowHandles('l') });
-  def('upArrow', 'Up Arrow', (w, h, a) => {
+  def('upArrow', '上箭头', (w, h, a) => {
     const t = (w * a.adj1) / 200000, hy = (ss(w, h) * a.adj2) / 100000;
     return one(P([[w / 2 - t, h], [w / 2 - t, hy], [0, hy], [w / 2, 0], [w, hy], [w / 2 + t, hy], [w / 2 + t, h]]));
   }, { adj: { adj1: 50000, adj2: 50000 }, handles: arrowHandles('u') });
-  def('downArrow', 'Down Arrow', (w, h, a) => {
+  def('downArrow', '下箭头', (w, h, a) => {
     const t = (w * a.adj1) / 200000, hy = h - (ss(w, h) * a.adj2) / 100000;
     return one(P([[w / 2 - t, 0], [w / 2 - t, hy], [0, hy], [w / 2, h], [w, hy], [w / 2 + t, hy], [w / 2 + t, 0]]));
   }, { adj: { adj1: 50000, adj2: 50000 }, handles: arrowHandles('d') });
-  def('leftRightArrow', 'Left-Right Arrow', (w, h, a) => {
+  def('leftRightArrow', '左右双箭头', (w, h, a) => {
     const t = (h * a.adj1) / 200000, hx = (ss(w, h) * a.adj2) / 100000;
     return one(P([[0, h / 2], [hx, 0], [hx, h / 2 - t], [w - hx, h / 2 - t], [w - hx, 0], [w, h / 2], [w - hx, h], [w - hx, h / 2 + t], [hx, h / 2 + t], [hx, h]]));
   }, { adj: { adj1: 50000, adj2: 50000 }, handles: arrowHandles('l') });
-  def('upDownArrow', 'Up-Down Arrow', (w, h, a) => {
+  def('upDownArrow', '上下双箭头', (w, h, a) => {
     const t = (w * a.adj1) / 200000, hy = (ss(w, h) * a.adj2) / 100000;
     return one(P([[w / 2, 0], [w, hy], [w / 2 + t, hy], [w / 2 + t, h - hy], [w, h - hy], [w / 2, h], [0, h - hy], [w / 2 - t, h - hy], [w / 2 - t, hy], [0, hy]]));
   }, { adj: { adj1: 50000, adj2: 50000 }, handles: arrowHandles('u') });
-  def('quadArrow', 'Quad Arrow', (w, h, a) => {
+  def('quadArrow', '四向箭头', (w, h, a) => {
     const s = ss(w, h), t = (s * a.adj1) / 200000, hw = (s * a.adj2) / 100000, hl = (s * a.adj3) / 100000;
     const cx = w / 2, cy = h / 2;
     return one(P([
@@ -292,34 +292,34 @@
       [cx - hw, h - hl], [cx - t, h - hl], [cx - t, cy + t], [hl, cy + t], [hl, cy + hw],
     ]));
   }, { adj: { adj1: 22500, adj2: 22500, adj3: 22500 } });
-  def('notchedRightArrow', 'Notched Right Arrow', (w, h, a) => {
+  def('notchedRightArrow', '燕尾形右箭头', (w, h, a) => {
     const t = (h * a.adj1) / 200000, hx = w - (ss(w, h) * a.adj2) / 100000, nx = ((h / 2 - t) * (w - hx)) / (h / 2);
     return one(P([[0, h / 2 - t], [hx, h / 2 - t], [hx, 0], [w, h / 2], [hx, h], [hx, h / 2 + t], [0, h / 2 + t], [nx, h / 2]]));
   }, { adj: { adj1: 50000, adj2: 50000 }, handles: arrowHandles('r') });
-  def('stripedRightArrow', 'Striped Right Arrow', (w, h, a) => {
+  def('stripedRightArrow', '虚尾右箭头', (w, h, a) => {
     const t = (h * a.adj1) / 200000, hx = w - (ss(w, h) * a.adj2) / 100000, s = ss(w, h);
     return one(P([[0, h / 2 - t], [s / 32, h / 2 - t], [s / 32, h / 2 + t], [0, h / 2 + t]]) + ' ' + P([[s / 16, h / 2 - t], [s / 8, h / 2 - t], [s / 8, h / 2 + t], [s / 16, h / 2 + t]]) + ' ' + P([[(s * 5) / 32, h / 2 - t], [hx, h / 2 - t], [hx, 0], [w, h / 2], [hx, h], [hx, h / 2 + t], [(s * 5) / 32, h / 2 + t]]));
   }, { adj: { adj1: 50000, adj2: 50000 } });
-  def('homePlate', 'Pentagon', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[0, 0], [w - x, 0], [w, h / 2], [w - x, h], [0, h]])); }, {
+  def('homePlate', '五边形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[0, 0], [w - x, 0], [w, h / 2], [w - x, h], [0, h]])); }, {
     adj: { adj: 50000 },
     handles: [{ pos: (w, h, a) => [w - (ss(w, h) * a.adj) / 100000, 0], set: (x, y, w, h) => ({ adj: L.clamp(((w - x) / ss(w, h)) * 100000, 0, (w / ss(w, h)) * 100000) }) }],
   });
-  def('chevron', 'Chevron', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[0, 0], [w - x, 0], [w, h / 2], [w - x, h], [0, h], [x, h / 2]])); }, {
+  def('chevron', '燕尾形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(P([[0, 0], [w - x, 0], [w, h / 2], [w - x, h], [0, h], [x, h / 2]])); }, {
     adj: { adj: 50000 },
     handles: [{ pos: (w, h, a) => [w - (ss(w, h) * a.adj) / 100000, 0], set: (x, y, w, h) => ({ adj: L.clamp(((w - x) / ss(w, h)) * 100000, 0, (w / ss(w, h)) * 100000) }) }],
   });
-  def('bentArrow', 'Bent Arrow', (w, h, a) => {
+  def('bentArrow', '直角箭头', (w, h, a) => {
     const s = ss(w, h), t = (s * a.adj1) / 100000, hw = (s * a.adj2) / 100000, hl = (s * a.adj3) / 100000, r = Math.min((s * a.adj4) / 100000, h - hw - t / 2);
     const yc = hw; // centre line of the horizontal shaft
     return one(`M0,${n(h)} V${n(yc - t / 2 + r)} A${n(r)},${n(r)} 0 0 1 ${n(r)},${n(yc - t / 2)} H${n(w - hl)} V${n(yc - hw)} L${n(w)},${n(yc)} L${n(w - hl)},${n(yc + hw)} V${n(yc + t / 2)} H${n(t + Math.max(0, r - t))} ${r > t ? `A${n(r - t)},${n(r - t)} 0 0 0 ${n(t)},${n(yc + t / 2 + r - t)}` : ''} V${n(h)} Z`);
   }, { adj: { adj1: 25000, adj2: 25000, adj3: 25000, adj4: 43750 } });
-  def('uturnArrow', 'U-Turn Arrow', (w, h, a) => {
+  def('uturnArrow', 'U 形箭头', (w, h, a) => {
     const s = ss(w, h), t = (s * a.adj1) / 100000, hw = (s * a.adj2) / 100000, hl = (s * a.adj3) / 100000;
     const r = Math.min((w - hw * 2 + t) / 2, h * 0.4), xr = w - hw - t / 2; // right shaft centre
     const top = 0, yHead = (h * a.adj5) / 100000;
     return one(`M0,${n(h)} V${n(top + r)} A${n(r)},${n(r)} 0 0 1 ${n(r)},${n(top)} H${n(xr + t / 2 - r)} A${n(r)},${n(r)} 0 0 1 ${n(xr + t / 2)},${n(top + r)} V${n(yHead - hl)} H${n(w)} L${n(xr)},${n(yHead)} L${n(xr - hw)},${n(yHead - hl)} H${n(xr - t / 2)} V${n(top + r)} A${n(Math.max(0, r - t))},${n(Math.max(0, r - t))} 0 0 0 ${n(xr + t / 2 - r)},${n(top + t)} H${n(r)} A${n(Math.max(0, r - t))},${n(Math.max(0, r - t))} 0 0 0 ${n(t)},${n(top + r)} V${n(h)} Z`);
   }, { adj: { adj1: 25000, adj2: 25000, adj3: 25000, adj4: 43750, adj5: 75000 } });
-  def('circularArrow', 'Circular Arrow', (w, h, a) => {
+  def('circularArrow', '环形箭头', (w, h, a) => {
     // a ring segment with arrow head, sweeping clockwise from adj4 to adj5 (degrees*60000)
     const t = (ss(w, h) * a.adj1) / 100000;
     const st = (a.adj4 / 60000) * Math.PI / 180, en = (a.adj5 / 60000) * Math.PI / 180;
@@ -335,16 +335,16 @@
   }, { adj: { adj1: 12500, adj2: 1142319, adj3: 20457681, adj4: 10800000, adj5: 0 } });
 
   /* stars & banners */
-  def('star4', '4-Point Star', (w, h, a) => one(star(w, h, 4, a.adj / 50000)), { adj: { adj: 12500 } });
-  def('star5', '5-Point Star', (w, h, a) => one(star(w, h, 5, a.adj / 50000)), { adj: { adj: 19098 } });
-  def('star6', '6-Point Star', (w, h, a) => one(star(w, h, 6, a.adj / 50000)), { adj: { adj: 28868 } });
-  def('star8', '8-Point Star', (w, h, a) => one(star(w, h, 8, a.adj / 50000)), { adj: { adj: 37500 } });
-  def('star16', '16-Point Star', (w, h, a) => one(star(w, h, 16, a.adj / 50000)), { adj: { adj: 37500 } });
-  def('star24', '24-Point Star', (w, h, a) => one(star(w, h, 24, a.adj / 50000)), { adj: { adj: 37500 } });
-  def('star32', '32-Point Star', (w, h, a) => one(star(w, h, 32, a.adj / 50000)), { adj: { adj: 37500 } });
-  def('irregularSeal1', 'Explosion 1', (w, h) => one(poly21600(w, h, [[10800, 5800], [14522, 0], [14155, 5325], [18380, 4457], [16702, 7315], [21097, 8137], [17607, 10475], [21600, 13290], [16837, 12942], [18145, 18095], [14020, 14457], [13247, 19737], [10532, 14935], [8485, 21600], [7715, 15627], [4762, 17617], [5667, 13937], [135, 14587], [3722, 11775], [0, 8615], [4627, 7617], [370, 2295], [7312, 6320], [8352, 2295]])));
-  def('irregularSeal2', 'Explosion 2', (w, h) => one(poly21600(w, h, [[11462, 4342], [14790, 0], [14525, 5777], [18007, 3172], [16380, 6532], [21600, 6645], [16985, 9402], [18270, 11290], [16380, 12310], [18877, 15632], [14640, 14350], [14942, 17370], [12180, 15935], [11612, 18842], [9872, 17370], [8700, 19712], [7527, 18125], [4917, 21600], [4805, 18240], [1285, 17825], [3330, 15370], [0, 12877], [3935, 11592], [1172, 8270], [5372, 7817], [4502, 3625], [8550, 6382], [9722, 1887]])));
-  def('ribbon2', 'Up Ribbon', (w, h) => {
+  def('star4', '四角星', (w, h, a) => one(star(w, h, 4, a.adj / 50000)), { adj: { adj: 12500 } });
+  def('star5', '五角星', (w, h, a) => one(star(w, h, 5, a.adj / 50000)), { adj: { adj: 19098 } });
+  def('star6', '六角星', (w, h, a) => one(star(w, h, 6, a.adj / 50000)), { adj: { adj: 28868 } });
+  def('star8', '八角星', (w, h, a) => one(star(w, h, 8, a.adj / 50000)), { adj: { adj: 37500 } });
+  def('star16', '十六角星', (w, h, a) => one(star(w, h, 16, a.adj / 50000)), { adj: { adj: 37500 } });
+  def('star24', '二十四角星', (w, h, a) => one(star(w, h, 24, a.adj / 50000)), { adj: { adj: 37500 } });
+  def('star32', '三十二角星', (w, h, a) => one(star(w, h, 32, a.adj / 50000)), { adj: { adj: 37500 } });
+  def('irregularSeal1', '爆炸形 1', (w, h) => one(poly21600(w, h, [[10800, 5800], [14522, 0], [14155, 5325], [18380, 4457], [16702, 7315], [21097, 8137], [17607, 10475], [21600, 13290], [16837, 12942], [18145, 18095], [14020, 14457], [13247, 19737], [10532, 14935], [8485, 21600], [7715, 15627], [4762, 17617], [5667, 13937], [135, 14587], [3722, 11775], [0, 8615], [4627, 7617], [370, 2295], [7312, 6320], [8352, 2295]])));
+  def('irregularSeal2', '爆炸形 2', (w, h) => one(poly21600(w, h, [[11462, 4342], [14790, 0], [14525, 5777], [18007, 3172], [16380, 6532], [21600, 6645], [16985, 9402], [18270, 11290], [16380, 12310], [18877, 15632], [14640, 14350], [14942, 17370], [12180, 15935], [11612, 18842], [9872, 17370], [8700, 19712], [7527, 18125], [4917, 21600], [4805, 18240], [1285, 17825], [3330, 15370], [0, 12877], [3935, 11592], [1172, 8270], [5372, 7817], [4502, 3625], [8550, 6382], [9722, 1887]])));
+  def('ribbon2', '上凸带形', (w, h) => {
     const e = w / 8, f = h / 3;
     return [
       { d: P([[0, h], [e * 1.5, h], [e * 1.5, f * 0.6], [0, f * 0.6], [e * 0.7, f * 1.3]]).replace('Z', '') + ' Z', fill: 'darkenLess', stroke: true },
@@ -352,14 +352,14 @@
       { d: P([[e, 0], [w - e, 0], [w - e, h - f * 0.6], [e, h - f * 0.6]]), fill: 'norm', stroke: true },
     ];
   });
-  def('verticalScroll', 'Vertical Scroll', (w, h) => {
+  def('verticalScroll', '竖卷形', (w, h) => {
     const r = Math.min(w, h) / 16;
     return [
       { d: P([[r * 2, r * 2], [w - r, r * 2], [w - r, h - r], [r * 2, h - r]]), fill: 'norm', stroke: true },
       { d: ell(w - r * 2, r * 2, r * 1.2, r * 1.2) + ' ' + ell(r * 2.2, h - r * 1.2, r * 1.2, r * 1.2), fill: 'darkenLess', stroke: true },
     ];
   });
-  def('horizontalScroll', 'Horizontal Scroll', (w, h) => {
+  def('horizontalScroll', '横卷形', (w, h) => {
     const r = Math.min(w, h) / 16;
     return [
       { d: P([[r, r * 2], [w - r * 2, r * 2], [w - r * 2, h - r], [r, h - r]]), fill: 'norm', stroke: true },
@@ -368,48 +368,48 @@
   });
 
   /* flowchart */
-  def('flowChartProcess', 'Flowchart: Process', (w, h) => one(P([[0, 0], [w, 0], [w, h], [0, h]])));
-  def('flowChartAlternateProcess', 'Flowchart: Alternate Process', (w, h) => one(rrect(0, 0, w, h, ss(w, h) / 6)));
-  def('flowChartDecision', 'Flowchart: Decision', (w, h) => one(P([[w / 2, 0], [w, h / 2], [w / 2, h], [0, h / 2]])), { text: (w, h) => [w / 4, h / 4, (w * 3) / 4, (h * 3) / 4] });
-  def('flowChartInputOutput', 'Flowchart: Data', (w, h) => one(P([[w / 5, 0], [w, 0], [(w * 4) / 5, h], [0, h]])));
-  def('flowChartPredefinedProcess', 'Flowchart: Predefined Process', (w, h) => [{ d: P([[0, 0], [w, 0], [w, h], [0, h]]), fill: 'norm', stroke: true }, { d: `M${n(w / 8)},0 V${n(h)} M${n((w * 7) / 8)},0 V${n(h)}`, fill: 'none', stroke: true, open: true }]);
-  def('flowChartInternalStorage', 'Flowchart: Internal Storage', (w, h) => [{ d: P([[0, 0], [w, 0], [w, h], [0, h]]), fill: 'norm', stroke: true }, { d: `M${n(w / 8)},0 V${n(h)} M0,${n(h / 8)} H${n(w)}`, fill: 'none', stroke: true, open: true }]);
-  def('flowChartDocument', 'Flowchart: Document', (w, h) => one(`M0,0 H${n(w)} V${n(h * 0.8)} C${n(w * 0.75)},${n(h * 0.62)} ${n(w * 0.5)},${n(h * 1.08)} 0,${n(h * 0.9)} Z`));
-  def('flowChartMultidocument', 'Flowchart: Multidocument', (w, h) => [
+  def('flowChartProcess', '流程图：过程', (w, h) => one(P([[0, 0], [w, 0], [w, h], [0, h]])));
+  def('flowChartAlternateProcess', '流程图：可选过程', (w, h) => one(rrect(0, 0, w, h, ss(w, h) / 6)));
+  def('flowChartDecision', '流程图：决策', (w, h) => one(P([[w / 2, 0], [w, h / 2], [w / 2, h], [0, h / 2]])), { text: (w, h) => [w / 4, h / 4, (w * 3) / 4, (h * 3) / 4] });
+  def('flowChartInputOutput', '流程图：数据', (w, h) => one(P([[w / 5, 0], [w, 0], [(w * 4) / 5, h], [0, h]])));
+  def('flowChartPredefinedProcess', '流程图：预定义过程', (w, h) => [{ d: P([[0, 0], [w, 0], [w, h], [0, h]]), fill: 'norm', stroke: true }, { d: `M${n(w / 8)},0 V${n(h)} M${n((w * 7) / 8)},0 V${n(h)}`, fill: 'none', stroke: true, open: true }]);
+  def('flowChartInternalStorage', '流程图：内部存储', (w, h) => [{ d: P([[0, 0], [w, 0], [w, h], [0, h]]), fill: 'norm', stroke: true }, { d: `M${n(w / 8)},0 V${n(h)} M0,${n(h / 8)} H${n(w)}`, fill: 'none', stroke: true, open: true }]);
+  def('flowChartDocument', '流程图：文档', (w, h) => one(`M0,0 H${n(w)} V${n(h * 0.8)} C${n(w * 0.75)},${n(h * 0.62)} ${n(w * 0.5)},${n(h * 1.08)} 0,${n(h * 0.9)} Z`));
+  def('flowChartMultidocument', '流程图：多文档', (w, h) => [
     { d: P([[w * 0.1, 0], [w, 0], [w, h * 0.7], [w * 0.9, h * 0.7], [w * 0.9, h * 0.1], [w * 0.1, h * 0.1]]), fill: 'norm', stroke: true },
     { d: P([[w * 0.05, h * 0.05], [w * 0.95, h * 0.05], [w * 0.95, h * 0.75], [w * 0.85, h * 0.75], [w * 0.85, h * 0.15], [w * 0.05, h * 0.15]]), fill: 'norm', stroke: true },
     { d: `M0,${n(h * 0.15)} H${n(w * 0.85)} V${n(h * 0.82)} C${n(w * 0.65)},${n(h * 0.7)} ${n(w * 0.42)},${n(h * 1.06)} 0,${n(h * 0.9)} Z`, fill: 'norm', stroke: true },
   ]);
-  def('flowChartTerminator', 'Flowchart: Terminator', (w, h) => { const r = Math.min(h / 2, w / 2); return one(`M${n(r)},0 H${n(w - r)} A${n(r)},${n(h / 2)} 0 0 1 ${n(w - r)},${n(h)} H${n(r)} A${n(r)},${n(h / 2)} 0 0 1 ${n(r)},0 Z`); });
-  def('flowChartPreparation', 'Flowchart: Preparation', (w, h) => one(P([[w / 5, 0], [(w * 4) / 5, 0], [w, h / 2], [(w * 4) / 5, h], [w / 5, h], [0, h / 2]])));
-  def('flowChartManualInput', 'Flowchart: Manual Input', (w, h) => one(P([[0, h / 5], [w, 0], [w, h], [0, h]])));
-  def('flowChartManualOperation', 'Flowchart: Manual Operation', (w, h) => one(P([[0, 0], [w, 0], [(w * 4) / 5, h], [w / 5, h]])));
-  def('flowChartConnector', 'Flowchart: Connector', (w, h) => one(ell(w / 2, h / 2, w / 2, h / 2)), { text: (w, h) => [w * 0.146, h * 0.146, w * 0.854, h * 0.854] });
-  def('flowChartOffpageConnector', 'Flowchart: Off-page Connector', (w, h) => one(P([[0, 0], [w, 0], [w, h * 0.8], [w / 2, h], [0, h * 0.8]])));
-  def('flowChartPunchedCard', 'Flowchart: Card', (w, h) => one(P([[w / 5, 0], [w, 0], [w, h], [0, h], [0, h / 5]])));
-  def('flowChartPunchedTape', 'Flowchart: Punched Tape', (w, h) => one(`M0,${n(h * 0.1)} C${n(w * 0.25)},${n(h * 0.3)} ${n(w * 0.25)},${n(-h * 0.1)} ${n(w / 2)},${n(h * 0.1)} C${n(w * 0.75)},${n(h * 0.3)} ${n(w * 0.75)},${n(-h * 0.1)} ${n(w)},${n(h * 0.1)} V${n(h * 0.9)} C${n(w * 0.75)},${n(h * 0.7)} ${n(w * 0.75)},${n(h * 1.1)} ${n(w / 2)},${n(h * 0.9)} C${n(w * 0.25)},${n(h * 0.7)} ${n(w * 0.25)},${n(h * 1.1)} 0,${n(h * 0.9)} Z`));
-  def('flowChartSummingJunction', 'Flowchart: Summing Junction', (w, h) => { const k = Math.SQRT1_2; return [{ d: ell(w / 2, h / 2, w / 2, h / 2), fill: 'norm', stroke: true }, { d: `M${n(w / 2 - (w / 2) * k)},${n(h / 2 - (h / 2) * k)} L${n(w / 2 + (w / 2) * k)},${n(h / 2 + (h / 2) * k)} M${n(w / 2 + (w / 2) * k)},${n(h / 2 - (h / 2) * k)} L${n(w / 2 - (w / 2) * k)},${n(h / 2 + (h / 2) * k)}`, fill: 'none', stroke: true, open: true }]; });
-  def('flowChartOr', 'Flowchart: Or', (w, h) => [{ d: ell(w / 2, h / 2, w / 2, h / 2), fill: 'norm', stroke: true }, { d: `M${n(w / 2)},0 V${n(h)} M0,${n(h / 2)} H${n(w)}`, fill: 'none', stroke: true, open: true }]);
-  def('flowChartCollate', 'Flowchart: Collate', (w, h) => one(P([[0, 0], [w, 0], [0, h], [w, h]])));
-  def('flowChartSort', 'Flowchart: Sort', (w, h) => [{ d: P([[w / 2, 0], [w, h / 2], [w / 2, h], [0, h / 2]]), fill: 'norm', stroke: true }, { d: `M0,${n(h / 2)} H${n(w)}`, fill: 'none', stroke: true, open: true }]);
-  def('flowChartExtract', 'Flowchart: Extract', (w, h) => one(P([[w / 2, 0], [w, h], [0, h]])));
-  def('flowChartMerge', 'Flowchart: Merge', (w, h) => one(P([[0, 0], [w, 0], [w / 2, h]])));
-  def('flowChartDelay', 'Flowchart: Delay', (w, h) => one(`M0,0 H${n(w / 2)} A${n(w / 2)},${n(h / 2)} 0 0 1 ${n(w / 2)},${n(h)} H0 Z`));
-  def('flowChartMagneticDisk', 'Flowchart: Magnetic Disk', (w, h) => { const r = h / 6; return [{ d: `M0,${n(r)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w)},${n(r)} V${n(h - r)} A${n(w / 2)},${n(r)} 0 0 1 0,${n(h - r)} Z`, fill: 'norm', stroke: true }, { d: ell(w / 2, r, w / 2, r), fill: 'norm', stroke: true }]; });
-  def('flowChartDisplay', 'Flowchart: Display', (w, h) => one(`M0,${n(h / 2)} L${n(w / 6)},0 H${n((w * 5) / 6)} A${n(w / 6)},${n(h / 2)} 0 0 1 ${n((w * 5) / 6)},${n(h)} H${n(w / 6)} Z`));
+  def('flowChartTerminator', '流程图：终止', (w, h) => { const r = Math.min(h / 2, w / 2); return one(`M${n(r)},0 H${n(w - r)} A${n(r)},${n(h / 2)} 0 0 1 ${n(w - r)},${n(h)} H${n(r)} A${n(r)},${n(h / 2)} 0 0 1 ${n(r)},0 Z`); });
+  def('flowChartPreparation', '流程图：准备', (w, h) => one(P([[w / 5, 0], [(w * 4) / 5, 0], [w, h / 2], [(w * 4) / 5, h], [w / 5, h], [0, h / 2]])));
+  def('flowChartManualInput', '流程图：手动输入', (w, h) => one(P([[0, h / 5], [w, 0], [w, h], [0, h]])));
+  def('flowChartManualOperation', '流程图：手动操作', (w, h) => one(P([[0, 0], [w, 0], [(w * 4) / 5, h], [w / 5, h]])));
+  def('flowChartConnector', '流程图：连接符', (w, h) => one(ell(w / 2, h / 2, w / 2, h / 2)), { text: (w, h) => [w * 0.146, h * 0.146, w * 0.854, h * 0.854] });
+  def('flowChartOffpageConnector', '流程图：离页连接符', (w, h) => one(P([[0, 0], [w, 0], [w, h * 0.8], [w / 2, h], [0, h * 0.8]])));
+  def('flowChartPunchedCard', '流程图：卡片', (w, h) => one(P([[w / 5, 0], [w, 0], [w, h], [0, h], [0, h / 5]])));
+  def('flowChartPunchedTape', '流程图：纸带', (w, h) => one(`M0,${n(h * 0.1)} C${n(w * 0.25)},${n(h * 0.3)} ${n(w * 0.25)},${n(-h * 0.1)} ${n(w / 2)},${n(h * 0.1)} C${n(w * 0.75)},${n(h * 0.3)} ${n(w * 0.75)},${n(-h * 0.1)} ${n(w)},${n(h * 0.1)} V${n(h * 0.9)} C${n(w * 0.75)},${n(h * 0.7)} ${n(w * 0.75)},${n(h * 1.1)} ${n(w / 2)},${n(h * 0.9)} C${n(w * 0.25)},${n(h * 0.7)} ${n(w * 0.25)},${n(h * 1.1)} 0,${n(h * 0.9)} Z`));
+  def('flowChartSummingJunction', '流程图：汇总连接', (w, h) => { const k = Math.SQRT1_2; return [{ d: ell(w / 2, h / 2, w / 2, h / 2), fill: 'norm', stroke: true }, { d: `M${n(w / 2 - (w / 2) * k)},${n(h / 2 - (h / 2) * k)} L${n(w / 2 + (w / 2) * k)},${n(h / 2 + (h / 2) * k)} M${n(w / 2 + (w / 2) * k)},${n(h / 2 - (h / 2) * k)} L${n(w / 2 - (w / 2) * k)},${n(h / 2 + (h / 2) * k)}`, fill: 'none', stroke: true, open: true }]; });
+  def('flowChartOr', '流程图：或', (w, h) => [{ d: ell(w / 2, h / 2, w / 2, h / 2), fill: 'norm', stroke: true }, { d: `M${n(w / 2)},0 V${n(h)} M0,${n(h / 2)} H${n(w)}`, fill: 'none', stroke: true, open: true }]);
+  def('flowChartCollate', '流程图：对照', (w, h) => one(P([[0, 0], [w, 0], [0, h], [w, h]])));
+  def('flowChartSort', '流程图：排序', (w, h) => [{ d: P([[w / 2, 0], [w, h / 2], [w / 2, h], [0, h / 2]]), fill: 'norm', stroke: true }, { d: `M0,${n(h / 2)} H${n(w)}`, fill: 'none', stroke: true, open: true }]);
+  def('flowChartExtract', '流程图：摘录', (w, h) => one(P([[w / 2, 0], [w, h], [0, h]])));
+  def('flowChartMerge', '流程图：合并', (w, h) => one(P([[0, 0], [w, 0], [w / 2, h]])));
+  def('flowChartDelay', '流程图：延期', (w, h) => one(`M0,0 H${n(w / 2)} A${n(w / 2)},${n(h / 2)} 0 0 1 ${n(w / 2)},${n(h)} H0 Z`));
+  def('flowChartMagneticDisk', '流程图：磁盘', (w, h) => { const r = h / 6; return [{ d: `M0,${n(r)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w)},${n(r)} V${n(h - r)} A${n(w / 2)},${n(r)} 0 0 1 0,${n(h - r)} Z`, fill: 'norm', stroke: true }, { d: ell(w / 2, r, w / 2, r), fill: 'norm', stroke: true }]; });
+  def('flowChartDisplay', '流程图：显示', (w, h) => one(`M0,${n(h / 2)} L${n(w / 6)},0 H${n((w * 5) / 6)} A${n(w / 6)},${n(h / 2)} 0 0 1 ${n((w * 5) / 6)},${n(h)} H${n(w / 6)} Z`));
 
   /* callouts */
   const calloutHandles = [{ pos: (w, h, a) => [w / 2 + (w * a.adj1) / 100000, h / 2 + (h * a.adj2) / 100000], set: (x, y, w, h) => ({ adj1: ((x - w / 2) / w) * 100000, adj2: ((y - h / 2) / h) * 100000 }) }];
-  def('wedgeRectCallout', 'Rectangular Callout', (w, h, a) => one(wedgeRect(w, h, a, 0)), { adj: { adj1: -20833, adj2: 62500 }, handles: calloutHandles });
-  def('wedgeRoundRectCallout', 'Rounded Rectangular Callout', (w, h, a) => one(wedgeRect(w, h, a, ss(w, h) / 6)), { adj: { adj1: -20833, adj2: 62500 }, handles: calloutHandles });
-  def('wedgeEllipseCallout', 'Oval Callout', (w, h, a) => {
+  def('wedgeRectCallout', '矩形标注', (w, h, a) => one(wedgeRect(w, h, a, 0)), { adj: { adj1: -20833, adj2: 62500 }, handles: calloutHandles });
+  def('wedgeRoundRectCallout', '圆角矩形标注', (w, h, a) => one(wedgeRect(w, h, a, ss(w, h) / 6)), { adj: { adj1: -20833, adj2: 62500 }, handles: calloutHandles });
+  def('wedgeEllipseCallout', '椭圆形标注', (w, h, a) => {
     const tx = w / 2 + (w * a.adj1) / 100000, ty = h / 2 + (h * a.adj2) / 100000;
     const ang = Math.atan2((ty - h / 2) / h, (tx - w / 2) / w), sp = 0.18;
     const p1 = [w / 2 + (Math.cos(ang - sp) * w) / 2, h / 2 + (Math.sin(ang - sp) * h) / 2];
     const p2 = [w / 2 + (Math.cos(ang + sp) * w) / 2, h / 2 + (Math.sin(ang + sp) * h) / 2];
     return one(`M${n(p2[0])},${n(p2[1])} A${n(w / 2)},${n(h / 2)} 0 1 1 ${n(p1[0])},${n(p1[1])} L${n(tx)},${n(ty)} Z`);
   }, { adj: { adj1: -20833, adj2: 62500 }, handles: calloutHandles, text: (w, h) => [w * 0.146, h * 0.146, w * 0.854, h * 0.854] });
-  def('cloudCallout', 'Cloud Callout', (w, h, a) => {
+  def('cloudCallout', '云形标注', (w, h, a) => {
     const tx = w / 2 + (w * a.adj1) / 100000, ty = h / 2 + (h * a.adj2) / 100000;
     const parts = [{ d: cloudPath(w / 2, h / 2, w / 2, h / 2, 11), fill: 'norm', stroke: true }];
     const dx = tx - w / 2, dy = ty - h / 2, len = Math.hypot(dx / w, dy / h);
@@ -423,31 +423,31 @@
     }
     return parts;
   }, { adj: { adj1: -20833, adj2: 62500 }, handles: calloutHandles, text: (w, h) => [w * 0.15, h * 0.15, w * 0.85, h * 0.85] });
-  def('cloud', 'Cloud', (w, h) => one(cloudPath(w / 2, h / 2, w / 2, h / 2, 11)), { text: (w, h) => [w * 0.15, h * 0.15, w * 0.85, h * 0.85] });
+  def('cloud', '云朵', (w, h) => one(cloudPath(w / 2, h / 2, w / 2, h / 2, 11)), { text: (w, h) => [w * 0.15, h * 0.15, w * 0.85, h * 0.85] });
 
   /* brackets */
-  def('leftBracket', 'Left Bracket', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj) / 100000, h / 2); const d = `M${n(w)},0 A${n(w)},${n(r)} 0 0 0 0,${n(r)} V${n(h - r)} A${n(w)},${n(r)} 0 0 0 ${n(w)},${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 8333 }, line: true });
-  def('rightBracket', 'Right Bracket', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj) / 100000, h / 2); const d = `M0,0 A${n(w)},${n(r)} 0 0 1 ${n(w)},${n(r)} V${n(h - r)} A${n(w)},${n(r)} 0 0 1 0,${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 8333 }, line: true });
-  def('leftBrace', 'Left Brace', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj1) / 100000, h / 4); const d = `M${n(w)},0 A${n(w / 2)},${n(r)} 0 0 0 ${n(w / 2)},${n(r)} V${n(h / 2 - r)} A${n(w / 2)},${n(r)} 0 0 1 0,${n(h / 2)} A${n(w / 2)},${n(r)} 0 0 1 ${n(w / 2)},${n(h / 2 + r)} V${n(h - r)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w)},${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj1: 8333, adj2: 50000 }, line: true });
-  def('rightBrace', 'Right Brace', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj1) / 100000, h / 4); const d = `M0,0 A${n(w / 2)},${n(r)} 0 0 1 ${n(w / 2)},${n(r)} V${n(h / 2 - r)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w)},${n(h / 2)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w / 2)},${n(h / 2 + r)} V${n(h - r)} A${n(w / 2)},${n(r)} 0 0 1 0,${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj1: 8333, adj2: 50000 }, line: true });
-  def('bracketPair', 'Double Bracket', (w, h, a) => { const r = (ss(w, h) * a.adj) / 100000; const l = `M${n(r)},${n(h)} A${n(r)},${n(r)} 0 0 1 0,${n(h - r)} V${n(r)} A${n(r)},${n(r)} 0 0 1 ${n(r)},0`, rr = `M${n(w - r)},0 A${n(r)},${n(r)} 0 0 1 ${n(w)},${n(r)} V${n(h - r)} A${n(r)},${n(r)} 0 0 1 ${n(w - r)},${n(h)}`; return [{ d: rrect(0, 0, w, h, r), fill: 'norm', stroke: false }, { d: l + ' ' + rr, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 16667 }, line: true });
-  def('bracePair', 'Double Brace', (w, h, a) => { const r = (ss(w, h) * a.adj) / 100000; const l = `M${n(r * 2)},${n(h)} A${n(r)},${n(r)} 0 0 1 ${n(r)},${n(h - r)} V${n(h / 2 + r)} A${n(r)},${n(r)} 0 0 0 0,${n(h / 2)} A${n(r)},${n(r)} 0 0 0 ${n(r)},${n(h / 2 - r)} V${n(r)} A${n(r)},${n(r)} 0 0 1 ${n(r * 2)},0`; const rr = `M${n(w - r * 2)},0 A${n(r)},${n(r)} 0 0 1 ${n(w - r)},${n(r)} V${n(h / 2 - r)} A${n(r)},${n(r)} 0 0 0 ${n(w)},${n(h / 2)} A${n(r)},${n(r)} 0 0 0 ${n(w - r)},${n(h / 2 + r)} V${n(h - r)} A${n(r)},${n(r)} 0 0 1 ${n(w - r * 2)},${n(h)}`; return [{ d: P([[r, 0], [w - r, 0], [w - r, h], [r, h]]), fill: 'norm', stroke: false }, { d: l + ' ' + rr, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 8333 }, line: true });
+  def('leftBracket', '左中括号', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj) / 100000, h / 2); const d = `M${n(w)},0 A${n(w)},${n(r)} 0 0 0 0,${n(r)} V${n(h - r)} A${n(w)},${n(r)} 0 0 0 ${n(w)},${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 8333 }, line: true });
+  def('rightBracket', '右中括号', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj) / 100000, h / 2); const d = `M0,0 A${n(w)},${n(r)} 0 0 1 ${n(w)},${n(r)} V${n(h - r)} A${n(w)},${n(r)} 0 0 1 0,${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 8333 }, line: true });
+  def('leftBrace', '左大括号', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj1) / 100000, h / 4); const d = `M${n(w)},0 A${n(w / 2)},${n(r)} 0 0 0 ${n(w / 2)},${n(r)} V${n(h / 2 - r)} A${n(w / 2)},${n(r)} 0 0 1 0,${n(h / 2)} A${n(w / 2)},${n(r)} 0 0 1 ${n(w / 2)},${n(h / 2 + r)} V${n(h - r)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w)},${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj1: 8333, adj2: 50000 }, line: true });
+  def('rightBrace', '右大括号', (w, h, a) => { const r = Math.min((ss(w, h) * a.adj1) / 100000, h / 4); const d = `M0,0 A${n(w / 2)},${n(r)} 0 0 1 ${n(w / 2)},${n(r)} V${n(h / 2 - r)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w)},${n(h / 2)} A${n(w / 2)},${n(r)} 0 0 0 ${n(w / 2)},${n(h / 2 + r)} V${n(h - r)} A${n(w / 2)},${n(r)} 0 0 1 0,${n(h)}`; return [{ d: d + ' Z', fill: 'norm', stroke: false }, { d, fill: 'none', stroke: true, open: true }]; }, { adj: { adj1: 8333, adj2: 50000 }, line: true });
+  def('bracketPair', '双中括号', (w, h, a) => { const r = (ss(w, h) * a.adj) / 100000; const l = `M${n(r)},${n(h)} A${n(r)},${n(r)} 0 0 1 0,${n(h - r)} V${n(r)} A${n(r)},${n(r)} 0 0 1 ${n(r)},0`, rr = `M${n(w - r)},0 A${n(r)},${n(r)} 0 0 1 ${n(w)},${n(r)} V${n(h - r)} A${n(r)},${n(r)} 0 0 1 ${n(w - r)},${n(h)}`; return [{ d: rrect(0, 0, w, h, r), fill: 'norm', stroke: false }, { d: l + ' ' + rr, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 16667 }, line: true });
+  def('bracePair', '双大括号', (w, h, a) => { const r = (ss(w, h) * a.adj) / 100000; const l = `M${n(r * 2)},${n(h)} A${n(r)},${n(r)} 0 0 1 ${n(r)},${n(h - r)} V${n(h / 2 + r)} A${n(r)},${n(r)} 0 0 0 0,${n(h / 2)} A${n(r)},${n(r)} 0 0 0 ${n(r)},${n(h / 2 - r)} V${n(r)} A${n(r)},${n(r)} 0 0 1 ${n(r * 2)},0`; const rr = `M${n(w - r * 2)},0 A${n(r)},${n(r)} 0 0 1 ${n(w - r)},${n(r)} V${n(h / 2 - r)} A${n(r)},${n(r)} 0 0 0 ${n(w)},${n(h / 2)} A${n(r)},${n(r)} 0 0 0 ${n(w - r)},${n(h / 2 + r)} V${n(h - r)} A${n(r)},${n(r)} 0 0 1 ${n(w - r * 2)},${n(h)}`; return [{ d: P([[r, 0], [w - r, 0], [w - r, h], [r, h]]), fill: 'norm', stroke: false }, { d: l + ' ' + rr, fill: 'none', stroke: true, open: true }]; }, { adj: { adj: 8333 }, line: true });
 
   /* action buttons */
-  [['actionButtonBlank', 'Action Button: Custom', 'blank'], ['actionButtonHome', 'Action Button: Home', 'home'], ['actionButtonHelp', 'Action Button: Help', 'help'],
-    ['actionButtonInformation', 'Action Button: Information', 'info'], ['actionButtonBackPrevious', 'Action Button: Back or Previous', 'back'],
-    ['actionButtonForwardNext', 'Action Button: Forward or Next', 'next'], ['actionButtonBeginning', 'Action Button: Beginning', 'begin'],
-    ['actionButtonEnd', 'Action Button: End', 'end'], ['actionButtonReturn', 'Action Button: Return', 'return'], ['actionButtonDocument', 'Action Button: Document', 'doc'],
-    ['actionButtonSound', 'Action Button: Sound', 'sound'], ['actionButtonMovie', 'Action Button: Movie', 'movie']].forEach(([k, l, g]) => def(k, l, actionButton(g), { action: g }));
+  [['actionButtonBlank', '动作按钮：自定义', 'blank'], ['actionButtonHome', '动作按钮：首页', 'home'], ['actionButtonHelp', '动作按钮：帮助', 'help'],
+    ['actionButtonInformation', '动作按钮：信息', 'info'], ['actionButtonBackPrevious', '动作按钮：后退或前一项', 'back'],
+    ['actionButtonForwardNext', '动作按钮：前进或后一项', 'next'], ['actionButtonBeginning', '动作按钮：开始', 'begin'],
+    ['actionButtonEnd', '动作按钮：结束', 'end'], ['actionButtonReturn', '动作按钮：返回', 'return'], ['actionButtonDocument', '动作按钮：文档', 'doc'],
+    ['actionButtonSound', '动作按钮：声音', 'sound'], ['actionButtonMovie', '动作按钮：影片', 'movie']].forEach(([k, l, g]) => def(k, l, actionButton(g), { action: g }));
 
   /* lines & connectors — drawn from (0,0) to (w,h) honoring flips */
-  def('line', 'Line', null, { isLine: true });
-  def('straightConnector1', 'Straight Connector', null, { isLine: true });
-  def('bentConnector3', 'Elbow Connector', null, { isLine: true });
-  def('bentConnector2', 'Elbow Connector', null, { isLine: true });
-  def('bentConnector4', 'Elbow Connector', null, { isLine: true });
-  def('curvedConnector2', 'Curved Connector', null, { isLine: true });
-  def('curvedConnector3', 'Curved Connector', null, { isLine: true });
+  def('line', '线条', null, { isLine: true });
+  def('straightConnector1', '直线连接符', null, { isLine: true });
+  def('bentConnector3', '肘形连接符', null, { isLine: true });
+  def('bentConnector2', '肘形连接符', null, { isLine: true });
+  def('bentConnector4', '肘形连接符', null, { isLine: true });
+  def('curvedConnector2', '曲线连接符', null, { isLine: true });
+  def('curvedConnector3', '曲线连接符', null, { isLine: true });
 
   function arrowHandles(dir) {
     if (dir === 'r') return [
@@ -501,30 +501,30 @@
 
   /* ---------- Office 2007+ presets that real-world decks use ---------- */
   const deg = (v) => v / 60000;
-  def('pie', 'Pie', (w, h, a) => { const p0 = ePt(w, h, deg(a.adj1)); return one(`M${n(w / 2)},${n(h / 2)} L${n(p0[0])},${n(p0[1])} ${arcSeg(w, h, deg(a.adj1), deg(a.adj2))} Z`); }, { adj: { adj1: 0, adj2: 16200000 } });
-  def('pieWedge', 'Pie Wedge', (w, h) => one(`M0,${n(h)} A${n(w)},${n(h)} 0 0 1 ${n(w)},0 L${n(w)},${n(h)} Z`));
-  def('chord', 'Chord', (w, h, a) => { const p0 = ePt(w, h, deg(a.adj1)); return one(`M${n(p0[0])},${n(p0[1])} ${arcSeg(w, h, deg(a.adj1), deg(a.adj2))} Z`); }, { adj: { adj1: 2700000, adj2: 16200000 } });
-  def('blockArc', 'Block Arc', (w, h, a) => {
+  def('pie', '饼形', (w, h, a) => { const p0 = ePt(w, h, deg(a.adj1)); return one(`M${n(w / 2)},${n(h / 2)} L${n(p0[0])},${n(p0[1])} ${arcSeg(w, h, deg(a.adj1), deg(a.adj2))} Z`); }, { adj: { adj1: 0, adj2: 16200000 } });
+  def('pieWedge', '扇形', (w, h) => one(`M0,${n(h)} A${n(w)},${n(h)} 0 0 1 ${n(w)},0 L${n(w)},${n(h)} Z`));
+  def('chord', '弦形', (w, h, a) => { const p0 = ePt(w, h, deg(a.adj1)); return one(`M${n(p0[0])},${n(p0[1])} ${arcSeg(w, h, deg(a.adj1), deg(a.adj2))} Z`); }, { adj: { adj1: 2700000, adj2: 16200000 } });
+  def('blockArc', '空心弧', (w, h, a) => {
     const st = deg(a.adj1), en = deg(a.adj2), t = (ss(w, h) * a.adj3) / 100000;
     const rx = w / 2, ry = h / 2, irx = Math.max(0, rx - t), iry = Math.max(0, ry - t);
     const o0 = ePt(w, h, st), i1 = ePt(w, h, en, irx, iry);
     return one(`M${n(o0[0])},${n(o0[1])} ${arcSeg(w, h, st, en)} L${n(i1[0])},${n(i1[1])} ${arcSegCCW(w, h, en, st, irx, iry)} Z`);
   }, { adj: { adj1: 10800000, adj2: 0, adj3: 25000 } });
-  def('teardrop', 'Teardrop', (w, h, a) => {
+  def('teardrop', '泪滴形', (w, h, a) => {
     const k = Math.min(2, a.adj / 100000);
     const tx = w / 2 + (w / 2) * k * Math.SQRT1_2 * 1.414, ty = h / 2 - (h / 2) * k * Math.SQRT1_2 * 1.414;
     return one(`M0,${n(h / 2)} A${n(w / 2)},${n(h / 2)} 0 0 1 ${n(w / 2)},0 Q${n((w / 2 + tx) / 2 + w * 0.05)},${n(ty / 2 - h * 0.02)} ${n(tx)},${n(ty)} Q${n(w + w * 0.02)},${n((ty + h / 2) / 2 - h * 0.05)} ${n(w)},${n(h / 2)} A${n(w / 2)},${n(h / 2)} 0 0 1 ${n(w / 2)},${n(h)} A${n(w / 2)},${n(h / 2)} 0 0 1 0,${n(h / 2)} Z`);
   }, { adj: { adj: 100000 } });
-  def('corner', 'L-Shape', (w, h, a) => { const y = (ss(w, h) * a.adj1) / 100000, x = (ss(w, h) * a.adj2) / 100000; return one(P([[0, 0], [x, 0], [x, h - y], [w, h - y], [w, h], [0, h]])); }, { adj: { adj1: 50000, adj2: 50000 } });
-  def('halfFrame', 'Half Frame', (w, h, a) => { const t1 = (ss(w, h) * a.adj1) / 100000, t2 = (ss(w, h) * a.adj2) / 100000; return one(P([[0, 0], [w, 0], [Math.max(t2, w - (t1 * w) / h), t1], [t2, t1], [t2, Math.max(t1, h - (t2 * h) / w)], [0, h]])); }, { adj: { adj1: 33333, adj2: 33333 } });
-  def('diagStripe', 'Diagonal Stripe', (w, h, a) => { const k = a.adj / 100000; return one(P([[0, h * k], [w * k, 0], [w, 0], [0, h]])); }, { adj: { adj: 50000 } });
-  def('plaque', 'Plaque', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(`M0,${n(x)} A${n(x)},${n(x)} 0 0 0 ${n(x)},0 L${n(w - x)},0 A${n(x)},${n(x)} 0 0 0 ${n(w)},${n(x)} L${n(w)},${n(h - x)} A${n(x)},${n(x)} 0 0 0 ${n(w - x)},${n(h)} L${n(x)},${n(h)} A${n(x)},${n(x)} 0 0 0 0,${n(h - x)} Z`); }, { adj: { adj: 16667 } });
-  def('bentUpArrow', 'Bent-Up Arrow', (w, h, a) => {
+  def('corner', 'L 形', (w, h, a) => { const y = (ss(w, h) * a.adj1) / 100000, x = (ss(w, h) * a.adj2) / 100000; return one(P([[0, 0], [x, 0], [x, h - y], [w, h - y], [w, h], [0, h]])); }, { adj: { adj1: 50000, adj2: 50000 } });
+  def('halfFrame', '半框', (w, h, a) => { const t1 = (ss(w, h) * a.adj1) / 100000, t2 = (ss(w, h) * a.adj2) / 100000; return one(P([[0, 0], [w, 0], [Math.max(t2, w - (t1 * w) / h), t1], [t2, t1], [t2, Math.max(t1, h - (t2 * h) / w)], [0, h]])); }, { adj: { adj1: 33333, adj2: 33333 } });
+  def('diagStripe', '斜条纹', (w, h, a) => { const k = a.adj / 100000; return one(P([[0, h * k], [w * k, 0], [w, 0], [0, h]])); }, { adj: { adj: 50000 } });
+  def('plaque', '缺角矩形', (w, h, a) => { const x = (ss(w, h) * a.adj) / 100000; return one(`M0,${n(x)} A${n(x)},${n(x)} 0 0 0 ${n(x)},0 L${n(w - x)},0 A${n(x)},${n(x)} 0 0 0 ${n(w)},${n(x)} L${n(w)},${n(h - x)} A${n(x)},${n(x)} 0 0 0 ${n(w - x)},${n(h)} L${n(x)},${n(h)} A${n(x)},${n(x)} 0 0 0 0,${n(h - x)} Z`); }, { adj: { adj: 16667 } });
+  def('bentUpArrow', '上弯箭头', (w, h, a) => {
     const th = (ss(w, h) * a.adj1) / 100000, hw = (ss(w, h) * a.adj2) / 100000 * 2, hl = (ss(w, h) * a.adj3) / 100000;
     const cx = w - hw / 2;
     return one(P([[0, h - th], [cx - th / 2, h - th], [cx - th / 2, hl], [w - hw, hl], [cx, 0], [w, hl], [cx + th / 2, hl], [cx + th / 2, h], [0, h]]));
   }, { adj: { adj1: 25000, adj2: 25000, adj3: 25000 } });
-  def('leftUpArrow', 'Left-Up Arrow', (w, h, a) => {
+  def('leftUpArrow', '左上双箭头', (w, h, a) => {
     const th = (ss(w, h) * a.adj1) / 100000, hw = (ss(w, h) * a.adj2) / 100000 * 2, hl = (ss(w, h) * a.adj3) / 100000;
     const cx = w - hw / 2, cy = h - hw / 2;
     return one(P([[0, cy], [hl, h - hw], [hl, cy - th / 2], [cx - th / 2, cy - th / 2], [cx - th / 2, hl], [w - hw, hl], [cx, 0], [w, hl], [cx + th / 2, hl], [cx + th / 2, cy + th / 2], [hl, cy + th / 2], [hl, h]]));
@@ -535,28 +535,28 @@
     return `M${n(tl)},0 L${n(w - tr)},0 ${c(tr, w, 0, w, tr, S.tr)} L${n(w)},${n(h - br)} ${c(br, w, h, w - br, h, S.br)} L${n(bl)},${n(h)} ${c(bl, 0, h, 0, h - bl, S.bl)} L0,${n(tl)} ${c(tl, 0, 0, tl, 0, S.tl)} Z`;
   };
   const sz = (w, h, v) => (ss(w, h) * v) / 100000;
-  def('snip1Rect', 'Snip Single Corner Rectangle', (w, h, a) => one(rcorners(w, h, 0, sz(w, h, a.adj), 0, 0, { tr: 1 })), { adj: { adj: 16667 } });
-  def('snip2SameRect', 'Snip Same Side Corner Rectangle', (w, h, a) => { const t = sz(w, h, a.adj1), b = sz(w, h, a.adj2); return one(rcorners(w, h, t, t, b, b, { tl: 1, tr: 1, br: 1, bl: 1 })); }, { adj: { adj1: 16667, adj2: 0 } });
-  def('snip2DiagRect', 'Snip Diagonal Corner Rectangle', (w, h, a) => { const d1 = sz(w, h, a.adj1), d2 = sz(w, h, a.adj2); return one(rcorners(w, h, d1, d2, d1, d2, { tl: 1, tr: 1, br: 1, bl: 1 })); }, { adj: { adj1: 0, adj2: 16667 } });
-  def('snipRoundRect', 'Snip and Round Single Corner Rectangle', (w, h, a) => one(rcorners(w, h, sz(w, h, a.adj1), sz(w, h, a.adj2), 0, 0, { tr: 1 })), { adj: { adj1: 16667, adj2: 16667 } });
-  def('round1Rect', 'Round Single Corner Rectangle', (w, h, a) => one(rcorners(w, h, 0, sz(w, h, a.adj), 0, 0)), { adj: { adj: 16667 } });
-  def('round2SameRect', 'Round Same Side Corner Rectangle', (w, h, a) => { const t = sz(w, h, a.adj1), b = sz(w, h, a.adj2); return one(rcorners(w, h, t, t, b, b)); }, { adj: { adj1: 16667, adj2: 0 } });
-  def('round2DiagRect', 'Round Diagonal Corner Rectangle', (w, h, a) => { const d1 = sz(w, h, a.adj1), d2 = sz(w, h, a.adj2); return one(rcorners(w, h, d1, d2, d1, d2)); }, { adj: { adj1: 16667, adj2: 0 } });
-  def('heptagon', 'Heptagon', (w, h) => one(regPoly(w, h, 7)));
-  def('decagon', 'Decagon', (w, h) => one(regPoly(w, h, 10, 0)));
-  def('dodecagon', 'Dodecagon', (w, h) => one(regPoly(w, h, 12, 15)));
-  def('star7', '7-Point Star', (w, h, a) => one(star(w, h, 7, a.adj / 50000)), { adj: { adj: 34601 } });
-  def('star10', '10-Point Star', (w, h, a) => one(star(w, h, 10, a.adj / 50000)), { adj: { adj: 42533 } });
-  def('star12', '12-Point Star', (w, h, a) => one(star(w, h, 12, a.adj / 50000)), { adj: { adj: 37500 } });
-  def('flowChartOnlineStorage', 'Flowchart: Stored Data', (w, h) => one(`M${n(w / 6)},0 L${n(w)},0 A${n(w / 6)},${n(h / 2)} 0 0 0 ${n(w)},${n(h)} L${n(w / 6)},${n(h)} A${n(w / 6)},${n(h / 2)} 0 0 1 ${n(w / 6)},0 Z`));
-  def('flowChartOfflineStorage', 'Flowchart: Offline Storage', (w, h) => one(P([[0, 0], [w, 0], [w / 2, h]])));
-  def('flowChartMagneticTape', 'Flowchart: Sequential Access Storage', (w, h) => one(`M${n(w / 2)},${n(h)} A${n(w / 2)},${n(h / 2)} 0 1 1 ${n(w * 0.854)},${n(h * 0.854)} L${n(w)},${n(h * 0.854)} L${n(w)},${n(h)} Z`));
-  def('mathPlus', 'Plus', (w, h, a) => { const t = sz(w, h, a.adj1) / 2, m = 0.1; const cx = w / 2, cy = h / 2; return one(P([[w * m, cy - t], [cx - t, cy - t], [cx - t, h * m], [cx + t, h * m], [cx + t, cy - t], [w * (1 - m), cy - t], [w * (1 - m), cy + t], [cx + t, cy + t], [cx + t, h * (1 - m)], [cx - t, h * (1 - m)], [cx - t, cy + t], [w * m, cy + t]])); }, { adj: { adj1: 23520 } });
-  def('mathMinus', 'Minus', (w, h, a) => { const t = (h * a.adj1) / 200000; return one(P([[w * 0.1, h / 2 - t], [w * 0.9, h / 2 - t], [w * 0.9, h / 2 + t], [w * 0.1, h / 2 + t]])); }, { adj: { adj1: 23520 } });
-  def('mathEqual', 'Equal', (w, h, a) => { const t = (h * a.adj1) / 100000, g = (h * a.adj2) / 200000; return [...one(P([[w * 0.1, h / 2 - g - t], [w * 0.9, h / 2 - g - t], [w * 0.9, h / 2 - g], [w * 0.1, h / 2 - g]])), ...one(P([[w * 0.1, h / 2 + g], [w * 0.9, h / 2 + g], [w * 0.9, h / 2 + g + t], [w * 0.1, h / 2 + g + t]]))]; }, { adj: { adj1: 23520, adj2: 11760 } });
+  def('snip1Rect', '剪去单角的矩形', (w, h, a) => one(rcorners(w, h, 0, sz(w, h, a.adj), 0, 0, { tr: 1 })), { adj: { adj: 16667 } });
+  def('snip2SameRect', '剪去同侧角的矩形', (w, h, a) => { const t = sz(w, h, a.adj1), b = sz(w, h, a.adj2); return one(rcorners(w, h, t, t, b, b, { tl: 1, tr: 1, br: 1, bl: 1 })); }, { adj: { adj1: 16667, adj2: 0 } });
+  def('snip2DiagRect', '剪去对角的矩形', (w, h, a) => { const d1 = sz(w, h, a.adj1), d2 = sz(w, h, a.adj2); return one(rcorners(w, h, d1, d2, d1, d2, { tl: 1, tr: 1, br: 1, bl: 1 })); }, { adj: { adj1: 0, adj2: 16667 } });
+  def('snipRoundRect', '剪去及圆化单角的矩形', (w, h, a) => one(rcorners(w, h, sz(w, h, a.adj1), sz(w, h, a.adj2), 0, 0, { tr: 1 })), { adj: { adj1: 16667, adj2: 16667 } });
+  def('round1Rect', '单圆角矩形', (w, h, a) => one(rcorners(w, h, 0, sz(w, h, a.adj), 0, 0)), { adj: { adj: 16667 } });
+  def('round2SameRect', '同侧圆角矩形', (w, h, a) => { const t = sz(w, h, a.adj1), b = sz(w, h, a.adj2); return one(rcorners(w, h, t, t, b, b)); }, { adj: { adj1: 16667, adj2: 0 } });
+  def('round2DiagRect', '对角圆角矩形', (w, h, a) => { const d1 = sz(w, h, a.adj1), d2 = sz(w, h, a.adj2); return one(rcorners(w, h, d1, d2, d1, d2)); }, { adj: { adj1: 16667, adj2: 0 } });
+  def('heptagon', '七边形', (w, h) => one(regPoly(w, h, 7)));
+  def('decagon', '十边形', (w, h) => one(regPoly(w, h, 10, 0)));
+  def('dodecagon', '十二边形', (w, h) => one(regPoly(w, h, 12, 15)));
+  def('star7', '七角星', (w, h, a) => one(star(w, h, 7, a.adj / 50000)), { adj: { adj: 34601 } });
+  def('star10', '十角星', (w, h, a) => one(star(w, h, 10, a.adj / 50000)), { adj: { adj: 42533 } });
+  def('star12', '十二角星', (w, h, a) => one(star(w, h, 12, a.adj / 50000)), { adj: { adj: 37500 } });
+  def('flowChartOnlineStorage', '流程图：存储数据', (w, h) => one(`M${n(w / 6)},0 L${n(w)},0 A${n(w / 6)},${n(h / 2)} 0 0 0 ${n(w)},${n(h)} L${n(w / 6)},${n(h)} A${n(w / 6)},${n(h / 2)} 0 0 1 ${n(w / 6)},0 Z`));
+  def('flowChartOfflineStorage', '流程图：脱机存储', (w, h) => one(P([[0, 0], [w, 0], [w / 2, h]])));
+  def('flowChartMagneticTape', '流程图：顺序访问存储', (w, h) => one(`M${n(w / 2)},${n(h)} A${n(w / 2)},${n(h / 2)} 0 1 1 ${n(w * 0.854)},${n(h * 0.854)} L${n(w)},${n(h * 0.854)} L${n(w)},${n(h)} Z`));
+  def('mathPlus', '加号', (w, h, a) => { const t = sz(w, h, a.adj1) / 2, m = 0.1; const cx = w / 2, cy = h / 2; return one(P([[w * m, cy - t], [cx - t, cy - t], [cx - t, h * m], [cx + t, h * m], [cx + t, cy - t], [w * (1 - m), cy - t], [w * (1 - m), cy + t], [cx + t, cy + t], [cx + t, h * (1 - m)], [cx - t, h * (1 - m)], [cx - t, cy + t], [w * m, cy + t]])); }, { adj: { adj1: 23520 } });
+  def('mathMinus', '减号', (w, h, a) => { const t = (h * a.adj1) / 200000; return one(P([[w * 0.1, h / 2 - t], [w * 0.9, h / 2 - t], [w * 0.9, h / 2 + t], [w * 0.1, h / 2 + t]])); }, { adj: { adj1: 23520 } });
+  def('mathEqual', '等于', (w, h, a) => { const t = (h * a.adj1) / 100000, g = (h * a.adj2) / 200000; return [...one(P([[w * 0.1, h / 2 - g - t], [w * 0.9, h / 2 - g - t], [w * 0.9, h / 2 - g], [w * 0.1, h / 2 - g]])), ...one(P([[w * 0.1, h / 2 + g], [w * 0.9, h / 2 + g], [w * 0.9, h / 2 + g + t], [w * 0.1, h / 2 + g + t]]))]; }, { adj: { adj1: 23520, adj2: 11760 } });
   const bar = (cx, cy, r, t, angDeg) => { const a = (angDeg * Math.PI) / 180, u = [Math.cos(a), Math.sin(a)], v = [-Math.sin(a), Math.cos(a)]; return P([[cx - u[0] * r - v[0] * t, cy - u[1] * r - v[1] * t], [cx + u[0] * r - v[0] * t, cy + u[1] * r - v[1] * t], [cx + u[0] * r + v[0] * t, cy + u[1] * r + v[1] * t], [cx - u[0] * r + v[0] * t, cy - u[1] * r + v[1] * t]]); };
-  def('mathMultiply', 'Multiply', (w, h, a) => { const t = sz(w, h, a.adj1) / 2, r = ss(w, h) * 0.42; return [{ d: bar(w / 2, h / 2, r, t, 45) + ' ' + bar(w / 2, h / 2, r, t, -45), fill: 'norm', stroke: true }]; }, { adj: { adj1: 23520 } });
-  def('mathDivide', 'Division', (w, h, a) => { const t = (h * a.adj1) / 200000, r = (h * a.adj3) / 100000 || h * 0.1, g = (h * a.adj2) / 100000; return [...one(P([[w * 0.1, h / 2 - t], [w * 0.9, h / 2 - t], [w * 0.9, h / 2 + t], [w * 0.1, h / 2 + t]])), ...one(ell(w / 2, h / 2 - t - g - r, r, r)), ...one(ell(w / 2, h / 2 + t + g + r, r, r))]; }, { adj: { adj1: 23520, adj2: 5880, adj3: 11760 } });
+  def('mathMultiply', '乘', (w, h, a) => { const t = sz(w, h, a.adj1) / 2, r = ss(w, h) * 0.42; return [{ d: bar(w / 2, h / 2, r, t, 45) + ' ' + bar(w / 2, h / 2, r, t, -45), fill: 'norm', stroke: true }]; }, { adj: { adj1: 23520 } });
+  def('mathDivide', '除法', (w, h, a) => { const t = (h * a.adj1) / 200000, r = (h * a.adj3) / 100000 || h * 0.1, g = (h * a.adj2) / 100000; return [...one(P([[w * 0.1, h / 2 - t], [w * 0.9, h / 2 - t], [w * 0.9, h / 2 + t], [w * 0.1, h / 2 + t]])), ...one(ell(w / 2, h / 2 - t - g - r, r, r)), ...one(ell(w / 2, h / 2 + t + g + r, r, r))]; }, { adj: { adj1: 23520, adj2: 5880, adj3: 11760 } });
 
   /* ---------- text rectangles (after presetShapeDefinitions, simplified) ---------- */
   const inset = (fx, fy, fr, fb) => (w, h) => [w * fx, h * fy, w * fr, h * fb];
@@ -616,7 +616,60 @@
   for (const k in TR) if (G[k] && !G[k].text) G[k].text = TR[k];
 
   /* ---------- public API ---------- */
+  /* Preset pattern fills (a:pattFill prst, ECMA-376 ST_PresetPatternVal): 8×8 bitmaps, rows top to bottom, high bit
+     left, anchored at the shape's top-left corner. Taken from what PowerPoint draws: its PDF of a deck with each preset
+     in a rectangle embeds every tile as a 64×64 image (tools/patterns/). */
+  const PATTERNS = {
+    pct5: [0x80, 0, 0, 0, 0x08, 0, 0, 0], pct10: [0x80, 0, 0x08, 0, 0x80, 0, 0x08, 0], pct20: [0x88, 0, 0x22, 0, 0x88, 0, 0x22, 0],
+    pct25: [0x88, 0x22, 0x88, 0x22, 0x88, 0x22, 0x88, 0x22], pct30: [0xAA, 0x44, 0xAA, 0x11, 0xAA, 0x44, 0xAA, 0x11],
+    pct40: [0xAA, 0x55, 0xAA, 0x51, 0xAA, 0x55, 0xAA, 0x15], pct50: [0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55],
+    pct60: [0xEE, 0x55, 0xBB, 0x55, 0xEE, 0x55, 0xBB, 0x55], pct70: [0x77, 0xDD, 0x77, 0xDD, 0x77, 0xDD, 0x77, 0xDD],
+    pct75: [0x77, 0xFF, 0xDD, 0xFF, 0x77, 0xFF, 0xDD, 0xFF], pct80: [0xEF, 0xFF, 0xFE, 0xFF, 0xEF, 0xFF, 0xFE, 0xFF],
+    pct90: [0xFF, 0xFF, 0xFF, 0xF7, 0xFF, 0xFF, 0xFF, 0x7F], horz: [0xFF, 0, 0, 0, 0, 0, 0, 0], vert: [0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80],
+    ltHorz: [0xFF, 0, 0, 0, 0xFF, 0, 0, 0], ltVert: [0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88], dkHorz: [0xFF, 0xFF, 0, 0, 0xFF, 0xFF, 0, 0],
+    dkVert: [0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC], narHorz: [0xFF, 0, 0xFF, 0, 0xFF, 0, 0xFF, 0],
+    narVert: [0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55], dashHorz: [0xF0, 0, 0, 0, 0x0F, 0, 0, 0],
+    dashVert: [0x80, 0x80, 0x80, 0x80, 0x08, 0x08, 0x08, 0x08], cross: [0xFF, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80],
+    dnDiag: [0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01], upDiag: [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80],
+    ltDnDiag: [0x88, 0x44, 0x22, 0x11, 0x88, 0x44, 0x22, 0x11], ltUpDiag: [0x11, 0x22, 0x44, 0x88, 0x11, 0x22, 0x44, 0x88],
+    dkDnDiag: [0xCC, 0x66, 0x33, 0x99, 0xCC, 0x66, 0x33, 0x99], dkUpDiag: [0x33, 0x66, 0xCC, 0x99, 0x33, 0x66, 0xCC, 0x99],
+    wdDnDiag: [0xC1, 0xE0, 0x70, 0x38, 0x1C, 0x0E, 0x07, 0x83], wdUpDiag: [0x83, 0x07, 0x0E, 0x1C, 0x38, 0x70, 0xE0, 0xC1],
+    dashDnDiag: [0, 0, 0x88, 0x44, 0x22, 0x11, 0, 0], dashUpDiag: [0, 0, 0x11, 0x22, 0x44, 0x88, 0, 0],
+    diagCross: [0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81], smCheck: [0x99, 0x66, 0x66, 0x99, 0x99, 0x66, 0x66, 0x99],
+    lgCheck: [0xF0, 0xF0, 0xF0, 0xF0, 0x0F, 0x0F, 0x0F, 0x0F], smGrid: [0xFF, 0x88, 0x88, 0x88, 0xFF, 0x88, 0x88, 0x88],
+    lgGrid: [0xFF, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80], dotGrid: [0xAA, 0, 0x80, 0, 0x80, 0, 0x80, 0],
+    smConfetti: [0x80, 0x08, 0x40, 0x02, 0x10, 0x01, 0x20, 0x04], lgConfetti: [0xB1, 0x30, 0x03, 0x1B, 0xD8, 0xC0, 0x0C, 0x8D],
+    horzBrick: [0xFF, 0x80, 0x80, 0x80, 0xFF, 0x08, 0x08, 0x08], diagBrick: [0x01, 0x02, 0x04, 0x08, 0x18, 0x24, 0x42, 0x81],
+    solidDmnd: [0x10, 0x38, 0x7C, 0xFE, 0x7C, 0x38, 0x10, 0], openDmnd: [0x82, 0x44, 0x28, 0x10, 0x28, 0x44, 0x82, 0x01],
+    dotDmnd: [0x80, 0, 0x22, 0, 0x08, 0, 0x22, 0], plaid: [0xAA, 0x55, 0xAA, 0x55, 0xF0, 0xF0, 0xF0, 0xF0],
+    sphere: [0x77, 0x89, 0x8F, 0x8F, 0x77, 0x98, 0xF8, 0xF8], weave: [0x88, 0x54, 0x22, 0x45, 0x88, 0x14, 0x22, 0x51],
+    divot: [0, 0x10, 0x08, 0x10, 0, 0x80, 0x01, 0x80], shingle: [0x03, 0x84, 0x48, 0x30, 0x0C, 0x02, 0x01, 0x01],
+    wave: [0, 0x18, 0x25, 0xC0, 0, 0x18, 0x25, 0xC0], trellis: [0xFF, 0x66, 0xFF, 0x99, 0xFF, 0x66, 0xFF, 0x99],
+    zigZag: [0x81, 0x42, 0x24, 0x18, 0x81, 0x42, 0x24, 0x18],
+  };
+  /* each pattern's name, as Office's pattern pickers show it (UI text, translated where it is shown) */
+  const N = (x) => x;
+  const PATTERN_NAMES = { pct5: '5%', pct10: '10%', pct20: '20%', pct25: '25%', pct30: '30%', pct40: '40%', pct50: '50%', pct60: '60%', pct70: '70%', pct75: '75%', pct80: '80%', pct90: '90%',
+    horz: N('水平'), vert: N('垂直'), ltHorz: N('浅色水平线'), ltVert: N('浅色垂直线'), dkHorz: N('深色水平线'), dkVert: N('深色垂直线'),
+    narHorz: N('窄水平线'), narVert: N('窄垂直线'), dashHorz: N('水平虚线'), dashVert: N('垂直虚线'), cross: N('十字形'),
+    dnDiag: N('下斜线'), upDiag: N('上斜线'), ltDnDiag: N('浅色下斜线'), ltUpDiag: N('浅色上斜线'),
+    dkDnDiag: N('深色下斜线'), dkUpDiag: N('深色上斜线'), wdDnDiag: N('宽下斜线'), wdUpDiag: N('宽上斜线'),
+    dashDnDiag: N('下斜虚线'), dashUpDiag: N('上斜虚线'), diagCross: N('对角交叉'), smCheck: N('小棋盘'),
+    lgCheck: N('大棋盘'), smGrid: N('小网格'), lgGrid: N('大网格'), dotGrid: N('点状网格'), smConfetti: N('小纸屑'),
+    lgConfetti: N('大纸屑'), horzBrick: N('水平砖形'), diagBrick: N('斜向砖形'), solidDmnd: N('实心菱形'), openDmnd: N('空心菱形'),
+    dotDmnd: N('点状菱形'), plaid: N('格子布'), sphere: N('球体'), weave: N('编织'), divot: N('草皮'), shingle: N('木瓦'), wave: N('波浪'),
+    trellis: N('棚架'), zigZag: N('之字形') };
+  /** SVG path of a pattern's set bits, one 1×1 square each, in an 8×8 box */
+  const patternPath = (bits) => {
+    let d = '';
+    bits.forEach((row, y) => { for (let x = 0; x < 8; x++) if (row & (0x80 >> x)) d += `M${x},${y}h1v1h-1z`; });
+    return d;
+  };
+
   L.geom = {
+    PATTERNS,
+    PATTERN_NAMES,
+    patternPath,
     presets: G,
     get: (name) => G[name] || G.rect,
     isLine: (name) => !!(G[name] && G[name].isLine),
@@ -652,14 +705,14 @@
       sh.w = Math.abs(p2[0] - p1[0]); sh.h = Math.abs(p2[1] - p1[1]);
       sh.flipH = p1[0] > p2[0]; sh.flipV = p1[1] > p2[1];
     },
-    /* AutoShapes menu groups (2003 order) */
+    /* AutoShapes menu groups (2003 order), by their English names (UI text, translated where shown) */
     MENU: {
-      'Basic Shapes': ['rect', 'parallelogram', 'trapezoid', 'diamond', 'roundRect', 'octagon', 'triangle', 'rtTriangle', 'ellipse', 'hexagon', 'plus', 'pentagon', 'can', 'cube', 'bevel', 'foldedCorner', 'smileyFace', 'donut', 'noSmoking', 'heart', 'lightningBolt', 'sun', 'moon', 'arc', 'bracketPair', 'bracePair', 'leftBracket', 'rightBracket', 'leftBrace', 'rightBrace', 'frame', 'cloud'],
-      'Block Arrows': ['rightArrow', 'leftArrow', 'upArrow', 'downArrow', 'leftRightArrow', 'upDownArrow', 'quadArrow', 'bentArrow', 'uturnArrow', 'circularArrow', 'stripedRightArrow', 'notchedRightArrow', 'homePlate', 'chevron'],
-      'Flowchart': ['flowChartProcess', 'flowChartAlternateProcess', 'flowChartDecision', 'flowChartInputOutput', 'flowChartPredefinedProcess', 'flowChartInternalStorage', 'flowChartDocument', 'flowChartMultidocument', 'flowChartTerminator', 'flowChartPreparation', 'flowChartManualInput', 'flowChartManualOperation', 'flowChartConnector', 'flowChartOffpageConnector', 'flowChartPunchedCard', 'flowChartPunchedTape', 'flowChartSummingJunction', 'flowChartOr', 'flowChartCollate', 'flowChartSort', 'flowChartExtract', 'flowChartMerge', 'flowChartDelay', 'flowChartMagneticDisk', 'flowChartDisplay'],
-      'Stars and Banners': ['irregularSeal1', 'irregularSeal2', 'star4', 'star5', 'star6', 'star8', 'star16', 'star24', 'star32', 'ribbon2', 'verticalScroll', 'horizontalScroll', 'wave'],
-      'Callouts': ['wedgeRectCallout', 'wedgeRoundRectCallout', 'wedgeEllipseCallout', 'cloudCallout'],
-      'Action Buttons': ['actionButtonBlank', 'actionButtonHome', 'actionButtonHelp', 'actionButtonInformation', 'actionButtonBackPrevious', 'actionButtonForwardNext', 'actionButtonBeginning', 'actionButtonEnd', 'actionButtonReturn', 'actionButtonDocument', 'actionButtonSound', 'actionButtonMovie'],
+      [N('基本形状')]: ['rect', 'parallelogram', 'trapezoid', 'diamond', 'roundRect', 'octagon', 'triangle', 'rtTriangle', 'ellipse', 'hexagon', 'plus', 'pentagon', 'can', 'cube', 'bevel', 'foldedCorner', 'smileyFace', 'donut', 'noSmoking', 'heart', 'lightningBolt', 'sun', 'moon', 'arc', 'bracketPair', 'bracePair', 'leftBracket', 'rightBracket', 'leftBrace', 'rightBrace', 'frame', 'cloud'],
+      [N('箭头总汇')]: ['rightArrow', 'leftArrow', 'upArrow', 'downArrow', 'leftRightArrow', 'upDownArrow', 'quadArrow', 'bentArrow', 'uturnArrow', 'circularArrow', 'stripedRightArrow', 'notchedRightArrow', 'homePlate', 'chevron'],
+      [N('流程图')]: ['flowChartProcess', 'flowChartAlternateProcess', 'flowChartDecision', 'flowChartInputOutput', 'flowChartPredefinedProcess', 'flowChartInternalStorage', 'flowChartDocument', 'flowChartMultidocument', 'flowChartTerminator', 'flowChartPreparation', 'flowChartManualInput', 'flowChartManualOperation', 'flowChartConnector', 'flowChartOffpageConnector', 'flowChartPunchedCard', 'flowChartPunchedTape', 'flowChartSummingJunction', 'flowChartOr', 'flowChartCollate', 'flowChartSort', 'flowChartExtract', 'flowChartMerge', 'flowChartDelay', 'flowChartMagneticDisk', 'flowChartDisplay'],
+      [N('星与旗帜')]: ['irregularSeal1', 'irregularSeal2', 'star4', 'star5', 'star6', 'star8', 'star16', 'star24', 'star32', 'ribbon2', 'verticalScroll', 'horizontalScroll', 'wave'],
+      [N('标注')]: ['wedgeRectCallout', 'wedgeRoundRectCallout', 'wedgeEllipseCallout', 'cloudCallout'],
+      [N('动作按钮')]: ['actionButtonBlank', 'actionButtonHome', 'actionButtonHelp', 'actionButtonInformation', 'actionButtonBackPrevious', 'actionButtonForwardNext', 'actionButtonBeginning', 'actionButtonEnd', 'actionButtonReturn', 'actionButtonDocument', 'actionButtonSound', 'actionButtonMovie'],
     },
     /* small SVG preview of a preset (for menus) */
     preview(name, size) {

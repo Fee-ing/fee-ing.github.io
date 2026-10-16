@@ -129,7 +129,7 @@
           const p = X.source.get(anchor);
           changes.push({ start: p.start, end: p.end, value: i ? '' : '<pc:sldMkLst xmlns:pc="' + PC + '"><pc:docMk/><pc:sldMk cId="' + state.creationId(slide) + '" sldId="' + sldId + '"/></pc:sldMkLst>' });
         });
-        w.loss({ id: 'comment-anchor:' + slide.id + ':' + at(cm, 'id'), what: absent ? 'A comment on a deleted object is now attached to its slide.' : 'A comment on edited text is now attached to its slide.', where: 'Slide comments', action: 'conversion' });
+        w.loss({ id: 'comment-anchor:' + slide.id + ':' + at(cm, 'id'), what: absent ? '已删除对象上的批注现已附加到其所在的幻灯片。' : '已编辑文本上的批注现已附加到其所在的幻灯片。', where: '幻灯片批注', action: 'conversion' });
       }
     }
     if (changes.length) xml = K.patch(X.source.get(tree).text, changes);
@@ -177,7 +177,7 @@
         const id = w.rels(ctx.part).add(record.type, K.relative(ctx.part, target), false, copy ? undefined : record.id);
         relIds.set(record.id, id);
       } catch (error) {
-        w.loss({ id: 'comments:' + slide.id + ':' + record.part, what: 'Comments on this slide couldn\'t be kept and will be removed.', detail: error.message, where: record.part, place: ctx.place, action: 'drop', notify: !L.opc.sourceMissing(error) });
+        w.loss({ id: 'comments:' + slide.id + ':' + record.part, what: '此幻灯片上的批注无法保留，将被删除。', detail: error.message, where: record.part, place: ctx.place, action: 'drop', notify: !L.opc.sourceMissing(error) });
       }
     }
     const extensions = (slide.keep?.commentExt || []).flatMap(f => {
@@ -205,7 +205,7 @@
     // A source part is dropped only when none of its original owners survives.
     const live = new Set(pres.slides.filter(s => s.keep?.source && s.keep.source === pres.pkg?.id && !s.keep.copy).flatMap(s => (s.keep.comments || []).map(r => r.part)));
     for (const name of pres.pkg?.names || []) for (const r of pres.pkg.rels(name).filter(r => kind(r) >= 0 && !r.external)) {
-      if (!live.has(r.part)) w.omit(r.part, 'The slide containing these comments was deleted.');
+      if (!live.has(r.part)) w.omit(r.part, '包含这些批注的幻灯片已删除。');
     }
   };
 })();

@@ -135,7 +135,7 @@
   const esc = (s) => L.xml.esc(String(s));
   const hex = (c) => String(c || '#000000').replace('#', '').toUpperCase();
   function cacheXml(kind, vals, fmt) {
-    if (kind === 'num') return `<c:numCache><c:formatCode>${esc(fmt || '常规')}</c:formatCode><c:ptCount val="${vals.length}"/>` + vals.map((v, i) => (typeof v === 'number' && isFinite(v) ? `<c:pt idx="${i}"><c:v>${v}</c:v></c:pt>` : '')).join('') + '</c:numCache>';
+    if (kind === 'num') return `<c:numCache><c:formatCode>${esc(fmt || 'General')}</c:formatCode><c:ptCount val="${vals.length}"/>` + vals.map((v, i) => (typeof v === 'number' && isFinite(v) ? `<c:pt idx="${i}"><c:v>${v}</c:v></c:pt>` : '')).join('') + '</c:numCache>';
     return `<c:strCache><c:ptCount val="${vals.length}"/>` + vals.map((v, i) => `<c:pt idx="${i}"><c:v>${esc(v == null ? '' : v)}</c:v></c:pt>`).join('') + '</c:strCache>';
   }
   const richTitle = (text, sz, bold) => `<c:title><c:tx><c:rich><a:bodyPr/><a:lstStyle/><a:p><a:pPr><a:defRPr sz="${sz}" b="${bold ? 1 : 0}"/></a:pPr><a:r><a:rPr lang="en-US" sz="${sz}" b="${bold ? 1 : 0}"/><a:t>${esc(text)}</a:t></a:r></a:p></c:rich></c:tx><c:overlay val="0"/></c:title>`;
@@ -150,7 +150,7 @@
     let ser = '';
     m.series.forEach((s, i) => {
       const col = hex(s.color || PAL2003[i % 8]);
-      const name = s.nameRef ? `<c:tx><c:strRef><c:f>${esc(s.nameRef)}</c:f>${cacheXml('str', [s.name])}</c:strRef></c:tx>` : `<c:tx><c:v>${esc(s.name || '系列' + (i + 1))}</c:v></c:tx>`;
+      const name = s.nameRef ? `<c:tx><c:strRef><c:f>${esc(s.nameRef)}</c:f>${cacheXml('str', [s.name])}</c:strRef></c:tx>` : `<c:tx><c:v>${esc(s.name || 'Series' + (i + 1))}</c:v></c:tx>`;
       const isLine = /^line/.test(k) || isScatter;
       const sp = k === 'scatter' ? '<c:spPr><a:ln w="28575"><a:noFill/></a:ln></c:spPr>' : isLine ? `<c:spPr><a:ln w="28575"><a:solidFill><a:srgbClr val="${col}"/></a:solidFill></a:ln></c:spPr>` : `<c:spPr><a:solidFill><a:srgbClr val="${col}"/></a:solidFill><a:ln w="12700"><a:solidFill><a:srgbClr val="000000"/></a:solidFill></a:ln></c:spPr>`;
       let marker = '';
@@ -183,11 +183,11 @@
       const xTitle = chart.axTitleX ? (horizBar ? richTitleV(chart.axTitleX) : richTitle(chart.axTitleX, 1000, true)) : '';
       const yTitle = chart.axTitleY ? (horizBar ? richTitle(chart.axTitleY, 1000, true) : richTitleV(chart.axTitleY)) : '';
       if (isScatter) {
-        axes = `<c:valAx><c:axId val="${AX1}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="b"/>${xTitle}<c:numFmt formatCode="常规" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX2}"/><c:crosses val="autoZero"/><c:crossBetween val="midCat"/></c:valAx>` +
-          `<c:valAx><c:axId val="${AX2}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="l"/>${grid}${yTitle}<c:numFmt formatCode="常规" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX1}"/><c:crosses val="autoZero"/><c:crossBetween val="midCat"/></c:valAx>`;
+        axes = `<c:valAx><c:axId val="${AX1}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="b"/>${xTitle}<c:numFmt formatCode="General" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX2}"/><c:crosses val="autoZero"/><c:crossBetween val="midCat"/></c:valAx>` +
+          `<c:valAx><c:axId val="${AX2}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="l"/>${grid}${yTitle}<c:numFmt formatCode="General" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX1}"/><c:crosses val="autoZero"/><c:crossBetween val="midCat"/></c:valAx>`;
       } else {
-        axes = `<c:catAx><c:axId val="${AX1}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="${catPos}"/>${xTitle}<c:numFmt formatCode="常规" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX2}"/><c:crosses val="autoZero"/><c:auto val="1"/><c:lblAlgn val="ctr"/><c:lblOffset val="100"/><c:noMultiLvlLbl val="0"/></c:catAx>` +
-          `<c:valAx><c:axId val="${AX2}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="${valPos}"/>${grid}${yTitle}<c:numFmt formatCode="${/Pct$/.test(k) ? '0%' : '常规'}" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX1}"/><c:crosses val="autoZero"/><c:crossBetween val="${/^area/.test(k) ? 'midCat' : 'between'}"/></c:valAx>`;
+        axes = `<c:catAx><c:axId val="${AX1}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="${catPos}"/>${xTitle}<c:numFmt formatCode="General" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX2}"/><c:crosses val="autoZero"/><c:auto val="1"/><c:lblAlgn val="ctr"/><c:lblOffset val="100"/><c:noMultiLvlLbl val="0"/></c:catAx>` +
+          `<c:valAx><c:axId val="${AX2}"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="0"/><c:axPos val="${valPos}"/>${grid}${yTitle}<c:numFmt formatCode="${/Pct$/.test(k) ? '0%' : 'General'}" sourceLinked="1"/><c:majorTickMark val="out"/><c:minorTickMark val="none"/><c:tickLblPos val="nextTo"/>${axLine}<c:crossAx val="${AX1}"/><c:crosses val="autoZero"/><c:crossBetween val="${/^area/.test(k) ? 'midCat' : 'between'}"/></c:valAx>`;
       }
     }
     const plotFill = chart.plotBg && chart.plotBg.t === 'solid' ? `<c:spPr><a:solidFill><a:srgbClr val="${hex(chart.plotBg.color)}"/></a:solidFill><a:ln w="12700"><a:solidFill><a:srgbClr val="808080"/></a:solidFill></a:ln></c:spPr>` : !chart.imported && !isPie ? '<c:spPr><a:solidFill><a:srgbClr val="C0C0C0"/></a:solidFill><a:ln w="12700"><a:solidFill><a:srgbClr val="808080"/></a:solidFill></a:ln></c:spPr>' : '';
@@ -215,9 +215,9 @@
     if (byRows == null) byRows = rg.c2 - c0 > rg.r2 - r0; /* Excel: series in the longer direction's perpendicular */
     const series = [];
     if (!byRows) {
-      for (let c = c0; c <= rg.c2; c++) series.push({ nameRef: hasHeadRow ? q(rg.r1, c, rg.r1, c) : null, name: hasHeadRow ? String(C.cellValue(sh, rg.r1, c) == null ? '' : C.cellValue(sh, rg.r1, c)) : '系列' + (c - c0 + 1), catRef: hasHeadCol ? q(r0, rg.c1, rg.r2, rg.c1) : null, valRef: q(r0, c, rg.r2, c), vals: [] });
+      for (let c = c0; c <= rg.c2; c++) series.push({ nameRef: hasHeadRow ? q(rg.r1, c, rg.r1, c) : null, name: hasHeadRow ? String(C.cellValue(sh, rg.r1, c) == null ? '' : C.cellValue(sh, rg.r1, c)) : 'Series' + (c - c0 + 1), catRef: hasHeadCol ? q(r0, rg.c1, rg.r2, rg.c1) : null, valRef: q(r0, c, rg.r2, c), vals: [] });
     } else {
-      for (let r = r0; r <= rg.r2; r++) series.push({ nameRef: hasHeadCol ? q(r, rg.c1, r, rg.c1) : null, name: hasHeadCol ? String(C.cellValue(sh, r, rg.c1) == null ? '' : C.cellValue(sh, r, rg.c1)) : '系列' + (r - r0 + 1), catRef: hasHeadRow ? q(rg.r1, c0, rg.r1, rg.c2) : null, valRef: q(r, c0, r, rg.c2), vals: [] });
+      for (let r = r0; r <= rg.r2; r++) series.push({ nameRef: hasHeadCol ? q(r, rg.c1, r, rg.c1) : null, name: hasHeadCol ? String(C.cellValue(sh, r, rg.c1) == null ? '' : C.cellValue(sh, r, rg.c1)) : 'Series' + (r - r0 + 1), catRef: hasHeadRow ? q(rg.r1, c0, rg.r1, rg.c2) : null, valRef: q(r, c0, r, rg.c2), vals: [] });
     }
     series.forEach((s, i) => { s.color = PAL2003[i % 8]; });
     void wb;
@@ -226,14 +226,16 @@
 
   /* ------------------------------------------------------------ Chart Wizard */
   const TYPES = [
-    { id: 'column', label: '柱形图', subs: [['col', '簇状柱形图'], ['colStacked', '堆积柱形图'], ['colPct', '100% Stacked Column']] },
+    { id: 'column', label: '柱形图', subs: [['col', '簇状柱形图'], ['colStacked', '堆积柱形图'], ['colPct', L.N('百分比堆积柱形图')]] },
     { id: 'bar', label: '条形图', subs: [['bar', '簇状条形图'], ['barStacked', '堆积条形图']] },
-    { id: 'line', label: '折线图', subs: [['line', '折线图'], ['lineMarkers', '折线图，在每个数据值处显示标记']] },
-    { id: 'pie', label: '饼图', subs: [['pie', '饼图']] },
+    { id: 'line', label: '折线图', subs: [['line', L.N('折线图')], ['lineMarkers', '在各数据值处显示标记的折线图']] },
+    { id: 'pie', label: '饼图', subs: [['pie', L.N('饼图')]] },
     { id: 'scatter', label: 'XY（散点图）', subs: [['scatter', '散点图。比较成对的数值。']] },
-    { id: 'area', label: '面积图', subs: [['area', '面积图'], ['areaStacked', '堆积面积图']] },
-    { id: 'doughnut', label: '圆环图', subs: [['doughnut', '圆环图']] },
+    { id: 'area', label: '面积图', subs: [['area', L.N('面积图')], ['areaStacked', '堆积面积图']] },
+    { id: 'doughnut', label: '圆环图', subs: [['doughnut', L.N('圆环图')]] },
   ];
+  /** a chart sub-type's name (English, shown translated) */
+  const subName = (k) => { for (const t of TYPES) for (const [id, l] of t.subs) if (id === k) return l; return k; };
   const typeIcon = (kind) => {
     const s = 40;
     const bars = (pts, horiz) => pts.map(([x, y, w, hh, col]) => (horiz ? `<rect x="${y}" y="${x}" width="${hh}" height="${w}" fill="${col}" stroke="#000" stroke-width=".5"/>` : `<rect x="${x}" y="${s - 4 - hh - y}" width="${w}" height="${hh}" fill="${col}" stroke="#000" stroke-width=".5"/>`)).join('');
@@ -262,7 +264,7 @@
     const kinds = TYPES.flatMap((t) => t.subs.map((s) => s[0]));
     L.ui.openMenu([{ custom: (close) => {
       const g = L.h('div', { class: 'ctype-grid' });
-      for (const k of kinds) { const b = L.h('button', { type: 'button', class: 'ctype-b', html: typeIcon(k), 'data-tip': k, 'aria-label': k }); b.addEventListener('click', () => { close(); if (d && d.kind === 'chart' && d.chart) CW.setKind(d, k); }); g.appendChild(b); }
+      for (const k of kinds) { const b = L.h('button', { type: 'button', class: 'ctype-b', html: typeIcon(k), 'data-tip': subName(k), 'aria-label': subName(k) }); b.addEventListener('click', () => { close(); if (d && d.kind === 'chart' && d.chart) CW.setKind(d, k); }); g.appendChild(b); }
       return g;
     } }], at);
   };
@@ -274,7 +276,7 @@
     L.grid.selectObject(nd); L.grid.syncObjects(true);
   };
   /**
-   * The four-step Chart Wizard. opts: {sheet: true to start with "作为新工作表插入", edit: drawing to edit}
+   * The four-step Chart Wizard. opts: {sheet: true to start with "As new sheet", edit: drawing to edit}
    */
   CW.open = function (opts) {
     opts = opts || {};
@@ -289,7 +291,7 @@
       range: editing ? null : F.quoteSheet(sh.name) + '!' + F.absRangeName(rg), byRows: null,
       title: editing ? editing.chart.title || '' : '', axX: editing ? editing.chart.axTitleX || '' : '', axY: editing ? editing.chart.axTitleY || '' : '',
       gridY: editing ? editing.chart.gridY !== false : true, legend: editing ? editing.chart.legend || 'none' : 'r', labels: editing ? !!editing.chart.labels : false,
-      where: opts.sheet ? 'sheet' : 'object', sheetName: wb.nextSheetName('图表'),
+      where: opts.sheet ? 'sheet' : 'object', sheetName: wb.nextSheetName('Chart'),
       series: editing ? editing.chart.series.map((s) => Object.assign({}, s)) : null,
     };
     const body = h('div', { class: 'cw' });
@@ -331,18 +333,18 @@
         subs.textContent = '';
         for (const [k, label] of curType.subs) {
           const b = h('button', { type: 'button', class: 'cw-sub' + (k === st.kind ? ' on' : ''), html: typeIcon(k), 'aria-label': label });
-          b.addEventListener('click', () => { st.kind = k; desc.textContent = label; drawSubs(); drawPreview(); });
+          b.addEventListener('click', () => { st.kind = k; desc.textContent = L.t(label); drawSubs(); drawPreview(); });
           subs.appendChild(b);
         }
         const cur = curType.subs.find((s) => s[0] === st.kind);
-        desc.textContent = cur ? cur[1] : '';
+        desc.textContent = cur ? L.t(cur[1]) : '';
       };
       for (const t of TYPES) {
-        const it = h('div', { class: 'cw-type' + (t === curType ? ' on' : ''), role: 'option', html: typeIcon(t.subs[0][0]).replace(/width="40" height="40"/, 'width="20" height="20"') + `<span>${t.label}</span>` });
+        const it = h('div', { class: 'cw-type' + (t === curType ? ' on' : ''), role: 'option', html: typeIcon(t.subs[0][0]).replace(/width="40" height="40"/, 'width="20" height="20"') + `<span>${L.esc(L.t(t.label))}</span>` });
         it.addEventListener('click', () => { curType = t; if (!t.subs.some((s) => s[0] === st.kind)) st.kind = t.subs[0][0]; L.$$('.cw-type', list).forEach((x) => x.classList.toggle('on', x === it)); drawSubs(); drawPreview(); });
         list.appendChild(it);
       }
-      stepBox.append(h('div', { class: 'cw-cols' }, h('div', { class: 'col' }, h('label', { text: '图表类型:' }), list), h('div', { class: 'col' }, h('label', { text: '子图表类型:' }), subs, desc)));
+      stepBox.append(h('div', { class: 'cw-cols' }, h('div', { class: 'col' }, h('label', { text: '图表类型：' }), list), h('div', { class: 'col' }, h('label', { text: '子图表类型：' }), subs, desc)));
       drawSubs();
     }
     function step2() {
@@ -350,47 +352,47 @@
       const inp = h('input', { type: 'text', value: st.range || '', style: 'width:100%' });
       inp.addEventListener('change', () => { st.range = inp.value; st.rangeChanged = true; st.byRows = null; drawPreview(); });
       const rows = ui.radio('cw-by', '行(&R)', st.byRows === true, () => { st.byRows = true; st.rangeChanged = true; drawPreview(); });
-      const cols = ui.radio('cw-by', '列(&M)', st.byRows !== true, () => { st.byRows = false; st.rangeChanged = true; drawPreview(); });
-      stepBox.append(ui.field('数据区域(&D):', inp), h('div', { class: 'row', style: 'gap:16px' }, h('span', { text: '系列产生在:' }), rows, cols));
-      if (editing && !st.rangeChanged) stepBox.appendChild(h('div', { class: 'hint', text: '若要保持图表的当前系列，请让区域留空。' }));
+      const cols = ui.radio('cw-by', '列(&m)', st.byRows !== true, () => { st.byRows = false; st.rangeChanged = true; drawPreview(); });
+      stepBox.append(ui.field('数据区域(&D)：', inp), h('div', { class: 'row', style: 'gap:16px' }, h('span', { text: '序列产生在：' }), rows, cols));
+      if (editing && !st.rangeChanged) stepBox.appendChild(h('div', { class: 'hint', text: '将区域留空可保留图表的当前数据系列。' }));
     }
     function step3() {
       stepBox.textContent = '';
       const tIn = (key, label) => { const i = h('input', { type: 'text', value: st[key], style: 'width:100%' }); i.addEventListener('input', () => { st[key] = i.value; drawPreview(); }); return ui.field(label, i); };
-      const titles = h('div', { class: 'col' }, tIn('title', '图表标题(&T):'), tIn('axX', '分类(X)轴(&C):'), tIn('axY', '数值(Y)轴(&V):'));
+      const titles = h('div', { class: 'col' }, tIn('title', '图表标题(&t)：'), tIn('axX', '分类 (X) 轴(&C)：'), tIn('axY', '数值 (Y) 轴(&V)：'));
       const grid = h('div', { class: 'col' }, ui.check('主要网格线（数值轴）(&M)', st.gridY, (v) => { st.gridY = v; drawPreview(); }));
       const leg = h('div', { class: 'col' }, ui.check('显示图例(&S)', st.legend !== 'none', (v) => { st.legend = v ? 'r' : 'none'; drawPreview(); }),
-        ...[['b', '&Bottom'], ['tr', 'C&orner'], ['t', 'To&p'], ['r', '&Right'], ['l', '&Left']].map(([k, l]) => ui.radio('cw-leg', l, st.legend === k, () => { st.legend = k; drawPreview(); })));
-      const lab = h('div', { class: 'col' }, ui.check('数值(&V)', st.labels, (v) => { st.labels = v; drawPreview(); }));
-      stepBox.appendChild(ui.tabs([{ label: '标题', body: titles }, { label: '网格线', body: grid }, { label: '图例', body: leg }, { label: '数据标志', body: lab }]));
+        ...[['b', '底端(&B)'], ['tr', '角形(&o)'], ['t', '顶端(&p)'], ['r', '右(&R)'], ['l', '左(&L)']].map(([k, l]) => ui.radio('cw-leg', l, st.legend === k, () => { st.legend = k; drawPreview(); })));
+      const lab = h('div', { class: 'col' }, ui.check('值(&V)', st.labels, (v) => { st.labels = v; drawPreview(); }));
+      stepBox.appendChild(ui.tabs([{ label: '标题', body: titles }, { label: '网格线', body: grid }, { label: '图例', body: leg }, { label: '数据标签', body: lab }]));
     }
     function step4() {
       stepBox.textContent = '';
       const nm = h('input', { type: 'text', value: st.sheetName, style: 'width:180px' });
       nm.addEventListener('input', () => { st.sheetName = nm.value; });
-      stepBox.append(h('div', { text: '放置图表:' }),
-        h('div', { class: 'row', style: 'gap:8px;margin:6px 0' }, ui.radio('cw-where', '作为新工作表插入(&S):', st.where === 'sheet', () => { st.where = 'sheet'; }), nm),
-        h('div', { class: 'row', style: 'gap:8px;margin:6px 0' }, ui.radio('cw-where', '作为其中的对象(&O):', st.where === 'object', () => { st.where = 'object'; }), h('span', { text: sh.name })));
+      stepBox.append(h('div', { text: '图表位置：' }),
+        h('div', { class: 'row', style: 'gap:8px;margin:6px 0' }, ui.radio('cw-where', '作为新工作表(&s)：', st.where === 'sheet', () => { st.where = 'sheet'; }), nm),
+        h('div', { class: 'row', style: 'gap:8px;margin:6px 0' }, ui.radio('cw-where', '作为其中的对象(&o)：', st.where === 'object', () => { st.where = 'object'; }), h('span', { translate: 'no', text: sh.name })));
     }
     const steps = editing ? [step1, step2, step3] : [step1, step2, step3, step4];
     const titles = ['图表类型', '图表源数据', '图表选项', '图表位置'];
     return new Promise((resolve) => {
       let ok = false;
       const d = ui.dialog({
-        title: '图表向导 - 第 1 步，共 ' + steps.length + ' - 图表类型', body, width: 640,
+        title: L.t('图表向导 - 第 {0} 步，共 {1} 步 - {2}', 1, steps.length, L.t(titles[0])), body, width: 640,
         buttons: [
           { label: '取消' },
           { label: '< 上一步(&B)', onClick: () => { if (st.step > 1) { st.step--; show(); } return false; } },
-          { label: '下一步(&N) >', onClick: () => { if (st.step < steps.length) { st.step++; show(); } return false; } },
+          { label: '下一步 >(&N)', onClick: () => { if (st.step < steps.length) { st.step++; show(); } return false; } },
           { label: '完成(&F)', primary: true, onClick: () => { ok = true; } },
         ],
       });
-      function show() { steps[st.step - 1](); d.el.querySelector('.dlg-ttl').textContent = `图表向导 - 第 ${st.step} 步，共 ${steps.length} 步 - ${titles[st.step - 1]}`; d.buttons[1].disabled = st.step === 1; d.buttons[2].disabled = st.step === steps.length; drawPreview(); }
+      function show() { steps[st.step - 1](); d.el.querySelector('.dlg-ttl').textContent = L.t('图表向导 - 第 {0} 步，共 {1} 步 - {2}', st.step, steps.length, L.t(titles[st.step - 1])); d.buttons[1].disabled = st.step === 1; d.buttons[2].disabled = st.step === steps.length; drawPreview(); }
       show();
       d.done.then(() => {
         if (!ok) { resolve(null); return; }
         const m = model();
-        if (!m.series.length) { ui.msg('图表没有数据。请先选定包含数字的区域。', { icon: 'warn' }); resolve(null); return; }
+        if (!m.series.length) { ui.msg('图表没有数据。请先选择包含数字的区域。', { icon: 'warn' }); resolve(null); return; }
         const chart = Object.assign({}, editing ? editing.chart : {}, m, { dirty: true, imported: editing ? editing.chart.imported : false });
         delete chart.refs;
         if (editing) {
@@ -400,8 +402,8 @@
           resolve(nd); return;
         }
         if (st.where === 'sheet') {
-          let name = (st.sheetName || '').trim() || wb.nextSheetName('图表');
-          if (wb.sheetByName(name)) name = wb.nextSheetName('图表');
+          let name = (st.sheetName || '').trim() || wb.nextSheetName('Chart');
+          if (wb.sheetByName(name)) name = wb.nextSheetName('Chart');
           let ns;
           L.ops.tx(wb, '插入图表', () => {
             ns = L.ops.addSheet(wb, name, wb.active);
@@ -424,7 +426,7 @@
         let rr = startR; acc = 0; while (acc + g.rows.size(rr) <= hpx && rr < M.MAXR - 1) { acc += g.rows.size(rr); rr++; }
         dr.anchor.to.r = rr; dr.anchor.to.rOff = (hpx - acc) * 0.75;
         void s;
-        L.ops.tx(wb, '插入图表', () => L.ops.setDrawings(sh, sh.drawings.concat([dr])));
+        L.ops.tx(wb, 'Insert Chart', () => L.ops.setDrawings(sh, sh.drawings.concat([dr])));
         G.selectObject(dr); G.syncObjects(true);
         L.app.updateToolbars();
         resolve(dr);

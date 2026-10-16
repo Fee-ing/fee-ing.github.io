@@ -35,9 +35,9 @@
     const ch = (id, name, rPr, o) => (st[id] = Object.assign({ id, name, type: 'character', basedOn: null, next: null, pPr: {}, rPr, builtin: true }, o || {}));
     ch('HTMLCode', 'HTML 代码', { font: 'Courier New', sz: 10, shd: { val: 'clear', fill: 'EFF1F3', color: 'auto' } });
     ch('HTMLKeyboard', 'HTML 键盘', { font: 'Courier New', sz: 10, shd: { val: 'clear', fill: 'F6F8FA', color: 'auto' } });
-    ch('MarkdownSource', 'Markdown 源码', { font: 'Courier New', sz: 10, color: '6E7781' }, { builtin: false, custom: true });
+    ch('MarkdownSource', 'Markdown 源', { font: 'Courier New', sz: 10, color: '6E7781' }, { builtin: false, custom: true });
     const line = BORDER('D0D7DE', 0.5, 0);
-    st.MarkdownTable = { id: 'MarkdownTable', name: 'Markdown Table', type: 'table', basedOn: 'TableNormal', next: null, custom: true, pPr: {}, rPr: {},
+    st.MarkdownTable = { id: 'MarkdownTable', name: 'Markdown 表格', type: 'table', basedOn: 'TableNormal', next: null, custom: true, pPr: {}, rPr: {},
       tblPr: { borders: { top: line, left: line, bottom: line, right: line, insideH: line, insideV: line }, cellMar: { l: 9, r: 9, t: 4, b: 4 } },
       cond: { firstRow: { rPr: { b: true } }, band2Horz: { tcPr: { shd: { val: 'clear', fill: 'F6F8FA', color: 'auto' } } } } };
     D.stylesChanged();
@@ -947,7 +947,7 @@
     const files = await L.zip.read(buf);
     const names = [...files.keys()];
     const main = mainMarkdown(names);
-    if (!main) { const e = new Error('There is no Markdown (.md) file in this .zip file.'); e.code = 'nomd'; throw e; }
+    if (!main) { const e = new Error('此 zip 文件中没有 Markdown（.md）文件。'); e.code = 'nomd'; throw e; }
     const dir = main.includes('/') ? main.slice(0, main.lastIndexOf('/')) : '';
     const lower = new Map(names.map((n) => [n.toLowerCase(), n]));
     const resolve = async (rel) => {

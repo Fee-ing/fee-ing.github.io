@@ -32,7 +32,7 @@
     return rows;
   }
   function setData(name, rows) {
-    if (!rows.length) { ui.msg('The data source contains no records.', { icon: 'warn' }); return false; }
+    if (!rows.length) { ui.msg('数据源不包含记录。', { icon: 'warn' }); return false; }
     const fields = rows[0].map((f, i) => String(f).trim() || 'Field' + (i + 1));
     MM.data = { name, fields, rows: rows.slice(1).map((r) => fields.map((_, i) => (r[i] == null ? '' : String(r[i])))), included: null };
     MM.data.included = new Set(MM.data.rows.map((_, i) => i));
@@ -57,11 +57,11 @@
       } else if (/\.html?$/i.test(f.name)) {
         const dom = new DOMParser().parseFromString(await L.readAsText(f), 'text/html');
         const t = dom.querySelector('table');
-        if (!t) { ui.msg('No table was found in that file.', { icon: 'warn' }); return; }
+        if (!t) { ui.msg('该文件中未找到表格。', { icon: 'warn' }); return; }
         setData(f.name, Array.from(t.rows).map((r) => Array.from(r.cells).map((c) => c.textContent.trim())));
       } else setData(f.name, parseDelimited(await L.readAsText(f)));
       MM.recipientsDialog();
-    } catch (e) { ui.msg('The data source could not be opened. ' + (e.message || ''), { icon: 'error' }); }
+    } catch (e) { ui.msg(L.t('无法打开数据源。{0}', e.message || ''), { icon: 'error' }); }
   };
   /** Type a New Address List */
   MM.typeList = function () {
@@ -69,17 +69,18 @@
     const rows = MM.data && MM.data.typed ? MM.data.rows.map((r) => r.slice()) : [fields.map(() => '')];
     let cur = 0;
     const inputs = fields.map((f, i) => { const inp = h('input', { type: 'text', id: 'mm-f' + i, style: 'width:100%' }); inp.addEventListener('input', () => { rows[cur][i] = inp.value; }); return inp; });
-    const grid = h('div', { style: 'display:grid;grid-template-columns:120px 1fr;gap:3px 8px;max-height:300px;overflow:auto;padding-right:4px' });
-    fields.forEach((f, i) => grid.append(h('label', { for: 'mm-f' + i, text: f }), inputs[i]));
+    /* the fields' names are the data's own (they become MERGEFIELD names): not translated */
+    const grid = h('div', { style: 'display:grid;grid-template-columns:120px 1fr;gap:3px 8px;max-height:300px;overflow:auto;padding-right:4px', translate: 'no' });
+    fields.forEach((f, i) => grid.append(h('label', { for: 'mm-f' + i }, document.createTextNode(f)), inputs[i]));
     const info = h('span');
-    const load = () => { inputs.forEach((inp, i) => { inp.value = rows[cur][i] || ''; }); info.textContent = `Entry ${cur + 1} of ${rows.length}`; };
+    const load = () => { inputs.forEach((inp, i) => { inp.value = rows[cur][i] || ''; }); info.textContent = L.t('第 {0} 项，共 {1} 项', cur + 1, rows.length); };
     const nav = h('div', { class: 'tp-btns' },
-      ui.button('新建条目(&N)', () => { rows.push(fields.map(() => '')); cur = rows.length - 1; load(); inputs[0].focus(); }, { class: 'btn small' }),
-      ui.button('删除条目(&D)', () => { if (rows.length > 1) { rows.splice(cur, 1); cur = Math.min(cur, rows.length - 1); load(); } }, { class: 'btn small' }),
+      ui.button('新建词条(&N)', () => { rows.push(fields.map(() => '')); cur = rows.length - 1; load(); inputs[0].focus(); }, { class: 'btn small' }),
+      ui.button('删除词条(&D)', () => { if (rows.length > 1) { rows.splice(cur, 1); cur = Math.min(cur, rows.length - 1); load(); } }, { class: 'btn small' }),
       ui.button('<', () => { if (cur > 0) { cur--; load(); } }, { class: 'btn small' }), ui.button('>', () => { if (cur < rows.length - 1) { cur++; load(); } }, { class: 'btn small' }), info);
     load();
     ui.dialog({
-      title: '新建地址列表', width: 440, body: h('div', { class: 'col' }, grid, nav), buttons: [{ label: 'OK', primary: true, onClick: () => { const data = [fields].concat(rows.filter((r) => r.some(Boolean))); if (setData('Address list', data)) MM.data.typed = true; } }, { label: '取消' }],
+      title: '新建地址列表', width: 440, body: h('div', { class: 'col' }, grid, nav), buttons: [{ label: '确定', primary: true, onClick: () => { const data = [fields].concat(rows.filter((r) => r.some(Boolean))); if (setData(L.t('地址列表'), data)) MM.data.typed = true; } }, { label: '取消' }],
     });
   };
   MM.recipientsDialog = function () {
@@ -91,20 +92,20 @@
       L.clear(box);
       const order = d.rows.map((_, i) => i);
       if (sortCol >= 0) order.sort((a, b) => { const r = String(d.rows[a][sortCol]).localeCompare(String(d.rows[b][sortCol]), undefined, { numeric: true }); return desc ? -r : r; });
-      const t = h('table', { class: 'mm-table' });
-      const hr = h('tr', null, h('th', null, (() => { const c = h('input', { type: 'checkbox', 'aria-label': 'Include all' }); c.checked = d.included.size === d.rows.length; c.addEventListener('change', () => { d.included = c.checked ? new Set(d.rows.map((_, i) => i)) : new Set(); draw(); }); return c; })()));
-      d.fields.forEach((f, i) => { const th = h('th', { text: f + (sortCol === i ? (desc ? ' ▼' : ' ▲') : ''), style: 'cursor:pointer' }); th.addEventListener('click', () => { if (sortCol === i) desc = !desc; else { sortCol = i; desc = false; } draw(); }); hr.appendChild(th); });
+      const t = h('table', { class: 'mm-table', translate: 'no' });   // the data's own fields and values
+      const hr = h('tr', null, h('th', null, (() => { const c = h('input', { type: 'checkbox', 'aria-label': '全部包含' }); c.checked = d.included.size === d.rows.length; c.addEventListener('change', () => { d.included = c.checked ? new Set(d.rows.map((_, i) => i)) : new Set(); draw(); }); return c; })()));
+      d.fields.forEach((f, i) => { const th = h('th', { style: 'cursor:pointer' }, document.createTextNode(f + (sortCol === i ? (desc ? ' ▼' : ' ▲') : ''))); th.addEventListener('click', () => { if (sortCol === i) desc = !desc; else { sortCol = i; desc = false; } draw(); }); hr.appendChild(th); });
       t.appendChild(hr);
       for (const i of order) {
-        const c = h('input', { type: 'checkbox', 'aria-label': 'Include' });
+        const c = h('input', { type: 'checkbox', 'aria-label': '包含' });
         c.checked = d.included.has(i);
         c.addEventListener('change', () => { if (c.checked) d.included.add(i); else d.included.delete(i); });
-        t.appendChild(h('tr', null, h('td', null, c), ...d.rows[i].map((v) => h('td', { text: v }))));
+        t.appendChild(h('tr', null, h('td', null, c), ...d.rows[i].map((v) => h('td', null, document.createTextNode(v)))));
       }
       box.appendChild(t);
     };
     draw();
-    ui.dialog({ title: '邮件合并收件人', width: 620, body: h('div', { class: 'col' }, h('div', { text: `Data source: ${d.name}. Click a column heading to sort; clear a check box to leave a recipient out.` }), box), buttons: [{ label: 'OK', primary: true, onClick: () => { MM.order = null; refreshPane(); } }] });
+    ui.dialog({ title: '邮件合并收件人', width: 620, body: h('div', { class: 'col' }, h('div', { text: L.t('数据源：{0}。单击列标题可排序；清除复选框可排除相应收件人。', d.name) }), box), buttons: [{ label: '确定', primary: true, onClick: () => { MM.order = null; refreshPane(); } }] });
   };
   MM.records = () => (MM.data ? MM.data.rows.map((r, i) => i).filter((i) => MM.data.included.has(i)) : []);
   MM.value = function (name) {
@@ -144,7 +145,7 @@
       if (fn) parts.push({ f: fn }, ' ');
       if (ln) parts.push({ f: ln });
       parts.push(',');
-      insertParts(parts, 'Insert Greeting Line');
+      insertParts(parts, '插入问候语');
       return;
     }
     const parts = [];
@@ -158,15 +159,15 @@
     if (st) { parts.push({ f: st }); if (zip) parts.push(' '); }
     if (zip) parts.push({ f: zip });
     if (!parts.length) { MM.fieldDialog(); return; }
-    insertParts(parts, 'Insert Address Block');
+    insertParts(parts, '插入地址块');
   };
   MM.fieldDialog = function () {
     if (!MM.data) return;
-    const sel = h('select', { size: 10, id: 'mm-fields', style: 'width:100%' });
-    for (const f of MM.data.fields) sel.appendChild(h('option', { value: f, text: f }));
+    const sel = h('select', { size: 10, id: 'mm-fields', style: 'width:100%', translate: 'no' });
+    for (const f of MM.data.fields) sel.appendChild(h('option', { value: f }, document.createTextNode(f)));
     sel.selectedIndex = 0;
     sel.addEventListener('dblclick', () => { MM.insertField(sel.value); });
-    ui.dialog({ title: '插入合并域', width: 300, body: h('div', { class: 'col' }, h('label', { for: 'mm-fields', text: '域:' }), sel), buttons: [{ label: '插入(&I)', primary: true, onClick: () => { MM.insertField(sel.value); return false; } }, { label: '关闭' }] });
+    ui.dialog({ title: '插入合并域', width: 300, body: h('div', { class: 'col' }, h('label', { for: 'mm-fields', text: '域：' }), sel), buttons: [{ label: '插入(&I)', primary: true, onClick: () => { MM.insertField(sel.value); return false; } }, { label: '关闭' }] });
   };
 
   /* ---------- preview ---------- */
@@ -178,7 +179,7 @@
     if (!list.length) return;
     const dirty = d.dirty;
     const n0 = D.hist.undo.length;
-    D.tx('Preview Results', () => { for (const fr of list) L.fields.updateField(fr); });
+    D.tx('预览结果', () => { for (const fr of list) L.fields.updateField(fr); });
     if (D.hist.undo.length > n0) D.hist.undo.pop();
     d.dirty = dirty;
   }
@@ -237,13 +238,14 @@
   };
   MM.mergeToNew = async function () {
     const d = MM.buildMerged();
-    if (!d) { ui.msg('There are no recipients selected.', { icon: 'info' }); return; }
+    if (!d) { ui.msg('未选择收件人。', { icon: 'info' }); return; }
     A().untitled++;
     MM.preview = false;
     refreshFields();
     A().loadDoc(d, 'Letters' + A().untitled, { newWindow: true });
     MM.preview = false;
-    A().status(`Merged ${MM.records().length} record(s) into a new document.`);
+    const n = MM.records().length;
+    A().status(n === 1 ? L.t('已将 {0} 条记录合并到新文档。', n) : L.t('已将 {0} 条记录合并到新文档。', n));
   };
   MM.mergeToPDF = async function () {
     const merged = MM.buildMerged();
@@ -259,35 +261,37 @@
       LY.render();
       E.restoreDom(true);
       await L.saveFile(A().fileName + ' (merged).pdf', blob);
-    } catch (e) { D.doc = keep; LY.render(); L.ui.busy(false); ui.msg('The merge could not be printed. ' + (e.message || ''), { icon: 'error' }); }
+    } catch (e) { D.doc = keep; LY.render(); L.ui.busy(false); ui.msg(L.t('无法打印合并结果。{0}', e.message || ''), { icon: 'error' }); }
   };
 
   /* ---------- wizard (task pane) ---------- */
+  /* the wizard's six steps */
+  const STEPS = [L.N('选择文档类型'), L.N('开始文档'), L.N('选择收件人'), L.N('撰写信函'), L.N('预览信函'), L.N('完成合并')];
   function refreshPane() { if (L.panes && L.panes.task.current === 'mailmerge') L.panes.task.render(); }
   MM.renderWizard = function (b) {
     const { sec, link } = L.panes;
     const step = MM.wstep;
-    const nav = h('div', { class: 'tp-btns', style: 'margin-top:14px' }, h('div', { class: 'tp-note', text: `Step ${step} of 6` }));
-    if (step < 6) nav.appendChild(link('nextChange', 'Next: ' + ['Starting document', 'Select recipients', 'Write your letter', 'Preview your letters', 'Complete the merge'][step - 1], () => { MM.wstep++; if (MM.wstep === 5 && MM.data) MM.go(MM.rec); refreshPane(); }, { disabled: step === 3 && !MM.data }));
-    if (step > 1) nav.appendChild(link('prevChange', 'Previous: ' + ['Select document type', 'Starting document', 'Select recipients', 'Write your letter', 'Preview your letters'][step - 2], () => { MM.wstep--; refreshPane(); }));
+    const nav = h('div', { class: 'tp-btns', style: 'margin-top:14px' }, h('div', { class: 'tp-note', text: L.t('第 {0} 步，共 6 步', step) }));
+    if (step < 6) nav.appendChild(link('nextChange', L.t('下一步：{0}', L.t(STEPS[step])), () => { MM.wstep++; if (MM.wstep === 5 && MM.data) MM.go(MM.rec); refreshPane(); }, { disabled: step === 3 && !MM.data }));
+    if (step > 1) nav.appendChild(link('prevChange', L.t('上一步：{0}', L.t(STEPS[step - 2])), () => { MM.wstep--; refreshPane(); }));
     if (step === 1) {
       const rad = (v, l) => ui.radio('mm-type', l, MM.type === v, () => { MM.type = v; });
-      b.append(sec('Select document type', h('div', { class: 'tp-note', text: '您正在处理哪种类型的文档？' }), rad('letters', '信函(&L)'), rad('envelopes', '信封(&E)'), rad('labels', '标签(&B)'), rad('directory', '目录(&D)')), h('div', { class: 'tp-note', text: '信函：向一组人群发送信函，可为每个人定制内容。' }));
+      b.append(sec('选择文档类型', h('div', { class: 'tp-note', text: '您正在处理哪种类型的文档？' }), rad('letters', '信函(&L)'), rad('envelopes', '信封(&E)'), rad('labels', '标签(&b)'), rad('directory', '目录(&D)')), h('div', { class: 'tp-note', text: '信函：向一组收件人发送信函，可为每位收件人定制信函内容。' }));
     } else if (step === 2) {
-      b.append(sec('Select starting document', h('div', { class: 'tp-note', text: '要如何设置信函？' }), ui.radio('mm-start', '使用当前文档(&D)', true, () => {}), ui.radio('mm-start', '基于模板开始(&T)', false, () => L.dlg.newFromTemplate()), ui.radio('mm-start', '基于现有文档开始(&C)', false, () => ui.exec('open'))));
-      if (MM.type === 'envelopes') b.appendChild(link('envelope', 'Envelope options...', () => L.dlg.envelopes()));
-      if (MM.type === 'labels') b.appendChild(link('labels', 'Label options...', () => L.dlg.envelopes('labels')));
+      b.append(sec('选择开始文档', h('div', { class: 'tp-note', text: '您希望如何设置信函？' }), ui.radio('mm-start', '使用当前文档(&d)', true, () => {}), ui.radio('mm-start', '从模板开始(&t)', false, () => L.dlg.newFromTemplate()), ui.radio('mm-start', '从现有文档开始(&c)', false, () => ui.exec('open'))));
+      if (MM.type === 'envelopes') b.appendChild(link('envelope', '信封选项...', () => L.dlg.envelopes()));
+      if (MM.type === 'labels') b.appendChild(link('labels', '标签选项...', () => L.dlg.envelopes('labels')));
     } else if (step === 3) {
-      b.append(sec('Select recipients', ui.radio('mm-src', '使用现有列表(&L)', !MM.data || !MM.data.typed, () => {}), ui.radio('mm-src', '键入新列表(&Y)', !!(MM.data && MM.data.typed), () => MM.typeList()),
-        MM.data ? h('div', { class: 'tp-note', text: `Currently, your recipients are selected from: ${MM.data.name} (${MM.records().length} of ${MM.data.rows.length})` }) : h('div', { class: 'tp-note', text: '使用来自文件或数据库的姓名和地址。' }),
-        link('open', 'Browse...', () => MM.openSource()), MM.data ? link('mmRecipients', 'Edit recipient list...', () => MM.recipientsDialog()) : null, link('new', 'Type a new list...', () => MM.typeList())));
+      b.append(sec('选择收件人', ui.radio('mm-src', '使用现有列表(&l)', !MM.data || !MM.data.typed, () => {}), ui.radio('mm-src', '键入新列表(&y)', !!(MM.data && MM.data.typed), () => MM.typeList()),
+        MM.data ? h('div', { class: 'tp-note', text: L.t('当前收件人来源：{0}（已选择 {1} 位，共 {2} 位）', MM.data.name, MM.records().length, MM.data.rows.length) }) : h('div', { class: 'tp-note', text: '使用文件或数据库中的姓名和地址。' }),
+        link('open', '浏览...', () => MM.openSource()), MM.data ? link('mmRecipients', '编辑收件人列表...', () => MM.recipientsDialog()) : null, link('new', '键入新列表...', () => MM.typeList())));
     } else if (step === 4) {
-      b.append(sec('Write your letter', h('div', { class: 'tp-note', text: '现在写信函内容，然后在文档中单击某个位置并选择下列项目之一。' }), link('mmAddress', 'Address block...', () => MM.insertBlock('address')), link('mmGreeting', 'Greeting line...', () => MM.insertBlock('greeting')), link('mmField', 'More items...', () => MM.fieldDialog())));
+      b.append(sec('撰写信函', h('div', { class: 'tp-note', text: '请先撰写信函，再单击文档中的位置并选择以下项目之一。' }), link('mmAddress', '地址块...', () => MM.insertBlock('address')), link('mmGreeting', '问候语...', () => MM.insertBlock('greeting')), link('mmField', '更多项目...', () => MM.fieldDialog())));
     } else if (step === 5) {
       const n = MM.records().length;
-      b.append(sec('Preview your letters', h('div', { class: 'tp-note', text: '此处预览一封合并后的信函。若要预览其他信函，请单击以下之一:' }), h('div', { class: 'tp-row' }, ui.button('<<', () => MM.step(-1), { class: 'btn small' }), h('span', { text: `Recipient: ${MM.rec + 1} of ${n}` }), ui.button('>>', () => MM.step(1), { class: 'btn small' })), link('find', 'Find a recipient...', async () => { const q = await ui.prompt('Find:', '', 'Find Entry'); if (!q) return; const recs = MM.records(); const k = recs.findIndex((ri) => MM.data.rows[ri].some((v) => String(v).toLowerCase().includes(q.toLowerCase()))); if (k >= 0) MM.go(k); }), link('mmRecipients', 'Edit recipient list...', () => MM.recipientsDialog()), ui.button('排除此收件人', () => { const recs = MM.records(); MM.data.included.delete(recs[MM.rec]); MM.go(MM.rec); }, { class: 'btn small' })));
+      b.append(sec('预览信函', h('div', { class: 'tp-note', text: '此处预览一封合并后的信函。要预览其他信函，请单击以下按钮之一：' }), h('div', { class: 'tp-row' }, ui.button('<<', () => MM.step(-1), { class: 'btn small' }), h('span', { text: L.t('收件人：第 {0} 位，共 {1} 位', MM.rec + 1, n) }), ui.button('>>', () => MM.step(1), { class: 'btn small' })), link('find', '查找收件人...', async () => { const q = await ui.prompt('查找：', '', '查找条目'); if (!q) return; const recs = MM.records(); const k = recs.findIndex((ri) => MM.data.rows[ri].some((v) => String(v).toLowerCase().includes(q.toLowerCase()))); if (k >= 0) MM.go(k); }), link('mmRecipients', '编辑收件人列表...', () => MM.recipientsDialog()), ui.button('排除此收件人', () => { const recs = MM.records(); MM.data.included.delete(recs[MM.rec]); MM.go(MM.rec); }, { class: 'btn small' })));
     } else {
-      b.append(sec('Complete the merge', h('div', { class: 'tp-note', text: 'Quire 已准备好生成信函。' }), link('mmMergePrint', 'Print... (PDF)', () => MM.mergeToPDF()), link('mmMergeNew', 'Edit individual letters...', () => MM.mergeToNew())));
+      b.append(sec('完成合并', h('div', { class: 'tp-note', text: 'Quire 已准备好生成信函。' }), link('mmMergePrint', '打印... (PDF)', () => MM.mergeToPDF()), link('mmMergeNew', '编辑单个信函...', () => MM.mergeToNew())));
     }
     b.appendChild(nav);
   };

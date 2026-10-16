@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,8 +8,11 @@
 <link rel="stylesheet" href="../common/ui.css">
 <link rel="stylesheet" href="../common/scout/scout.css">
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
-<title>Quire 2003</title>
+<title>Quire</title>
 <meta name="theme-color" content="#2a64c8">
+<!-- Embedded copy (tools-box): the web app manifest (manifest.webmanifest) and its icons are gone —
+     they only serve installing the suite as a standalone app, which cannot happen while it is framed
+     on another site. -->
 <link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../fonts/fonts.css">
 <style>
@@ -51,7 +54,7 @@
 .pg { position: relative; margin: 0 auto 14px; background: #fff; box-shadow: 0 0 0 1px #4a4a4a, 3px 3px 0 1px #3c3c3c; contain: layout paint; overflow: hidden; }
 .pages.multi { display: flex; flex-wrap: wrap; gap: 14px 16px; align-items: flex-start; }
 .pages.multi .pg { margin: 0; }
-.pg.blank::after { content: "(This page intentionally left blank by a section break)"; position: absolute; left: 0; right: 0; top: 45%; text-align: center; color: #999; font: 12px Arial, Arimo, sans-serif; }
+.pg.blank::after { content: var(--t-blank, "(This page intentionally left blank by a section break)"); position: absolute; left: 0; right: 0; top: 45%; text-align: center; color: #999; font: 12px Arial, Arimo, sans-serif; }
 .pg-body { position: absolute; }
 .pg-reg { position: absolute; left: 0; }
 .pg-col { position: absolute; top: 0; }
@@ -81,7 +84,7 @@
 .pages.hfmode .pg-hdr::before, .pages.hfmode .pg-ftr::before { content: attr(data-label); position: absolute; left: -2px; font: 10px Tahoma, var(--ui-font); color: #333; background: #e8e8e8; border: 1px dashed #7a7a7a; padding: 0 4px; white-space: nowrap; pointer-events: none; }
 .pages.hfmode .pg-hdr::before { top: -18px; }
 .pages.hfmode .pg-ftr::before { bottom: auto; top: -18px; }
-.pages.hfmode .pg-hdr[data-same]::after, .pages.hfmode .pg-ftr[data-same]::after { content: "Same as Previous"; position: absolute; right: -2px; top: -18px; font: 10px Tahoma, var(--ui-font); color: #333; background: #e8e8e8; border: 1px dashed #7a7a7a; padding: 0 4px; pointer-events: none; }
+.pages.hfmode .pg-hdr[data-same]::after, .pages.hfmode .pg-ftr[data-same]::after { content: var(--t-same, "Same as Previous"); position: absolute; right: -2px; top: -18px; font: 10px Tahoma, var(--ui-font); color: #333; background: #e8e8e8; border: 1px dashed #7a7a7a; padding: 0 4px; pointer-events: none; }
 /* flow views */
 .flow { position: relative; margin: 0 0 30px 0; padding: 4px 0 40vh 28px; background: #fff; min-height: 100%; }
 .flow.web { padding: 10px 20px 40vh; }
@@ -102,7 +105,7 @@
 .tb.lead-middleDot { background: radial-gradient(circle, currentColor 0.7px, transparent 1px) 0 -3px / 4px 4px repeat-x; height: 4px; }
 .lsp { display: inline; }
 .zw { display: inline; }
-.img { display: inline-block; position: relative; overflow: hidden; vertical-align: baseline; text-indent: 0; line-height: 0; cursor: default; }
+.img { display: inline-block; position: relative; overflow: hidden; vertical-align: baseline; text-indent: 0; line-height: 0; cursor: move; }
 .img img { display: block; user-select: none; -webkit-user-drag: none; }
 .img.missing { border: 1px solid #999; background: repeating-linear-gradient(45deg, #eee 0 6px, #ddd 6px 12px); font: 10px Arial, Arimo, sans-serif; color: #555; line-height: 1.2; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
 .nref { cursor: default; }
@@ -112,7 +115,7 @@
 .raw.mml.mpara { display: block; margin: 2px 0; }
 .raw.mml math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", "Noto Sans Math", math; font-style: normal; }
 .raw.mml mtable mtd { padding: 1px 4px; }
-.raw.empty::before { content: "[object]"; color: #888; font: 10px Arial, Arimo, sans-serif; }
+.raw.empty::before { content: var(--t-object, "[object]"); color: #888; font: 10px Arial, Arimo, sans-serif; }
 .anc { display: inline-block; width: 0; height: 0; overflow: hidden; vertical-align: baseline; }
 .flt .shp, .flt .img { display: block; }
 .obj-missing { display: inline-block; width: 40px; height: 20px; border: 1px dashed #999; }
@@ -144,7 +147,7 @@
 .pages.marks .pg .hbrk { position: absolute; }
 .sectmark { position: absolute; width: 100%; text-align: center; font: 10px/14px Arial, Arimo, sans-serif; color: #3a3a3a; border-top: 3px double #555; margin-top: 8px; height: 0; text-indent: 0; }
 .sectmark::after { content: attr(data-label); background: #fff; position: relative; top: -9px; padding: 0 4px; }
-.flow .p.has-sect::after { content: "Section Break (Next Page)"; display: block; text-align: center; font: 10px/14px Arial, Arimo, sans-serif; color: #3a3a3a; border-top: 3px double #555; margin: 6px 0 4px; height: 0; }
+.flow .p.has-sect::after { content: var(--t-sect, "Section Break (Next Page)"); display: block; text-align: center; font: 10px/14px Arial, Arimo, sans-serif; color: #3a3a3a; border-top: 3px double #555; margin: 6px 0 4px; height: 0; }
 .flow .p.has-sect .sectmark { display: none; }
 .flow .pg-fn, .flow .fnote { display: none; }
 /* tables */
@@ -175,13 +178,17 @@ td.csel { background-image: linear-gradient(rgba(10,36,106,.3), rgba(10,36,106,.
 .oh-sw { left: 0; top: 100%; cursor: nesw-resize; } .oh-w { left: 0; top: 50%; cursor: ew-resize; }
 .oh-rot { left: 50%; top: -18px; background: #3dd13d; border-color: #1a6b1a; border-radius: 50%; cursor: grab; }
 .resize-ghost { position: absolute; left: 0; top: 0; border: 1px dashed #000; pointer-events: none; }
+.drop-caret { position: absolute; width: 0; border-left: 2px dotted #000; pointer-events: none; z-index: 31; }
 .flt { position: absolute; }
 .flt.sel-obj { outline: 1px solid rgba(0,0,0,.6); }
 .shp svg.geo { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
 .shp .tbx { position: absolute; overflow: hidden; }
 .shp .tbx.nowrap .pc { white-space: pre; }
-.shp { cursor: default; }
+/* a drag on a picture, shape or diagram moves it: the move cursor says so; its text takes a caret; in the part of the
+   page not being edited (the body while a header is, a header while the body is) a press does nothing */
+.shp { cursor: move; }
 .shp .tbx .pc { cursor: text; }
+#pages:not(.hfmode) :is(.pg-hdr, .pg-ftr) :is(.img, .shp), #pages.hfmode .pg-body :is(.img, .shp) { cursor: default; }
 .wa svg { overflow: visible; }
 .marquee, .draw-ghost { position: absolute; border: 1px dashed #000; pointer-events: none; z-index: 40; }
 /* comment balloons */
@@ -298,6 +305,7 @@ td.csel { background-image: linear-gradient(rgba(10,36,106,.3), rgba(10,36,106,.
 .scroller.selobj .pg-body, .scroller.selobj .pc { cursor: default !important; }
 .scroller.painting .pages, .scroller.painting .pc { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='20'%3E%3Cpath d='M6 1v12' stroke='%23000'/%3E%3Cpath d='M4 1h4M4 13h4' stroke='%23000'/%3E%3Crect x='9' y='12' width='6' height='3' fill='%23f5c842' stroke='%23000'/%3E%3Crect x='11' y='15' width='2' height='4' fill='%238b5a2b'/%3E%3C/svg%3E") 6 8, text !important; }
 .pages.readonly .pc { caret-color: transparent; }
+.pages.objsel, .pages.objsel .pc { caret-color: transparent; } /* a floating object selected: the caret at its anchor is not shown */
 .pages.hidebody .pg-body { visibility: hidden; }
 .pages.hyphens .pc { hyphens: auto; -webkit-hyphens: auto; }
 .pages.with-balloons { padding-right: 230px; }
@@ -309,6 +317,8 @@ body.bluebg .pages .pg { background: #0000a8 !important; }
 body.bluebg .pages .pc, body.bluebg .pages .pc span { color: #fff !important; }
 /* ---- find & replace "highlight all items" ---- */
 ::highlight(quire-find) { background-color: #ffe476; color: inherit; }
+/* ---- the selection while Find and Replace has the keyboard (editor.js, E.drawSel) ---- */
+::highlight(quire-sel) { background-color: Highlight; color: HighlightText; }
 
 /* ---- proofing underlines (Word: red wavy for spelling, green wavy for grammar) ---- */
 ::highlight(quire-spell) { text-decoration: underline wavy #e01b1b; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-skip-ink: none; }
@@ -321,7 +331,7 @@ body.bluebg .pages .pc, body.bluebg .pages .pc span { color: #fff !important; }
 </style>
 </head>
 <body>
-<div id="app" class="app" aria-label="Quire 2003 word processor">
+<div id="app" class="app" aria-label="Quire 字处理程序">
   <div class="cmdbars">
     <div class="menurow" id="menurow"></div>
     <div class="toolbars" id="toolbars"></div>
@@ -345,8 +355,10 @@ body.bluebg .pages .pc, body.bluebg .pages .pc span { color: #fff !important; }
   <div class="statusbar" id="statusbar"></div>
 </div>
 <script src="../common/suite.js"></script>
-<script>window.L = { APP_ID: 'quire', APP_NAME: 'Quire', APP: 'Quire 2003' };</script>
+<script>window.L = { APP_ID: 'quire', APP_NAME: 'Quire', APP: 'Quire' };</script>
 <script src="../common/core.js"></script>
+<script src="../common/text.js"></script>
+<script src="../common/locales.js"></script>
 <script src="../common/xml.js"></script>
 <script src="../common/opc.js"></script>
 <script src="../common/opc-order.js"></script>
@@ -363,6 +375,7 @@ body.bluebg .pages .pc, body.bluebg .pages .pc span { color: #fff !important; }
 <script src="js/ops.js"></script>
 <script src="js/omml.js"></script>
 <script src="js/render.js"></script>
+<script src="js/portions.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/drawing.js"></script>
 <script src="js/editor.js"></script>

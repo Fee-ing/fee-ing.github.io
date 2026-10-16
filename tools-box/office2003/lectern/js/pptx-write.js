@@ -29,7 +29,6 @@
   };
   const HEAD = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n';
   const NSDECL = `xmlns:a="${NS_A}" xmlns:r="${NS_R}" xmlns:p="${NS_P}"`;
-  const guid = () => '{' + 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => { const r = (Math.random() * 16) | 0; return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16).toUpperCase(); }) + '}';
   const pct = (v) => Math.round((v || 0) * 1000); /* % → 1/1000 % */
 
   const Rels = K.Rels;
@@ -122,10 +121,12 @@
   }
 
   /* ---------- text ---------- */
-  const fontRef = (f) => (f === '+mj' ? '+mj-lt' : f === '+mn' ? '+mn-lt' : f);
+  /* the language new text is in: the presentation's (its default text style), as PowerPoint marks typed text */
+  let textLang = 'en-US';
+  const fontRef = (f, script) => (f === '+mj' ? '+mj-' + (script || 'lt') : f === '+mn' ? '+mn-' + (script || 'lt') : f);
   function rPrXML(r, tag, ctx, design) {
     tag = tag || 'a:rPr';
-    const a = ['lang="en-US"'];
+    const a = [`lang="${X(textLang)}"`].concat(/^(ja|ko|zh)/i.test(textLang) ? ['altLang="en-US"'] : []);
     if (r.sz) a.push(`sz="${Math.round(r.sz * 100)}"`);
     if (r.b != null) a.push(`b="${r.b ? 1 : 0}"`);
     if (r.i != null) a.push(`i="${r.i ? 1 : 0}"`);
@@ -142,7 +143,10 @@
     if (r.shd && r.shdX) kids += shadowXML(r.shdX, design);
     else if (r.shd) kids += `<a:effectLst><a:outerShdw blurRad="38100" dist="38100" dir="2700000" algn="tl"><a:srgbClr val="000000"><a:alpha val="43137"/></a:srgbClr></a:outerShdw></a:effectLst>`;
     if (r.hl) kids += `<a:highlight>${clr(r.hl, null, design)}</a:highlight>`;
-    if (r.font) { const f = X(fontRef(r.font)); kids += `<a:latin typeface="${f}"/><a:ea typeface="${f}"/><a:cs typeface="${f}"/>`; }
+    /* the Latin font for letters and complex scripts; East Asian characters keep their own font (a:ea) */
+    if (r.font) kids += `<a:latin typeface="${X(fontRef(r.font))}"/>`;
+    if (r.fontEA) kids += `<a:ea typeface="${X(r.fontEA)}"/>`;
+    if (r.font) kids += `<a:cs typeface="${X(fontRef(r.font, 'cs'))}"/>`;
     if (r.link && ctx && tag === 'a:rPr') kids += hlinkXML(r.link, ctx);
     const xml = kids ? `<${tag} ${a.join(' ')}>${kids}</${tag}>` : `<${tag} ${a.join(' ')}/>`;
     return L.properties.text(r, ctx, xml, 'run', tag);
@@ -194,7 +198,7 @@
       x += pPrXML(p.pp || {}, 'a:pPr', p.lvl || 0, ctx, design, false) || '';
       for (const r of p.rs) {
         const props = L.txt.runProps(r);
-        if (r.fld) { x += `<a:fld id="${ctx.fieldId ? ctx.fieldId() : guid()}" type="${X(r.fld)}">${rPrXML(props, 'a:rPr', ctx, design)}<a:t>${X(r.t || '')}</a:t></a:fld>`; continue; }
+        if (r.fld) { x += `<a:fld id="${ctx.fieldId ? ctx.fieldId() : K.guid()}" type="${X(r.fld)}">${rPrXML(props, 'a:rPr', ctx, design)}<a:t>${X(r.t || '')}</a:t></a:fld>`; continue; }
         const parts = String(r.t).split('\n');
         parts.forEach((t, i) => {
           if (i) x += `<a:br>${rPrXML(Object.assign({}, props, { link: undefined }), 'a:rPr', ctx, design)}</a:br>`;
@@ -380,7 +384,7 @@
       /* the drawing is a part of its own: picture fills and text links (relationships of the slide) are not written in it */
       let kf = k.fill;
       if (kf && !['solid', 'grad', 'none', 'patt'].includes(kf.t)) {
-        ctx.writer.loss({ id: 'smartart-fill:' + sh.id + ':' + i, what: 'A picture fill on a shape of this IntelliArt is saved as the diagram\'s colour.', where: sh.name || ctx.part, place: ctx.place, action: 'conversion', notify: true });
+        ctx.writer.loss({ id: 'smartart-fill:' + sh.id + ':' + i, what: L.N('此 IntelliArt 中形状的图片填充将保存为图示的颜色。'), where: sh.name || ctx.part, place: ctx.place, action: 'conversion', notify: true });
         kf = { t: 'solid', c: 'accent1', a: 1 };
       }
       const fill = kf ? fillXML(kf, ctx, design) : '';
@@ -667,7 +671,9 @@
   function themeXML(d, name) {
     const c = d.colors;
     const sc = (k) => `<a:${k}><a:srgbClr val="${(c[k] || '#000000').replace('#', '').toUpperCase()}"/></a:${k}>`;
-    const fnt = (f) => `<a:latin typeface="${X(f)}"/><a:ea typeface=""/><a:cs typeface=""/>`;
+    /* the East Asian font as the theme's font for the script of the presentation's language, as PowerPoint writes it */
+    const script = /^ja/i.test(textLang) ? 'Jpan' : /^ko/i.test(textLang) ? 'Hang' : /^zh-(cn|sg)/i.test(textLang) ? 'Hans' : /^zh/i.test(textLang) ? 'Hant' : null;
+    const fnt = (f, ea) => `<a:latin typeface="${X(f)}"/><a:ea typeface=""/><a:cs typeface=""/>` + (script && ea ? `<a:font script="${script}" typeface="${X(ea)}"/>` : '');
     const ph = '<a:solidFill><a:schemeClr val="phClr"/></a:solidFill>';
     const ln = (w) => `<a:ln w="${w}" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/></a:ln>`;
     /* the style matrix of L.model.FMT */
@@ -675,7 +681,7 @@
     const fills = FMT.fills.map((g) => (!g ? ph : `<a:gradFill rotWithShape="1"><a:gsLst>${g.map(([p, mods]) => `<a:gs pos="${Math.round(p * 100000)}"><a:schemeClr val="phClr">${mods.map(([n, v]) => `<a:${n} val="${v}"/>`).join('')}</a:schemeClr></a:gs>`).join('')}</a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill>`)).join('');
     const effects = FMT.effects.map((e) => `<a:effectStyle><a:effectLst><a:outerShdw blurRad="${emu(e.blur)}" dist="${emu(e.dist)}" dir="5400000" algn="ctr" rotWithShape="0"><a:srgbClr val="000000"><a:alpha val="${Math.round(e.a * 100000)}"/></a:srgbClr></a:outerShdw></a:effectLst></a:effectStyle>`).join('');
     return HEAD + `<a:theme xmlns:a="${NS_A}" name="${X(name || d.name)}"><a:themeElements><a:clrScheme name="${X(d.name)}">${['dk1', 'lt1', 'dk2', 'lt2', 'accent1', 'accent2', 'accent3', 'accent4', 'accent5', 'accent6', 'hlink', 'folHlink'].map(sc).join('')}</a:clrScheme>` +
-      `<a:fontScheme name="${X(d.name)}"><a:majorFont>${fnt(d.fonts.major || 'Arial')}</a:majorFont><a:minorFont>${fnt(d.fonts.minor || 'Arial')}</a:minorFont></a:fontScheme>` +
+      `<a:fontScheme name="${X(d.name)}"><a:majorFont>${fnt(d.fonts.major || 'Arial', d.fonts.majorEA)}</a:majorFont><a:minorFont>${fnt(d.fonts.minor || 'Arial', d.fonts.minorEA)}</a:minorFont></a:fontScheme>` +
       `<a:fmtScheme name="Office"><a:fillStyleLst>${fills}</a:fillStyleLst><a:lnStyleLst>${FMT.lines.map((w) => ln(emu(w))).join('')}</a:lnStyleLst><a:effectStyleLst>${effects}</a:effectStyleLst><a:bgFillStyleLst>${ph}${ph}${ph}</a:bgFillStyleLst></a:fmtScheme>` +
       `</a:themeElements><a:objectDefaults/><a:extraClrSchemeLst/></a:theme>`;
   }
@@ -743,7 +749,7 @@
     return HEAD + `<p:notesMaster ${NSDECL}><p:cSld><p:bg><p:bgRef idx="1001"><a:schemeClr val="bg1"/></p:bgRef></p:bg><p:spTree>${GRP}${img}${body}</p:spTree></p:cSld>${CLRMAP}<p:notesStyle>${lvl}</p:notesStyle></p:notesMaster>`;
   }
   function notesXML(pres, text) {
-    const paras = String(text).split('\n').map((t) => (t ? `<a:p><a:r><a:rPr lang="en-US" dirty="0"/><a:t>${X(t)}</a:t></a:r></a:p>` : '<a:p><a:endParaRPr lang="en-US" dirty="0"/></a:p>')).join('');
+    const paras = String(text).split('\n').map((t) => (t ? `<a:p><a:r><a:rPr lang="${X(textLang)}" dirty="0"/><a:t>${X(t)}</a:t></a:r></a:p>` : `<a:p><a:endParaRPr lang="${X(textLang)}" dirty="0"/></a:p>`)).join('');
     return HEAD + `<p:notes ${NSDECL}><p:cSld><p:spTree>${GRP}<p:sp><p:nvSpPr><p:cNvPr id="2" name="Slide Image Placeholder 1"/><p:cNvSpPr><a:spLocks noGrp="1" noRot="1" noChangeAspect="1"/></p:cNvSpPr><p:nvPr><p:ph type="sldImg"/></p:nvPr></p:nvSpPr><p:spPr/></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Notes Placeholder 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="body" idx="1"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/>${paras || '<a:p><a:endParaRPr lang="en-US"/></a:p>'}</p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:notes>`;
   }
 
@@ -772,6 +778,7 @@
   async function write(pres, opts) {
     opts = opts || {};
     const format = K.format(pres, opts.format, 'pptx'), pack = L.preserve.begin(pres, format), writer = pack.writer;
+    textLang = pres.lang || 'en-US';
     const freshName = (dir, base, ext) => pack.use(writer.name(dir, base, ext));
     const files = [];
     const add = (name, data) => files.push({ name, data });
@@ -991,7 +998,7 @@
       if (rootClash) rootId = writer.ids.fresh(part, 'shape');
       const idMap = new Map();
       const ctx = {
-        writer, frames, part, place: 'Slide ' + n, rels: sRels, media: mediaSync(sRels, part), svg: svgSync(sRels, part), slideIndex, fieldId: fieldIds(part),
+        writer, frames, part, place: L.t('幻灯片 {0}', n), rels: sRels, media: mediaSync(sRels, part), svg: svgSync(sRels, part), slideIndex, fieldId: fieldIds(part),
         slideTarget: index => K.relative(part, slideParts[index]),
         nextId: (mid) => {
           if (idMap.has(mid)) return idMap.get(mid);
@@ -1091,7 +1098,7 @@
     presRels.add(RT('tableStyles'), 'tableStyles.xml');
     const sizeType = { '720x540': 'screen4x3', '720x405': 'screen16x9', '720x450': 'screen16x10', '780x540': 'A4', '810x540': '35mm', '576x72': 'banner' }[`${Math.round(pres.W)}x${Math.round(pres.H)}`] || 'custom';
     const defStyle = levelsXML(L.model.DEFAULT_TX.other, { rels: presRels, media: () => null }, pres.designs[designIds[0]]);
-    const presXML = HEAD + `<p:presentation ${NSDECL} saveSubsetFonts="1"${pres.firstNum && pres.firstNum !== 1 ? ` firstSlideNum="${pres.firstNum}"` : ''}><p:sldMasterIdLst>${masterIdList.map((m) => `<p:sldMasterId id="${m.id}" r:id="${m.rid}"/>`).join('')}</p:sldMasterIdLst><p:notesMasterIdLst><p:notesMasterId r:id="${notesMasterRid}"/></p:notesMasterIdLst>${sldIds.length ? `<p:sldIdLst>${sldIds.map((s) => `<p:sldId id="${s.id}" r:id="${s.rid}"/>`).join('')}</p:sldIdLst>` : ''}<p:sldSz cx="${emu(pres.W)}" cy="${emu(pres.H)}"${sizeType !== 'custom' ? ` type="${sizeType}"` : ''}/><p:notesSz cx="6858000" cy="9144000"/><p:defaultTextStyle><a:defPPr><a:defRPr lang="en-US"/></a:defPPr>${defStyle}</p:defaultTextStyle></p:presentation>`;
+    const presXML = HEAD + `<p:presentation ${NSDECL} saveSubsetFonts="1"${pres.firstNum && pres.firstNum !== 1 ? ` firstSlideNum="${pres.firstNum}"` : ''}><p:sldMasterIdLst>${masterIdList.map((m) => `<p:sldMasterId id="${m.id}" r:id="${m.rid}"/>`).join('')}</p:sldMasterIdLst><p:notesMasterIdLst><p:notesMasterId r:id="${notesMasterRid}"/></p:notesMasterIdLst>${sldIds.length ? `<p:sldIdLst>${sldIds.map((s) => `<p:sldId id="${s.id}" r:id="${s.rid}"/>`).join('')}</p:sldIdLst>` : ''}<p:sldSz cx="${emu(pres.W)}" cy="${emu(pres.H)}"${sizeType !== 'custom' ? ` type="${sizeType}"` : ''}/><p:notesSz cx="6858000" cy="9144000"/><p:defaultTextStyle><a:defPPr><a:defRPr lang="${X(textLang)}"/></a:defPPr>${defStyle}</p:defaultTextStyle></p:presentation>`;
     add('ppt/presentation.xml', presXML);
     add('ppt/_rels/presentation.xml.rels', presRels.xml());
     overrides.unshift(['/ppt/presentation.xml', mainCT]);
@@ -1110,7 +1117,7 @@
     overrides.push(['/docProps/core.xml', CT.core]);
     const words = allSlides.reduce((a, s) => a + (L.model.allText(s).match(/\S+/g) || []).length, 0);
     const fmtName = (L.model.SLIDE_SIZES.find((z) => z.w === pres.W && z.h === pres.H) || { name: 'Custom' }).name;
-    add('docProps/app.xml', HEAD + `<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><TotalTime>0</TotalTime><Words>${words}</Words><Application>Lectern 2003 Web Edition</Application><PresentationFormat>${X(fmtName)}</PresentationFormat><Paragraphs>0</Paragraphs><Slides>${allSlides.length}</Slides><Notes>${allSlides.filter((s) => s.notes && s.notes.trim()).length}</Notes><HiddenSlides>${allSlides.filter((s) => s.hidden).length}</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><Company>${X(p.company || '')}</Company><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>11.0000</AppVersion></Properties>`);
+    add('docProps/app.xml', HEAD + `<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><TotalTime>0</TotalTime><Words>${words}</Words><Application>Lectern Web Edition</Application><PresentationFormat>${X(fmtName)}</PresentationFormat><Paragraphs>0</Paragraphs><Slides>${allSlides.length}</Slides><Notes>${allSlides.filter((s) => s.notes && s.notes.trim()).length}</Notes><HiddenSlides>${allSlides.filter((s) => s.hidden).length}</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><Company>${X(p.company || '')}</Company><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>11.0000</AppVersion></Properties>`);
     overrides.push(['/docProps/app.xml', CT.app]);
 
     const rootRels = pack.rels('');

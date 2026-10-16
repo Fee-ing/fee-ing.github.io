@@ -6,6 +6,8 @@
   'use strict';
   const L = window.L;
   const M = (L.model = {});
+  /* UI text in the tables below, shown in the UI's language where it is displayed (L.N; this file also loads without common/i18n.js) */
+  const N = L.N || ((s) => s);
 
   /* ---------- default text levels (PowerPoint 2003 master) ---------- */
   const BODY_BULLETS = ['•', '–', '•', '–', '»', '•', '•', '•', '•'];
@@ -60,7 +62,7 @@
 
   /* ---------- helpers for decoration shapes ---------- */
   let decoId = 0;
-  const deco = (geom, x, y, w, h, fill, extra) => Object.assign({ id: 'd' + (decoId++), type: 'shape', name: '装饰', geom, x, y, w, h, rot: 0, fill, line: { t: 'none' } }, extra || {});
+  const deco = (geom, x, y, w, h, fill, extra) => Object.assign({ id: 'd' + (decoId++), type: 'shape', name: 'Decoration', geom, x, y, w, h, rot: 0, fill, line: { t: 'none' } }, extra || {});
   const solid = (c, a) => ({ t: 'solid', c, a: a == null ? 1 : a });
   const grad = (stops, ang, path) => ({ t: 'grad', stops: stops.map(([p, c, a]) => ({ p, c, a: a == null ? 1 : a })), ang: ang || 0, path: path || 'lin' });
   const custom = (x, y, w, h, cmds, fill, extra) => deco('custom', x, y, w, h, fill, Object.assign({ path: { paths: [{ w, h, cmds, fill: 'norm', stroke: false }] } }, extra || {}));
@@ -79,7 +81,7 @@
 
   defDesign('default', '默认设计', { colors: M.COLOR_SCHEMES[0], fonts: { major: 'Arial', minor: 'Arial' }, bg: solid('bg1') });
 
-  defDesign('azure', '蔚蓝天际', {
+  defDesign('azure', '蔚蓝地平线', {
     colors: scheme('#FFFFFF', '#1B2A41', '#7F93B2', '#FFFFFF', '#4A7BC8', '#E0A526', '#2D6BB5', '#8E7CC3', '#9BB7E3', '#1F3A6E', '#F2C76E', '#5C88C5'),
     fonts: { major: 'Trebuchet MS', minor: 'Verdana' },
     bg: grad([[0, '#FFFFFF'], [1, '#DCE8F7']], 90),
@@ -103,7 +105,7 @@
     tx: { title: { algn: 'l' }, body: { bu: { c: 'accent2', ch: '✦' } } },
   });
 
-  defDesign('meadow', '草甸', {
+  defDesign('meadow', N('草地'), {
     colors: scheme('#F7FBEF', '#22331A', '#A7C08F', '#2F5E1E', '#7DB04B', '#E7A93B', '#3B7D2A', '#8A9A5B', '#B9D88F', '#4E7A33', '#F3D27A', '#6A9C89'),
     fonts: { major: 'Century Gothic', minor: 'Century Gothic' },
     bg: solid('bg1'),
@@ -115,7 +117,7 @@
     tx: { title: { algn: 'l' }, body: { bu: { c: 'accent1', ch: '●' } }, footer: { color: '#FFFFFF' } },
   });
 
-  defDesign('ember', '余烬', {
+  defDesign('ember', N('余烬'), {
     colors: scheme('#FFF8F0', '#3A2414', '#C9A88C', '#8C2D04', '#E8641C', '#C1272D', '#B5651D', '#8E6C4F', '#F4A259', '#5B3A29', '#F7C59F', '#A23B05'),
     fonts: { major: 'Franklin Gothic Medium', minor: 'Arial' },
     bg: solid('bg1'),
@@ -134,7 +136,7 @@
     tx: { title: { algn: 'l' }, body: { bu: { c: 'accent1', ch: '■' } } },
   });
 
-  defDesign('graphite', '石墨', {
+  defDesign('graphite', N('石墨'), {
     colors: scheme('#2B2D31', '#E8EAED', '#17181B', '#FFFFFF', '#F28C28', '#58A6FF', '#79C0FF', '#B1BAC4', '#FFB86B', '#8B949E', '#3FB950', '#D2A8FF'),
     fonts: { major: 'Arial', minor: 'Arial' },
     bg: grad([[0, '#34373D'], [1, '#232428']], 90),
@@ -145,7 +147,7 @@
     tx: { title: { algn: 'l', rPr: { b: true } }, body: { bu: { c: 'accent1', ch: '▸' } } },
   });
 
-  defDesign('blueprint', '蓝图', {
+  defDesign('blueprint', N('蓝图'), {
     colors: scheme('#1D4E89', '#E8F1FB', '#123359', '#FFFFFF', '#7FB3E6', '#FFD24D', '#B3D4F5', '#9DBCE0', '#4A86C5', '#C9DDF2', '#FFE699', '#5FA0DA'),
     fonts: { major: 'Courier New', minor: 'Arial' },
     bg: solid('bg1'),
@@ -156,7 +158,7 @@
     tx: { title: { algn: 'l', rPr: { b: true } }, body: { bu: { c: 'accent2', ch: '–' } } },
   });
 
-  defDesign('capsule', '胶囊', {
+  defDesign('capsule', N('胶囊'), {
     colors: scheme('#FFFFFF', '#1E2D33', '#9FB4BA', '#21545F', '#2BA6A0', '#9BC53D', '#1F7A8C', '#7E9C9F', '#7FD1C8', '#33658A', '#E3D96E', '#F26B38'),
     fonts: { major: 'Trebuchet MS', minor: 'Trebuchet MS' },
     bg: solid('bg1'),
@@ -182,7 +184,7 @@
     tx: { body: { bu: { c: 'accent1', ch: '•' } }, footer: { color: '#FFFFFF' } },
   });
 
-  defDesign('parchment', '羊皮纸', {
+  defDesign('parchment', N('羊皮纸'), {
     colors: scheme('#F4ECD8', '#3B2A1A', '#B8A27F', '#5A3A1A', '#C8A96B', '#8C5A2B', '#7B3F00', '#8A7A60', '#E1CDA0', '#6B4F2E', '#A77B4F', '#556B2F'),
     fonts: { major: 'Book Antiqua', minor: 'Georgia' },
     bg: grad([[0, '#F7F0DE'], [1, '#E6D7B5']], 0, 'circle'),
@@ -207,7 +209,7 @@
     tx: { title: { algn: 'l' }, body: { bu: { c: 'accent2', ch: '■' } } },
   });
 
-  defDesign('crimson', '绯红边缘', {
+  defDesign('crimson', '绯红边饰', {
     colors: scheme('#FFFFFF', '#262626', '#A6A6A6', '#A4161A', '#A4161A', '#495057', '#0B6E99', '#6C757D', '#E5383B', '#343A40', '#F4ACB7', '#ADB5BD'),
     fonts: { major: 'Georgia', minor: 'Arial' },
     bg: solid('bg1'),
@@ -237,7 +239,21 @@
     tx: { body: { bu: { c: 'accent1' } } },
   });
 
+  defDesign('evergreen', N('常青'), {
+    colors: scheme('#FBF8F3', '#2B2622', '#E9E2D7', '#1F4038', '#2F6B5B', '#C9803A', '#3F6E8C', '#8C7A66', '#93B7A8', '#5E5A55', '#E8C590', '#A8503E'),
+    fonts: { major: 'Georgia', minor: 'Calibri' },
+    bg: solid('bg1'),
+    /* a copper rule over the title, a hairline over the footer */
+    deco: (W, H) => [deco('rect', W * 0.05, H * 0.07, W * 0.05, H * 0.008, solid('accent2')), deco('rect', W * 0.05, H * 0.905, W * 0.9, H * 0.002, solid('lt2'))],
+    /* the title slide: text on the left, a pine panel on the right */
+    titleDeco: (W, H) => [deco('rect', W * 0.6, 0, W * 0.4, H, solid('tx2')), deco('rect', W * 0.6, 0, W * 0.006, H, solid('accent2'))],
+    ph: { title: [0.05, 0.09, 0.9, 0.13], body: [0.05, 0.26, 0.9, 0.61], ctrTitle: [0.06, 0.25, 0.48, 0.3], subTitle: [0.06, 0.57, 0.48, 0.16], dt: [0.05, 0.92, 0.2333, 0.06], ftr: [0.3417, 0.92, 0.3167, 0.06], sldNum: [0.7167, 0.92, 0.2333, 0.06] },
+    tx: { title: { algn: 'l', rPr: { sz: 36 } }, body: { bu: { c: 'accent2' } }, footer: { color: 'folHlink' }, ctrTitleAlgn: 'l', subTitleAlgn: 'l' },
+  });
+
   M.DESIGNS = DESIGNS;
+  /** a design's name as shown: ours in the UI's language, a file's own as it is */
+  M.designName = (d) => (!d ? '' : DESIGNS.some((x) => x.key === d.key && x.name === d.name) && L.t ? L.t(d.name) : d.name);
 
   /** Build a concrete design object (data only) for a slide size. */
   M.buildDesign = function (key, W, H) {
@@ -278,7 +294,7 @@
     const slot = (design && design.clrMap && design.clrMap[c]) || MAP[c] || c;
     return cols[slot] || L.color.PRESET[c] || fallback || '#000000';
   };
-  M.SCHEME_SLOTS = [['lt1', 'Background'], ['dk1', 'Text and lines'], ['lt2', 'Shadows'], ['dk2', 'Title text'], ['accent1', 'Fills'], ['accent2', 'Accent'], ['hlink', 'Accent and hyperlink'], ['folHlink', 'Accent and followed hyperlink']];
+  M.SCHEME_SLOTS = [['lt1', N('背景')], ['dk1', '文字和线条'], ['lt2', N('阴影')], ['dk2', '标题文字'], ['accent1', N('填充')], ['accent2', N('强调色')], ['hlink', '强调色和超链接'], ['folHlink', '强调色和已访问的超链接']];
   M.schemeRow = (design) => ['bg1', 'tx1', 'bg2', 'tx2', 'accent1', 'accent2', 'hlink', 'folHlink'].map((k) => ({ ref: k, hex: M.resolveColor(k, design) }));
 
   /* ---------- text model ---------- */
@@ -298,7 +314,7 @@
   T.paraText = (p) => p.rs.map((r) => (r.fld ? r.t || '' : r.t)).join('');
   T.plain = (tx) => (tx && tx.ps ? tx.ps.map(T.paraText).join('\n') : '');
   T.isEmpty = (tx) => !tx || !tx.ps || tx.ps.every((p) => !T.paraText(p).length);
-  T.RUN_KEYS = ['b', 'i', 'u', 'strike', 'sz', 'font', 'color', 'base', 'shd', 'shdX', 'link', 'fld', 'spc', 'cap', 'fill', 'ln', 'hl', 'emb', 'keep'];
+  T.RUN_KEYS = ['b', 'i', 'u', 'strike', 'sz', 'font', 'fontEA', 'color', 'base', 'shd', 'shdX', 'link', 'fld', 'spc', 'cap', 'fill', 'ln', 'hl', 'emb', 'keep'];
   T.runProps = (r) => { const o = {}; for (const k of T.RUN_KEYS) if (r[k] !== undefined && k !== 'fld') o[k] = r[k]; return o; };
   T.sameProps = (a, b) => L.equal(T.runProps(a), T.runProps(b)) && !a.fld && !b.fld;
   T.normalize = (p) => {
@@ -387,31 +403,39 @@
     if (f === '+mn' || f === '+mn-lt') return (design && design.fonts && design.fonts.minor) || 'Arial';
     return f;
   };
+  /** a run's East Asian font: +mn-ea / +mj-ea (or none: the master's +mn-ea) are the design's, else as given;
+      undefined where the design has none */
+  S.fontEA = (f, design) => {
+    const fonts = (design && design.fonts) || {};
+    if (f === '+mj-ea') return fonts.majorEA || undefined;
+    if (!f || f === '+mn-ea') return fonts.minorEA || undefined;
+    return f && f[0] !== '+' ? f : undefined;
+  };
   S.run = (ps, r) => Object.assign({}, ps.rPr || {}, T.runProps(r || {}));
 
   /* ---------- layouts ---------- */
   M.LAYOUTS = [
     { key: 'title', name: '标题幻灯片', group: '文字版式', ox: 'title' },
     { key: 'titleOnly', name: '仅标题', group: '文字版式', ox: 'titleOnly' },
-    { key: 'text', name: '标题和文本', group: '文字版式', ox: 'tx' },
-    { key: 'twoText', name: '标题和两栏文本', group: '文字版式', ox: 'twoColTx' },
-    { key: 'blank', name: '空白', group: '内容版式', ox: 'blank' },
-    { key: 'contentOnly', name: '内容', group: '内容版式', ox: 'objOnly' },
+    { key: 'text', name: '标题和文字', group: '文字版式', ox: 'tx' },
+    { key: 'twoText', name: '标题和两栏文字', group: '文字版式', ox: 'twoColTx' },
+    { key: 'blank', name: N('空白'), group: '内容版式', ox: 'blank' },
+    { key: 'contentOnly', name: N('内容'), group: '内容版式', ox: 'objOnly' },
     { key: 'content', name: '标题和内容', group: '内容版式', ox: 'obj' },
-    { key: 'twoContent', name: '标题和 2 项内容', group: '内容版式', ox: 'twoObj' },
-    { key: 'contentTwoContent', name: '标题、内容和 2 项内容', group: '内容版式', ox: 'objAndTwoObj' },
-    { key: 'twoContentContent', name: '标题、2 项内容和内容', group: '内容版式', ox: 'twoObjAndObj' },
-    { key: 'fourContent', name: '标题和 4 项内容', group: '内容版式', ox: 'fourObj' },
-    { key: 'textContent', name: '标题、文本和内容', group: '文字和内容版式', ox: 'txAndObj' },
-    { key: 'contentText', name: '标题、内容和文本', group: '文字和内容版式', ox: 'objAndTx' },
-    { key: 'textTwoContent', name: '标题、文本和 2 项内容', group: '文字和内容版式', ox: 'txAndTwoObj' },
-    { key: 'twoContentText', name: '标题、2 项内容和文本', group: '文字和内容版式', ox: 'twoObjAndTx' },
+    { key: 'twoContent', name: '标题和两项内容', group: '内容版式', ox: 'twoObj' },
+    { key: 'contentTwoContent', name: '标题、内容和两项内容', group: '内容版式', ox: 'objAndTwoObj' },
+    { key: 'twoContentContent', name: '标题、两项内容和内容', group: '内容版式', ox: 'twoObjAndObj' },
+    { key: 'fourContent', name: '标题和四项内容', group: '内容版式', ox: 'fourObj' },
+    { key: 'textContent', name: '标题、文字和内容', group: '文字和内容版式', ox: 'txAndObj' },
+    { key: 'contentText', name: '标题、内容和文字', group: '文字和内容版式', ox: 'objAndTx' },
+    { key: 'textTwoContent', name: '标题、文字和两项内容', group: '文字和内容版式', ox: 'txAndTwoObj' },
+    { key: 'twoContentText', name: '标题、两项内容和文字', group: '文字和内容版式', ox: 'twoObjAndTx' },
     { key: 'table', name: '标题和表格', group: '其他版式', ox: 'tbl' },
     { key: 'chart', name: '标题和图表', group: '其他版式', ox: 'chart' },
-    { key: 'textOverContent', name: '标题和文本（内容之上）', group: '其他版式', ox: 'txOverObj' },
-    { key: 'contentOverText', name: '标题和内容（文本之上）', group: '其他版式', ox: 'objOverTx' },
-    { key: 'vertText', name: '标题和竖排文本', group: '其他版式', ox: 'vertTx' },
-    { key: 'vertTitleText', name: '竖排标题和文本', group: '其他版式', ox: 'vertTitleAndTx' },
+    { key: 'textOverContent', name: '标题、上方文字和下方内容', group: '其他版式', ox: 'txOverObj' },
+    { key: 'contentOverText', name: '标题、上方内容和下方文字', group: '其他版式', ox: 'objOverTx' },
+    { key: 'vertText', name: '标题和竖排文字', group: '其他版式', ox: 'vertTx' },
+    { key: 'vertTitleText', name: '竖排标题与文字', group: '其他版式', ox: 'vertTitleAndTx' },
   ];
   M.layoutInfo = (key) => M.LAYOUTS.find((l) => l.key === key) || M.LAYOUTS[2];
 
@@ -455,7 +479,7 @@
     }
   };
 
-  M.PROMPTS = { title: 'Click to add title', ctrTitle: 'Click to add title', subTitle: 'Click to add subtitle', body: 'Click to add text', obj: 'Click to add text', tbl: 'Double click to add table', chart: 'Double click to add chart', pic: 'Click icon to add picture', dt: '', ftr: '', sldNum: '' };
+  M.PROMPTS = { title: '单击此处添加标题', ctrTitle: '单击此处添加标题', subTitle: '单击此处添加副标题', body: '单击此处添加文本', obj: '单击此处添加文本', tbl: '双击添加表格', chart: '双击添加图表', pic: '单击图标添加图片', dt: '', ftr: '', sldNum: '' };
 
   M.makePlaceholder = function (fr, design, idHint) {
     const isTitle = fr.type === 'title' || fr.type === 'ctrTitle';
@@ -471,26 +495,28 @@
     return sh;
   };
   function phName(type, idx) {
-    return ({ title: 'Title', ctrTitle: 'Title', subTitle: 'Subtitle', body: 'Text Placeholder', obj: 'Content Placeholder', tbl: 'Table Placeholder', chart: 'Chart Placeholder', dt: 'Date Placeholder', ftr: 'Footer Placeholder', sldNum: 'Slide Number Placeholder' }[type] || 'Placeholder') + ' ' + ((idx || 0) + 1);
+    return ({ title: '标题', ctrTitle: '标题', subTitle: 'Subtitle', body: '文本占位符', obj: '内容占位符', tbl: '表格占位符', chart: '图表占位符', dt: '日期占位符', ftr: '页脚占位符', sldNum: '幻灯片编号占位符' }[type] || 'Placeholder') + ' ' + ((idx || 0) + 1);
   }
 
   /* ---------- presentation ---------- */
   M.SLIDE_SIZES = [
-    { key: 'screen', name: '屏幕演示（4:3）', w: 720, h: 540 },
-    { key: 'widescreen', name: '宽屏（16:9），13.33 x 7.5 英寸', w: 960, h: 540 },
-    { key: 'wide', name: '屏幕演示（16:9），10 x 5.63 英寸', w: 720, h: 405 },
-    { key: 'wide10', name: '屏幕演示（16:10）', w: 720, h: 450 },
-    { key: 'letter', name: '信纸（8.5x11 英寸）', w: 720, h: 540 },
-    { key: 'a4', name: 'A4 纸张（210x297 毫米）', w: 780, h: 540 },
-    { key: '35mm', name: '35 毫米幻灯片', w: 810, h: 540 },
-    { key: 'overhead', name: '投影机', w: 720, h: 540 },
-    { key: 'banner', name: '横幅', w: 576, h: 72 },
-    { key: 'custom', name: '自定义', w: 720, h: 540 },
+    { key: 'screen', name: '屏幕放映 (4:3)', w: 720, h: 540 },
+    { key: 'widescreen', name: '宽屏 (16:9)，13.33 × 7.5 英寸', w: 960, h: 540 },
+    { key: 'wide', name: '屏幕放映 (16:9)，10 × 5.63 英寸', w: 720, h: 405 },
+    { key: 'wide10', name: '屏幕放映 (16:10)', w: 720, h: 450 },
+    { key: 'letter', name: 'Letter 纸（8.5 × 11 英寸）', w: 720, h: 540 },
+    { key: 'a4', name: 'A4 纸（210×297 毫米）', w: 780, h: 540 },
+    { key: '35mm', name: N('35 毫米幻灯片'), w: 810, h: 540 },
+    { key: 'overhead', name: N('投影胶片'), w: 720, h: 540 },
+    { key: 'banner', name: N('横幅'), w: 576, h: 72 },
+    { key: 'custom', name: N('自定义'), w: 720, h: 540 },
   ];
 
+  /** the size of a new presentation, unless the user chose another (Page Setup): Widescreen, as in PowerPoint */
+  M.DEFAULT_SIZE = { w: 960, h: 540 };
   M.newPresentation = function (opts) {
     opts = opts || {};
-    const W = opts.w || 720, H = opts.h || 540;
+    const W = opts.w || M.DEFAULT_SIZE.w, H = opts.h || M.DEFAULT_SIZE.h;
     const design = M.buildDesign(opts.design || 'default', W, H);
     const pres = {
       W, H, firstNum: 1, title: opts.title || '',
@@ -499,6 +525,10 @@
       hf: { dt: false, dtAuto: true, dtFmt: 'datetime1', dtText: '', num: false, ftr: false, ftrText: '', notOnTitle: false },
       props: { author: '', subject: '', keywords: '', comments: '', company: '', category: '', created: new Date().toISOString() },
     };
+    /* the text language and East Asian font of the UI's language, as its PowerPoint makes a new presentation
+       (common/locales.js); not for a file being read (pptx-read.js: locale false) */
+    const loc = opts.locale !== false && L.locale && L.locale.get().slide;
+    if (loc) { pres.lang = loc.lang; if (loc.fontEA) Object.assign(design.fonts, { majorEA: loc.fontEA, minorEA: loc.fontEA }); }
     if (opts.empty !== true) pres.slides.push(M.newSlide(pres, 'title', design.id));
     return pres;
   };
@@ -609,7 +639,7 @@
   };
   M.newLine = function (pres, slide, geom, p1, p2, arrows) {
     const def = pres.lineDefaults || {};
-    const sh = { id: L.uid('s'), type: 'line', name: '线条 ' + (slide.shapes.length + 1), geom: geom || 'line', x: 0, y: 0, w: 0, h: 0, rot: 0, line: def.line ? L.clone(def.line) : { c: 'tx1', w: 0.75, dash: 'solid' } };
+    const sh = { id: L.uid('s'), type: 'line', name: 'Line ' + (slide.shapes.length + 1), geom: geom || 'line', x: 0, y: 0, w: 0, h: 0, rot: 0, line: def.line ? L.clone(def.line) : { c: 'tx1', w: 0.75, dash: 'solid' } };
     L.geom.setLineEnds(sh, p1, p2);
     if (arrows === 'end' || arrows === 'both') sh.line.tail = { type: 'triangle', w: 'med', len: 'med' };
     if (arrows === 'both') sh.line.head = { type: 'triangle', w: 'med', len: 'med' };
@@ -617,13 +647,13 @@
   };
   M.newTextBox = function (pres, slide, x, y, w, h, wrap) {
     return {
-      id: L.uid('s'), type: 'text', name: '文本框 ' + (slide.shapes.length + 1), geom: 'rect', x, y, w, h, rot: 0,
+      id: L.uid('s'), type: 'text', name: 'Text Box ' + (slide.shapes.length + 1), geom: 'rect', x, y, w, h, rot: 0,
       fill: { t: 'none' }, line: { t: 'none' },
       tx: T.body([T.para('')], { anchor: 't', wrap: wrap !== false, autofit: 'shape' }),
     };
   };
   M.newImage = function (slide, media, x, y, w, h) {
-    return { id: L.uid('s'), type: 'image', name: '图片 ' + (slide.shapes.length + 1), geom: 'rect', x, y, w, h, rot: 0, media, crop: { l: 0, t: 0, r: 0, b: 0 }, line: { t: 'none' }, lockAspect: true, img: {} };
+    return { id: L.uid('s'), type: 'image', name: 'Picture ' + (slide.shapes.length + 1), geom: 'rect', x, y, w, h, rot: 0, media, crop: { l: 0, t: 0, r: 0, b: 0 }, line: { t: 'none' }, lockAspect: true, img: {} };
   };
   M.newTable = function (pres, slide, rows, cols, x, y, w) {
     const d = M.design(pres, slide);
@@ -636,7 +666,7 @@
       for (let c = 0; c < cols; c++) cells.push({ tx: T.body([T.para('', {}, { sz: 18 })], { anchor: 't', ins: [7.2, 3.6, 7.2, 3.6] }), fill: { t: 'none' }, bd: { l: L.clone(border), r: L.clone(border), t: L.clone(border), b: L.clone(border) } });
       tbl.rows.push({ h: Math.max(rh, 28.8), cells });
     }
-    return { id: L.uid('s'), type: 'table', name: '表格 ' + (slide.shapes.length + 1), x, y, w, h: rows * 28.8, rot: 0, tbl };
+    return { id: L.uid('s'), type: 'table', name: 'Table ' + (slide.shapes.length + 1), x, y, w, h: rows * 28.8, rot: 0, tbl };
   };
 
   /* ---------- shape lookup ---------- */
@@ -719,10 +749,13 @@
   H.restore = (snap) => { Object.assign(L.pres, JSON.parse(snap)); };
   /** Record state before a mutation. coalesceKey merges rapid repeats (typing). */
   H.push = (label, coalesceKey) => {
+    /* an edit made while a drag is live (one the keys held back didn't stop) ends that drag first: the drag put back
+       what it moved, so this step's snapshot and the drag's own never interleave */
+    if (L.ui && L.ui.dragging && L.ui.dragging()) L.ui.dragCancel();
     const now = Date.now();
     if (coalesceKey && H._key === coalesceKey && now - H._t < 1200) { H._t = now; H.dirty = true; return; }
     H._key = coalesceKey || null; H._t = now;
-    H.undo.push({ label: label || 'Edit', snap: H.snapshot(), sel: L.ed ? L.ed.saveSel() : null });
+    H.undo.push({ label: label || N('编辑'), snap: H.snapshot(), sel: L.ed ? L.ed.saveSel() : null });
     if (H.undo.length > H.limit) H.undo.shift();
     H.redo.length = 0;
     H.dirty = true;

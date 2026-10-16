@@ -113,6 +113,8 @@
   NF.r15 = (x) => (x === 0 || !isFinite(x) ? x : parseFloat(x.toPrecision(15)));
 
   /* -------------------------------------------------------------- General */
+  /* stripDec and normExp: derived from SheetJS SSF ssf.js, strip_decimal and normalize_exp (Apache License 2.0;
+     ssf.js (C) 2013-present SheetJS); changed: stripDec leaves exponents alone */
   const stripDec = (o) => (o.indexOf('.') < 0 || /e/i.test(o) ? o : o.replace(/(?:\.0*|(\.\d*[1-9])0+)$/, '$1'));
   const normExp = (o) => (o.indexOf('E') < 0 ? o : o.replace(/(?:\.0*|(\.\d*[1-9])0+)E/, '$1E').replace(/(E[+-])(\d)$/, '$10$2'));
   /** General format in at most `w` characters (Excel's default is 11; the grid passes the column width) */

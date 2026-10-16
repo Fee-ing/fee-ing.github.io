@@ -255,7 +255,7 @@
       case 'USERINITIALS': return fmt(f.args[0] || L.store.get('userInitials', '') || O.initials());
       case 'USERADDRESS': return fmt(f.args[0] || L.store.get('userAddress', ''));
       case 'NUMWORDS': case 'NUMCHARS': case 'NUMPARAS': { const st = D.stats(D.allParas(d)); return num(t === 'NUMWORDS' ? st.words : t === 'NUMCHARS' ? st.charsNoSp : st.paras); }
-      case 'DOCPROPERTY': { const k = (f.args[0] || '').toLowerCase(); const map = { title: 'title', subject: 'subject', author: 'creator', keywords: 'keywords', comments: 'description', company: 'company', manager: 'manager', category: 'category', lastsavedby: 'lastModifiedBy' }; if (map[k]) return fmt(docProp(map[k])); const c = d.custom && Object.keys(d.custom).find((x) => x.toLowerCase() === k); if (c) return fmt(String(d.custom[c].v != null ? d.custom[c].v : d.custom[c])); if (k === 'pages') return num(LY.pages.length || 1); if (k === 'words') return num(D.stats(D.allParas(d)).words); return 'Error! Unknown document property name.'; }
+      case 'DOCPROPERTY': { const k = (f.args[0] || '').toLowerCase(); const map = { title: 'title', subject: 'subject', author: 'creator', keywords: 'keywords', comments: 'description', company: 'company', manager: 'manager', category: 'category', lastsavedby: 'lastModifiedBy' }; if (map[k]) return fmt(docProp(map[k])); const c = d.custom && Object.keys(d.custom).find((x) => x.toLowerCase() === k); if (c) return fmt(String(d.custom[c].v != null ? d.custom[c].v : d.custom[c])); if (k === 'pages') return num(LY.pages.length || 1); if (k === 'words') return num(D.stats(D.allParas(d)).words); return '错误！未知的文档属性名称。'; }
       case 'INFO': return F.evaluate((f.args[0] || 'TITLE') + ' ' + (f.args.slice(1).join(' ')), pos);
       case 'QUOTE': return fmt(f.args.join(' '));
       case 'SYMBOL': { const c = f.args[0] || ''; const code = /^0x/i.test(c) ? parseInt(c, 16) : parseInt(c, 10); return isNaN(code) ? '' : L.mapSymbolChar(String.fromCharCode(code), f.sw['\\f'] || 'Symbol') || String.fromCharCode(code); }
@@ -263,7 +263,7 @@
       case 'REF': case '': return refValue(f, pos);
       case 'PAGEREF': {
         const b = F.bookmarks().get(f.args[0]);
-        if (!b) return 'Error! Bookmark not defined.';
+        if (!b) return '错误！未定义书签。';
         const pg = LY.pageOf(D.pos(b.p, b.o));
         if (pg < 0) return null;
         const page = LY.pages[pg];
@@ -273,17 +273,17 @@
       }
       case 'NOTEREF': {
         const b = F.bookmarks().get(f.args[0]);
-        if (!b) return 'Error! Bookmark not defined.';
+        if (!b) return '错误！未定义书签。';
         let o = 0;
         for (const it of b.p.runs) { if (o >= b.o && (it.t === 'fn' || it.t === 'en')) return fmt(LY.noteNum ? LY.noteNum(it) : '1'); o += D.ilen(it); }
-        return 'Error! Not a valid footnote reference.';
+        return '错误！无效的脚注引用。';
       }
       case 'STYLEREF': return styleRef(f, pos);
       case '=': {
         try {
           const v = L.tables.evalFormula(f.expr, pos ? pos.p : null);
           return L.tables.formatNumber(v, f.sw['\\#'] || null);
-        } catch (e) { return '!' + (e.message || 'Syntax Error'); }
+        } catch (e) { return '!' + (e.message || '语法错误'); }
       }
       case 'IF': return ifValue(f, pos);
       case 'MERGEFIELD': {
@@ -299,13 +299,13 @@
       default:
         /* a bare bookmark name behaves like REF */
         if (f.type && F.bookmarks().has(f.args.length ? f.type : instr.trim().split(/\s+/)[0])) return refValue({ args: [instr.trim().split(/\s+/)[0]], sw: f.sw, fmt: f.fmt }, pos);
-        return 'Error! Bookmark not defined.';
+        return '错误！未定义书签。';
     }
   };
   function refValue(f, pos) {
     const name = f.args[0];
     const b = F.bookmarks().get(name);
-    if (!b) return 'Error! Reference source not found.';
+    if (!b) return '错误！未找到引用源。';
     void pos;
     if (f.sw['\\n'] || f.sw['\\r'] || f.sw['\\w']) {
       const lb = LY.labels && LY.labels.get(b.p.id);
@@ -365,7 +365,7 @@
     D.reindex(d);
     let q = p;
     while (q) { if (matches(q)) return D.plainText(q).trim(); q = D.prevPara(d, q); }
-    return 'Error! No text of specified style in document.';
+    return '错误！文档中没有指定样式的文字。';
   }
   function ifValue(f, pos) {
     const toks = F.tokens(f.args.length ? '' : '');
@@ -404,9 +404,9 @@
   };
   F.updateSelection = function () {
     let fields = F.inSelection();
-    if (!fields.length) { app().status('There are no fields in the selection.'); return; }
+    if (!fields.length) { app().status('选区中没有域。'); return; }
     const hasToc = fields.some((x) => /^(TOC|INDEX)$/.test(F.parse(x.it.instr).type));
-    E.edit('Update Field', () => {
+    E.edit('更新域', () => {
       for (const fr of fields) F.updateField(fr);
       if (hasToc) F.refreshTOCPages(fields);
       return E.sel;
@@ -417,14 +417,14 @@
     const list = [];
     for (const st of D.stories(d)) D.walk(st, (b, c, i, story) => { if (b.t === 'p') for (const it of b.runs) if (it.t === 'fb' && (!types || types.includes(F.parse(it.instr).type))) list.push({ fid: it.fid, it, p: b, story }); });
     if (!list.length) return 0;
-    E.edit('Update Fields', () => { for (const fr of list) F.updateField(fr); F.refreshTOCPages(list); return E.sel; });
+    E.edit('更新域', () => { for (const fr of list) F.updateField(fr); F.refreshTOCPages(list); return E.sel; });
     return list.length;
   };
-  F.updateAllOfType = (type) => { const n = F.updateAll([type]); if (!n) app().status(type === 'TOC' ? 'There is no table of contents in this document.' : 'No fields were updated.'); };
+  F.updateAllOfType = (type) => { const n = F.updateAll([type]); if (!n) app().status(type === 'TOC' ? '此文档中没有目录。' : '没有更新任何域。'); };
   F.gotoFirst = function (type) {
     const d = doc();
     for (const st of [d.main]) for (const p of (D.reindex(d), st.paras)) { let o = 0; for (const it of p.runs) { if (it.t === 'fb' && F.parse(it.instr).type === type) { app().gotoPos(D.pos(p, o)); return; } o += D.ilen(it); } }
-    app().status('There is no table of contents in this document.');
+    app().status('此文档中没有目录。');
   };
   /** after rebuilding TOC/INDEX blocks: paginate once more and refresh PAGEREF results */
   F.refreshTOCPages = function (fields) {
@@ -451,7 +451,7 @@
   F.unlinkSelection = function () {
     const fields = F.inSelection();
     if (!fields.length) return;
-    E.edit('Unlink Fields', () => {
+    E.edit('断开域链接', () => {
       for (const fr of fields) {
         const g = O.findField(fr.story, fr.fid);
         for (const part of [g.begin, g.sep, g.end]) if (part) { D.touch(part.p); part.p.runs = part.p.runs.filter((x) => !((x.t === 'fb' || x.t === 'fs' || x.t === 'fe') && x.fid === fr.fid)); }
@@ -462,11 +462,11 @@
   F.lockSelection = function (lock) {
     const fields = F.inSelection();
     if (!fields.length) return;
-    E.edit(lock ? 'Lock Fields' : 'Unlock Fields', () => { for (const fr of fields) { D.touch(fr.p); fr.it.lock = lock || undefined; } return E.sel; });
+    E.edit(lock ? '锁定域' : '解除域锁定', () => { for (const fr of fields) { D.touch(fr.p); fr.it.lock = lock || undefined; } return E.sel; });
   };
   /** replace a field's instruction (Edit Field) and update it */
   F.setInstr = function (fr, instr) {
-    E.edit('Edit Field', () => { D.touch(fr.p); fr.it.instr = ' ' + instr.trim() + ' '; F.updateField(fr); return E.sel; });
+    E.edit('编辑域', () => { D.touch(fr.p); fr.it.instr = ' ' + instr.trim() + ' '; F.updateField(fr); return E.sel; });
   };
   /** fields Word updates before saving/printing (when the option is on) */
   F.beforeSave = function () {
@@ -544,7 +544,7 @@
     const isFig = typeof f.sw['\\c'] === 'string';
     const blocks = [];
     if (!entries.length) {
-      blocks.push(D.para([D.text(isFig ? 'No table of figures entries found.' : 'No table of contents entries found.', { b: true })]));
+      blocks.push(D.para([D.text(isFig ? '未找到图表目录项。' : '未找到目录项。', { b: true })]));
       return blocks;
     }
     for (const e of entries) {
@@ -598,7 +598,7 @@
       }
     }
     const blocks = [];
-    if (!entries.size) { blocks.push(D.para([D.text('No index entries found.', { b: true })])); return blocks; }
+    if (!entries.size) { blocks.push(D.para([D.text('未找到索引项。', { b: true })])); return blocks; }
     const ensure = (id) => { if (!d.styles[id]) { D.touchKey(d, 'styles'); d.styles[id] = D.builtinStyles()[id]; D.stylesChanged(); } return id; };
     const pageRuns = (list) => { const out = []; list.forEach((pg, i) => { if (i) out.push(D.text(sepPages)); out.push(D.text(pg.see ? pg.s : pg.s, { b: pg.b || undefined, i: pg.i || pg.see || undefined })); }); return out; };
     const keys = Array.from(entries.keys()).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
@@ -630,7 +630,7 @@
     opts = opts || {};
     const f = F.parse(instr);
     let inserted;
-    E.edit(f.type === 'INDEX' ? 'Insert Index' : 'Insert Table of Contents', () => {
+    E.edit(f.type === 'INDEX' ? '插入索引' : '插入目录', () => {
       let pos = E.deleteSelection();
       /* fields producing paragraphs start at the beginning of a paragraph */
       if (pos.o > 0) pos = O.splitPara(pos);
@@ -666,7 +666,7 @@
       }
       return E.sel;
     });
-    if (inserted) E.edit('Update Page Numbers', () => { F.refreshTOCPages([inserted]); return E.sel; }, { merge: null });
+    if (inserted) E.edit('更新页码', () => { F.refreshTOCPages([inserted]); return E.sel; }, { merge: null });
   };
 
   /* ================= captions & cross-references ================= */
@@ -676,7 +676,7 @@
     const label = opts.label || 'Figure';
     const fmt = opts.fmt && opts.fmt !== 'ARABIC' ? ' \\* ' + opts.fmt : ' \\* ARABIC';
     const instr = `SEQ ${label.replace(/\s+/g, '_')}${fmt}`;
-    E.edit('Insert Caption', () => {
+    E.edit('插入题注', () => {
       if (!d.styles.Caption) { D.touchKey(d, 'styles'); d.styles.Caption = D.builtinStyles().Caption; D.stylesChanged(); }
       const pos = E.collapsed() ? E.sel.f : E.range()[0];
       let p;
@@ -712,7 +712,7 @@
     const fields = [];
     D.reindex(d);
     for (const p of D.allParas(d)) for (const it of p.runs) if (it.t === 'fb' && /^(SEQ|STYLEREF)$/.test(F.parse(it.instr).type)) fields.push({ fid: it.fid, it, p, story: d.main });
-    E.edit('Update Captions', () => { for (const fr of fields) F.updateField(fr); return E.sel; });
+    E.edit('更新题注', () => { for (const fr of fields) F.updateField(fr); return E.sel; });
   };
   /** cross-reference targets of a kind */
   F.xrefItems = function (kind) {
@@ -735,7 +735,7 @@
   F.insertXref = function (kind, item, what, opts) {
     opts = opts || {};
     const d = doc();
-    E.edit('Insert Cross-reference', () => {
+    E.edit('插入交叉引用', () => {
       let name;
       if (kind === 'Bookmark') name = item.name;
       else if (kind === 'Footnote' || kind === 'Endnote') {
@@ -770,9 +770,9 @@
   N.insert = function (kind, opts) {
     opts = opts || {};
     const d = doc();
-    if (!E.sel || D.storyOf(d, E.sel.f.p) !== d.main) { app().status('Notes can only be inserted in the main document.'); return; }
+    if (!E.sel || D.storyOf(d, E.sel.f.p) !== d.main) { app().status('注释只能插入主文档。'); return; }
     let target = null;
-    E.edit(kind === 'fn' ? 'Insert Footnote' : 'Insert Endnote', () => {
+    E.edit(kind === 'fn' ? '插入脚注' : '插入尾注', () => {
       const store = kind === 'fn' ? 'fn' : 'en';
       D.touchKey(d, store);
       let id = 1;
@@ -802,13 +802,13 @@
   /** notes settings: {fmt, start, restart, pos} for footnotes or endnotes */
   N.setOptions = function (kind, o) {
     const d = doc();
-    E.edit('Note Options', () => { D.touchKey(d, 'settings'); const k = kind === 'fn' ? 'fnPr' : 'enPr'; d.settings[k] = Object.assign({}, d.settings[k], o); return E.sel; });
+    E.edit('注释选项', () => { D.touchKey(d, 'settings'); const k = kind === 'fn' ? 'fnPr' : 'enPr'; d.settings[k] = Object.assign({}, d.settings[k], o); return E.sel; });
   };
   /** convert all footnotes to endnotes or the reverse */
   N.convertAll = function (from) {
     const d = doc();
     const to = from === 'fn' ? 'en' : 'fn';
-    E.edit('Convert Notes', () => {
+    E.edit('转换注释', () => {
       D.touchKey(d, 'fn'); D.touchKey(d, 'en');
       const map = {};
       let next = 1;

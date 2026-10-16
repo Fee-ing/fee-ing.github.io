@@ -105,7 +105,7 @@
       /* several areas only copy when they line up */
       const rs = s.ranges;
       const sameCols = rs.every((x) => x.c1 === rs[0].c1 && x.c2 === rs[0].c2), sameRows = rs.every((x) => x.r1 === rs[0].r1 && x.r2 === rs[0].r2);
-      if (cut || !(sameCols || sameRows)) { L.ui.msg('That command cannot be used on multiple selections.', { icon: 'warn' }); return; }
+      if (cut || !(sameCols || sameRows)) { L.ui.msg('此命令无法用于多重选区。', { icon: 'warn' }); return; }
     }
     const rg0 = s.ranges[s.active];
     const rg = { r1: rg0.r1, c1: rg0.c1, r2: rg0.r2 >= M.MAXR - 1 ? Math.max(rg0.r1, sh.maxR) : rg0.r2, c2: rg0.c2 >= M.MAXC - 1 ? Math.max(rg0.c1, sh.maxC) : rg0.c2 };
@@ -122,7 +122,7 @@
     marqueeTimer = setInterval(() => { if (!g.state.marquee) { clearInterval(marqueeTimer); return; } g.state.marquee.phase = (g.state.marquee.phase + 2) % 8; g.paint(); }, 120);
     L.bus.emit('clipboard', clip);
     if (L.app.addOfficeClip) L.app.addOfficeClip(clip);
-    L.app.status(cut ? 'Select destination and press ENTER or choose Paste' : 'Select destination and press ENTER or choose Paste');
+    L.app.status(L.t('选择目标位置并按 Enter，或选择“粘贴”'));
     g.paint();
   };
 
@@ -148,7 +148,7 @@
     try {
       if (navigator.clipboard && navigator.clipboard.readText) { const t = await navigator.clipboard.readText(); if (t) { pasteText(t); return; } }
     } catch (err) { /* blocked */ }
-    L.ui.msg('Use Ctrl+V to paste from other programs.', { icon: 'info' });
+    L.ui.msg('使用 Ctrl+V 从其他程序粘贴。', { icon: 'info' });
   };
   /** paste destination range for a block of h×w at the selection (tiles when the selection is a multiple) */
   function destFor(h, w) {
@@ -184,10 +184,10 @@
     const snap = clip.snap;
     let H = opts.transpose ? snap.w : snap.h, W = opts.transpose ? snap.h : snap.w;
     const dest = destFor(H, W);
-    if (O.cutsArray(sh, [dest])) { L.ui.msg('You cannot change part of an array.', { icon: 'warn' }); return; }
-    if (what === 'all' && !dest.tile && sh.merges.some((m) => M.rangesOverlap(m, dest) && !(m.r1 >= dest.r1 && m.r2 <= dest.r2 && m.c1 >= dest.c1 && m.c2 <= dest.c2))) { L.ui.msg('Cannot change part of a merged cell.', { icon: 'warn' }); return; }
+    if (O.cutsArray(sh, [dest])) { L.ui.msg('不能更改数组的一部分。', { icon: 'warn' }); return; }
+    if (what === 'all' && !dest.tile && sh.merges.some((m) => M.rangesOverlap(m, dest) && !(m.r1 >= dest.r1 && m.r2 <= dest.r2 && m.c1 >= dest.c1 && m.c2 <= dest.c2))) { L.ui.msg('不能更改合并单元格的一部分。', { icon: 'warn' }); return; }
     const srcWb = clip.wb;
-    O.tx(sh.wb, opts.what || opts.op || opts.transpose ? 'Paste Special' : 'Paste', () => {
+    O.tx(sh.wb, opts.what || opts.op || opts.transpose ? '选择性粘贴' : L.N('粘贴'), () => {
       if (what === 'colWidths') {
         for (let j = 0; j < W && j < snap.colW.length; j++) { const o = snap.colW[opts.transpose ? 0 : j]; if (o && o.w != null) O.setColWidth(sh, [dest.c1 + j], o.w); }
         return;
@@ -306,8 +306,8 @@
     if (!rows.length) return;
     const W = Math.max(...rows.map((r) => r.length));
     const dest = destFor(rows.length, W);
-    if (O.cutsArray(sh, [dest])) { L.ui.msg('You cannot change part of an array.', { icon: 'warn' }); return; }
-    O.tx(sh.wb, 'Paste', () => {
+    if (O.cutsArray(sh, [dest])) { L.ui.msg('不能更改数组的一部分。', { icon: 'warn' }); return; }
+    O.tx(sh.wb, L.N('粘贴'), () => {
       for (let r = dest.r1; r <= dest.r2; r++) for (let c = dest.c1; c <= dest.c2; c++) {
         const t = (rows[(r - dest.r1) % rows.length] || [])[(c - dest.c1) % W];
         if (t == null) continue;
@@ -365,7 +365,7 @@
       const nf = get('mso-number-format'); if (nf) d.nf = nf.replace(/^["']|["']$/g, '').replace(/\\(.)/g, '$1');
       return Object.keys(d).length ? d : null;
     };
-    O.tx(wb, 'Paste', () => {
+    O.tx(wb, L.N('粘贴'), () => {
       for (let r = dest.r1; r <= dest.r2; r++) for (let c = dest.c1; c <= dest.c2; c++) {
         const it = (grid[(r - dest.r1) % H] || [])[(c - dest.c1) % W];
         if (it === null) continue;
@@ -393,6 +393,17 @@
   /**
    * Move (cut + paste, or drag) src on sheet `sh` to `to` (on `toSheet`, default same). copy: Ctrl-drag copies instead.
    */
+  /** whether cells of range `to` outside `except` hold a value or a formula (formatting alone doesn't count) */
+  CL.holdsData = function (sh, to, except) {
+    for (let r = to.r1; r <= Math.min(to.r2, sh.maxR); r++) {
+      const row = sh.rows[r];
+      if (row) for (let c = to.c1; c <= Math.min(to.c2, row.cells.length - 1); c++) {
+        const cl = row.cells[c];
+        if (cl && (cl.v != null || cl.f != null) && !(except && M.rangeContains(except, r, c))) return true;
+      }
+    }
+    return false;
+  };
   CL.moveRange = function (sh, src, to, copy, toSheet) {
     toSheet = toSheet || sh;
     const wb = sh.wb;
@@ -407,9 +418,8 @@
       void keep;
       return;
     }
-    if (O.cutsArray(sh, [src]) || O.cutsArray(toSheet, [to])) { L.ui.msg('You cannot change part of an array.', { icon: 'warn' }); return; }
-    /* overwriting non-empty cells asks first (drag only) */
-    O.tx(wb, 'Move', () => {
+    if (O.cutsArray(sh, [src]) || O.cutsArray(toSheet, [to])) { L.ui.msg('不能更改数组的一部分。', { icon: 'warn' }); return; }
+    O.tx(wb, L.N('移动'), () => {
       const snap = snapshot(sh, src);
       const sameSheet = toSheet === sh;
       const before = O.snapSheet(sh), before2 = sameSheet ? null : O.snapSheet(toSheet);

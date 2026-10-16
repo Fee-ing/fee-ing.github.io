@@ -7,7 +7,7 @@
   color-scheme: light;
   --theme-color: #2a64c8;   /* the browser's own bar (meta theme-color) */
   --tray-radius: 3px; --ctl-radius: 2px;   /* toolbars and panels; buttons and fields */
-  --ui-font: Tahoma, "Segoe UI", Verdana, Geneva, "DejaVu Sans", sans-serif;
+  --ui-font: Tahoma, "Segoe UI", Verdana, Geneva, "DejaVu Sans", var(--ui-cjk, sans-serif);
   --ui-size: 11px;
   /* command bars and toolbars */
   --tb-a: #E3EFFF; --tb-b: #CBE1FC; --tb-c: #7BA4E0; --tb-edge: #5e85c6;
@@ -63,6 +63,7 @@
   /* Start Center and the New dialog */
   --card-hot-border: #E3A23B; --card-thumb-bg: #f3f6fb; --card-thumb-line: #b8c7df; --start-on-b: #e6eefc; --start-rule: #a9c1ea;
   --start-line: #c3d3ee; --error-ink: #a3300b; --badge-bg: #fde3c4; --badge-ink: #8a3b00; --rm-bg: rgba(255,255,255,.9);
+  --notice-bg: #eef8f1; --notice-hot: #dcf0e2; --notice-line: #9fcfae; --notice-mark: #1f8a4c; --notice-ink: #14572f;
   --drop-bg: rgba(214,227,248,.85);
   /* ribbon (looks with layout 'ribbon'; common/ribbon.js) */
   --rb-bg: #C4DAFA; --rb-panel: #F3F7FE; --rb-line: #9DB6E4; --rb-tab-ink: #0B2E7C; --rb-tab-on-ink: #0B2E7C; --rb-tab-hot: #E3EFFF;
@@ -79,7 +80,7 @@
 [data-look="paper"], [data-look="paper2016"] {
   --theme-color: #FAF8F4;
   --tray-radius: 10px; --ctl-radius: 6px;
-  --ui-font: system-ui, "Segoe UI", "Helvetica Neue", Ubuntu, Cantarell, "DejaVu Sans", sans-serif;
+  --ui-font: system-ui, "Segoe UI", "Helvetica Neue", Ubuntu, Cantarell, "DejaVu Sans", var(--ui-cjk, sans-serif);
   --ui-size: 12px;
   --p-paper: #FAF8F4; --p-paper-2: #F3F0EA; --p-line: #E2DDD4; --p-line-strong: #CFC8BC;
   --p-accent: #0F6F74; --p-accent-ink: #0A5357; --p-accent-soft: #E2EFEE; --p-accent-mid: #C9E2E0;
@@ -128,6 +129,7 @@
   --cell-sel: rgba(15,111,116,.14); --cell-sel-border: var(--p-accent);
   --card-hot-border: var(--p-accent-mid); --card-thumb-bg: var(--p-paper-2); --card-thumb-line: var(--p-line); --start-on-b: var(--p-accent-soft); --start-rule: var(--p-line);
   --start-line: var(--p-line); --error-ink: #A3300B; --badge-bg: #FCE7CF; --badge-ink: #8A3B00; --rm-bg: rgba(255,255,255,.9);
+  --notice-bg: #EBF4EE; --notice-hot: #DBEDE1; --notice-line: #B2D5BF; --notice-mark: #2E8650; --notice-ink: #1E5A36;
   --drop-bg: rgba(226,239,238,.9);
   --rb-bg: var(--p-paper); --rb-panel: #fff; --rb-line: var(--p-line); --rb-tab-ink: #4A463F; --rb-tab-on-ink: var(--p-accent-ink); --rb-tab-hot: var(--p-paper-2);
   --rb-label-ink: #8C857A; --rb-ctx: #A85A1E; --rb-ctx-bg: #FBF0E4; --rb-file-ink: var(--p-accent);
@@ -208,4 +210,12 @@
 :is([data-look="paper"], [data-look="paper2016"]) dialog { border-radius: 12px; }
 :is([data-look="paper"], [data-look="paper2016"]) dialog .dt { background: #fff; border: 0; color: var(--ink); padding: 12px 16px 4px; font-weight: 600; }
 :is([data-look="paper"], [data-look="paper2016"]) dialog form button { height: 28px; border-radius: 6px; background: var(--p-accent); border-color: var(--p-accent); color: #fff; box-shadow: none; }
+:is([data-look="paper"], [data-look="paper2016"]) dialog form button:hover { background: var(--p-accent-ink); }
 :is([data-look="paper"], [data-look="paper2016"]) .combo-in { font-size: 11px; }   /* the boxes' widths are set for 11 px text */
+
+/* the UI's language (<html lang>, common/lang.js): Japanese, Korean and Chinese text in the fonts made for those UIs, after each
+   look's own fonts, which have no such letters */
+:root:lang(ja) { --ui-cjk: "Meiryo UI", "Yu Gothic UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans JP", sans-serif; }
+:root:lang(ko) { --ui-cjk: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", sans-serif; }
+:root:lang(zh-CN) { --ui-cjk: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Noto Sans SC", sans-serif; }
+:root:lang(zh-Hant) { --ui-cjk: "Microsoft JhengHei UI", "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; }

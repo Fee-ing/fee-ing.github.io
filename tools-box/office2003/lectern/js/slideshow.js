@@ -5,28 +5,28 @@
   const { h } = L;
 
   /* ================= effect catalogue (shared with UI and .pptx I/O) ================= */
-  const DIR8 = [['b', '自底部', 4], ['l', '自左侧', 8], ['r', '自右侧', 2], ['t', '自顶部', 1], ['bl', '自左下角', 12], ['br', '自右下角', 6], ['tl', '自左上角', 9], ['tr', '自右上角', 3]];
-  const DIR4 = [['b', '自底部', 4], ['l', '自左侧', 8], ['r', '自右侧', 2], ['t', '自顶部', 1]];
-  const HV = [['horz', 'Horizontal', 10], ['vert', 'Vertical', 5]];
-  const INOUT = [['in', 'In', 16], ['out', '外出', 32]];
-  const ACROSS = [['across', '水平', 10], ['down', 'Down', 5]];
-  const SPLIT = [['horzIn', '水平进入', 26], ['horzOut', '水平退出', 42], ['vertIn', '垂直进入', 21], ['vertOut', '垂直退出', 37]];
-  const DIAG = [['dl', '左下', 12], ['ul', '左上', 9], ['dr', '右下', 6], ['ur', '右上', 3]];
-  const SPOKES = [['1', '1 个辐射', 1], ['2', '2 个辐射', 2], ['3', '3 个辐射', 3], ['4', '4 个辐射', 4], ['8', '8 个辐射', 8]];
+  const DIR8 = [['b', L.N('自底部'), 4], ['l', L.N('自左侧'), 8], ['r', L.N('自右侧'), 2], ['t', L.N('自顶部'), 1], ['bl', L.N('自左下角'), 12], ['br', L.N('自右下角'), 6], ['tl', L.N('自左上角'), 9], ['tr', L.N('自右上角'), 3]];
+  const DIR4 = [['b', L.N('自底部'), 4], ['l', L.N('自左侧'), 8], ['r', L.N('自右侧'), 2], ['t', L.N('自顶部'), 1]];
+  const HV = [['horz', L.N('水平'), 10], ['vert', L.N('垂直'), 5]];
+  const INOUT = [['in', L.N('在'), 16], ['out', L.N('向外'), 32]];
+  const ACROSS = [['across', L.N('横向'), 10], ['down', L.N('向下'), 5]];
+  const SPLIT = [['horzIn', L.N('水平向内'), 26], ['horzOut', L.N('水平向外'), 42], ['vertIn', L.N('垂直向内'), 21], ['vertOut', L.N('垂直向外'), 37]];
+  const DIAG = [['dl', L.N('左下'), 12], ['ul', L.N('左上'), 9], ['dr', L.N('右下'), 6], ['ur', L.N('右上'), 3]];
+  const SPOKES = [['1', L.N('1 轮辐'), 1], ['2', L.N('2 轮辐'), 2], ['3', L.N('3 轮辐'), 3], ['4', L.N('4 轮辐'), 4], ['8', L.N('8 轮辐'), 8]];
   const E_ENTR = [
-    ['appear', '出现', 1], ['blinds', '百叶窗', 3, HV], ['box', '方框', 4, INOUT], ['checkerboard', '棋盘', 5, ACROSS], ['circle', 'Circle', 6, INOUT],
-    ['diamond', '菱形', 8, INOUT], ['dissolve', '溶解进入', 9], ['fade', '淡出', 10], ['flyIn', '飞入', 2, DIR8], ['peekIn', '切入', 12, DIR4],
-    ['plus', '十字形', 13, INOUT], ['randomBars', '随机线条', 14, HV], ['split', '拆分', 16, SPLIT], ['strips', '条纹', 18, DIAG], ['wedge', '楔形', 20],
-    ['wheel', '轮形', 21, SPOKES], ['wipe', '擦除', 22, DIR4], ['zoom', 'Zoom', 23], ['ascend', '升序', 42], ['descend', '降序', 47], ['expand', '展开', 55], ['spinner', '螺旋', 49],
+    ['appear', L.N('出现'), 1], ['blinds', L.N('百叶窗'), 3, HV], ['box', L.N('方框'), 4, INOUT], ['checkerboard', L.N('棋盘'), 5, ACROSS], ['circle', L.N('圆形'), 6, INOUT],
+    ['diamond', L.N('菱形'), 8, INOUT], ['dissolve', L.N('溶解进入'), 9], ['fade', L.N('淡化'), 10], ['flyIn', L.N('飞入'), 2, DIR8], ['peekIn', L.N('缓慢进入'), 12, DIR4],
+    ['plus', L.N('加号'), 13, INOUT], ['randomBars', L.N('随机线条'), 14, HV], ['split', L.N('拆分'), 16, SPLIT], ['strips', L.N('阶梯状'), 18, DIAG], ['wedge', L.N('楔形'), 20],
+    ['wheel', L.N('轮子'), 21, SPOKES], ['wipe', L.N('擦除'), 22, DIR4], ['zoom', L.N('缩放'), 23], ['ascend', L.N('升起'), 42], ['descend', L.N('下降'), 47], ['expand', L.N('展开'), 55], ['spinner', L.N('旋转器'), 49],
   ];
-  const E_EMPH = [['growShrink', '放大/缩小', 6], ['spin', '旋转', 8], ['transparency', '透明度', 9], ['teeter', '跷跷板', 32], ['blink', '闪烁', 35]];
+  const E_EMPH = [['growShrink', L.N('放大/缩小'), 6], ['spin', L.N('陀螺旋'), 8], ['transparency', L.N('透明度'), 9], ['teeter', L.N('跷跷板'), 32], ['blink', L.N('闪烁'), 35]];
   const E_EXIT = [
-    ['disappear', '消失', 1], ['blinds', '百叶窗', 3, HV], ['box', '方框', 4, INOUT], ['checkerboard', '棋盘', 5, ACROSS], ['circle', 'Circle', 6, INOUT],
-    ['diamond', '菱形', 8, INOUT], ['dissolve', '溶解退出', 9], ['fade', '淡出', 10], ['flyOut', '飞出', 2, DIR8], ['peekIn', '切出', 12, DIR4],
-    ['plus', '十字形', 13, INOUT], ['randomBars', '随机线条', 14, HV], ['split', '拆分', 16, SPLIT], ['strips', '条纹', 18, DIAG], ['wedge', '楔形', 20],
-    ['wheel', '轮形', 21, SPOKES], ['wipe', '擦除', 22, DIR4], ['zoom', 'Zoom', 23], ['descend', '下沉', 47],
+    ['disappear', L.N('消失'), 1], ['blinds', L.N('百叶窗'), 3, HV], ['box', L.N('方框'), 4, INOUT], ['checkerboard', L.N('棋盘'), 5, ACROSS], ['circle', L.N('圆形'), 6, INOUT],
+    ['diamond', L.N('菱形'), 8, INOUT], ['dissolve', L.N('溶解退出'), 9], ['fade', L.N('淡化'), 10], ['flyOut', L.N('飞出'), 2, DIR8], ['peekIn', L.N('缓慢退出'), 12, DIR4],
+    ['plus', L.N('加号'), 13, INOUT], ['randomBars', L.N('随机线条'), 14, HV], ['split', L.N('拆分'), 16, SPLIT], ['strips', L.N('阶梯状'), 18, DIAG], ['wedge', L.N('楔形'), 20],
+    ['wheel', L.N('轮子'), 21, SPOKES], ['wipe', L.N('擦除'), 22, DIR4], ['zoom', L.N('缩放'), 23], ['descend', L.N('下沉'), 47],
   ];
-  const E_PATH = [['right', 'Right', 0], ['left', 'Left', 0], ['up', 'Up', 0], ['down', 'Down', 0], ['diagDR', '右下斜线', 0], ['diagUR', '右上斜线', 0], ['circle', 'Circle', 0], ['bounce', '向右弹跳', 0]];
+  const E_PATH = [['right', L.N('右'), 0], ['left', L.N('左'), 0], ['up', L.N('向上'), 0], ['down', L.N('向下'), 0], ['diagDR', L.N('向右下对角线'), 0], ['diagUR', L.N('向右上对角线'), 0], ['circle', L.N('圆形'), 0], ['bounce', L.N('向右弹跳'), 0]];
   const A = (L.anim = {
     ENTR: E_ENTR, EMPH: E_EMPH, EXIT: E_EXIT, PATH: E_PATH,
     list: (cls) => ({ entr: E_ENTR, emph: E_EMPH, exit: E_EXIT, path: E_PATH }[cls] || E_ENTR),
@@ -96,38 +96,38 @@
       return [[0, 0], v];
     },
     pathString(a) { const p = A.pathPoints(a); return p.map((q, i) => `${i ? 'L' : 'M'} ${L.round(q[0], 4)} ${L.round(q[1], 4)}`).join(' ') + ' E'; },
-    SPEEDS: [['非常慢', 5000], ['慢速', 3000], ['中速', 2000], ['快速', 1000], ['非常快', 500]],
+    SPEEDS: [[L.N('非常慢'), 5000], [L.N('慢速'), 3000], [L.N('中等'), 2000], [L.N('快速'), 1000], [L.N('非常快'), 500]],
   });
 
   /* transitions (2003 list) */
   const TR = [];
   const tr = (name, type, extra) => TR.push(Object.assign({ name, type }, extra || {}));
-  tr('无切换', 'none');
-  tr('水平百叶窗', 'blinds', { dir: 'horz' }); tr('垂直百叶窗', 'blinds', { dir: 'vert' });
-  tr('盒状收缩', 'zoom', { dir: 'in' }); tr('盒状展开', 'zoom', { dir: 'out' });
-  tr('棋盘横向', 'checker', { dir: 'horz' }); tr('棋盘向下', 'checker', { dir: 'vert' });
-  tr('水平梳状', 'comb', { dir: 'horz' }); tr('垂直梳状', 'comb', { dir: 'vert' });
-  tr('向下覆盖', 'cover', { dir: 'd' }); tr('向左覆盖', 'cover', { dir: 'l' }); tr('向右覆盖', 'cover', { dir: 'r' }); tr('向上覆盖', 'cover', { dir: 'u' });
-  tr('向左下覆盖', 'cover', { dir: 'ld' }); tr('向左上覆盖', 'cover', { dir: 'lu' }); tr('向右下覆盖', 'cover', { dir: 'rd' }); tr('向右上覆盖', 'cover', { dir: 'ru' });
-  tr('剪切', 'cut'); tr('黑场剪切', 'cut', { thruBlk: true });
-  tr('溶解', 'dissolve'); tr('平滑淡出', 'fade'); tr('黑场淡出', 'fade', { thruBlk: true });
-  tr('新闻快报', 'newsflash');
-  tr('向下推出', 'push', { dir: 'd' }); tr('向左推出', 'push', { dir: 'l' }); tr('向右推出', 'push', { dir: 'r' }); tr('向上推出', 'push', { dir: 'u' });
-  tr('水平随机线条', 'randomBar', { dir: 'horz' }); tr('垂直随机线条', 'randomBar', { dir: 'vert' });
-  tr('圆形', 'circle'); tr('菱形', 'diamond'); tr('十字形', 'plus');
-  tr('水平收起', 'split', { orient: 'horz', dir: 'in' }); tr('水平展开', 'split', { orient: 'horz', dir: 'out' });
-  tr('垂直收起', 'split', { orient: 'vert', dir: 'in' }); tr('垂直展开', 'split', { orient: 'vert', dir: 'out' });
-  tr('向左下条纹', 'strips', { dir: 'ld' }); tr('向左上条纹', 'strips', { dir: 'lu' }); tr('向右下条纹', 'strips', { dir: 'rd' }); tr('向右上条纹', 'strips', { dir: 'ru' });
-  tr('向下揭开', 'pull', { dir: 'd' }); tr('向左揭开', 'pull', { dir: 'l' }); tr('向右揭开', 'pull', { dir: 'r' }); tr('向上揭开', 'pull', { dir: 'u' });
-  tr('向左下揭开', 'pull', { dir: 'ld' }); tr('向左上揭开', 'pull', { dir: 'lu' }); tr('向右下揭开', 'pull', { dir: 'rd' }); tr('向右上揭开', 'pull', { dir: 'ru' });
-  tr('楔形', 'wedge');
-  tr('顺时针轮辐 1 条', 'wheel', { spokes: 1 }); tr('顺时针轮辐 2 条', 'wheel', { spokes: 2 }); tr('顺时针轮辐 3 条', 'wheel', { spokes: 3 });
-  tr('顺时针轮辐 4 条', 'wheel', { spokes: 4 }); tr('顺时针轮辐 8 条', 'wheel', { spokes: 8 });
-  tr('向下擦除', 'wipe', { dir: 'd' }); tr('向左擦除', 'wipe', { dir: 'l' }); tr('向右擦除', 'wipe', { dir: 'r' }); tr('向上擦除', 'wipe', { dir: 'u' });
-  tr('随机切换', 'random');
+  tr(L.N('无切换'), 'none');
+  tr(L.N('水平百叶窗'), 'blinds', { dir: 'horz' }); tr(L.N('垂直百叶窗'), 'blinds', { dir: 'vert' });
+  tr(L.N('盒状收缩'), 'zoom', { dir: 'in' }); tr(L.N('盒状展开'), 'zoom', { dir: 'out' });
+  tr(L.N('横向棋盘'), 'checker', { dir: 'horz' }); tr(L.N('纵向棋盘'), 'checker', { dir: 'vert' });
+  tr(L.N('水平梳理'), 'comb', { dir: 'horz' }); tr(L.N('垂直梳理'), 'comb', { dir: 'vert' });
+  tr(L.N('向下覆盖'), 'cover', { dir: 'd' }); tr(L.N('向左覆盖'), 'cover', { dir: 'l' }); tr(L.N('向右覆盖'), 'cover', { dir: 'r' }); tr(L.N('向上覆盖'), 'cover', { dir: 'u' });
+  tr(L.N('向左下覆盖'), 'cover', { dir: 'ld' }); tr(L.N('向左上覆盖'), 'cover', { dir: 'lu' }); tr(L.N('向右下覆盖'), 'cover', { dir: 'rd' }); tr(L.N('向右上覆盖'), 'cover', { dir: 'ru' });
+  tr(L.N('切出'), 'cut'); tr(L.N('通过黑色切出'), 'cut', { thruBlk: true });
+  tr(L.N('溶解'), 'dissolve'); tr(L.N('平滑淡出'), 'fade'); tr(L.N('通过黑色淡出'), 'fade', { thruBlk: true });
+  tr(L.N('新闻快报'), 'newsflash');
+  tr(L.N('向下推出'), 'push', { dir: 'd' }); tr(L.N('向左推出'), 'push', { dir: 'l' }); tr(L.N('向右推出'), 'push', { dir: 'r' }); tr(L.N('向上推出'), 'push', { dir: 'u' });
+  tr(L.N('水平随机线条'), 'randomBar', { dir: 'horz' }); tr(L.N('垂直随机线条'), 'randomBar', { dir: 'vert' });
+  tr(L.N('圆形扩展'), 'circle'); tr(L.N('菱形扩展'), 'diamond'); tr(L.N('十字扩展'), 'plus');
+  tr(L.N('水平向内拆分'), 'split', { orient: 'horz', dir: 'in' }); tr(L.N('水平向外拆分'), 'split', { orient: 'horz', dir: 'out' });
+  tr(L.N('垂直向内拆分'), 'split', { orient: 'vert', dir: 'in' }); tr(L.N('垂直向外拆分'), 'split', { orient: 'vert', dir: 'out' });
+  tr(L.N('向左下阶梯状'), 'strips', { dir: 'ld' }); tr(L.N('向左上阶梯状'), 'strips', { dir: 'lu' }); tr(L.N('向右下阶梯状'), 'strips', { dir: 'rd' }); tr(L.N('向右上阶梯状'), 'strips', { dir: 'ru' });
+  tr(L.N('向下揭开'), 'pull', { dir: 'd' }); tr(L.N('向左揭开'), 'pull', { dir: 'l' }); tr(L.N('向右揭开'), 'pull', { dir: 'r' }); tr(L.N('向上揭开'), 'pull', { dir: 'u' });
+  tr(L.N('向左下揭开'), 'pull', { dir: 'ld' }); tr(L.N('向左上揭开'), 'pull', { dir: 'lu' }); tr(L.N('向右下揭开'), 'pull', { dir: 'rd' }); tr(L.N('向右上揭开'), 'pull', { dir: 'ru' });
+  tr(L.N('楔形'), 'wedge');
+  tr(L.N('顺时针轮子，1 根辐条'), 'wheel', { spokes: 1 }); tr(L.N('顺时针轮子，2 根辐条'), 'wheel', { spokes: 2 }); tr(L.N('顺时针轮子，3 根辐条'), 'wheel', { spokes: 3 });
+  tr(L.N('顺时针轮子，4 根辐条'), 'wheel', { spokes: 4 }); tr(L.N('顺时针轮子，8 根辐条'), 'wheel', { spokes: 8 });
+  tr(L.N('向下擦除'), 'wipe', { dir: 'd' }); tr(L.N('向左擦除'), 'wipe', { dir: 'l' }); tr(L.N('向右擦除'), 'wipe', { dir: 'r' }); tr(L.N('向上擦除'), 'wipe', { dir: 'u' });
+  tr(L.N('随机切换'), 'random');
   A.TRANSITIONS = TR;
   A.transName = (t) => {
-    if (!t || t.type === 'none') return 'No Transition';
+    if (!t || t.type === 'none') return '无切换';
     const hit = TR.find((x) => x.type === t.type && (x.dir || null) === (t.dir || null) && (!!x.thruBlk === !!t.thruBlk) && (x.spokes || null) === (t.spokes || null) && (x.orient || null) === (t.orient || null));
     return hit ? hit.name : TR.find((x) => x.type === t.type) ? TR.find((x) => x.type === t.type).name : t.type;
   };
@@ -354,18 +354,18 @@
     opts = opts || {};
     if (S.active) return;
     const pres = L.pres;
-    if (!pres.slides.length) { L.ui.msg('There are no slides to show.', { icon: 'info' }); return; }
+    if (!pres.slides.length) { L.ui.msg('没有可放映的幻灯片。', { icon: 'info' }); return; }
     if (L.te && L.te.active()) L.te.end();
     S.active = true;
     L.ui.closeMenus();
-    root = h('div', { class: 'show', tabindex: '0', role: 'application', 'aria-label': 'Slide Show' });
+    root = h('div', { class: 'show', tabindex: '0', role: 'application', 'aria-label': '幻灯片放映' });
     stage = h('div', { class: 'stage' });
     inkCanvas = h('canvas', { class: 'ink' });
     popbar = h('div', { class: 'popbar' },
-      h('button', { type: 'button', 'aria-label': 'Previous', html: L.icons.get('showPrev'), onclick: (e) => { e.stopPropagation(); S.prev(); } }),
-      h('button', { type: 'button', 'aria-label': 'Pointer options', html: L.icons.get('showPen'), onclick: (e) => { e.stopPropagation(); const r = e.currentTarget.getBoundingClientRect(); L.ui.openMenu(pointerMenu(), { x: r.left, y: r.top - 230 }); } }),
-      h('button', { type: 'button', 'aria-label': 'Slide show menu', html: L.icons.get('showMenu'), onclick: (e) => { e.stopPropagation(); const r = e.currentTarget.getBoundingClientRect(); L.ui.openMenu(showMenu(), { x: r.left, y: r.top - 300 }); } }),
-      h('button', { type: 'button', 'aria-label': 'Next', html: L.icons.get('showNext'), onclick: (e) => { e.stopPropagation(); S.next(); } }));
+      h('button', { type: 'button', 'aria-label': '上一个', html: L.icons.get('showPrev'), onclick: (e) => { e.stopPropagation(); S.prev(); } }),
+      h('button', { type: 'button', 'aria-label': '指针选项', html: L.icons.get('showPen'), onclick: (e) => { e.stopPropagation(); const r = e.currentTarget.getBoundingClientRect(); L.ui.openMenu(pointerMenu(), { x: r.left, y: r.top - 230 }); } }),
+      h('button', { type: 'button', 'aria-label': '幻灯片放映菜单', html: L.icons.get('showMenu'), onclick: (e) => { e.stopPropagation(); const r = e.currentTarget.getBoundingClientRect(); L.ui.openMenu(showMenu(), { x: r.left, y: r.top - 300 }); } }),
+      h('button', { type: 'button', 'aria-label': '下一步', html: L.icons.get('showNext'), onclick: (e) => { e.stopPropagation(); S.next(); } }));
     root.append(stage, inkCanvas, popbar);
     document.body.appendChild(root);
     const sh = pres.show || {};
@@ -384,6 +384,8 @@
     root.addEventListener('pointerdown', onPointerDown);
     root.addEventListener('pointermove', onPointerMove);
     root.addEventListener('pointerup', onPointerUp);
+    root.addEventListener('pointercancel', pressLost);
+    window.addEventListener('blur', pressLost);
     root.addEventListener('contextmenu', onContext);
     root.addEventListener('wheel', onWheel, { passive: true });
     document.addEventListener('keydown', onKey, true);
@@ -729,6 +731,7 @@
     if (st.rehearse && !st.ended) recordTime(st.pos);
     document.removeEventListener('keydown', onKey, true);
     window.removeEventListener('resize', layout);
+    window.removeEventListener('blur', pressLost);
     try { if (document.fullscreenElement) await document.exitFullscreen(); } catch (e) { /* ignore */ }
     try { if (st.wake) st.wake.release(); } catch (e) { /* ignore */ }
     const inkData = st.ink;
@@ -742,14 +745,14 @@
     L.ui.closeMenus();
     const hasInk = Object.values(inkData).some((a) => a && a.length);
     if (hasInk) {
-      const r = await L.ui.msg('Do you want to keep your ink annotations?', { icon: 'question', buttons: ['&Keep', '放弃(&D)'] });
+      const r = await L.ui.msg('要保留墨迹注释吗？', { icon: 'question', buttons: ['保留(&K)', '放弃(&D)'] });
       if (r === 0) keepInk(inkData);
     }
     if (rehearse) {
       const total = Object.values(rehearse).reduce((a, b) => a + b, 0);
-      const r = await L.ui.msg(`The total time for the slide show was ${fmtTime(total)}. Do you want to keep the new slide timings?`, { icon: 'question', buttons: ['&Yes', '&No'] });
+      const r = await L.ui.msg(L.t('幻灯片放映总用时为 {0}。要保留新的幻灯片计时吗？', fmtTime(total)), { icon: 'question', buttons: ['是(&Y)', '否(&N)'] });
       if (r === 0) {
-        L.hist.push('Rehearse Timings');
+        L.hist.push('排练计时');
         for (const k in rehearse) { const s = L.pres.slides[+k]; if (s) { s.trans = Object.assign({}, s.trans, { after: Math.round(rehearse[k]) }); } }
         L.pres.show.useTimings = true;
         L.bus.emit('slides-changed');
@@ -762,7 +765,7 @@
     L.ed && L.ed.refocus();
   };
   function keepInk(data) {
-    L.hist.push('Ink Annotations');
+    L.hist.push('墨迹注释');
     const savedIdx = L.ed.idx, savedView = L.ed.view;
     for (const k in data) {
       const strokes = data[k];
@@ -824,9 +827,13 @@
     if (link && e.button === 0) { e.preventDefault(); follow(JSON.parse(link.dataset.link)); return; }
     if (e.button === 0) { st._down = true; }
   }
+  /** the press ends without its release (let go in another window, the window left, the pointer cancelled): no
+      click to advance, no ink following the bare pointer */
+  function pressLost() { drawing = null; if (st) st._down = false; }
   function onPointerMove(e) {
     if (!st) return;
     idleCursor();
+    if (e.pointerType === 'mouse' && !(e.buttons & 1)) pressLost();
     if (drawing) {
       if (drawing.erase) { eraseAt(toSlidePt(e)); return; }
       drawing.pts.push(toSlidePt(e));
@@ -877,25 +884,25 @@
     return [
       { label: '箭头(&A)', run: () => setPen(null), checked: () => !st.pen },
       { label: '圆珠笔(&B)', run: () => setPen('pen'), checked: () => st.pen === 'pen' },
-      { label: '毡尖笔(&F)', run: () => setPen('felt'), checked: () => st.pen === 'felt' },
+      { label: '毡头笔(&F)', run: () => setPen('felt'), checked: () => st.pen === 'felt' },
       { label: '荧光笔(&H)', run: () => setPen('highlighter'), checked: () => st.pen === 'highlighter' },
-      { label: '墨迹颜色(&C)', sub: ['#FF0000', '#0000FF', '#00B050', '#000000', '#FFFFFF', '#FFC000', '#7030A0'].map((c) => ({ label: { '#FF0000': 'Red', '#0000FF': 'Blue', '#00B050': 'Green', '#000000': 'Black', '#FFFFFF': 'White', '#FFC000': 'Gold', '#7030A0': 'Purple' }[c], html: `<span style="display:inline-block;width:12px;height:12px;background:${c};border:1px solid #555"></span>`, run: () => { st.penColor = c; if (!st.pen) setPen('pen'); }, checked: () => st.penColor === c })) },
+      { label: '墨迹颜色(&C)', sub: ['#FF0000', '#0000FF', '#00B050', '#000000', '#FFFFFF', '#FFC000', '#7030A0'].map((c) => ({ label: { '#FF0000': L.N('红色'), '#0000FF': L.N('蓝色'), '#00B050': L.N('绿色'), '#000000': L.N('黑色'), '#FFFFFF': L.N('白色'), '#FFC000': L.N('金色'), '#7030A0': L.N('紫色') }[c], html: `<span style="display:inline-block;width:12px;height:12px;background:${c};border:1px solid #555"></span>`, run: () => { st.penColor = c; if (!st.pen) setPen('pen'); }, checked: () => st.penColor === c })) },
       '-',
       { label: '橡皮擦(&E)', run: () => setPen('eraser'), checked: () => st.pen === 'eraser' },
-      { label: '清除幻灯片上的所有墨迹(&R)', run: () => { st.ink[st.order[st.pos]] = []; redrawInk(); } },
+      { label: '擦除幻灯片上的所有墨迹(&r)', run: () => { st.ink[st.order[st.pos]] = []; redrawInk(); } },
     ];
   }
   function showMenu() {
-    const slides = st.order.map((i, pos) => ({ label: `&${pos + 1} ${L.model.slideTitle(L.pres.slides[i]) || 'Slide ' + (i + 1)}`.slice(0, 60), run: () => showSlide(pos, { transition: true }), checked: () => st.pos === pos }));
+    const slides = st.order.map((i, pos) => ({ label: `&${pos + 1} ${(L.model.slideTitle(L.pres.slides[i]) || L.t('Slide {0}', i + 1)).slice(0, 56).replace(/&/g, '&&')}`, raw: true, run: () => showSlide(pos, { transition: true }), checked: () => st.pos === pos }));
     return [
-      { label: '&Next', run: () => S.next() },
-      { label: '&Previous', run: () => S.prev() },
-      { label: '上次查看过的(&V)', run: () => follow({ action: 'lastViewed' }) },
-      { label: '定位幻灯片(&G)', sub: slides.length ? slides : [{ label: '(none)', disabled: true }] },
+      { label: '下一步(&N)', run: () => S.next() },
+      { label: '上一个(&P)', run: () => S.prev() },
+      { label: '上次查看(&V)', run: () => follow({ action: 'lastViewed' }) },
+      { label: '定位至幻灯片(&G)', sub: slides.length ? slides : [{ label: '（无）', disabled: true }] },
       '-',
-      { label: '屏幕(&S)', sub: [{ label: '黑屏(&B)', run: () => setBlank('#000') }, { label: '白屏(&W)', run: () => setBlank('#fff') }, { label: st.paused ? '&Resume' : '&Pause', run: () => togglePause() }] },
-      { label: '指针选项(&O)', sub: pointerMenu() },
-      { label: '&Help', run: showHelp },
+      { label: '屏幕(&S)', sub: [{ label: '黑屏(&B)', run: () => setBlank('#000') }, { label: '白屏(&W)', run: () => setBlank('#fff') }, { label: st.paused ? '继续(&R)' : '暂停(&P)', run: () => togglePause() }] },
+      { label: '指针选项(&o)', sub: pointerMenu() },
+      { label: '帮助(&H)', run: showHelp },
       '-',
       { label: '结束放映(&E)', run: () => S.end() },
     ];
@@ -912,11 +919,14 @@
     if (st.paused) clearTimeout(st.timer); else scheduleAuto();
   }
   function showHelp() {
-    L.ui.msg('Slide Show Help\n\nN, Enter, Page Down, Right Arrow, Down Arrow or Spacebar: next animation or slide\nP, Page Up, Left Arrow, Up Arrow or Backspace: previous animation or slide\nNumber + Enter: go to that slide\nB or Period: black / unblack screen\nW or Comma: white / unwhite screen\nS or Plus: stop or restart automatic show\nEsc, Ctrl+Break or Hyphen: end slide show\nE: erase drawing on screen\nCtrl+P: pen  ·  Ctrl+A: arrow  ·  Ctrl+E: eraser  ·  Ctrl+H: hide pointer\nHome: first slide  ·  End: last slide', { title: '幻灯片放映帮助', width: 500 });
+    L.ui.msg('幻灯片放映帮助\n\nN、Enter、Page Down、右方向键、下方向键或空格：下一个动画或幻灯片\nP、Page Up、左方向键、上方向键或 Backspace：上一个动画或幻灯片\n数字 + Enter：转到该幻灯片\nB 或句点：显示/取消黑屏\nW 或逗号：显示/取消白屏\nS 或加号：停止或重新开始自动放映\nEsc、Ctrl+Break 或连字符：结束放映\nE：擦除屏幕上的绘图\nCtrl+P：笔 · Ctrl+A：箭头 · Ctrl+E：橡皮擦 · Ctrl+H：隐藏指针\nHome：第一张幻灯片 · End：最后一张幻灯片', { title: '幻灯片放映帮助', width: 500 });
   }
 
   function onKey(e) {
     if (!S.active) return;
+    /* the browser's reload keys would reload the page, and the presentation with it: during the show they do nothing
+       (also with the show's menu or a dialog open) */
+    if (e.key === 'F5' || ((e.ctrlKey || e.metaKey) && (e.key === 'r' || e.key === 'R'))) { e.preventDefault(); e.stopPropagation(); return; }
     if (L.ui.dialogOpen()) return;
     if (L.ui.menuOpen()) { if (L.ui.menuKey(e)) { e.preventDefault(); e.stopPropagation(); } return; }
     const k = e.key;
@@ -948,17 +958,17 @@
   function showGoto() {
     let g = root.querySelector('.gotobox');
     if (!g) { g = h('div', { class: 'gotobox' }); root.appendChild(g); }
-    g.textContent = 'Go to slide ' + st.gotoBuf;
+    g.textContent = L.t('转到幻灯片 {0}', st.gotoBuf);
   }
   function hideGoto() { const g = root && root.querySelector('.gotobox'); if (g) g.remove(); }
 
   /* ---- rehearsal ---- */
   function buildRehearse() {
-    const bar = h('div', { class: 'rehearse', role: 'toolbar', 'aria-label': 'Rehearsal' },
-      h('button', { type: 'button', class: 'tb-btn', 'aria-label': 'Next', html: L.icons.get('forward'), onclick: (e) => { e.stopPropagation(); S.next(); } }),
-      h('button', { type: 'button', class: 'tb-btn', 'aria-label': 'Pause', text: '❚❚', onclick: (e) => { e.stopPropagation(); st.rPaused = !st.rPaused; if (st.rPaused) st.rPauseAt = performance.now(); else st.slideStart += performance.now() - st.rPauseAt; } }),
+    const bar = h('div', { class: 'rehearse', role: 'toolbar', 'aria-label': '排练' },
+      h('button', { type: 'button', class: 'tb-btn', 'aria-label': '下一步', html: L.icons.get('forward'), onclick: (e) => { e.stopPropagation(); S.next(); } }),
+      h('button', { type: 'button', class: 'tb-btn', 'aria-label': '暂停', text: '❚❚', onclick: (e) => { e.stopPropagation(); st.rPaused = !st.rPaused; if (st.rPaused) st.rPauseAt = performance.now(); else st.slideStart += performance.now() - st.rPauseAt; } }),
       h('span', { class: 'rt', text: '0:00:00' }),
-      h('button', { type: 'button', class: 'tb-btn', 'aria-label': 'Repeat', html: L.icons.get('undo'), onclick: (e) => { e.stopPropagation(); st.slideStart = performance.now(); } }),
+      h('button', { type: 'button', class: 'tb-btn', 'aria-label': '重复', html: L.icons.get('undo'), onclick: (e) => { e.stopPropagation(); st.slideStart = performance.now(); } }),
       h('span', { class: 'tot', text: '0:00:00' }));
     root.appendChild(bar);
     st.rTimer = setInterval(updateRehearse, 250);

@@ -58,7 +58,7 @@
       if (tag === 'fldSimple' || tag === 'fldChar' && attr(el, 'fldCharType') === 'begin') return 'fields';
       return ({ sdt: 'controls', bookmarkStart: 'bookmarks', permStart: 'permissions', comment: 'comments', footnote: 'footnotes', endnote: 'endnotes', ins: 'revisions', del: 'revisions' })[tag];
     },
-    labels: { bodies: { text: '此文件中有部分文字位于主文档之外，将不会保存', notify: true }, finalSections: 'Conflicting final section definitions could not all be retained', xml: 'Smart tags or inline XML wrappers were converted to ordinary content', direction: 'Inline direction wrappers were converted to ordinary text', moves: 'Move revisions were converted to ordinary revisions or text', fields: 'Some original fields were converted or removed', controls: 'Some original content-control wrappers were converted or removed', bookmarks: 'Some original bookmarks were removed', permissions: 'Some original permission ranges were removed', comments: 'Some original comments were removed', footnotes: 'Some original footnotes were removed', endnotes: 'Some original endnotes were removed', revisions: 'Some original revision markup was converted or removed' },
+    labels: { bodies: { text: 'Some text in this file is outside the main document and won\'t be saved', notify: true }, finalSections: 'Conflicting final section definitions could not all be retained', xml: 'Smart tags or inline XML wrappers were converted to ordinary content', direction: 'Inline direction wrappers were converted to ordinary text', moves: 'Move revisions were converted to ordinary revisions or text', fields: 'Some original fields were converted or removed', controls: 'Some original content-control wrappers were converted or removed', bookmarks: 'Some original bookmarks were removed', permissions: 'Some original permission ranges were removed', comments: 'Some original comments were removed', footnotes: 'Some original footnotes were removed', endnotes: 'Some original endnotes were removed', revisions: 'Some original revision markup was converted or removed' },
   });
   P.merge = function (doc, base, source, generated, writer) {
     const original = writer.pkg.xml(source), fragment = K.fragment(original, { pkg: writer.pkg, part: source });
@@ -305,7 +305,7 @@
   P.rangeMarker = function (el, context) {
     const name = el.localName, bookmark = name.startsWith('bookmark');
     return D.item(bookmark ? name.endsWith('Start') ? 'bs' : 'be' : 'perm', { id: attr(el, 'id'), name: bookmark ? attr(el, 'name') : undefined,
-      end: name.endsWith('结尾'), keep: K.fragment(K.parse(K.raw(el)), context) });
+      end: name.endsWith('End'), keep: K.fragment(K.parse(K.raw(el)), context) });
   };
   P.prepareRanges = function (doc) {
     const valid = new Map(), visited = new Set();

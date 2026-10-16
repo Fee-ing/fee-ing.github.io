@@ -9,7 +9,7 @@
   const { h } = L;
   let H = null, V = null, corner = null;
   let tabKind = 0;
-  const TAB_KINDS = [['left', 'Left Tab'], ['center', 'Center Tab'], ['right', 'Right Tab'], ['decimal', 'Decimal Tab'], ['bar', 'Bar Tab'], ['firstLine', 'First Line Indent'], ['hanging', 'Hanging Indent']];
+  const TAB_KINDS = [['left', '左对齐制表符'], ['center', '居中制表符'], ['right', '右对齐制表符'], ['decimal', '小数点制表符'], ['bar', '竖线制表符'], ['firstLine', '首行缩进'], ['hanging', '悬挂缩进']];
   const SVG = {
     left: '<svg width="9" height="9"><path d="M2 0v7h6" stroke="#000" stroke-width="1.6" fill="none"/></svg>',
     center: '<svg width="9" height="9"><path d="M4.5 0v7M0 7h9" stroke="#000" stroke-width="1.6" fill="none"/></svg>',
@@ -29,9 +29,9 @@
     H = hEl; V = vEl; corner = cEl;
     H.appendChild(h('canvas', { class: 'r-canvas' }));
     V.appendChild(h('canvas', { class: 'r-canvas' }));
-    const sel = h('button', { class: 'tabsel', type: 'button', 'aria-label': 'Tab type', 'data-tip': TAB_KINDS[0][1], html: SVG.left });
+    const sel = h('button', { class: 'tabsel', type: 'button', 'aria-label': '制表位类型', 'data-tip': TAB_KINDS[0][1], html: SVG.left });
     sel.addEventListener('pointerdown', (e) => e.preventDefault());
-    sel.addEventListener('click', () => { tabKind = (tabKind + 1) % TAB_KINDS.length; sel.innerHTML = SVG[TAB_KINDS[tabKind][0]]; sel.setAttribute('data-tip', TAB_KINDS[tabKind][1]); sel.setAttribute('aria-label', TAB_KINDS[tabKind][1]); });
+    sel.addEventListener('click', () => { tabKind = (tabKind + 1) % TAB_KINDS.length; sel.innerHTML = SVG[TAB_KINDS[tabKind][0]]; sel.setAttribute('data-tip', L.t(TAB_KINDS[tabKind][1])); sel.setAttribute('aria-label', L.t(TAB_KINDS[tabKind][1])); });
     corner.appendChild(sel);
     H.addEventListener('pointerdown', onRulerDown);
     H.addEventListener('dblclick', (e) => { if (e.target.closest('.rmark.tabstop')) { L.dlg && L.dlg.tabs(); return; } L.dlg && (state && e.clientX > state.x0 && e.clientX < state.x0 + state.w ? L.dlg.tabs() : L.dlg.pageSetup()); });
@@ -122,14 +122,14 @@
     const ind = pp.ind || {};
     const l = (ind.l || 0) * pxPt, fl = (ind.fl || 0) * pxPt, r = (ind.r || 0) * pxPt;
     const base = colL;
-    addMark('first', base + l + fl, 1, 'First Line Indent');
-    addMark('hang', base + l, hr.height - 12, 'Hanging Indent');
-    addMark('left', base + l, hr.height - 6, 'Left Indent');
-    addMark('right', colR - r, hr.height - 9, 'Right Indent');
+    addMark('first', base + l + fl, 1, '首行缩进');
+    addMark('hang', base + l, hr.height - 12, '悬挂缩进');
+    addMark('left', base + l, hr.height - 6, '左缩进');
+    addMark('right', colR - r, hr.height - 9, '右缩进');
     /* tab stops (custom ones) */
     for (const t of pp.tabs || []) {
       if (t.al === 'clear' || t.al === 'num') continue;
-      const m = h('div', { class: 'rmark tabstop', 'data-tip': ({ left: 'Left Tab', center: 'Center Tab', right: 'Right Tab', decimal: 'Decimal Tab', bar: 'Bar Tab', start: 'Left Tab', end: 'Right Tab' }[t.al] || 'Tab'), html: SVG[{ start: 'left', end: 'right' }[t.al] || t.al] || SVG.left });
+      const m = h('div', { class: 'rmark tabstop', 'data-tip': ({ left: '左对齐制表符', center: '居中制表符', right: '右对齐制表符', decimal: '小数点制表符', bar: '竖线制表符', start: '左对齐制表符', end: '右对齐制表符' }[t.al] || L.N('制表符')), html: SVG[{ start: 'left', end: 'right' }[t.al] || t.al] || SVG.left });
       m.style.left = base + t.pos * pxPt - 1 + 'px';
       m.dataset.kind = 'tab';
       m.dataset.pos = t.pos;
@@ -143,10 +143,10 @@
     /* column / cell boundary markers */
     if (g.ci) {
       const tr = g.frag.closest('tr');
-      if (tr) { const tds = Array.from(tr.children).filter((x) => x.dataset.cid); tds.forEach((td, i) => { if (i === 0) return; const rr = td.getBoundingClientRect(); const m = h('div', { class: 'rmark colmark', 'data-tip': 'Move Table Column' }); m.style.left = rr.left - hr.left + 'px'; m.dataset.kind = 'cell'; m.dataset.cid = tds[i - 1].dataset.cid; H.appendChild(m); }); const last = tds[tds.length - 1]; if (last) { const rr = last.getBoundingClientRect(); const m = h('div', { class: 'rmark colmark', 'data-tip': 'Move Table Column' }); m.style.left = rr.right - hr.left + 'px'; m.dataset.kind = 'cell'; m.dataset.cid = last.dataset.cid; H.appendChild(m); } }
+      if (tr) { const tds = Array.from(tr.children).filter((x) => x.dataset.cid); tds.forEach((td, i) => { if (i === 0) return; const rr = td.getBoundingClientRect(); const m = h('div', { class: 'rmark colmark', 'data-tip': '移动表格列' }); m.style.left = rr.left - hr.left + 'px'; m.dataset.kind = 'cell'; m.dataset.cid = tds[i - 1].dataset.cid; H.appendChild(m); }); const last = tds[tds.length - 1]; if (last) { const rr = last.getBoundingClientRect(); const m = h('div', { class: 'rmark colmark', 'data-tip': '移动表格列' }); m.style.left = rr.right - hr.left + 'px'; m.dataset.kind = 'cell'; m.dataset.cid = last.dataset.cid; H.appendChild(m); } }
     } else if (g.pgEl && g.sect.cols && g.sect.cols.n > 1) {
       const cols = Array.from(g.colEl.parentNode.querySelectorAll('.pg-col'));
-      cols.slice(1).forEach((col) => { const rr = col.getBoundingClientRect(); const m = h('div', { class: 'rmark colmark', 'data-tip': 'Move Column' }); m.style.left = rr.left - hr.left - 4 + 'px'; m.style.width = '8px'; m.dataset.kind = 'col'; H.appendChild(m); });
+      cols.slice(1).forEach((col) => { const rr = col.getBoundingClientRect(); const m = h('div', { class: 'rmark colmark', 'data-tip': '移动列' }); m.style.left = rr.left - hr.left - 4 + 'px'; m.style.width = '8px'; m.dataset.kind = 'col'; H.appendChild(m); });
     }
     drawV();
   };
@@ -216,18 +216,24 @@
       else kind = 'newtab';
     }
     const startPos = mk ? +mk.dataset.pos : null;
-    const mv = (ev) => { placeGuide(gl, ev.clientX); if (mk) mk.style.left = ev.clientX - st.hr.left - (kind === 'tab' ? 1 : 0) + 'px'; };
-    const up = (ev) => {
-      window.removeEventListener('pointermove', mv, true);
-      window.removeEventListener('pointerup', up, true);
+    /* a click on the ruler's text area sets a tab stop (or the indent the selector shows); a click on a marker or a
+       margin changes nothing, only a drag moves them */
+    const clickSets = !mk && (kind === 'newtab' || kind === 'first' || kind === 'hang');
+    L.ui.drag(e, {
+      move: (ev) => { placeGuide(gl, ev.clientX); if (mk) mk.style.left = ev.clientX - st.hr.left - (kind === 'tab' ? 1 : 0) + 'px'; },
+      up,
+      cancel: () => { gl.remove(); if (mk) RU.draw(); },
+    });
+    function up(ev, d) {
       gl.remove();
+      if (!d.moved && !clickSets) return;
       const pt = snap(toPt(ev.clientX), ev.altKey);
       const off = ev.clientY > st.hr.bottom + 18 || ev.clientY < st.hr.top - 18;
       switch (kind) {
         case 'newtab': {
           const k = TAB_KINDS[tabKind][0];
           if (pt <= 0) return;
-          E.formatPara((pPr) => { pPr.tabs = (pPr.tabs || []).filter((t) => Math.abs(t.pos - pt) > 0.5).concat([{ pos: pt, al: k }]).sort((a, b) => a.pos - b.pos); }, 'Set Tab');
+          E.formatPara((pPr) => { pPr.tabs = (pPr.tabs || []).filter((t) => Math.abs(t.pos - pt) > 0.5).concat([{ pos: pt, al: k }]).sort((a, b) => a.pos - b.pos); }, '设置制表位');
           break;
         }
         case 'tab':
@@ -238,12 +244,12 @@
             if (fromStyle) tabs.push({ pos: startPos, al: 'clear' });
             if (!off) { const orig = eff.find((t) => Math.abs(t.pos - startPos) < 0.5) || { al: 'left' }; tabs = tabs.filter((t) => Math.abs(t.pos - pt) > 0.5); tabs.push(Object.assign({}, orig, { pos: pt })); }
             pPr.tabs = tabs.sort((a, b) => a.pos - b.pos);
-          }, off ? 'Clear Tab' : 'Move Tab');
+          }, off ? '清除制表位' : '移动制表位');
           break;
-        case 'first': E.formatPara((pPr, p) => { const cur = D.pProps(doc(), p).ind || {}; pPr.ind = Object.assign({}, pPr.ind, { fl: L.round(pt - (cur.l || 0), 2) }); }, 'First Line Indent'); break;
+        case 'first': E.formatPara((pPr, p) => { const cur = D.pProps(doc(), p).ind || {}; pPr.ind = Object.assign({}, pPr.ind, { fl: L.round(pt - (cur.l || 0), 2) }); }, '首行缩进'); break;
         case 'hang': E.formatPara((pPr, p) => { const cur = D.pProps(doc(), p).ind || {}; const firstAbs = (cur.l || 0) + (cur.fl || 0); pPr.ind = Object.assign({}, pPr.ind, { l: L.round(Math.max(-72, pt), 2), fl: L.round(firstAbs - pt, 2) }); }, 'Hanging Indent'); break;
-        case 'left': E.formatPara((pPr, p) => { const cur = D.pProps(doc(), p).ind || {}; pPr.ind = Object.assign({}, pPr.ind, { l: L.round(Math.max(-72, pt), 2), fl: cur.fl || 0 }); }, 'Left Indent'); break;
-        case 'right': { const fromRight = (st.colR - (ev.clientX - st.hr.left)) / st.pxPt; E.formatPara((pPr) => { pPr.ind = Object.assign({}, pPr.ind, { r: L.round(snap(fromRight, ev.altKey), 2) }); }, 'Right Indent'); break; }
+        case 'left': E.formatPara((pPr, p) => { const cur = D.pProps(doc(), p).ind || {}; pPr.ind = Object.assign({}, pPr.ind, { l: L.round(Math.max(-72, pt), 2), fl: cur.fl || 0 }); }, '左缩进'); break;
+        case 'right': { const fromRight = (st.colR - (ev.clientX - st.hr.left)) / st.pxPt; E.formatPara((pPr) => { pPr.ind = Object.assign({}, pPr.ind, { r: L.round(snap(fromRight, ev.altKey), 2) }); }, '右缩进'); break; }
         case 'marginL': case 'marginR': {
           const s = L.app.curSect();
           const dx = (ev.clientX - e.clientX) / st.pxPt;
@@ -260,21 +266,19 @@
           if (!mm) break;
           const k = mm.c0 + mm.span - 1;
           const dx = (ev.clientX - e.clientX) / st.pxPt;
-          E.edit('Column Width', () => { D.touchTbl(tbl); if (k + 1 < tbl.grid.length && !ev.shiftKey) { const dd = L.clamp(dx, -(tbl.grid[k] - 6), tbl.grid[k + 1] - 6); tbl.grid[k] += dd; tbl.grid[k + 1] -= dd; } else tbl.grid[k] = Math.max(6, tbl.grid[k] + dx); L.tables.fixWidths(tbl); return E.sel; });
+          E.edit('列宽', () => { D.touchTbl(tbl); if (k + 1 < tbl.grid.length && !ev.shiftKey) { const dd = L.clamp(dx, -(tbl.grid[k] - 6), tbl.grid[k + 1] - 6); tbl.grid[k] += dd; tbl.grid[k + 1] -= dd; } else tbl.grid[k] = Math.max(6, tbl.grid[k] + dx); L.tables.fixWidths(tbl); return E.sel; });
           break;
         }
         case 'col': {
           const s = L.app.curSect();
           const dx = (ev.clientX - e.clientX) / st.pxPt;
-          E.edit('Columns', () => { D.touchKey(s.holder, s.key); const sect = s.holder === doc() ? doc().sect : s.holder.sect; sect.cols = Object.assign({}, sect.cols, { space: L.round(Math.max(0, (sect.cols.space || 36) - dx * 2 / Math.max(1, sect.cols.n - 1)), 2), eq: true }); return E.sel; });
+          E.edit(L.N('分栏'), () => { D.touchKey(s.holder, s.key); const sect = s.holder === doc() ? doc().sect : s.holder.sect; sect.cols = Object.assign({}, sect.cols, { space: L.round(Math.max(0, (sect.cols.space || 36) - dx * 2 / Math.max(1, sect.cols.n - 1)), 2), eq: true }); return E.sel; });
           break;
         }
         default: break;
       }
       RU.draw();
-    };
-    window.addEventListener('pointermove', mv, true);
-    window.addEventListener('pointerup', up, true);
+    }
   }
   function onVDown(e) {
     if (!state || !state.v || e.button !== 0 || E.readOnly) return;
@@ -289,18 +293,17 @@
     sc.appendChild(gl);
     const place = (cy) => { const sr = sc.getBoundingClientRect(); gl.style.cssText = `top:${cy - sr.top + sc.scrollTop}px;left:${sc.scrollLeft}px;width:${sc.clientWidth}px;height:0;border-left:0;border-top:1px dotted #000`; };
     place(e.clientY);
-    const mv = (ev) => place(ev.clientY);
-    const up = (ev) => {
-      window.removeEventListener('pointermove', mv, true);
-      window.removeEventListener('pointerup', up, true);
-      gl.remove();
-      const dy = (ev.clientY - y0) / state.pxPt;
-      if (Math.abs(dy) < 0.5) return;
-      const s = L.app.curSect();
-      E.edit('Page Setup', () => { D.touchKey(s.holder, s.key); const sect = s.holder === doc() ? doc().sect : s.holder.sect; if (which === 'mt') sect.mt = L.round(Math.max(0, sect.mt + dy), 2); else sect.mb = L.round(Math.max(0, sect.mb - dy), 2); return E.sel; });
-    };
-    window.addEventListener('pointermove', mv, true);
-    window.addEventListener('pointerup', up, true);
+    L.ui.drag(e, {
+      move: (ev) => place(ev.clientY),
+      up(ev, d) {
+        gl.remove();
+        const dy = (ev.clientY - y0) / state.pxPt;
+        if (!d.moved || Math.abs(dy) < 0.5) return;
+        const s = L.app.curSect();
+        E.edit('Page Setup', () => { D.touchKey(s.holder, s.key); const sect = s.holder === doc() ? doc().sect : s.holder.sect; if (which === 'mt') sect.mt = L.round(Math.max(0, sect.mt + dy), 2); else sect.mb = L.round(Math.max(0, sect.mb - dy), 2); return E.sel; });
+      },
+      cancel: () => gl.remove(),
+    });
   }
   RU.tabKind = () => TAB_KINDS[tabKind][0];
 })();

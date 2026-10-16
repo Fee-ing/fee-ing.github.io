@@ -103,7 +103,7 @@
     const used = new Set();
     for (const t of wb.tables) if (!t.copyKeep) for (const r of t.queries || []) used.add(r.part);
     for (const sh of wb.sheets) if (!sh.extra.queryCopy) for (const r of sh.extra.queryParts || []) used.add(r.part);
-    for (const q of wb.extra.queries || []) if (!used.has(q.part)) pack.writer.omit(q.part, 'The table or worksheet that owned this query was deleted.');
+    for (const q of wb.extra.queries || []) if (!used.has(q.part)) pack.writer.omit(q.part, '此查询所属的表或工作表已删除。');
     const names = new Set([...used].map(part => (at(wb.pkg.xml(part), 'name') || '').toLowerCase())), copies = new Map();
     pack.writer.queryName = (name, copy, part) => {
       const key = copy.id + ':' + part; if (copies.has(key)) return copies.get(key);

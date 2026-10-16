@@ -77,7 +77,7 @@
     /* in a narrow window the group folds into one button that opens it below (fit()) */
     const first = g.items.flatMap((x) => (x && x.row) || [x]).find((x) => x !== '|' && !(x && x.make));
     const icon = g.icon || (first && (typeof first === 'string' ? (spec.icons || {})[first] || (ui.cmds[first] || {}).icon : first.icon || (spec.icons || {})[first.cmd || first.split] || (ui.cmds[first.cmd || first.split] || {}).icon));
-    const fold = h('button', { class: 'tb-btn rb-large rb-fold tb-drop with-label', type: 'button', 'aria-label': g.label, 'data-tip': g.label, html: (icon ? L.icons.get(icon, 32) : '') + `<span class="tb-lbl">${L.esc(g.label)}</span><span class="dd-arrow"></span>` });
+    const fold = h('button', { class: 'tb-btn rb-large rb-fold tb-drop with-label', type: 'button', 'aria-label': g.label, 'data-tip': g.label, html: (icon ? L.icons.get(icon, 32) : '') + `<span class="tb-lbl">${L.esc(L.t(g.label))}</span><span class="dd-arrow"></span>` });
     const grp = h('div', { class: 'rb-group', role: 'group', 'aria-label': g.label }, fold, body, label);
     fold.addEventListener('pointerdown', (e) => e.preventDefault());
     fold.addEventListener('click', () => openFold(grp, fold));
@@ -144,7 +144,7 @@
   /** the tab strip: File, the app's tabs, then the contextual sets that apply now */
   function drawTabs() {
     tabsEl.textContent = '';
-    tabsEl.append(tabButton({ id: 'file', label: '&File' }, 'file'));
+    tabsEl.append(tabButton({ id: 'file', label: '文件(&F)' }, 'file'));
     for (const t of spec.tabs) tabsEl.append(tabButton(t));
     for (const c of active()) tabsEl.append(h('div', { class: 'rb-ctx' }, h('span', { class: 'rb-ctx-name' }, c.set), h('div', { class: 'rb-ctx-tabs' }, ...c.tabs.map((t) => tabButton(t, 'ctx')))));
     for (const b of tabsEl.querySelectorAll('.rb-tab')) b.classList.toggle('on', b.dataset.tab === cur);
@@ -207,7 +207,9 @@
      "FF", "AN"); a two-letter tip never starts with a one-letter tip, so typing is unambiguous. */
   function assign(items) {
     const used = new Set(), out = new Map(), rest = [];
-    const letters = (it) => [...(it.label || '').toUpperCase()].filter((ch) => /[A-Z]/.test(ch));
+    /* the letters of the label as shown, or of the English one where it has none (Japanese, Korean) */
+    const shown = (it) => (/[A-Za-z]/.test(it.label || '') ? it.label : it.en || '');
+    const letters = (it) => [...shown(it).toUpperCase()].filter((ch) => /[A-Z]/.test(ch));
     const take = (k, it) => { used.add(k); out.set(k, it); };
     for (const it of items) if (it.key && !used.has(it.key)) take(it.key, it); else rest.push(it);
     const later = [];
@@ -215,7 +217,7 @@
     const singles = new Set([...used].filter((k) => k.length === 1));
     const ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     for (const it of later) {
-      const ls = letters(it), words = (it.label || '').toUpperCase().split(/[^A-Z]+/).filter(Boolean);
+      const ls = letters(it), words = shown(it).toUpperCase().split(/[^A-Z]+/).filter(Boolean);
       const firsts = [...ls, ...ABC].filter((ch) => !singles.has(ch) && !/[0-9]/.test(ch));
       let k = null;
       for (const a of firsts) {
@@ -234,15 +236,16 @@
     document.body.append(b);
     return b;
   }
-  const accessKey = (label) => { const m = /&([^&])/.exec(label || ''); return m ? m[1].toUpperCase() : null; };
+  /* the access key of the label as shown (common/i18n.js) */
+  const accessKey = (label) => { const k = ui.accessKey(label); return k && /[a-z0-9]/i.test(k) ? k.toUpperCase() : null; };
   function showTips(level) {
     clearTips(true);
     const items = [];
     if (level === 'tabs') {
       L.$$('.rb-qat > *', el).forEach((x, i) => items.push({ el: x.matches('.tb-split') ? x.firstChild : x, key: String(i + 1) }));
-      L.$$('.rb-tab', tabsEl).forEach((x) => { const t = x.dataset.tab === 'file' ? { label: '&File' } : allTabs().find((y) => y.id === x.dataset.tab); items.push({ el: x, label: ui.stripAmp(t.label), key: accessKey(t.label), tab: x.dataset.tab }); });
+      L.$$('.rb-tab', tabsEl).forEach((x) => { const t = x.dataset.tab === 'file' ? { label: '文件(&F)' } : allTabs().find((y) => y.id === x.dataset.tab); items.push({ el: x, label: ui.stripAmp(t.label), en: ui.plainAmp(t.label), key: accessKey(t.label), tab: x.dataset.tab }); });
     } else {
-      L.$$(ACT, panelEl).forEach((x) => { if (!x.getClientRects().length) return; const c = ui.cmds[x.dataset.cmd] || {}; items.push({ el: x, label: x.getAttribute('aria-label') || x.textContent || x.dataset.tip || ui.stripAmp(c.label || "") }); });
+      L.$$(ACT, panelEl).forEach((x) => { if (!x.getClientRects().length) return; const c = ui.cmds[x.dataset.cmd] || {}; items.push({ el: x, label: x.getAttribute('aria-label') || x.textContent || x.dataset.tip || ui.stripAmp(c.label || ""), en: ui.plainAmp(c.label || '') }); });
     }
     const map = assign(items);
     tips = { level, map, buf: '', els: [...map].map(([k, it]) => badge(it.el, k)) };
@@ -283,10 +286,10 @@
 
   function build() {
     spec = L.ribbonSpec();
-    const qat = h('div', { class: 'rb-qat', role: 'toolbar', 'aria-label': 'Quick Access Toolbar' }, ...(spec.qat || []).map((x) => item(typeof x === 'string' ? { cmd: x, size: 'small' } : Object.assign({ size: 'small' }, x)).el));
+    const qat = h('div', { class: 'rb-qat', role: 'toolbar', 'aria-label': '快速访问工具栏' }, ...(spec.qat || []).map((x) => item(typeof x === 'string' ? { cmd: x, size: 'small' } : Object.assign({ size: 'small' }, x)).el));
     tabsEl = h('div', { class: 'rb-tabs', role: 'tablist' });
     panelEl = h('div', { class: 'rb-panel' });
-    const pin = h('button', { class: 'rb-pin', type: 'button', 'aria-label': 'Collapse the Ribbon (Ctrl+F1)', 'data-tip': 'Collapse the Ribbon (Ctrl+F1)', html: '<svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 5l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>' });
+    const pin = h('button', { class: 'rb-pin', type: 'button', 'aria-label': '折叠功能区 (Ctrl+F1)', 'data-tip': '折叠功能区 (Ctrl+F1)', html: '<svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 5l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>' });
     pin.addEventListener('click', () => RB.collapse());
     el = h('div', { class: 'ribbon' }, h('div', { class: 'rb-bar' }, qat, tabsEl, ui.searchBox()), h('div', { class: 'rb-panelwrap' }, panelEl, pin));
     L.$('.cmdbars').prepend(el);

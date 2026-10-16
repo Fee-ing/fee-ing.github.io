@@ -14,10 +14,16 @@
     'calibri': 1.2207, 'calibri light': 1.2207, 'cambria': 1.1724, 'times new roman': 1.149, 'arial': 1.149, 'courier new': 1.1328, 'verdana': 1.2153, 'georgia': 1.1362,
     'tahoma': 1.2069, 'trebuchet ms': 1.1611, 'segoe ui': 1.3301, 'garamond': 1.1235, 'comic sans ms': 1.3936, 'book antiqua': 1.1704, 'bookman old style': 1.1636, 'century gothic': 1.2251,
     'palatino linotype': 1.1353, 'lucida console': 1.0, 'impact': 1.2197, 'arial black': 1.41, 'arial narrow': 1.149, 'franklin gothic medium': 1.1338, 'symbol': 1.2275, 'wingdings': 1.1, 'aptos': 1.2, 'helvetica': 1.149,
+    /* East Asian fonts, by their English names (L.fontKey: ＭＳ 明朝 is ms mincho), from the fonts' Windows metrics;
+       unverified against Word (python3 tools/linegrid.py fonts measures them from its PDF) */
+    'ms mincho': 1.0, 'ms pmincho': 1.0, 'ms gothic': 1.0, 'ms pgothic': 1.0, 'ms ui gothic': 1.0, 'yu mincho': 1.73, 'yu gothic': 1.73, 'yu gothic light': 1.73,
+    'meiryo': 1.5, 'malgun gothic': 1.33,
   };
-  R.lineFactor = (font) => LH[String(font || '').toLowerCase()] || 1.17;
+  R.lineFactor = (font) => LH[L.fontKey(font)] || 1.17;
+  /* a run's line factor: its East Asian font's where its text has East Asian characters and that font is taller */
+  const runFactorFont = (r) => (r.eaText && r.fontEA && LH[L.fontKey(r.fontEA)] > R.lineFactor(r.font) ? r.fontEA : r.font);
   const SPACE_EM = { 'times new roman': 0.25, arial: 0.2778, calibri: 0.2261, 'calibri light': 0.2261, cambria: 0.2197, georgia: 0.2412, verdana: 0.3516, tahoma: 0.3125, 'courier new': 0.6, garamond: 0.25, 'book antiqua': 0.25, 'palatino linotype': 0.25, 'segoe ui': 0.2744, 'trebuchet ms': 0.3013, 'century gothic': 0.2773, helvetica: 0.2778, aptos: 0.2, 'arial narrow': 0.2278 };
-  R.spaceEm = (font) => SPACE_EM[String(font || '').toLowerCase()] || 0.25;
+  R.spaceEm = (font) => SPACE_EM[L.fontKey(font)] || 0.25;
   R.mathSolo = (p) => {
     let maths = 0, other = '';
     for (const it of p.runs) {
@@ -115,21 +121,26 @@
   /* ---------- run CSS ---------- */
   const rcssCache = new Map();
   R.clearCaches = () => rcssCache.clear();
-  /** CSS for resolved run properties. lineMult: line spacing multiple (auto rule) or null for exact */
+  /** CSS for resolved run properties. lineMult: line spacing multiple (auto rule), null for exact, or on a document line
+      grid {grid, mult, line}: the paragraph's line (line px) sizes the line, and a run whose text needs more pitches
+      takes its own grid line (R.gridLine); a run that fits keeps its single line height, well inside the paragraph's,
+      as runs of other fonts (a bullet, a fallback font) sitting on the same baseline would otherwise make it taller */
   R.runCSS = function (r, lineMult, opts) {
-    const key = JSON.stringify(r) + '|' + lineMult + '|' + (opts ? opts.key : '');
+    const key = JSON.stringify(r) + '|' + (lineMult && lineMult.grid ? [lineMult.grid, lineMult.mult, lineMult.line] : lineMult) + '|' + (opts ? opts.key : '');
     let css = rcssCache.get(key);
     if (css != null) return css;
     const s = [];
     const sz = r.sz || 12;
     const vert = r.vert;
     const fsz = vert === 'superscript' || vert === 'subscript' ? sz * 0.65 : sz;
-    s.push(`font-family:${L.fontStack(r.font || 'Times New Roman').replace(/"/g, "'")}`);
+    s.push(`font-family:${L.fontStack(r.font || 'Times New Roman', r.fontEA).replace(/\x22/g, "'")}`);
+    const lf = runFactorFont(r);
     s.push(`font-size:${R.px(fsz)}px`);
     /* superscript/subscript text is raised or lowered inside the line Word has already sized: it must not
        stretch the line (a footnote reference would otherwise push its line down a few pixels) */
     if (vert === 'superscript' || vert === 'subscript') s.push('line-height:0');
-    else if (lineMult != null) s.push(`line-height:${L.round(R.lineFactor(r.font) * lineMult * (fsz < sz ? sz / fsz : 1), 4)}`);
+    else if (lineMult && lineMult.grid) { const g = R.gridLine(lineMult.grid, lineMult.mult, sz, lf); s.push(g > lineMult.line ? `line-height:${g}px` : `line-height:${R.lineFactor(lf)}`); }
+    else if (lineMult != null) s.push(`line-height:${L.round(R.lineFactor(lf) * lineMult * (fsz < sz ? sz / fsz : 1), 4)}`);
     if (r.b) s.push('font-weight:bold');
     if (r.i) s.push('font-style:italic');
     const deco = [];
@@ -176,6 +187,10 @@
     if (sp.rule === 'atLeast' && sp.line) return { atLeast: R.px(sp.line), mult: 1 };
     return { mult: sp.line && sp.rule !== 'exact' && sp.rule !== 'atLeast' ? sp.line : 1 };
   };
+  /** a line's height on a document line grid, in px (pitch in px, font size in pt): the pitch times the spacing
+      multiple, and at least the whole pitches the text needs. As Word draws them: 1.5 lines on a 15.6pt grid are 23.4pt,
+      and 14pt text at 1.7 lines takes two pitches, 31.2pt (issue 11; tests/from-issues/11/) */
+  R.gridLine = (pitch, mult, sz, font) => L.round(pitch * Math.max(1, mult, Math.ceil(R.px(sz * R.lineFactor(font)) / pitch - 0.02)), 3);
   const ALIGN = { left: 'left', start: 'left', center: 'center', right: 'right', end: 'right', both: 'justify', distribute: 'justify', lowKashida: 'justify', mediumKashida: 'justify', highKashida: 'justify', thaiDistribute: 'justify' };
 
   /**
@@ -201,6 +216,7 @@
     outer.appendChild(pc);
     const ls = R.lineSpec(pPr);
     const markR = D.rProps(d, p, null, tctx);
+    pc.dataset.markSz = R.px(markR.sz || 12);   /* the ¶ drawn with formatting marks is the mark's size (R.layoutMarks) */
     /* paragraph box */
     const st = [];
     const ind = pPr.ind || {};
@@ -236,19 +252,24 @@
     if (jc !== 'left') st.push(`text-align:${jc}`);
     if (jc === 'justify' && (!last || pPr.jc === 'distribute')) st.push('text-align-last:' + (pPr.jc === 'distribute' ? 'justify' : 'justify'));
     if (jc === 'justify' && !last) outer.classList.add('jl');
-    /* document grid (lines): a line takes whole grid pitches, times the spacing multiple */
+    /* document grid (lines): R.gridLine */
     const gridPx = ctx.grid && !pPr.noSnap && !ls.exact && !ls.atLeast ? ctx.grid : 0;
-    const gridLine = (rr) => { const nat = R.px((rr.sz || 12) * R.lineFactor(rr.font)); return L.round(gridPx * Math.max(1, Math.ceil(nat / gridPx - 0.02)) * (ls.mult || 1), 3); };
+    const gridLine = (rr) => R.gridLine(gridPx, ls.mult || 1, rr.sz || 12, rr.font);
     /* line height strut from the first text run (Word sizes lines by their content, not the mark) */
     const firstText = p.runs.find((it) => it.t === 'text' && it.text && !(it.rPr && it.rPr.hidden && !ctx.showHidden) && !(it.rPr && it.rPr.del && ctx.markup === 'final'));
     const strutR = firstText ? D.rProps(d, p, firstText, tctx) : markR;
-    st.push(`font-family:${L.fontStack(strutR.font).replace(/"/g, "'")}`, `font-size:${R.px(strutR.sz || 12)}px`);
+    st.push(`font-family:${L.fontStack(strutR.font).replace(/\x22/g, "'")}`, `font-size:${R.px(strutR.sz || 12)}px`);
     /* Word 2013+ (compatibility mode 15) fits justified lines by shrinking spaces up to 20% */
     if (pPr.jc === 'both' && d.settings && d.settings.compat >= 15) st.push(`word-spacing:${L.round(-0.2 * R.spaceEm(strutR.font) * R.px(strutR.sz || 12), 3)}px`);
+    /* the paragraph's own line (CSS's strut): what each line is at least, where the line rule gives one (exact, at
+       least, a grid's pitch); with auto spacing R.lineBoxes takes it away once a line holds anything */
+    const gridMin = gridPx ? R.gridLine(gridPx, ls.mult || 1, 0, strutR.font) : 0;
     if (ls.exact) st.push(`line-height:${ls.exact}px`);
-    else if (ls.atLeast) st.push(`line-height:${Math.max(ls.atLeast, R.px((strutR.sz || 12) * R.lineFactor(strutR.font)))}px`);
-    else if (gridPx) st.push(`line-height:${gridLine(strutR)}px`);
+    else if (ls.atLeast) st.push(`line-height:${ls.atLeast}px`);
+    else if (gridPx) st.push(`line-height:${gridMin}px`);
     else st.push(`line-height:${L.round(R.lineFactor(strutR.font) * ls.mult, 4)}`);
+    const runLine = gridPx ? { grid: gridPx, mult: ls.mult || 1, line: gridMin } : ls.mult != null && !ls.exact ? ls.mult : null;
+    if (gridPx) pc.dataset.grid = runLine.line;   /* the line's box when measured (LY.lines): runs that fit are shorter */
     /* borders & shading, grouped with identical neighbours */
     const bd = pPr.borders;
     const shd = pPr.shd ? R.shadeCSS(pPr.shd) : '';
@@ -295,7 +316,9 @@
         if (lv.fmt === 'bullet') { text = lb.text; if (lv.picture && L.media.has(lv.picture)) text = ''; }
         span.textContent = text;
         if (lv.fmt === 'bullet' && lv.rPr && /symbol|wingdings/i.test(lv.rPr.font || '')) lr.font = 'Arial';
-        span.style.cssText = R.runCSS(lr, ls.mult != null && !ls.exact ? ls.mult : null);
+        span.style.cssText = R.runCSS(lr, runLine);
+        /* a Symbol or Wingdings bullet is drawn in Arial, but its line is as tall as its own font makes it (Word) */
+        if (lv.rPr && lr.font !== lv.rPr.font && typeof runLine === 'number') span.style.lineHeight = String(L.round(R.lineFactor(lv.rPr.font) * runLine, 4));
         if (lv.picture && L.media.has(lv.picture)) { const im = document.createElement('img'); im.src = L.media.url(lv.picture); im.style.cssText = 'height:0.75em;vertical-align:baseline'; span.appendChild(im); }
         pc.appendChild(span);
         if (lv.suff !== 'nothing') {
@@ -309,19 +332,24 @@
         if (lv.jc === 'right' || lv.jc === 'center') span.dataset.jc = lv.jc;
       }
     }
-    R.fillRuns(pc, p, from, to, ctx, pPr, ls, tctx);
+    R.fillRuns(pc, p, from, to, ctx, pPr, ls, tctx, runLine);
     /* empty fragment or a trailing line break needs a filler so the line has height */
     const lastEl = pc.lastChild;
     if (!pc.querySelector('[data-o]:not(.zw)') && !pc.querySelector('.lbl')) {
       const br = document.createElement('br');
       br.className = 'fill';
       pc.appendChild(br);
-      if (!firstText) { pc.style.fontFamily = L.fontStack(markR.font).replace(/"/g, "'"); pc.style.fontSize = R.px(markR.sz || 12) + 'px'; if (!ls.exact && !ls.atLeast) pc.style.lineHeight = gridPx ? gridLine(markR) + 'px' : L.round(R.lineFactor(markR.font) * ls.mult, 4); }
     } else if (lastEl && (lastEl.nodeName === 'BR' && !lastEl.classList.contains('fill') || lastEl.firstChild?.nodeType === 3 && /\n$/.test(lastEl.firstChild.data))) {
       const br = document.createElement('br');
       br.className = 'fill';
       pc.appendChild(br);
     }
+    /* each line as tall as what it holds (portions.js) */
+    R.lineBoxes(pc, {
+      ls, grid: !!gridPx, dropCap: pc.dataset.dropLines != null, to,
+      markCSS: R.runCSS(markR, ls.exact ? null : ls.atLeast ? 1 : runLine), markFont: L.fontStack(markR.font).replace(/"/g, "'"), markSize: R.px(markR.sz || 12) + 'px',
+      markLine: gridPx ? gridLine(markR) + 'px' : String(L.round(R.lineFactor(markR.font) * ls.mult, 4)), strutLine: String(L.round(R.lineFactor(strutR.font) * (ls.mult || 1), 4)),
+    });
     if (last) {
       outer.classList.add('last');
       if (p.sect && ctx.view !== 'web') outer.classList.add('has-sect');
@@ -339,16 +367,21 @@
       const sb = document.createElement('span');
       sb.className = 'sectmark';
       sb.contentEditable = 'false';
-      sb.dataset.label = 'Section Break (' + ({ nextPage: 'Next Page', continuous: 'Continuous', evenPage: 'Even Page', oddPage: 'Odd Page', nextColumn: 'Next Column' }[p.sect.type || 'nextPage'] || 'Next Page') + ')';
+      sb.dataset.label = L.t({ nextPage: '分节符（下一页）', continuous: '分节符（连续）', evenPage: '分节符（偶数页）', oddPage: '分节符（奇数页）', nextColumn: '分节符（下一栏）' }[p.sect.type || 'nextPage'] || '分节符（下一页）');
       pc.appendChild(sb);
     }
     return outer;
   };
 
+  /* the names docx-read gives the objects it keeps without showing them (preserve.js keepObject); alt text is the document's */
+  /* a kept object's label (preserve.js keepObject); a SmartArt diagram is shown by its feature's name in the UI */
+  /* the kind comes from the document (English); only the label shown is Chinese */
+  const OBJECT_LABEL = { 'Embedded object': '嵌入对象', Drawing: '绘图', 'Form Control': '窗体控件', 'Embedded content': '嵌入内容' };
+  const rawLabel = (s) => (s === 'SmartArt' ? L.t('IntelliArt') : OBJECT_LABEL[s] || s);
   /** fill a paragraph content element with spans for items in [from,to) */
-  R.fillRuns = function (pc, p, from, to, ctx, pPr, ls, tctx) {
+  R.fillRuns = function (pc, p, from, to, ctx, pPr, ls, tctx, runLine) {
     const d = ctx.doc;
-    const mult = ls.exact ? null : ls.atLeast ? 1 : ls.mult;
+    const mult = ls.exact ? null : ls.atLeast ? 1 : runLine && runLine.grid ? runLine : ls.mult;
     let pos = 0;
     let maxTextSz; /* largest size of runs with visible text (computed when first needed) */
     const open = ctx.openCmts ? new Set(ctx.openCmts) : new Set();
@@ -481,8 +514,12 @@
             r = Object.assign({}, r, { sz: maxTextSz });
           }
         }
+        /* East Asian characters: drawn with the run's East Asian font, in its East Asian language */
+        const ea = L.hasEAText(text);
+        if (ea && r.fontEA) r = Object.assign({}, r, { eaText: true });
+        const lang = ea && r.langEA ? r.langEA : r.lang && !/^en/i.test(r.lang) ? r.lang : '';
         const css = R.runCSS(r, mult, ctx.dkPara ? { autoWhite: true, key: 'w' } : null) + extra;
-        const clsS = cls.join(' ');
+        const clsS = cls.join(' ') + (lang ? '|' + lang : '');
         /* merge with the previous span when formatting is identical */
         if (lastSpan && lastCss === css + '|' + clsS && +lastSpan.dataset.o + +lastSpan.dataset.n === a) {
           lastSpan.firstChild.appendData(text);
@@ -492,12 +529,12 @@
         el = document.createElement('span');
         el.appendChild(document.createTextNode(text));
         el.style.cssText = css;
-        if (clsS) el.className = clsS;
+        if (cls.length) el.className = cls.join(' ');
         el.dataset.o = a;
         el.dataset.n = b - a;
         if (r.link || rp.link) el.dataset.link = linkStr(r.link || rp.link);
         if (r.noProof) el.spellcheck = false;
-        if (r.lang && !/^en/i.test(r.lang)) el.lang = r.lang;
+        if (lang) el.lang = lang;
         controlSpan(el);
         pc.appendChild(el);
         lastSpan = el; lastCss = css + '|' + clsS;
@@ -515,9 +552,11 @@
           el = document.createElement('span');
           el.className = 'hbrk ' + (it.type === 'page' ? 'pbrk' : 'cbrk');
           el.contentEditable = 'false';
-          el.dataset.label = it.type === 'page' ? '分页符' : '分栏符';
+          el.dataset.label = it.type === 'page' ? L.t('分页符') : L.t('分栏符');
         } else {
           el = document.createElement('br');
+          /* Chromium sizes a line by its block, not by a <br>: R.lineBoxes gives this style to the line it ends */
+          el.style.cssText = R.runCSS(r, mult);
         }
       } else if ((it.t === 'img' || it.t === 'shape' || it.t === 'group' || it.t === 'chart') && it.float) {
         if (!L.drawing) continue;
@@ -576,7 +615,7 @@
           el.appendChild(mm);
         } else {
           el.style.cssText = R.runCSS(r, mult) + (it.math ? ';font-family:"Cambria Math",Caladea,serif;font-style:italic' : '');
-          el.textContent = it.text || it.label || '';
+          el.textContent = it.text || rawLabel(it.label) || '';
           if (it.opaquePlaceholder) { el.style.opacity = '0.65'; el.style.border = '1px dotted currentColor'; el.style.padding = '2px 5px'; }
           if (!it.text && !it.label) el.classList.add('empty');
         }
@@ -619,18 +658,19 @@
         layer.className = 'format-marks'; layer.contentEditable = 'false'; layer.setAttribute('aria-hidden', 'true');
         const pc = p.firstChild, cs = getComputedStyle(pc), rtl = cs.direction === 'rtl', vertical = cs.writingMode !== 'horizontal-tb';
         layer.style.writingMode = cs.writingMode;
-        const mark = (cls, r) => {
+        /* a mark is as large as its character: ¶ the paragraph mark, ↵ its line break (not the paragraph's first run) */
+        const mark = (cls, r, size) => {
           if (!r || !r.height) return;
           const span = document.createElement('span'); span.className = cls;
           const x = vertical || rtl ? r.left : r.right, y = vertical ? (rtl ? r.top : r.bottom) : r.top;
-          span.style.cssText = `left:${x - box.left - p.clientLeft}px;top:${y - box.top - p.clientTop}px;font-size:${cs.fontSize}`;
+          span.style.cssText = `left:${x - box.left - p.clientLeft}px;top:${y - box.top - p.clientTop}px;font-size:${size || cs.fontSize}`;
           if (rtl) span.style.transform = vertical ? 'translateY(-100%)' : 'translateX(-100%)';
           layer.appendChild(span);
         };
-        for (const br of show ? pc.querySelectorAll(':scope > br:not(.fill)') : []) mark('mark-br', br.getBoundingClientRect());
+        for (const br of show ? pc.querySelectorAll(':scope > br:not(.fill)') : []) mark('mark-br', br.getBoundingClientRect(), br.style.fontSize);
         if (p.classList.contains('last')) {
           range.selectNodeContents(pc);
-          mark('mark-p', Array.from(range.getClientRects()).at(-1));
+          mark('mark-p', Array.from(range.getClientRects()).at(-1), pc.dataset.markSz && pc.dataset.markSz + 'px');
         }
         for (const sp of show ? pc.querySelectorAll(':scope > span[data-o]') : []) {
           const text = sp.firstChild;
@@ -707,7 +747,7 @@
       wrap.appendChild(im);
     } else {
       wrap.classList.add('missing');
-      wrap.textContent = it.alt || 'Picture';
+      wrap.textContent = it.alt || L.t('图片');
     }
     if (it.rot) wrap.style.transform = `rotate(${it.rot}deg)`;
     if (it.flipH || it.flipV) wrap.style.transform = (wrap.style.transform || '') + ` scale(${it.flipH ? -1 : 1},${it.flipV ? -1 : 1})`;

@@ -15,6 +15,7 @@
     beforeExec() { if (L.ed && L.ed.syncSel && !L.ed.objSel) L.ed.syncSel(); },
     refocus() { if (L.ed) L.ed.refocus(); },
     commitEdit() { if (L.ed && L.ed.textSave) L.ed.textSave(); },
+    ownsText: (el) => !!(L.layout && L.layout.root && L.layout.root.contains(el)),
   };
 
   const DEFAULT_OPTS = {
@@ -22,8 +23,8 @@
     toolbars: { standard: true, formatting: true, drawing: true, tables: false, reviewing: 'auto', picture: 'auto', outlining: 'auto', headerFooter: 'auto', mailMerge: false, wordart: 'auto' },
     showMarks: false, marks: { tabs: false, spaces: false, para: false, hidden: false, all: false }, textBoundaries: true, fieldShading: 'selected', bookmarks: false,
     smartQuotes: true, autocorrect: true, autoFormat: true, capSentence: true, autoBullets: true, autoNumbers: true, autoBorders: true, autoHeadings: false, autoUrl: true, ordinals: true, fractions: true, dashes: true,
-    spell: true, unit: 'in', recent: [], zoom: 1, view: 'print', balloons: true, pasteOptions: true, dragDrop: true, smartCut: true, typingReplaces: true,
-    userName: 'Quire User', userInitials: 'QU', markupMode: 'markup',
+    spell: true, unit: (L.locale && L.locale.get().unit) || 'in', recent: [], zoom: 1, view: 'print', balloons: true, pasteOptions: true, dragDrop: true, smartCut: true, typingReplaces: true,
+    userName: 'Quire 用户', userInitials: 'QU', markupMode: 'markup',
   };
   const A = (L.app = Object.assign(L.app || {}, {
     view: 'print', fileName: 'Document1', fileType: 'docx', saved: false, untitled: 1, opts: L.clone(DEFAULT_OPTS),
@@ -32,12 +33,14 @@
   const doc = () => D.doc;
 
   /* ================= options ================= */
-  A.loadOpts = () => { A.opts = L.deepMerge(L.clone(DEFAULT_OPTS), L.store.get('opts', {}) || {}); D.unit = A.opts.unit || 'in'; };
-  A.saveOpts = () => { L.store.set('opts', A.opts); };
+  /* the options that follow the UI's language, with their English values (common/locales.js) */
+  const EN_OPTS = { unit: 'in' };
+  A.loadOpts = () => { A.opts = L.deepMerge(L.clone(DEFAULT_OPTS), L.locale.savedOpts(L.store.get('opts', {}), EN_OPTS)); D.unit = A.opts.unit || 'in'; };
+  A.saveOpts = () => { L.store.set('opts', L.locale.optsToSave(A.opts, DEFAULT_OPTS, EN_OPTS)); };
   A.applyOpts = () => {
     document.body.classList.toggle('bluebg', !!A.opts.blueBg);
     D.unit = A.opts.unit || 'in';
-    L.store.set('userName', A.opts.userName || 'Quire User');
+    L.store.set('userName', A.opts.userName || 'Quire 用户');
     L.store.set('userInitials', A.opts.userInitials || '');
     L.$('#statusbar').hidden = !A.opts.statusBar;
     LY.opts.textBoundaries = A.opts.textBoundaries !== false;
@@ -52,10 +55,10 @@
   function buildMenus() {
     const recentItems = () => (window.VO ? VO.recentMenuItems(4) : []);
     const menus = [
-      { label: '文件(&F)', items: () => ['new', 'open', 'close', '-', 'save', 'saveAs', 'saveWeb', 'fileSearch', '-', 'webPreview', '-', 'pageSetup', 'printPreview', 'print', '-', { label: '发送(&D)', sub: ['sendMail', 'exportPDF'] }, 'properties', ...((recentItemsList) => (recentItemsList.length ? ['-', ...recentItemsList] : []))(recentItems()), '-', 'exitApp'] },
+      { label: '文件(&F)', items: () => ['new', 'open', 'close', '-', 'save', 'saveAs', 'saveWeb', 'fileSearch', '-', 'webPreview', '-', 'pageSetup', 'printPreview', 'print', '-', { label: '发送到(&d)', sub: ['sendMail', 'exportPDF'] }, 'properties', ...((recentItemsList) => (recentItemsList.length ? ['-', ...recentItemsList] : []))(recentItems()), '-', 'exitApp'] },
       {
         label: '编辑(&E)', items: () => ['undo', 'redo', '-', 'cut', 'copy', 'officeClipboard', 'paste', 'pasteSpecial', 'pasteHyperlink', '-',
-          { label: '清除(&A)', sub: ['clearFormats', 'clearContents'] }, 'selectAll', '-', 'find', 'replace', 'goTo', '-', 'links', 'editObject'],
+          { label: '清除(&a)', sub: ['clearFormats', 'clearContents'] }, 'selectAll', '-', 'find', 'replace', 'goTo', '-', 'links', 'editObject'],
       },
       {
         label: '视图(&V)', items: () => ['viewNormal', 'viewWeb', 'viewPrint', 'viewReading', 'viewOutline', '-', 'taskPane',
@@ -64,24 +67,24 @@
       },
       {
         label: '插入(&I)', items: () => ['insertBreak', 'pageNumbers', 'dateTime', { label: '自动图文集(&A)', sub: () => L.autocorrect ? L.autocorrect.autoTextMenu() : [] }, 'insertField', 'insertSymbol', 'insertComment', '-',
-          { label: '引用(&N)', sub: ['insertFootnote', 'insertCaption', 'crossReference', 'indexTables'] }, '-',
-          { label: '图片(&P)', icon: 'picture', sub: ['insertClipArt', 'insertPicture', '-', 'newDrawing', { label: '自选图形(&U)', icon: 'autoshapes', run: () => A.openAutoShapes() }, 'insertWordArt', 'insertChart'] },
+          { label: '引用(&n)', sub: ['insertFootnote', 'insertCaption', 'crossReference', 'indexTables'] }, '-',
+          { label: '图片(&P)', icon: 'picture', sub: ['insertClipArt', 'insertPicture', '-', 'newDrawing', { label: '自选图形(&A)', icon: 'autoshapes', run: () => A.openAutoShapes() }, 'insertWordArt', 'insertChart'] },
           'insertDiagram', 'textBox', 'insertFile', 'insertObject', 'bookmark', 'hyperlink'],
       },
       {
-        label: '格式(&O)', items: () => ['fontDlg', 'paragraphDlg', 'bulletsDlg', 'bordersDlg', 'columnsDlg', 'tabsDlg', 'dropCap', 'textDirection', 'changeCase', '-',
+        label: '格式(&o)', items: () => ['fontDlg', 'paragraphDlg', 'bulletsDlg', 'bordersDlg', 'columnsDlg', 'tabsDlg', 'dropCap', 'textDirection', 'changeCase', '-',
           { label: '背景(&B)', sub: () => backgroundMenu() }, 'themeDlg', 'autoFormat', '-', 'stylesPane', 'revealFormatting', '-', 'formatObject'],
       },
       {
         label: '工具(&T)', items: () => ['research', { label: '语言(&L)', sub: ['setLanguage', 'hyphenation'] }, 'wordCount', 'autoSummarize', '-',
-          'trackChanges', 'compareDocs', 'protectDoc', '-', { label: '信函与邮件(&E)', sub: ['mailMerge', 'tb_mailMerge', 'envelopes', 'letterWizard'] }, '-',
+          'trackChanges', 'compareDocs', 'protectDoc', '-', { label: '信函与邮件(&e)', sub: ['mailMerge', 'tb_mailMerge', 'envelopes', 'letterWizard'] }, '-',
           { label: '宏(&M)', sub: ['macros'] }, 'templates', 'autocorrectDlg', 'customize', 'optionsDlg'],
       },
       {
-        label: '表格(&A)', items: () => ['drawTable', { label: '插入(&I)', sub: ['insertTable', '-', 'colLeft', 'colRight', 'rowAbove', 'rowBelow', 'insertCells'] },
-          { label: '删除(&D)', sub: ['deleteTable', 'deleteCols', 'deleteRows', 'deleteCells'] }, { label: '选定(&C)', sub: ['selectTable', 'selectCol', 'selectRow', 'selectCell'] },
+        label: '表格(&a)', items: () => ['drawTable', { label: '插入(&I)', sub: ['insertTable', '-', 'colLeft', 'colRight', 'rowAbove', 'rowBelow', 'insertCells'] },
+          { label: '删除(&D)', sub: ['deleteTable', 'deleteCols', 'deleteRows', 'deleteCells'] }, { label: '选择(&c)', sub: ['selectTable', 'selectCol', 'selectRow', 'selectCell'] },
           'mergeCells', 'splitCells', 'splitTable', '-', 'tableAutoFormat', { label: '自动调整(&A)', sub: ['autofitContents', 'autofitWindow', 'fixedWidth', '-', 'distRows', 'distCols'] },
-          'headingRows', { label: '转换(&V)', sub: ['textToTable', 'tableToText'] }, 'sortDlg', 'formulaDlg', 'gridlines', '-', 'tableProps'],
+          'headingRows', { label: '转换(&v)', sub: ['textToTable', 'tableToText'] }, 'sortDlg', 'formulaDlg', 'gridlines', '-', 'tableProps'],
       },
       { label: '窗口(&W)', items: () => ['newWindow', 'arrangeAll', 'splitWindow', '-', ...A.windowItems()] },
       { label: '帮助(&H)', items: ['help', 'showAssistant', '-', 'gettingStarted', 'keyboardHelp', '-', 'about'] },
@@ -92,13 +95,13 @@
   }
   function backgroundMenu() {
     return [
-      { label: '无填充(&N)', run: () => A.setBackground(null) },
+      { label: '无填充颜色(&N)', run: () => A.setBackground(null) },
       { custom: (close) => { const g = h('div', { class: 'color-panel' }); const grid = h('div', { class: 'cp-grid' }); for (const c of L.color.STANDARD) grid.appendChild(h('button', { class: 'cp-sw', type: 'button', style: `background:${c}`, 'aria-label': ui.colorName(c), 'data-tip': ui.colorName(c), onclick: () => { close(); A.setBackground(c.replace('#', '')); } })); g.appendChild(grid); return g; } },
       { label: '其他颜色(&M)...', run: () => ui.moreColors(doc().bg ? '#' + doc().bg : null, (c) => { if (c) A.setBackground(c.replace('#', '')); }) },
       'printedWatermark',
     ];
   }
-  A.setBackground = (c) => E.edit('Background', () => { D.touchKey(doc(), 'bg'); doc().bg = c; return E.sel; });
+  A.setBackground = (c) => E.edit(L.N('背景'), () => { D.touchKey(doc(), 'bg'); doc().bg = c; return E.sel; });
 
   /* ================= toolbars ================= */
   const listPanel = (items, close) => {
@@ -118,18 +121,28 @@
         const box = h('div', { class: 'tbl-grid-pick' });
         let R = 4, C = 5;
         const cells = h('div', { class: 'tgp-cells' });
-        const lbl = h('div', { class: 'tgp-label', text: 'Cancel' });
+        const lbl = h('div', { class: 'tgp-label', text: '取消' });
         let cur = [0, 0];
+        // the cells stay put while the grid grows (a cell replaced under the pointer between press and release
+        // gets no click, so the table was never inserted)
         const draw = () => {
           cells.style.gridTemplateColumns = `repeat(${C}, 18px)`;
-          L.clear(cells);
+          const have = new Map([...cells.children].map((s) => [s.dataset.ij, s]));
+          let next = cells.firstChild;
           for (let i = 0; i < R; i++) for (let j = 0; j < C; j++) {
-            const s = h('span', { class: i < cur[0] && j < cur[1] ? 'on' : '' });
-            s.addEventListener('pointerenter', () => { cur = [i + 1, j + 1]; if (i + 2 > R && R < 12) R++; if (j + 2 > C && C < 10) C++; draw(); lbl.textContent = `${cur[0]} x ${cur[1]} Table`; });
-            s.addEventListener('click', () => { close(); L.tables.insert(cur[0], cur[1]); });
-            cells.appendChild(s);
+            let s = have.get(i + ',' + j);
+            if (s) next = s.nextSibling; else cells.insertBefore(s = h('span', { 'data-ij': i + ',' + j }), next);
+            s.classList.toggle('on', i < cur[0] && j < cur[1]);
           }
         };
+        cells.addEventListener('pointerover', (e) => {
+          const s = e.target.closest('span[data-ij]');
+          if (!s) return;
+          const [i, j] = s.dataset.ij.split(',').map(Number);
+          cur = [i + 1, j + 1]; if (i + 2 > R && R < 12) R++; if (j + 2 > C && C < 10) C++;
+          draw(); lbl.textContent = L.t('{0} × {1} 表格', cur[0], cur[1]);
+        });
+        cells.addEventListener('click', () => { if (cur[0]) { close(); L.tables.insert(cur[0], cur[1]); } });
         draw();
         box.append(cells, lbl);
         return box;
@@ -141,10 +154,10 @@
       custom: (close) => {
         const box = h('div', { class: 'tbl-grid-pick' });
         const cells = h('div', { class: 'tgp-cells', style: 'grid-template-columns:repeat(4,22px)' });
-        const lbl = h('div', { class: 'tgp-label', text: 'Cancel' });
+        const lbl = h('div', { class: 'tgp-label', text: '取消' });
         for (let j = 0; j < 4; j++) {
           const s = h('span', { style: 'height:30px' });
-          s.addEventListener('pointerenter', () => { L.$$('span', cells).forEach((x, k) => x.classList.toggle('on', k <= j)); lbl.textContent = `${j + 1} Column${j ? 's' : ''}`; });
+          s.addEventListener('pointerenter', () => { L.$$('span', cells).forEach((x, k) => x.classList.toggle('on', k <= j)); lbl.textContent = j ? L.t('{0} 列', j + 1) : L.t('{0} 列', j + 1); });
           s.addEventListener('click', () => { close(); A.setColumns(j + 1); });
           cells.appendChild(s);
         }
@@ -153,7 +166,7 @@
       },
     }, ...(more || [])], r, { cls: 'grid-menu' });
   }
-  A.setColumns = (n) => E.edit('Columns', () => { const s = A.curSect(); D.touchKey(s.holder, s.key); s.sect.cols = Object.assign({}, s.sect.cols, { n, eq: true, w: [] }); return E.sel; });
+  A.setColumns = (n) => E.edit(L.N('分栏'), () => { const s = A.curSect(); D.touchKey(s.holder, s.key); s.sect.cols = Object.assign({}, s.sect.cols, { n, eq: true, w: [] }); return E.sel; });
   /** the section object governing the caret (holder/key let undo snapshot it) */
   A.curSect = function () {
     const d = doc();
@@ -166,16 +179,18 @@
   function lineSpacingMenu(r) {
     const cur = E.curPara().sp || {};
     const v = cur.rule === 'auto' || !cur.rule ? cur.line || 1 : null;
-    ui.openMenu([1, 1.5, 2, 2.5, 3].map((x) => ({ label: String(x.toFixed(1)), checked: () => v === x, run: () => E.formatPara((pPr) => { pPr.sp = Object.assign({}, pPr.sp, { line: x, rule: 'auto' }); }, 'Line Spacing') }))
-      .concat(['-', { label: '&More...', run: () => L.dlg.paragraph() }]), r);
+    ui.openMenu([1, 1.5, 2, 2.5, 3].map((x) => ({ label: String(x.toFixed(1)), checked: () => v === x, run: () => E.formatPara((pPr) => { pPr.sp = Object.assign({}, pPr.sp, { line: x, rule: 'auto' }); }, '行距') }))
+      .concat(['-', { label: '更多(&M)...', run: () => L.dlg.paragraph() }]), r);
   }
+  const HL_NAMES = [['yellow', L.N('黄色')], ['green', L.N('鲜绿色')], ['cyan', L.N('青绿色')], ['magenta', L.N('粉红色')], ['blue', L.N('蓝色')], ['red', L.N('红色')], ['darkBlue', L.N('深蓝色')], ['darkCyan', L.N('青色')],
+    ['darkGreen', L.N('绿色')], ['darkMagenta', L.N('紫罗兰色')], ['darkRed', L.N('深红色')], ['darkYellow', L.N('深黄色')], ['darkGray', L.N('灰色-50%')], ['lightGray', L.N('灰色-25%')], ['black', L.N('黑色')]];
   function highlightDD(r, anchor) {
     ui.openMenu([{
       custom: (close) => {
         const el = h('div', { class: 'color-panel' });
         const g = h('div', { class: 'cp-grid hl' });
-        for (const n of ['yellow', 'green', 'cyan', 'magenta', 'blue', 'red', 'darkBlue', 'darkCyan', 'darkGreen', 'darkMagenta', 'darkRed', 'darkYellow', 'darkGray', 'lightGray', 'black']) {
-          g.appendChild(h('button', { class: 'cp-sw', type: 'button', style: `background:${L.R.HIGHLIGHT[n]}`, 'data-tip': n.replace(/([A-Z])/g, ' $1').replace(/^./, (c) => c.toUpperCase()), 'aria-label': n, onclick: () => { close(); A.lastHighlight = n; A.applyHighlight(n); } }));
+        for (const [n, name] of HL_NAMES) {
+          g.appendChild(h('button', { class: 'cp-sw', type: 'button', style: `background:${L.R.HIGHLIGHT[n]}`, 'data-tip': name, 'aria-label': name, onclick: () => { close(); A.lastHighlight = n; A.applyHighlight(n); } }));
         }
         el.appendChild(g);
         el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: '无', onclick: () => { close(); A.applyHighlight('none'); } }));
@@ -183,7 +198,7 @@
       },
     }], anchor ? anchor.getBoundingClientRect() : r, { cls: 'color-menu' });
   }
-  A.applyHighlight = (n) => { if (E.collapsed()) { A.highlighter.start(true, n); return; } E.formatRun({ hl: n === 'none' ? undefined : n }, 'Highlight'); };
+  A.applyHighlight = (n) => { if (E.collapsed()) { A.highlighter.start(true, n); return; } E.formatRun({ hl: n === 'none' ? undefined : n }, L.N('突出显示')); };
   function fontColorDD(r, anchor) {
     ui.colorMenu(anchor || r, { mode: 'font' }, (v) => {
       if (v && v.auto) A.applyFontColor('auto');
@@ -191,11 +206,11 @@
       ui.refresh();
     });
   }
-  A.applyFontColor = (c) => E.formatRun({ color: c === 'auto' ? undefined : c }, '字体颜色');
+  A.applyFontColor = (c) => E.formatRun({ color: c === 'auto' ? undefined : c }, 'Font Color');
   const BORDER_ITEMS = [
-    ['outside', 'bordersOut', '外侧框线'], ['all', 'bordersAll', '所有框线'], ['top', 'bordersTop', '上框线'], ['bottom', 'bordersBottom', '底端框线'],
+    ['outside', 'bordersOut', '外侧框线'], ['all', 'bordersAll', '所有框线'], ['top', 'bordersTop', '上框线'], ['bottom', 'bordersBottom', '下框线'],
     ['left', 'bordersLeft', '左框线'], ['right', 'bordersRight', '右框线'], ['insideH', 'bordersInH', '内部横框线'], ['insideV', 'bordersInV', '内部竖框线'],
-    ['inside', 'bordersIn', '内侧框线'], ['diagDown', 'bordersDiagDown', '斜下框线'], ['diagUp', 'bordersDiagUp', '斜上框线'], ['hline', 'hline', '水平线'], ['none', 'bordersNone', '无边框'],
+    ['inside', 'bordersIn', '内部框线'], ['diagDown', 'bordersDiagDown', '下斜框线'], ['diagUp', 'bordersDiagUp', '上斜框线'], ['hline', 'hline', '水平线'], ['none', 'bordersNone', '无框线'],
   ];
   A.BORDER_ITEMS = BORDER_ITEMS;
   function bordersDD(r) {
@@ -229,7 +244,7 @@
         default: if (['top', 'bottom', 'left', 'right'].includes(k)) set(k, !has(k));
       }
       pPr.borders = Object.keys(cur).length ? cur : undefined;
-    }, '边框');
+    }, L.N('边框'));
   };
   A.insertHorizontalLine = () => E.edit('水平线', () => {
     let pos = E.deleteSelection();
@@ -244,7 +259,7 @@
     const grid = (list) => ({ custom: (close) => { const g = h('div', { class: 'shape-grid' }); for (const k of list) { const p = L.geom.get(k); const b = h('button', { type: 'button', 'data-tip': p.label || k, 'aria-label': p.label || k, html: L.geom.preview(k, 20) }); b.addEventListener('click', () => { close(); L.drawtool && L.drawtool.start({ geom: k, line: !!p.isLine }); }); g.appendChild(b); } return g; } });
     ui.openMenu([
       { label: '线条(&L)', icon: 'line', sub: ['drawLine', 'drawArrow', 'drawDblArrow'] },
-      ...['基本形状', '箭头总汇', '流程图', '星与旗帜', '标注'].map((g) => ({ label: g.replace(/^(\w)/, '&$1'), icon: { '基本形状': 'autoshapes', '箭头总汇': 'arrowStyle', Flowchart: 'diagram', '星与旗帜': 'animation', Callouts: 'comment' }[g], sub: [grid(L.geom.MENU[g])] })),
+      ...[['基本形状', '基本形状(&B)', 'autoshapes'], ['箭头总汇', '箭头总汇(&B)', 'arrowStyle'], ['流程图', '流程图(&F)', 'diagram'], ['星与旗帜', '星与旗帜(&S)', 'animation'], ['标注', '标注(&C)', 'comment']].map(([g, label, icon]) => ({ label, icon, sub: [grid(L.geom.MENU[g])] })),
       '-', { label: '其他自选图形(&M)...', icon: 'clipart', run: () => L.panes && L.panes.task.show('clipart') },
     ], { left: r.left, bottom: r.bottom }, { selectFirst: !at });
   };
@@ -252,40 +267,40 @@
   A.menus = { tableGrid: (r, more) => tableGridPicker(r, more), columns: (r, more) => columnsPicker(r, more), lineSpacing: (r) => lineSpacingMenu(r), borders: (r, b) => bordersDD(r, b), highlight: (r, b) => highlightDD(r, b), fontColor: (r, b) => fontColorDD(r, b) };
   A.parts = {
     style: (o) => ui.combo(Object.assign({
-      id: 'tb-style', width: 118, tip: 'Style', listCls: 'styles',
+      id: 'tb-style', width: 118, tip: '样式', listCls: 'styles',
       options: () => A.styleOptions().map((s) => s.label),
       preview: (v) => { const s = A.styleOptions().find((x) => x.label === v); return s ? s.css : ''; },
       value: () => (E.sel ? styleState() : ''), onChange: (v) => A.applyStyleByName(v),
     }, o)),
-    font: (o) => ui.combo(Object.assign({ id: 'tb-font', width: 136, tip: 'Font', options: () => A.fontOptions(), preview: (v) => `font-family:${L.fontStack(v)};font-size:13px`, note: L.fontNote, listCls: 'fonts', value: () => { const v = E.uniformRun('font'); return v || ''; }, onChange: (v) => A.setFont(v) }, o)),
-    size: (o) => ui.combo(Object.assign({ id: 'tb-size', width: 40, tip: '字号', options: () => L.SIZE_LIST, value: () => { const v = E.uniformRun('sz'); return v ? String(L.round(v, 1)) : ''; }, onChange: (v) => A.setFontSize(parseFloat(v)) }, o)),
-    zoom: (o) => ui.combo(Object.assign({ id: 'tb-zoom', width: 74, tip: 'Zoom', options: () => ['500%', '200%', '150%', '100%', '75%', '50%', '25%', '10%', '页宽', '文字宽度', '整页', '两页'], value: () => Math.round(LY.zoom * 100) + '%', onChange: (v) => A.zoomTo(v) }, o)),
+    font: (o) => ui.combo(Object.assign({ id: 'tb-font', width: 136, tip: '字体', options: () => A.fontOptions(), preview: (v) => `font-family:${L.fontStack(v)};font-size:13px`, note: L.fontNote, listCls: 'fonts', value: () => { const v = E.uniformRun('font'); return v || ''; }, onChange: (v) => A.setFont(v) }, o)),
+    size: (o) => ui.combo(Object.assign({ id: 'tb-size', width: 48, tip: '字号', options: () => L.SIZE_LIST, value: () => { const v = E.uniformRun('sz'); return v ? String(L.round(v, 1)) : ''; }, onChange: (v) => A.setFontSize(parseFloat(v)) }, o)),
+    zoom: (o) => ui.combo(Object.assign({ id: 'tb-zoom', width: 74, tip: '缩放', options: () => ['500%', '200%', '150%', '100%', '75%', '50%', '25%', '10%'].concat([L.N('页宽'), L.N('文字宽度'), L.N('整页'), L.N('双页')].map((v) => ({ value: v, label: L.t(v) }))), value: () => Math.round(LY.zoom * 100) + '%', onChange: (v) => A.zoomTo(v) }, o)),
   };
   function buildToolbars() {
     const host = L.$('#toolbars');
     const styleCombo = A.parts.style(), fontCombo = A.parts.font(), sizeCombo = A.parts.size(), zoomCombo = A.parts.zoom();
     A.toolbarsEl = {
-      standard: ui.toolbar('standard', '常用', ['new', 'open', 'save', 'permission', 'sendMail', 'print', 'printPreview', 'research', '|', 'cut', 'copy', 'paste', 'painter', '|',
+      standard: ui.toolbar('standard', 'Standard', ['new', 'open', 'save', 'permission', 'sendMail', 'print', 'printPreview', 'research', '|', 'cut', 'copy', 'paste', 'painter', '|',
         ui.tbSplit('undo', (r) => A.historyMenu(r, 'undo')), ui.tbSplit('redo', (r) => A.historyMenu(r, 'redo')), '|', 'hyperlink', ui.tbButton('tb_tables', { icon: 'tablesBorders' }),
-        ui.tbDrop('', 'table', (r) => tableGridPicker(r), 'Insert Table'), 'insertExcel', ui.tbDrop('', 'columns', (r) => columnsPicker(r), 'Columns'), ui.tbButton('tb_drawing', { icon: 'drawing' }), 'docMap', 'showMarks', zoomCombo, 'help', ui.tbButton('viewReading', { label: 'Read', icon: 'read' })]),
-      formatting: ui.toolbar('formatting', '设置格式', ['stylesPane', styleCombo, fontCombo, sizeCombo, 'bold', 'italic', 'underline', '|', 'alignLeft', 'alignCenter', 'alignRight', 'justify', '|',
-        ui.tbDrop('', 'lineSpacing', lineSpacingMenu, 'Line Spacing'), '|', 'numbering', 'bullets', 'decIndent', 'incIndent', '|', ui.tbSplit('borderBtn', bordersDD), ui.tbSplit('highlightBtn', highlightDD), ui.tbSplit('fontColorBtn', fontColorDD)]),
-      tables: ui.toolbar('tables', '表格和边框', ['drawTable', 'eraser', '|', ui.tbDrop('', 'dashStyle', (r) => A.borderStyleMenu(r), '线型'), ui.tbDrop('', 'lineStyle', (r) => A.borderWeightMenu(r), 'Line Weight'), ui.tbDrop('', 'lineColor', (r, b) => ui.colorMenu(b, { mode: 'plain', automatic: true }, (v) => { A.borderPen.color = v && v.auto ? 'auto' : typeof v === 'string' ? v.replace('#', '') : A.borderPen.color; }), 'Border Color'),
-        ui.tbSplit('borderBtn', bordersDD), ui.tbDrop('', 'fillColor', (r, b) => ui.colorMenu(b, { mode: 'fill' }, (v) => { if (L.tables) L.tables.shade(v && v.none ? null : typeof v === 'string' ? v.replace('#', '') : null); }), 'Shading Color'), '|',
+        ui.tbDrop('', 'table', (r) => tableGridPicker(r), '插入表格'), 'insertExcel', ui.tbDrop('', 'columns', (r) => columnsPicker(r), '分栏'), ui.tbButton('tb_drawing', { icon: 'drawing' }), 'docMap', 'showMarks', zoomCombo, 'help', ui.tbButton('viewReading', { label: '阅读', icon: 'read' })]),
+      formatting: ui.toolbar('formatting', '格式设置', ['stylesPane', styleCombo, fontCombo, sizeCombo, 'bold', 'italic', 'underline', '|', 'alignLeft', 'alignCenter', 'alignRight', 'justify', '|',
+        ui.tbDrop('', 'lineSpacing', lineSpacingMenu, '行距'), '|', 'numbering', 'bullets', 'decIndent', 'incIndent', '|', ui.tbSplit('borderBtn', bordersDD), ui.tbSplit('highlightBtn', highlightDD), ui.tbSplit('fontColorBtn', fontColorDD)]),
+      tables: ui.toolbar('tables', '表格和边框', ['drawTable', 'eraser', '|', ui.tbDrop('', 'dashStyle', (r) => A.borderStyleMenu(r), '线型'), ui.tbDrop('', 'lineStyle', (r) => A.borderWeightMenu(r), '线条粗细'), ui.tbDrop('', 'lineColor', (r, b) => ui.colorMenu(b, { mode: 'plain', automatic: true }, (v) => { A.borderPen.color = v && v.auto ? 'auto' : typeof v === 'string' ? v.replace('#', '') : A.borderPen.color; }), '边框颜色'),
+        ui.tbSplit('borderBtn', bordersDD), ui.tbDrop('', 'fillColor', (r, b) => ui.colorMenu(b, { mode: 'fill' }, (v) => { if (L.tables) L.tables.shade(v && v.none ? null : typeof v === 'string' ? v.replace('#', '') : null); }), '底纹颜色'), '|',
         ui.tbDrop('', 'table', (r) => ui.openMenu(['insertTable', '-', 'colLeft', 'colRight', 'rowAbove', 'rowBelow', 'insertCells', '-', 'autofitContents', 'autofitWindow', 'fixedWidth'], r), 'Insert Table'), 'mergeCells', 'splitCells', '|',
         ui.tbDrop('', 'alignTop', (r) => ui.openMenu(['cellTop', 'cellMiddle', 'cellBottom'], r), 'Align'), 'distRows', 'distCols', '|', 'tableAutoFormat', 'textDirection', '|', 'sortAsc', 'sortDesc', 'autoSum']),
-      reviewing: ui.toolbar('reviewing', '审阅', [ui.tbDrop('Final Showing Markup', null, (r) => ui.openMenu(['markupFinalMarkup', 'markupFinal', 'markupOriginalMarkup', 'markupOriginal'], r), 'Display for Review'),
+      reviewing: ui.toolbar('reviewing', '审阅', [ui.tbDrop('显示标记的最终状态', null, (r) => ui.openMenu(['markupFinalMarkup', 'markupFinal', 'markupOriginalMarkup', 'markupOriginal'], r), '显示以供审阅'),
         ui.tbDrop('Show', null, (r) => ui.openMenu(['showComments', 'showInsDel', 'showFormatting', '-', 'reviewersMenu', '-', 'balloonsToggle', 'reviewingPane'], r), 'Show'), '|', 'prevChange', 'nextChange', '|',
         ui.tbSplit('acceptChange', (r) => ui.openMenu(['acceptChange', 'acceptShown', 'acceptAll'], r)), ui.tbSplit('rejectChange', (r) => ui.openMenu(['rejectChange', 'rejectShown', 'rejectAll', '-', 'deleteAllComments'], r)), '|',
         'insertComment', 'trackChanges', 'reviewingPane']),
-      picture: ui.toolbar('picture', 'Picture', ['insertPicture', ui.tbDrop('', 'colorPic', (r) => ui.openMenu([{ label: '&Automatic', run: () => A.picMode('') }, { label: '灰度(&G)', run: () => A.picMode('gray') }, { label: '&Black & White', run: () => A.picMode('bw') }, { label: '冲蚀(&W)', run: () => A.picMode('washout') }], r), '颜色'),
+      picture: ui.toolbar('picture', 'Picture', ['insertPicture', ui.tbDrop('', 'colorPic', (r) => ui.openMenu([{ label: '自动(&A)', run: () => A.picMode('') }, { label: '灰度(&G)', run: () => A.picMode('gray') }, { label: '黑白(&B)', run: () => A.picMode('bw') }, { label: '冲蚀(&W)', run: () => A.picMode('washout') }], r), '颜色'),
         'picMoreContrast', 'picLessContrast', 'picMoreBright', 'picLessBright', '|', 'picCrop', 'picRotate', ui.tbDrop('', 'lineStyle', (r) => A.objLineWeightMenu(r), '线型'), '|', ui.tbDrop('', 'textWrap', (r) => A.wrapMenu(r), '文字环绕'), 'formatObject', 'picReset']),
-      outlining: ui.toolbar('outlining', 'Outlining', ['promoteH1', 'promote', ui.combo({ id: 'tb-olvl', width: 74, tip: '大纲级别', options: () => ['级别 1', '级别 2', '级别 3', '级别 4', '级别 5', '级别 6', '级别 7', '级别 8', '级别 9', '正文'], value: () => { const l = E.sel ? D.headingLevel(doc(), E.sel.f.p) : 0; return l ? 'Level ' + l : '正文'; }, onChange: (v) => L.outline && L.outline.setLevel(/body/i.test(v) ? 0 : parseInt(v.replace(/\D/g, ''), 10) || 0) }), 'demote', 'demoteBody', '|', 'moveUp', 'moveDown', 'expand', 'collapse',
-        ui.combo({ id: 'tb-olshow', width: 96, tip: '显示级别', options: () => ['显示所有级别', '显示级别 1', '显示级别 2', '显示级别 3', '显示级别 4', '显示级别 5', '显示级别 6', '显示级别 7', '显示级别 8', '显示级别 9'], value: () => (L.outline && L.outline.showLevel ? 'Show Level ' + L.outline.showLevel : '显示所有级别'), onChange: (v) => L.outline && L.outline.show(/all/i.test(v) ? 0 : parseInt(v.replace(/\D/g, ''), 10)) }),
+      outlining: ui.toolbar('outlining', '大纲', ['promoteH1', 'promote', ui.combo({ id: 'tb-olvl', width: 74, tip: '大纲级别', options: () => [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => L.t('级别 {0}', n)).concat(L.t('正文')), value: () => { const l = E.sel ? D.headingLevel(doc(), E.sel.f.p) : 0; return l ? L.t('级别 {0}', l) : L.t('正文'); }, onChange: (v) => L.outline && L.outline.setLevel(parseInt(v.replace(/\D/g, ''), 10) || 0) }), 'demote', 'demoteBody', '|', 'moveUp', 'moveDown', 'expand', 'collapse',
+        ui.combo({ id: 'tb-olshow', width: 96, tip: '显示级别', options: () => [L.t('显示所有级别')].concat([1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => L.t('显示第 {0} 级', n))), value: () => (L.outline && L.outline.showLevel ? L.t('显示第 {0} 级', L.outline.showLevel) : L.t('显示所有级别')), onChange: (v) => L.outline && L.outline.show(parseInt(v.replace(/\D/g, ''), 10) || 0) }),
         'olFirstLine', 'olFormatting', '|', 'updateTOC', 'gotoTOC']),
-      headerFooter: ui.toolbar('headerFooter', 'Header and Footer', [ui.tbDrop('插入自动图文集', null, (r) => ui.openMenu(L.autocorrect ? L.autocorrect.hfAutoText() : [], r), '插入自动图文集'), '|', 'hfPageNum', 'hfNumPages', 'hfFormatPageNum', 'hfDate', 'hfTime', '|', 'pageSetup', 'hfShowText', 'hfLinkPrev', '|', 'hfSwitch', 'hfPrev', 'hfNext', '|', ui.tbButton('hfClose', { label: 'Close' })]),
-      mailMerge: ui.toolbar('mailMerge', 'Mail Merge', ['mmMainDoc', 'mmOpenSource', 'mmRecipients', '|', 'mmAddress', 'mmGreeting', 'mmInsertField', '|', 'mmViewData', 'mmFirst', 'mmPrev', ui.combo({ id: 'tb-mmrec', width: 34, tip: 'Go to Record', options: () => [], value: () => String(L.mailmerge ? L.mailmerge.rec + 1 : 1), onChange: (v) => L.mailmerge && L.mailmerge.go(parseInt(v, 10) - 1) }), 'mmNext', 'mmLast', '|', 'mmMergeNew', 'mmMergePrint']),
-      wordart: ui.toolbar('wordart', 'LettersArt', ['insertWordArt', ui.tbButton('wordartEdit', { label: '编辑文本...' }), 'wordartGallery', 'formatObject', ui.tbDrop('', 'waShape', (r) => ui.openMenu(L.drawing.WARPS.map(([k, n]) => ({ label: n, run: () => L.drawing.modifySelected('LettersArt Shape', (it) => { it.warp = k; }) })), r), 'LettersArt Shape'), ui.tbDrop('', 'textWrap', (r) => A.wrapMenu(r), '文字环绕')]),
+      headerFooter: ui.toolbar('headerFooter', '页眉和页脚', [ui.tbDrop('插入自动图文集', null, (r) => ui.openMenu(L.autocorrect ? L.autocorrect.hfAutoText() : [], r), '插入自动图文集'), '|', 'hfPageNum', 'hfNumPages', 'hfFormatPageNum', 'hfDate', 'hfTime', '|', 'pageSetup', 'hfShowText', 'hfLinkPrev', '|', 'hfSwitch', 'hfPrev', 'hfNext', '|', ui.tbButton('hfClose', { label: '关闭' })]),
+      mailMerge: ui.toolbar('mailMerge', '邮件合并', ['mmMainDoc', 'mmOpenSource', 'mmRecipients', '|', 'mmAddress', 'mmGreeting', 'mmInsertField', '|', 'mmViewData', 'mmFirst', 'mmPrev', ui.combo({ id: 'tb-mmrec', width: 34, tip: '转到记录', options: () => [], value: () => String(L.mailmerge ? L.mailmerge.rec + 1 : 1), onChange: (v) => L.mailmerge && L.mailmerge.go(parseInt(v, 10) - 1) }), 'mmNext', 'mmLast', '|', 'mmMergeNew', 'mmMergePrint']),
+      wordart: ui.toolbar('wordart', 'LettersArt', ['insertWordArt', ui.tbButton('wordartEdit', { label: '编辑文字...' }), 'wordartGallery', 'formatObject', ui.tbDrop('', 'waShape', (r) => ui.openMenu(L.drawing.WARPS.map(([k, n]) => ({ label: n, run: () => L.drawing.modifySelected('LettersArt 形状', (it) => { it.warp = k; }) })), r), 'LettersArt 形状'), ui.tbDrop('', 'textWrap', (r) => A.wrapMenu(r), '文字环绕')]),
     };
     const row1 = h('div', { class: 'tb-row' }, A.toolbarsEl.standard);
     const row2 = h('div', { class: 'tb-row' }, A.toolbarsEl.formatting);
@@ -293,24 +308,24 @@
     host.append(row1, row2, row3);
     A.tbRows = [row1, row2, row3];
     /* drawing toolbar */
-    const asBtn = ui.tbDrop('自选图形(&U)', null, (r) => A.openAutoShapes(r), '自选图形');
+    const asBtn = ui.tbDrop('自选图形(&u)', null, (r) => A.openAutoShapes(r), '自选图形');
     asBtn.setAttribute('data-as', '1');
-    A.toolbarsEl.drawing = ui.toolbar('drawing', 'Drawing', [ui.tbDrop('绘制(&R)', null, (r) => A.drawMenu(r), 'Draw'), 'selectObjects', '|', asBtn, 'drawLine', 'drawArrow', 'drawRect', 'drawOval', 'textBox', 'insertWordArt', 'insertDiagram', 'insertClipArt', 'insertPicture', '|',
+    A.toolbarsEl.drawing = ui.toolbar('drawing', '绘图', [ui.tbDrop('绘制(&r)', null, (r) => A.drawMenu(r), '绘制'), 'selectObjects', '|', asBtn, 'drawLine', 'drawArrow', 'drawRect', 'drawOval', 'textBox', 'insertWordArt', 'insertDiagram', 'insertClipArt', 'insertPicture', '|',
       ui.tbSplit('fillColor', (r, b) => A.objColorMenu(b, 'fill')), ui.tbSplit('lineColor', (r, b) => A.objColorMenu(b, 'line')), ui.tbSplit('fontColorBtn', fontColorDD), '|',
-      ui.tbDrop('', 'lineStyle', (r) => A.objLineWeightMenu(r), '线型'), ui.tbDrop('', 'dashStyle', (r) => A.objDashMenu(r), '短划线样式'), ui.tbDrop('', 'arrowStyle', (r) => A.objArrowMenu(r), '箭头样式'), ui.tbDrop('', 'shadowStyle', (r) => A.objShadowMenu(r), '阴影样式')]);
+      ui.tbDrop('', 'lineStyle', (r) => A.objLineWeightMenu(r), '线型'), ui.tbDrop('', 'dashStyle', (r) => A.objDashMenu(r), '虚线线型'), ui.tbDrop('', 'arrowStyle', (r) => A.objArrowMenu(r), '箭头样式'), ui.tbDrop('', 'shadowStyle', (r) => A.objShadowMenu(r), '阴影样式')]);
     L.$('#drawrow').appendChild(A.toolbarsEl.drawing);
     /* view buttons & browse */
     const vb = L.$('#viewbar');
     vb.append(ui.tbButton('viewNormal'), ui.tbButton('viewWeb'), ui.tbButton('viewPrint'), ui.tbButton('viewOutline'), ui.tbButton('viewReading'), h('span', { class: 'vb-sp' }),
-      h('span', { class: 'browse' }, ui.tbButton('browsePrev'), ui.tbDrop('', 'browseObj', (r) => A.browseMenu(r), 'Select Browse Object'), ui.tbButton('browseNext')));
+      h('span', { class: 'browse' }, ui.tbButton('browsePrev'), ui.tbDrop('', 'browseObj', (r) => A.browseMenu(r), '选择浏览对象'), ui.tbButton('browseNext')));
   }
   A.fontOptions = () => {
     const docFonts = [doc().defaults.rPr.font];
     for (const k in doc().styles) { const r = doc().styles[k].rPr; if (r && r.font) docFonts.push(r.font); }
     return L.fontSections({ major: doc().theme?.major, minor: doc().theme?.minor, extra: docFonts });
   };
-  A.setFont = (v) => { if (!v) return; L.addRecentFont(v); E.formatRun({ font: v }, 'Font'); E.refocus(); };
-  A.setFontSize = (v) => { if (!(v > 0)) return; v = L.clamp(Math.round(v * 2) / 2, 1, 1638); E.formatRun({ sz: v }, '字号'); E.refocus(); };
+  A.setFont = (v) => { if (!v) return; L.addRecentFont(v); E.formatRun({ font: v }, L.N('字体')); E.refocus(); };
+  A.setFontSize = (v) => { if (!(v > 0)) return; v = L.clamp(Math.round(v * 2) / 2, 1, 1638); E.formatRun({ sz: v }, 'Font Size'); E.refocus(); };
   function styleState() {
     const d = doc();
     if (!E.sel) return '';
@@ -319,7 +334,7 @@
     const sid = E.sel.f.p.pPr.style || 'Normal';
     const s = d.styles[sid];
     let name = s ? D.styleDisplayName(s) : sid;
-    /* Word shows "常规 + 加粗" style names in the box only in the task pane; the box shows the base style */
+    /* Word shows "Normal + Bold" style names in the box only in the task pane; the box shows the base style */
     return name;
   }
   A.styleState = styleState;
@@ -357,7 +372,7 @@
       return;
     }
     const [a, b] = E.range();
-    E.edit('Style', () => { O.applyStyle(a, b, s.id); return E.sel; });
+    E.edit(L.N('样式'), () => { O.applyStyle(a, b, s.id); return E.sel; });
     E.refocus();
   };
   A.historyMenu = function (r, kind) {
@@ -365,10 +380,11 @@
     if (!list.length) return;
     ui.openMenu([{ custom: (close) => {
       const el = h('div', { class: 'style-list', style: 'max-height:260px;overflow:auto;min-width:180px' });
-      const lbl = h('div', { class: 'tgp-label', text: `${kind === 'undo' ? '撤销' : '恢复'} 1 Action` });
+      const actions = (n) => (kind === 'undo' ? (n === 1 ? L.t('撤消 {0} 项操作', n) : L.t('撤消 {0} 项操作', n)) : n === 1 ? L.t('重做 {0} 项操作', n) : L.t('重做 {0} 项操作', n));
+      const lbl = h('div', { class: 'tgp-label', text: actions(1) });
       const btns = list.slice(0, 40).map((label, i) => {
         const b = h('button', { type: 'button', text: label });
-        b.addEventListener('pointerenter', () => { btns.forEach((x, k) => { x.style.background = k <= i ? '#316ac5' : ''; x.style.color = k <= i ? '#fff' : ''; }); lbl.textContent = `${kind === 'undo' ? '撤销' : '恢复'} ${i + 1} Action${i ? 's' : ''}`; });
+        b.addEventListener('pointerenter', () => { btns.forEach((x, k) => { x.style.background = k <= i ? '#316ac5' : ''; x.style.color = k <= i ? '#fff' : ''; }); lbl.textContent = actions(i + 1); });
         b.addEventListener('click', () => { close(); for (let k = 0; k <= i; k++) ui.exec(kind); });
         el.appendChild(b);
         return b;
@@ -380,26 +396,26 @@
 
   /* ---------- drawing toolbar helpers ---------- */
   A.drawMenu = function (r) {
-    ui.openMenu(['groupObj', 'ungroupObj', '-', { label: '&Order', sub: ['bringFront', 'sendBack', 'bringForward', 'sendBackward', 'bringFrontText', 'sendBehindText'] },
-      { label: '网格(&G)...', run: () => L.dlg.drawingGrid && L.dlg.drawingGrid() }, { label: '微移(&G)', sub: ['nudgeUp', 'nudgeDown', 'nudgeLeft', 'nudgeRight'] },
-      { label: '旋转或翻转(&I)', sub: ['rotateLeft', 'rotateRight', '-', 'flipH', 'flipV'] }, { label: '文字环绕(&T)', sub: () => A.wrapItems() }, '-', 'setDefaults'], r);
+    ui.openMenu(['groupObj', 'ungroupObj', '-', { label: '叠放次序(&O)', sub: ['bringFront', 'sendBack', 'bringForward', 'sendBackward', 'bringFrontText', 'sendBehindText'] },
+      { label: '网格(&G)...', run: () => L.dlg.drawingGrid && L.dlg.drawingGrid() }, { label: '微移(&g)', sub: ['nudgeUp', 'nudgeDown', 'nudgeLeft', 'nudgeRight'] },
+      { label: '旋转或翻转(&i)', sub: ['rotateLeft', 'rotateRight', '-', 'flipH', 'flipV'] }, { label: '文字环绕(&T)', sub: () => A.wrapItems() }, '-', 'setDefaults'], r);
   };
   A.wrapItems = () => L.drawing.WRAPS.map(([k, n]) => ({ label: n, checked: () => { const it = L.drawing.selectedItem(); return !!it && (k === 'inline' ? !it.float : it.float && it.float.wrap === k); }, enabled: () => !!L.ed.objSel, run: () => L.drawing.modifySelected('文字环绕', (it) => L.drawing.setWrap(it, k)) }))
-    .concat(['-', { label: '&Edit Wrap Points', enabled: () => false }]);
+    .concat(['-', { label: '编辑环绕顶点(&E)', enabled: () => false }]);
   A.wrapMenu = (r) => ui.openMenu(A.wrapItems(), r);
   A.objColorMenu = function (anchor, kind) {
     ui.colorMenu(anchor, { mode: kind === 'fill' ? 'fill' : 'line', effects: kind === 'fill' }, async (v) => {
-      if (!E.objSel) { A.status('请先选定一个图形对象。'); return; }
+      if (!E.objSel) { A.status('请先选择绘图对象。'); return; }
       if (kind === 'fill') {
-        if (v && v.effects) { const it = L.drawing.selectedItem(); const f = L.dlg.fillEffects ? await L.dlg.fillEffects(it && it.fill) : null; if (f) L.drawing.modifySelected('填充颜色', (x) => { x.fill = f; }); return; }
-        L.drawing.modifySelected('填充颜色', (it) => { it.fill = v && v.none ? { t: 'none' } : { t: 'solid', c: v, a: 1 }; });
+        if (v && v.effects) { const it = L.drawing.selectedItem(); const f = L.dlg.fillEffects ? await L.dlg.fillEffects(it && it.fill) : null; if (f) L.drawing.modifySelected('Fill Color', (x) => { x.fill = f; }); return; }
+        L.drawing.modifySelected('Fill Color', (it) => { it.fill = v && v.none ? { t: 'none' } : { t: 'solid', c: v, a: 1 }; });
       } else L.drawing.modifySelected('线条颜色', (it) => { if (it.t === 'img') it.border = v && v.none ? undefined : { val: 'single', sz: (it.border && it.border.sz) || 0.75, color: String(v).replace('#', '') }; else it.line = v && v.none ? { t: 'none' } : Object.assign({ w: 0.75, dash: 'solid' }, it.line && it.line.t !== 'none' ? it.line : {}, { c: v }); });
     });
   };
   const lineSVG = (w, dash, extra) => `<svg width="90" height="14" viewBox="0 0 90 14"><path d="M2 7h86" stroke="#000" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ''} fill="none"/>${extra || ''}</svg>`;
   A.WEIGHTS = [0.25, 0.5, 0.75, 1, 1.5, 2.25, 3, 4.5, 6];
-  A.objLineWeightMenu = (r) => ui.openMenu([{ custom: (close) => listPanel(A.WEIGHTS.map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: w + ' pt', run: () => L.drawing.modifySelected('线型', (it) => { if (it.t === 'img') it.border = Object.assign({ val: 'single', color: '000000' }, it.border || {}, { sz: w }); else it.line = Object.assign({ c: '#000000', dash: 'solid' }, it.line && it.line.t !== 'none' ? it.line : {}, { w }); }) })).concat([{ label: '其他线条...', run: () => ui.exec('formatObject') }]), close) }], r);
-  A.objDashMenu = (r) => ui.openMenu([{ custom: (close) => listPanel([['solid', null], ['sysDot', '1 1'], ['sysDash', '3 1'], ['dash', '4 3'], ['dashDot', '4 3 1 3'], ['lgDash', '8 3'], ['lgDashDot', '8 3 1 3'], ['lgDashDotDot', '8 3 1 3 1 3']].map(([k, da]) => ({ html: lineSVG(2, da), run: () => L.drawing.modifySelected('短划线样式', (it) => { if (it.line && it.line.t !== 'none') it.line = Object.assign({}, it.line, { dash: k }); }) })), close) }], r);
+  A.objLineWeightMenu = (r) => ui.openMenu([{ custom: (close) => listPanel(A.WEIGHTS.map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: L.t('{0} 磅', w), run: () => L.drawing.modifySelected('线型', (it) => { if (it.t === 'img') it.border = Object.assign({ val: 'single', color: '000000' }, it.border || {}, { sz: w }); else it.line = Object.assign({ c: '#000000', dash: 'solid' }, it.line && it.line.t !== 'none' ? it.line : {}, { w }); }) })).concat([{ label: '其他线条...', run: () => ui.exec('formatObject') }]), close) }], r);
+  A.objDashMenu = (r) => ui.openMenu([{ custom: (close) => listPanel([['solid', null], ['sysDot', '1 1'], ['sysDash', '3 1'], ['dash', '4 3'], ['dashDot', '4 3 1 3'], ['lgDash', '8 3'], ['lgDashDot', '8 3 1 3'], ['lgDashDotDot', '8 3 1 3 1 3']].map(([k, da]) => ({ html: lineSVG(2, da), run: () => L.drawing.modifySelected('虚线线型', (it) => { if (it.line && it.line.t !== 'none') it.line = Object.assign({}, it.line, { dash: k }); }) })), close) }], r);
   A.objArrowMenu = (r) => {
     const P = [[null, null], [null, 'triangle'], ['triangle', null], ['triangle', 'triangle'], [null, 'arrow'], [null, 'stealth'], [null, 'oval'], [null, 'diamond'], ['oval', 'oval']];
     const head = (t, x, dir) => !t ? '' : t === 'oval' ? `<circle cx="${x}" cy="7" r="3"/>` : t === 'diamond' ? `<path d="M${x - 4} 7l4-4 4 4-4 4z"/>` : t === 'arrow' ? `<path d="M${x - dir * 6} 2l${dir * 6} 5-${dir * 6} 5" fill="none" stroke="#000" stroke-width="1.5"/>` : `<path d="M${x} 7l${-dir * 8} -4v8z"/>`;
@@ -407,12 +423,12 @@
   };
   A.objShadowMenu = (r) => {
     const S = [null, [3, 3], [-3, 3], [3, -3], [-3, -3], [0, 4], [4, 0], [6, 6]];
-    ui.openMenu([{ custom: (close) => { const g = h('div', { class: 'shape-grid', style: 'grid-template-columns:repeat(4,30px)' }); S.forEach((s) => { const b = h('button', { type: 'button', style: 'width:30px;height:30px', 'aria-label': s ? '阴影样式' : '无阴影', html: s ? `<svg width="24" height="24"><rect x="${6 + s[0] / 1.5}" y="${6 + s[1] / 1.5}" width="12" height="12" fill="#888"/><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/></svg>` : '<svg width="24" height="24"><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/><path d="M3 21L21 3" stroke="#d33"/></svg>' }); b.addEventListener('click', () => { close(); L.drawing.modifySelected('Shadow', (it) => { it.shadow = s ? { c: '#000000', a: 0.5, dx: s[0], dy: s[1], blur: 0 } : undefined; }); }); g.appendChild(b); }); return g; } }], r);
+    ui.openMenu([{ custom: (close) => { const g = h('div', { class: 'shape-grid', style: 'grid-template-columns:repeat(4,30px)' }); S.forEach((s) => { const b = h('button', { type: 'button', style: 'width:30px;height:30px', 'aria-label': s ? '阴影样式' : '无阴影', html: s ? `<svg width="24" height="24"><rect x="${6 + s[0] / 1.5}" y="${6 + s[1] / 1.5}" width="12" height="12" fill="#888"/><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/></svg>` : '<svg width="24" height="24"><rect x="6" y="6" width="12" height="12" fill="#fff" stroke="#000"/><path d="M3 21L21 3" stroke="#d33"/></svg>' }); b.addEventListener('click', () => { close(); L.drawing.modifySelected(L.N('阴影'), (it) => { it.shadow = s ? { c: '#000000', a: 0.5, dx: s[0], dy: s[1], blur: 0 } : undefined; }); }); g.appendChild(b); }); return g; } }], r);
   };
-  A.borderStyleMenu = (r) => ui.openMenu([{ custom: (close) => listPanel([['single', null], ['dotted', '1 2'], ['dashed', '4 3'], ['dotDash', '4 3 1 3'], ['double', null], ['thick', null], ['triple', null], ['wave', null], ['threeDEmboss', null]].map(([k, da]) => ({ html: k === 'double' ? '<svg width="90" height="14"><path d="M2 5h86M2 9h86" stroke="#000"/></svg>' : k === 'triple' ? '<svg width="90" height="14"><path d="M2 3h86M2 7h86M2 11h86" stroke="#000"/></svg>' : k === 'wave' ? '<svg width="90" height="14"><path d="M2 7q5-5 10 0t10 0t10 0t10 0t10 0t10 0t10 0t10 0t6 0" fill="none" stroke="#000"/></svg>' : lineSVG(k === 'thick' ? 3 : 1, da), run: () => { A.borderPen.val = k; } })).concat([{ label: '无边框', run: () => { A.borderPen.val = 'nil'; } }]), close) }], r);
-  A.borderWeightMenu = (r) => ui.openMenu([{ custom: (close) => listPanel([0.25, 0.5, 0.75, 1, 1.5, 2.25, 3, 4.5, 6].map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: w + ' pt', run: () => { A.borderPen.sz = w; } })), close) }], r);
+  A.borderStyleMenu = (r) => ui.openMenu([{ custom: (close) => listPanel([['single', null], ['dotted', '1 2'], ['dashed', '4 3'], ['dotDash', '4 3 1 3'], ['double', null], ['thick', null], ['triple', null], ['wave', null], ['threeDEmboss', null]].map(([k, da]) => ({ html: k === 'double' ? '<svg width="90" height="14"><path d="M2 5h86M2 9h86" stroke="#000"/></svg>' : k === 'triple' ? '<svg width="90" height="14"><path d="M2 3h86M2 7h86M2 11h86" stroke="#000"/></svg>' : k === 'wave' ? '<svg width="90" height="14"><path d="M2 7q5-5 10 0t10 0t10 0t10 0t10 0t10 0t10 0t10 0t6 0" fill="none" stroke="#000"/></svg>' : lineSVG(k === 'thick' ? 3 : 1, da), run: () => { A.borderPen.val = k; } })).concat([{ label: '无框线', run: () => { A.borderPen.val = 'nil'; } }]), close) }], r);
+  A.borderWeightMenu = (r) => ui.openMenu([{ custom: (close) => listPanel([0.25, 0.5, 0.75, 1, 1.5, 2.25, 3, 4.5, 6].map((w) => ({ html: lineSVG(Math.max(0.5, w * 1.33)), label: L.t('{0} 磅', w), run: () => { A.borderPen.sz = w; } })), close) }], r);
   A.picMode = (m) => L.drawing.modifySelected('图片颜色', (it) => { it.gray = m === 'gray' || undefined; it.bw = m === 'bw' || undefined; it.washout = m === 'washout' || undefined; });
-  A.picAdjust = (k, d) => L.drawing.modifySelected(k === 'bright' ? '亮度' : '对比度', (it) => { it[k] = L.clamp(L.round((it[k] || 0) + d, 2), -1, 1) || undefined; });
+  A.picAdjust = (k, d) => L.drawing.modifySelected(k === 'bright' ? L.N('亮度') : L.N('对比度'), (it) => { it[k] = L.clamp(L.round((it[k] || 0) + d, 2), -1, 1) || undefined; });
 
   /* ================= status bar ================= */
   let statusTimer = 0;
@@ -420,12 +436,12 @@
     const sb = L.$('#statusbar');
     const cell = (cls, tip) => h('div', { class: 'sb-cell ' + (cls || ''), 'data-tip': tip || null });
     A.sb = {
-      page: cell('', 'Page'), sec: cell('', 'Section'), pages: cell('', 'Page / pages'), at: cell('', 'Vertical position'), ln: cell('', 'Line'), col: cell('', '列'),
-      rec: cell('flag', '录制宏'), trk: cell('flag act', '修订（双击切换）'), ext: cell('flag act', '扩展选定范围'), ovr: cell('flag act', '改写（双击切换）'),
-      lang: cell('act', 'Language'), msg: cell('grow'),
+      page: cell('', L.N('页面')), sec: cell('', L.N('节')), pages: cell('', '当前页/总页数'), at: cell('', '垂直位置'), ln: cell('', L.N('行')), col: cell('', L.N('列')),
+      rec: cell('flag', '录制宏'), trk: cell('flag act', '修订（双击切换）'), ext: cell('flag act', '扩展选区'), ovr: cell('flag act', '改写（双击切换）'),
+      lang: cell('act', L.N('语言')), msg: cell('grow'),
     };
-    A.sb.rec.textContent = 'REC'; A.sb.trk.textContent = 'TRK'; A.sb.ext.textContent = 'EXT'; A.sb.ovr.textContent = 'OVR';
-    A.sb.lang.textContent = '英语（美国）';
+    A.sb.rec.textContent = L.t('录制'); A.sb.trk.textContent = L.t('修订'); A.sb.ext.textContent = L.t('扩展'); A.sb.ovr.textContent = L.t('改写');
+    A.sb.lang.textContent = A.langName('en-US');
     A.sb.trk.addEventListener('dblclick', () => ui.exec('trackChanges'));
     A.sb.ovr.addEventListener('dblclick', () => { E.overtype = !E.overtype; A.updateStatus(); });
     A.sb.ext.addEventListener('dblclick', () => { E.extend = !E.extend; A.updateStatus(); });
@@ -433,7 +449,7 @@
     A.sb.page.addEventListener('dblclick', () => ui.exec('goTo'));
     sb.append(A.sb.page, A.sb.sec, A.sb.pages, A.sb.at, A.sb.ln, A.sb.col, A.sb.rec, A.sb.trk, A.sb.ext, A.sb.ovr, A.sb.lang, A.sb.msg);
   }
-  A.status = (msg, ms) => { if (!A.sb) return; A.sb.msg.textContent = msg; clearTimeout(statusTimer); statusTimer = setTimeout(() => { A.sb.msg.textContent = ''; }, ms || 4000); };
+  A.status = (msg, ms) => { if (!A.sb) return; A.sb.msg.textContent = L.t(msg); clearTimeout(statusTimer); statusTimer = setTimeout(() => { A.sb.msg.textContent = ''; }, ms || 4000); };
   A.updateStatus = L.debounce(function () {
     if (!A.sb) return;
     const d = doc();
@@ -446,31 +462,32 @@
     const pi = LY.pageOf(sel.f);
     const pg = pi >= 0 ? LY.pages[pi] : null;
     if (pg) {
-      A.sb.page.textContent = 'Page ' + D.fmtNum(pg.numVal, pg.numFmt);
-      A.sb.sec.textContent = 'Sec ' + (pg.si + 1);
+      A.sb.page.textContent = L.t('第 {0} 页', D.fmtNum(pg.numVal, pg.numFmt));
+      A.sb.sec.textContent = L.t('第 {0} 节', pg.si + 1);
       A.sb.pages.textContent = `${pi + 1}/${n}`;
       const r = E.caretRect();
       if (r) {
         const pr = pg.el.getBoundingClientRect();
         const atPt = (r.top - pr.top) / LY.zoom / D.PX;
-        A.sb.at.textContent = 'At ' + D.fmtLen(atPt);
+        A.sb.at.textContent = L.t('在 {0}', D.fmtLen(atPt));
         /* line number on the page and column within the line */
         const lc = A.lineCol(sel.f, pg);
-        A.sb.ln.textContent = 'Ln ' + lc.ln;
-        A.sb.col.textContent = 'Col ' + lc.col;
+        A.sb.ln.textContent = L.t('第 {0} 行', lc.ln);
+        A.sb.col.textContent = L.t('第 {0} 列', lc.col);
       }
     } else {
-      A.sb.page.textContent = LY.view === 'print' ? '' : 'Page 1';
-      A.sb.sec.textContent = '节 1';
+      A.sb.page.textContent = LY.view === 'print' ? '' : L.t('第 {0} 页', 1);
+      A.sb.sec.textContent = L.t('第 {0} 节', 1);
       A.sb.pages.textContent = LY.view === 'print' ? '' : '';
-      A.sb.at.textContent = ''; A.sb.ln.textContent = ''; A.sb.col.textContent = 'Col ' + (sel.f.o + 1);
+      A.sb.at.textContent = ''; A.sb.ln.textContent = ''; A.sb.col.textContent = L.t('第 {0} 列', sel.f.o + 1);
     }
     const r = E.curRun();
     const lang = r.lang || (d.defaults.rPr && d.defaults.rPr.lang) || 'en-US';
     A.sb.lang.textContent = A.langName(lang);
   }, 60);
-  A.LANGS = [['en-US', '英语（美国）'], ['en-GB', '英语（英国）'], ['en-AU', '英语（澳大利亚）'], ['en-CA', '英语（加拿大）'], ['fr-FR', '法语（法国）'], ['fr-CA', '法语（加拿大）'], ['de-DE', '德语（德国）'], ['es-ES', '西班牙语（西班牙）'], ['es-MX', '西班牙语（墨西哥）'], ['it-IT', '意大利语（意大利）'], ['pt-BR', '葡萄牙语（巴西）'], ['pt-PT', '葡萄牙语（葡萄牙）'], ['nl-NL', '荷兰语（荷兰）'], ['sv-SE', '瑞典语'], ['da-DK', '丹麦语'], ['nb-NO', '挪威语（博克马尔）'], ['fi-FI', '芬兰语'], ['pl-PL', '波兰语'], ['ru-RU', '俄语'], ['ja-JP', '日语'], ['zh-CN', 'Chinese (PRC)'], ['ko-KR', '朝鲜语']];
-  A.langName = (code) => { const hit = A.LANGS.find((x) => x[0].toLowerCase() === String(code).toLowerCase()); return hit ? hit[1] : code; };
+  /* [code, name]: the names are UI text, shown through L.t; A.langName gives the name as shown */
+  A.LANGS = [['en-US', L.N('英语（美国）')], ['en-GB', L.N('英语（英国）')], ['en-AU', L.N('英语（澳大利亚）')], ['en-CA', L.N('英语（加拿大）')], ['fr-FR', L.N('法语（法国）')], ['fr-CA', L.N('法语（加拿大）')], ['de-DE', L.N('德语（德国）')], ['es-ES', L.N('西班牙语（西班牙）')], ['es-MX', L.N('西班牙语（墨西哥）')], ['it-IT', L.N('意大利语（意大利）')], ['pt-BR', L.N('葡萄牙语（巴西）')], ['pt-PT', L.N('葡萄牙语（葡萄牙）')], ['nl-NL', L.N('荷兰语（荷兰）')], ['sv-SE', L.N('瑞典语')], ['da-DK', L.N('丹麦语')], ['nb-NO', L.N('挪威语（博克马尔）')], ['fi-FI', L.N('芬兰语')], ['pl-PL', L.N('波兰语')], ['ru-RU', L.N('俄语')], ['ja-JP', L.N('日语')], ['zh-CN', L.N('中文（中国）')], ['ko-KR', L.N('韩语')]];
+  A.langName = (code) => { const hit = A.LANGS.find((x) => x[0].toLowerCase() === String(code).toLowerCase()); return hit ? L.t(hit[1]) : code; };
   A.lineCol = function (pos, pg) {
     const frag = LY.fragFor(pos.p, pos.o);
     if (!frag) return { ln: 1, col: pos.o + 1 };
@@ -488,14 +505,13 @@
       for (const f of col0.querySelectorAll('.p')) {
         if (f === frag) break;
         if (f.compareDocumentPosition(frag) & Node.DOCUMENT_POSITION_FOLLOWING) {
-          const lh = parseFloat(getComputedStyle(f.firstChild).lineHeight) || 16;
-          ln += Math.max(1, Math.round((f.firstChild.offsetHeight) / lh));
+          ln += LY.lineCount(f);
         }
       }
     }
     return { ln, col };
   };
-  A.updateTitle = () => { document.title = `${A.fileName} - Quire 2003`; };
+  A.updateTitle = () => { document.title = `${A.fileName} - Quire`; };
 
   /* ================= rulers ================= */
   A.updateRulers = function () {
@@ -511,6 +527,7 @@
 
   /* ================= views ================= */
   A.setView = function (v) {
+    ui.dragCancel();   /* a view switch ends a drag in progress */
     const app = L.$('#app');
     if (A.view === 'preview' && v !== 'preview' && L.panes && L.panes.preview) L.panes.preview.exit();
     if (A.view === 'reading' && v !== 'reading') { app.classList.remove('reading'); LY.setMultiPage(0); }
@@ -616,6 +633,7 @@
   const pristine = () => !!D.doc && !D.doc.dirty && !A.saved && !D.canUndo() && /^Document\d+$/.test(A.fileName);
   A.switchTo = function (i) {
     if (i === A.cur || !A.docs[i]) return;
+    ui.dragCancel();
     stash();
     const w = A.docs[i];
     A.cur = i;
@@ -633,9 +651,10 @@
     ui.refresh();
     E.refocus();
   };
-  A.windowItems = () => A.docs.map((w, i) => ({ label: `&${i + 1} ${(i === A.cur ? A.fileName : w.fileName).replace(/&/g, '&&')}`, checked: () => i === A.cur, run: () => A.switchTo(i) }));
+  A.windowItems = () => A.docs.map((w, i) => ({ label: `&${i + 1} ${(i === A.cur ? A.fileName : w.fileName).replace(/&/g, '&&')}`, raw: true, checked: () => i === A.cur, run: () => A.switchTo(i) }));
   A.loadDoc = function (d, name, opts) {
     opts = opts || {};
+    ui.dragCancel();
     if (opts.newWindow || A.cur < 0) { stash(); A.docs.push(null); A.cur = A.docs.length - 1; }
     if (LY.hfEdit) { LY.hfEdit = null; LY.root.classList.remove('hfmode'); }
     E.clearObjSel();
@@ -662,15 +681,17 @@
   };
   async function confirmDiscard() {
     if (!doc() || !doc().dirty) return true;
-    const r = await ui.msg(`是否保存对 ${A.fileName} 的更改？`, { icon: 'warn', buttons: ['是(&Y)', '否(&N)', '取消'] });
+    const r = await ui.msg(L.t('要保存对 {0} 所做的更改吗？', A.fileName), { icon: 'warn', buttons: ['是(&Y)', '否(&N)', '取消'] });
     if (r === 0) return await A.save() === 'saved';
     if (r === 1 && window.VO) VO.discard(doc());   // its unsaved version goes too
     return r === 1;
   }
   A.confirmDiscard = confirmDiscard;
+  /** a blank document as the Office of the UI's language makes it (common/locales.js) */
+  const blank = () => D.applyLocale(D.newDoc(), L.locale && L.locale.get());
   A.newDocument = async function (opts) {
     A.untitled++;
-    const d = D.newDoc(opts && opts.modern ? { modern: true } : {});
+    const d = opts && opts.modern ? D.newDoc({ modern: true }) : blank();
     if (opts && opts.build) opts.build(d);
     /* a new document opens in its own window, as in Word; an untouched blank one is simply replaced */
     A.loadDoc(d, 'Document' + A.untitled, { newWindow: !pristine() });
@@ -678,7 +699,7 @@
   /** close the current document (asking to save); false when the user cancels */
   A.closeDocument = async function () {
     if (!(await confirmDiscard())) return false;
-    if (A.docs.length <= 1) { A.docs = []; A.cur = -1; A.untitled++; A.loadDoc(D.newDoc(), 'Document' + A.untitled); return true; }
+    if (A.docs.length <= 1) { A.docs = []; A.cur = -1; A.untitled++; A.loadDoc(blank(), 'Document' + A.untitled); return true; }
     const i = A.cur;
     A.docs.splice(i, 1);
     A.cur = -1; /* nothing to stash: the closed window is gone */
@@ -693,7 +714,7 @@
   A.openFile = async function (file) {
     const reuse = pristine();
     const name = file.name.replace(/\.(docx|docm|dotx|dotm|doc|txt|html?|rtf|xml|md|markdown|mdown|mkd|zip)$/i, '');
-    ui.busy(true, `Opening ${file.name}...`);
+    ui.busy(true, L.t('正在打开 {0}...', file.name));
     try {
       let d, warnings = [], type = 'docx';
       if (/\.txt$/i.test(file.name)) d = A.docFromText(await L.readAsText(file));
@@ -709,17 +730,17 @@
       A.loadDoc(d, name, { saved: /\.(docx|docm|dotx|dotm)$/i.test(file.name) || type !== 'docx', type, newWindow: !reuse });
       if (window.VO) VO.opened(file, doc());
       ui.busy(false);
-      if (d.isTemplate) A.status('已打开模板。保存时沿用其模板格式。');
+      if (d.isTemplate) A.status('已打开模板。保存时将保留其模板格式。');
       if (d.wasEncrypted) A.status('This document is protected with a password to open; saving keeps the protection (Tools ▸ Options ▸ Security).');
       if (warnings.length) ui.msg(warnings.join('\n'), { icon: 'warn' });
-      if (type === 'md') { const n = L.mdio.missingPictures(d); if (n) A.status(`${n === 1 ? '图片为' : n + ' pictures are'} not in the .md file and show${n === 1 ? 's' : ''} as a box. Open a .zip holding the file and its pictures to see them.`); }
-      if (d.settings.protect && d.settings.protect.on) A.status('This document is protected: ' + ({ readOnly: 'no changes (read only)', comments: 'comments only', tracked: 'tracked changes', forms: 'filling in forms' }[d.settings.protect.kind] || 'restricted'));
+      if (type === 'md') { const n = L.mdio.missingPictures(d); if (n) A.status(n === 1 ? L.t('图片不在 .md 文件中，因此显示为方框。请打开包含该文件及其图片的 .zip 文件以查看图片。') : L.t('{0} 张图片未包含在 .md 文件中，因此显示为方框。请打开包含该文件及其图片的 .zip 以查看图片。', n)); }
+      if (d.settings.protect && d.settings.protect.on) A.status({ readOnly: L.N('此文档已受保护：不允许更改（只读）'), comments: L.N('此文档已受保护：仅允许批注'), tracked: L.N('此文档已受保护：保留修订'), forms: L.N('此文档已受保护：仅允许填写窗体') }[d.settings.protect.kind] || L.N('此文档已受保护：编辑受限'));
     } catch (e) {
       ui.busy(false);
       console.error(e);
       if (e && e.code === 'cancel') return;
       if (e && e.code === 'ole') ui.msg(e.message, { icon: 'warn' });
-      else ui.msg(`${L.APP} 无法打开 ${file.name}。${e && e.message ? e.message : ''}`, { icon: 'error' });
+      else ui.msg(L.t("{0} 无法打开 {1}。{2}", L.APP, file.name, e && e.message ? e.message : ''), { icon: 'error' });
     }
   };
   /** read .docx bytes; a password-protected file asks for its password (or takes opts.password) */
@@ -730,11 +751,11 @@
       let pass = opts && opts.password != null ? opts.password : null;
       if (pass == null) { ui.busy(false); pass = await ui.password(displayName || 'Document'); }
       if (pass == null) { const c = new Error('cancelled'); c.code = 'cancel'; throw c; }
-      ui.busy(true, '正在打开…');
+      ui.busy(true, '正在打开...');
       let plain;
       try { plain = await L.officeCrypto.decrypt(e.bytes, pass); }
       catch (err) {
-        const b = new Error(err && err.code === 'badpass' ? `The password is incorrect. ${L.APP} cannot open the document.` : err && err.message === 'unsupported' ? `This document is encrypted in a way ${L.APP} cannot read.` : String(err && err.message || err));
+        const b = new Error(err && err.code === 'badpass' ? L.t('密码不正确。{0} 无法打开文档。', L.APP) : err && err.message === 'unsupported' ? L.t('此文档使用了 {0} 无法读取的加密方式。', L.APP) : String(err && err.message || err));
         b.code = 'ole';
         b.badPassword = !!(err && err.code === 'badpass');
         throw b;
@@ -783,12 +804,12 @@
   A.exportAs = async function (type, name) {
     name = name || A.fileName;
     const d = doc();
-    ui.busy(true, '正在保存…');
+    ui.busy(true, '正在保存...');
     try {
       if (L.fields && L.fields.beforeSave) L.fields.beforeSave();
       let blob, ext = type;
       d.props.modified = new Date().toISOString();
-      d.props.lastModifiedBy = A.opts.userName || 'Quire User';
+      d.props.lastModifiedBy = A.opts.userName || 'Quire 用户';
       if (/^(docx|docm|dotx|dotm)$/.test(type)) {
         d.props.revision = (d.props.revision || 0) + 1;
         blob = await L.docx.write(d, { stats: A.docStats(), format: type });
@@ -803,10 +824,10 @@
         /* pictures need the .zip form: a .md file only refers to them */
         if (L.mdio.newPictures(d)) {
           ui.busy(false);
-          const r = await ui.msg('此文档含图片，.md 文件无法保存图片。是否另存为“带图片的 Markdown (.zip)”（其中包含 .md 文件及其图片）？', { icon: 'warn', buttons: ['另存为 .zip(&Z)', 'Save .md &without them', '取消'] });
+          const r = await ui.msg('此文档包含 .md 文件无法容纳的图片。请保存为“包含图片的 Markdown”(.zip)，其中会包含 .md 文件及其图片？', { icon: 'warn', buttons: ['保存为 .zip(&z)', '保存为 .md，不包含这些图片(&w)', '取消'] });
           if (r !== 0 && r !== 1) return;
           if (r === 0) { type = ext = 'mdzip'; if (A.fileType === 'md') A.fileType = 'mdzip'; }
-          ui.busy(true, '正在保存…');
+          ui.busy(true, '正在保存...');
         }
         if (type === 'md') blob = new Blob([L.mdio.write(d).text], { type: 'text/markdown;charset=utf-8' });
       }
@@ -821,22 +842,23 @@
       if (losses === null) return 'declined';
       const r = await L.saveFile(`${name}.${ext}`, blob);
       if (r === 'saved') L.opc.acknowledge(d, losses);
-      if (r === 'saved' && ['docx', 'docm', 'dotx', 'dotm', 'md', 'mdzip'].includes(type)) { A.fileName = name; A.fileType = type; A.saved = true; A.updateTitle(); d.dirty = false; A.status(`Saved ${name}.${ext}`); ui.refresh(); if (window.VO) VO.saved(`${name}.${ext}`, blob, d); }
+      if (r === 'saved' && ['docx', 'docm', 'dotx', 'dotm', 'md', 'mdzip'].includes(type)) { A.fileName = name; A.fileType = type; A.saved = true; A.updateTitle(); d.dirty = false; A.status(L.t('已保存 {0}', `${name}.${ext}`)); ui.refresh(); if (window.VO) VO.saved(`${name}.${ext}`, blob, d); }
       return r;
     } catch (e) {
       ui.busy(false);
       console.error(e);
-      ui.msg(`文件无法保存：${e.message || e}`, { icon: 'error' });
+      ui.msg(L.t('无法保存文件：{0}', e.message || e), { icon: 'error' });
     }
   };
 
   /* ---------- PDF (print) ---------- */
+  /** the document's own rules (`.p …`, `table.tbl …`), for the page pictures of PDF export */
   function docCSS() {
     let css = '';
     for (const sheet of document.styleSheets) {
       let rules;
       try { rules = sheet.cssRules; } catch (e) { continue; }
-      for (const r of rules) if (r.selectorText && /(^|[\s,])\.(pg|p|pc|lbl|tb|img|shp|tbl|cf|nref|fdyn|ffcb|crop|pg-|frm|flt|anc|sym|raw|zw|fnsep|fnote|hbrk|sectmark|cmk|cmr|ins|del|hid|lnk|sgrp|tbx|geo|wa|chart)/.test(r.selectorText)) css += r.cssText + '\n';
+      for (const r of rules) if (r.selectorText && /(^|[\s,>]|\b(?:table|td))\.(pg|p|pc|lbl|tb|img|shp|tbl|cf|nref|fdyn|ffcb|crop|pg-|frm|flt|anc|sym|raw|zw|fnsep|fnote|hbrk|sectmark|cmk|cmr|ins|del|hid|lnk|sgrp|tbx|geo|wa|chart)/.test(r.selectorText)) css += r.cssText + '\n';
     }
     return css + '.crop{display:none}.pg-hdr,.pg-ftr{opacity:1!important}.cmk,.cmr{background:none!important}td.csel{background-image:none!important}.p.chg::before{display:none}';
   }
@@ -874,9 +896,9 @@
     const sel = window.getSelection(); sel.removeAllRanges();
     let n = 0;
     for (const p of list) {
-      ui.busy(true, `Creating PDF... (page ${++n} of ${list.length})`);
+      ui.busy(true, L.t('正在创建 PDF...（第 {0} 页，共 {1} 页）', ++n, list.length));
       const c = await A.rasterizePage(p.el, 2.2, css, map);
-      const jpeg = new Uint8Array(await (await new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error('浏览器阻止了页面图像。'))), 'image/jpeg', 0.92))).arrayBuffer());
+      const jpeg = new Uint8Array(await (await new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error(L.t('浏览器阻止了页面图像。')))), 'image/jpeg', 0.92))).arrayBuffer());
       pages.push({ jpeg, iw: c.width, ih: c.height, pw: p.sect.pgW, ph: p.sect.pgH });
     }
     if (prevView !== A.view || LY.view !== (prevView === 'reading' || prevView === 'preview' ? 'print' : prevView)) { LY.view = prevView === 'reading' || prevView === 'preview' ? 'print' : prevView; LY.render(); }
@@ -885,12 +907,21 @@
   };
   A.printPDF = async function () {
     try { const blob = await A.buildPDF(); ui.busy(false); await L.saveFile(`${A.fileName}.pdf`, blob); }
-    catch (e) { ui.busy(false); ui.msg('无法创建 PDF：' + (e.message || e), { icon: 'error' }); }
+    catch (e) { ui.busy(false); ui.msg(L.t('无法创建 PDF：{0}', e.message || e), { icon: 'error' }); }
   };
 
   /* ================= headers & footers ================= */
-  A.editHeaderFooter = function (kind, pageIdx) {
+  /** the caret at a point of the page, when that point is in story (or, without a story, in the body) */
+  const caretAt = (ev, story) => {
+    const pos = ev && E.posAtPoint(ev.clientX, ev.clientY);
+    return pos && D.storyOf(doc(), pos.p) === (story || doc().main) ? pos : null;
+  };
+  /** open the header or footer of kind on page pageIdx (the caret's page); ev, the double-click that opened it:
+      the view stays, and the caret goes where it was double-clicked. The body's selection is kept for the way back. */
+  A.editHeaderFooter = function (kind, pageIdx, ev) {
     if (A.view !== 'print') A.setView('print');
+    if (!LY.hfEdit && E.sel && D.storyOf(doc(), E.sel.f.p) === doc().main) hfReturn = { a: E.sel.a, f: E.sel.f };
+    const top = LY.scroller.scrollTop;
     const pg = LY.pages[pageIdx == null ? Math.max(0, LY.pageOf(E.sel.f)) : pageIdx] || LY.pages[0];
     const d = doc();
     const secs = D.sections(d);
@@ -899,7 +930,7 @@
     /* create the story when the section has none */
     let story = LY.hfFor(secs, pg.si, kind, ty);
     if (!story) {
-      E.edit(kind === 'hdr' ? 'Header' : 'Footer', () => {
+      E.edit(kind === 'hdr' ? L.N('页眉') : L.N('页脚'), () => {
         const id = (kind === 'hdr' ? 'h' : 'f') + D.nid();
         D.touchKey(d, 'hf');
         d.hf[id] = { kind, id, blocks: [D.para([], { style: kind === 'hdr' ? 'Header' : 'Footer' })] };
@@ -919,40 +950,61 @@
     LY.render();
     labelHF();
     D.reindex(d);
+    if (ev) LY.scroller.scrollTop = top;
     const p = story && story.paras && story.paras[0] ? story.paras[0] : story && D.firstPara(story.blocks);
-    if (p) E.setSel(D.pos(p, 0));
+    const at = caretAt(ev, story);
+    if (at) E.setSel(at); else if (p) E.setSel(D.pos(p, 0));
     A.updateToolbars();
     ui.refresh();
   };
+  const HF_NAMES = { first: [L.N('首页页眉'), L.N('首页页脚')], even: [L.N('偶数页页眉'), L.N('偶数页页脚')], odd: [L.N('奇数页页眉'), L.N('奇数页页脚')], default: [L.N('页眉'), L.N('页脚')] };
   function labelHF() {
     const d = doc();
     const secs = D.sections(d);
     for (const pg of LY.pages) {
       const multi = secs.length > 1;
-      const tyName = { first: 'First Page ', even: 'Even Page ', default: doc().settings.evenOdd ? 'Odd Page ' : '' }[pg.type] || '';
-      pg.hdr.dataset.label = `${tyName}Header${multi ? ' -Section ' + (pg.si + 1) + '-' : ''}`;
-      pg.ftr.dataset.label = `${tyName}Footer${multi ? ' -Section ' + (pg.si + 1) + '-' : ''}`;
+      const ty = pg.type === 'first' || pg.type === 'even' ? pg.type : doc().settings.evenOdd ? 'odd' : 'default';
+      const label = (name) => (multi ? L.t('{0} -第 {1} 节-', L.t(name), pg.si + 1) : L.t(name));
+      pg.hdr.dataset.label = label(HF_NAMES[ty][0]);
+      pg.ftr.dataset.label = label(HF_NAMES[ty][1]);
       const refH = LY.hfRefFor(secs, pg.si, 'hdr', pg.type), refF = LY.hfRefFor(secs, pg.si, 'ftr', pg.type);
       if (refH && refH.si < pg.si) pg.hdr.dataset.same = '1'; else delete pg.hdr.dataset.same;
       if (refF && refF.si < pg.si) pg.ftr.dataset.same = '1'; else delete pg.ftr.dataset.same;
     }
   }
   L.bus.on('layout-done', () => { if (LY.hfEdit) labelHF(); });
-  A.closeHeaderFooter = function (silent) {
+  /** back to the body: the caret where ev (a double-click on the body) was, else where it was before the header */
+  let hfReturn = null;
+  A.closeHeaderFooter = function (silent, ev) {
     LY.hfEdit = null;
     LY.root.classList.remove('hfmode');
     if (!silent) {
+      const top = LY.scroller.scrollTop;
       LY.render();
-      const p = D.firstPara(doc().main.blocks);
-      const pg = LY.pages[0];
-      void pg;
-      E.setSel(D.pos(p, 0));
+      LY.scroller.scrollTop = top;
+      const back = hfReturn && D.byId(doc(), hfReturn.a.p.id) === hfReturn.a.p && D.byId(doc(), hfReturn.f.p.id) === hfReturn.f.p ? hfReturn : null;
+      const at = caretAt(ev);
+      if (at) E.setSel(at);
+      else if (back) E.setSel(back.a, back.f);
+      else E.setSel(D.pos(D.firstPara(doc().main.blocks), 0));
     }
+    hfReturn = null;
     A.updateToolbars();
   };
 
   /* ================= misc helpers used by commands ================= */
-  A.gotoPos = function (pos, sel2) {
+  /** select pos (to sel2) and show it; opts.focus false: a modeless dialog (Find and Replace) keeps the keyboard */
+  A.gotoPos = function (pos, sel2, opts) {
+    E.clearObjSel();   /* the text found or gone to is the selection now, not a shape selected before */
+    if (opts && opts.focus === false) {
+      E.setSel(pos, sel2 || pos, { noDom: true });
+      /* an edit just before (Replace) left the page's own selection behind: it would show, and typing would go there */
+      const s = window.getSelection();
+      if (s.rangeCount && LY.root && LY.root.contains(s.anchorNode)) s.removeAllRanges();
+      E.scrollToCaret(true);
+      E.drawSel(true);
+      return;
+    }
     E.setSel(pos, sel2 || pos);
     E.focus();
   };
@@ -970,7 +1022,7 @@
       const used = new Set();
       for (const p of D.allParas(d)) if (D.headingLevel(d, p) && L.md.slug(D.plainText(p), used) === name.toLowerCase()) { A.gotoPos(D.pos(p, 0)); return true; }
     }
-    A.status(`Bookmark "${name}" not found.`);
+    A.status(L.t('找不到书签“{0}”。', name));
     return false;
   };
   A.gotoNote = function (key) {
@@ -984,26 +1036,27 @@
   };
   A.contextMenu = function (e) {
     e.preventDefault();
+    if (!E.objSel) E.syncSel();   /* the press moved the caret, but 'selectionchange' comes after this */
     const inTable = L.tables && L.tables.inTable();
     const items = ['cut', 'copy', 'paste', '-'];
-    if (E.objSel) items.push({ label: '文字环绕(&R)', sub: () => A.wrapItems() }, 'formatObject', '-');
+    if (E.objSel) items.push({ label: '文字环绕(&r)', sub: () => A.wrapItems() }, 'formatObject', '-');
     const ln = e.target.closest && e.target.closest('[data-link]');
-    if (ln) items.push('hyperlink', { label: '打开超链接(&O)', run: () => { const a = document.createElement('a'); a.href = ln.dataset.link; a.target = '_blank'; a.rel = 'noopener'; a.click(); } }, { label: '&Remove Hyperlink', run: () => ui.exec('removeHyperlink') }, '-');
-    if (inTable) items.push({ label: '插入(&I)', sub: ['colLeft', 'colRight', 'rowAbove', 'rowBelow', 'insertCells'] }, { label: '删除(&D)', sub: ['deleteTable', 'deleteCols', 'deleteRows', 'deleteCells'] }, 'mergeCells', 'splitCells', '-', 'distRows', 'distCols', '-', 'bordersDlg', { label: 'Cell Alignment', sub: ['cellTop', 'cellMiddle', 'cellBottom'] }, 'tableAutoFormat', 'tableProps', '-');
+    if (ln) items.push('hyperlink', { label: '打开超链接(&O)', run: () => { const a = document.createElement('a'); a.href = ln.dataset.link; a.target = '_blank'; a.rel = 'noopener'; a.click(); } }, { label: '删除超链接(&R)', run: () => ui.exec('removeHyperlink') }, '-');
+    if (inTable) items.push({ label: '插入(&I)', sub: ['colLeft', 'colRight', 'rowAbove', 'rowBelow', 'insertCells'] }, { label: '删除(&D)', sub: ['deleteTable', 'deleteCols', 'deleteRows', 'deleteCells'] }, 'mergeCells', 'splitCells', '-', 'distRows', 'distCols', '-', 'bordersDlg', { label: '单元格对齐方式', sub: ['cellTop', 'cellMiddle', 'cellBottom'] }, 'tableAutoFormat', 'tableProps', '-');
     const f = L.fields && L.fields.at(E.sel && E.sel.f);
     if (f) items.push('updateField', 'editField', 'toggleCodes', '-');
     const control = L.preserve.controlAt(E.sel && E.sel.f);
     if (control && !control.control.converted && ['date', 'dropDownList', 'comboBox', 'checkbox'].includes(control.control.type)) items.push({ label: '内容控件值(&V)...', run: () => L.preserve.controlDialog(control) }, '-');
     if (L.review && L.review.revisionAt && L.review.revisionAt()) items.push('acceptChange', 'rejectChange', '-');
     const cm = L.review && L.review.commentAt && L.review.commentAt();
-    if (cm) items.push({ label: '编辑批注(&E)', run: () => L.review.editComment(cm) }, { label: '删除批注(&M)', run: () => L.review.deleteComment(cm) }, '-');
+    if (cm) items.push({ label: '编辑批注(&E)', run: () => L.review.editComment(cm) }, { label: '删除批注(&m)', run: () => L.review.deleteComment(cm) }, '-');
     items.push('fontDlg', 'paragraphDlg', 'bulletsDlg', '-', 'hyperlink', 'research');
     /* on a misspelled word or a grammar problem Word shows only the proofing menu */
     ui.openMenu(items, { x: e.clientX, y: e.clientY });
   };
   A.browseKind = 'page';
   A.browseMenu = function (r) {
-    const kinds = [['field', '按域浏览'], ['endnote', '按尾注浏览'], ['footnote', '按脚注浏览'], ['comment', '按批注浏览'], ['section', '按节浏览'], ['page', '按页浏览'], ['goto', '定位...'], ['find', '查找...'], ['edit', '按编辑浏览'], ['heading', '按标题浏览'], ['graphic', '按图形浏览'], ['table', '按表格浏览']];
+    const kinds = [['field', '按域浏览'], ['endnote', '按尾注浏览'], ['footnote', '按脚注浏览'], ['comment', '按批注浏览'], ['section', '按节浏览'], ['page', '按页浏览'], ['goto', '定位...'], ['find', '查找...'], ['edit', '按编辑位置浏览'], ['heading', '按标题浏览'], ['graphic', '按图形浏览'], ['table', '按表格浏览']];
     ui.openMenu(kinds.map(([k, n]) => ({ label: n, checked: () => A.browseKind === k, run: () => { if (k === 'goto') ui.exec('goTo'); else if (k === 'find') ui.exec('find'); else { A.browseKind = k; A.status(n); } } })), r);
   };
   A.browse = function (dir) {
@@ -1045,13 +1098,13 @@
       items.push(D.item('img', { media: id, w: L.round(w, 2), h: L.round(hh, 2), name: f.name, alt: '' }));
     }
     if (!items.length) return;
-    E.edit('插入图片', () => { let pos = E.deleteSelection(); for (const it of items) pos = O.insertItem(pos, it); return pos; });
+    E.edit('Insert Picture', () => { let pos = E.deleteSelection(); for (const it of items) pos = O.insertItem(pos, it); return pos; });
   };
 
   /* ================= keyboard ================= */
   const keyName = (e) => {
     let k = e.key;
-    if (k === ' ') k = '空格';
+    if (k === ' ') k = 'Space';
     if (k.length === 1) k = k.toUpperCase();
     if (e.code && /^Digit\d$/.test(e.code) && (e.ctrlKey || e.altKey)) k = e.code.slice(5);
     if (e.code === 'Equal' && (e.ctrlKey || e.metaKey)) k = '=';
@@ -1114,7 +1167,7 @@
   function setupDrop() {
     let hint = null, depth = 0;
     const app = L.$('#app');
-    app.addEventListener('dragenter', (e) => { if (!e.dataTransfer || !Array.from(e.dataTransfer.types || []).includes('Files')) return; depth++; if (!hint) { hint = h('div', { class: 'drop-hint', text: '拖入文档即可打开，拖入图片即可插入' }); document.body.appendChild(hint); } });
+    app.addEventListener('dragenter', (e) => { if (!e.dataTransfer || !Array.from(e.dataTransfer.types || []).includes('Files')) return; depth++; if (!hint) { hint = h('div', { class: 'drop-hint', text: '将文档拖到此处可打开，将图片拖到此处可插入' }); document.body.appendChild(hint); } });
     app.addEventListener('dragleave', () => { depth--; if (depth <= 0 && hint) { hint.remove(); hint = null; depth = 0; } });
     app.addEventListener('dragover', (e) => { if (e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files')) e.preventDefault(); });
     app.addEventListener('drop', (e) => {
@@ -1133,12 +1186,14 @@
   function setupSplitters() {
     const sp = L.$('#split-map');
     sp.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
       e.preventDefault();
-      sp.setPointerCapture(e.pointerId);
-      const x0 = e.clientX, w0 = L.$('#docmap').offsetWidth;
-      const mv = (ev) => { L.$('#docmap').style.width = L.clamp(w0 + ev.clientX - x0, 100, 480) + 'px'; };
-      const up = () => { sp.removeEventListener('pointermove', mv); sp.removeEventListener('pointerup', up); LY.fitSizer(); };
-      sp.addEventListener('pointermove', mv); sp.addEventListener('pointerup', up);
+      const map = L.$('#docmap'), w0 = map.offsetWidth, style0 = map.style.width;
+      ui.drag(e, {
+        move: (ev, d) => { map.style.width = L.clamp(w0 + d.dx, 100, 480) + 'px'; },
+        up: (ev, d) => { if (d.moved) LY.fitSizer(); },
+        cancel: () => { map.style.width = style0; },
+      });
     });
   }
 
@@ -1172,7 +1227,7 @@
       [a, b] = w;
     }
     const keep = E.sel, src = fmt.rPr;
-    E.edit('格式刷', () => {
+    E.edit('Format Painter', () => {
       O.formatRange(a, b, (r) => { for (const k of PAINTED) { if (src[k] !== undefined) r[k] = L.clone(src[k]); else delete r[k]; } return r; });
       if (a.p !== b.p || (a.o === 0 && b.o >= D.plen(b.p))) O.setParaProps(E.selectedParas(), () => L.clone(fmt.pPr));
       return keep;
@@ -1181,12 +1236,12 @@
     return true;
   };
   /* the brushes paint when the mouse is let go ('sel-done'), not while a selection is being dragged out */
-  A.painter = ui.brush({ el: () => L.$('#scroller'), pick: A.pickFormat, apply: A.paintFormat, hint: '选定要应用格式的文字。', status: (t) => A.status(t) });
+  A.painter = ui.brush({ el: () => L.$('#scroller'), pick: A.pickFormat, apply: A.paintFormat, hint: '选择要应用格式的文字。', status: (t) => A.status(t) });
   A.highlighter = ui.brush({
     el: () => L.$('#scroller'),
     pick: () => A.lastHighlight,
-    apply: (n) => { if (E.collapsed()) return false; E.formatRun({ hl: n === 'none' ? undefined : n }, 'Highlight'); return true; },
-    hint: '选定要高亮显示的文字。按 Esc 结束。',
+    apply: (n) => { if (E.collapsed()) return false; E.formatRun({ hl: n === 'none' ? undefined : n }, L.N('突出显示')); return true; },
+    hint: '选择要突出显示的文字。按 Esc 停止。',
     status: (t) => A.status(t),
   });
 
@@ -1196,18 +1251,18 @@
     const P = (text, pPr, rPr) => D.para(text ? [D.text(text, rPr || {})] : [], pPr || {});
     const bl = d.main.blocks;
     bl.length = 0;
-    d.props.title = '欢迎使用 Quire 2003';
+    d.props.title = '欢迎使用 Quire';
     d.props.creator = 'Quire';
-    bl.push(P('欢迎使用 Quire 2003', { style: 'Title' }));
-    bl.push(P('A word processor in the spirit of Word 2003 — it opens and saves real .docx files.', { style: 'Subtitle' }, { i: true }));
-    bl.push(P('浏览文档', { style: 'Heading1' }));
+    bl.push(P('欢迎使用 Quire', { style: 'Title' }));
+    bl.push(P('A word processor in the spirit of Word — it opens and saves real .docx files.', { style: 'Subtitle' }, { i: true }));
+    bl.push(P('浏览与定位', { style: 'Heading1' }));
     bl.push(D.para([D.text('Type anywhere on this page. Everything works the way you remember: '), D.text('bold', { b: true }), D.text(', '), D.text('italic', { i: true }), D.text(', '), D.text('underline', { u: 'single' }), D.text(', '), D.text('highlighting', { hl: 'yellow' }), D.text(', '), D.text('colors', { color: 'C00000' }), D.text(', styles, bullets, numbering, tables, headers and footers, footnotes, comments, tracked changes, fields and more.')], { jc: 'both' }));
     bl.push(P('Open a document with File ▸ Open, or drop a .docx onto the window. Save with File ▸ Save (Ctrl+S); File ▸ Save As offers Word Document, Word Template, Web Page, Plain Text, Markdown and PDF.', { num: { id: '1', lvl: 0 } }));
-    bl.push(P('用左下角的按钮切换视图：普通、Web 版式、页面、大纲和阅读版式。', { num: { id: '1', lvl: 0 } }));
+    bl.push(P('使用左下角的按钮切换视图：普通、Web 版式、页面、大纲和阅读版式。', { num: { id: '1', lvl: 0 } }));
     bl.push(P('Right-click for the shortcut menu; the task pane (Ctrl+F1) holds Styles and Formatting, Reveal Formatting, Clip Art and the Mail Merge wizard.', { num: { id: '1', lvl: 0 } }));
-    bl.push(P('小表格', { style: 'Heading2' }));
+    bl.push(P('小型表格', { style: 'Heading2' }));
     const t = D.simpleTable(4, 3, 432);
-    const rows = [['特征', '菜单', '快捷键'], ['查找和替换', 'Edit', 'Ctrl+H'], ['插入脚注', '插入 ▸ 引用', 'Ctrl+Alt+F'], ['修订', 'Tools', 'Ctrl+Shift+E']];
+    const rows = [['Feature', 'Menu', 'Shortcut'], ['查找和替换', '编辑', 'Ctrl+H'], ['插入脚注', '插入 ▸ 引用', 'Ctrl+Alt+F'], ['修订', '工具', 'Ctrl+Shift+E']];
     rows.forEach((r, ri) => r.forEach((v, ci) => { t.rows[ri].cells[ci].blocks[0].runs = [D.text(v, ri === 0 ? { b: true } : {})]; if (ri === 0) t.rows[ri].cells[ci].tcPr.shd = { val: 'clear', fill: 'D9E2F3' }; }));
     t.rows[0].trPr.header = true;
     bl.push(t);
@@ -1221,7 +1276,7 @@
     bl.push(fp);
     bl.push(P(''));
     /* header & footer with page numbers */
-    d.hf.h1 = { kind: 'hdr', id: 'h1', blocks: [D.para([D.text('Quire 2003'), D.item('tab'), D.item('tab'), D.text('示例文档')], { style: 'Header' })] };
+    d.hf.h1 = { kind: 'hdr', id: 'h1', blocks: [D.para([D.text('Quire'), D.item('tab'), D.item('tab'), D.text('示例文档')], { style: 'Header' })] };
     const ftr = D.para([D.item('tab'), D.text('Page ')], { style: 'Footer' });
     ftr.runs.push(D.item('fb', { fid: 'f2', instr: ' PAGE ' }), D.item('fs', { fid: 'f2' }), D.text('1'), D.item('fe', { fid: 'f2' }), D.text(' of '), D.item('fb', { fid: 'f3', instr: ' NUMPAGES ' }), D.item('fs', { fid: 'f3' }), D.text('1'), D.item('fe', { fid: 'f3' }));
     d.hf.f1 = { kind: 'ftr', id: 'f1', blocks: [ftr] };
@@ -1233,6 +1288,9 @@
   A.init = async function () {
     A.loadOpts();
     if (window.VO && L.icons.app) VO.setIcon(L.icons.app(32));
+    /* the labels the page's CSS draws on pages and marks, in the UI's language */
+    for (const [v, text] of [['--t-blank', L.t('（此页因分节符而留空）')], ['--t-same', L.t('同前节')],
+      ['--t-object', L.t('[对象]')], ['--t-sect', L.t('分节符（下一页）')]]) document.documentElement.style.setProperty(v, JSON.stringify(text));
     buildMenus();
     buildToolbars();
     L.ribbonUI.init();
@@ -1253,12 +1311,7 @@
     LY.zoom = narrow ? Math.max(0.4, (window.innerWidth - 40) / 816) : A.opts.zoom || 1;
     /* opened from the Start Center: a template, or blank (a new document, or to open a file into); else the sample */
     const launch = window.VO && VO.launch;
-    A.loadDoc(launch && launch.template && L.templates ? L.templates.build(launch.template) : launch ? D.newDoc() : A.buildSample(), 'Document1');
-    /* Embedded copy (tools-box): a document created from the Start Center — blank or from a template —
-       is unsaved work, exactly like a new document in Word. Upstream loads it as "not dirty", so closing
-       it never asked to save and it never reached Recent Files. Marking it dirty restores that:
-       File ▸ Exit (and the host's close button) now asks to save, and saving records it in Recent Files. */
-    if (launch && (launch.new || launch.template) && doc()) { doc().dirty = true; A.updateTitle(); }
+    A.loadDoc(launch && launch.template && L.templates ? L.templates.build(launch.template) : launch ? blank() : A.buildSample(), 'Document1');
     A.view = 'x';
     A.setView(A.opts.view && ['print', 'normal', 'web', 'outline'].includes(A.opts.view) ? A.opts.view : 'print');
     if (L.panes && A.opts.taskOpen) L.panes.task.show('getting-started');
@@ -1270,7 +1323,7 @@
         await A.openFile(f);
         if (o?.draft && doc()) L.opc.recoverLosses(doc(), o.lossState);
         /* an unsaved version: the changes are not saved yet, and a never-saved document still needs Save As */
-        if (o && o.draft && doc()) { doc().dirty = true; A.saved = !!o.saved; A.fileName = o.name.replace(/\.(docx|docm|dotx|dotm|md|markdown|zip)$/i, ''); A.updateTitle(); A.status('Recovered the unsaved changes. Save the document to keep them.'); ui.refresh(); }
+        if (o && o.draft && doc()) { doc().dirty = true; A.saved = !!o.saved; A.fileName = o.name.replace(/\.(docx|docm|dotx|dotm|md|markdown|zip)$/i, ''); A.updateTitle(); A.status('已恢复未保存的更改。请保存文档以保留这些更改。'); ui.refresh(); }
       },
       /* a Markdown document's unsaved version is Markdown too, so recovering it loses nothing */
       async snapshot(d) {
@@ -1290,16 +1343,16 @@
       message: (t) => ui.msg(t, { icon: 'warn' }),
       templates: () => (L.templates ? L.templates.list().map(({ id, name }) => ({ id, name })) : []),
     });
-    /* Embedded copy (tools-box): the autosave hooks exist only once VO.attach has run, so the draft of a
-       document created from the Start Center is scheduled here rather than next to A.loadDoc above. */
-    if (window.VO && launch && (launch.new || launch.template) && doc()) VO.changed(doc());
   };
+
   const winOf = (d) => (d === doc() ? A : A.docs.find((x) => x && x.doc === d) || A);
   /** Recent Files picture: the first page, drawn as for PDF (print layout only) */
   async function pageThumb() {
     const p = LY.view === 'print' && LY.pages && LY.pages[0];
     return p ? A.rasterizePage(p.el, 400 / p.el.offsetWidth, docCSS(), await mediaDataMap()) : null;
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => A.init());
-  else A.init();
+  /* Embedded copy (tools-box): no i18n runtime — the text is already Chinese (common/text.js) */
+  const boot = () => A.init();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();

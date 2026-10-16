@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Office 2003</title>
+<title translate="no">Office 2003</title>
 <meta name="description" content="A free office suite that runs in your browser: a word processor, a spreadsheet and a presentation editor. Your files never leave your computer.">
 <meta name="theme-color" content="#2a64c8">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
@@ -26,7 +26,7 @@
   .shell { flex: 1; min-height: 0; display: flex; }
 
   /* the start center's left side */
-  .side { flex: none; width: 250px; display: flex; flex-direction: column; gap: 14px; padding: 12px;
+  .side { flex: none; width: 250px; display: flex; flex-direction: column; gap: 14px; padding: 18px 12px 12px;
     background: linear-gradient(var(--pane-a), var(--pane-b)); border-right: 1px solid var(--chrome-line); overflow: auto; }
   .brand { display: flex; align-items: center; gap: 10px; padding: 0 6px 6px; }
   .brand img { width: 44px; height: 44px; }
@@ -47,11 +47,28 @@
   .caching { padding: 2px 8px 4px; color: var(--muted); font-size: 11px; }
   .caching progress { display: block; width: 100%; height: 8px; margin-top: 3px; accent-color: var(--sel); }
   .caching #cachingsize { display: block; margin-top: 1px; text-align: right; }
+  /* after an update: a notice whose green tick draws itself, then pulses a few times, so it is seen */
+  .updated { display: flex; align-items: center; gap: 10px; width: 100%; margin: 2px 0 6px; padding: 8px 10px; border: 1px solid var(--notice-line);
+    border-left: 4px solid var(--notice-mark); border-radius: 4px; background: var(--notice-bg); color: var(--pane-ink); font: inherit; text-align: left;
+    cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .updated:hover, .updated:focus-visible { background: var(--notice-hot); }
+  .updated b { display: block; color: var(--notice-ink); font-size: 13px; }
+  .updated small { display: block; color: var(--pane-link); text-decoration: underline; }
+  .updated .mark { position: relative; flex: none; display: flex; border-radius: 50%; }
+  .updated .mark circle { fill: var(--notice-mark); transform-origin: 50% 50%; animation: vo-pop .35s ease-out backwards; }
+  .updated .mark path { fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 16; animation: vo-tick .45s ease-out .3s backwards; }
+  .updated .mark::after { content: ""; position: absolute; inset: 0; border-radius: 50%; opacity: 0; animation: vo-pulse 1.6s ease-out .8s 4; }
+  @keyframes vo-pop { from { transform: scale(0); } 70% { transform: scale(1.15); } to { transform: scale(1); } }
+  @keyframes vo-tick { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
+  @keyframes vo-pulse { from { box-shadow: 0 0 0 0 var(--notice-mark); opacity: .6; } to { box-shadow: 0 0 0 9px var(--notice-mark); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .updated .mark circle, .updated .mark path, .updated .mark::after { animation: none; } }
   .side .note { margin: 0; padding: 0 8px; color: var(--muted); font-size: 11px; }
   .link { border: 0; background: none; padding: 0; color: var(--pane-link); cursor: pointer; text-decoration: underline; }
   .side .links { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: -4px; }
   .links .link { display: inline-flex; align-items: center; gap: 4px; text-decoration: none; font-size: 11px; }
   .links .link:hover span, .links .link:focus-visible span { text-decoration: underline; }
+  .news p { margin: 0 0 8px; white-space: pre-line; }
+  .news p:last-child { margin-bottom: 0; }
   /* Settings: what applies to every app */
   #settingsdlg { max-width: 470px; }
   .st { margin: 0 0 10px; padding: 6px 10px 2px; border: 1px solid var(--chrome-line); border-radius: 3px; }
@@ -152,14 +169,17 @@
 </head>
 <body>
 <div class="shell">
-  <nav class="side" aria-label="Start">
+  <nav class="side" aria-label="开始">
+    <div class="brand"><img src="icons/icon.svg" alt=""><div><b translate="no">Office 2003</b><small>浏览器中的办公套件</small></div></div>
     <div>
       <button class="big" id="open" type="button"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M1.5 5.5v11h14l3-8h-14l-3 8" fill="#ffd66b" stroke="#a5781e"/><path d="M1.5 16V3.5h5l1.5 2h6.5v3" fill="#f5c044" stroke="#a5781e"/></svg>打开文件…</button>
-      <button class="big on" id="recentbtn" type="button" aria-pressed="true"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="#fff" stroke="#3b619c" stroke-width="1.5"/><path d="M10 5v5l3.5 2" fill="none" stroke="#0b3fa8" stroke-width="1.6" stroke-linecap="round"/></svg>最近文件</button>
-      <button class="big" id="createbtn" type="button" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 1.5h9l4 4v13h-13z" fill="#fff" stroke="#3b619c"/><path d="M12.5 1.5v4h4" fill="#dbe6f7" stroke="#3b619c"/><circle cx="14" cy="14.5" r="4.5" fill="#1f8a4c"/><path d="M14 12v5M11.5 14.5h5" stroke="#fff" stroke-width="1.8"/></svg>新建文件</button>
+      <button class="big on" id="recentbtn" type="button" aria-pressed="true"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="#fff" stroke="#3b619c" stroke-width="1.5"/><path d="M10 5v5l3.5 2" fill="none" stroke="#0b3fa8" stroke-width="1.6" stroke-linecap="round"/></svg>最近使用的文件</button>
+      <button class="big" id="createbtn" type="button" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 1.5h9l4 4v13h-13z" fill="#fff" stroke="#3b619c"/><path d="M12.5 1.5v4h4" fill="#dbe6f7" stroke="#3b619c"/><circle cx="14" cy="14.5" r="4.5" fill="#1f8a4c"/><path d="M14 12v5M11.5 14.5h5" stroke="#fff" stroke-width="1.8"/></svg>创建文件</button>
     </div>
     <div class="sec">
       <h2>应用</h2>
+      <!-- Embedded copy (tools-box): explicit index.html — "quire/" would be answered by the site's own
+           SPA fallback page, not by the app (see common/suite.js, VO.url) -->
       <a class="new" href="quire/index.html" data-go><span data-icon="quire"></span><span><b>Quire</b><small>文字处理器</small></span></a>
       <a class="new" href="ledger/index.html" data-go><span data-icon="ledger"></span><span><b>Ledger</b><small>电子表格</small></span></a>
       <a class="new" href="lectern/index.html" data-go><span data-icon="lectern"></span><span><b>Lectern</b><small>演示文稿</small></span></a>
@@ -168,9 +188,9 @@
     <div>
       <button class="big" id="install" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="16" height="12" rx="1.5" fill="#fff" stroke="#3b619c"/><path d="M10 5.5v6M7 9l3 3 3-3" fill="none" stroke="#1f8a4c" stroke-width="1.8"/><path d="M6 17.5h8" stroke="#3b619c"/></svg>安装 Office 2003</button>
       <div class="caching" id="caching" role="status" hidden><span id="cachingtext">正在更新缓存资源</span><progress id="cachingbar" max="1" value="0"></progress><span id="cachingsize"></span></div>
-      <button class="big" id="cachingreload" type="button" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="#1f8a4c"/><path d="M14 7.2A4.6 4.6 0 1 0 14.6 11" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M14.8 4.4v3.6h-3.6" fill="none" stroke="#fff" stroke-width="1.8"/></svg>更新完成，请重新加载</button>
+      <button class="updated" id="cachingreload" type="button" hidden><span class="mark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9.5"/><path d="M5.6 10.3l3 3 5.9-6.2"/></svg></span><span><b>刚刚更新成功</b><small>单击此处重新加载</small></span></button>
     </div>
-    <p class="note">文件只保存在这台电脑上；最近文件仅记录在本浏览器中。</p>
+    <p class="note">文件保存在此计算机上。最近使用的文件仅保存在此浏览器中。<br><span class="version" translate="no"></span></p>
     <p class="note links">
       <button class="link" id="settings" type="button"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.6" fill="none" stroke="#5b6f8c" stroke-width="2.6" stroke-dasharray="2.2 2.2"/><circle cx="8" cy="8" r="4" fill="#dbe6f7" stroke="#3b619c" stroke-width="1.2"/><circle cx="8" cy="8" r="1.6" fill="#fff" stroke="#3b619c"/></svg><span>设置</span></button>
       <button class="link" id="themes" type="button"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13c1 0 1.4-.8 1-1.6-.5-1 .1-2 1.2-2h1.6a2.7 2.7 0 0 0 2.7-2.9C14.3 4.3 11.5 1.5 8 1.5z" fill="#fff" stroke="#a5781e"/><circle cx="5" cy="6.5" r="1.3" fill="#d9442b"/><circle cx="8.2" cy="4.6" r="1.3" fill="#f5b400"/><circle cx="11.3" cy="6.4" r="1.3" fill="#1f8a4c"/><circle cx="5.2" cy="10" r="1.3" fill="#2a6fd6"/></svg><span>主题</span></button>
@@ -179,67 +199,68 @@
 
   <main id="main">
     <div class="bar">
-      <h1 id="viewtitle">最近文件</h1>
+      <h1 id="viewtitle">最近使用的文件</h1>
       <span class="status" id="status" role="status"></span>
-      <button class="link" id="clear" type="button" hidden>清空最近文档</button>
+      <button class="link" id="clear" type="button" hidden>清除最近使用的文档</button>
     </div>
     <div class="grid" id="grid" hidden></div>
     <div class="gallery" id="gallery" hidden></div>
     <div class="empty" id="empty">
       <img src="icons/icon.svg" alt="">
       <b>欢迎使用 Office 2003。</b>
-      <span>把文档拖到这里，或在左侧选择一个应用开始新建。</span>
+      <span>将文档拖到此处，或选择左侧的应用来创建文档。</span>
     </div>
-    <div class="drop" id="drop" hidden>松开以打开文件</div>
+    <div class="drop" id="drop" hidden>拖到此处打开</div>
   </main>
 </div>
 
-<!-- Embedded copy (tools-box): the desktop app's update dialog (#updatedlg), its "更新 Office 2003"
-     button and the daily update check are gone — VO.host.kind is always 'web' here (no Tauri host),
-     so none of it could ever run. Re-add them on the next sync if upstream changes this area. -->
 <dialog id="settingsdlg">
   <div class="dt">设置</div>
   <div class="db">
-    <p>这些设置对 Office 2003 的每个应用都生效。</p>
+    <p>这些设置适用于 Office 2003 的所有应用。</p>
     <fieldset class="st"><legend>界面大小</legend>
-      <p id="scalerow" hidden><label for="uiscale">菜单、工具栏与文档的显示比例：</label>
+      <p id="scalerow" hidden><label for="uiscale">菜单、工具栏、文档及其他所有内容的大小：</label>
         <select id="uiscale"><option value="1">100 %</option><option value="1.25">125 %</option><option value="1.5">150 %</option><option value="2">200 %</option><option value="3">300 %</option><option value="4">400 %</option></select></p>
-      <p id="scaleweb">用浏览器的缩放即可：Ctrl 与 + 放大、Ctrl 与 − 缩小、Ctrl 与 0 恢复原大小（Mac 上是 ⌘）。</p>
+      <p id="scaleweb">使用浏览器缩放：Ctrl 和 + 放大所有内容，Ctrl 和 − 缩小，Ctrl 和 0 恢复通常大小（Mac 上使用 ⌘）。</p>
     </fieldset>
-    <fieldset class="st"><legend>本机字体</legend>
+    <fieldset class="st"><legend>此计算机上的字体</legend>
       <p id="fontinfo"></p>
-      <p id="fontbtns"><button class="btn" id="fontload" type="button">读取本机字体列表</button> <button class="btn" id="fontforget" type="button">忘记该列表</button></p>
+      <p id="fontbtns"><button class="btn" id="fontload" type="button">加载此计算机上的字体</button> <button class="btn" id="fontforget" type="button">清空列表</button></p>
     </fieldset>
-    <fieldset class="st"><legend>最近文件</legend>
+    <fieldset class="st"><legend>最近使用的文件</legend>
       <p id="recentinfo"></p>
-      <p><button class="btn" id="recentclear" type="button">清空最近文档</button></p>
+      <p><button class="btn" id="recentclear" type="button">清除最近使用的文档</button></p>
     </fieldset>
-    <form method="dialog"><button>确定</button></form>
+    <form method="dialog"><button>OK</button></form>
   </div>
 </dialog>
 <dialog id="themesdlg">
   <div class="dt">主题</div>
   <div class="db">
-    <p>选择 Office 2003 的外观，所有已打开的窗口都会随之变化。</p>
+    <p>选择 Office 2003 的外观。所有已打开的窗口都会随之更改。</p>
     <div class="looks" id="looklist"></div>
-    <form method="dialog"><button>确定</button></form>
+    <form method="dialog"><button>OK</button></form>
   </div>
 </dialog>
 <input type="file" id="picker" hidden>
 <script src="common/suite.js"></script>
+<script src="common/text.js"></script>
 <script>
+/* Embedded copy (tools-box): no i18n runtime — the text here is already Chinese (common/text.js) */
 (function () {
   'use strict';
   const $ = (id) => document.getElementById(id);
-  /* Safari's Lockdown Mode takes IndexedDB away (the name is undefined), which 最近文件, unsaved
+  /* Safari's Lockdown Mode takes IndexedDB away (the name is undefined), which Recent Files, unsaved
      versions and opening files from here need */
   const noStorage = typeof indexedDB === 'undefined';
-  if (noStorage) alert('Office 2003 keeps 最近文件 and unsaved changes in this browser, and Safari\'s Lockdown Mode turns that off.\n\n' +
-    'To allow it for this site only: tap aA in the address bar, tap Website Settings, and turn off Lockdown Mode. Safari reloads the page.');
+  if (noStorage) alert('Office 2003 会在此浏览器中保留「最近使用的文件」和未保存的更改，而 Safari 的「锁定模式」会关闭该功能。\n\n只为此站点允许：点按地址栏中的 aA，点按「网站设置」，然后关闭「锁定模式」。Safari 会重新载入页面。');
+  /* text and the attributes the user reads are already Chinese here */
+  const T = (s) => (typeof s === 'string' ? VO.t(s) : s);
+  /* translate="no": kept for upstream's sake — data (a file's name) is shown as it is */
   const h = (tag, attrs, ...kids) => {
-    const el = document.createElement(tag);
-    for (const k in attrs || {}) if (attrs[k] != null) el.setAttribute(k, attrs[k]);
-    el.append(...kids.filter((k) => k != null));
+    const el = document.createElement(tag), tr = attrs && attrs.translate === 'no' ? (s) => s : T;
+    for (const k in attrs || {}) if (attrs[k] != null) el.setAttribute(k, k === 'title' || k === 'aria-label' || k === 'placeholder' ? tr(attrs[k]) : attrs[k]);
+    el.append(...kids.filter((k) => k != null).map(tr));
     return el;
   };
   const COLOR = { quire: 'var(--quire)', ledger: 'var(--ledger)', lectern: 'var(--lectern)' };
@@ -256,7 +277,7 @@
   }
   for (const el of document.querySelectorAll('[data-icon]')) el.innerHTML = picture(el.dataset.icon);
 
-  const status = (text) => { $('status').textContent = text || ''; };
+  const status = (text) => { $('status').textContent = VO.t(text || ''); };
 
   /* links to apps open in a new window when installed, so this start page stays */
   document.addEventListener('click', (e) => {
@@ -270,7 +291,7 @@
   async function openFile(file) {
     status('');
     if (!file) return;
-    if (!(await VO.handoff(file))) status(`Office 2003 无法打开“${file.name}”。它可以打开文档（.docx/.rtf）、电子表格（.xlsx/.csv）和演示文稿（.pptx）。`);
+    if (!(await VO.handoff(file))) status(VO.t('Office 2003 can\'t open “{0}”. It opens documents (.docx, .rtf), spreadsheets (.xlsx, .csv) and presentations (.pptx).', file.name));
   }
   $('picker').accept = VO.accept();
   $('open').addEventListener('click', () => { $('picker').value = ''; $('picker').click(); });
@@ -283,19 +304,20 @@
   document.addEventListener('drop', (e) => { if (!hasFiles(e)) return; e.preventDefault(); depth = 0; $('drop').hidden = true; openFile(e.dataTransfer.files[0]); });
   VO.host.onFiles((files) => openFile(files[0]));   // Open with, a double-click on a file
 
-  /* ---------- 最近文件 */
+  /* ---------- Recent Files */
   const day = (t) => new Date(t).toDateString();
   const when = (t) => {
-    const time = new Date(t).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    if (day(t) === day(Date.now())) return '今天 ' + time;
-    if (day(t) === day(Date.now() - 86400000)) return '昨天 ' + time;
-    return new Date(t).toLocaleDateString([], { year: 'numeric', month: 'short', day: 'numeric' });
+    const time = new Date(t).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+    if (day(t) === day(Date.now())) return VO.t('今天，{0}', time);
+    if (day(t) === day(Date.now() - 86400000)) return VO.t('昨天，{0}', time);
+    /* Embedded copy (tools-box): the site is Chinese only — upstream read the locale off VO.i18n (common/i18n.js, removed) */
+    return new Date(t).toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
   };
   let urls = [];
   async function render() {
     let list = [];
-    if (!noStorage) try { list = await VO.recent.list(); } catch (e) { status('此浏览器中无法使用最近文件（' + e.message + ').'); }
-    if (view !== 'recent') return;   // switched to 新建文件 meanwhile
+    if (!noStorage) try { list = await VO.recent.list(); } catch (e) { status(VO.t('此浏览器无法使用最近文件列表（{0}）。', e.message)); }
+    if (view !== 'recent') return;   // switched to Create File meanwhile
     for (const u of urls) URL.revokeObjectURL(u);
     urls = [];
     const grid = $('grid');
@@ -304,28 +326,31 @@
       if (e.thumb) { const u = URL.createObjectURL(e.thumb); urls.push(u); thumb.append(h('img', { src: u, alt: '' })); }
       else thumb.innerHTML = picture(e.app, VO.ext(e.name));
       /* a document with unsaved changes opens at its unsaved version; × then discards those changes */
-      const rm = h('button', { class: 'rm', type: 'button', title: e.draft ? 'Discard the unsaved changes' : '从列表中移除', 'aria-label': (e.draft ? '放弃对以下文档的未保存更改：' : '从列表中移除：') + e.name }, '×');
+      const rm = h('button', { class: 'rm', type: 'button', title: e.draft ? '放弃未保存的更改' : '从列表中移除' }, '×');
+      rm.setAttribute('aria-label', e.draft ? VO.t('放弃对 {0} 所做的未保存更改', e.name) : VO.t('从列表中移除：{0}', e.name));
       rm.addEventListener('click', async () => {
-        if (e.draft) { if (confirm(`Discard the unsaved changes to “${e.name}”?` + (e.file ? ' 已保存的版本仍保留在列表中。' : ''))) await VO.recent.discardDraft(e.key); }
+        if (e.draft) { if (confirm(e.file ? VO.t('要放弃对“{0}”所做的未保存更改吗？已保存的版本仍会保留在列表中。', e.name) : VO.t('放弃对“{0}”所做的未保存更改？', e.name))) await VO.recent.discardDraft(e.key); }
         else await VO.recent.remove(e.key);
         render();
       });
       const app = VO.APPS[e.app] || { name: e.app };
       const dot = h('i'); dot.style.background = COLOR[e.app] || '#888';
-      return h('div', { class: 'doc', title: `${e.name}\n${app.name}` + (e.file ? ` · ${(e.size / 1024).toFixed(0)} KB` : '') + ` · ${new Date(e.time).toLocaleString()}` + (e.draft ? '\nUnsaved changes' : '') },
+      const card = h('div', { class: 'doc' },
         thumb,
-        h('a', { class: 'name', href: VO.url(e.app, e.draft ? { recent: e.key, draft: true } : { recent: e.key }), 'data-go': '' }, e.name),
-        h('div', { class: 'meta' }, dot, app.name + ' · ' + when(e.time)),
-        e.draft ? h('span', { class: 'unsaved' }, e.file ? '未保存的更改' : '从未保存') : null,
-        e.draft && e.file ? h('a', { class: 'alt', href: VO.url(e.app, { recent: e.key }), 'data-go': '', title: '打开更改之前保存的版本' }, '已保存的版本') : null,
+        h('a', { class: 'name', href: VO.url(e.app, e.draft ? { recent: e.key, draft: true } : { recent: e.key }), 'data-go': '', translate: 'no' }, e.name),
+        h('div', { class: 'meta', translate: 'no' }, dot, app.name + ' · ' + when(e.time)),
+        e.draft ? h('span', { class: 'unsaved' }, e.file ? '未保存的更改' : '尚未保存') : null,
+        e.draft && e.file ? h('a', { class: 'alt', href: VO.url(e.app, { recent: e.key }), 'data-go': '', title: '打开更改前保存的版本' }, '已保存的版本') : null,
         rm);
+      card.title = `${e.name}\n${app.name}` + (e.file ? ' · ' + VO.t('{0} KB', (e.size / 1024).toFixed(0)) : '') + ` · ${new Date(e.time).toLocaleString('zh-CN')}` + (e.draft ? '\n' + VO.t('未保存的更改') : '');
+      return card;
     }));
     grid.hidden = !list.length;
     $('empty').hidden = !!list.length;
     $('clear').hidden = !list.length;
   }
   const clearRecent = async () => {
-    if (!confirm('清空最近文件列表？电脑上的文件不会被删除。')) return false;
+    if (!confirm('要从最近文件列表中移除所有文件吗？计算机上的原文件不会受到影响。')) return false;
     await VO.recent.clear(); render();
     return true;
   };
@@ -333,32 +358,33 @@
   VO.onRecentChange(() => { if (view === 'recent') render(); });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && view === 'recent') render(); });
 
-  /* ---------- 新建文件: Blank and the templates of each app (common/templates.json, made by tools/templates.mjs) */
-  const KIND = { quire: '文档', ledger: '电子表格', lectern: '演示文稿' };
+  /* ---------- Create File: Blank and the templates of each app (common/templates.json, made by tools/templates.mjs) */
+  const KIND = { quire: VO.N('文档'), ledger: VO.N('电子表格'), lectern: VO.N('演示文稿') };
+  const NEW = { quire: [VO.N('新建空白文档'), VO.N('根据“{0}”新建文档')], ledger: [VO.N('新建空白电子表格'), VO.N('根据“{0}”新建电子表格')], lectern: [VO.N('新建空白演示文稿'), VO.N('根据“{0}”新建演示文稿')] };
   let gallery = null;
   async function renderGallery() {
     if (gallery) return;
     gallery = $('gallery');
     let cat = {};
-    try { cat = await (await fetch('common/templates.json')).json(); } catch (e) { status('模板加载失败。'); }
+    try { cat = await (await fetch('common/templates.json')).json(); } catch (e) { status('无法加载模板。'); }
     for (const app of Object.keys(KIND)) {
       const list = cat[app] || [{ id: '', name: 'Blank', img: null }];
       gallery.append(h('h2', null, h('span', { 'data-icon': app }), KIND[app], h('small', null, '· ' + VO.APPS[app].name)),
         h('div', { class: 'grid' }, ...list.map((t) => {
           const thumb = h('div', { class: 'thumb' });
           if (t.img) thumb.append(h('img', { src: t.img, alt: '', loading: 'lazy' })); else thumb.innerHTML = picture(app);
-          return h('div', { class: 'doc', title: t.id ? `New ${VO.APPS[app].kind.toLowerCase()} from “${t.name}”` : `New blank ${VO.APPS[app].kind.toLowerCase()}` },
+          return h('div', { class: 'doc', title: t.id ? VO.t(NEW[app][1], VO.t(t.name)) : VO.t(NEW[app][0]) },
             thumb, h('a', { class: 'name', href: VO.url(app, t.id ? { template: t.id } : { new: true }), 'data-go': '' }, t.name));
         })));
     }
     for (const el of gallery.querySelectorAll('[data-icon]')) el.innerHTML = picture(el.dataset.icon);
   }
 
-  /* ---------- the two views: 最近文件 (default) and 新建文件 (#create), so Back goes between them */
+  /* ---------- the two views: Recent Files (default) and Create File (#create), so Back goes between them */
   let view = '';
   function show() {
     view = location.hash === '#create' ? 'create' : 'recent';
-    $('viewtitle').textContent = view === 'create' ? '新建文件' : '最近文件';
+    $('viewtitle').textContent = view === 'create' ? VO.t('创建文件') : VO.t('最近使用的文件');
     $('recentbtn').classList.toggle('on', view === 'recent'); $('recentbtn').setAttribute('aria-pressed', view === 'recent');
     $('createbtn').classList.toggle('on', view === 'create'); $('createbtn').setAttribute('aria-pressed', view === 'create');
     status('');
@@ -376,6 +402,7 @@
   window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvent = e; $('install').hidden = false; });
   window.addEventListener('appinstalled', () => { installEvent = null; $('install').hidden = true; });
   $('install').addEventListener('click', async () => { if (!installEvent) return; installEvent.prompt(); await installEvent.userChoice; installEvent = null; $('install').hidden = true; });
+  document.querySelectorAll('.version').forEach((el) => { el.textContent = VO.VERSION; });
   /* Themes: the suite's looks (common/looks.css); choosing one changes every open window of the suite */
   const BODY = '<div class="lk-body"><div class="lk-canvas"><div class="lk-page"><p></p><p></p><p></p><p></p><p></p><p></p></div></div>'
     + '<div class="lk-pane"><em></em><u></u><u></u><s></s><u></u></div></div><div class="lk-status"></div>';
@@ -383,7 +410,7 @@
     + '<div class="lk-tb"><i></i><i></i><i></i><b></b><i></i><i></i><i></i></div>'
     + BODY;
   const grp = (icons) => '<div class="lk-rgrp"><div>' + icons + '</div><p></p></div>';
-  const RIBBON = '<div class="lk-rbar"><span>文件</span><span class="on">开始</span><span>插入</span><span>视图</span></div>'
+  const RIBBON = '<div class="lk-rbar"><span>文件</span><span class="on">主页</span><span>插入</span><span>视图</span></div>'
     + '<div class="lk-rpanel">' + grp('<i class="big"></i><i></i><i></i>') + grp('<i></i><i></i><i></i><i></i><i></i>') + grp('<i></i><i></i><i></i>') + grp('<i class="big"></i>') + '</div>'
     + BODY;
   const drawLooks = () => {
@@ -408,7 +435,7 @@
     $('caching').hidden = d.state !== 'progress';
     $('cachingreload').hidden = !(d.state === 'done' && d.update);
     if (d.state !== 'progress') return;
-    $('cachingtext').textContent = d.update ? '正在更新缓存资源' : '正在缓存资源以供离线使用';
+    $('cachingtext').textContent = d.update ? '正在更新缓存资源' : '正在缓存资源，以供离线使用';
     $('cachingsize').textContent = d.total ? `${mb(d.received || 0)} of ${mb(d.total)} MB` : d.received ? `${mb(d.received)} MB` : '';
     $('cachingbar').value = d.progress || 0;
   });
@@ -416,25 +443,28 @@
 
   /* Updates (desktop app): gone — see the Embedded copy note above the dialogs. */
 
-  /* Settings: what applies to every app. 界面大小 is the desktop app's zoom (VO.host); on the web the browser's own */
+  /* Settings: what applies to every app. UI size is the desktop app's zoom (VO.host); on the web the browser's own */
   const fontInfo = () => {
     const n = VO.localFonts.list().length;
     $('fontbtns').hidden = !VO.localFonts.supported();
     $('fontforget').hidden = !n;
-    $('fontload').textContent = n ? '重新读取本机字体列表' : '读取本机字体列表';
-    $('fontinfo').textContent = n ? `字体下拉框还会列出本机安装的 ${n} 种字体。`
-      : VO.localFonts.supported() ? '字体下拉框会列出常用 Office 字体和文档自带的字体；获得授权后还可以列出本机安装的字体。'
-        : '字体下拉框会列出常用 Office 字体和文档自带的字体。';
+    $('fontload').textContent = n ? VO.t('重新加载此计算机上的字体') : VO.t('加载此计算机上的字体');
+    $('fontinfo').textContent = n ? VO.t('字体框还列出了此计算机上安装的 {0} 种字体。', n)
+      : VO.localFonts.supported() ? VO.t('The Font boxes list the frequently used Office fonts and the document\'s own. They can also list the fonts installed on this computer, once you allow it.')
+        : VO.t('The Font boxes list the frequently used Office fonts and the document\'s own.');
   };
   const recentInfo = async () => {
     let list = [];
     if (!noStorage) try { list = await VO.recent.list(); } catch (e) { /* shown as none */ }
     const drafts = list.filter((e) => e.draft).length;
-    let size = '';
-    try { const est = navigator.storage && await navigator.storage.estimate(); if (est && est.usage) size = `，约 ${(est.usage / 1048576).toFixed(1)} MB`; } catch (e) { /* no estimate */ }
-    $('recentinfo').textContent = noStorage ? '此处无法使用最近文件。'
-      : !list.length ? '列表为空。'
-        : `共 ${list.length} 个文件${drafts ? `（${drafts} 个有未保存的更改）` : ''}${size}，保存在${VO.host.kind === 'desktop' ? '本机' : '本浏览器'}中。`;
+    let mb = '';
+    try { const est = navigator.storage && await navigator.storage.estimate(); if (est && est.usage) mb = (est.usage / 1048576).toFixed(1); } catch (e) { /* no estimate */ }
+    /* how many files (and with unsaved changes), then how much room they take and where */
+    const files = list.length === 1 ? (drafts ? VO.t('1 个文件，含未保存的更改') : VO.t('1 个文件')) : drafts ? VO.t('{0} 个文件，其中 {1} 个有未保存的更改', list.length, drafts) : VO.t('{0} 个文件', list.length);
+    const desk = VO.host.kind === 'desktop';
+    const kept = mb ? (desk ? VO.t('约 {0} MB，由 Office 2003 保存在此计算机上。', mb) : VO.t('约 {0} MB，保存在此浏览器中。', mb)) : desk ? VO.t('由 Office 2003 保存在此计算机上。') : VO.t('保存在此浏览器中。');
+    $('recentinfo').textContent = noStorage ? VO.t('此处无法使用最近文件列表。')
+      : !list.length ? VO.t('列表为空。') : VO.t('{0}. {1}', files, kept);
     $('recentclear').hidden = !list.length;
   };
   $('settings').addEventListener('click', async () => {
@@ -442,13 +472,13 @@
     $('scalerow').hidden = scale === null;
     $('scaleweb').hidden = scale !== null;
     if (scale !== null) $('uiscale').value = String(scale);
-    fontInfo();
+        fontInfo();
     await recentInfo();
     $('settingsdlg').showModal();
   });
   $('uiscale').addEventListener('change', () => VO.host.setUiScale(+$('uiscale').value).catch((e) => status(String(e))));
   $('fontload').addEventListener('click', async () => {
-    try { await VO.localFonts.load(); } catch (e) { $('fontinfo').textContent = '无法列出本机字体' + (e.name === 'NotAllowedError' || e.name === 'SecurityError' ? '：未授予权限。' : ': ' + (e.message || e)); return; }
+    try { await VO.localFonts.load(); } catch (e) { $('fontinfo').textContent = e.name === 'NotAllowedError' || e.name === 'SecurityError' ? VO.t('无法列出此计算机上的字体：未获得许可。') : VO.t('无法列出此计算机上的字体：{0}', e.message || e); return; }
     fontInfo();
   });
   $('fontforget').addEventListener('click', () => { VO.localFonts.forget(); fontInfo(); });

@@ -202,6 +202,7 @@
         case 'effectLst': { const s = shadow(c, ctx); if (s) { r.shd = true; r.shdX = s; } break; }
         case 'highlight': { const v = colorOf(c, ctx); if (v) r.hl = v.c; break; }
         case 'latin': { const f = fontName(at(c, 'typeface')); if (f) r.font = f; break; }
+        case 'ea': { const f = at(c, 'typeface'); if (f) r.fontEA = f; break; }   // +mn-ea, +mj-ea or a font (L.style.fontEA)
         case 'hlinkClick': { const l = ctx.link(c); if (l) r.link = l; break; }
         default: break;
       }
@@ -744,14 +745,14 @@
     let zip;
     let password = null;
     try { zip = await L.zip.read(buffer); } catch (e) {
-      if (e && e.code === 'ole' && !e.encrypted) e.message = 'This is an older binary PowerPoint 97–2003 file (.ppt) with a .pptx name. Save it as .pptx in PowerPoint, Keynote, Google Slides or LibreOffice first.';
+      if (e && e.code === 'ole' && !e.encrypted) e.message = L.N('这是旧版二进制 PowerPoint 97–2003 文件 (.ppt)，只是使用了 .pptx 文件名。请先在 PowerPoint、Keynote、Google Slides 或 LibreOffice 中将其保存为 .pptx。');
       if (!(e && e.code === 'ole' && e.encrypted && L.officeCrypto)) throw e;
       /* a presentation with a password to open: decrypt it here, in the browser */
       if (!opts.password) { const err = new Error('This presentation is password-protected.'); err.code = 'password'; throw err; }
       let inner;
       try { inner = await L.officeCrypto.decrypt(buffer instanceof Uint8Array ? buffer : new Uint8Array(buffer), opts.password); } catch (e2) {
         const unsup = e2 && e2.message === 'unsupported';
-        const err = new Error(unsup ? 'This presentation is encrypted with a method that is not supported (only the AES encryption of PowerPoint 2007 and later is).' : e2 && /secure/.test(e2.message) ? e2.message : 'The password is incorrect. PowerPoint cannot open the file.');
+        const err = new Error(unsup ? L.N('此演示文稿使用了不支持的加密方式（仅支持 PowerPoint 2007 及更高版本的 AES 加密）。') : e2 && /secure/.test(e2.message) ? e2.message : 'The password is incorrect. PowerPoint cannot open the file.');
         err.code = unsup ? 'unsupported' : /secure/.test(String(e2 && e2.message)) ? 'insecure' : 'badpassword';
         throw err;
       }
@@ -835,13 +836,16 @@
       const tsX = await xml(tsRel ? tsRel.target : 'ppt/tableStyles.xml');
       if (tsX) for (const st of kids(tsX, 'tblStyle')) tblStyles.set((at(st, 'styleId') || '').toUpperCase(), st);
     }
-    if (!presX || presX.localName !== 'presentation') throw new Error('This file does not contain a PowerPoint presentation.');
+    if (!presX || presX.localName !== 'presentation') throw new Error(L.N('此文件不包含 PowerPoint 演示文稿。'));
+    const deckLang = String(at(path(presX, 'defaultTextStyle', 'lvl1pPr', 'defRPr') || presX, 'lang') || '').toLowerCase();
+    const deckScript = /^ja/.test(deckLang) ? 'Jpan' : /^ko/.test(deckLang) ? 'Hang' : /^zh-(cn|sg)/.test(deckLang) ? 'Hans' : /^zh/.test(deckLang) ? 'Hant' : null;
     const presRels = await rels(presPath);
     const sz = kid(presX, 'sldSz');
     const W = L.round(pt(num(sz, 'cx', 9144000)), 3), H = L.round(pt(num(sz, 'cy', 6858000)), 3);
-    const pres = L.model.newPresentation({ w: W, h: H, empty: true });
+    const pres = L.model.newPresentation({ w: W, h: H, empty: true, locale: false });
+    if (deckLang) pres.lang = at(path(presX, 'defaultTextStyle', 'lvl1pPr', 'defRPr'), 'lang');   // new text's language (pptx-write.js)
     if (pkg) L.opc.attach(pres, pkg);
-    if (packageError) L.opc.loss(pres, { id: 'package:unreadable', what: 'Part of this file couldn\'t be read. Anything in it that Office 2003 can\'t edit itself, such as macros or embedded objects, won\'t be saved.', detail: String(packageError), where: presPath, action: 'drop', notify: true });
+    if (packageError) L.opc.loss(pres, { id: 'package:unreadable', what: L.N('此文件的部分内容无法读取。其中 Office 2003 无法直接编辑的内容，例如宏或嵌入对象，将不会保存。'), detail: String(packageError), where: presPath, action: 'drop', notify: true });
     pres.designs = {};
     pres.firstNum = num(presX, 'firstSlideNum', 1);
 
@@ -887,7 +891,16 @@
       const cs = desc(t, 'clrScheme');
       if (cs) for (const c of cs.children) { const v = color(colorEl(c), { design: null }); if (v) theme.colors[c.localName] = v.c[0] === '#' ? v.c : theme.colors[v.c] || '#000000'; }
       const fs = desc(t, 'fontScheme');
-      if (fs) { const mj = path(fs, 'majorFont', 'latin'), mn = path(fs, 'minorFont', 'latin'); if (mj && at(mj, 'typeface')) theme.fonts.major = at(mj, 'typeface'); if (mn && at(mn, 'typeface')) theme.fonts.minor = at(mn, 'typeface'); }
+      if (fs) {
+        const mj = path(fs, 'majorFont', 'latin'), mn = path(fs, 'minorFont', 'latin'); if (mj && at(mj, 'typeface')) theme.fonts.major = at(mj, 'typeface'); if (mn && at(mn, 'typeface')) theme.fonts.minor = at(mn, 'typeface');
+        /* East Asian fonts: the theme's own (a:ea), else its font for the script of the deck's language (a Japanese
+           PowerPoint's theme has <a:font script="Jpan" typeface="ＭＳ Ｐゴシック"/>) */
+        const ea = (part) => {
+          const own = path(fs, part, 'ea'), f = kids(kid(fs, part) || fs).find((c) => c.localName === 'font' && at(c, 'script') === deckScript);
+          return (own && at(own, 'typeface')) || (deckScript && f && at(f, 'typeface')) || '';
+        };
+        theme.fonts.majorEA = ea('majorFont'); theme.fonts.minorEA = ea('minorFont');
+      }
       const fm = desc(t, 'fmtScheme');
       if (fm) {
         theme.fills = kids(kid(fm, 'fillStyleLst'));

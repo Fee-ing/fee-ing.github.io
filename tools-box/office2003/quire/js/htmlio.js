@@ -163,7 +163,7 @@
     }
     const title = d.props.title || name || 'Document';
     const bg = d.bg ? `background:#${d.bg};` : '';
-    const html = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="generator" content="Quire 2003">\n<title>${esc(title)}</title>\n` +
+    const html = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="generator" content="Quire">\n<title>${esc(title)}</title>\n` +
       `${d.props.creator ? `<meta name="author" content="${attr(d.props.creator)}">\n` : ''}${d.props.description ? `<meta name="description" content="${attr(d.props.description)}">\n` : ''}` +
       `<style>body{${bg}font-family:${cssFont(baseR.font || 'Times New Roman')};font-size:${baseR.sz || 12}pt;margin:1in;max-width:${L.round((d.sect.pgW - d.sect.ml - d.sect.mr) / 72, 2)}in}p,h1,h2,h3,h4,h5,h6,li{margin:0}table{margin:4pt 0}a{color:#0000ff}</style>\n</head>\n<body>\n${body}\n${foot}\n</body>\n</html>\n`;
     return new Blob([html], { type: 'text/html;charset=utf-8' });

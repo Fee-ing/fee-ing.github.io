@@ -9,8 +9,9 @@
 
   /* What the app's editor does around commands, toolbar boxes and dialogs; each app fills these in (app.js).
    * beforeExec: bring the selection model up to date; refocus: give the keyboard back to the document;
-   * commitEdit: finish an edit in progress before a toolbar box takes the focus. */
-  ui.hooks = { beforeExec() {}, refocus() {}, commitEdit() {} };
+   * commitEdit: finish an edit in progress before a toolbar box takes the focus; ownsText(el): el is the document's
+   * own editable text, which refocus gives back with the app's selection (other editable text gets its own back). */
+  ui.hooks = { beforeExec() {}, refocus() {}, commitEdit() {}, ownsText() { return false; } };
   /* Theme colours for the colour menus (Lectern): schemeColors(design) -> [{ ref, hex, tip }], currentDesign() */
   ui.schemeColors = null;
   ui.currentDesign = null;
@@ -29,18 +30,44 @@
     if (c.enabled && !c.enabled()) return;
     ui.hooks.beforeExec();
     let r;
-    try { r = c.run(arg, ev); } catch (e) { console.error(e); ui.msg('无法完成该操作：' + (e && e.message ? e.message : e), { icon: 'warn' }); }
+    try { r = c.run(arg, ev); } catch (e) { console.error(e); ui.msg(t('无法完成此操作：{0}', e && e.message ? e.message : e), { icon: 'warn' }); }
     ui.refresh();
     tell('vo-command', { id, result: r });
     return r;
   };
   ui.enabled = (id) => { const c = ui.cmds[id]; return !!c && (!c.enabled || !!c.enabled()); };
   ui.checked = (id) => { const c = ui.cmds[id]; return !!c && !!c.checked && !!c.checked(); };
-  const stripAmp = (s) => String(s || '').replace(/&&/g, '\u0000').replace(/&(\S)/g, '$1').replace(/\u0000/g, '&');
-  /* "&x" marks the access key; "&&" and "& " stay a literal ampersand */
-  const ampHTML = (s) => L.esc(s || '').replace(/&amp;&amp;/g, '\u0000').replace(/&amp;(\S)/g, '<u>$1</u>').replace(/\u0000/g, '&amp;');
+  /* UI text is English in the code and shown in the UI's language (common/i18n.js; docs/i18n.md): labels through
+     stripAmp / ampHTML, the rest through t */
+  const t = (s, ...args) => (L.t ? L.t(s, ...args) : s);
+  /* "&x" marks the access key; "&&" and "& " stay a literal ampersand; "|chart" after the text is its context
+     (common/i18n.js), not shown */
+  const plainAmp = (s) => (root.VO && root.VO.plain ? root.VO.plain(String(s || '')) : String(s || '')).replace(/&&/g, '\u0000').replace(/&(\S)/g, '$1').replace(/\u0000/g, '&');
+  /** a label as shown, without its access key mark */
+  const stripAmp = (s) => plainAmp(t(s));
+  /** text as HTML, its access key underlined */
+  const ampMark = (s) => L.esc(s || '').replace(/&amp;&amp;/g, '\u0000').replace(/&amp;(\S)/g, '<u>$1</u>').replace(/\u0000/g, '&amp;');
+  /** a label as shown, its access key underlined */
+  const ampHTML = (s) => ampMark(t(s));
+  const keyOf = (s) => { const m = /&([^&\s])/.exec(s || ''); return m ? m[1].toLowerCase() : null; };
+  /** the access key of a label as shown */
+  const accessKey = (s) => keyOf(t(s));
+  /** a shortcut as shown: its key names in the UI's language (Ctrl+Shift+F12 is Strg+Umschalt+F12 in German), each
+      in the context "key" (a key's Home, not a Home button's). On a Mac, where ⌘ does what Ctrl does, the modifiers
+      are Apple's symbols in Apple's order, without "+": Ctrl+Shift+S is ⇧⌘S */
+  const MAC_MODS = [['Alt', '⌥'], ['Shift', '⇧'], ['Ctrl', '⌘']];
+  const keyName = (p) => ({ Ctrl: t('Ctrl'), Shift: t('Shift'), Alt: t('Alt'), Del: t('Del'), Ins: t('Ins'), Esc: t('Esc'), Home: t('主页'), End: t('End'), Enter: t('输入'), Tab: t('制表符'), Space: t('空格'), Backspace: t('Backspace'), 'Page Up': t('Page Up'), 'Page Down': t('Page Down'), PgUp: t('PgUp'), PgDn: t('PgDn') })[p] || p;
+  const keyText = (k) => {
+    if (!k) return '';
+    const parts = String(k).split('+');
+    if (!L.isMac) return parts.map(keyName).join('+');
+    return MAC_MODS.filter(([m]) => parts.includes(m)).map(([, s]) => s).join('') + parts.filter((p) => !MAC_MODS.some(([m]) => m === p)).map(keyName).join('+');
+  };
   ui.stripAmp = stripAmp;
+  ui.plainAmp = plainAmp;
   ui.ampHTML = ampHTML;
+  ui.accessKey = accessKey;
+  ui.keyText = keyText;
 
   /* ---------- tooltips ---------- */
   let tipEl = null, tipTimer = null, tipTarget = null;
@@ -48,7 +75,7 @@
     const t = target.getAttribute('data-tip');
     if (!t) return;
     if (!tipEl) { tipEl = h('div', { class: 'tooltip', role: 'tooltip' }); document.body.appendChild(tipEl); }
-    tipEl.textContent = t;
+    tipEl.textContent = target.closest('[translate="no"]') ? t : (L.t ? L.t(t) : t);   // data (a font's name) stays as it is
     tipEl.hidden = false;
     const r = tipEl.getBoundingClientRect();
     let left = x + 2, top = y + 20;
@@ -107,7 +134,8 @@
     const depth = opts.depth || 0;
     ui.closeMenus(depth);
     const list = (typeof items === 'function' ? items() : items).map(resolveItem).filter((x) => x && !x.hidden);
-    const el = h('div', { class: 'menu' + (opts.cls ? ' ' + opts.cls : ''), role: 'menu', tabindex: '-1' });
+    /* a menu from inside a dialog (a drop-down button there) goes above the dialogs */
+    const el = h('div', { class: 'menu' + (opts.cls ? ' ' + opts.cls : '') + (ui.dialogOpen() ? ' over-dlg' : ''), role: 'menu', tabindex: '-1' });
     const rows = [];
     list.forEach((it) => {
       if (it.sep) { el.appendChild(h('div', { class: 'm-sep' })); return; }
@@ -115,15 +143,16 @@
       if (it.custom) { const c = it.custom(() => ui.closeMenus()); el.appendChild(c); return; }
       const disabled = it.disabled || (it.enabled && !it.enabled());
       const checked = it.checked && it.checked();
-      const row = h('div', { class: 'm-item' + (disabled ? ' dis' : '') + (checked ? ' chk' : '') + (it.sub ? ' has-sub' : '') + (it.bold ? ' bold' : ''), role: 'menuitem', 'aria-disabled': disabled ? 'true' : null });
+      const row = h('div', { class: 'm-item' + (disabled ? ' dis' : '') + (checked ? ' chk' : '') + (it.sub ? ' has-sub' : '') + (it.bold ? ' bold' : ''), role: 'menuitem', 'aria-disabled': disabled ? 'true' : null, title: it.tip || null });
       const icoHTML = it.html ? it.html : it.icon ? L.icons.get(it.icon) : checked ? (it.radio ? '<span class="m-radio">●</span>' : '<span class="m-check">✓</span>') : '';
       row.appendChild(h('span', { class: 'm-ico' + (checked && it.icon ? ' on' : ''), html: icoHTML }));
-      row.appendChild(h('span', { class: 'm-lbl', html: ampHTML(it.label) }));
-      row.appendChild(h('span', { class: 'm-key', text: it.key || '' }));
+      /* it.raw: data shown as it is (a font's name in a font list, a file's in Recent Files), not UI text; its
+         access key, if any, is the label's own */
+      row.appendChild(h('span', { class: 'm-lbl', html: it.raw ? ampMark(it.label) : ampHTML(it.label), translate: it.raw ? 'no' : null }));
+      row.appendChild(h('span', { class: 'm-key', text: it.raw ? it.key || '' : keyText(it.key), translate: it.raw ? 'no' : null }));
       row.appendChild(h('span', { class: 'm-sub', html: it.sub ? '▶' : '' }));
       row._it = it;
-      const mn = /&(.)/.exec(it.label || '');
-      row._mn = mn ? mn[1].toLowerCase() : null;
+      row._mn = it.raw ? keyOf(it.label) : accessKey(it.label);
       row.addEventListener('pointerenter', () => { setActive(row); if (it.sub && !disabled) openSub(row); else ui.closeMenus(depth + 1); });
       row.addEventListener('click', (e) => { e.stopPropagation(); activate(row); });
       rows.push(row);
@@ -142,6 +171,7 @@
       ui.closeMenus();
       if (it.run) it.run();
       else if (it.cmd) ui.exec(it.cmd, it.arg);
+      if (!ui.dialogOpen() && keyboardLost()) ui.hooks.refocus();
     }
     el._keys = (e) => {
       const idx = rows.indexOf(active);
@@ -183,7 +213,20 @@
     }, true);
     window.addEventListener('blur', () => ui.closeMenus());
     window.addEventListener('resize', () => ui.closeMenus());
+    /* The keyboard stays with the document when chrome is pressed: a toolbar's, the ribbon's or a pane's background, a
+       grip, the status bar, a tab strip, a menu, the menu bar or a button outside a dialog. The browser would give it
+       to <body> or to what was pressed, and the arrows, Delete and typing would stop working on the document until it
+       is clicked. A control of its own (a box, a list, the document itself, anything in a dialog) still takes it. */
+    document.addEventListener('mousedown', (e) => {
+      const t = e.target;
+      if (!t || !t.closest || t.closest('.dlg')) return;
+      const f = t.closest('input, select, textarea, [contenteditable=""], [contenteditable="true"], a[href], label, [tabindex], button');
+      if (f && !f.matches('button, .menu, .mb-item')) return;
+      e.preventDefault();
+    }, true);
   }
+  /** after chrome that took the keyboard is done with it (a menu command, a dialog), the document gets it back */
+  const keyboardLost = () => !document.activeElement || document.activeElement === document.body || !document.activeElement.isConnected;
   ui.menuOpen = () => openStack.length > 0;
   /* menu keyboard routing; returns true if handled */
   ui.menuKey = (e) => {
@@ -226,7 +269,7 @@
     }
     bar.openByKey = (ch) => {
       if (ui.barKeys && ui.barKeys.active()) return ui.barKeys.byKey(ch);
-      const i = menus.findIndex((m) => /&(.)/.exec(m.label) && /&(.)/.exec(m.label)[1].toLowerCase() === ch.toLowerCase());
+      const i = menus.findIndex((m) => accessKey(m.label) === ch.toLowerCase());
       if (i >= 0) { open(i, true); return true; }
       return false;
     };
@@ -242,7 +285,7 @@
     opts = opts || {};
     const c = ui.cmds[id] || {};
     const label = opts.label != null ? opts.label : c.tbLabel;
-    const b = h('button', { class: 'tb-btn' + (label ? ' with-label' : ''), type: 'button', 'data-cmd': id, 'aria-label': stripAmp(c.label || id), 'data-tip': stripAmp(c.tip || c.label || id) + (c.key ? ` (${c.key})` : '') });
+    const b = h('button', { class: 'tb-btn' + (label ? ' with-label' : ''), type: 'button', 'data-cmd': id, 'aria-label': stripAmp(c.label || id), 'data-tip': stripAmp(c.tip || c.label || id) + (c.key ? ` (${keyText(c.key)})` : '') });
     b.innerHTML = (c.icon || opts.icon ? L.icons.get(opts.icon || c.icon) : '') + (label ? `<span class="tb-lbl">${ampHTML(label)}</span>` : '');
     b.addEventListener('pointerdown', (e) => e.preventDefault()); /* keep the focus and selection where they are */
     b.addEventListener('click', (e) => ui.exec(id, opts.arg, e));
@@ -272,11 +315,11 @@
   };
   /** editable combo box (font name / size / zoom); o.options() may include { heading } rows, { sep }, { value, label }
    * and { label, run } actions (the list reopens after the action);
-   * o.note(v): grey text beside an option in the list */
+   * o.note(v): grey text beside an option in the list, or { text, tip } with a tooltip for its row */
   ui.combo = function (o) {
     const wrap = h('div', { class: 'combo', style: `width:${o.width || 120}px`, 'data-tip': o.tip || '' });
     const inp = h('input', { type: 'text', class: 'combo-in', id: o.id, 'aria-label': o.tip || o.id, autocomplete: 'off', spellcheck: 'false' });
-    const btn = h('button', { class: 'combo-btn', type: 'button', tabindex: '-1', 'aria-label': '打开列ist', html: '<span class="dd-arrow"></span>' });
+    const btn = h('button', { class: 'combo-btn', type: 'button', tabindex: '-1', 'aria-label': '打开列表', html: '<span class="dd-arrow"></span>' });
     wrap.append(inp, btn);
     const commit = () => { o.onChange(inp.value); inp.blur(); };
     inp.addEventListener('keydown', (e) => {
@@ -296,11 +339,12 @@
         if (x && x.sep) return { sep: true };
         if (x && x.run) return { label: x.label, run: async () => { await x.run(); btn.click(); } };   // an action, then the list again
         const v = x && typeof x === 'object' ? x.value : x;
+        const note = o.note ? o.note(v) : '';
         return {
-          label: String(x && x.label || v).replace(/&/g, '&&'), value: v,
+          label: String(x && x.label || v).replace(/&/g, '&&'), value: v, raw: true,
           html: '', run: () => { inp.value = v; o.onChange(String(v)); ui.hooks.refocus(); },
           checked: () => String(v) === String(o.value()),
-          key: o.note ? o.note(v) : '',
+          key: note && typeof note === 'object' ? note.text : note, tip: note && note.tip,
         };
       }), { left: r.left, bottom: r.bottom }, { cls: 'combo-list' + (o.listCls ? ' ' + o.listCls : '') });
       if (o.preview) {
@@ -350,27 +394,30 @@
   const dlgStack = [];
   ui.dialogOpen = () => dlgStack.length > 0;
   /**
-   * opts: {title, body, width, buttons:[{label, primary, cancel, onClick(close)→false to keep open}], onClose, help}
+   * opts: {title, body, width, buttons:[{label, primary, cancel, onClick(close, button)→false to keep open}], onClose, help}
    */
   ui.dialog = function (opts) {
     ui.closeMenus();
     hideTip();
     const prevFocus = document.activeElement;
+    /* the selection in text being edited, for text the app doesn't give back itself (Lectern's speaker notes) */
+    const s0 = window.getSelection();
+    const prevRange = prevFocus && prevFocus.isContentEditable && s0.rangeCount && prevFocus.contains(s0.anchorNode) ? s0.getRangeAt(0).cloneRange() : null;
     const overlay = h('div', { class: 'dlg-overlay' });
     const dlg = h('div', { class: 'dlg', role: 'dialog', 'aria-modal': 'true', 'aria-label': opts.title });
     dlg.style.width = Math.min(opts.width || 380, window.innerWidth - 16) + 'px';
     const titleBar = h('div', { class: 'dlg-title' }, h('span', { class: 'dlg-ttl', text: opts.title }),
-      opts.help ? h('button', { class: 'dlg-x dlg-help', type: 'button', 'aria-label': 'Help', text: '?', onclick: opts.help }) : null,
-      h('button', { class: 'dlg-x', type: 'button', 'aria-label': 'Close', html: '<svg width="9" height="9" viewBox="0 0 9 9"><path d="M1 1l7 7M8 1L1 8" stroke="currentColor" stroke-width="1.5"/></svg>', onclick: () => close(null) }));
+      opts.help ? h('button', { class: 'dlg-x dlg-help', type: 'button', 'aria-label': '帮助', text: '?', onclick: opts.help }) : null,
+      h('button', { class: 'dlg-x', type: 'button', 'aria-label': '关闭', html: '<svg width="9" height="9" viewBox="0 0 9 9"><path d="M1 1l7 7M8 1L1 8" stroke="currentColor" stroke-width="1.5"/></svg>', onclick: () => close(null) }));
     const body = h('div', { class: 'dlg-body' });
     if (opts.body) body.appendChild(opts.body);
     const foot = h('div', { class: 'dlg-foot' });
     let result;
     const done = new Promise((res) => { result = res; });
-    const btns = (opts.buttons || [{ label: 'OK', primary: true }]).map((b, i) => {
+    const btns = (opts.buttons || [{ label: '确定', primary: true }]).map((b, i) => {
       const el = h('button', { class: 'btn' + (b.primary ? ' primary' : ''), type: 'button', html: ampHTML(b.label) });
       el.addEventListener('click', () => {
-        if (b.onClick) { const r = b.onClick(close); if (r === false) return; }
+        if (b.onClick) { const r = b.onClick(close, el); if (r === false) return; }
         close(i);
       });
       foot.appendChild(el);
@@ -399,9 +446,7 @@
       dlg.addEventListener('keydown', (e) => { entry.keys(e); e.stopPropagation(); });   // keys stay in a modeless dialog
     } else dlgStack.push(entry);
     entry.keys = (e) => {
-      /* Esc 找“取消”按钮。文案已中文化，所以除了 cancel/close 还要认 取消/关闭；
-         允许尾随的加速键后缀（如「关闭(O)」），但必须整串匹配 —— 否则「取消链接」也会被当成取消。 */
-      if (e.key === 'Escape') { e.preventDefault(); const ci = (opts.buttons || []).findIndex((b) => b.cancel || /^(cancel|close|取消|关闭)(\(&?[A-Za-z]\))?$/i.test(stripAmp(b.label))); if (ci >= 0) btns[ci].click(); else close(null); return true; }
+      if (e.key === 'Escape') { e.preventDefault(); const ci = (opts.buttons || []).findIndex((b) => b.cancel || /^(?:cancel|close|取消|关闭)(?:\(&?[A-Za-z]\))?$/i.test(plainAmp(b.label))); if (ci >= 0) btns[ci].click(); else close(null); return true; }
       if (e.key === 'Enter' && !e.shiftKey && !(e.target && (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.isContentEditable || e.target.tagName === 'SELECT'))) {
         const pi = (opts.buttons || []).findIndex((b) => b.primary);
         if (pi >= 0) { e.preventDefault(); btns[pi].click(); return true; }
@@ -421,8 +466,14 @@
       overlay.remove();
       if (opts.onClose) opts.onClose(i);
       result(i);
-      if (prevFocus && prevFocus.focus && document.contains(prevFocus)) { try { prevFocus.focus({ preventScroll: true }); } catch (e) { /* ignore */ } }
-      else ui.hooks.refocus();
+      /* the keyboard goes back to what had it: a box, a pane's list, the dialog under this one, the grid, text being
+         edited with the selection it had (the page's own moved into the dialog); the document's own text the app gives
+         back itself, with its selection (ui.hooks.ownsText); nothing (<body>, a menu gone) goes to the document */
+      const live = prevFocus && prevFocus.isConnected && prevFocus !== document.body;
+      if (live && !(prevFocus.isContentEditable && ui.hooks.ownsText(prevFocus))) {
+        try { prevFocus.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
+        if (prevRange && prevRange.startContainer.isConnected && prevRange.endContainer.isConnected) { const s = window.getSelection(); s.removeAllRanges(); s.addRange(prevRange); }
+      } else ui.hooks.refocus();
     }
     setTimeout(() => {
       const first = opts.focus ? (typeof opts.focus === 'string' ? L.$(opts.focus, dlg) : opts.focus) : L.$('input:not([type=checkbox]):not([type=radio]),select,textarea', body) || btns.find((b, i) => opts.buttons && opts.buttons[i] && opts.buttons[i].primary) || btns[0];
@@ -444,25 +495,26 @@
     };
     const body = h('div', { class: 'msgbox' }, h('div', { class: 'msg-ico', html: icons[o.icon || 'info'] }), h('div', { class: 'msg-text' }));
     const t = body.querySelector('.msg-text');
-    String(text).split('\n').forEach((line, i) => { if (i) t.appendChild(h('br')); t.appendChild(document.createTextNode(line)); });
+    String(L.t ? L.t(text) : text).split('\n').forEach((line, i) => { if (i) t.appendChild(h('br')); t.appendChild(document.createTextNode(line)); });
     const labels = o.buttons || ['OK'];
     tell('vo-message', { icon: o.icon || 'info' });
-    /* 与上游同义：No/否 也算“取消位”，因此 Esc 在「是/否/取消」上是“否”（放弃修改，不回退、不保存）。
-       中文文案下同样要认 否/取消，并允许加速键后缀。 */
-    const d = ui.dialog({ title: o.title || L.APP, body, width: o.width || 380, buttons: labels.map((l, i) => ({ label: l, primary: i === (o.def || 0), cancel: /cancel|^(no|否|取消)(\(&?[A-Za-z]\))?$/i.test(stripAmp(l)) })) });
+    const d = ui.dialog({ title: o.title || L.APP, body, width: o.width || 380, buttons: labels.map((l, i) => ({ label: l, primary: i === (o.def || 0), cancel: /^(?:cancel|no|取消|否)(?:\(&?[A-Za-z]\))?$/i.test(plainAmp(l)) })) });
     return d.done;
   };
-  /** Help ▸ About, the same in every app: icon, name and version, the app's own paragraphs, the suite's license
-   *  note, then the trademark note naming the Office program it follows (o: { name, text: [paragraphs], office }).
+  /** Help ▸ About, the same in every app: icon, name and version, the app's own paragraphs, the link to the open
+   *  source licenses, the suite's license and font notes (as in the Start Center's About), then the trademark note
+   *  naming the Office program it follows (o: { name, text: [paragraphs], office })
    *  Embedded copy (tools-box): the "Open source licenses" link is gone with oss-licenses.html. */
   ui.about = function (o) {
     const body = h('div', { class: 'col about' },
       h('div', { class: 'about-head' }, h('span', { html: L.icons.app ? L.icons.app(48) : '' }),
-        h('div', null, h('div', { class: 'about-name', text: o.name + ' 2003 Web Edition' }), h('div', { text: 'Version ' + L.VERSION }))),
+        h('div', null, h('div', { class: 'about-name', text: t('{0} 网络版', o.name) }), h('div', { text: t('版本 {0}', L.VERSION) }))),
       ...o.text.map((t) => h('p', { text: t })),
-      h('p', { text: 'Open source under the Apache License 2.0, provided as is, without warranty. Office 2003 is an independent project. Product names in its documentation are trademarks of their owners; Office 2003 is not affiliated with them.' }),
-      h('p', { class: 'about-marks', text: `Microsoft, ${o.office} and Office are trademarks of Microsoft Corporation. ${o.name} is an independent work and is not affiliated with Microsoft.` }));
-    return ui.dialog({ title: '关于 ' + o.name, width: 420, body, buttons: [{ label: '确定', primary: true }] });
+      /* Embedded copy (tools-box): the "Open source licenses" link is gone with oss-licenses.html. */
+      h('p', { text: '本项目以 Apache License 2.0 开源许可发布，按原样提供，不作任何担保。Office 2003 是独立项目。文档中提及的产品名称为各自所有者的商标；Office 2003 与其没有关联。' }),
+      h('p', { class: 'about-marks', text: '字体名称仅用于标识文档中指定的字体，并与 Office Open XML 文件及其创建程序保持互操作性；此类名称可能是各自所有者的商标。Office 2003 使用您计算机上已安装的字体来显示文字。若文档指定的字体未安装，Office 2003 会用自带的开源字体或您计算机上的其他字体代替，因此文档的显示效果可能与其他程序不同。Office 2003 不包含也不分发任何商业字体软件。' }),
+      h('p', { class: 'about-marks', text: t('Microsoft、{0} 和 Office 是 Microsoft Corporation 的商标。{1} 是独立作品，与 Microsoft 没有关联。', o.office, o.name) }));
+    return ui.dialog({ title: t('关于 {0}', o.name), width: 420, body, buttons: [{ label: '确定', primary: true }] });
   };
   ui.prompt = function (label, value, title) {
     const inp = h('input', { type: 'text', id: 'prompt-in', value: value || '', style: 'width:100%' });
@@ -486,20 +538,20 @@
     }
     const list = h('ul', { style: 'max-height:240px;overflow:auto;margin:8px 0;padding-left:22px' });
     for (const [what, places] of groups) list.appendChild(h('li', { style: 'margin-bottom:8px' },
-      h('div', { text: what }), places.length ? h('div', { class: 'hint', text: places.length > 4 ? places.slice(0, 4).join(', ') + ' and ' + (places.length - 4) + ' more' : places.join(', ') }) : null));
+      h('div', { text: what }), places.length ? h('div', { class: 'hint', text: places.length > 4 ? t('{0} 及其他 {1} 项', places.slice(0, 4).join(', '), places.length - 4) : places.join(', ') }) : null));
     const body = h('div', { class: 'col' },
-      h('div', { text: 'Some of this file can\'t be saved exactly as it was:' }), list,
-      h('div', { text: 'Click Continue to save anyway, or Cancel to go back to your document without saving.' }));
+      h('div', { text: '此文件的部分内容无法原样保存：' }), list,
+      h('div', { text: '单击“继续”仍然保存，或单击“取消”返回文档而不保存。' }));
     const result = await ui.dialog({ title: '兼容性检查器', width: 540, body,
       buttons: [{ label: '继续(&C)', primary: true }, { label: '取消', cancel: true }] }).done;
     return result === 0 ? pending : null;
   };
 
-  /** the "Password" box for opening a protected file; resolves to the password or null. wrong: after a wrong one */
+  /** the "密码" box for opening a protected file; resolves to the password or null. wrong: after a wrong one */
   ui.password = function (fileName, wrong) {
     const inp = h('input', { type: 'password', id: 'pw-in', value: '', style: 'width:100%', autocomplete: 'off' });
     let val = null;
-    const d = ui.dialog({ title: '密码', width: 340, body: h('div', { class: 'col' }, h('div', { text: wrong ? 'The password is incorrect. Try again.' : `'${fileName}' is protected.` }), h('label', { for: 'pw-in', text: 'Enter password to open file' }), inp), buttons: [{ label: '确定', primary: true, onClick: () => { val = inp.value; } }, { label: '取消' }] });
+    const d = ui.dialog({ title: '密码', width: 340, body: h('div', { class: 'col' }, h('div', { text: wrong ? '密码不正确。请重试。' : t('“{0}”已受保护。', fileName) }), h('label', { for: 'pw-in', text: '输入密码以打开文件' }), inp), buttons: [{ label: '确定', primary: true, onClick: () => { val = inp.value; } }, { label: '取消' }] });
     setTimeout(() => inp.focus(), 0);
     return d.done.then(() => val);
   };
@@ -525,11 +577,13 @@
     wrap.input = inp;
     return wrap;
   };
+  /** options: [value, label] pairs, whose labels are UI text, or plain values shown as they are (font names, sizes);
+      o.translate: 'no' shows every label as it is */
   ui.select = (options, value, onChange, o) => {
     const sel = h('select', Object.assign({ id: (o && o.id) || 'sel' + (++ctlId) }, o || {}));
     for (const op of options) {
       const [v, l] = Array.isArray(op) ? op : [op, op];
-      const opt = h('option', { value: v, text: l });
+      const opt = h('option', { value: v, text: l, translate: !Array.isArray(op) || (o && o.translate === 'no') ? 'no' : null });
       if (String(v) === String(value)) opt.selected = true;
       sel.appendChild(opt);
     }
@@ -543,8 +597,8 @@
     const inp = h('input', { type: 'text', id, class: 'spin-in', value: fmt(o.value), inputmode: 'decimal', autocomplete: 'off' });
     const parse = () => { const v = parseFloat(String(inp.value).replace(/[^0-9.\-]/g, '')); return isNaN(v) ? o.value : v; };
     const set = (v) => { v = L.clamp(v, o.min == null ? -1e9 : o.min, o.max == null ? 1e9 : o.max); o.value = v; inp.value = fmt(v); if (o.onChange) o.onChange(v); };
-    const up = h('button', { type: 'button', class: 'spin-b up', tabindex: '-1', 'aria-label': 'Increase', html: '<span></span>' });
-    const dn = h('button', { type: 'button', class: 'spin-b dn', tabindex: '-1', 'aria-label': 'Decrease', html: '<span></span>' });
+    const up = h('button', { type: 'button', class: 'spin-b up', tabindex: '-1', 'aria-label': '增加', html: '<span></span>' });
+    const dn = h('button', { type: 'button', class: 'spin-b dn', tabindex: '-1', 'aria-label': '减少', html: '<span></span>' });
     up.addEventListener('click', () => set(L.round(parse() + (o.step || 1), 4)));
     dn.addEventListener('click', () => set(L.round(parse() - (o.step || 1), 4)));
     inp.addEventListener('change', () => set(parse()));
@@ -581,11 +635,20 @@
   ui.group = (title, ...kids) => h('fieldset', { class: 'grp' }, h('legend', { html: ampHTML(title) }), ...kids);
   /** Tools ▸ Options ▸ General ▸ Theme: the suite's look (common/looks.css). { el, apply() }; apply on OK
    *  changes every open window of the suite. null outside the suite (no common/suite.js). */
+  /** the suite's own choice for Tools ▸ Options: the look (Theme) */
   ui.lookField = () => {
     if (!window.VO || !VO.look) return null;
     let pick = VO.look.get();
     const sel = ui.select(VO.look.list().map((l) => [l.id, l.name]), pick, (v) => { pick = v; }, { id: 'op-look' });
-    return { el: ui.field('Theme:', sel), apply: () => { if (pick !== VO.look.get()) VO.look.set(pick); } };
+    const el = h('div', { class: 'col' }, ui.field('主题：', sel));
+    /* Embedded copy (tools-box): no language choice — the suite is Chinese only */
+    return {
+      el,
+      apply: () => {
+        if (pick !== VO.look.get()) VO.look.set(pick);
+        /* Embedded copy (tools-box): nothing to do about a language */
+      },
+    };
   };
 
   /* ---------- colour pickers ---------- */
@@ -603,8 +666,8 @@
     const r = anchor.getBoundingClientRect ? anchor.getBoundingClientRect() : anchor;
     const panel = (close) => {
       const el = h('div', { class: 'color-panel' });
-      if (o.mode === 'fill' || o.mode === 'line') el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: o.mode === 'fill' ? 'No Fill' : 'No Line', onclick: () => { close(); onPick({ none: true }); } }));
-      if (o.mode === 'font' || o.automatic) el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: 'Automatic', onclick: () => { close(); onPick({ auto: true }); } }));
+      if (o.mode === 'fill' || o.mode === 'line') el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: o.mode === 'fill' ? '无填充颜色' : '无线条', onclick: () => { close(); onPick({ none: true }); } }));
+      if (o.mode === 'font' || o.automatic) el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: '自动', onclick: () => { close(); onPick({ auto: true }); } }));
       el.appendChild(h('div', { class: 'cp-sep' }));
       if (scheme && ui.schemeColors) {
         const row = h('div', { class: 'cp-row' });
@@ -628,14 +691,16 @@
         el.appendChild(g);
       }
       el.appendChild(h('div', { class: 'cp-sep' }));
-      el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: o.mode === 'fill' ? 'More Fill Colors...' : o.mode === 'line' ? 'More Line Colors...' : 'More Colors...', onclick: () => { close(); ui.moreColors(null, (c) => { if (c) { ui.addRecentColor(c); onPick(c); } }); } }));
-      if (o.effects) el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: o.mode === 'line' ? 'Patterned Lines...' : 'Fill Effects...', onclick: () => { close(); onPick({ effects: true }); } }));
+      el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: o.mode === 'fill' ? '其他填充颜色...' : o.mode === 'line' ? '其他线条颜色...' : '其他颜色...', onclick: () => { close(); ui.moreColors(null, (c) => { if (c) { ui.addRecentColor(c); onPick(c); } }); } }));
+      if (o.effects) el.appendChild(h('button', { class: 'cp-wide', type: 'button', text: o.mode === 'line' ? '图案线条...' : '填充效果...', onclick: () => { close(); onPick({ effects: true }); } }));
       return el;
     };
     ui.openMenu([{ custom: panel }], { left: r.left, bottom: r.bottom }, { cls: 'color-menu' });
   };
-  const CNAMES = { '#000000': 'Black', '#993300': 'Brown', '#333300': 'Olive Green', '#003300': 'Dark Green', '#003366': 'Dark Teal', '#000080': 'Dark Blue', '#333399': 'Indigo', '#333333': 'Gray-80%', '#800000': 'Dark Red', '#FF6600': 'Orange', '#808000': 'Dark Yellow', '#008000': 'Green', '#008080': 'Teal', '#0000FF': 'Blue', '#666699': 'Blue-Gray', '#808080': 'Gray-50%', '#FF0000': 'Red', '#FF9900': 'Light Orange', '#99CC00': 'Lime', '#339966': 'Sea Green', '#33CCCC': 'Aqua', '#3366FF': 'Light Blue', '#800080': 'Violet', '#969696': 'Gray-40%', '#FF00FF': 'Pink', '#FFCC00': 'Gold', '#FFFF00': 'Yellow', '#00FF00': 'Bright Green', '#00FFFF': 'Turquoise', '#00CCFF': 'Sky Blue', '#993366': 'Plum', '#C0C0C0': 'Gray-25%', '#FF99CC': 'Rose', '#FFCC99': 'Tan', '#FFFF99': 'Light Yellow', '#CCFFCC': 'Light Green', '#CCFFFF': 'Light Turquoise', '#99CCFF': 'Pale Blue', '#CC99FF': 'Lavender', '#FFFFFF': 'White' };
-  ui.colorName = (c) => CNAMES[String(c).toUpperCase()] || String(c).toUpperCase();
+  /* the colour names Office shows, in the UI's language where they are shown */
+  const N = (x) => x;
+  const CNAMES = { '#000000': N('黑色'), '#993300': N('棕色'), '#333300': N('橄榄绿'), '#003300': N('深绿色'), '#003366': N('深青色'), '#000080': N('深蓝色'), '#333399': N('靛蓝色'), '#333333': N('灰色-80%'), '#800000': N('深红色'), '#FF6600': N('橙色'), '#808000': N('深黄色'), '#008000': N('绿色'), '#008080': N('青色'), '#0000FF': N('蓝色'), '#666699': N('蓝灰色'), '#808080': N('灰色-50%'), '#FF0000': N('红色'), '#FF9900': N('浅橙色'), '#99CC00': N('青柠色'), '#339966': N('海绿色'), '#33CCCC': N('水绿色'), '#3366FF': N('浅蓝色'), '#800080': N('紫罗兰色'), '#969696': N('灰色-40%'), '#FF00FF': N('粉红色'), '#FFCC00': N('金色'), '#FFFF00': N('黄色'), '#00FF00': N('鲜绿色'), '#00FFFF': N('青绿色'), '#00CCFF': N('天蓝色'), '#993366': N('梅红色'), '#C0C0C0': N('灰色-25%'), '#FF99CC': N('玫瑰色'), '#FFCC99': N('茶色'), '#FFFF99': N('浅黄色'), '#CCFFCC': N('浅绿色'), '#CCFFFF': N('浅青绿色'), '#99CCFF': N('淡蓝色'), '#CC99FF': N('淡紫色'), '#FFFFFF': N('白色') };
+  ui.colorName = (c) => t(CNAMES[String(c).toUpperCase()]) || String(c).toUpperCase();
   /** "Colors" dialog with Standard and Custom tabs. cb(hex|null) */
   ui.moreColors = function (initial, cb) {
     let cur = initial && initial[0] === '#' ? initial : '#3366FF';
@@ -668,10 +733,10 @@
     hex.addEventListener('change', () => { if (/^#?[0-9a-f]{6}$/i.test(hex.value)) set(hex.value[0] === '#' ? hex.value : '#' + hex.value); });
     function upd() { cur = L.color.rgbToHex(R.get(), Gs.get(), Bs.get()); prevNew.style.background = cur; hex.value = cur; nat.value = cur.toLowerCase(); }
     const custom = h('div', { class: 'cc-custom' },
-      h('div', { class: 'field' }, h('label', { for: 'cc-native', text: 'Pick:' }), nat),
-      ui.field('&Red:', R), ui.field('&Green:', Gs), ui.field('&Blue:', Bs), ui.field('He&x:', hex));
-    const tabs = ui.tabs([{ label: 'Standard', body: h('div', null, h('div', { class: 'cc-cap', text: 'Colors:' }), std, grays) }, { label: 'Custom', body: custom }]);
-    const side = h('div', { class: 'cc-side' }, h('div', { class: 'cc-cap', text: 'New' }), prevNew, prevOld, h('div', { class: 'cc-cap', text: 'Current' }));
+      h('div', { class: 'field' }, h('label', { for: 'cc-native', text: '选择：' }), nat),
+      ui.field('红色(&R)：', R), ui.field('绿色(&G)：', Gs), ui.field('蓝色(&B)：', Bs), ui.field('十六进制(&x)：', hex));
+    const tabs = ui.tabs([{ label: '常用', body: h('div', null, h('div', { class: 'cc-cap', text: '颜色：' }), std, grays) }, { label: '自定义', body: custom }]);
+    const side = h('div', { class: 'cc-side' }, h('div', { class: 'cc-cap', text: '新颜色' }), prevNew, prevOld, h('div', { class: 'cc-cap', text: '当前' }));
     set(cur);
     let ok = false;
     ui.dialog({ title: '颜色', body: h('div', { class: 'cc-wrap' }, tabs, side), width: 440, buttons: [{ label: '确定', primary: true, onClick: () => { ok = true; } }, { label: '取消' }] })
@@ -739,12 +804,106 @@
     liveBrush.stop();
   }, true);
 
+  /* ---------- drags ---------- */
+  /* A drag is what a press with the primary button starts and its release ends: moving a shape, a ruler marker or a
+   * cell range, drawing a shape. One at a time, the same in every app (LibreOffice's vcl tracking does the same):
+   *   ui.drag(e, { move(ev, d), up(ev, d), cancel(d), threshold = 4, capture })
+   * on the press event e (a pointerdown, or a mousedown: no pointer capture then, the window listeners follow) returns
+   * the drag d ({ x0, y0, x, y, dx, dy, moved, data: {} for the app }); null for a press of another button.
+   * - move runs only once the pointer is `threshold` px from the press (Windows' drag rectangle), so a click that
+   *   never moved changes nothing: up gets d.moved false.
+   * - up runs on the release of the primary button. The pointer is held by `capture` (by default e.target; false: not
+   *   held, the window listeners follow), so the click and dblclick that follow go to that element; if it is drawn
+   *   again in the middle of the drag, the drag goes on. Don't hold it on a CSS-scaled ancestor of text the browser
+   *   selects: its selection then stops short of the pointer.
+   * - cancel(d, why) runs instead, and nothing may commit (the app puts back what it moved), on: Esc ('esc', which
+   *   goes no further), a second button ('button', its context menu doesn't open), a move that reports the button no
+   *   longer held ('lost': it was let go where the page couldn't see), a lost capture or pointercancel ('lost'), the
+   *   window losing focus or the page hidden ('blur'), Ctrl+Z or Ctrl+Y ('undo': the drag is what gets undone), a new
+   *   drag ('new'), ui.dragCancel() ('api': a tool or view switch). A tool stays armed unless why is 'esc'; Esc also
+   *   puts a brush down (ui.brush). Other keys go nowhere while the button is held, except the modifiers.
+   * - While it moves, the cursor shown at the press stays wherever the pointer goes (`cursor` sets another one;
+   *   false: none is held).
+   * A text selection is the browser's own drag; an app may watch it with { capture: false, cursor: false } (Quire
+   * does, so its release, or how it ended otherwise, is known the same way). */
+  let liveDrag = null, swallow = null, cursorStyle = null;
+  /** the events of the button that cancelled a drag go no further: its press, release, auxclick and context menu */
+  const swallowButton = (button) => { swallow = { button, until: Date.now() + 1500, seen: new Set() }; };
+  const holdCursor = (c) => {
+    if (!cursorStyle) { cursorStyle = document.createElement('style'); document.head.appendChild(cursorStyle); }
+    cursorStyle.textContent = c ? `*, *::before, *::after { cursor: ${c} !important; }` : '';
+  };
+  ui.drag = function (e, o) {
+    if (e.button != null && e.button !== 0) return null;
+    if (liveDrag) liveDrag.end(false, null, 'new');
+    const d = { x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, dx: 0, dy: 0, moved: false, data: {} };
+    const id = e.pointerId, threshold = o.threshold == null ? 4 : o.threshold;
+    const cap = o.capture === false ? null : o.capture || e.target;
+    let cursor = o.cursor || null;
+    if (!cursor && o.cursor !== false) { try { const c = getComputedStyle(e.target).cursor; if (c && c !== 'auto') cursor = c; } catch (err) { /* no cursor kept */ } }
+    try { if (cap && id != null && cap.setPointerCapture) cap.setPointerCapture(id); } catch (err) { /* window listeners still follow */ }
+    const on = (t, type, fn, capture) => { t.addEventListener(type, fn, capture); return () => t.removeEventListener(type, fn, capture); };
+    const second = (button) => { swallowButton(button); end(false, null, 'button'); };
+    const offs = [
+      on(window, 'pointermove', (ev) => {
+        if (id != null && ev.pointerId !== id) return;
+        if (ev.buttons & 6) { second(ev.buttons & 2 ? 2 : 1); return; }
+        if (!(ev.buttons & 1)) { end(false, null, 'lost'); return; }
+        d.x = ev.clientX; d.y = ev.clientY; d.dx = d.x - d.x0; d.dy = d.y - d.y0;
+        if (!d.moved && Math.hypot(d.dx, d.dy) < threshold) return;
+        if (!d.moved && cursor) holdCursor(cursor);
+        d.moved = true;
+        if (o.move) o.move(ev, d);
+      }, true),
+      on(window, 'pointerup', (ev) => { if ((id == null || ev.pointerId === id) && ev.button === 0) end(true, ev); }, true),
+      on(window, 'keydown', (ev) => {
+        /* the modifiers shape the drag (Shift constrains it, Ctrl copies, Alt doesn't snap) */
+        if (/^(Shift|Control|Alt|Meta|AltGraph|CapsLock)$/.test(ev.key)) return;
+        ev.preventDefault(); ev.stopImmediatePropagation();
+        /* Ctrl+Z (or Y) in the middle of a drag undoes the drag, not what came before it */
+        if ((ev.ctrlKey || ev.metaKey) && /^[zy]$/i.test(ev.key)) { end(false, null, 'undo'); return; }
+        if (ev.key === 'Escape') { end(false, null, 'esc'); if (liveBrush) liveBrush.stop(); }
+        /* any other key waits for the release: an edit in the middle of a drag would come between its start and the
+           step it records */
+      }, true),
+      on(window, 'pointercancel', () => end(false, null, 'lost'), true),
+      on(window, 'blur', () => end(false, null, 'blur')),
+      on(document, 'visibilitychange', () => { if (document.hidden) end(false, null, 'blur'); }),
+    ];
+    if (cap) offs.push(on(cap, 'lostpointercapture', () => { if (cap.isConnected) end(false, null, 'lost'); }));
+    function end(ok, ev, why) {
+      if (liveDrag !== live) return;
+      liveDrag = null;
+      offs.forEach((off) => off());
+      if (cursorStyle) holdCursor(null);
+      try { if (cap && id != null && cap.hasPointerCapture && cap.hasPointerCapture(id)) cap.releasePointerCapture(id); } catch (err) { /* ignore */ }
+      if (ok) { if (o.up) o.up(ev, d); } else if (o.cancel) o.cancel(d, why);
+    }
+    const live = { end, d };
+    liveDrag = live;
+    return d;
+  };
+  ui.dragging = () => !!liveDrag;
+  ui.dragCancel = () => { if (liveDrag) liveDrag.end(false, null, 'api'); };
+  /* a second button cancels the drag; its own events then go no further (the pointer events report it as a move,
+     before the mouse events come): its press, its release, and its auxclick or context menu, whichever ends that
+     click, in whatever order the system sends them (or for 1.5 s at most) */
+  if (typeof window !== 'undefined') for (const type of ['mousedown', 'mouseup', 'auxclick', 'contextmenu']) window.addEventListener(type, (e) => {
+    if (e.button === 0) return;
+    if (liveDrag) { swallowButton(e.button); liveDrag.end(false, null, 'button'); }
+    if (!swallow || e.button !== swallow.button) return;
+    if (Date.now() > swallow.until) { swallow = null; return; }
+    e.preventDefault(); e.stopImmediatePropagation();
+    swallow.seen.add(type);
+    if (swallow.seen.has('mouseup') && swallow.seen.has(swallow.button === 2 ? 'contextmenu' : 'auxclick')) swallow = null;
+  }, true);
+
   /* ---------- status bar & misc ---------- */
   /** a short notice at the bottom; action: { label, run } adds a button to it (e.g. Browse) */
   ui.toast = (text, ms, action) => {
     let t = L.$('.toast');
     if (!t) { t = h('div', { class: 'toast', role: 'status' }); document.body.appendChild(t); }
-    t.textContent = text;
+    t.textContent = L.t ? L.t(text) : text;
     if (action) t.append(' ', h('button', { class: 'toast-act', type: 'button', text: action.label, onclick: () => { t.hidden = true; action.run(); } }));
     t.hidden = false;
     clearTimeout(t._t);
@@ -752,8 +911,8 @@
   };
   ui.busy = (on, text) => {
     let b = L.$('.busy');
-    if (!!on !== !!(b && !b.hidden)) tell('vo-busy', { on: !!on, text: on ? text || 'Working...' : '' });
-    if (on) { if (!b) { b = h('div', { class: 'busy' }, h('div', { class: 'busy-box' }, h('span', { class: 'busy-spin' }), h('span', { class: 'busy-t' }))); document.body.appendChild(b); } b.querySelector('.busy-t').textContent = text || 'Working...'; b.hidden = false; }
+    if (!!on !== !!(b && !b.hidden)) tell('vo-busy', { on: !!on, text: on ? text || '正在处理...' : '' });
+    if (on) { if (!b) { b = h('div', { class: 'busy' }, h('div', { class: 'busy-box' }, h('span', { class: 'busy-spin' }), h('span', { class: 'busy-t' }))); document.body.appendChild(b); } b.querySelector('.busy-t').textContent = t(text || '正在处理...'); b.hidden = false; }
     else if (b) b.hidden = true;
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -15,7 +15,7 @@
     LP.tabs = h('div', { class: 'lp-tabs', role: 'tablist' });
     LP.tabOutline = h('div', { class: 'lp-tab', role: 'tab', tabindex: '0', text: '大纲' });
     LP.tabSlides = h('div', { class: 'lp-tab', role: 'tab', tabindex: '0', text: '幻灯片' });
-    const close = h('button', { class: 'lp-close', type: 'button', 'aria-label': 'Close pane', html: L.icons.get('close', 12) });
+    const close = h('button', { class: 'lp-close', type: 'button', 'aria-label': '关闭窗格', html: L.icons.get('close', 12) });
     close.addEventListener('click', () => L.app.toggleLeft(false));
     LP.tabs.append(LP.tabOutline, LP.tabSlides, close);
     LP.body = h('div', { class: 'lp-body', tabindex: '-1' });
@@ -44,23 +44,30 @@
   function thumbWidth() { return Math.max(60, (LP.body.clientWidth || 190) - 48); }
   function renderThumbs() {
     const pres = L.pres;
-    const box = h('div', { class: 'thumbs', role: 'listbox', 'aria-label': 'Slides' });
+    const box = h('div', { class: 'thumbs', role: 'listbox', 'aria-label': '幻灯片' });
     const w = thumbWidth();
     pres.slides.forEach((s, i) => box.appendChild(thumbItem(s, i, w)));
-    L.clear(LP.body).appendChild(box);
+    keepFocus(() => L.clear(LP.body).appendChild(box));
     LP.list = box;
     scrollCur();
+  }
+  /** the pane drawn again (a slide deleted, moved, added) keeps the keyboard when it had it: the focused thumbnail
+      goes with the old list, and the next Delete or arrow must still work on slides (P4) */
+  function keepFocus(fn) {
+    const had = LP.body.contains(document.activeElement) || (L.app && L.app.focusArea === 'slides');
+    fn();
+    if (had && !LP.body.contains(document.activeElement)) { try { LP.body.focus({ preventScroll: true }); } catch (e) { /* ignore */ } L.app.focusArea = 'slides'; }
   }
   function thumbItem(s, i, w) {
     const sel = L.app.slideSel;
     const it = h('div', { class: 'th' + (i === E().idx ? ' cur' : '') + (sel.has(i) ? ' sel' : '') + (s.hidden ? ' hiddenslide' : ''), 'data-i': i, role: 'option', 'aria-selected': String(i === E().idx) });
     const meta = h('div', { class: 'th-meta' }, h('span', { class: 'th-num', text: String(i + (L.pres.firstNum || 1)) }));
     if ((s.trans && s.trans.type && s.trans.type !== 'none') || (s.anims && s.anims.length)) {
-      const star = h('span', { class: 'th-star', 'data-tip': 'Play animations', html: '<svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 .8l1.5 3.2 3.4.4-2.5 2.3.7 3.4L6 8.4 2.9 10.1l.7-3.4L1.1 4.4l3.4-.4z" fill="none" stroke="#333"/></svg>' });
-      star.addEventListener('click', (e) => { e.stopPropagation(); const fr = it.querySelector('.th-frame'); L.show.previewTransition(fr, L.pres, s, L.pres.slides[i - 1]); });
+      const star = h('span', { class: 'th-star', 'data-tip': '播放动画', html: '<svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 .8l1.5 3.2 3.4.4-2.5 2.3.7 3.4L6 8.4 2.9 10.1l.7-3.4L1.1 4.4l3.4-.4z" fill="none" stroke="#333"/></svg>' });
+      star.addEventListener('click', (e) => { e.stopPropagation(); const fr = (e.currentTarget.closest('.th') || it).querySelector('.th-frame');   /* the thumbnail shown: refreshThumb moves the star into it */ L.show.previewTransition(fr, L.pres, s, L.pres.slides[i - 1]); });
       meta.appendChild(star);
     }
-    const frame = h('button', { class: 'th-frame', type: 'button', 'aria-label': `Slide ${i + 1}` });
+    const frame = h('button', { class: 'th-frame', type: 'button', 'aria-label': L.t('幻灯片 {0}', i + 1) });
     frame.appendChild(L.render.thumb(L.pres, s, w, { index: i }));
     it.append(meta, frame);
     it.addEventListener('pointerdown', (e) => onThumbDown(e, i));
@@ -77,7 +84,11 @@
     const s = L.pres.slides[i];
     const old = LP.list.querySelector(`.th[data-i="${i}"]`);
     if (!s || !old) { renderThumbs(); return; }
-    old.replaceWith(thumbItem(s, i, thumbWidth()));
+    /* in place: the thumbnail's elements stay, so a press on it in the meantime still gets its click (P4) */
+    const fresh = thumbItem(s, i, thumbWidth());
+    old.className = fresh.className;
+    old.querySelector('.th-meta').replaceWith(fresh.querySelector('.th-meta'));
+    old.querySelector('.th-frame').replaceChildren(...fresh.querySelector('.th-frame').childNodes);
   };
   LP.markCurrent = function () {
     if (!LP.list) return;
@@ -86,6 +97,8 @@
   };
   function onThumbDown(e, i) {
     if (e.button !== 0) return;
+    /* the Slides pane takes the keyboard: text editing on the slide ends, even on the current slide's thumbnail (P3) */
+    if (E().editing()) L.te.end();
     LP.body.focus({ preventScroll: true });
     L.app.focusArea = 'slides';
     const sel = L.app.slideSel;
@@ -94,14 +107,15 @@
     if (!sel.has(i)) L.app.slideSel = new Set([i]);
     if (E().idx !== i || L.app.view !== 'normal') E().goto(i);
     LP.markCurrent();
-    /* drag to reorder */
-    const y0 = e.clientY;
+    /* drag to reorder (common/ui.js ui.drag: Esc, a second button or a release the page never saw cancel it) */
     let line = null, target = null;
     const mv = (ev) => {
-      if (!line && Math.abs(ev.clientY - y0) < 6) return;
       if (!line) { line = h('div', { class: 'drop-line' }); LP.body.appendChild(line); }
       const items = L.$$('.th', LP.list);
       const br = LP.body.getBoundingClientRect();
+      /* let go outside the pane (over the slide), the slides stay where they are */
+      if (ev.clientX < br.left || ev.clientX > br.right) { line.style.display = 'none'; target = null; return; }
+      line.style.display = '';
       target = items.length;
       for (let k = 0; k < items.length; k++) { const r = items[k].getBoundingClientRect(); if (ev.clientY < r.top + r.height / 2) { target = k; break; } }
       const ref = items[target] || items[items.length - 1];
@@ -109,11 +123,12 @@
       line.style.top = (target < items.length ? rr.top - 5 : rr.bottom + 4) - br.top + LP.body.scrollTop + 'px';
       if (ev.clientY < br.top + 20) LP.body.scrollTop -= 8; else if (ev.clientY > br.bottom - 20) LP.body.scrollTop += 8;
     };
-    const up = () => {
-      window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up);
-      if (line) { line.remove(); if (target != null) L.app.moveSlides(Array.from(L.app.slideSel).sort((a, b) => a - b), target); }
-    };
-    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up);
+    L.ui.drag(e, {
+      threshold: 6,
+      move: mv,
+      up() { if (line) { line.remove(); if (target != null) L.app.moveSlides(Array.from(L.app.slideSel).sort((a, b) => a - b), target); } },
+      cancel() { if (line) line.remove(); },
+    });
   }
   function renderMasterThumbs() {
     const box = h('div', { class: 'thumbs' });
@@ -122,7 +137,7 @@
     kinds.forEach(([k, label], i) => {
       E().masterKind = E().masterKind === 'title' && !d.titleDeco ? 'slide' : E().masterKind;
       const it = h('div', { class: 'th' + (E().masterKind === k ? ' cur' : '') });
-      const frame = h('button', { class: 'th-frame', type: 'button', 'aria-label': label, 'data-tip': `${d.name} ${label}` });
+      const frame = h('button', { class: 'th-frame', type: 'button', 'aria-label': label, 'data-tip': L.t(k === 'title' ? '{0} 标题母版' : '{0} 幻灯片母版', M.designName(d)) });
       const saveKind = E().masterKind;
       E().masterKind = k; E().buildMaster();
       frame.appendChild(L.render.thumb(L.pres, E().masterSlide, thumbWidth(), { prompts: false }));
@@ -138,7 +153,7 @@
   /* --- outline --- */
   let olDirty = false, olHistPushed = false;
   function renderOutline() {
-    const ol = h('div', { class: 'outline' + (L.app.opts.outlinePlain ? ' plain' : ''), contenteditable: 'true', spellcheck: String(!!L.app.opts.spell), role: 'textbox', 'aria-multiline': 'true', 'aria-label': 'Outline' });
+    const ol = h('div', { class: 'outline' + (L.app.opts.outlinePlain ? ' plain' : ''), contenteditable: 'true', spellcheck: String(!!L.app.opts.spell), role: 'textbox', 'aria-multiline': 'true', 'aria-label': '大纲' });
     L.pres.slides.forEach((s, i) => {
       const title = s.shapes.find((x) => x.ph && (x.ph.type === 'title' || x.ph.type === 'ctrTitle'));
       const row = h('div', { class: 'ol-row title', 'data-slide': s.id });
@@ -156,7 +171,7 @@
       void i;
     });
     ol.addEventListener('keydown', onOutlineKey);
-    ol.addEventListener('input', () => { if (!olHistPushed) { L.hist.push('Outline Edit'); olHistPushed = true; } olDirty = true; commitSoon(); });
+    ol.addEventListener('input', () => { if (!olHistPushed) { L.hist.push('编辑大纲'); olHistPushed = true; } olDirty = true; commitSoon(); });
     ol.addEventListener('paste', (e) => { e.preventDefault(); const t = (e.clipboardData && e.clipboardData.getData('text/plain')) || ''; document.execCommand('insertText', false, t.replace(/\r?\n/g, ' ')); });
     ol.addEventListener('focusout', () => LP.commitOutline());
     ol.addEventListener('keyup', syncOutlineSlide);
@@ -198,7 +213,7 @@
     if (!row) return;
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (!olHistPushed) { L.hist.push('Outline Edit'); olHistPushed = true; }
+      if (!olHistPushed) { L.hist.push('编辑大纲'); olHistPushed = true; }
       const s = window.getSelection();
       const r = s.getRangeAt(0);
       r.deleteContents();
@@ -219,7 +234,7 @@
     if (e.key === 'Tab' || (e.altKey && e.shiftKey && (e.key === 'ArrowRight' || e.key === 'ArrowLeft'))) {
       e.preventDefault();
       const demote = e.key === 'Tab' ? !e.shiftKey : e.key === 'ArrowRight';
-      if (!olHistPushed) { L.hist.push('Outline Edit'); olHistPushed = true; }
+      if (!olHistPushed) { L.hist.push('编辑大纲'); olHistPushed = true; }
       if (demote) { if (row.classList.contains('title')) { if (row.previousElementSibling) { row.className = 'ol-row body'; row.dataset.lvl = '0'; } } else row.dataset.lvl = Math.min(4, (+row.dataset.lvl || 0) + 1); }
       else if (row.classList.contains('body')) { const lv = +row.dataset.lvl || 0; if (lv === 0) row.className = 'ol-row title'; else row.dataset.lvl = lv - 1; }
       olDirty = true; styleOutline(); commitSoon();
@@ -273,12 +288,12 @@
   const NP = (P.notes = {});
   NP.mount = function (el) {
     NP.el = el;
-    NP.ed = h('div', { class: 'notes-in', contenteditable: 'true', spellcheck: 'true', role: 'textbox', 'aria-multiline': 'true', 'aria-label': 'Speaker notes', 'data-ph': 'Click to add notes' });
+    NP.ed = h('div', { class: 'notes-in', contenteditable: 'true', spellcheck: 'true', role: 'textbox', 'aria-multiline': 'true', 'aria-label': '演讲者备注', 'data-ph': L.t('单击此处添加备注') });
     el.appendChild(NP.ed);
     NP.ed.addEventListener('input', () => {
       const s = E().slide();
       if (!s || s.isMaster) return;
-      L.hist.push('Notes', 'notes:' + s.id);
+      L.hist.push(L.N('备注'), 'notes:' + s.id);
       s.notes = NP.ed.innerText.replace(/\n$/, '');
       if (!NP.ed.textContent) NP.ed.innerHTML = '';
     });
@@ -295,7 +310,7 @@
   /* ================= Slide Sorter ================= */
   const SO = (P.sorter = { zoom: 0.25 });
   SO.mount = function (parent) {
-    SO.el = h('div', { class: 'sorter', tabindex: '-1', 'aria-label': 'Slide Sorter' });
+    SO.el = h('div', { class: 'sorter', tabindex: '-1', 'aria-label': '幻灯片浏览' });
     parent.appendChild(SO.el);
     SO.el.addEventListener('pointerdown', (e) => { if (e.target === SO.el || e.target.classList.contains('sorter-grid')) { L.app.slideSel = new Set([E().idx]); SO.mark(); } });
     SO.el.addEventListener('focus', () => { L.app.focusArea = 'slides'; });
@@ -307,7 +322,7 @@
     const w = Math.max(90, Math.round(SO.el.clientWidth ? Math.min(260, (SO.el.clientWidth - 60) / 4) : 180));
     L.pres.slides.forEach((s, i) => {
       const it = h('div', { class: 'so-it' + (L.app.slideSel.has(i) ? ' sel' : '') + (s.hidden ? ' hiddenslide' : ''), 'data-i': i });
-      const fr = h('button', { class: 'so-frame', type: 'button', 'aria-label': `Slide ${i + 1}` });
+      const fr = h('button', { class: 'so-frame', type: 'button', 'aria-label': L.t('幻灯片 {0}', i + 1) });
       fr.appendChild(L.render.thumb(L.pres, s, w, { index: i }));
       const foot = h('div', { class: 'so-foot' });
       if (s.trans && s.trans.type && s.trans.type !== 'none') {
@@ -336,10 +351,9 @@
     if (!sel.has(i)) L.app.slideSel = new Set([i]);
     E().idx = i;
     SO.mark();
-    const x0 = e.clientX, y0 = e.clientY;
+    /* drag to reorder (common/ui.js ui.drag) */
     let marker = null, target = null;
     const mv = (ev) => {
-      if (!marker && Math.hypot(ev.clientX - x0, ev.clientY - y0) < 6) return;
       if (!marker) { marker = h('div', { style: 'position:absolute;width:3px;background:#000;pointer-events:none;z-index:5' }); SO.el.appendChild(marker); }
       const items = L.$$('.so-it', SO.el);
       target = items.length;
@@ -355,17 +369,18 @@
       marker.style.top = rr.top - br.top + SO.el.scrollTop + 'px';
       marker.style.height = rr.height + 'px';
     };
-    const up = () => {
-      window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up);
-      if (marker) { marker.remove(); if (target != null) L.app.moveSlides(Array.from(L.app.slideSel).sort((a, b) => a - b), target); }
-    };
-    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up);
+    L.ui.drag(e, {
+      threshold: 6,
+      move: mv,
+      up() { if (marker) { marker.remove(); if (target != null) L.app.moveSlides(Array.from(L.app.slideSel).sort((a, b) => a - b), target); } },
+      cancel() { if (marker) marker.remove(); },
+    });
     void it;
   }
 
   /* ================= Notes Page view ================= */
   const NV = (P.notesView = {});
-  NV.mount = function (parent) { NV.el = h('div', { class: 'notespage', 'aria-label': 'Notes Page' }); parent.appendChild(NV.el); };
+  NV.mount = function (parent) { NV.el = h('div', { class: 'notespage', 'aria-label': '备注页' }); parent.appendChild(NV.el); };
   NV.render = function () {
     if (!NV.el) return;
     const s = E().slide();
@@ -378,9 +393,9 @@
     const sb = h('div', { class: 'np-slide', style: `left:${(pw - sw) / 2}px;top:${ph * 0.075}px;width:${sw}px;height:${shh}px` });
     sb.appendChild(L.render.thumb(L.pres, s, sw, { index: E().idx }));
     const ny = ph * 0.075 + shh + ph * 0.05;
-    const notes = h('div', { class: 'np-notes', contenteditable: 'true', spellcheck: 'true', style: `left:${pw * 0.1}px;top:${ny}px;width:${pw * 0.8}px;height:${ph - ny - ph * 0.08}px;font-size:${Math.max(11, pw / 48)}px`, role: 'textbox', 'aria-label': 'Notes' });
+    const notes = h('div', { class: 'np-notes', contenteditable: 'true', spellcheck: 'true', style: `left:${pw * 0.1}px;top:${ny}px;width:${pw * 0.8}px;height:${ph - ny - ph * 0.08}px;font-size:${Math.max(11, pw / 48)}px`, role: 'textbox', 'aria-label': '备注' });
     notes.textContent = s.notes || '';
-    notes.addEventListener('input', () => { L.hist.push('Notes', 'notes:' + s.id); s.notes = notes.innerText.replace(/\n$/, ''); });
+    notes.addEventListener('input', () => { L.hist.push(L.N('备注'), 'notes:' + s.id); s.notes = notes.innerText.replace(/\n$/, ''); });
     notes.addEventListener('paste', (e) => { e.preventDefault(); document.execCommand('insertText', false, (e.clipboardData && e.clipboardData.getData('text/plain')) || ''); });
     page.append(sb, notes, h('div', { class: 'pv-hdr', style: `right:${pw * 0.05}px;bottom:${ph * 0.03}px`, text: String(E().idx + (L.pres.firstNum || 1)) }));
     NV.el.appendChild(page);
@@ -389,7 +404,7 @@
   /* ================= Print Preview ================= */
   const PV = (P.preview = {});
   PV.mount = function (parent) {
-    PV.el = h('div', { class: 'preview', 'aria-label': 'Print Preview' });
+    PV.el = h('div', { class: 'preview', 'aria-label': '打印预览' });
     PV.bar = h('div', { class: 'pv-bar' });
     PV.scroll = h('div', { class: 'pv-scroll' });
     PV.el.append(PV.bar, PV.scroll);
@@ -400,17 +415,17 @@
     const o = L.app.printOpts;
     L.clear(PV.bar);
     const canPrint = window.self === window.top;
-    if (canPrint) PV.bar.appendChild(ui.button('&Print...', () => { document.body.classList.add('printing'); window.print(); setTimeout(() => document.body.classList.remove('printing'), 500); }));
+    if (canPrint) PV.bar.appendChild(ui.button('打印(&P)...', () => { document.body.classList.add('printing'); window.print(); setTimeout(() => document.body.classList.remove('printing'), 500); }));
     PV.bar.append(
-      h('label', { text: '打印内容:' }),
+      h('label', { text: '打印内容：' }),
       ui.select([['slides', '幻灯片'], ['handouts', '讲义'], ['notes', '备注页'], ['outline', '大纲视图']], o.what, (v) => { o.what = v; PV.render(); }),
-      h('label', { text: '每页:' }),
+      h('label', { text: '每页：' }),
       ui.select([[1, '1'], [2, '2'], [3, '3'], [4, '4'], [6, '6'], [9, '9']], o.per, (v) => { o.per = +v; PV.render(); }, { disabled: o.what !== 'handouts' }),
       ui.select([['color', '颜色'], ['gray', '灰度'], ['bw', '纯黑白']], o.color, (v) => { o.color = v; PV.render(); }),
-      ui.check('给幻灯片加框', o.frame, (v) => { o.frame = v; PV.render(); }),
+      ui.check('幻灯片加框', o.frame, (v) => { o.frame = v; PV.render(); }),
       ui.button('另存为 PDF(&D)...', () => L.app.previewPDF()),
-      ui.button('&Close', () => L.app.setView(L.app.prevView || 'normal')));
-    if (!canPrint) PV.bar.appendChild(h('span', { class: 'tp-note', text: '若要打印，请将这些页面保存为 PDF 后打印该 PDF。' }));
+      ui.button('关闭(&C)', () => L.app.setView(L.app.prevView || 'normal')));
+    if (!canPrint) PV.bar.appendChild(h('span', { class: 'tp-note', text: '要打印，请将这些页面保存为 PDF，再打印该 PDF。' }));
     L.clear(PV.scroll);
     const slides = L.pres.slides.map((s, i) => [s, i]).filter(([s, i]) => (o.hidden || !s.hidden) && (!o.range || o.range.includes(i)));
     const landscape = o.what === 'slides';
@@ -431,13 +446,13 @@
       slides.forEach(([s, i], n) => {
         const p = page();
         const w = pw * 0.67; const hh = cell(p, s, i, (pw - w) / 2, ph * 0.07, w);
-        p.appendChild(h('div', { class: 'pv-text', style: `left:${pw * 0.1}px;top:${ph * 0.07 + hh + ph * 0.04}px;width:${pw * 0.8}px;height:${ph * 0.4}px;font-size:${pw / 50}px`, text: s.notes || '' }));
+        p.appendChild(h('div', { class: 'pv-text', style: `left:${pw * 0.1}px;top:${ph * 0.07 + hh + ph * 0.04}px;width:${pw * 0.8}px;height:${ph * 0.4}px;font-size:${pw / 50}px`, text: s.notes || '', translate: 'no' }));
         footer(p, n + 1);
       });
     } else if (o.what === 'outline') {
       let p = page(), y = ph * 0.06, pn = 1;
       const lh = pw / 40;
-      const line = (t, indent, bold) => { if (y > ph * 0.92) { footer(p, pn++); p = page(); y = ph * 0.06; } p.appendChild(h('div', { class: 'pv-text', style: `left:${pw * 0.08 + indent}px;top:${y}px;width:${pw * 0.84 - indent}px;font-size:${lh * 0.85}px;${bold ? 'font-weight:bold' : ''}`, text: t })); y += lh * 1.3; };
+      const line = (t, indent, bold) => { if (y > ph * 0.92) { footer(p, pn++); p = page(); y = ph * 0.06; } p.appendChild(h('div', { class: 'pv-text', style: `left:${pw * 0.08 + indent}px;top:${y}px;width:${pw * 0.84 - indent}px;font-size:${lh * 0.85}px;${bold ? 'font-weight:bold' : ''}`, text: t, translate: 'no' })); y += lh * 1.3; };
       slides.forEach(([s, i]) => {
         line(`${i + 1}  ${M.slideTitle(s)}`, 0, true);
         const b = bodyShape(s);
@@ -466,11 +481,11 @@
   const TP = (P.task = { stack: [], pos: -1, registry: {} });
   TP.mount = function (el) {
     TP.el = el;
-    TP.back = h('button', { class: 'tp-nav', type: 'button', 'aria-label': 'Back', html: L.icons.get('back') });
-    TP.fwd = h('button', { class: 'tp-nav', type: 'button', 'aria-label': 'Forward', html: L.icons.get('forward') });
-    TP.home = h('button', { class: 'tp-nav', type: 'button', 'aria-label': 'Home', html: L.icons.get('home') });
+    TP.back = h('button', { class: 'tp-nav', type: 'button', 'aria-label': '后退', html: L.icons.get('back') });
+    TP.fwd = h('button', { class: 'tp-nav', type: 'button', 'aria-label': '向前', html: L.icons.get('forward') });
+    TP.home = h('button', { class: 'tp-nav', type: 'button', 'aria-label': '主页', html: L.icons.get('home') });
     TP.title = h('div', { class: 'tp-title', role: 'button', tabindex: '0', 'aria-haspopup': 'menu' }, h('span', { text: '' }), h('span', { class: 'dd-arrow' }));
-    const close = h('button', { class: 'tp-nav', type: 'button', 'aria-label': 'Close task pane', html: L.icons.get('close', 12) });
+    const close = h('button', { class: 'tp-nav', type: 'button', 'aria-label': '关闭任务窗格', html: L.icons.get('close', 12) });
     TP.body = h('div', { class: 'tp-body' });
     el.append(h('div', { class: 'tp-head' }, TP.back, TP.fwd, TP.home, TP.title, close), TP.body);
     TP.back.addEventListener('click', () => TP.go(TP.pos - 1));
@@ -494,7 +509,7 @@
     TP.current = id;
     const p = TP.registry[id];
     if (!p) return;
-    TP.title.firstChild.textContent = p.title;
+    TP.title.firstChild.textContent = L.t(p.title);
     TP.back.disabled = TP.pos <= 0; TP.fwd.disabled = TP.pos >= TP.stack.length - 1;
     L.clear(TP.body);
     p.render(TP.body);
@@ -510,17 +525,17 @@
 
   /* --- Getting Started --- */
   /* ---------- Document Recovery: unsaved versions kept by common/suite.js ---------- */
-  TP.register({ id: 'recovery', title: 'Document Recovery', render(b) { if (window.VO) VO.recoveryPane(b); } });
+  TP.register({ id: 'recovery', title: '文档恢复', render(b) { if (window.VO) VO.recoveryPane(b); } });
   TP.register({
-    id: 'getting-started', title: 'Getting Started',
+    id: 'getting-started', title: '入门',
     render(b) {
-      const q = h('input', { type: 'text', id: 'gs-search', placeholder: 'Search help', style: 'flex:1;min-width:0' });
+      const q = h('input', { type: 'text', id: 'gs-search', placeholder: '搜索帮助', style: 'flex:1;min-width:0' });
       q.addEventListener('keydown', (e) => { if (e.key === 'Enter') { P.helpQuery = q.value; TP.show('help'); } });
       b.append(
-        h('div', { class: 'tp-row' }, h('span', { html: L.icons.app(32) }), h('b', { text: 'Lectern 2003 Web Edition', style: 'color:var(--pane-ink)' })),
-        sec('Search for:', h('div', { class: 'tp-row' }, q, ui.button('Go', () => { P.helpQuery = q.value; TP.show('help'); }, { class: 'btn small' }))),
-        sec('Open', window.VO ? VO.recentLinks(4) : null, link('open', 'Open a presentation (.pptx)...', () => ui.exec('open')), link('new', 'Create a new presentation...', () => TP.show('new')), link('slideshow', 'View the sample presentation', () => L.app.loadSample())),
-        sec('Learn', link('help', 'Keyboard shortcuts and help', () => TP.show('help')), link('design', 'Apply a design template', () => TP.show('design')), link('animation', 'Animate your slides', () => TP.show('customAnim'))));
+        h('div', { class: 'tp-row' }, h('span', { html: L.icons.app(32) }), h('b', { text: 'Lectern 网络版', style: 'color:var(--pane-ink)' })),
+        sec('搜索内容：', h('div', { class: 'tp-row' }, q, ui.button('转到', () => { P.helpQuery = q.value; TP.show('help'); }, { class: 'btn small' }))),
+        sec(L.N('打开'), window.VO ? VO.recentLinks(4) : null, link('open', L.N('打开演示文稿 (.pptx)...'), () => ui.exec('open')), link('new', '新建演示文稿...', () => TP.show('new')), link('slideshow', '查看示例演示文稿', () => L.app.loadSample())),
+        sec(L.N('学习'), link('help', '键盘快捷键和帮助', () => TP.show('help')), link('design', '应用设计模板', () => TP.show('design')), link('animation', '为幻灯片添加动画', () => TP.show('customAnim'))));
     },
   });
 
@@ -529,38 +544,40 @@
     id: 'new', title: '新建演示文稿',
     render(b) {
       b.append(
-        sec('New', link('new', 'Blank presentation', () => L.app.newPresentation()), link('design', 'From design template', () => { L.app.newPresentation(); TP.show('design'); }), link('properties', 'From AutoContent wizard...', () => L.app.autoContent()), link('open', 'From existing presentation...', () => ui.exec('open')), link('photoAlbum', 'Photo album...', () => ui.exec('photoAlbum'))),
-        sec('Templates', link('slideshow', 'Sample: café expansion plan', () => L.app.loadSample())));
+        sec(L.N('新建'), link('new', '空白演示文稿', () => L.app.newPresentation()), link('design', '根据设计模板', () => { L.app.newPresentation(); TP.show('design'); }), link('properties', '根据内容提示向导...', () => L.app.autoContent()), link('open', '根据现有演示文稿...', () => ui.exec('open')), link('photoAlbum', '相册...', () => ui.exec('photoAlbum'))),
+        sec(L.N('模板'), link('slideshow', '示例：咖啡馆扩展计划', () => L.app.loadSample())));
     },
   });
 
   /* --- Help --- */
   const HELP = [
-    ['Get around', '用左侧的「幻灯片」选项卡切换幻灯片；拖动缩略图可重新排序。「大纲」选项卡可输入标题和项目符号 —— 按 Tab 降级、Shift+Tab 升级。在标题行按 Enter 可新建幻灯片。'],
-    ['Add text', 'Click a placeholder ("Click to add title") and type. Use the Text Box tool on the Drawing toolbar to add text anywhere. Click a box once to start typing; drag its border to move it.'],
-    ['Format text', '选定文字，然后使用格式工具栏或「格式 ▸ 字体」。项目符号和编号在「格式 ▸ 项目符号和编号」下。在项目符号开头按 Tab 可将其降级。'],
-    ['Draw shapes', 'Choose AutoShapes on the Drawing toolbar, then drag on the slide. Hold Shift for perfect squares, circles and 15° angles; hold Ctrl to draw from the center. Yellow diamonds adjust a shape\'s proportions; the green dot rotates.'],
-    ['Pictures, tables and charts', '使用「插入」菜单或内容占位符中的图标。双击图表可编辑其数据表，双击图片可裁剪或重新着色。'],
-    ['Design templates', '「格式 ▸ 幻灯片设计」显示设计方案库。配色方案和动画方案链接在该窗格顶部。'],
-    ['Animation', '「幻灯片放映 ▸ 自定义动画」。选定对象后选择「添加效果」，再设置开始、方向和速度。用「按第一级段落」（效果选项 ▸ 文字动画）可逐条显示项目符号。'],
-    ['Slide show', 'Press F5 to start from the first slide or Shift+F5 from the current slide. Click, Space or → advances; ← goes back; B blacks the screen; Ctrl+P switches to the pen; Esc ends the show.'],
-    ['Files', '「文件 ▸ 打开」可读取 .pptx、.ppsx 和 .potx 文件。「文件 ▸ 保存」写出可在 PowerPoint、Keynote、Google 幻灯片和 LibreOffice 中打开的 .pptx。另存为还提供 .ppsx、.potx、单文件网页、当前幻灯片的 PNG 和文本大纲。'],
+    [L.N('浏览与定位'), L.N('使用左侧“幻灯片”选项卡切换幻灯片，拖动缩略图可重新排序。“大纲”选项卡可输入标题和项目符号，按 Tab 降级，Shift+Tab 升级。在标题行按 Enter 可新建幻灯片。')],
+    [L.N('添加文本'), L.N('单击占位符（“单击此处添加标题”）并键入内容。使用“绘图”工具栏中的“文本框”工具可在任意位置添加文字。单击文本框即可开始键入，拖动其边框可移动文本框。')],
+    [L.N('设置文字格式'), L.N('选择文字后，使用“格式”工具栏或“格式 ▸ 字体”。项目符号和编号位于“格式 ▸ 项目符号和编号”。在项目符号开头按 Tab 可将其降级。')],
+    [L.N('绘制形状'), L.N('在“绘图”工具栏中选择“自选图形”，然后在幻灯片上拖动。按住 Shift 可绘制正方形、正圆或以 15° 为单位的角度；按住 Ctrl 可从中心绘制。黄色菱形用于调整形状比例，绿色圆点用于旋转。')],
+    [L.N('图片、表格和图表'), L.N('使用“插入”菜单或内容占位符中的图标。双击图表可编辑其数据表，双击图片可裁剪或重新着色。')],
+    [L.N('设计模板'), L.N('“格式 ▸ 幻灯片设计”会显示设计库。该窗格顶部提供“配色方案”和“动画方案”链接。')],
+    [L.N('动画'), L.N('“幻灯片放映 ▸ 自定义动画”：选择对象，选择“添加效果”，再设置“开始”、“方向”和“速度”。使用“按第一级段落”（“效果选项 ▸ 文本动画”）可逐条显示项目符号。')],
+    [L.N('幻灯片放映'), L.N('按 F5 从第一张幻灯片开始放映，或按 Shift+F5 从当前幻灯片开始。单击、空格或 → 可前进，← 可后退，B 可显示黑屏，Ctrl+P 可切换到笔，Esc 可结束放映。')],
+    [L.N('文件'), L.N('“文件 ▸ 打开”可读取 .pptx、.ppsx 和 .potx 文件。“文件 ▸ 保存”可生成能在 PowerPoint、Keynote、Google Slides 和 LibreOffice 中打开的 .pptx。“另存为”还提供 .ppsx、.potx、单文件网页、当前幻灯片的 PNG 图片以及文本大纲。')],
   ];
-  const KEYS = [['Ctrl+N / Ctrl+O / Ctrl+S', '新建、打开、保存'], ['Ctrl+M', '新幻灯片'], ['Ctrl+D', '复制'], ['Ctrl+Z / Ctrl+Y', '撤销 / 恢复'], ['Ctrl+X / C / V', '剪切、复制、粘贴'], ['Ctrl+A', '全选'], ['Ctrl+G / Ctrl+Shift+G', '组合/取消组合'], ['Ctrl+B / I / U', '加粗、倾斜、下划线'], ['Ctrl+E / L / R / J', '居中，左对齐，右对齐，两端对齐'], ['Ctrl+Shift+> / <', '增大/缩小字号'], ['Ctrl+T', '字体对话框'], ['Shift+F3', '更改大小写'], ['Ctrl+K', '超链接'], ['Ctrl+F / Ctrl+H', '查找/替换'], ['Tab / Shift+Tab', '降级/升级；下一个对象'], ['Arrow keys', '微移（按 Ctrl 精细微移）'], ['F2', '在文字选择和对象选择之间切换'], ['F5 / Shift+F5', '从头/从当前幻灯片放映'], ['Page Up / Page Down', '上一张/下一张幻灯片'], ['Ctrl+F1', '任务窗格']];
+  const KEYS = [['Ctrl+N / Ctrl+O / Ctrl+S', L.N('新建、打开、保存')], ['Ctrl+M', L.N('新建幻灯片')], ['Ctrl+D', L.N('创建副本')], ['Ctrl+Z / Ctrl+Y', L.N('撤消/重做')], ['Ctrl+X / C / V', L.N('剪切、复制、粘贴')], ['Ctrl+A', L.N('全选')], ['Ctrl+G / Ctrl+Shift+G', L.N('组合/取消组合')], ['Ctrl+B / I / U', L.N('加粗、倾斜、下划线')], ['Ctrl+E / L / R / J', L.N('居中、左对齐、右对齐、两端对齐')], ['Ctrl+Shift+> / <', L.N('增大/减小字号')], ['Ctrl+T', L.N('字体对话框')], ['Shift+F3', L.N('更改大小写')], ['Ctrl+K', L.N('超链接')], ['Ctrl+F / Ctrl+H', L.N('查找/替换')], ['Tab / Shift+Tab', L.N('降级/升级；下一个对象')], [L.N('方向键'), L.N('微移（按住 Ctrl 可精细微移）')], ['F2', L.N('在文字选择和对象选择之间切换')], ['F5 / Shift+F5', L.N('从头/从当前幻灯片放映')], ['Page Up / Page Down', L.N('上一张/下一张幻灯片')], ['Ctrl+F1', L.N('任务窗格')]];
   TP.register({
-    id: 'help', title: 'Help',
+    id: 'help', title: '帮助',
     render(b) {
-      const q = h('input', { type: 'text', id: 'hp-q', value: P.helpQuery || '', placeholder: 'Search', style: 'flex:1;min-width:0' });
+      const q = h('input', { type: 'text', id: 'hp-q', value: P.helpQuery || '', placeholder: '搜索', style: 'flex:1;min-width:0' });
       const res = h('div');
       const draw = () => {
         L.clear(res);
         const words = q.value.toLowerCase().split(/\s+/).filter(Boolean);
         const hit = (t) => words.every((w) => t.toLowerCase().includes(w));
-        const topics = HELP.filter(([t, d]) => !words.length || hit(t + ' ' + d));
+        /* searched as shown: the topics in the UI's language, the keys with their names there (Strg+M) */
+        const topics = HELP.map(([t, d]) => [L.t(t), L.t(d)]).filter(([t, d]) => !words.length || hit(t + ' ' + d));
         for (const [t, d] of topics) res.appendChild(h('div', { class: 'help-topic' }, h('h4', { text: t }), h('p', { text: d })));
-        const keys = KEYS.filter(([k, d]) => !words.length || hit(k + ' ' + d));
-        if (keys.length) res.appendChild(h('div', { class: 'help-topic' }, h('h4', { text: '键盘快捷键' }), h('table', { class: 'kbd-table' }, ...keys.map(([k, d]) => h('tr', null, h('td', { text: k }), h('td', { text: d }))))));
-        if (!res.children.length) res.appendChild(h('div', { class: 'tp-note', text: '没有匹配的主题。请换个词试试。' }));
+        const keyName = (k) => k.split(' / ').map((x) => (/ [a-z]/.test(x) ? L.t(x) : ui.keyText(x))).join(' / ');
+        const keys = KEYS.map(([k, d]) => [keyName(k), L.t(d)]).filter(([k, d]) => !words.length || hit(k + ' ' + d));
+        if (keys.length) res.appendChild(h('div', { class: 'help-topic' }, h('h4', { text: '键盘快捷键' }), h('table', { class: 'kbd-table' }, ...keys.map(([k, d]) => h('tr', null, h('td', { text: k, translate: 'no' }), h('td', { text: d }))))));
+        if (!res.children.length) res.appendChild(h('div', { class: 'tp-note', text: '没有匹配的主题。请尝试其他词语。' }));
       };
       q.addEventListener('input', draw);
       b.append(h('div', { class: 'tp-row' }, q), res);
@@ -570,9 +587,9 @@
 
   /* --- Clip Art --- */
   TP.register({
-    id: 'clipart', title: 'Clip Art',
+    id: 'clipart', title: '剪贴画',
     render(b) {
-      const q = h('input', { type: 'text', id: 'ca-q', placeholder: '例如 人员、增长、时间', style: 'flex:1;min-width:0' });
+      const q = h('input', { type: 'text', id: 'ca-q', placeholder: '例如：人物、成长、时间', style: 'flex:1;min-width:0' });
       const grid = h('div', { class: 'clip-grid' });
       const draw = () => {
         L.clear(grid);
@@ -585,19 +602,19 @@
         if (!list.length) grid.appendChild(h('div', { class: 'tp-note', text: '未找到剪贴画。' }));
       };
       q.addEventListener('keydown', (e) => { if (e.key === 'Enter') draw(); });
-      b.append(sec('Search for:', h('div', { class: 'tp-row' }, q, ui.button('Go', draw, { class: 'btn small' }))), sec('Results', grid), h('div', { class: 'tp-note', text: '单击剪贴画即可插入到当前幻灯片。' }));
+      b.append(sec('搜索内容：', h('div', { class: 'tp-row' }, q, ui.button('转到', draw, { class: 'btn small' }))), sec(L.N('结果'), grid), h('div', { class: 'tp-note', text: '单击剪贴画可将其插入当前幻灯片。' }));
       draw();
     },
   });
 
   /* --- Clipboard --- */
   TP.register({
-    id: 'clipboard', title: 'Clipboard', live: true,
+    id: 'clipboard', title: '剪贴板', live: true,
     render(b) {
       const items = L.app.clipHistory;
-      b.append(h('div', { class: 'tp-btns' }, ui.button('Paste All', () => { for (const it of items.slice().reverse()) L.app.pasteItem(it); }, { class: 'btn small' }), ui.button('Clear All', () => { items.length = 0; TP.refresh(); }, { class: 'btn small' })), h('div', { class: 'tp-note', text: `剪贴板 ${items.length}/24 —— 单击某项即可粘贴。` }));
+      b.append(h('div', { class: 'tp-btns' }, ui.button('全部粘贴', () => { for (const it of items.slice().reverse()) L.app.pasteItem(it); }, { class: 'btn small' }), ui.button('全部清除', () => { items.length = 0; TP.refresh(); }, { class: 'btn small' })), h('div', { class: 'tp-note', text: L.t('{0}/24 — 单击项目可粘贴。', items.length) }));
       for (const it of items) {
-        const el = h('button', { class: 'cb-item', type: 'button' }, h('span', { class: 'cb-ico', html: L.icons.get(it.kind === 'slides' ? 'sorterView' : it.kind === 'text' ? 'font' : 'autoshapes') }), h('span', { class: 'cb-t', text: it.label }));
+        const el = h('button', { class: 'cb-item', type: 'button' }, h('span', { class: 'cb-ico', html: L.icons.get(it.kind === 'slides' ? 'sorterView' : it.kind === 'text' ? 'font' : 'autoshapes') }), h('span', { class: 'cb-t', text: it.label, translate: 'no' }));
         el.addEventListener('click', () => L.app.pasteItem(it));
         b.appendChild(el);
       }
@@ -605,10 +622,12 @@
   });
 
   /* --- Slide Layout --- */
+  /** a layout's picture, in the presentation's shape */
   function layoutSVG(key, w) {
-    const d = L.model.buildDesign('default', 720, 540);
+    const W = L.pres ? L.pres.W : M.DEFAULT_SIZE.w, H = L.pres ? L.pres.H : M.DEFAULT_SIZE.h;
+    const d = L.model.buildDesign('default', W, H);
     const frames = M.layoutFrames(key, d);
-    const k = w / 720, hh = 540 * k;
+    const k = w / W, hh = H * k;
     let body = '';
     for (const f of frames) {
       const x = f.x * k, y = f.y * k, fw = f.w * k, fh = f.h * k;
@@ -620,26 +639,28 @@
     return `<svg width="${w}" height="${hh}" viewBox="0 0 ${w} ${hh}">${body}</svg>`;
   }
   P.layoutSVG = layoutSVG;
+  /* the headings of M.LAYOUTS' groups */
+  const LAYOUT_GROUPS = { '文字版式': L.N('文字版式：'), '内容版式': L.N('内容版式：'), '文字和内容版式': L.N('文字和内容版式：'), '其他版式': L.N('其他版式：') };
   TP.register({
     id: 'layout', title: '幻灯片版式',
     render(b) {
-      b.appendChild(h('div', { class: 'tp-note', text: '应用幻灯片版式:' }));
+      b.appendChild(h('div', { class: 'tp-note', text: '应用幻灯片版式：' }));
       const groups = {};
       for (const l of M.LAYOUTS) (groups[l.group] = groups[l.group] || []).push(l);
       const cur = E().slide() ? E().slide().layout : null;
       for (const g in groups) {
         const grid = h('div', { class: 'lay-grid' });
         for (const l of groups[g]) {
-          const it = h('button', { class: 'lay-it' + (l.key === cur ? ' on' : ''), type: 'button', 'data-tip': l.name, 'aria-label': l.name, html: layoutSVG(l.key, 64) });
+          const it = h('button', { class: 'lay-it' + (l.key === cur ? ' on' : ''), type: 'button', 'data-key': l.key, 'data-tip': l.name, 'aria-label': l.name, html: layoutSVG(l.key, 64) });
           it.addEventListener('click', () => L.app.applyLayoutToSel(l.key));
           it.addEventListener('contextmenu', (e) => { e.preventDefault(); ui.openMenu([{ label: '应用于选定幻灯片(&S)', run: () => L.app.applyLayoutToSel(l.key) }, { label: '重新应用母版样式(&R)', run: () => L.app.applyLayoutToSel(l.key, true) }, '-', { label: '插入新幻灯片(&N)', run: () => L.app.insertSlide(l.key) }], { x: e.clientX, y: e.clientY }); });
           grid.appendChild(it);
         }
-        b.appendChild(sec(g + ':', grid));
+        b.appendChild(sec(LAYOUT_GROUPS[g] || g, grid));
       }
       b.appendChild(ui.check('插入新幻灯片时显示', !!L.app.opts.layoutPaneOnNew, (v) => { L.app.opts.layoutPaneOnNew = v; L.app.saveOpts(); }));
     },
-    refresh(b) { L.$$('.lay-it', b).forEach((el) => el.classList.toggle('on', E().slide() && el.getAttribute('aria-label') === M.layoutInfo(E().slide().layout).name)); },
+    refresh(b) { L.$$('.lay-it', b).forEach((el) => el.classList.toggle('on', !!E().slide() && el.dataset.key === M.layoutInfo(E().slide().layout).key)); },
   });
 
   /* --- Slide Design --- */
@@ -651,9 +672,9 @@
     const did = Object.keys(pres.designs)[0];
     const s = M.newSlide(pres, 'text', did);
     const t = s.shapes.find((x) => x.ph.type === 'title');
-    L.txt.setPlain(t.tx, 'Title');
+    L.txt.setPlain(t.tx, L.t('标题'));
     const b = s.shapes.find((x) => x.ph.type === 'body');
-    b.tx.ps = [L.txt.para('项目符号文本'), L.txt.para('第二行')];
+    b.tx.ps = [L.txt.para(L.t('项目符号文字')), L.txt.para(L.t('第二行'))];
     pres.slides.push(s);
     const el = L.render.thumb(pres, s, w);
     previewCache[ck] = el;
@@ -670,7 +691,7 @@
         const it = h('button', { class: 'dsn-it' + (d === cur ? ' on' : ''), type: 'button', 'data-tip': d.name });
         const tmp = L.pres.slides.find((s) => s.design === d.id);
         it.append(L.render.thumb(L.pres, Object.assign({}, tmp, { shapes: tmp.shapes.filter((x) => x.ph && x.type === 'text') }), 100, { prompts: false }), h('span', { class: 'dsn-name', text: d.name }));
-        it.addEventListener('click', () => { const sel = L.app.selectedSlides(); L.hist.push('Apply Design Template'); for (const s of sel) s.design = d.id; E().render(); L.bus.emit('slides-changed'); });
+        it.addEventListener('click', () => { const sel = L.app.selectedSlides(); L.hist.push('应用设计模板'); for (const s of sel) s.design = d.id; E().render(); L.bus.emit('slides-changed'); });
         usedGrid.appendChild(it);
       }
       b.appendChild(sec('此演示文稿中使用的', usedGrid));
@@ -686,7 +707,7 @@
         grid.appendChild(it);
       }
       b.appendChild(sec('可供使用', grid));
-      b.appendChild(link('open', 'Browse... (use the design of another .pptx/.potx)', () => L.app.browseDesign()));
+      b.appendChild(link('open', L.N('浏览...（使用其他 .pptx/.potx 文件的设计）'), () => L.app.browseDesign()));
     },
     refresh(b, reason) { if (reason === 'slides' || reason === 'design') { L.clear(b); this.render(b); } },
   });
@@ -700,33 +721,33 @@
       const d0 = E().design();
       const schemes = [d0.colors].concat(M.COLOR_SCHEMES);
       schemes.forEach((cs, i) => {
-        const it = h('button', { class: 'scheme-it', type: 'button', 'aria-label': i === 0 ? 'Current scheme' : 'Color scheme ' + i, 'data-tip': i === 0 ? 'Current color scheme' : 'Apply this color scheme' });
+        const it = h('button', { class: 'scheme-it', type: 'button', 'aria-label': i === 0 ? L.t('当前方案') : L.t('配色方案 {0}', i), 'data-tip': i === 0 ? L.N('当前配色方案') : '应用此配色方案' });
         for (const k of ['lt1', 'dk1', 'lt2', 'dk2', 'accent1', 'accent2', 'hlink', 'folHlink']) it.appendChild(h('span', { style: `background:${cs[k]}` }));
         it.addEventListener('click', () => L.app.applyColorScheme(cs, true));
         it.addEventListener('contextmenu', (e) => { e.preventDefault(); ui.openMenu([{ label: '应用于所有幻灯片(&A)', run: () => L.app.applyColorScheme(cs, true) }, { label: '应用于选定幻灯片(&S)', run: () => L.app.applyColorScheme(cs, false) }], { x: e.clientX, y: e.clientY }); });
         grid.appendChild(it);
       });
-      b.append(sec('Apply a color scheme:', grid), link('options', 'Edit Color Schemes...', () => L.app.editColorScheme()));
+      b.append(sec('应用配色方案：', grid), link('options', '编辑配色方案...', () => L.app.editColorScheme()));
     },
     refresh(b, reason) { if (reason === 'design') { L.clear(b); this.render(b); } },
   });
 
   /* --- Animation Schemes --- */
   const AS = [
-    ['No Animation', null], ['Subtle', 'group'],
-    ['Appear', { tr: { type: 'cut' }, title: ['appear'], body: ['appear'] }], ['Appear and dim', { tr: { type: 'fade' }, title: ['appear'], body: ['appear'] }],
-    ['Fade in all', { tr: { type: 'fade' }, title: ['fade'], body: ['fade', null, 'all'] }], ['Fade in one by one', { tr: { type: 'fade' }, title: ['fade'], body: ['fade'] }],
-    ['Faded wipe', { tr: { type: 'fade' }, title: ['fade'], body: ['wipe', 'b'] }], ['Faded zoom', { tr: { type: 'fade' }, title: ['fade'], body: ['zoom'] }],
-    ['Dissolve in', { tr: { type: 'dissolve' }, title: ['dissolve'], body: ['dissolve'] }], ['Random bars', { tr: { type: 'randomBar', dir: 'horz' }, title: ['randomBars', 'horz'], body: ['randomBars', 'horz'] }],
-    ['Wipe', { tr: { type: 'wipe', dir: 'r' }, title: ['wipe', 'l'], body: ['wipe', 't'] }], ['Blinds', { tr: { type: 'blinds', dir: 'horz' }, title: ['blinds', 'horz'], body: ['blinds', 'horz'] }],
-    ['Moderate', 'group'],
-    ['Ascend', { tr: { type: 'fade' }, title: ['ascend'], body: ['ascend'] }], ['Descend', { tr: { type: 'fade' }, title: ['descend'], body: ['descend'] }],
-    ['Zoom', { tr: { type: 'zoom', dir: 'out' }, title: ['zoom'], body: ['zoom'] }], ['Expand', { tr: { type: 'fade' }, title: ['expand'], body: ['expand'] }],
-    ['Spinner', { tr: { type: 'fade' }, title: ['spinner'], body: ['spinner'] }], ['Peek in', { tr: { type: 'cover', dir: 'u' }, title: ['peekIn', 'b'], body: ['peekIn', 'b'] }],
-    ['Exciting', 'group'],
-    ['Fly in', { tr: { type: 'push', dir: 'u' }, title: ['flyIn', 't'], body: ['flyIn', 'l'] }], ['Checkerboard', { tr: { type: 'checker', dir: 'horz' }, title: ['checkerboard', 'across'], body: ['checkerboard', 'across'] }],
-    ['Wheel', { tr: { type: 'wheel', spokes: 4 }, title: ['wheel', '4'], body: ['wheel', '1'] }], ['Plus', { tr: { type: 'plus' }, title: ['plus', 'out'], body: ['plus', 'out'] }],
-    ['Diamond', { tr: { type: 'diamond' }, title: ['diamond', 'out'], body: ['diamond', 'out'] }], ['Box out', { tr: { type: 'zoom', dir: 'out' }, title: ['box', 'out'], body: ['box', 'out'] }],
+    [L.N('无动画'), null], [L.N('细微型'), 'group'],
+    [L.N('出现'), { tr: { type: 'cut' }, title: ['appear'], body: ['appear'] }], [L.N('出现并变暗'), { tr: { type: 'fade' }, title: ['appear'], body: ['appear'] }],
+    [L.N('全部淡入'), { tr: { type: 'fade' }, title: ['fade'], body: ['fade', null, 'all'] }], [L.N('逐个淡入'), { tr: { type: 'fade' }, title: ['fade'], body: ['fade'] }],
+    [L.N('淡化擦除'), { tr: { type: 'fade' }, title: ['fade'], body: ['wipe', 'b'] }], [L.N('淡化缩放'), { tr: { type: 'fade' }, title: ['fade'], body: ['zoom'] }],
+    [L.N('溶解进入'), { tr: { type: 'dissolve' }, title: ['dissolve'], body: ['dissolve'] }], [L.N('随机线条'), { tr: { type: 'randomBar', dir: 'horz' }, title: ['randomBars', 'horz'], body: ['randomBars', 'horz'] }],
+    [L.N('擦除'), { tr: { type: 'wipe', dir: 'r' }, title: ['wipe', 'l'], body: ['wipe', 't'] }], [L.N('百叶窗'), { tr: { type: 'blinds', dir: 'horz' }, title: ['blinds', 'horz'], body: ['blinds', 'horz'] }],
+    [L.N('温和型'), 'group'],
+    [L.N('升起'), { tr: { type: 'fade' }, title: ['ascend'], body: ['ascend'] }], [L.N('下降'), { tr: { type: 'fade' }, title: ['descend'], body: ['descend'] }],
+    [L.N('缩放'), { tr: { type: 'zoom', dir: 'out' }, title: ['zoom'], body: ['zoom'] }], [L.N('展开'), { tr: { type: 'fade' }, title: ['expand'], body: ['expand'] }],
+    [L.N('旋转器'), { tr: { type: 'fade' }, title: ['spinner'], body: ['spinner'] }], [L.N('缓慢进入'), { tr: { type: 'cover', dir: 'u' }, title: ['peekIn', 'b'], body: ['peekIn', 'b'] }],
+    [L.N('华丽型'), 'group'],
+    [L.N('飞入'), { tr: { type: 'push', dir: 'u' }, title: ['flyIn', 't'], body: ['flyIn', 'l'] }], [L.N('棋盘'), { tr: { type: 'checker', dir: 'horz' }, title: ['checkerboard', 'across'], body: ['checkerboard', 'across'] }],
+    [L.N('轮子'), { tr: { type: 'wheel', spokes: 4 }, title: ['wheel', '4'], body: ['wheel', '1'] }], [L.N('加号'), { tr: { type: 'plus' }, title: ['plus', 'out'], body: ['plus', 'out'] }],
+    [L.N('菱形'), { tr: { type: 'diamond' }, title: ['diamond', 'out'], body: ['diamond', 'out'] }], [L.N('盒状展开'), { tr: { type: 'zoom', dir: 'out' }, title: ['box', 'out'], body: ['box', 'out'] }],
   ];
   P.ANIM_SCHEMES = AS;
   TP.register({
@@ -741,7 +762,7 @@
         li.addEventListener('click', () => { L.$$('.li', list).forEach((x) => x.classList.remove('on')); li.classList.add('on'); pick = def; L.app.applyAnimScheme(def, false); if (L.app.opts.autoPreview) P.playSlide(); });
         list.appendChild(li);
       });
-      b.append(sec('应用于选定幻灯片:', list),
+      b.append(sec('应用于选定幻灯片：', list),
         h('div', { class: 'tp-btns' }, ui.button('应用于所有幻灯片', () => L.app.applyAnimScheme(pick, true), { class: 'btn tp-btn' })),
         h('div', { class: 'tp-btns' }, ui.button('▶ 播放', () => P.playSlide(), { class: 'btn small' }), ui.button('幻灯片放映', () => ui.exec('showFromCurrent'), { class: 'btn small' })),
         ui.check('自动预览', !!L.app.opts.autoPreview, (v) => { L.app.opts.autoPreview = v; L.app.saveOpts(); }));
@@ -755,8 +776,8 @@
   }
   P.addEffectMenu = (onPick) => [
     { label: '进入(&E)', html: '<span style="color:#2f9a3a;font-size:13px">★</span>', sub: effectMenu('entr', onPick) },
-    { label: '强调(&M)', html: '<span style="color:#c9a100;font-size:13px">★</span>', sub: effectMenu('emph', onPick) },
-    { label: '退出(&X)', html: '<span style="color:#d33a2c;font-size:13px">★</span>', sub: effectMenu('exit', onPick) },
+    { label: '强调(&m)', html: '<span style="color:#c9a100;font-size:13px">★</span>', sub: effectMenu('emph', onPick) },
+    { label: '退出(&x)', html: '<span style="color:#d33a2c;font-size:13px">★</span>', sub: effectMenu('exit', onPick) },
     { label: '动作路径(&P)', html: '<span style="color:#555;font-size:13px">☆</span>', sub: effectMenu('path', onPick) },
   ];
   TP.register({
@@ -767,22 +788,22 @@
   function renderCA(b) {
     L.clear(b);
     const slide = E().slide();
-    if (!slide || slide.isMaster) { b.appendChild(h('div', { class: 'tp-note', text: '自定义动画仅在普通视图中可用。' })); return; }
+    if (!slide || slide.isMaster) { b.appendChild(h('div', { class: 'tp-note', text: '自定义动画可在普通视图中使用。' })); return; }
     const anims = slide.anims || (slide.anims = []);
     const shapes = E().selected();
     const add = ui.tbDrop('添加效果', 'animation', (r) => {
-      if (!E().selected().length) { ui.msg('Select an object on the slide first, then choose an effect.'); return; }
+      if (!E().selected().length) { ui.msg('请先选择幻灯片上的对象，再选择效果。'); return; }
       ui.openMenu(P.addEffectMenu((cls, eff) => L.app.addAnimation(cls, eff)), r);
-    }, 'Add Effect');
+    }, '添加效果');
     const sel = anims.find((a) => a.id === CA.selId) || null;
-    const remove = ui.button('删除', () => { if (!sel) return; L.hist.push('Remove Effect'); slide.anims = anims.filter((a) => a.id !== sel.id); CA.selId = null; renderCA(b); L.bus.emit('slide-modified', E().idx); }, { class: 'btn small', disabled: !sel });
+    const remove = ui.button('移除', () => { if (!sel) return; L.hist.push('删除效果'); slide.anims = anims.filter((a) => a.id !== sel.id); CA.selId = null; renderCA(b); L.bus.emit('slide-modified', E().idx); }, { class: 'btn small', disabled: !sel });
     b.append(h('div', { class: 'tp-row' }, add, remove));
-    const upd = (k, v) => { if (!sel) return; L.hist.push('Modify Effect'); sel[k] = v; renderCA(b); if (L.app.opts.autoPreview) P.playSlide(sel.id); };
+    const upd = (k, v) => { if (!sel) return; L.hist.push('修改效果'); sel[k] = v; renderCA(b); if (L.app.opts.autoPreview) P.playSlide(sel.id); };
     const info = sel ? L.anim.info(sel.cls, sel.eff) : null;
     const start = ui.select([['click', '单击时'], ['with', '与上一动画同时'], ['after', '上一动画之后']], sel ? sel.start : 'click', (v) => upd('start', v), { disabled: !sel });
     const dir = ui.select(info && info.dirs ? info.dirs.map((d) => [d[0], d[1]]) : [['', '']], sel && sel.dir, (v) => upd('dir', v), { disabled: !(info && info.dirs) });
     const spd = ui.select(L.anim.SPEEDS.map(([n, ms]) => [ms, n]), sel ? L.anim.SPEEDS.reduce((best, s) => (Math.abs(s[1] - sel.dur) < Math.abs(best - sel.dur) ? s[1] : best), 500) : 1000, (v) => upd('dur', +v), { disabled: !sel || (sel.eff === 'appear' || sel.eff === 'disappear') });
-    b.append(sec(sel ? 'Modify: ' + L.anim.name(sel) : '修改效果', h('div', { class: 'tp-row' }, h('label', { text: '开始:' }), start), h('div', { class: 'tp-row' }, h('label', { text: '方向:' }), dir), h('div', { class: 'tp-row' }, h('label', { text: '速度:' }), spd)));
+    b.append(sec(sel ? L.t('修改：{0}', L.t(L.anim.name(sel))) : '修改效果', h('div', { class: 'tp-row' }, h('label', { text: '开始：' }), start), h('div', { class: 'tp-row' }, h('label', { text: '方向：' }), dir), h('div', { class: 'tp-row' }, h('label', { text: '速度：' }), spd)));
     const list = h('div', { class: 'list-box', style: 'min-height:150px' });
     let step = 0;
     anims.forEach((a, i) => {
@@ -790,11 +811,11 @@
       if (a.start === 'click' || i === 0) step += a.start === 'click' ? 1 : 0;
       const label = (sh ? sh.name : '?') + (sh && sh.tx ? ': ' + L.txt.plain(sh.tx).slice(0, 24) : '');
       const col = { entr: '#2f9a3a', emph: '#c9a100', exit: '#d33a2c', path: '#555' }[a.cls];
-      const li = h('div', { class: 'li' + (a.id === CA.selId ? ' on' : ''), 'data-tip': `${L.anim.name(a)} — ${label}` },
+      const li = h('div', { class: 'li' + (a.id === CA.selId ? ' on' : ''), 'data-tip': `${L.t(L.anim.name(a))} — ${label}` },
         h('span', { class: 'li-num', text: a.start === 'click' ? String(step) : '' }),
         h('span', { class: 'li-ico', html: a.start === 'click' ? '<svg width="10" height="14" viewBox="0 0 10 14"><rect x="1" y="1" width="8" height="12" rx="4" fill="#fff" stroke="#555"/><path d="M5 1v5" stroke="#555"/></svg>' : a.start === 'after' ? '<svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#fff" stroke="#555"/><path d="M6 3v3l2 1" stroke="#555" fill="none"/></svg>' : '' }),
         h('span', { class: 'li-ico', html: `<span style="color:${col}">★</span>` }),
-        h('span', { class: 'li-n', text: `${L.anim.name(a)}${a.by === 'para' ? ' ¶' : ''} — ${label}` }));
+        h('span', { class: 'li-n', text: `${L.t(L.anim.name(a))}${a.by === 'para' ? ' ¶' : ''} — ${label}` }));
       li.addEventListener('click', () => { CA.selId = a.id; if (sh && E().topOf(a.sid)) E().select([E().topOf(a.sid).id]); renderCA(b); });
       li.addEventListener('dblclick', () => openOptions(a));
       li.addEventListener('contextmenu', (e) => {
@@ -803,18 +824,18 @@
           { label: '单击时开始(&C)', checked: () => a.start === 'click', run: () => upd('start', 'click') },
           { label: '与上一动画同时开始(&W)', checked: () => a.start === 'with', run: () => upd('start', 'with') },
           { label: '上一动画之后开始(&A)', checked: () => a.start === 'after', run: () => upd('start', 'after') },
-          '-', { label: '效果选项(&E)...', run: () => openOptions(a) }, { label: '计时(&T)...', run: () => openOptions(a) }, '-', { label: '删除(&R)', run: () => { L.hist.push('Remove Effect'); slide.anims = slide.anims.filter((x) => x.id !== a.id); CA.selId = null; renderCA(b); } },
+          '-', { label: '效果选项(&E)...', run: () => openOptions(a) }, { label: '计时(&T)...', run: () => openOptions(a) }, '-', { label: '移除(&R)', run: () => { L.hist.push('删除效果'); slide.anims = slide.anims.filter((x) => x.id !== a.id); CA.selId = null; renderCA(b); } },
         ], { x: e.clientX, y: e.clientY });
       });
       list.appendChild(li);
     });
-    if (!anims.length) list.appendChild(h('div', { class: 'tp-note', style: 'padding:8px', text: shapes.length ? '请选定幻灯片上的元素，然后单击「添加效果」以添加动画。' : '请选定幻灯片上的元素，然后单击「添加效果」以添加动画。' }));
-    const move = (d) => { if (!sel) return; const i = anims.indexOf(sel), j = i + d; if (j < 0 || j >= anims.length) return; L.hist.push('Reorder Effects'); [anims[i], anims[j]] = [anims[j], anims[i]]; renderCA(b); };
+    if (!anims.length) list.appendChild(h('div', { class: 'tp-note', style: 'padding:8px', text: shapes.length ? '选择幻灯片中的元素，然后单击“添加效果”以添加动画。' : '选择幻灯片中的元素，然后单击“添加效果”以添加动画。' }));
+    const move = (d) => { if (!sel) return; const i = anims.indexOf(sel), j = i + d; if (j < 0 || j >= anims.length) return; L.hist.push('重新排列效果'); [anims[i], anims[j]] = [anims[j], anims[i]]; renderCA(b); };
     b.append(list,
-      h('div', { class: 'tp-row' }, h('span', { text: '重新排序' }), ui.button('↑', () => move(-1), { class: 'btn small', 'aria-label': 'Move up' }), ui.button('↓', () => move(1), { class: 'btn small', 'aria-label': 'Move down' })),
+      h('div', { class: 'tp-row' }, h('span', { text: '重新排序' }), ui.button('↑', () => move(-1), { class: 'btn small', 'aria-label': '上移' }), ui.button('↓', () => move(1), { class: 'btn small', 'aria-label': '下移' })),
       h('div', { class: 'tp-btns' }, ui.button('▶ 播放', () => P.playSlide(), { class: 'btn small' }), ui.button('幻灯片放映', () => ui.exec('showFromCurrent'), { class: 'btn small' })),
       ui.check('自动预览', !!L.app.opts.autoPreview, (v) => { L.app.opts.autoPreview = v; L.app.saveOpts(); }));
-    function openOptions(a) { L.dlg.effectOptions(a, (o) => { L.hist.push('Effect Options'); Object.assign(a, o); renderCA(b); if (L.app.opts.autoPreview) P.playSlide(a.id); }); }
+    function openOptions(a) { L.dlg.effectOptions(a, (o) => { L.hist.push('效果选项'); Object.assign(a, o); renderCA(b); if (L.app.opts.autoPreview) P.playSlide(a.id); }); }
   }
   P.selectAnim = (id) => { CA.selId = id; };
 
@@ -827,7 +848,7 @@
   function renderTR(b) {
     L.clear(b);
     const slide = E().slide();
-    if (!slide || slide.isMaster) { b.appendChild(h('div', { class: 'tp-note', text: '切换效果在普通视图或幻灯片浏览视图中设置。' })); return; }
+    if (!slide || slide.isMaster) { b.appendChild(h('div', { class: 'tp-note', text: '可在普通视图或幻灯片浏览视图中设置切换效果。' })); return; }
     const tr = slide.trans || {};
     const curName = L.anim.transName(tr);
     const list = h('div', { class: 'list-box trans-list', style: 'height:220px' });
@@ -841,13 +862,13 @@
       list.appendChild(li);
     }
     setTimeout(() => { const on = list.querySelector('.li.on'); if (on) on.scrollIntoView({ block: 'nearest' }); }, 0);
-    const spd = ui.select([['slow', '慢速'], ['med', '中速'], ['fast', '快速']], tr.spd || 'fast', (v) => L.app.setTransition((s) => { s.trans.spd = v; delete s.trans.dur; }));
+    const spd = ui.select([['slow', '慢速'], ['med', '中等'], ['fast', '快速']], tr.spd || 'fast', (v) => L.app.setTransition((s) => { s.trans.spd = v; delete s.trans.dur; }));
     const snd = ui.select([['', '[无声音]']], '', null, { disabled: true });
     const onClick = ui.check('单击鼠标时', tr.click !== false, (v) => L.app.setTransition((s) => { s.trans.click = v; }));
     const secs = ui.spin({ value: tr.after != null ? tr.after / 1000 : 0, min: 0, max: 3600, step: 1, dec: 1, unit: ' s', onChange: (v) => { if (auto.input.checked) L.app.setTransition((s) => { s.trans.after = v * 1000; }); } });
-    const auto = ui.check('在此之后自动', tr.after != null, (v) => L.app.setTransition((s) => { s.trans.after = v ? secs.get() * 1000 : null; }));
-    b.append(sec('应用于选定幻灯片:', list),
-      sec('修改切换效果', h('div', { class: 'tp-row' }, h('label', { text: '速度:' }), spd), h('div', { class: 'tp-row' }, h('label', { text: '声音:' }), snd)),
+    const auto = ui.check('自动换片间隔', tr.after != null, (v) => L.app.setTransition((s) => { s.trans.after = v ? secs.get() * 1000 : null; }));
+    b.append(sec('应用于选定幻灯片：', list),
+      sec('修改切换效果', h('div', { class: 'tp-row' }, h('label', { text: '速度：' }), spd), h('div', { class: 'tp-row' }, h('label', { text: '声音：' }), snd)),
       sec('换片方式', onClick, h('div', { class: 'tp-row' }, auto, secs)),
       h('div', { class: 'tp-btns' }, ui.button('应用于所有幻灯片', () => L.app.transitionToAll(), { class: 'btn tp-btn' })),
       h('div', { class: 'tp-btns' }, ui.button('▶ 播放', () => P.previewTransition(), { class: 'btn small' }), ui.button('幻灯片放映', () => ui.exec('showFromCurrent'), { class: 'btn small' })),

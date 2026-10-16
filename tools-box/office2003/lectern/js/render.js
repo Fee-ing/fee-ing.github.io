@@ -10,35 +10,10 @@
   let gid = 0;
   const nid = (p) => (p || 'g') + (++gid);
 
-  /* ---------- patterns (8×8 bitmaps, OOXML prst names) ---------- */
-  const PATT = {
-    pct5: [0x80, 0, 0, 0, 0x08, 0, 0, 0], pct10: [0x80, 0, 0x08, 0, 0x80, 0, 0x08, 0], pct20: [0x88, 0, 0x22, 0, 0x88, 0, 0x22, 0],
-    pct25: [0x88, 0x22, 0x88, 0x22, 0x88, 0x22, 0x88, 0x22], pct30: [0xAA, 0x44, 0xAA, 0x11, 0xAA, 0x44, 0xAA, 0x11], pct40: [0xAA, 0x55, 0xAA, 0x51, 0xAA, 0x55, 0xAA, 0x15],
-    pct50: [0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55], pct60: [0xEE, 0x55, 0xBB, 0x55, 0xEE, 0x55, 0xBB, 0x55], pct70: [0xEE, 0xBB, 0xEE, 0xBB, 0xEE, 0xBB, 0xEE, 0xBB],
-    pct75: [0xEE, 0xFF, 0xBB, 0xFF, 0xEE, 0xFF, 0xBB, 0xFF], pct80: [0xF7, 0xFF, 0x7F, 0xFF, 0xF7, 0xFF, 0x7F, 0xFF], pct90: [0xFF, 0xF7, 0xFF, 0xFF, 0xFF, 0x7F, 0xFF, 0xFF],
-    horz: [0xFF, 0, 0, 0, 0xFF, 0, 0, 0], vert: [0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88], ltHorz: [0xFF, 0, 0, 0, 0, 0, 0, 0], ltVert: [0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80],
-    dkHorz: [0xFF, 0xFF, 0, 0, 0xFF, 0xFF, 0, 0], dkVert: [0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC], narHorz: [0xFF, 0, 0xFF, 0, 0xFF, 0, 0xFF, 0], narVert: [0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA],
-    dashHorz: [0xF0, 0, 0, 0, 0x0F, 0, 0, 0], dashVert: [0x80, 0x80, 0x80, 0x80, 0x08, 0x08, 0x08, 0x08],
-    dnDiag: [0x88, 0x44, 0x22, 0x11, 0x88, 0x44, 0x22, 0x11], upDiag: [0x11, 0x22, 0x44, 0x88, 0x11, 0x22, 0x44, 0x88],
-    ltDnDiag: [0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01], ltUpDiag: [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80],
-    dkDnDiag: [0xCC, 0x66, 0x33, 0x99, 0xCC, 0x66, 0x33, 0x99], dkUpDiag: [0x33, 0x66, 0xCC, 0x99, 0x33, 0x66, 0xCC, 0x99],
-    wdDnDiag: [0xC1, 0xE0, 0x70, 0x38, 0x1C, 0x0E, 0x07, 0x83], wdUpDiag: [0x83, 0x07, 0x0E, 0x1C, 0x38, 0x70, 0xE0, 0xC1],
-    dashDnDiag: [0x88, 0x44, 0x22, 0x11, 0, 0, 0, 0], dashUpDiag: [0x11, 0x22, 0x44, 0x88, 0, 0, 0, 0],
-    cross: [0xFF, 0x88, 0x88, 0x88, 0xFF, 0x88, 0x88, 0x88], smGrid: [0xFF, 0x88, 0x88, 0x88, 0xFF, 0x88, 0x88, 0x88], lgGrid: [0xFF, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80],
-    diagCross: [0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81], smCheck: [0xCC, 0xCC, 0x33, 0x33, 0xCC, 0xCC, 0x33, 0x33], lgCheck: [0xF0, 0xF0, 0xF0, 0xF0, 0x0F, 0x0F, 0x0F, 0x0F],
-    dotGrid: [0xAA, 0, 0x80, 0, 0x80, 0, 0x80, 0], smConfetti: [0x80, 0x08, 0x40, 0x02, 0x10, 0x01, 0x20, 0x04], lgConfetti: [0xB1, 0x30, 0x03, 0x1B, 0xD8, 0xC0, 0x0C, 0x8D],
-    horzBrick: [0xFF, 0x80, 0x80, 0x80, 0xFF, 0x08, 0x08, 0x08], diagBrick: [0x80, 0x40, 0x20, 0x10, 0x18, 0x24, 0x42, 0x81],
-    solidDmnd: [0x10, 0x38, 0x7C, 0xFE, 0x7C, 0x38, 0x10, 0x00], openDmnd: [0x80, 0x41, 0x22, 0x14, 0x08, 0x14, 0x22, 0x41], dotDmnd: [0x80, 0x00, 0x22, 0x00, 0x08, 0x00, 0x22, 0x00],
-    plaid: [0xAA, 0x55, 0xAA, 0x55, 0xF0, 0xF0, 0xF0, 0xF0], sphere: [0x77, 0x98, 0xF8, 0xF8, 0x77, 0x89, 0x8F, 0x8F], weave: [0x88, 0x54, 0x22, 0x45, 0x88, 0x14, 0x22, 0x51],
-    divot: [0x00, 0x08, 0x04, 0x08, 0x00, 0x80, 0x40, 0x80], shingle: [0x03, 0x84, 0x48, 0x30, 0x0C, 0x02, 0x01, 0x01], wave: [0x00, 0x18, 0xA4, 0x03, 0x00, 0x18, 0xA4, 0x03],
-    trellis: [0xFF, 0x66, 0xFF, 0x99, 0xFF, 0x66, 0xFF, 0x99], zigZag: [0x81, 0x42, 0x24, 0x18, 0x81, 0x42, 0x24, 0x18],
-  };
+  /* ---------- patterns (8×8 bitmaps, OOXML prst names; common/geometry.js) ---------- */
+  const PATT = L.geom.PATTERNS;
   R.PATTERNS = PATT;
-  const pattPath = (bits) => {
-    let d = '';
-    bits.forEach((row, y) => { for (let x = 0; x < 8; x++) if (row & (0x80 >> x)) d += `M${x},${y}h1v1h-1z`; });
-    return d;
-  };
+  const pattPath = L.geom.patternPath;
   R.patternSVG = (prst, fg, bg, tile) => {
     tile = tile || 6;
     const bits = PATT[prst] || PATT.pct50;
@@ -219,7 +194,7 @@
   R.runStyle = function (span, rp, design, ctx, scale) {
     const sz = (rp.sz || 18) * scale;
     const st = span.style;
-    st.fontFamily = L.fontStack(L.style.font(rp.font, design));
+    st.fontFamily = L.fontStack(L.style.font(rp.font, design), L.style.fontEA(rp.fontEA, design));
     st.fontSize = L.round(sz, 2) + 'px';
     st.fontWeight = rp.b ? '700' : '400';
     st.fontStyle = rp.i ? 'italic' : 'normal';
@@ -287,7 +262,7 @@
       el.style.paddingLeft = L.round((ps.marL || 0) * scale, 2) + 'px';
       el.style.textIndent = L.round((ps.indent || 0) * scale, 2) + 'px';
       el.style.fontSize = L.round(fsz, 2) + 'px';
-      el.style.fontFamily = L.fontStack(L.style.font(firstRun.font, design));
+      el.style.fontFamily = L.fontStack(L.style.font(firstRun.font, design), L.style.fontEA(firstRun.fontEA, design));
       const lh = lineHeight(ps, scale);
       el.style.lineHeight = lh.factor ? String(L.round(lh.factor * (1 - lnRed), 3)) : lh.css;
       if (pi > 0) el.style.marginTop = L.round(spacing(ps.spcBef, fsz / scale) * scale, 2) + 'px';
@@ -461,7 +436,7 @@
     if (sh.flipH || sh.flipV) img.style.transform = `scale(${sh.flipH ? -1 : 1},${sh.flipV ? -1 : 1})`;
     if (!L.media.has(sh.media)) {
       wrap.classList.add('missing');
-      wrap.appendChild(h('div', { class: 'pic-missing', text: sh.missingLabel || 'Picture' }));
+      wrap.appendChild(h('div', { class: 'pic-missing', text: missingText(sh.missingLabel) }));
     } else {
       /* formats browsers can't decode (TIFF, HD Photo, …) degrade to a labelled frame; the original bytes still save */
       img.addEventListener('error', () => {
@@ -470,7 +445,7 @@
         const ext = m ? L.mimeToExt(m.type) : '';
         img.remove();
         wrap.classList.add('missing');
-        wrap.appendChild(h('div', { class: 'pic-missing', text: ext && ext !== 'png' ? `Picture (.${ext})` : 'Picture' }));
+        wrap.appendChild(h('div', { class: 'pic-missing', text: ext && ext !== 'png' ? L.t('图片 (.{0})', ext) : L.t('图片') }));
       }, { once: true });
       wrap.appendChild(img);
     }
@@ -524,8 +499,8 @@
 
   /* WordArt (2003-style stretched text, optional warp) */
   R.WARPS = [
-    ['textPlain', 'Plain Text'], ['textArchUp', 'Arch Up'], ['textArchDown', 'Arch Down'], ['textCircle', 'Circle'], ['textWave1', 'Wave'],
-    ['textSlantUp', 'Slant Up'], ['textSlantDown', 'Slant Down'], ['textTriangle', 'Triangle Up'], ['textChevron', 'Chevron Up'], ['textCanUp', 'Can Up'],
+    ['textPlain', '纯文本'], ['textArchUp', '上弯弧'], ['textArchDown', '下弯弧'], ['textCircle', L.N('圆形')], ['textWave1', L.N('波浪')],
+    ['textSlantUp', '向上倾斜'], ['textSlantDown', '向下倾斜'], ['textTriangle', '向上三角形'], ['textChevron', '向上燕尾形'], ['textCanUp', '向上圆柱'],
   ];
   function warpPoints(warp, w, hh, fs) {
     const pts = [];
@@ -591,7 +566,10 @@
   };
 
   /* content-placeholder icon palette (2003) */
-  const CONTENT_ICONS = [['table', 'Insert Table'], ['chart', 'Insert Chart'], ['clipart', 'Insert Clip Art'], ['picture', 'Insert Picture'], ['diagram', 'Insert Diagram or Organization Chart'], ['media', 'Insert Media Clip']];
+  /* what a picture that can't be shown is (pptx-read.js, frames.js), in the UI's language */
+  const MISSING = { Picture: '图片', 'Embedded object': '嵌入对象', Ink: '墨迹', '3-D model': '三维模型', 'New chart': '新建图表', IntelliArt: 'IntelliArt' };
+  const missingText = (label) => (/^Linked picture: /.test(label || '') ? L.t('链接的图片：{0}', label.slice(16)) : L.t(MISSING[label] || label || 'Picture'));
+  const CONTENT_ICONS = [['table', '插入表格'], ['chart', '插入图表'], ['clipart', '插入剪贴画'], ['picture', '插入图片'], ['diagram', '插入图示或组织结构图'], ['media', '插入媒体剪辑']];
 
   /**
    * Render a shape. ctx = {pres, slide, design, mode, num}
@@ -652,7 +630,8 @@
           }
           if (empty && (sh.ph || (sh.sa && sh.sa.role === 'node')) && ctx.mode === 'edit' && ctx.prompts !== false) {
             const ptype = sh.ph ? sh.ph.type : null;
-            const prompt = !sh.ph ? '[Text]' : L.model.PROMPTS[ptype] != null ? L.model.PROMPTS[ptype] : 'Click to add text';
+            /* the prompt in the UI's language (the file keeps the English one, pptx-write.js) */
+            const prompt = L.t(!sh.ph ? '[文本]' : L.model.PROMPTS[ptype] != null ? L.model.PROMPTS[ptype] : '单击此处添加文本');
             if (prompt) {
               const ptx = Object.assign({}, sh.tx, { ps: [L.txt.para(prompt, sh.tx.ps[0] && sh.tx.ps[0].pp, sh.tx.ps[0] && (sh.tx.ps[0].end || (sh.tx.ps[0].rs[0] && L.txt.runProps(sh.tx.ps[0].rs[0]))), sh.tx.ps[0] ? sh.tx.ps[0].lvl : 0)] });
               const pe = R.textBody(sh, ptx, design, ctx, rect, {});

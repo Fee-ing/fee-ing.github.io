@@ -22,19 +22,22 @@
   /* ---------- DOM ---------- */
   E.mount = function (container) {
     E.wrap = container;
-    E.scroller = h('div', { class: 'ed-scroll', tabindex: '-1', 'aria-label': 'Slide editing area' });
+    E.scroller = h('div', { class: 'ed-scroll', tabindex: '-1', 'aria-label': '幻灯片编辑区' });
     E.canvas = h('div', { class: 'ed-canvas' });
     E.host = h('div', { class: 'ed-host' });
     E.gridEl = h('div', { class: 'ed-grid', hidden: true });
     E.overlay = h('div', { class: 'ed-overlay' });
     E.rulerH = h('div', { class: 'ruler ruler-h', hidden: true });
     E.rulerV = h('div', { class: 'ruler ruler-v', hidden: true });
-    E.empty = h('div', { class: 'ed-empty', hidden: true, text: 'Click to add first slide' });
+    E.empty = h('div', { class: 'ed-empty', hidden: true, text: '单击此处添加第一张幻灯片' });
     E.canvas.append(E.host, E.gridEl, E.overlay);
     E.scroller.append(E.canvas, E.empty);
     container.append(E.rulerH, E.rulerV, E.scroller);
     E.empty.addEventListener('click', () => L.ui.exec('newSlide'));
-    E.scroller.addEventListener('pointerdown', onDown);
+    E.scroller.addEventListener('pointerdown', (e) => {
+      if (e.button === 0) pressStart();
+      try { onDown(e); } finally { if (!L.ui.dragging()) pressEnd(true); }
+    });
     E.scroller.addEventListener('dblclick', onDbl);
     E.scroller.addEventListener('contextmenu', onContext);
     E.scroller.addEventListener('wheel', (e) => {
@@ -53,7 +56,7 @@
 
   E.refocus = () => {
     if (E.editing()) { L.te.focus(); return; }
-    if (L.app && L.app.focusArea === 'slides') return;
+    if (L.app && L.app.focusArea === 'slides') { const b = L.panes && L.panes.left && L.panes.left.body; if (b && b.isConnected && document.activeElement !== b && !b.contains(document.activeElement)) { try { b.focus({ preventScroll: true }); } catch (e) { /* ignore */ } } return; }
     try { E.scroller.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
   };
 
@@ -113,19 +116,25 @@
     }
   }
   function dragGuide(e, axis) {
+    if (e.button !== 0) return;
     e.stopPropagation(); e.preventDefault();
     const el = e.currentTarget;
-    el.setPointerCapture(e.pointerId);
     const tip = h('div', { class: 'guide-tip' });
-    E.gridEl.appendChild(tip);
-    const mv = (ev) => {
-      const p = E.toSlide(ev.clientX, ev.clientY);
-      const v = L.clamp(axis === 'x' ? p.x : p.y, 0, axis === 'x' ? L.pres.W : L.pres.H);
-      if (axis === 'x') { E.grid.gx = v; el.style.left = v * E.scale + 'px'; tip.style.cssText = `left:${v * E.scale + 6}px;top:6px`; tip.textContent = L.round(Math.abs(v - L.pres.W / 2) / 72, 2) + '"'; }
-      else { E.grid.gy = v; el.style.top = v * E.scale + 'px'; tip.style.cssText = `left:6px;top:${v * E.scale + 6}px`; tip.textContent = L.round(Math.abs(v - L.pres.H / 2) / 72, 2) + '"'; }
-    };
-    const up = () => { el.removeEventListener('pointermove', mv); el.removeEventListener('pointerup', up); tip.remove(); };
-    el.addEventListener('pointermove', mv); el.addEventListener('pointerup', up);
+    const was = axis === 'x' ? E.grid.gx : E.grid.gy;
+    const put = (v) => { if (axis === 'x') { E.grid.gx = v; el.style.left = v * E.scale + 'px'; } else { E.grid.gy = v; el.style.top = v * E.scale + 'px'; } };
+    L.ui.drag(e, {
+      capture: E.scroller,
+      move(ev) {
+        const p = E.toSlide(ev.clientX, ev.clientY);
+        const v = L.clamp(axis === 'x' ? p.x : p.y, 0, axis === 'x' ? L.pres.W : L.pres.H);
+        if (!tip.isConnected) E.gridEl.appendChild(tip);
+        put(v);
+        if (axis === 'x') { tip.style.cssText = `left:${v * E.scale + 6}px;top:6px`; tip.textContent = L.round(Math.abs(v - L.pres.W / 2) / 72, 2) + '"'; }
+        else { tip.style.cssText = `left:6px;top:${v * E.scale + 6}px`; tip.textContent = L.round(Math.abs(v - L.pres.H / 2) / 72, 2) + '"'; }
+      },
+      up() { tip.remove(); },
+      cancel() { tip.remove(); put(was); },
+    });
   }
 
   L.onLook(() => { if (E.rulerH) E.drawRulers(); });   /* the canvas follows the look */
@@ -226,6 +235,7 @@
   E.selectAll = () => { const sl = E.slide(); if (sl) E.select(sl.shapes.map((s) => s.id)); };
   E.saveSel = () => ({ idx: E.idx, view: E.view, sel: E.sel.slice(), edit: E.editing() ? L.te.snapshot() : null });
   E.restoreSel = function (st) {
+    E.endInteraction();   /* the model was replaced (undo, redo): a drag in progress holds shapes no longer there */
     if (!st) { E.render(); return; }
     if (E.view === 'master') E.buildMaster();
     E.idx = L.clamp(st.idx || 0, 0, Math.max(0, L.pres.slides.length - 1));
@@ -241,6 +251,7 @@
     const n = L.pres.slides.length;
     if (!n) { E.idx = 0; E.render(); return; }
     i = L.clamp(i, 0, n - 1);
+    E.endInteraction();   /* another slide: what was under way on this one ends */
     if (E.editing()) L.te.end();
     if (E.view === 'master') { E.view = 'normal'; L.bus.emit('view'); }
     const changed = i !== E.idx;
@@ -280,7 +291,7 @@
       fr.style.cssText = `left:${vis.x * s}px;top:${vis.y * s}px;width:${Math.max(vis.w * s, 1)}px;height:${Math.max(vis.h * s, 1)}px;${vis.rot ? `transform:rotate(${vis.rot}deg)` : ''}`;
       if (editId === id) {
         fr.appendChild(h('div', { class: 'edit-ring', 'data-h': 'move', 'data-sid': id }));
-      }
+      } else if (sh.type === 'group') fr.appendChild(h('div', { class: 'grp-ring', 'data-h': 'move', 'data-sid': id }));
       const locked = !!f.parent && !!f.parent.rot;
       if (!locked) {
         if (E.cropMode && sh.type === 'image' && E.sel.length === 1) {
@@ -349,7 +360,47 @@
   E.touchNow = () => L.bus.emit('slide-modified', E.idx);
 
   /* ---------- pointer interaction ---------- */
-  let drag = null;
+  /* Every press-drag-release on the slide is a ui.drag (common/ui.js): it moves only past its threshold, ends with up on
+     the release (d.moved false: it was a click), and with cancel instead on Esc, a second button, a release the page
+     never saw, the window losing focus or a tool switch; cancel puts back what the drag moved and records nothing.
+     Only the browser's own text selection inside the text being edited is not one. The editing area holds the
+     pointer, so the slide re-rendering under a drag doesn't end it. */
+  function slideDrag(e, o) {
+    const then = (fn, end) => (...a) => { try { if (fn) fn(...a); } finally { L.ui.refresh(); end(...a); } };
+    return L.ui.drag(e, { threshold: o.threshold, capture: o.capture || E.scroller, move: o.move, up: then(o.up, (ev, d) => pressEnd(!d.moved)), cancel: then(o.cancel, () => pressEnd(false)) });
+  }
+  /* The toolbars that come and go with the selection (Picture, Tables and Borders, …) change the slide area's size, and
+     so where the slide is. While a press on the slide is under way, and for a double-click's time after a click, that
+     waits (E.holdLayout), so nothing moves under the pointer: a drag from a table's cell stays on the cells it
+     started on, and a double-click's second press lands where the first did. The press ends with its drag (whichever
+     way it ends) or, when it started none, at once. */
+  let pressing = false, laterTimer = 0, later = null;
+  function pressStart() { pressing = true; clearTimeout(laterTimer); laterTimer = 0; }
+  function pressEnd(clicked) {
+    if (!pressing) return;
+    pressing = false;
+    if (later) { if (clicked) laterTimer = setTimeout(flushLater, 450); else flushLater(); }
+  }
+  function flushLater() { clearTimeout(laterTimer); laterTimer = 0; const fn = later; later = null; if (fn) fn(); }
+  /** true when fn (a change of the slide area's size) must wait for the press; it then runs when the press is over */
+  E.holdLayout = (fn) => { if (!pressing && !laterTimer) return false; later = fn; return true; };
+  /** shapes a drag changes as it goes: put back on cancel; on commit, one undo step for what changed */
+  function liveEdit(shapes) {
+    const before = shapes.map((s) => [s, L.clone(s)]);
+    const put = (s, o) => {
+      for (const k of new Set(Object.keys(s).concat(Object.keys(o)))) {
+        if (!(k in o)) delete s[k];
+        else if (JSON.stringify(s[k]) !== JSON.stringify(o[k])) s[k] = L.clone(o[k]);
+      }
+    };
+    return {
+      revert() { for (const [s, o] of before) put(s, o); },
+      commit(label) { const after = before.map(([s]) => L.clone(s)); this.revert(); L.hist.push(label); before.forEach(([s], i) => put(s, after[i])); },
+    };
+  }
+  /** with the Format Painter on, what a press marks is painted when the mouse is let go: the text selected (id unset)
+      or the object id; null when the painter is off */
+  const painterUp = (id) => (L.app.painter.on() ? () => L.app.painter.release(id) : null);
   function shapeHit(target) {
     const el = target.closest && target.closest('.shp.ia');
     if (!el || !E.host.contains(el)) return null;
@@ -360,6 +411,13 @@
   function onDown(e) {
     if (e.button === 1) return;
     L.ui.closeMenus();
+    /* the prompt of an empty presentation is a button of its own: its click adds the first slide (P15) */
+    if (E.empty.contains(e.target)) return;
+    /* the slide area's scroll bars only scroll: no press on the slide's background, selection and editing stay (P12) */
+    if (e.target === E.scroller && (e.offsetX >= E.scroller.clientWidth || e.offsetY >= E.scroller.clientHeight)) return;
+    /* a press on the slide takes the keyboard from the Slides pane: Delete, the arrows and the clipboard keys work on
+       the slide again (the presses below prevent the browser's own focus change) */
+    if (L.app && L.app.focusArea === 'slides') { L.app.focusArea = null; try { E.scroller.focus({ preventScroll: true }); } catch (err) { /* ignore */ } }
     const tgt = e.target;
     /* content placeholder icons */
     const act = tgt.closest && tgt.closest('[data-content-act]');
@@ -376,20 +434,24 @@
     if (hd && e.button === 0) { startHandle(e, hd, tgt.dataset.sid); return; }
     /* inside the active text editor → native caret handling */
     if (E.editing() && L.te.contains(tgt)) {
-      if (e.button === 0 && L.te.target().sh.type === 'table') startCellSelect(e);
-      if (e.button === 0) paintOnRelease();
+      if (e.button === 0 && L.te.target().sh.type === 'table') startCellSelect(e, painterUp());
+      /* the browser selects the text; the painter only needs to know when the mouse is let go */
+      else if (e.button === 0 && L.app.painter.on()) slideDrag(e, { threshold: 0, capture: e.target, up: painterUp() });   /* held by the text: see startCellSelect */
       return;
     }
     /* elsewhere inside the box being edited (its margins, the space under the text): place the caret and
        drag to select text, as PowerPoint does; the hatched ring around it moves the box */
     const st = L.te.state;
-    if (st && !st.cell && e.button === 0 && st.el.contains(tgt)) { startTextSelect(e, st); paintOnRelease(); return; }
+    if (st && !st.cell && e.button === 0 && st.el.contains(tgt)) { startTextSelect(e, st, painterUp()); return; }
     const hit = shapeHit(tgt);
     if (e.button === 2) {
       if (hit) { const id = pickId(hit); if (!E.sel.includes(id)) E.select([id]); }
       return;
     }
     if (!hit) {
+      /* no browser selection on the slide's background (a double-click there would select its line break, and the next
+         press would drag that selection instead of a rubber band) */
+      if (e.target !== E.scroller) e.preventDefault();
       L.app.painter.stop(); /* a click beside the objects puts the brush down, kept on or not (as Impress) */
       if (E.editing()) L.te.end();
       if (!e.shiftKey && !e.ctrlKey) E.clearSel();
@@ -397,17 +459,27 @@
       startMarquee(e);
       return;
     }
-    e.preventDefault();
     const id = pickId(hit);
+    /* a press in a table's cell edits that cell at once, and a drag from it selects cells, as PowerPoint does; the
+       table moves by its border (P8) */
+    if (e.button === 0 && !e.shiftKey && !e.ctrlKey && !L.app.painter.on() && E.shape(id) && E.shape(id).type === 'table' && tgt.closest('td')) {
+      L.te.begin(id, { point: { x: e.clientX, y: e.clientY } });
+      if (L.te.state && L.te.contains(tgt)) { startCellSelect(e, null); return; }
+    }
+    e.preventDefault();
     if (L.app.painter.on()) { paintPress(e, id); return; }
     const wasSelected = E.sel.includes(id) && E.sel.length === 1;
-    if (e.shiftKey || e.ctrlKey) {
-      if (E.sel.includes(id) && !e.ctrlKey) { E.toggleSel(id); return; }
-      if (!E.sel.includes(id)) { E.sel.push(id); E.select(E.sel.slice()); }
-    } else if (!E.sel.includes(id)) E.select([id]);
+    /* Shift or Ctrl adds to the selection and never edits text (P6): a click on a selected object takes it out
+       (Ctrl only when it doesn't drag, which copies) */
+    const multi = e.shiftKey || e.ctrlKey, wasIn = E.sel.includes(id);
+    if (multi) {
+      if (E.editing()) L.te.end();
+      if (wasIn && !e.ctrlKey) { E.toggleSel(id); return; }
+      if (!wasIn) { E.sel.push(id); E.select(E.sel.slice()); }
+    } else if (!wasIn) E.select([id]);
     else if (E.editing()) L.te.end();
     E.refocus();
-    startMove(e, id, wasSelected);
+    startMove(e, id, wasSelected, multi ? { multi: true, wasIn } : null);
   }
   /** caret position for a point in or around the text being edited: above it → start, below → end, beside → that line */
   function caretNear(root, x, y) {
@@ -418,7 +490,9 @@
     const rg = L.te.caretFromPoint(L.clamp(x, r.left + 1, r.right - 1), y);
     return rg && root.contains(rg.startContainer) ? rg : edge(x > r.left + r.width / 2);
   }
-  function startTextSelect(e, st) {
+  /** select text from the press to the pointer (then: run when the mouse is let go); cancelled, the selection is the
+      press's own (the caret where it went down, or Shift's extension to there) */
+  function startTextSelect(e, st, then) {
     e.preventDefault();
     const root = st.root;
     L.te.focus();
@@ -426,24 +500,14 @@
     const at = caretNear(root, e.clientX, e.clientY);
     let anchor = { node: at.startContainer, off: at.startOffset };
     if (e.shiftKey && sel.rangeCount && root.contains(sel.anchorNode)) anchor = { node: sel.anchorNode, off: sel.anchorOffset };
-    const extend = (ev) => {
-      const f = caretNear(root, ev.clientX, ev.clientY);
-      try { sel.setBaseAndExtent(anchor.node, anchor.off, f.startContainer, f.startOffset); } catch (err) { /* outside the text */ }
-    };
-    extend(e);
-    try { E.scroller.setPointerCapture(e.pointerId); } catch (err) { /* window listeners still follow the drag */ }
-    drag = { move: extend, up() { L.te.lastSel = L.te.getSel(); } };
-  }
-  /** with the Format Painter on, what the press marks is painted when the mouse is let go: the text selected
-      (id unset) or the object id */
-  function paintOnRelease(id) {
-    if (!L.app.painter.on()) return;
-    const prev = drag;
-    drag = {
-      native: !prev || prev.native,
-      move(ev) { if (prev) prev.move(ev); },
-      up(ev) { if (prev) prev.up(ev); L.app.painter.release(id); },
-    };
+    const to = (f) => { try { sel.setBaseAndExtent(anchor.node, anchor.off, f.startContainer, f.startOffset); } catch (err) { /* outside the text */ } };
+    to(at);
+    slideDrag(e, {
+      threshold: 0,
+      move: (ev) => to(caretNear(root, ev.clientX, ev.clientY)),
+      up() { L.te.lastSel = L.te.getSel(); if (then) then(); },
+      cancel() { if (root.isConnected) to(at); L.te.lastSel = L.te.getSel(); },
+    });
   }
   /** a press on another object with the Format Painter on: on its text, when the painter carries text
       formatting, it edits that text and the drag marks what to paint; elsewhere the whole object is painted */
@@ -451,9 +515,9 @@
     const sh = E.shape(id), fmt = L.app.painter.value;
     if (fmt.run && textCapable(sh) && !L.txt.isEmpty(sh.tx) && e.target.closest && e.target.closest('.txi')) {
       L.te.begin(id, { point: { x: e.clientX, y: e.clientY } });
-      if (L.te.state && !L.te.state.cell) { startTextSelect(e, L.te.state); paintOnRelease(); return; }
+      if (L.te.state && !L.te.state.cell) { startTextSelect(e, L.te.state, painterUp()); return; }
     }
-    paintOnRelease(id);
+    slideDrag(e, { up: painterUp(id) });
   }
   function pickId(hit) {
     if (hit.top === hit.inner) return hit.top;
@@ -463,43 +527,46 @@
   }
   const textCapable = (sh) => sh && (sh.type === 'text' || sh.type === 'shape') && !L.geom.isLine(sh.geom) && sh.tx;
 
-  function startMove(e, id, wasSelected) {
+  /** opts: { multi, wasIn } a press with Shift or Ctrl (it selects, never edits); { ring } a press on the hatched
+      ring of the box being edited (a click there selects the box as an object, P11) */
+  function startMove(e, id, wasSelected, opts) {
+    opts = opts || {};
     const p0 = E.toSlide(e.clientX, e.clientY);
     const ids = E.sel.slice();
     const shapes = ids.map((x) => E.find(x)).filter((f) => f && !(f.parent && f.parent.rot));
     const orig = shapes.map((f) => ({ f, x: f.shape.x, y: f.shape.y }));
     const prim = E.shape(id);
     const els = shapes.map((f) => E.elOf(f.shape.id));
-    let moved = false;
-    E.scroller.setPointerCapture(e.pointerId);
-    drag = {
+    let mdx = 0, mdy = 0;
+    const unmove = () => { els.forEach((el) => { if (el) el.style.translate = ''; }); L.$$('.sel-frame,.hd-end', E.overlay).forEach((el) => { el.style.translate = ''; }); };
+    slideDrag(e, {
       move(ev) {
         const p = E.toSlide(ev.clientX, ev.clientY);
         let dx = p.x - p0.x, dy = p.y - p0.y;
-        if (!moved && Math.hypot(dx * E.scale, dy * E.scale) < 4) return;
-        moved = true;
         if (ev.shiftKey) { if (Math.abs(dx) > Math.abs(dy)) dy = 0; else dx = 0; }
         if (prim && E.grid.snap && !ev.altKey) {
           const o = orig.find((q) => q.f.shape.id === prim.id) || orig[0];
           if (o) { dx = snapV(o.x + dx, ev) - o.x; dy = snapV(o.y + dy, ev) - o.y; }
         }
-        this.dx = dx; this.dy = dy;
+        mdx = dx; mdy = dy;
         els.forEach((el) => { if (el) el.style.translate = `${dx}px ${dy}px`; });
         L.$$('.sel-frame,.hd-end', E.overlay).forEach((el) => { el.style.translate = `${dx * E.scale}px ${dy * E.scale}px`; });
-        L.app && L.app.status && L.app.status(`Position: ${L.fmtIn(o0().x + dx)} from left, ${L.fmtIn(o0().y + dy)} from top`);
+        L.app && L.app.status && L.app.status(L.t('位置：距左 {0}，距顶 {1}', L.fmtIn(o0().x + dx), L.fmtIn(o0().y + dy)));
       },
-      up(ev) {
-        if (!moved) {
+      up(ev, d) {
+        if (!d.moved) {
+          if (opts.multi) { if (ev.ctrlKey && opts.wasIn && E.sel.length > 1) E.toggleSel(id); return; }
+          if (opts.ring) { if (E.editing()) L.te.end(); E.select([id]); E.refocus(); return; }
           if (prim && textCapable(prim) && (wasSelected || prim.type === 'text' || (prim.ph && L.txt.isEmpty(prim.tx)))) {
-            if (!(prim.type === 'shape' && !wasSelected)) L.te.begin(prim.id, { point: { x: ev.clientX, y: ev.clientY } });
+            if (!(prim.type === 'shape' && !wasSelected)) { L.te.begin(prim.id, { point: { x: ev.clientX, y: ev.clientY } }); clickEdit = { id: prim.id, t: Date.now() }; }
           } else if (prim && prim.type === 'table') L.te.begin(prim.id, { point: { x: ev.clientX, y: ev.clientY } });
           return;
         }
-        const dx = this.dx || 0, dy = this.dy || 0;
-        els.forEach((el) => { if (el) el.style.translate = ''; });
+        const dx = mdx, dy = mdy;
+        unmove();
         if (ev.ctrlKey && !dx && !dy) return;
         if (ev.ctrlKey) {
-          L.hist.push('Duplicate');
+          L.hist.push(L.N('创建副本'));
           const sl = E.slide();
           const copies = shapes.map((f) => { const c = M.dup(f.shape); M.translate(c, dx, dy); f.list.push(c); return c.id; });
           if (E.view === 'master') E.syncMaster();
@@ -509,9 +576,10 @@
           void sl;
           return;
         }
-        E.commit('Move Object', () => { for (const o of orig) { const d = { x: o.x + dx - o.f.shape.x, y: o.y + dy - o.f.shape.y }; M.translate(o.f.shape, d.x, d.y); if (o.f.parent) E.fitGroup(o.f.parent); } });
+        E.commit('移动对象', () => { for (const o of orig) { M.translate(o.f.shape, o.x + dx - o.f.shape.x, o.y + dy - o.f.shape.y); if (o.f.parent) E.fitGroup(o.f.parent); } });
       },
-    };
+      cancel() { unmove(); if (L.app && L.app.status) L.app.status(''); },
+    });
     function o0() { return orig.find((q) => prim && q.f.shape.id === prim.id) || orig[0] || { x: 0, y: 0 }; }
   }
   E.fitGroup = function (g) {
@@ -525,69 +593,68 @@
     const f = E.find(sid);
     if (!f) return;
     const sh = f.shape;
-    if (hd === 'move') { startMove(e, sid, true); return; }
+    if (hd === 'move') { startMove(e, sid, true, { ring: e.target.classList.contains('edit-ring') }); return; }
     if (hd === 'rot' && !E.selected().every(M.canRotate)) return;
-    E.scroller.setPointerCapture(e.pointerId);
     const orig = L.clone(sh);
     const others = E.sel.filter((x) => x !== sid).map((x) => E.find(x)).filter(Boolean).map((of) => ({ f: of, o: L.clone(of.shape) }));
-    let changed = false;
     const live = () => { E.renderShape(E.topOf(sid).id); for (const o of others) E.renderShape(E.topOf(o.f.shape.id).id); };
+    /* the shapes change as the pointer goes; the release records them as one step (label), a cancel puts them back */
+    const edit = liveEdit([sh].concat(others.map((o) => o.f.shape)));
+    const handle = (label, move, after) => slideDrag(e, {
+      move,
+      up(ev, d) {
+        if (!d.moved) return;
+        edit.commit(label);
+        if (after) after();
+        if (E.view === 'master') E.syncMaster();
+        E.render(); E.touched();
+      },
+      cancel(d) { if (d.moved) { edit.revert(); E.render(); } },
+    });
     if (hd === 'p1' || hd === 'p2') {
-      drag = {
-        move(ev) {
-          let p = E.toSlide(ev.clientX, ev.clientY);
-          const [a, b] = L.geom.lineEnds(orig);
-          const fixed = hd === 'p1' ? b : a;
-          if (ev.shiftKey) {
-            const ang = Math.atan2(p.y - fixed[1], p.x - fixed[0]);
-            const sn = (Math.round(ang / (Math.PI / 12)) * Math.PI) / 12;
-            const len = Math.hypot(p.x - fixed[0], p.y - fixed[1]);
-            p = { x: fixed[0] + Math.cos(sn) * len, y: fixed[1] + Math.sin(sn) * len };
-          } else p = { x: snapV(p.x, ev), y: snapV(p.y, ev) };
-          if (!changed) { L.hist.push('Resize'); changed = true; }
-          L.geom.setLineEnds(sh, hd === 'p1' ? [p.x, p.y] : a, hd === 'p2' ? [p.x, p.y] : b);
-          live();
-        },
-        up() { if (changed) { if (f.parent) E.fitGroup(f.parent); if (E.view === 'master') E.syncMaster(); E.render(); E.touched(); } },
-      };
+      handle(L.N('调整大小'), (ev) => {
+        let p = E.toSlide(ev.clientX, ev.clientY);
+        const [a, b] = L.geom.lineEnds(orig);
+        const fixed = hd === 'p1' ? b : a;
+        if (ev.shiftKey) {
+          const ang = Math.atan2(p.y - fixed[1], p.x - fixed[0]);
+          const sn = (Math.round(ang / (Math.PI / 12)) * Math.PI) / 12;
+          const len = Math.hypot(p.x - fixed[0], p.y - fixed[1]);
+          p = { x: fixed[0] + Math.cos(sn) * len, y: fixed[1] + Math.sin(sn) * len };
+        } else p = { x: snapV(p.x, ev), y: snapV(p.y, ev) };
+        L.geom.setLineEnds(sh, hd === 'p1' ? [p.x, p.y] : a, hd === 'p2' ? [p.x, p.y] : b);
+        live();
+      }, () => { if (f.parent) E.fitGroup(f.parent); });
       return;
     }
     if (hd === 'rot') {
       const cx = orig.x + orig.w / 2, cy = orig.y + orig.h / 2;
-      drag = {
-        move(ev) {
-          const p = E.toSlide(ev.clientX, ev.clientY);
-          let ang = (Math.atan2(p.y - cy, p.x - cx) * 180) / Math.PI + 90;
-          if (ev.shiftKey) ang = Math.round(ang / 15) * 15;
-          ang = ((ang % 360) + 360) % 360;
-          if (!changed) { L.hist.push('Rotate'); changed = true; }
-          const d = ang - (orig.rot || 0);
-          sh.rot = L.round(ang, 2);
-          for (const o of others) o.f.shape.rot = L.round((((o.o.rot || 0) + d) % 360 + 360) % 360, 2);
-          live();
-          L.app && L.app.status && L.app.status(`Rotation: ${Math.round(ang)}°`);
-        },
-        up() { if (changed) { if (E.view === 'master') E.syncMaster(); E.render(); E.touched(); } },
-      };
+      handle(L.N('旋转'), (ev) => {
+        const p = E.toSlide(ev.clientX, ev.clientY);
+        let ang = (Math.atan2(p.y - cy, p.x - cx) * 180) / Math.PI + 90;
+        if (ev.shiftKey) ang = Math.round(ang / 15) * 15;
+        ang = ((ang % 360) + 360) % 360;
+        const turn = ang - (orig.rot || 0);
+        sh.rot = L.round(ang, 2);
+        for (const o of others) o.f.shape.rot = L.round((((o.o.rot || 0) + turn) % 360 + 360) % 360, 2);
+        live();
+        L.app && L.app.status && L.app.status(L.t('旋转：{0}°', Math.round(ang)));
+      });
       return;
     }
     if (hd.startsWith('adj')) {
       const hdef = L.geom.handles(sh)[+hd.slice(3)];
-      drag = {
-        move(ev) {
-          const p = E.toSlide(ev.clientX, ev.clientY);
-          const c = { x: orig.x + orig.w / 2, y: orig.y + orig.h / 2 };
-          let [lx, ly] = L.rotPt(p.x, p.y, c.x, c.y, -(orig.rot || 0));
-          lx -= orig.x; ly -= orig.y;
-          if (sh.flipH) lx = orig.w - lx;
-          if (sh.flipV) ly = orig.h - ly;
-          if (!changed) { L.hist.push('Adjust'); changed = true; }
-          sh.adj = Object.assign({}, L.geom.adj(orig), hdef.set(lx, ly, orig.w, orig.h, L.geom.adj(orig)));
-          for (const k in sh.adj) sh.adj[k] = Math.round(sh.adj[k]);
-          live();
-        },
-        up() { if (changed) { if (E.view === 'master') E.syncMaster(); E.render(); E.touched(); } },
-      };
+      handle(L.N('调整'), (ev) => {
+        const p = E.toSlide(ev.clientX, ev.clientY);
+        const c = { x: orig.x + orig.w / 2, y: orig.y + orig.h / 2 };
+        let [lx, ly] = L.rotPt(p.x, p.y, c.x, c.y, -(orig.rot || 0));
+        lx -= orig.x; ly -= orig.y;
+        if (sh.flipH) lx = orig.w - lx;
+        if (sh.flipV) ly = orig.h - ly;
+        sh.adj = Object.assign({}, L.geom.adj(orig), hdef.set(lx, ly, orig.w, orig.h, L.geom.adj(orig)));
+        for (const k in sh.adj) sh.adj[k] = Math.round(sh.adj[k]);
+        live();
+      });
       return;
     }
     if (hd.startsWith('crop-')) { startCrop(e, hd.slice(5), sh, orig); return; }
@@ -596,62 +663,53 @@
     const c0 = { x: orig.x + orig.w / 2, y: orig.y + orig.h / 2 };
     const ar = orig.h ? orig.w / orig.h : 1;
     const isCorner = hd.length === 2;
-    drag = {
-      move(ev) {
-        const p = E.toSlide(ev.clientX, ev.clientY);
-        let [lx, ly] = L.rotPt(p.x, p.y, c0.x, c0.y, -rot);
-        lx -= c0.x; ly -= c0.y;
-        let l = -orig.w / 2, t = -orig.h / 2, r = orig.w / 2, b = orig.h / 2;
-        if (!rot && E.grid.snap && !ev.altKey) { lx = snapV(lx + c0.x, ev) - c0.x; ly = snapV(ly + c0.y, ev) - c0.y; }
-        if (hd.includes('w')) l = lx;
-        if (hd.includes('e')) r = lx;
-        if (hd.includes('n')) t = ly;
-        if (hd.includes('s')) b = ly;
-        if (ev.ctrlKey) {
-          if (hd.includes('w')) r = -l; if (hd.includes('e')) l = -r;
-          if (hd.includes('n')) b = -t; if (hd.includes('s')) t = -b;
-        }
-        let w = r - l, hh = b - t;
-        const keep = (isCorner && (ev.shiftKey || sh.lockAspect)) || (sh.type === 'chart' && ev.shiftKey);
-        if (keep && ar) {
-          const sw = Math.abs(w) / orig.w, sH = Math.abs(hh) / orig.h, k = Math.max(sw, sH);
-          const nw = orig.w * k * Math.sign(w || 1), nh = orig.h * k * Math.sign(hh || 1);
-          if (hd.includes('w')) l = r - nw; else r = l + nw;
-          if (hd.includes('n')) t = b - nh; else b = t + nh;
-          if (ev.ctrlKey) { l = -Math.abs(nw) / 2; r = Math.abs(nw) / 2; t = -Math.abs(nh) / 2; b = Math.abs(nh) / 2; }
-          w = r - l; hh = b - t;
-        }
-        let flipX = false, flipY = false;
-        if (w < 0) { flipX = true; [l, r] = [r, l]; w = -w; }
-        if (hh < 0) { flipY = true; [t, b] = [b, t]; hh = -hh; }
-        w = Math.max(w, 1); hh = Math.max(hh, 1);
-        const [ncx, ncy] = L.rotPt(c0.x + (l + r) / 2, c0.y + (t + b) / 2, c0.x, c0.y, rot);
-        if (!changed) { L.hist.push('Resize'); changed = true; }
-        const ob = { x: sh.x, y: sh.y, w: sh.w, h: sh.h };
-        sh.x = L.round(ncx - w / 2, 3); sh.y = L.round(ncy - hh / 2, 3); sh.w = L.round(w, 3); sh.h = L.round(hh, 3);
-        if (sh.type !== 'table' && sh.type !== 'group') { sh.flipH = flipX ? !orig.flipH : !!orig.flipH; sh.flipV = flipY ? !orig.flipV : !!orig.flipV; }
-        if (sh.type === 'group') { if (sh.sa) L.diagram.relayout(sh); else M.scaleGroup(sh, ob, sh); }
-        if (sh.type === 'table') E.scaleTable(sh, orig);
-        const sx = sh.w / orig.w, sy = sh.h / orig.h;
-        for (const o of others) {
-          const s2 = o.f.shape, o2 = o.o;
-          const ob2 = { x: s2.x, y: s2.y, w: s2.w, h: s2.h };
-          s2.w = Math.max(1, o2.w * sx); s2.h = Math.max(1, o2.h * sy);
-          s2.x = hd.includes('w') ? o2.x + o2.w - s2.w : o2.x;
-          s2.y = hd.includes('n') ? o2.y + o2.h - s2.h : o2.y;
-          if (s2.type === 'group') { if (s2.sa) L.diagram.relayout(s2); else M.scaleGroup(s2, ob2, s2); }
-          if (s2.type === 'table') E.scaleTable(s2, o2);
-        }
-        live();
-        L.app && L.app.status && L.app.status(`Size: ${L.fmtIn(sh.w)} × ${L.fmtIn(sh.h)}`);
-      },
-      up() {
-        if (!changed) return;
-        if (f.parent) E.fitGroup(f.parent);
-        if (E.view === 'master') E.syncMaster();
-        E.render(); E.touched();
-      },
-    };
+    handle(L.N('调整大小'), (ev) => {
+      const p = E.toSlide(ev.clientX, ev.clientY);
+      let [lx, ly] = L.rotPt(p.x, p.y, c0.x, c0.y, -rot);
+      lx -= c0.x; ly -= c0.y;
+      let l = -orig.w / 2, t = -orig.h / 2, r = orig.w / 2, b = orig.h / 2;
+      if (!rot && E.grid.snap && !ev.altKey) { lx = snapV(lx + c0.x, ev) - c0.x; ly = snapV(ly + c0.y, ev) - c0.y; }
+      if (hd.includes('w')) l = lx;
+      if (hd.includes('e')) r = lx;
+      if (hd.includes('n')) t = ly;
+      if (hd.includes('s')) b = ly;
+      if (ev.ctrlKey) {
+        if (hd.includes('w')) r = -l; if (hd.includes('e')) l = -r;
+        if (hd.includes('n')) b = -t; if (hd.includes('s')) t = -b;
+      }
+      let w = r - l, hh = b - t;
+      const keep = (isCorner && (ev.shiftKey || sh.lockAspect)) || (sh.type === 'chart' && ev.shiftKey);
+      if (keep && ar) {
+        const sw = Math.abs(w) / orig.w, sH = Math.abs(hh) / orig.h, k = Math.max(sw, sH);
+        const nw = orig.w * k * Math.sign(w || 1), nh = orig.h * k * Math.sign(hh || 1);
+        if (hd.includes('w')) l = r - nw; else r = l + nw;
+        if (hd.includes('n')) t = b - nh; else b = t + nh;
+        if (ev.ctrlKey) { l = -Math.abs(nw) / 2; r = Math.abs(nw) / 2; t = -Math.abs(nh) / 2; b = Math.abs(nh) / 2; }
+        w = r - l; hh = b - t;
+      }
+      let flipX = false, flipY = false;
+      if (w < 0) { flipX = true; [l, r] = [r, l]; w = -w; }
+      if (hh < 0) { flipY = true; [t, b] = [b, t]; hh = -hh; }
+      w = Math.max(w, 1); hh = Math.max(hh, 1);
+      const [ncx, ncy] = L.rotPt(c0.x + (l + r) / 2, c0.y + (t + b) / 2, c0.x, c0.y, rot);
+      const ob = { x: sh.x, y: sh.y, w: sh.w, h: sh.h };
+      sh.x = L.round(ncx - w / 2, 3); sh.y = L.round(ncy - hh / 2, 3); sh.w = L.round(w, 3); sh.h = L.round(hh, 3);
+      if (sh.type !== 'table' && sh.type !== 'group') { sh.flipH = flipX ? !orig.flipH : !!orig.flipH; sh.flipV = flipY ? !orig.flipV : !!orig.flipV; }
+      if (sh.type === 'group') { if (sh.sa) L.diagram.relayout(sh); else M.scaleGroup(sh, ob, sh); }
+      if (sh.type === 'table') E.scaleTable(sh, orig);
+      const sx = sh.w / orig.w, sy = sh.h / orig.h;
+      for (const o of others) {
+        const s2 = o.f.shape, o2 = o.o;
+        const ob2 = { x: s2.x, y: s2.y, w: s2.w, h: s2.h };
+        s2.w = Math.max(1, o2.w * sx); s2.h = Math.max(1, o2.h * sy);
+        s2.x = hd.includes('w') ? o2.x + o2.w - s2.w : o2.x;
+        s2.y = hd.includes('n') ? o2.y + o2.h - s2.h : o2.y;
+        if (s2.type === 'group') { if (s2.sa) L.diagram.relayout(s2); else M.scaleGroup(s2, ob2, s2); }
+        if (s2.type === 'table') E.scaleTable(s2, o2);
+      }
+      live();
+      L.app && L.app.status && L.app.status(L.t('大小：{0} × {1}', L.fmtIn(sh.w), L.fmtIn(sh.h)));
+    }, () => { if (f.parent) E.fitGroup(f.parent); });
   }
   E.scaleTable = function (sh, orig) {
     const sx = sh.w / orig.w, sy = sh.h / orig.h;
@@ -659,14 +717,15 @@
     sh.tbl.rows.forEach((r, i) => { r.h = L.round(Math.max(8, orig.tbl.rows[i].h * sy), 2); });
   };
   function startCrop(e, hd, sh, orig) {
-    let changed = false;
     const c = Object.assign({ l: 0, t: 0, r: 0, b: 0 }, orig.crop);
     const fullW = orig.w / (1 - c.l - c.r), fullH = orig.h / (1 - c.t - c.b);
-    drag = {
+    const edit = liveEdit([sh]);
+    let changed = false;
+    slideDrag(e, {
       move(ev) {
         if (orig.rot) return;
         const p = E.toSlide(ev.clientX, ev.clientY);
-        if (!changed) { L.hist.push('Crop Picture'); changed = true; }
+        changed = true;
         const nc = Object.assign({}, c);
         const imgX = orig.x - c.l * fullW, imgY = orig.y - c.t * fullH;
         if (hd.includes('w')) nc.l = L.clamp((p.x - imgX) / fullW, -2, 1 - nc.r - 0.02);
@@ -678,39 +737,43 @@
         sh.w = fullW * (1 - nc.l - nc.r); sh.h = fullH * (1 - nc.t - nc.b);
         E.renderShape(sh.id);
       },
-      up() { if (changed) { E.render(); E.touched(); } },
-    };
+      up() { if (changed) { edit.commit('裁剪图片'); E.render(); E.touched(); } },
+      cancel() { if (changed) { edit.revert(); E.render(); } },
+    });
   }
 
   function startMarquee(e) {
     const p0 = E.toSlide(e.clientX, e.clientY);
     const box = h('div', { class: 'marquee' });
-    let on = false;
-    E.scroller.setPointerCapture(e.pointerId);
     const base = e.shiftKey || e.ctrlKey ? E.sel.slice() : [];
-    drag = {
+    let r = null;
+    slideDrag(e, {
       move(ev) {
         const p = E.toSlide(ev.clientX, ev.clientY);
-        if (!on && Math.hypot(p.x - p0.x, p.y - p0.y) * E.scale < 4) return;
-        if (!on) { E.overlay.appendChild(box); on = true; }
+        if (!box.isConnected) E.overlay.appendChild(box);
         const x = Math.min(p.x, p0.x), y = Math.min(p.y, p0.y), w = Math.abs(p.x - p0.x), hh = Math.abs(p.y - p0.y);
         box.style.cssText = `left:${x * E.scale}px;top:${y * E.scale}px;width:${w * E.scale}px;height:${hh * E.scale}px`;
-        this.r = { x, y, w, h: hh };
+        r = { x, y, w, h: hh };
       },
       up() {
         box.remove();
-        if (!on || !this.r) return;
-        const r = this.r;
+        if (!r) return;
         const ids = E.slide().shapes.filter((sh) => { const b = sh.type === 'group' ? M.groupBounds(sh) : L.rotBounds(sh); return b.x >= r.x - 0.5 && b.y >= r.y - 0.5 && b.x + b.w <= r.x + r.w + 0.5 && b.y + b.h <= r.y + r.h + 0.5; }).map((s) => s.id);
         E.select(Array.from(new Set(base.concat(ids))));
       },
-    };
+      cancel() { box.remove(); },
+    });
   }
-  function startCellSelect(e) {
+  /** select table cells from the press to the pointer (the browser selects text within the one cell); then: run when the
+      mouse is let go */
+  function startCellSelect(e, then) {
     const td0 = e.target.closest('td');
-    if (!td0) return;
+    if (!td0) { if (then) slideDrag(e, { threshold: 0, capture: e.target, up: then }); return; }
     const r0 = +td0.dataset.r, c0 = +td0.dataset.c;
-    drag = {
+    if (E.cellSel) { E.cellSel = null; E.drawOverlay(); }   /* a press in one cell ends a range, and its highlight (P9) */
+    slideDrag(e, {
+      threshold: 0,
+      capture: e.target,   /* held by the editing area (scaled), the browser would select the cell's text short of the pointer */
       move(ev) {
         const el = document.elementFromPoint(ev.clientX, ev.clientY);
         const td = el && el.closest && el.closest('td');
@@ -721,19 +784,17 @@
         window.getSelection().removeAllRanges();
         E.drawOverlay();
       },
-      up() { },
-      native: true,
-    };
-    E.cellSel = null;
+      up() { if (then) then(); },
+      cancel() { if (E.cellSel) { E.cellSel = null; E.drawOverlay(); } },
+    });
   }
 
-  window.addEventListener('pointermove', (e) => { if (drag) { if (!drag.native) e.preventDefault(); drag.move(e); } });
-  window.addEventListener('pointerup', (e) => { if (drag) { const d = drag; drag = null; try { d.up(e); } catch (er) { console.error(er); } L.ui.refresh(); } });
-  window.addEventListener('pointercancel', () => { drag = null; });
-
+  let clickEdit = null;   /* { id, t }: the text edit a click just started */
   function onDbl(e) {
     if (E.tool && ['freeform', 'curve'].includes(E.tool.kind)) return;
-    const hit = shapeHit(e.target);
+    /* a press's drag holds the pointer in the editing area, so the double-click is addressed to it: the shape is the
+       one under the pointer */
+    const hit = shapeHit(e.target === E.scroller ? document.elementFromPoint(e.clientX, e.clientY) || e.target : e.target);
     if (!hit) return;
     const id = pickId(hit);
     const sh = E.shape(id);
@@ -744,7 +805,11 @@
     if (sh.type === 'line') { L.ui.exec('formatObject'); return; }
     if (textCapable(sh)) {
       if (!E.editing() || L.te.target().sh.id !== id) L.te.begin(id, { point: { x: e.clientX, y: e.clientY }, word: true });
+      /* the double-click's second press started the edit (the first selected the shape): the browser placed no word
+         selection, since the press was the slide's, so select the word here (P13) */
+      else if (clickEdit && clickEdit.id === id && Date.now() - clickEdit.t < 1000) L.te.selectWordAt(e.clientX, e.clientY);
     }
+    clickEdit = null;
   }
   function onContext(e) {
     if (L.show && L.show.active) return;
@@ -756,20 +821,28 @@
   }
 
   /* ---------- drawing tools ---------- */
+  /** the one way what is under way on the slide ends unfinished: the drag in progress (put back, nothing recorded), an
+      unfinished freeform or curve, a range of table cells and its highlight. A tool switch, another slide and a model
+      replaced (undo, redo) call it; Esc finishes a freeform first (app.js) */
+  E.endInteraction = function () {
+    L.ui.dragCancel();
+    if (ff) { ff.el.remove(); ff = null; }
+    if (E.cellSel) { E.cellSel = null; E.drawOverlay(); }
+  };
   E.setTool = function (tool) {
+    E.endInteraction();
     if (E.editing()) L.te.end();
     if (tool) L.ui.brushOn()?.stop();
     E.tool = tool;
     E.scroller.classList.toggle('drawing', !!tool);
     L.ui.refresh();
-    if (tool) L.app && L.app.status && L.app.status(tool.kind === 'freeform' ? 'Click to add points; double-click to finish' : tool.kind === 'curve' ? 'Click to add points; double-click to finish' : 'Drag to draw; hold Shift to constrain');
+    if (tool) L.app && L.app.status && L.app.status(tool.kind === 'freeform' || tool.kind === 'curve' ? L.N('单击添加顶点，双击完成') : L.N('拖动以绘制；按住 Shift 可约束比例或角度'));
   };
   function startTool(e) {
     e.preventDefault();
     const t = E.tool;
     const p0raw = E.toSlide(e.clientX, e.clientY);
     const p0 = { x: snapV(p0raw.x, e), y: snapV(p0raw.y, e) };
-    E.scroller.setPointerCapture(e.pointerId);
     if (t.kind === 'scribble') return startScribble(e, p0raw);
     if (t.kind === 'freeform' || t.kind === 'curve') return pointFreeform(e, p0raw);
     const ghost = h('div', { class: 'draw-ghost' + (t.kind === 'line' ? ' line' : '') });
@@ -777,7 +850,7 @@
     let svgLine = null;
     if (t.kind === 'line') { ghost.innerHTML = '<svg width="100%" height="100%" style="overflow:visible;position:absolute;left:0;top:0"><line stroke="#000" stroke-width="1" stroke-dasharray="3 2"/></svg>'; svgLine = ghost.querySelector('line'); ghost.style.cssText = 'left:0;top:0;width:100%;height:100%'; }
     let p1 = p0;
-    drag = {
+    slideDrag(e, {
       move(ev) {
         const raw = E.toSlide(ev.clientX, ev.clientY);
         let x = snapV(raw.x, ev), y = snapV(raw.y, ev);
@@ -807,7 +880,7 @@
         const x = Math.min(x0, p1.x), y = Math.min(y0, p1.y), w = Math.abs(p1.x - x0), hh = Math.abs(p1.y - y0);
         const tiny = w < 3 && hh < 3;
         let sh;
-        L.hist.push('Insert Object');
+        L.hist.push('插入对象');
         if (t.kind === 'line') {
           if (tiny) { L.hist.undo.pop(); E.setTool(t.sticky ? t : null); return; }
           sh = M.newLine(L.pres, sl, t.geom || 'line', [p0.x, p0.y], [p1.x, p1.y], t.arrows);
@@ -825,9 +898,9 @@
         E.render();
         E.touched();
         if (t.kind === 'text') L.te.begin(sh.id, { atEnd: true });
-        L.ui.refresh();
       },
-    };
+      cancel(d, why) { ghost.remove(); if (why === 'esc') E.setTool(null); },   /* Esc ends the tool; other cancels keep it */
+    });
   }
   function startScribble(e, p0) {
     const pts = [[p0.x, p0.y]];
@@ -835,7 +908,7 @@
     svg.innerHTML = '<svg width="100%" height="100%" style="overflow:visible;position:absolute;left:0;top:0"><polyline fill="none" stroke="#000" stroke-width="1"/></svg>';
     E.overlay.appendChild(svg);
     const pl = svg.querySelector('polyline');
-    drag = {
+    slideDrag(e, {
       move(ev) {
         const p = E.toSlide(ev.clientX, ev.clientY);
         const last = pts[pts.length - 1];
@@ -843,12 +916,14 @@
         pts.push([p.x, p.y]);
         pl.setAttribute('points', pts.map((q) => q[0] * E.scale + ',' + q[1] * E.scale).join(' '));
       },
-      up() { svg.remove(); if (pts.length > 2) E.addFreeform(pts, false, true); if (!E.tool.sticky) E.setTool(null); },
-    };
+      up() { svg.remove(); if (pts.length > 2) E.addFreeform(pts, false, true); if (!(E.tool && E.tool.sticky)) E.setTool(null); },
+      cancel(d, why) { svg.remove(); if (why === 'esc') E.setTool(null); },
+    });
   }
   let ff = null;
   function pointFreeform(e, p) {
     const now = Date.now();
+    const had = ff ? ff.pts.length : 0;
     if (!ff) {
       ff = { pts: [[p.x, p.y]], el: h('div', { class: 'draw-ghost line', style: 'left:0;top:0;width:100%;height:100%' }) };
       ff.el.innerHTML = '<svg width="100%" height="100%" style="overflow:visible;position:absolute;left:0;top:0"><path fill="none" stroke="#000" stroke-width="1"/></svg>';
@@ -868,15 +943,24 @@
       path.setAttribute('d', E.tool && E.tool.kind === 'curve' ? smoothD(pts.map((q) => [q[0] * E.scale, q[1] * E.scale])) : 'M' + pts.map((q) => q[0] * E.scale + ',' + q[1] * E.scale).join(' L'));
     };
     draw();
-    /* while the button is held in freeform mode, drawing is freehand */
-    drag = {
+    /* while the button is held in freeform mode, drawing is freehand; the release keeps collecting points, a cancel
+       takes back what this press added (the whole shape if it started it) */
+    const mine = ff;
+    slideDrag(e, {
       move(ev) {
+        if (ff !== mine) return;
         const q = E.toSlide(ev.clientX, ev.clientY);
-        if (ev.buttons && E.tool && E.tool.kind === 'freeform') { const last = ff.pts[ff.pts.length - 1]; if (Math.hypot(q.x - last[0], q.y - last[1]) * E.scale > 3) ff.pts.push([q.x, q.y]); }
+        if (E.tool && E.tool.kind === 'freeform') { const last = ff.pts[ff.pts.length - 1]; if (Math.hypot(q.x - last[0], q.y - last[1]) * E.scale > 3) ff.pts.push([q.x, q.y]); }
         draw([q.x, q.y]);
       },
-      up() { /* keep collecting points */ },
-    };
+      cancel(d, why) {
+        if (why === 'esc') { E.setTool(null); return; }   /* Esc ends the tool and drops the shape, as when no button is down */
+        if (ff !== mine) return;
+        if (!had) { ff.el.remove(); ff = null; return; }
+        ff.pts.length = had;
+        draw();
+      },
+    });
     if (!E._ffMove) {
       E._ffMove = (ev) => { if (!ff) return; const q = E.toSlide(ev.clientX, ev.clientY); draw([q.x, q.y]); };
       E.scroller.addEventListener('pointermove', E._ffMove);
@@ -924,7 +1008,7 @@
     sh.path = { paths: [{ w, h: hh, cmds, fill: closed ? 'norm' : 'none', stroke: true }] };
     if (!closed) { sh.fill = { t: 'none' }; delete sh.tx; }
     if (opts && opts.line) sh.line = opts.line;
-    if (!(opts && opts.noHistory)) L.hist.push('Freeform');
+    if (!(opts && opts.noHistory)) L.hist.push(L.N('任意多边形'));
     sl.shapes.push(sh);
     if (opts && opts.noRender) return sh;
     E.sel = [sh.id];
@@ -968,7 +1052,7 @@
     if (!s) return false;
     s = L.txt.norm(s);
     if (L.txt.collapsed(s) && !(s = L.txt.wordAt(t.tx, { p: s.p0, o: s.o0 }))) return false;
-    L.te.applyRun((r) => paintRun(r, fmt.run), 'Format Painter', s);
+    L.te.applyRun((r) => paintRun(r, fmt.run), '格式刷', s);
     if (fmt.para && wholePara(t.tx, s)) { const p = t.tx.ps[s.p0]; p.pp = Object.assign({}, p.pp, fmt.para); L.te.rerender(s); }
     return true;
   };
@@ -977,7 +1061,7 @@
     const sh = E.shape(id);
     if (!sh) return false;
     if (E.editing()) L.te.end();
-    E.commit('Format Painter', () => {
+    E.commit('格式刷', () => {
       if (fmt.fill && sh.type !== 'line' && sh.type !== 'image' && (sh.type !== 'text' || fmt.fill.t !== 'none')) sh.fill = L.clone(fmt.fill);
       if (fmt.line) sh.line = L.clone(fmt.line);
       if ('shadow' in fmt) sh.shadow = L.clone(fmt.shadow);
@@ -1005,14 +1089,14 @@
     };
     const shapes = deco.slice();
     if (titleKind) {
-      shapes.push(mk('ctrTitle', ph.ctrTitle, [L.txt.para('Click to edit Master title style')]));
-      shapes.push(mk('subTitle', ph.subTitle, [L.txt.para('Click to edit Master subtitle style')]));
+      shapes.push(mk('ctrTitle', ph.ctrTitle, [L.txt.para(L.t('单击此处编辑母版标题样式'))]));
+      shapes.push(mk('subTitle', ph.subTitle, [L.txt.para(L.t('单击此处编辑母版副标题样式'))]));
     } else {
-      shapes.push(mk('title', ph.title, [L.txt.para('Click to edit Master title style')]));
-      shapes.push(mk('body', ph.body, ['Click to edit Master text styles', 'Second level', 'Third level', 'Fourth level', 'Fifth level'].map((t, i) => L.txt.para(t, null, null, i))));
+      shapes.push(mk('title', ph.title, [L.txt.para(L.t('单击此处编辑母版标题样式'))]));
+      shapes.push(mk('body', ph.body, ['单击此处编辑母版文本样式', '第二级', '第三级', '第四级', '第五级'].map((t, i) => L.txt.para(L.t(t), null, null, i))));
     }
     const ft = (type, text) => { const s = mk(type, ph[type], [L.txt.para(text)]); return s; };
-    shapes.push(ft('dt', '<date/time>'), ft('ftr', '<footer>'), ft('sldNum', '<#>'));
+    shapes.push(ft('dt', L.t('<日期/时间>')), ft('ftr', L.t('<页脚>')), ft('sldNum', '<#>'));
     E.masterSlide = { id: 'master', layout: titleKind ? 'title' : 'text', design: d.id, shapes, hideMaster: true, bg: titleKind && d.titleBg ? d.titleBg : d.bg, anims: [], trans: {}, notes: '', isMaster: true, titleKind: !!titleKind };
   };
   /** fold master-view edits back into the design */

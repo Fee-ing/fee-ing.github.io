@@ -124,7 +124,7 @@
       }
       used.add(id); ids.set(d, id);
       w.ids.reserve(owner, 'shape', id);
-      if (d.objectKeep && !active(d)) w.loss({ id: 'worksheet-object:' + sh.id + ':' + id, what: 'An embedded object or control you edited will be saved as a picture and will no longer work.', where: sh.name + ': ' + d.name, place: sh.name + ': ' + d.name, action: 'conversion', notify: true });
+      if (d.objectKeep && !active(d)) w.loss({ id: 'worksheet-object:' + sh.id + ':' + id, what: '您编辑的嵌入对象或控件将保存为图片，无法再使用原有功能。', where: sh.name + ': ' + d.name, place: sh.name + ': ' + d.name, action: 'conversion', notify: true });
     }
     return { sh, pack, ids, used, next, owner, vml, names, activeX, copiedParts: new Map() };
   };
@@ -185,7 +185,7 @@
     if (changed('media') || changed('imgLink')) {
       fill['{' + N.a + '}blip'] = generatedChild('blip');
       const blip = all(K.parse(xml)).find(e => e.localName === 'blip');
-      if (kids(blip).length) state.pack.writer.loss({ id: 'picture-content:' + state.sh.id + ':' + state.ids.get(d), what: 'Replacing this picture removes effects and extensions attached to its original image.', where: state.sh.name + ': ' + (d.name || 'Picture'), action: 'conversion' });
+      if (kids(blip).length) state.pack.writer.loss({ id: 'picture-content:' + state.sh.id + ':' + state.ids.get(d), what: '替换此图片将移除原图附带的效果和扩展信息。', where: state.sh.name + ': ' + (d.name || 'Picture'), action: 'conversion' });
     }
     if (Object.keys(fill).length) patch('blipFill', raw => K.merge(raw, fill, 'a:CT_BlipFillProperties'));
     if (changed('lineXml')) patch('spPr', raw => K.merge(raw, { ['{' + N.a + '}ln']: d.lineXml || '' }, 'a:CT_ShapeProperties'));
@@ -297,7 +297,7 @@
       const xml = unchanged || !g.ids.length ? g.fragment.xml : project(g.fragment.xml, members, state);
       if (!xml) continue;
       try { values.push(pack.writer.emit(copiedParts(K.slice(g.fragment, xml), members, state), state.owner)); }
-      catch (error) { pack.writer.loss({ id: 'sheet-object:' + g.key, what: 'An object on this sheet couldn\'t be kept and will be removed.', detail: error.message, where: sh.name, place: sh.name, action: 'drop', notify: !K.sourceMissing(error) }); }
+      catch (error) { pack.writer.loss({ id: 'sheet-object:' + g.key, what: '此工作表上的一个对象无法保留，将被移除。', detail: error.message, where: sh.name, place: sh.name, action: 'drop', notify: !K.sourceMissing(error) }); }
     }
     if (values.length <= 1) return values.join('');
     return combineLists(values, name);
@@ -448,7 +448,7 @@
     const originalIds = original?.shapes || [];
     unchanged &&= shapes.length === originalIds.length && !rebase && !extend;
     if (unchanged) { pack.bind(base, original.part, 'opaque'); return source.bytes(original.part); }
-    if (original?.unparsed) w.loss({ id: 'vml:' + sh.id, what: 'The damaged VML drawing could not be merged; its readable notes were rebuilt.', where: sh.name, action: 'conversion' });
+    if (original?.unparsed) w.loss({ id: 'vml:' + sh.id, what: '损坏的 VML 绘图无法合并，其中可读取的注释已重新创建。', where: sh.name, action: 'conversion' });
     let xml = originalRoot ? K.raw(originalRoot) : K.raw(K.parse(generated));
     const tree = K.parse(xml), changes = [];
     for (const e of kids(tree)) if (e.namespaceURI === V && !['shapetype', 'background'].includes(e.localName)) { const p = L.xmlTree.source.get(e); changes.push({ start: p.start, end: p.end, value: '' }); }

@@ -19,7 +19,7 @@
     const sw = h('span', { class: 'fp-sw', style: 'display:inline-block;width:70px;height:14px;border:1px solid #555;vertical-align:middle' });
     const btn = h('button', { type: 'button', class: 'btn small', style: 'min-width:100px;display:inline-flex;align-items:center;gap:6px' }, sw, h('span', { class: 'dd-arrow' }));
     const paint = () => {
-      if (!cur || cur.t === 'none') { sw.style.background = 'repeating-linear-gradient(45deg,#fff 0 4px,#eee 4px 8px)'; sw.title = mode === 'line' ? 'No Line' : 'No Fill'; }
+      if (!cur || cur.t === 'none') { sw.style.background = 'repeating-linear-gradient(45deg,#fff 0 4px,#eee 4px 8px)'; sw.title = mode === 'line' ? L.t('无线条') : L.t('无填充颜色'); }
       else sw.style.background = mode === 'line' ? L.model.resolveColor(cur.c, design()) : fillCSS(cur);
     };
     paint();
@@ -50,26 +50,26 @@
   }
   D.colorPick = colorPick;
   const LINE_WEIGHTS = [0.25, 0.5, 0.75, 1, 1.5, 2.25, 3, 4.5, 6];
-  const DASHES = [['solid', '实线'], ['sysDot', '圆点'], ['sysDash', '方点'], ['dash', 'Dash'], ['dashDot', '点划线'], ['lgDash', '长划线'], ['lgDashDot', '长划点线'], ['lgDashDotDot', '长划双点线']];
-  const ARROWS = [['none', 'None'], ['triangle', '箭头'], ['arrow', '空心箭头'], ['stealth', '隐形箭头'], ['diamond', '菱形箭头'], ['oval', '椭圆箭头']];
-  const SIZES = [['sm', '小'], ['med', 'Medium'], ['lg', '大']];
+  const DASHES = [['solid', L.N('实线')], ['sysDot', L.N('圆点')], ['sysDash', L.N('方点')], ['dash', L.N('短划线')], ['dashDot', L.N('点划线')], ['lgDash', L.N('长划线')], ['lgDashDot', L.N('长点划线')], ['lgDashDotDot', L.N('长双点划线')]];
+  const ARROWS = [['none', L.N('无')], ['triangle', L.N('箭头')], ['arrow', L.N('开放式箭头')], ['stealth', L.N('燕尾形箭头')], ['diamond', L.N('菱形箭头')], ['oval', L.N('椭圆箭头')]];
+  const SIZES = [['sm', L.N('小')], ['med', L.N('中等')], ['lg', L.N('大')]];
   D.LINE_WEIGHTS = LINE_WEIGHTS; D.DASHES = DASHES; D.ARROWS = ARROWS;
 
   /* ---------- Font ---------- */
   D.font = function () {
     const st = L.fmt.state();
-    if (!st) { ui.msg('请先选定一些文本或文本对象。'); return; }
+    if (!st) { ui.msg('请先选择文字或文本对象。'); return; }
     const o = { font: st.font, sz: st.sz, b: st.b, i: st.i, u: st.u, shd: st.shd, emb: !!(st.r && st.r.emb), base: (st.r && st.r.base) || 0, color: st.r ? st.r.color : null };
     const fontList = h('select', { id: 'fd-font', size: 7, style: 'width:180px' });
-    L.FONT_LIST.forEach((f) => { const op = h('option', { value: f, text: f }); if (f === o.font) op.selected = true; fontList.appendChild(op); });
-    if (!L.FONT_LIST.includes(o.font)) fontList.insertBefore(h('option', { value: o.font, text: o.font, selected: true }), fontList.firstChild);
+    L.FONT_LIST.forEach((f) => { const op = h('option', { value: f, text: f, translate: 'no' }); if (f === o.font) op.selected = true; fontList.appendChild(op); });
+    if (!L.FONT_LIST.includes(o.font)) fontList.insertBefore(h('option', { value: o.font, text: o.font, selected: true, translate: 'no' }), fontList.firstChild);
     const fontIn = h('input', { type: 'text', id: 'fd-font-in', value: o.font, style: 'width:180px' });
-    const styleSel = h('select', { id: 'fd-style', size: 4, style: 'width:110px' }, ...['Regular', 'Italic', 'Bold', 'Bold Italic'].map((s) => h('option', { value: s, text: s })));
-    styleSel.value = o.b && o.i ? 'Bold Italic' : o.b ? 'Bold' : o.i ? 'Italic' : 'Regular';
+    const styleSel = h('select', { id: 'fd-style', size: 4, style: 'width:110px' }, ...[L.N('常规'), L.N('倾斜'), L.N('加粗'), '加粗、倾斜'].map((s) => h('option', { value: s, text: s })));
+    styleSel.value = o.b && o.i ? '加粗、倾斜' : o.b ? '加粗' : o.i ? '倾斜' : '常规';
     const sizeIn = h('input', { type: 'text', id: 'fd-size', value: o.sz, style: 'width:60px' });
     const sizeSel = h('select', { size: 4, style: 'width:60px' }, ...L.SIZE_LIST.map((s) => h('option', { value: s, text: s })));
     sizeSel.value = String(o.sz);
-    const preview = h('div', { class: 'preview-box font-preview', text: 'AaBbYyZz' });
+    const preview = h('div', { class: 'preview-box font-preview', text: 'AaBbYyZz', translate: 'no' });
     const upd = () => {
       const r = preview.style;
       r.fontFamily = L.fontStack(fontIn.value);
@@ -85,20 +85,20 @@
     styleSel.addEventListener('change', upd);
     sizeSel.addEventListener('change', () => { sizeIn.value = sizeSel.value; upd(); });
     sizeIn.addEventListener('input', upd);
-    const u = ui.check('&Underline', o.u, upd), s = ui.check('阴影(&S)', o.shd, upd), emb = ui.check('&Emboss', o.emb, upd);
-    const sup = ui.check('Su&perscript', o.base > 0, () => { if (sup.input.checked) sub.input.checked = false; }), sub = ui.check('Su&bscript', o.base < 0, () => { if (sub.input.checked) sup.input.checked = false; });
+    const u = ui.check('下划线(&U)', o.u, upd), s = ui.check('阴影(&S)', o.shd, upd), emb = ui.check('阳文(&E)', o.emb, upd);
+    const sup = ui.check('上标(&p)', o.base > 0, () => { if (sup.input.checked) sub.input.checked = false; }), sub = ui.check('下标(&b)', o.base < 0, () => { if (sub.input.checked) sup.input.checked = false; });
     const off = ui.spin({ value: o.base ? Math.abs(o.base / 1000) : 30, min: 1, max: 100, step: 1, unit: '%', dec: 0 });
     const col = colorPick(o.color, upd, { automatic: true });
     const body = h('div', { class: 'col' },
       h('div', { class: 'row' },
-        h('div', { class: 'col' }, h('label', { for: 'fd-font-in', html: '<u>F</u>ont:' }), fontIn, fontList),
-        h('div', { class: 'col' }, h('label', { for: 'fd-style', html: 'F<u>o</u>nt style:' }), styleSel),
-        h('div', { class: 'col' }, h('label', { for: 'fd-size', html: '<u>S</u>ize:' }), sizeIn, sizeSel)),
+        h('div', { class: 'col' }, h('label', { for: 'fd-font-in', html: ui.ampHTML('字体(&F)：') }), fontIn, fontList),
+        h('div', { class: 'col' }, h('label', { for: 'fd-style', html: ui.ampHTML('字形(&o)：') }), styleSel),
+        h('div', { class: 'col' }, h('label', { for: 'fd-size', html: ui.ampHTML('大小(&S)：') }), sizeIn, sizeSel)),
       h('div', { class: 'row' },
-        ui.group('Effects', h('div', { class: 'row' }, h('div', { class: 'col' }, u, s, emb), h('div', { class: 'col' }, sup, sub, h('div', { class: 'field' }, h('label', { text: '偏移:' }), off)))),
-        h('div', { class: 'col' }, h('label', { html: '<u>C</u>olor:' }), col)),
+        ui.group('效果', h('div', { class: 'row' }, h('div', { class: 'col' }, u, s, emb), h('div', { class: 'col' }, sup, sub, h('div', { class: 'field' }, h('label', { text: '偏移：' }), off)))),
+        h('div', { class: 'col' }, h('label', { html: ui.ampHTML('颜色(&C)：') }), col)),
       preview,
-      h('div', { class: 'tp-note', text: '这是 TrueType 字体，打印机和屏幕会使用同一字体。' }));
+      h('div', { class: 'tp-note', text: '这是 TrueType 字体。打印机和屏幕将使用相同的字体。' }));
     upd();
     ui.dialog({
       title: '字体', body, width: 470, buttons: [{
@@ -108,7 +108,7 @@
             u: u.input.checked ? 'sng' : undefined, shd: s.input.checked || undefined, emb: emb.input.checked || undefined,
             base: sup.input.checked ? off.get() * 1000 : sub.input.checked ? -off.get() * 1000 : undefined, color: col.get() || undefined,
           };
-          L.fmt.run((r) => { const n = Object.assign({}, r, props); for (const k in props) if (props[k] === undefined) delete n[k]; if (props.color) delete n.fill; return n; }, 'Font', (wa) => { wa.font = props.font; wa.b = props.b; wa.i = props.i; });
+          L.fmt.run((r) => { const n = Object.assign({}, r, props); for (const k in props) if (props[k] === undefined) delete n[k]; if (props.color) delete n.fill; return n; }, L.N('字体'), (wa) => { wa.font = props.font; wa.b = props.b; wa.i = props.i; });
         },
       }, { label: '取消' }],
     });
@@ -119,7 +119,7 @@
   const NUM_SETS = [null, 'arabicPeriod', 'arabicParenR', 'romanUcPeriod', 'alphaUcPeriod', 'alphaLcParenR', 'alphaLcPeriod', 'romanLcPeriod'];
   D.bullets = function (tabIdx) {
     const st = L.fmt.state();
-    if (!st || st.wa) { ui.msg('请先选定文本。'); return; }
+    if (!st || st.wa) { ui.msg('请先选择文字。'); return; }
     const cur = st.ps.bu || { t: 'none' };
     let pick = cur.t === 'char' ? cur.ch : cur.t === 'num' ? cur.scheme : null;
     let kind = cur.t === 'num' ? 'num' : 'char';
@@ -133,7 +133,7 @@
     const ng = h('div', { class: 'num-grid' });
     const mkBtn = (grid, val, label, isNum) => {
       const b = h('button', { type: 'button' });
-      if (val == null) b.appendChild(h('span', { text: 'None', style: 'font-size:13px;align-self:center' }));
+      if (val == null) b.appendChild(h('span', { text: '无', style: 'font-size:13px;align-self:center' }));
       else for (let i = 1; i <= 3; i++) b.appendChild(h('div', null, h('span', { text: isNum ? L.render.numberText(val, i) : val, style: 'min-width:16px' }), h('i')));
       if (pick === val && ((isNum && kind === 'num') || (!isNum && kind === 'char') || val == null)) b.classList.add('on');
       b.addEventListener('click', () => { L.$$('button', bg).concat(L.$$('button', ng)).forEach((x) => x.classList.remove('on')); b.classList.add('on'); pick = val; kind = isNum ? 'num' : 'char'; if (!isNum && val) customCh = val; });
@@ -143,10 +143,10 @@
     };
     BULLET_SETS.forEach((v) => mkBtn(bg, v, '', false));
     NUM_SETS.forEach((v) => mkBtn(ng, v, '', true));
-    const customize = ui.button('自定义(&U)...', () => D.symbol((ch) => { customCh = ch; pick = ch; kind = 'char'; const b = L.$$('button', bg)[7]; L.clear(b); for (let i = 0; i < 3; i++) b.appendChild(h('div', null, h('span', { text: ch, style: 'min-width:16px' }), h('i'))); L.$$('button', bg).forEach((x) => x.classList.remove('on')); b.classList.add('on'); BULLET_SETS[7] = ch; }));
+    const customize = ui.button('自定义(&u)...', () => D.symbol((ch) => { customCh = ch; pick = ch; kind = 'char'; const b = L.$$('button', bg)[7]; L.clear(b); for (let i = 0; i < 3; i++) b.appendChild(h('div', null, h('span', { text: ch, style: 'min-width:16px' }), h('i'))); L.$$('button', bg).forEach((x) => x.classList.remove('on')); b.classList.add('on'); BULLET_SETS[7] = ch; }));
     const tabs = ui.tabs([
-      { label: '项目符号(&T)', body: h('div', { class: 'col' }, bg, h('div', { class: 'row', style: 'align-items:center;margin-top:8px' }, h('label', { text: 'Size:' }), sizeSp, h('span', { text: '文字的 %' }), h('label', { text: 'Color:' }), col, customize)) },
-      { label: '&Numbered', body: h('div', { class: 'col' }, ng, h('div', { class: 'row', style: 'align-items:center;margin-top:8px' }, h('label', { text: 'Size:' }), sizeSp2, h('span', { text: '文字的 %' }), h('label', { text: 'Color:' }), col2, h('label', { text: '起始于:' }), startSp)) },
+      { label: '项目符号列表(&t)', body: h('div', { class: 'col' }, bg, h('div', { class: 'row', style: 'align-items:center;margin-top:8px' }, h('label', { text: '大小：' }), sizeSp, h('span', { text: '原文的百分比' }), h('label', { text: '颜色：' }), col, customize)) },
+      { label: '编号列表(&N)', body: h('div', { class: 'col' }, ng, h('div', { class: 'row', style: 'align-items:center;margin-top:8px' }, h('label', { text: '大小：' }), sizeSp2, h('span', { text: '原文的百分比' }), h('label', { text: '颜色：' }), col2, h('label', { text: '起始值：' }), startSp)) },
     ], tabIdx != null ? tabIdx : kind === 'num' ? 1 : 0);
     const d = ui.dialog({
       title: '项目符号和编号', body: tabs, width: 420, buttons: [{
@@ -161,7 +161,7 @@
             const cls = L.style.cls(t ? t.sh : null);
             if (bu.t !== 'none' && cls === 'other' && !(p.pp.marL > 0)) { p.pp.marL = 27 + (p.lvl || 0) * 36; p.pp.indent = -27; }
             if (bu.t === 'none' && cls === 'other') { delete p.pp.marL; delete p.pp.indent; }
-          }, 'Bullets and Numbering');
+          }, '项目符号和编号');
         },
       }, { label: '取消' }],
     });
@@ -171,27 +171,27 @@
   /* ---------- Line spacing ---------- */
   D.lineSpacing = function () {
     const st = L.fmt.state();
-    if (!st || st.wa) { ui.msg('请先选定文本。'); return; }
+    if (!st || st.wa) { ui.msg('请先选择文字。'); return; }
     const ps = st.ps;
     const mk = (sp, def) => {
       const isPts = sp && sp.pts != null;
       const v = sp ? (isPts ? sp.pts : (sp.pct || 0) / 100) : def;
       const spin = ui.spin({ value: v, min: 0, max: 1584, step: isPts ? 1 : 0.1, dec: 2 });
-      const unit = ui.select([['l', '线条'], ['p', 'Points']], isPts ? 'p' : 'l', (u2) => { spin.set(u2 === 'p' ? L.round(spin.get() * (st.sz || 18) * 1.2, 1) : L.round(spin.get() / ((st.sz || 18) * 1.2), 2)); });
+      const unit = ui.select([['l', '线条'], ['p', '磅']], isPts ? 'p' : 'l', (u2) => { spin.set(u2 === 'p' ? L.round(spin.get() * (st.sz || 18) * 1.2, 1) : L.round(spin.get() / ((st.sz || 18) * 1.2), 2)); });
       return { spin, unit, get: () => (unit.value === 'p' ? { pts: spin.get() } : { pct: L.round(spin.get() * 100, 1) }) };
     };
     const ls = mk(ps.lnSpc, 1), sb = mk(ps.spcBef, 0.2), sa = mk(ps.spcAft, 0);
     const body = h('div', { class: 'col' },
       ui.group('行距', h('div', { class: 'row' }, ls.spin, ls.unit)),
-      ui.group('段落之前', h('div', { class: 'row' }, sb.spin, sb.unit)),
-      ui.group('段落之后', h('div', { class: 'row' }, sa.spin, sa.unit)));
-    ui.dialog({ title: '行距', body, width: 280, buttons: [{ label: '确定', primary: true, onClick: () => L.fmt.para((p) => { p.pp = Object.assign({}, p.pp, { lnSpc: ls.get(), spcBef: sb.get(), spcAft: sa.get() }); }, 'Line Spacing') }, { label: '取消' }] });
+      ui.group('段前', h('div', { class: 'row' }, sb.spin, sb.unit)),
+      ui.group('段后', h('div', { class: 'row' }, sa.spin, sa.unit)));
+    ui.dialog({ title: '行距', body, width: 280, buttons: [{ label: '确定', primary: true, onClick: () => L.fmt.para((p) => { p.pp = Object.assign({}, p.pp, { lnSpc: ls.get(), spcBef: sb.get(), spcAft: sa.get() }); }, '行距') }, { label: '取消' }] });
   };
 
   /* ---------- Change Case ---------- */
   D.changeCase = function () {
     let mode = 'sentence';
-    const opts = [['sentence', '&Sentence case.'], ['lower', '全部小写(&L)'], ['upper', '全部大写(&U)'], ['title', '&Title Case'], ['toggle', 't&OGGLE cASE']];
+    const opts = [['sentence', '句首字母大写(&S)。'], ['lower', L.N('小写(&l)')], ['upper', L.N('大写(&U)')], ['title', '每词首字母大写(&T)'], ['toggle', L.N('切换大小写(&O)')]];
     const body = h('div', { class: 'col' }, ...opts.map(([k, l], i) => ui.radio('cc', l, i === 0, () => { mode = k; })));
     ui.dialog({ title: '更改大小写', body, width: 240, buttons: [{ label: '确定', primary: true, onClick: () => D.applyCase(mode) }, { label: '取消' }] });
   };
@@ -207,12 +207,12 @@
     for (const s of L.pres.slides) { const d = M.design(L.pres, s); M.walk(s.shapes, (sh) => { if (sh.tx) scan(sh.tx, d); if (sh.tbl) sh.tbl.rows.forEach((r) => r.cells.forEach((c) => scan(c.tx, d))); }); used.add(d.fonts.major); used.add(d.fonts.minor); }
     const from = ui.select(Array.from(used), Array.from(used)[0]);
     const to = ui.select(L.FONT_LIST, 'Arial');
-    const body = h('div', { class: 'col' }, ui.field('替换(&R):', from), ui.field('为(&W):', to));
+    const body = h('div', { class: 'col' }, ui.field('替换(&R)：', from), ui.field('替换为(&W)：', to));
     ui.dialog({
       title: '替换字体', body, width: 330, buttons: [{
         label: '替换', primary: true, onClick: () => {
           const a = from.value, b = to.value;
-          L.hist.push('Replace Fonts');
+          L.hist.push('替换字体');
           for (const id in L.pres.designs) { const d = L.pres.designs[id]; if (d.fonts.major === a) d.fonts.major = b; if (d.fonts.minor === a) d.fonts.minor = b; }
           const fix = (tx, d) => { for (const p of tx.ps) { for (const r of p.rs) if (L.style.font(r.font || '+mn', d) === a && r.font && r.font[0] !== '+') r.font = b; if (p.end && p.end.font === a) p.end.font = b; } };
           for (const s of L.pres.slides) { const d = M.design(L.pres, s); M.walk(s.shapes, (sh) => { if (sh.tx) fix(sh.tx, d); if (sh.tbl) sh.tbl.rows.forEach((r) => r.cells.forEach((c) => fix(c.tx, d))); if (sh.wa && sh.wa.font === a) sh.wa.font = b; }); }
@@ -224,30 +224,30 @@
 
   /* ---------- Fill Effects ---------- */
   const GRAD_PRESETS = [
-    ['Early Sunset', [[0, '#000082'], [0.3, '#66008F'], [0.65, '#BA0066'], [1, '#FF8200']]],
-    ['Late Sunset', [[0, '#000000'], [0.5, '#000040'], [1, '#FF8C00']]],
-    ['Nightfall', [[0, '#000000'], [0.6, '#0A128C'], [1, '#181CC7']]],
-    ['Daybreak', [[0, '#5E9EFF'], [0.4, '#85C2FF'], [0.7, '#C4D6EB'], [1, '#FFEBFA']]],
-    ['Horizon', [[0, '#DCEBF5'], [0.4, '#83A7C3'], [0.5, '#768FB9'], [0.6, '#83A7C3'], [1, '#FFFFFF']]],
-    ['Desert', [[0, '#9C3500'], [0.3, '#E8A15C'], [0.6, '#FFDF9C'], [1, '#FFFFFF']]],
-    ['Ocean', [[0, '#03D4A8'], [0.5, '#21D6E0'], [1, '#0087E6']]],
-    ['Calm Water', [[0, '#CCCCFF'], [0.5, '#99CCFF'], [1, '#CCCCFF']]],
-    ['Fire', [[0, '#FFF200'], [0.45, '#FF7A00'], [0.7, '#FF0300'], [1, '#4D0808']]],
-    ['Fog', [[0, '#8488C4'], [0.5, '#D4DEFF'], [1, '#96AB94']]],
-    ['Moss', [[0, '#DDEBCF'], [0.5, '#9CB86E'], [1, '#156B13']]],
-    ['Peacock', [[0, '#3399FF'], [0.2, '#00CCCC'], [0.5, '#9999FF'], [0.8, '#2E6792'], [1, '#3333CC']]],
-    ['Wheat', [[0, '#FBEAC7'], [0.2, '#FEE7F2'], [0.5, '#FAC77D'], [0.8, '#FBA97D'], [1, '#FBD49C']]],
-    ['Parchment', [[0, '#FFEFD1'], [0.65, '#F0EBD5'], [1, '#D1C39F']]],
-    ['Mahogany', [[0, '#D6B19C'], [0.3, '#D49E6C'], [0.7, '#A65528'], [1, '#663012']]],
-    ['Rainbow', [[0, '#A603AB'], [0.2, '#0819FB'], [0.4, '#1A8D48'], [0.6, '#FFFF00'], [0.8, '#EE3F17'], [1, '#E81766']]],
-    ['Gold', [[0, '#E6DCAC'], [0.15, '#E6D78A'], [0.4, '#C7AC4C'], [0.6, '#E6D78A'], [1, '#E6DCAC']]],
-    ['Brass', [[0, '#825600'], [0.15, '#FFA800'], [0.35, '#825600'], [0.55, '#FFA800'], [0.8, '#825600'], [1, '#FFA800']]],
-    ['Chrome', [[0, '#FFFFFF'], [0.2, '#000000'], [0.4, '#FFFFFF'], [0.6, '#000000'], [0.8, '#FFFFFF'], [1, '#000000']]],
-    ['Silver', [[0, '#FFFFFF'], [0.3, '#E6E6E6'], [0.6, '#7D8496'], [1, '#FFFFFF']]],
-    ['Sapphire', [[0, '#000082'], [0.5, '#0047FF'], [1, '#000082']]],
+    [L.N('初暮'), [[0, '#000082'], [0.3, '#66008F'], [0.65, '#BA0066'], [1, '#FF8200']]],
+    [L.N('暮色'), [[0, '#000000'], [0.5, '#000040'], [1, '#FF8C00']]],
+    [L.N('夜幕'), [[0, '#000000'], [0.6, '#0A128C'], [1, '#181CC7']]],
+    [L.N('黎明'), [[0, '#5E9EFF'], [0.4, '#85C2FF'], [0.7, '#C4D6EB'], [1, '#FFEBFA']]],
+    [L.N('地平线'), [[0, '#DCEBF5'], [0.4, '#83A7C3'], [0.5, '#768FB9'], [0.6, '#83A7C3'], [1, '#FFFFFF']]],
+    [L.N('沙漠'), [[0, '#9C3500'], [0.3, '#E8A15C'], [0.6, '#FFDF9C'], [1, '#FFFFFF']]],
+    [L.N('海洋'), [[0, '#03D4A8'], [0.5, '#21D6E0'], [1, '#0087E6']]],
+    [L.N('平静水面'), [[0, '#CCCCFF'], [0.5, '#99CCFF'], [1, '#CCCCFF']]],
+    [L.N('火焰'), [[0, '#FFF200'], [0.45, '#FF7A00'], [0.7, '#FF0300'], [1, '#4D0808']]],
+    [L.N('薄雾'), [[0, '#8488C4'], [0.5, '#D4DEFF'], [1, '#96AB94']]],
+    [L.N('苔藓'), [[0, '#DDEBCF'], [0.5, '#9CB86E'], [1, '#156B13']]],
+    [L.N('孔雀'), [[0, '#3399FF'], [0.2, '#00CCCC'], [0.5, '#9999FF'], [0.8, '#2E6792'], [1, '#3333CC']]],
+    [L.N('麦色'), [[0, '#FBEAC7'], [0.2, '#FEE7F2'], [0.5, '#FAC77D'], [0.8, '#FBA97D'], [1, '#FBD49C']]],
+    [L.N('羊皮纸'), [[0, '#FFEFD1'], [0.65, '#F0EBD5'], [1, '#D1C39F']]],
+    [L.N('红木'), [[0, '#D6B19C'], [0.3, '#D49E6C'], [0.7, '#A65528'], [1, '#663012']]],
+    [L.N('彩虹'), [[0, '#A603AB'], [0.2, '#0819FB'], [0.4, '#1A8D48'], [0.6, '#FFFF00'], [0.8, '#EE3F17'], [1, '#E81766']]],
+    [L.N('金色'), [[0, '#E6DCAC'], [0.15, '#E6D78A'], [0.4, '#C7AC4C'], [0.6, '#E6D78A'], [1, '#E6DCAC']]],
+    [L.N('黄铜'), [[0, '#825600'], [0.15, '#FFA800'], [0.35, '#825600'], [0.55, '#FFA800'], [0.8, '#825600'], [1, '#FFA800']]],
+    [L.N('铬色'), [[0, '#FFFFFF'], [0.2, '#000000'], [0.4, '#FFFFFF'], [0.6, '#000000'], [0.8, '#FFFFFF'], [1, '#000000']]],
+    [L.N('银色'), [[0, '#FFFFFF'], [0.3, '#E6E6E6'], [0.6, '#7D8496'], [1, '#FFFFFF']]],
+    [L.N('蓝宝石'), [[0, '#000082'], [0.5, '#0047FF'], [1, '#000082']]],
   ];
   /* procedural textures (generated tiles) */
-  const TEXTURES = ['Canvas', '牛仔布', 'Paper bag', 'Newsprint', 'Recycled paper', 'Parchment', 'Granite', 'White marble', 'Green marble', 'Sand', 'Cork', 'Oak', 'Walnut', 'Water droplets', 'Blue tissue paper', 'Woven mat', 'Stationery', 'Fabric'];
+  const TEXTURES = [L.N('画布'), L.N('牛仔布'), L.N('纸袋'), L.N('新闻纸'), L.N('再生纸'), L.N('羊皮纸'), L.N('花岗岩'), L.N('白色大理石'), L.N('绿色大理石'), L.N('沙地'), L.N('软木'), L.N('橡木'), L.N('胡桃木'), L.N('水滴'), L.N('蓝色薄纸'), L.N('编织席'), L.N('信纸'), L.N('织物')];
   const texCache = {};
   function texture(name) {
     if (texCache[name]) return texCache[name];
@@ -333,52 +333,53 @@
       const setMode = (m) => {
         mode = m;
         L.clear(colorsArea);
-        if (m === 'one') colorsArea.append(ui.field('Color &1:', p1), h('div', { class: 'row', style: 'align-items:center' }, h('span', { text: '深色' }), darkR, h('span', { text: '浅色' })));
-        if (m === 'two') colorsArea.append(ui.field('Color &1:', p1), ui.field('Color &2:', p2));
-        if (m === 'preset') colorsArea.append(ui.field('Preset colors:', presetSel));
+        if (m === 'one') colorsArea.append(ui.field('颜色 1(&1)：', p1), h('div', { class: 'row', style: 'align-items:center' }, h('span', { text: '深色' }), darkR, h('span', { text: '浅色' })));
+        if (m === 'two') colorsArea.append(ui.field('颜色 1(&1)：', p1), ui.field('颜色 2(&2)：', p2));
+        if (m === 'preset') colorsArea.append(ui.field('预设颜色：', presetSel));
         refreshVariants();
       };
-      const shadingRadios = h('div', { class: 'col' }, ...[['horz', '水平(&H)'], ['vert', '垂直(&V)'], ['dup', '斜上(&U)'], ['ddn', '斜下(&G)'], ['corner', '从角部(&F)'], ['center', '从中心(&M)']].map(([k, l]) => ui.radio('fe-shade', l, style === k, () => { style = k; variant = 0; refreshVariants(); })));
+      const shadingRadios = h('div', { class: 'col' }, ...[['horz', '水平(&H)'], ['vert', '垂直(&V)'], ['dup', '上对角线(&u)'], ['ddn', '下对角线(&g)'], ['corner', '从角部(&F)'], ['center', '从中心(&m)']].map(([k, l]) => ui.radio('fe-shade', l, style === k, () => { style = k; variant = 0; refreshVariants(); })));
       const gradTab = h('div', { class: 'col' },
         h('div', { class: 'row' },
-          ui.group('Colors', h('div', { class: 'col' }, ui.radio('fe-mode', '单色(&O)', false, () => setMode('one')), ui.radio('fe-mode', '&Two colors', true, () => setMode('two')), ui.radio('fe-mode', 'Pr&eset', false, () => setMode('preset')))),
+          ui.group('颜色', h('div', { class: 'col' }, ui.radio('fe-mode', '单色(&O)', false, () => setMode('one')), ui.radio('fe-mode', '双色(&T)', true, () => setMode('two')), ui.radio('fe-mode', '预设(&e)', false, () => setMode('preset')))),
           colorsArea),
-        ui.group('透明度', h('div', { class: 'col' }, ui.field('从(&R):', t1), ui.field('T&o:', t2))),
-        h('div', { class: 'row' }, ui.group('Shading styles', shadingRadios), ui.group('变量', variants)));
+        ui.group('透明度', h('div', { class: 'col' }, ui.field('从(&r)：', t1), ui.field('到(&o)：', t2))),
+        h('div', { class: 'row' }, ui.group('底纹样式', shadingRadios), ui.group('变体', variants)));
       /* texture */
       const texGrid = h('div', { class: 'tex-grid' });
       let texSel = null;
       TEXTURES.forEach((n) => {
         const b = h('button', { type: 'button', 'data-tip': n, 'aria-label': n, style: `background-image:url(${texture(n)});background-size:44px 44px` });
-        b.addEventListener('click', async () => { L.$$('button', texGrid).forEach((x) => x.classList.remove('on')); b.classList.add('on'); texSel = n; texName.textContent = n; const id = await textureMedia(n); current = { t: 'img', media: id, tile: true }; paintSample(); });
+        b.addEventListener('click', async () => { L.$$('button', texGrid).forEach((x) => x.classList.remove('on')); b.classList.add('on'); texSel = n; texName.textContent = L.t(n); const id = await textureMedia(n); current = { t: 'img', media: id, tile: true }; paintSample(); });
         texGrid.appendChild(b);
       });
       const texName = h('div', { class: 'tp-note', text: ' ' });
       const otherTex = ui.button('其他纹理(&O)...', async () => { const f = await L.pickFiles('image/*'); if (f[0]) { const id = L.media.add(f[0], f[0].name); current = { t: 'img', media: id, tile: true }; paintSample(); texName.textContent = f[0].name; } });
-      const texTab = h('div', { class: 'col' }, h('label', { text: '纹理:' }), texGrid, texName, otherTex);
+      const texTab = h('div', { class: 'col' }, h('label', { text: '纹理：' }), texGrid, texName, otherTex);
       /* pattern */
       let pfg = '#000000', pbg = '#FFFFFF', pprst = initial && initial.t === 'patt' ? initial.prst : 'pct50';
       const pattGrid = h('div', { class: 'patt-grid' });
-      const pattName = h('div', { class: 'tp-note', text: pprst });
+      const pattLabel = (k) => (L.geom.PATTERN_NAMES || {})[k] || k;   /* Office's name of a preset pattern */
+      const pattName = h('div', { class: 'tp-note', text: pattLabel(pprst) });
       const drawPatt = () => {
         L.clear(pattGrid);
         Object.keys(L.render.PATTERNS).forEach((k) => {
-          const b = h('button', { type: 'button', 'aria-label': k, 'data-tip': k, class: k === pprst ? 'on' : '', style: `background:${L.render.patternURL(k, L.model.resolveColor(pfg, d0), L.model.resolveColor(pbg, d0))}` });
-          b.addEventListener('click', () => { pprst = k; pattName.textContent = k; current = { t: 'patt', prst: k, fg: pfg, bg: pbg }; paintSample(); drawPatt(); });
+          const b = h('button', { type: 'button', 'aria-label': pattLabel(k), 'data-tip': pattLabel(k), class: k === pprst ? 'on' : '', style: `background:${L.render.patternURL(k, L.model.resolveColor(pfg, d0), L.model.resolveColor(pbg, d0))}` });
+          b.addEventListener('click', () => { pprst = k; pattName.textContent = L.t(pattLabel(k)); current = { t: 'patt', prst: k, fg: pfg, bg: pbg }; paintSample(); drawPatt(); });
           pattGrid.appendChild(b);
         });
       };
       drawPatt();
       const fgP = colorPick(pfg, (c) => { pfg = c; current = { t: 'patt', prst: pprst, fg: pfg, bg: pbg }; paintSample(); drawPatt(); });
       const bgP = colorPick(pbg, (c) => { pbg = c; current = { t: 'patt', prst: pprst, fg: pfg, bg: pbg }; paintSample(); drawPatt(); });
-      const pattTab = h('div', { class: 'col' }, h('label', { text: 'Pattern:' }), pattGrid, pattName, h('div', { class: 'row' }, ui.field('&Foreground:', fgP), ui.field('&Background:', bgP)));
+      const pattTab = h('div', { class: 'col' }, h('label', { text: '图案：' }), pattGrid, pattName, h('div', { class: 'row' }, ui.field('前景(&F)：', fgP), ui.field('背景(&B)：', bgP)));
       /* picture */
       const picPrev = h('div', { class: 'preview-box', style: 'width:220px;height:150px' });
-      const picTab = h('div', { class: 'col' }, ui.button('Select &Picture...', async () => { const f = await L.pickFiles('image/*'); if (!f[0]) return; const id = L.media.add(f[0], f[0].name); current = { t: 'img', media: id }; picPrev.style.background = `url(${L.media.url(id)}) center/contain no-repeat`; paintSample(); }), picPrev);
-      const tabs = ui.tabs([{ label: '&Gradient', body: gradTab }, { label: 'Te&xture', body: texTab }, { label: '&Pattern', body: pattTab }, { label: 'P&icture', body: picTab }], initial && initial.t === 'patt' ? 2 : initial && initial.t === 'img' ? (initial.tile ? 1 : 3) : 0);
+      const picTab = h('div', { class: 'col' }, ui.button('选择图片(&P)...', async () => { const f = await L.pickFiles('image/*'); if (!f[0]) return; const id = L.media.add(f[0], f[0].name); current = { t: 'img', media: id }; picPrev.style.background = `url(${L.media.url(id)}) center/contain no-repeat`; paintSample(); }), picPrev);
+      const tabs = ui.tabs([{ label: '渐变(&G)', body: gradTab }, { label: '纹理(&x)', body: texTab }, { label: '图案(&P)', body: pattTab }, { label: '图片(&i)', body: picTab }], initial && initial.t === 'patt' ? 2 : initial && initial.t === 'img' ? (initial.tile ? 1 : 3) : 0);
       setMode('two');
       if (initial && initial.t !== 'grad') { current = L.clone(initial); paintSample(); }
-      const body = h('div', { class: 'row', style: 'flex-wrap:nowrap' }, tabs, h('div', { class: 'col', style: 'flex:none;padding-top:26px' }, h('label', { text: '示例:' }), sample));
+      const body = h('div', { class: 'row', style: 'flex-wrap:nowrap' }, tabs, h('div', { class: 'col', style: 'flex:none;padding-top:26px' }, h('label', { text: '示例：' }), sample));
       ui.dialog({ title: '填充效果', body, width: 560, buttons: [{ label: '确定', primary: true, onClick: () => { res = current; } }, { label: '取消' }] }).done.then(() => resolve(res));
       void texSel;
     });
@@ -390,7 +391,7 @@
     if (!shapes.length) return;
     const s0 = shapes[0];
     const isPic = s0.type === 'image', isLine = s0.type === 'line', isWA = s0.type === 'wordart', isTable = s0.type === 'table';
-    const title = isPic ? 'Format Picture' : isLine ? 'Format AutoShape' : isWA ? 'Format LettersArt' : s0.ph ? 'Format Placeholder' : s0.type === 'text' ? 'Format Text Box' : isTable ? 'Format Table' : 'Format AutoShape';
+    const title = isPic ? '设置图片格式' : isLine ? '设置自选图形格式' : isWA ? '设置 LettersArt 格式' : s0.ph ? '设置占位符格式' : s0.type === 'text' ? '设置文本框格式' : isTable ? '设置表格格式' : '设置自选图形格式';
     const ch = {}; /* changes */
     const srcFill = isWA ? s0.wa.fill : s0.fill;
     const srcLine = isWA ? s0.wa.line : s0.line;
@@ -400,33 +401,33 @@
     const lp = fillPicker(srcLine && srcLine.t !== 'none' ? srcLine : { t: 'none' }, 'line', (l) => { ch.lineColor = l; });
     const lnW = ui.spin({ value: srcLine && srcLine.w != null ? srcLine.w : 0.75, min: 0, max: 1584, step: 0.25, unit: ' pt', dec: 2, onChange: (v) => { ch.lineW = v; } });
     const dash = ui.select(DASHES, (srcLine && srcLine.dash) || 'solid', (v) => { ch.dash = v; });
-    const cmpd = ui.select([['sng', 'Single'], ['dbl', 'Double'], ['thickThin', '粗-细'], ['thinThick', '细-粗'], ['tri', 'Triple']], (srcLine && srcLine.cmpd) || 'sng', (v) => { ch.cmpd = v; });
+    const cmpd = ui.select([['sng', '单线'], ['dbl', '双线'], ['thickThin', '粗细线'], ['thinThick', '细粗线'], ['tri', '三线']], (srcLine && srcLine.cmpd) || 'sng', (v) => { ch.cmpd = v; });
     const aB = ui.select(ARROWS, (srcLine && srcLine.head && srcLine.head.type) || 'none', (v) => { ch.head = v; });
     const aE = ui.select(ARROWS, (srcLine && srcLine.tail && srcLine.tail.type) || 'none', (v) => { ch.tail = v; });
     const sB = ui.select(SIZES, (srcLine && srcLine.head && srcLine.head.w) || 'med', (v) => { ch.headSz = v; });
     const sE = ui.select(SIZES, (srcLine && srcLine.tail && srcLine.tail.w) || 'med', (v) => { ch.tailSz = v; });
     const colorsTab = h('div', { class: 'col' },
-      !isLine && !isPic ? ui.group('Fill', ui.field('C&olor:', fp), ui.field('&Transparency:', trans)) : null,
-      isPic ? ui.group('Fill', ui.field('C&olor:', fp)) : null,
-      ui.group('Line', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('Co&lor:', lp), ui.field('&Dashed:', dash)), h('div', { class: 'col' }, ui.field('样式(&S):', cmpd), ui.field('&Weight:', lnW)))),
-      isLine || (s0.type === 'shape' && L.geom.get(s0.geom).line) || (s0.geom === 'custom') ? ui.group('Arrows', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('&Begin style:', aB), ui.field('起始大小(&Z):', sB)), h('div', { class: 'col' }, ui.field('&End style:', aE), ui.field('结束大小(&N):', sE)))) : null);
+      !isLine && !isPic ? ui.group('填充', ui.field('颜色(&o)：', fp), ui.field('透明度(&T)：', trans)) : null,
+      isPic ? ui.group('填充', ui.field('颜色(&o)：', fp)) : null,
+      ui.group('线条', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('颜色(&l)：', lp), ui.field('虚线(&D)：', dash)), h('div', { class: 'col' }, ui.field('样式(&S)：', cmpd), ui.field('粗细(&W)：', lnW)))),
+      isLine || (s0.type === 'shape' && L.geom.get(s0.geom).line) || (s0.geom === 'custom') ? ui.group('箭头', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('起点样式(&B)：', aB), ui.field('起点大小(&z)：', sB)), h('div', { class: 'col' }, ui.field('终点样式(&E)：', aE), ui.field('终点大小(&n)：', sE)))) : null);
     /* size */
     const hS = ui.spin({ value: IN(s0.h), min: 0, max: 56, step: 0.01, unit: '"', onChange: (v) => { ch.h = PT(v); if (lock.input.checked && s0.h) { ch.w = s0.w * (PT(v) / s0.h); wS.set(IN(ch.w)); } } });
     const wS = ui.spin({ value: IN(s0.w), min: 0, max: 56, step: 0.01, unit: '"', onChange: (v) => { ch.w = PT(v); if (lock.input.checked && s0.w) { ch.h = s0.h * (PT(v) / s0.w); hS.set(IN(ch.h)); } } });
     const rS = ui.spin({ value: s0.rot || 0, min: -360, max: 360, step: 1, unit: '°', dec: 1, onChange: (v) => { ch.rot = ((v % 360) + 360) % 360; } });
     rS.setDisabled(!shapes.every(M.canRotate));
-    const lock = ui.check('Lock &aspect ratio', !!s0.lockAspect, (v) => { ch.lockAspect = v; });
+    const lock = ui.check('锁定纵横比(&a)', !!s0.lockAspect, (v) => { ch.lockAspect = v; });
     let natW = 0, natH = 0;
     const origLbl = h('div', { class: 'tp-note' });
-    if (isPic && L.media.has(s0.media)) L.loadImage(L.media.url(s0.media)).then((im) => { natW = im.naturalWidth * 0.75; natH = im.naturalHeight * 0.75; origLbl.textContent = `Original size: Height ${IN(natH)}"  Width ${IN(natW)}"`; }).catch(() => {});
+    if (isPic && L.media.has(s0.media)) L.loadImage(L.media.url(s0.media)).then((im) => { natW = im.naturalWidth * 0.75; natH = im.naturalHeight * 0.75; origLbl.textContent = L.t('原始尺寸：高度 {0} 英寸，宽度 {1} 英寸', IN(natH), IN(natW)); }).catch(() => {});
     const sizeTab = h('div', { class: 'col' },
-      ui.group('Size and rotate', h('div', { class: 'row' }, ui.field('H&eight:', hS), ui.field('Wi&dth:', wS)), ui.field('旋转(&T):', rS)),
-      ui.group('Scale', lock),
-      isPic ? h('div', null, origLbl, ui.button('&Reset', () => { if (natW) { ch.w = natW; ch.h = natH; wS.set(IN(natW)); hS.set(IN(natH)); ch.crop = { l: 0, t: 0, r: 0, b: 0 }; ch.img = {}; } })) : null);
+      ui.group('大小和旋转', h('div', { class: 'row' }, ui.field('高度(&e)：', hS), ui.field('宽度(&d)：', wS)), ui.field('旋转(&t)：', rS)),
+      ui.group('比例', lock),
+      isPic ? h('div', null, origLbl, ui.button('重置(&R)', () => { if (natW) { ch.w = natW; ch.h = natH; wS.set(IN(natW)); hS.set(IN(natH)); ch.crop = { l: 0, t: 0, r: 0, b: 0 }; ch.img = {}; } })) : null);
     /* position */
     const xS = ui.spin({ value: IN(s0.x), min: -56, max: 56, step: 0.01, unit: '"', onChange: (v) => { ch.x = PT(v); } });
     const yS = ui.spin({ value: IN(s0.y), min: -56, max: 56, step: 0.01, unit: '"', onChange: (v) => { ch.y = PT(v); } });
-    const posTab = h('div', { class: 'col' }, ui.group('幻灯片上的位置', ui.field('&Horizontal:', xS), ui.field('&Vertical:', yS), h('div', { class: 'tp-note', text: '从: 左上角' })));
+    const posTab = h('div', { class: 'col' }, ui.group('在幻灯片上的位置', ui.field('水平(&H)：', xS), ui.field('垂直(&V)：', yS), h('div', { class: 'tp-note', text: '从：左上角' })));
     /* picture */
     let picTab = null;
     if (isPic) {
@@ -434,14 +435,14 @@
       const fullW = s0.w / (1 - c.l - c.r), fullH = s0.h / (1 - c.t - c.b);
       const cr = (k, full) => ui.spin({ value: IN(c[k] * full), min: -20, max: 20, step: 0.01, unit: '"', onChange: (v) => { ch.crop = Object.assign({}, ch.crop || c); ch.crop[k] = PT(v) / full; } });
       const im = s0.img || {};
-      const mode = ui.select([['', 'Automatic'], ['gray', '灰度'], ['bw', '黑白'], ['wash', '冲蚀']], im.mode || '', (v) => { ch.imgMode = v; });
+      const mode = ui.select([['', '自动'], ['gray', '灰度'], ['bw', '黑白'], ['wash', '冲蚀']], im.mode || '', (v) => { ch.imgMode = v; });
       const br = h('input', { type: 'range', min: -100, max: 100, value: Math.round((im.bright || 0) * 100), id: 'fp-bright' });
       const co = h('input', { type: 'range', min: -100, max: 100, value: Math.round((im.contrast || 0) * 100), id: 'fp-contrast' });
       br.addEventListener('input', () => { ch.bright = br.value / 100; });
       co.addEventListener('input', () => { ch.contrast = co.value / 100; });
       picTab = h('div', { class: 'col' },
-        ui.group('Crop from', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('&Left:', cr('l', fullW)), ui.field('&Right:', cr('r', fullW))), h('div', { class: 'col' }, ui.field('&Top:', cr('t', fullH)), ui.field('&Bottom:', cr('b', fullH))))),
-        ui.group('Image control', ui.field('&Color:', mode), ui.field('Brig&htness:', br), ui.field('Co&ntrast:', co)));
+        ui.group('裁剪范围', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('左(&L)：', cr('l', fullW)), ui.field('右(&R)：', cr('r', fullW))), h('div', { class: 'col' }, ui.field('顶端(&T)：', cr('t', fullH)), ui.field('底端(&B)：', cr('b', fullH))))),
+        ui.group('图像控件', ui.field('颜色(&C)：', mode), ui.field('亮度(&h)：', br), ui.field('对比度(&n)：', co)));
     }
     /* text box */
     let tbTab = null;
@@ -449,21 +450,21 @@
       const tx = s0.tx;
       const ins = tx.ins || [7.2, 3.6, 7.2, 3.6];
       const insSp = (i) => ui.spin({ value: IN(ins[i]), min: 0, max: 20, step: 0.01, unit: '"', onChange: (v) => { ch.ins = (ch.ins || ins.slice()); ch.ins[i] = PT(v); } });
-      const anchor = ui.select([['t', 'Top'], ['ctr', '中部'], ['b', 'Bottom'], ['t|c', '顶端居中'], ['ctr|c', '中部居中'], ['b|c', '底端居中']], tx.anchor + (tx.anchorCtr ? '|c' : ''), (v) => { ch.anchor = v; });
+      const anchor = ui.select([['t', '顶端'], ['ctr', '中部'], ['b', '底端'], ['t|c', '顶端居中'], ['ctr|c', '垂直居中'], ['b|c', '底端居中']], tx.anchor + (tx.anchorCtr ? '|c' : ''), (v) => { ch.anchor = v; });
       tbTab = h('div', { class: 'col' },
-        ui.field('文字对齐点(&A):', anchor, { cls: 'wide' }),
-        ui.group('Internal margin', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('&Left:', insSp(0)), ui.field('&Right:', insSp(2))), h('div', { class: 'col' }, ui.field('&Top:', insSp(1)), ui.field('&Bottom:', insSp(3))))),
-        ui.check('自选图形中文字自动换行(&W)', tx.wrap !== false, (v) => { ch.wrap = v; }),
-        ui.check('Resize AutoShape to &fit text', tx.autofit === 'shape', (v) => { ch.autofit = v ? 'shape' : 'none'; }),
-        ui.check('将自选图形中的文字旋转 90°(&O)', !!tx.vert, (v) => { ch.vert = v; }));
+        ui.field('文本定位点(&a)：', anchor, { cls: 'wide' }),
+        ui.group('内部边距', h('div', { class: 'row' }, h('div', { class: 'col' }, ui.field('左(&L)：', insSp(0)), ui.field('右(&R)：', insSp(2))), h('div', { class: 'col' }, ui.field('顶端(&T)：', insSp(1)), ui.field('底端(&B)：', insSp(3))))),
+        ui.check('自选图形中的文字自动换行(&W)', tx.wrap !== false, (v) => { ch.wrap = v; }),
+        ui.check('调整自选图形以适应文字(&f)', tx.autofit === 'shape', (v) => { ch.autofit = v ? 'shape' : 'none'; }),
+        ui.check('将自选图形内的文字旋转 90°(&o)', !!tx.vert, (v) => { ch.vert = v; }));
     }
     const alt = h('textarea', { id: 'fs-alt', rows: 4, style: 'width:100%' });
     alt.value = s0.alt || '';
     alt.addEventListener('input', () => { ch.alt = alt.value; });
-    const webTab = h('div', { class: 'col' }, h('label', { for: 'fs-alt', text: '替换文字:' }), alt, h('div', { class: 'tp-note', text: '屏幕阅读器和网页会用替换文字来描述该对象。' }));
-    const tabs = [{ label: 'Colors and Lines', body: colorsTab }, { label: 'Size', body: sizeTab }, { label: 'Position', body: posTab }];
-    if (picTab) tabs.push({ label: 'Picture', body: picTab });
-    if (tbTab) tabs.push({ label: 'Text Box', body: tbTab });
+    const webTab = h('div', { class: 'col' }, h('label', { for: 'fs-alt', text: '替代文字：' }), alt, h('div', { class: 'tp-note', text: '屏幕阅读器和网页使用替代文字描述对象。' }));
+    const tabs = [{ label: '颜色与线条', body: colorsTab }, { label: '大小', body: sizeTab }, { label: '位置', body: posTab }];
+    if (picTab) tabs.push({ label: '图片', body: picTab });
+    if (tbTab) tabs.push({ label: '文本框', body: tbTab });
     tabs.push({ label: 'Web', body: webTab });
     const ti = Math.max(0, tabs.findIndex((t) => t.label === tabName));
     const tabsEl = ui.tabs(tabs, ti);
@@ -540,10 +541,10 @@
       prev.appendChild(L.render.thumb(L.pres, tmp, 218));
     };
     const fp = fillPicker(fill, 'fill', (f) => { fill = f && f.t === 'none' ? { t: 'solid', c: 'bg1', a: 1 } : f; paint(); });
-    const om = ui.check('从母版中忽略背景图形(&G)', omit, (v) => { omit = v; paint(); });
+    const om = ui.check('忽略母版的背景图形(&g)', omit, (v) => { omit = v; paint(); });
     paint();
     const apply = (all) => {
-      L.hist.push('Background');
+      L.hist.push(L.N('背景'));
       const targets = all ? L.pres.slides : (L.app.selectedSlides && L.app.selectedSlides().length > 1 ? L.app.selectedSlides() : [slide]);
       if (E().view === 'master') { const ms = E().masterSlide; ms.bg = fill; E().syncMaster(); }
       else if (all) { for (const s of L.pres.slides) { delete s.bg; s.hideMaster = omit || undefined; } for (const id in L.pres.designs) { if (L.pres.slides.some((s) => s.design === id)) L.pres.designs[id].bg = L.clone(fill); } }
@@ -561,11 +562,11 @@
     const sel = ui.select(M.SLIDE_SIZES.map((s) => [s.key, s.name]), cur.key, (k) => { const s = M.SLIDE_SIZES.find((x) => x.key === k); if (k !== 'custom') { w.set(IN(s.w)); hh.set(IN(s.h)); } });
     const first = ui.spin({ value: p.firstNum || 1, min: 0, max: 9999, step: 1, dec: 0 });
     let portrait = p.H > p.W;
-    const dflt = L.app.opts.slideSize;
+    const dflt = L.app.opts.slideSize || M.DEFAULT_SIZE;
     const asDefault = ui.check('用于新演示文稿(&U)', !!(dflt && Math.abs(dflt.w - p.W) < 0.6 && Math.abs(dflt.h - p.H) < 0.6));
     const body = h('div', { class: 'row' },
-      h('div', { class: 'col' }, ui.field('幻灯片大小(&S):', sel, { cls: 'wide' }), ui.field('&Width:', w, { cls: 'wide' }), ui.field('H&eight:', hh, { cls: 'wide' }), ui.field('幻灯片编号起始值(&N):', first, { cls: 'wide' }), asDefault),
-      ui.group('Orientation', h('div', { class: 'col' }, h('b', { text: '幻灯片' }), ui.radio('ps-or', '纵向(&P)', portrait, () => { portrait = true; if (w.get() > hh.get()) { const t = w.get(); w.set(hh.get()); hh.set(t); } }), ui.radio('ps-or', '&Landscape', !portrait, () => { portrait = false; if (hh.get() > w.get()) { const t = w.get(); w.set(hh.get()); hh.set(t); } }))));
+      h('div', { class: 'col' }, ui.field('幻灯片大小(&S)：', sel, { cls: 'wide' }), ui.field('宽度(&W)：', w, { cls: 'wide' }), ui.field('高度(&e)：', hh, { cls: 'wide' }), ui.field('幻灯片编号起始值(&N)：', first, { cls: 'wide' }), asDefault),
+      ui.group('方向', h('div', { class: 'col' }, h('b', { text: '幻灯片' }), ui.radio('ps-or', '纵向(&P)', portrait, () => { portrait = true; if (w.get() > hh.get()) { const t = w.get(); w.set(hh.get()); hh.set(t); } }), ui.radio('ps-or', '横向(&L)', !portrait, () => { portrait = false; if (hh.get() > w.get()) { const t = w.get(); w.set(hh.get()); hh.set(t); } }))));
     ui.dialog({ title: '页面设置', body, width: 480, buttons: [{ label: '确定', primary: true, onClick: () => {
       const preset = M.SLIDE_SIZES.find((x) => x.key === sel.value);
       /* use exact preset points (inch spinners round to 0.01") */
@@ -586,22 +587,22 @@
     const slide = E().slide();
     const hf = Object.assign({}, L.pres.hf, slide && slide.hf);
     const dt = ui.check('日期和时间(&D)', !!hf.dt, () => sync());
-    const auto = ui.radio('hf-dt', '自动更新(&A)', hf.dtAuto !== false, () => sync());
-    const fmt = ui.select(L.DATE_FORMATS.map((f) => [f, L.fmtDate(new Date(), f)]), hf.dtFmt || 'datetime1');
-    const fixed = ui.radio('hf-dt', '固定(&X)', hf.dtAuto === false, () => sync());
+    const auto = ui.radio('hf-dt', '自动更新(&a)', hf.dtAuto !== false, () => sync());
+    const fmt = ui.select(L.DATE_FORMATS.map((f) => [f, L.fmtDate(new Date(), f)]), hf.dtFmt || 'datetime1', null, { translate: 'no' });
+    const fixed = ui.radio('hf-dt', '固定(&x)', hf.dtAuto === false, () => sync());
     const fixedIn = h('input', { type: 'text', id: 'hf-fixed', value: hf.dtText || L.fmtDate(new Date(), 'datetime1'), style: 'width:220px' });
-    const num = ui.check('幻灯片编号(&N)', !!hf.num);
+    const num = ui.check('幻灯片编号(&n)', !!hf.num);
     const ftr = ui.check('页脚(&F)', !!hf.ftr, () => sync());
     const ftrIn = h('input', { type: 'text', id: 'hf-ftr', value: hf.ftrText || '', style: 'width:260px' });
-    const nt = ui.check('标题幻灯片中不显示(&S)', !!hf.notOnTitle);
+    const nt = ui.check('标题幻灯片中不显示(&s)', !!hf.notOnTitle);
     const sync = () => { const on = dt.input.checked; auto.input.disabled = fixed.input.disabled = !on; fmt.disabled = !on || !auto.input.checked; fixedIn.disabled = !on || !fixed.input.checked; ftrIn.disabled = !ftr.input.checked; };
     sync();
     const read = () => ({ dt: dt.input.checked, dtAuto: auto.input.checked, dtFmt: fmt.value, dtText: fixedIn.value, num: num.input.checked, ftr: ftr.input.checked, ftrText: ftrIn.value, notOnTitle: nt.input.checked });
-    const body = ui.tabs([{ label: '幻灯片', body: h('div', { class: 'col' }, h('b', { text: '包含在幻灯片上' }), dt, h('div', { class: 'col', style: 'margin-left:20px' }, auto, fmt, fixed, fixedIn), num, ftr, h('div', { style: 'margin-left:20px' }, ftrIn), nt) }]);
+    const body = ui.tabs([{ label: '幻灯片', body: h('div', { class: 'col' }, h('b', { text: '幻灯片包含内容' }), dt, h('div', { class: 'col', style: 'margin-left:20px' }, auto, fmt, fixed, fixedIn), num, ftr, h('div', { style: 'margin-left:20px' }, ftrIn), nt) }]);
     ui.dialog({
       title: '页眉和页脚', body, width: 420, buttons: [
-        { label: '全部应用(&A)', primary: true, onClick: () => { L.hist.push('Header and Footer'); L.pres.hf = read(); for (const s of L.pres.slides) delete s.hf; E().render(); L.bus.emit('slides-changed'); } },
-        { label: '应用(&A)', onClick: () => { L.hist.push('Header and Footer'); if (slide) slide.hf = read(); E().render(); L.bus.emit('slides-changed'); } },
+        { label: '全部应用(&A)', primary: true, onClick: () => { L.hist.push('页眉和页脚'); L.pres.hf = read(); for (const s of L.pres.slides) delete s.hf; E().render(); L.bus.emit('slides-changed'); } },
+        { label: '应用(&A)', onClick: () => { L.hist.push('页眉和页脚'); if (slide) slide.hf = read(); E().render(); L.bus.emit('slides-changed'); } },
         { label: '取消' }],
     });
   };
@@ -650,22 +651,22 @@
   D.find = function (replace) {
     const what = h('input', { type: 'text', id: 'fd-what', value: (L.te.active() && L.te.selectedText()) || findState.what, style: 'width:260px' });
     const repl = h('input', { type: 'text', id: 'fd-with', value: findState.with, style: 'width:260px' });
-    const mc = ui.check('Matc&h case', findState.mc), ww = ui.check('全字匹配(&W)', findState.ww);
+    const mc = ui.check('区分大小写(&h)', findState.mc), ww = ui.check('全字匹配(&w)', findState.ww);
     const read = () => { findState.what = what.value; findState.with = repl.value; findState.mc = mc.input.checked; findState.ww = ww.input.checked; };
-    const body = h('div', { class: 'col' }, ui.field('Fi&nd what:', what, { cls: 'wide' }), replace ? ui.field('替换为(&P):', repl, { cls: 'wide' }) : null, mc, ww);
-    const notFound = () => ui.msg(`${L.APP} 已完成对演示文稿的搜索，但未找到搜索项。`, { icon: 'info' });
-    const btns = [{ label: '&Find Next', primary: true, onClick: () => { read(); if (!findNext(findState)) notFound(); return false; } }];
+    const body = h('div', { class: 'col' }, ui.field('查找内容(&n)：', what, { cls: 'wide' }), replace ? ui.field('替换为(&p)：', repl, { cls: 'wide' }) : null, mc, ww);
+    const notFound = () => ui.msg(L.t('{0} 已完成演示文稿搜索，未找到搜索项。', L.APP), { icon: 'info' });
+    const btns = [{ label: '查找下一处(&F)', primary: true, onClick: () => { read(); if (!findNext(findState)) notFound(); return false; } }];
     if (replace) {
-      btns.push({ label: '&Replace', onClick: () => { read(); doReplaceOne(); return false; } });
-      btns.push({ label: 'Replace &All', onClick: () => { read(); const n = replaceAll(); ui.msg(n ? `${L.APP} has finished searching the presentation and made ${n} replacement${n === 1 ? '' : 's'}.` : 'The search item wasn\'t found.', { icon: 'info' }); return false; } });
-    } else btns.push({ label: '替换(&P)...', onClick: (close) => { read(); close(null); setTimeout(() => D.find(true), 0); return false; } });
-    btns.push({ label: 'Close' });
-    ui.dialog({ title: replace ? 'Replace' : 'Find', body, width: 440, buttons: btns });
+      btns.push({ label: '替换(&R)', onClick: () => { read(); doReplaceOne(); return false; } });
+      btns.push({ label: '全部替换(&A)', onClick: () => { read(); const n = replaceAll(); ui.msg(n > 1 ? L.t('{0} 已完成演示文稿搜索，共替换 {1} 处。', L.APP, n) : n ? L.t('{0} 已完成演示文稿搜索，共替换 1 处。', L.APP) : '未找到搜索项。', { icon: 'info' }); return false; } });
+    } else btns.push({ label: '替换(&p)...', onClick: (close) => { read(); close(null); setTimeout(() => D.find(true), 0); return false; } });
+    btns.push({ label: '关闭' });
+    ui.dialog({ title: replace ? '替换' : '查找', body, width: 440, buttons: btns });
     function doReplaceOne() {
       if (L.te.active()) {
         const sel = L.te.selectedText();
         const match = findState.mc ? sel === findState.what : sel.toLowerCase() === findState.what.toLowerCase();
-        if (match && sel) { L.hist.push('Replace'); L.te.insertText(findState.with); }
+        if (match && sel) { L.hist.push(L.N('替换')); L.te.insertText(findState.with); }
       }
       if (!findNext(findState)) notFound();
     }
@@ -675,7 +676,7 @@
       const esc = findState.what.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp(findState.ww ? `\\b${esc}\\b` : esc, findState.mc ? 'g' : 'gi');
       let n = 0;
-      L.hist.push('Replace All');
+      L.hist.push('全部替换');
       const fix = (tx) => { for (const p of tx.ps) for (const r of p.rs) { if (r.fld) continue; r.t = r.t.replace(re, () => { n++; return findState.with; }); } };
       for (const s of L.pres.slides) M.walk(s.shapes, (sh) => { if (sh.tx) fix(sh.tx); if (sh.tbl) sh.tbl.rows.forEach((r) => r.cells.forEach((c) => fix(c.tx))); if (sh.wa) sh.wa.text = sh.wa.text.replace(re, () => { n++; return findState.with; }); });
       if (!n) L.hist.undo.pop();
@@ -687,7 +688,7 @@
   /* ---------- Insert Table ---------- */
   D.insertTable = function (cb) {
     const c = ui.spin({ value: 3, min: 1, max: 75, step: 1, dec: 0 }), r = ui.spin({ value: 2, min: 1, max: 75, step: 1, dec: 0 });
-    ui.dialog({ title: '插入表格', body: h('div', { class: 'col' }, ui.field('Number of &columns:', c, { cls: 'wide' }), ui.field('Number of &rows:', r, { cls: 'wide' })), width: 280, buttons: [{ label: '确定', primary: true, onClick: () => cb(r.get(), c.get()) }, { label: '取消' }] });
+    ui.dialog({ title: '插入表格', body: h('div', { class: 'col' }, ui.field('列数(&c)：', c, { cls: 'wide' }), ui.field('行数(&r)：', r, { cls: 'wide' })), width: 280, buttons: [{ label: '确定', primary: true, onClick: () => cb(r.get(), c.get()) }, { label: '取消' }] });
   };
 
   /* ---------- Hyperlink ---------- */
@@ -695,73 +696,73 @@
     const ed = E();
     const editing = L.te.active();
     const sh = ed.primary();
-    if (!sh && !editing) { ui.msg('请选定要链接的文本或对象。'); return; }
+    if (!sh && !editing) { ui.msg('选择要添加链接的文字或对象。'); return; }
     const runProps = editing ? L.te.runPropsAtSel() : {};
     const existing = editing ? (L.te.target() && (() => { const t = L.te.target(); const s = L.te.currentSel(); const p = t.tx.ps[s.p0]; let acc = 0; for (const r of p.rs) { acc += r.t.length; if (acc >= s.o0 && r.link) return r.link; } return null; })()) : sh.link;
     void runProps;
     let kind = existing && existing.slide ? 'place' : existing && existing.url && /^mailto:/.test(existing.url) ? 'mail' : existing && existing.action ? 'place' : 'web';
-    const disp = h('input', { type: 'text', id: 'hl-disp', value: editing ? L.te.selectedText() : '<<Selection in Document>>', style: 'width:100%' });
+    const disp = h('input', { type: 'text', id: 'hl-disp', value: editing ? L.te.selectedText() : L.t('<<文档中的选定内容>>'), style: 'width:100%' });
     if (!editing) disp.disabled = true;
     const addr = h('input', { type: 'text', id: 'hl-addr', value: existing && existing.url && !/^mailto:/.test(existing.url) ? existing.url : 'https://', style: 'width:100%' });
     const tip = h('input', { type: 'text', id: 'hl-tip', value: (existing && existing.tip) || '', style: 'width:100%' });
     const mail = h('input', { type: 'text', id: 'hl-mail', value: existing && existing.url && /^mailto:/.test(existing.url) ? existing.url.replace(/^mailto:/, '').split('?')[0] : '', style: 'width:100%' });
     const subj = h('input', { type: 'text', id: 'hl-subj', value: '', style: 'width:100%' });
-    const places = [['a:first', '第一张幻灯片'], ['a:last', '最后一张幻灯片'], ['a:next', '下一张幻灯片'], ['a:prev', '上一张幻灯片']].concat(L.pres.slides.map((s, i) => ['s:' + s.id, `${i + 1}. ${M.slideTitle(s) || 'Slide ' + (i + 1)}`]));
-    const placeSel = h('select', { id: 'hl-place', size: 10, style: 'width:100%' }, ...places.map(([v, l]) => h('option', { value: v, text: l })));
+    const places = [['a:first', '第一张幻灯片'], ['a:last', '最后一张幻灯片'], ['a:next', '下一张幻灯片'], ['a:prev', '上一张幻灯片']].concat(L.pres.slides.map((s, i) => ['s:' + s.id, `${i + 1}. ${M.slideTitle(s) || L.t('幻灯片 {0}', i + 1)}`]));
+    const placeSel = h('select', { id: 'hl-place', size: 10, style: 'width:100%' }, ...places.map(([v, l], i) => h('option', { value: v, text: l, translate: i < 4 ? null : 'no' })));
     if (existing && existing.slide) placeSel.value = 's:' + existing.slide; else if (existing && existing.action) placeSel.value = 'a:' + existing.action; else placeSel.selectedIndex = 2;
     const panes = {
-      web: h('div', { class: 'col' }, h('label', { for: 'hl-addr', html: 'Addr<u>e</u>ss:' }), addr, h('label', { for: 'hl-tip', text: '屏幕提示:' }), tip),
-      place: h('div', { class: 'col' }, h('label', { for: 'hl-place', html: 'Select a place in this d<u>o</u>cument:' }), placeSel),
-      mail: h('div', { class: 'col' }, h('label', { for: 'hl-mail', html: '<u>E</u>-mail address:' }), mail, h('label', { for: 'hl-subj', html: 'Su<u>b</u>ject:' }), subj),
+      web: h('div', { class: 'col' }, h('label', { for: 'hl-addr', html: ui.ampHTML('地址(&e)：') }), addr, h('label', { for: 'hl-tip', text: '屏幕提示：' }), tip),
+      place: h('div', { class: 'col' }, h('label', { for: 'hl-place', html: ui.ampHTML('选择本文档中的位置(&o)：') }), placeSel),
+      mail: h('div', { class: 'col' }, h('label', { for: 'hl-mail', html: ui.ampHTML('电子邮件地址(&E)：') }), mail, h('label', { for: 'hl-subj', html: ui.ampHTML('主题(&b)：') }), subj),
     };
     const host = h('div', { style: 'flex:1;min-width:0' });
     const side = h('div', { class: 'list-box', style: 'width:130px;min-height:180px' });
     const show = (k) => { kind = k; L.clear(host).appendChild(panes[k]); L.$$('.li', side).forEach((x) => x.classList.toggle('on', x.dataset.k === k)); };
-    [['web', '原有文件或网页'], ['place', '放置于本文档中'], ['mail', '电子邮件地址']].forEach(([k, l]) => { const it = h('div', { class: 'li', 'data-k': k, text: l, style: 'white-space:normal;padding:8px 6px' }); it.addEventListener('click', () => show(k)); side.appendChild(it); });
+    [['web', '现有文件或网页'], ['place', '本文档中的位置'], ['mail', '电子邮件地址']].forEach(([k, l]) => { const it = h('div', { class: 'li', 'data-k': k, text: l, style: 'white-space:normal;padding:8px 6px' }); it.addEventListener('click', () => show(k)); side.appendChild(it); });
     show(kind);
-    const body = h('div', { class: 'col' }, h('div', { class: 'field' }, h('label', { for: 'hl-disp', html: '<u>T</u>ext to display:' }), disp), h('div', { class: 'row', style: 'flex-wrap:nowrap' }, h('div', { class: 'col' }, h('label', { text: '链接到:' }), side), host));
+    const body = h('div', { class: 'col' }, h('div', { class: 'field' }, h('label', { for: 'hl-disp', html: ui.ampHTML('要显示的文字(&T)：') }), disp), h('div', { class: 'row', style: 'flex-wrap:nowrap' }, h('div', { class: 'col' }, h('label', { text: '链接到：' }), side), host));
     const apply = (link) => {
       if (editing) {
         const t = L.te.target();
         const s = L.te.currentSel();
-        if (s && L.txt.collapsed(s) && disp.value) { L.hist.push('Hyperlink'); L.te.insertText(disp.value); const s2 = L.te.currentSel(); L.te.applyRun((r) => { const n = Object.assign({}, r); if (link) n.link = link; else delete n.link; return n; }, 'Hyperlink', { p0: s2.p0, o0: s2.o0 - disp.value.length, p1: s2.p1, o1: s2.o1 }); }
+        if (s && L.txt.collapsed(s) && disp.value) { L.hist.push(L.N('超链接')); L.te.insertText(disp.value); const s2 = L.te.currentSel(); L.te.applyRun((r) => { const n = Object.assign({}, r); if (link) n.link = link; else delete n.link; return n; }, 'Hyperlink', { p0: s2.p0, o0: s2.o0 - disp.value.length, p1: s2.p1, o1: s2.o1 }); }
         else L.te.applyRun((r) => { const n = Object.assign({}, r); if (link) n.link = link; else delete n.link; return n; }, 'Hyperlink');
         void t;
-      } else ed.commit('Hyperlink', () => { for (const x of ed.selected()) { if (link) x.link = link; else delete x.link; } });
+      } else ed.commit(L.N('超链接'), () => { for (const x of ed.selected()) { if (link) x.link = link; else delete x.link; } });
     };
     const buttons = [{
-      label: 'OK', primary: true, onClick: () => {
+      label: '确定', primary: true, onClick: () => {
         let link = null;
         if (kind === 'web') { const u = addr.value.trim(); if (u && u !== 'https://') link = { url: /^[a-z]+:/i.test(u) ? u : 'https://' + u }; if (link && tip.value) link.tip = tip.value; }
         if (kind === 'mail' && mail.value.trim()) link = { url: 'mailto:' + mail.value.trim() + (subj.value ? '?subject=' + encodeURIComponent(subj.value) : '') };
         if (kind === 'place') { const v = placeSel.value || 'a:next'; link = v.startsWith('s:') ? { slide: v.slice(2) } : { action: v.slice(2) }; }
         if (link) apply(link);
       },
-    }, { label: 'Cancel' }];
-    if (existing) buttons.unshift({ label: '&Remove Link', onClick: () => apply(null) });
-    ui.dialog({ title: existing ? 'Edit Hyperlink' : 'Insert Hyperlink', body, width: 560, buttons });
+    }, { label: '取消' }];
+    if (existing) buttons.unshift({ label: '删除链接(&R)', onClick: () => apply(null) });
+    ui.dialog({ title: existing ? '编辑超链接' : '插入超链接', body, width: 560, buttons });
   };
 
   /* ---------- Action Settings ---------- */
   D.actionSettings = function () {
     const shapes = E().selected();
-    if (!shapes.length) { ui.msg('请先选定一个对象。'); return; }
+    if (!shapes.length) { ui.msg('请先选择对象。'); return; }
     const cur = shapes[0].link;
     let none = !cur;
-    const opts = [['next', '下一张幻灯片'], ['prev', '上一张幻灯片'], ['first', '第一张幻灯片'], ['last', '最后一张幻灯片'], ['lastViewed', '上次查看过的幻灯片'], ['end', '结束放映'], ['slide', '幻灯片...'], ['url', 'URL...']];
+    const opts = [['next', '下一张幻灯片'], ['prev', '上一张幻灯片'], ['first', '第一张幻灯片'], ['last', '最后一张幻灯片'], ['lastViewed', '上次查看的幻灯片'], ['end', '结束放映'], ['slide', '幻灯片...'], ['url', L.N('URL...')]];
     const sel = ui.select(opts, cur ? (cur.slide ? 'slide' : cur.url ? 'url' : cur.action) : 'next', () => sync());
-    const slideSel = ui.select(L.pres.slides.map((s, i) => [s.id, `${i + 1}. ${M.slideTitle(s) || 'Slide ' + (i + 1)}`]), cur && cur.slide);
+    const slideSel = ui.select(L.pres.slides.map((s, i) => [s.id, `${i + 1}. ${M.slideTitle(s) || L.t('幻灯片 {0}', i + 1)}`]), cur && cur.slide, null, { translate: 'no' });
     const url = h('input', { type: 'text', id: 'as-url', value: (cur && cur.url) || 'https://', style: 'width:240px' });
-    const rn = ui.radio('as-k', '&None', none, () => { none = true; sync(); }), rl = ui.radio('as-k', '超链接到(&H):', !none, () => { none = false; sync(); });
+    const rn = ui.radio('as-k', '无(&N)', none, () => { none = true; sync(); }), rl = ui.radio('as-k', '超链接到(&H)：', !none, () => { none = false; sync(); });
     const sync = () => { sel.disabled = none; slideSel.hidden = none || sel.value !== 'slide'; url.hidden = none || sel.value !== 'url'; };
     sync();
-    const body = ui.tabs([{ label: '鼠标单击', body: h('div', { class: 'col' }, h('b', { text: '单击时执行' }), rn, rl, h('div', { class: 'col', style: 'margin-left:20px' }, sel, slideSel, url)) }]);
+    const body = ui.tabs([{ label: '鼠标单击', body: h('div', { class: 'col' }, h('b', { text: '单击时的动作' }), rn, rl, h('div', { class: 'col', style: 'margin-left:20px' }, sel, slideSel, url)) }]);
     ui.dialog({
       title: '动作设置', body, width: 360, buttons: [{
         label: '确定', primary: true, onClick: () => {
           let link = null;
           if (!none) link = sel.value === 'slide' ? { slide: slideSel.value } : sel.value === 'url' ? { url: url.value } : { action: sel.value };
-          E().commit('Action Settings', () => { for (const s of shapes) { if (link) s.link = link; else delete s.link; } });
+          E().commit('动作设置', () => { for (const s of shapes) { if (link) s.link = link; else delete s.link; } });
         },
       }, { label: '取消' }],
     });
@@ -769,25 +770,25 @@
 
   /* ---------- Symbol ---------- */
   const SYM_SETS = [
-    ['Latin-1 Supplement', 0x00a1, 0x00ff], ['Latin Extended-A', 0x0100, 0x017f], ['Greek and Coptic', 0x0391, 0x03c9], ['General Punctuation', 0x2010, 0x2044],
-    ['Currency Symbols', 0x20a0, 0x20bf], ['Letterlike Symbols', 0x2100, 0x214f], ['Number Forms', 0x2150, 0x218b], ['Arrows', 0x2190, 0x21ff], ['Mathematical Operators', 0x2200, 0x22ff],
-    ['Box Drawing', 0x2500, 0x257f], ['Geometric Shapes', 0x25a0, 0x25ff], ['Miscellaneous Symbols', 0x2600, 0x26ff], ['Dingbats', 0x2700, 0x27bf],
+    [L.N('拉丁文-1 补充'), 0x00a1, 0x00ff], [L.N('拉丁文扩展-A'), 0x0100, 0x017f], [L.N('希腊文和科普特文'), 0x0391, 0x03c9], [L.N('常用标点'), 0x2010, 0x2044],
+    [L.N('货币符号'), 0x20a0, 0x20bf], [L.N('类字母符号'), 0x2100, 0x214f], [L.N('数字形式'), 0x2150, 0x218b], [L.N('箭头'), 0x2190, 0x21ff], [L.N('数学运算符'), 0x2200, 0x22ff],
+    [L.N('制表符号'), 0x2500, 0x257f], [L.N('几何形状'), 0x25a0, 0x25ff], [L.N('杂项符号'), 0x2600, 0x26ff], [L.N('装饰符号'), 0x2700, 0x27bf],
   ];
   const recentSyms = ['€', '£', '¥', '©', '®', '™', '±', '≠', '≤', '≥', '÷', '×', '∞', 'µ', 'α', 'β'];
   D.symbol = function (cb) {
     let pick = null;
-    const grid = h('div', { class: 'sym-grid' });
-    const font = ui.select(['(normal text)', 'Arial', 'Times New Roman', 'Georgia', 'Verdana', 'Segoe UI Symbol'], '(normal text)', () => fill(sub.value));
+    const grid = h('div', { class: 'sym-grid', translate: 'no' });
+    const font = ui.select([['normal', '（普通文本）'], 'Arial', 'Times New Roman', 'Georgia', 'Verdana', 'Segoe UI Symbol'], 'normal', () => fill(sub.value));
     const sub = ui.select(SYM_SETS.map((s, i) => [i, s[0]]), 0, (v) => fill(v));
     const code = h('input', { type: 'text', id: 'sym-code', style: 'width:70px', readonly: true });
     const recent = h('div', { class: 'row', style: 'gap:2px' });
     const fill = (si) => {
       const [, a, b] = SYM_SETS[+si];
       L.clear(grid);
-      grid.style.fontFamily = font.value === '(normal text)' ? '' : L.fontStack(font.value);
+      grid.style.fontFamily = font.value === 'normal' ? '' : L.fontStack(font.value);
       for (let c = a; c <= b; c++) {
         const ch = String.fromCodePoint(c);
-        const btn = h('button', { type: 'button', text: ch, 'aria-label': 'U+' + c.toString(16).toUpperCase() });
+        const btn = h('button', { type: 'button', text: ch, 'aria-label': 'U+' + c.toString(16).toUpperCase(), translate: 'no' });
         btn.addEventListener('click', () => { L.$$('button.on', grid).forEach((x) => x.classList.remove('on')); btn.classList.add('on'); pick = ch; code.value = c.toString(16).toUpperCase().padStart(4, '0'); });
         btn.addEventListener('dblclick', () => { pick = ch; insertBtn.click(); });
         grid.appendChild(btn);
@@ -795,14 +796,14 @@
     };
     fill(0);
     for (const ch of recentSyms) { const b = h('button', { type: 'button', class: 'btn small', text: ch, style: 'min-width:24px;padding:0' }); b.addEventListener('click', () => { pick = ch; code.value = ch.codePointAt(0).toString(16).toUpperCase().padStart(4, '0'); }); recent.appendChild(b); }
-    const body = h('div', { class: 'col' }, h('div', { class: 'row' }, ui.field('&Font:', font), ui.field('Su&bset:', sub)), grid, h('label', { text: 'Recently used symbols:' }), recent, ui.field('字符代码(&C):', code));
+    const body = h('div', { class: 'col' }, h('div', { class: 'row' }, ui.field('字体(&F)：', font), ui.field('子集(&b)：', sub)), grid, h('label', { text: '近期使用过的符号：' }), recent, ui.field('字符代码(&C)：', code));
     const d = ui.dialog({
       title: '符号', body, width: 470, buttons: [{
         label: '插入(&I)', primary: true, onClick: () => {
           if (!pick) return false;
           const i = recentSyms.indexOf(pick); if (i >= 0) recentSyms.splice(i, 1); recentSyms.unshift(pick); recentSyms.length = 16;
           if (cb) { cb(pick); return; }
-          if (L.te.active()) { L.hist.push('Insert Symbol'); L.te.insertText(pick); }
+          if (L.te.active()) { L.hist.push('插入符号'); L.te.insertText(pick); }
         },
       }, { label: '取消' }],
     });
@@ -811,16 +812,16 @@
 
   /* ---------- Date and Time ---------- */
   D.dateTime = function () {
-    const list = h('select', { id: 'dt-list', size: 12, style: 'width:260px' }, ...L.DATE_FORMATS.map((f) => h('option', { value: f, text: L.fmtDate(new Date(), f) })));
+    const list = h('select', { id: 'dt-list', size: 12, style: 'width:260px', translate: 'no' }, ...L.DATE_FORMATS.map((f) => h('option', { value: f, text: L.fmtDate(new Date(), f), translate: 'no' })));
     list.selectedIndex = 0;
     const upd = ui.check('自动更新(&U)', false);
     ui.dialog({
-      title: '日期和时间', body: h('div', { class: 'col' }, h('label', { for: 'dt-list', html: '<u>可</u>用格式:' }), list, upd), width: 300, buttons: [{
+      title: '日期和时间', body: h('div', { class: 'col' }, h('label', { for: 'dt-list', html: ui.ampHTML('可用格式(&A)：') }), list, upd), width: 300, buttons: [{
         label: '确定', primary: true, onClick: () => {
           const f = list.value || 'datetime1';
           if (!L.te.active()) { L.app.ensureTextTarget(); }
           if (!L.te.active()) return;
-          L.hist.push('Insert Date and Time');
+          L.hist.push('插入日期和时间');
           if (upd.input.checked) L.te.insertField(f); else L.te.insertText(L.fmtDate(new Date(), f));
         },
       }, { label: '取消' }],
@@ -831,16 +832,16 @@
   D.setupShow = function () {
     const s = L.pres.show;
     const n = L.pres.slides.length;
-    const speaker = ui.radio('su-type', '演讲者放映（全屏幕）(&P)', !s.kiosk), kiosk = ui.radio('su-type', '在展台浏览（全屏幕）(&K)', !!s.kiosk);
-    const loop = ui.check('循环放映，按 Esc 键终止(&L)', !!s.loop), noAnim = ui.check('不加动画放映(&A)', !!s.noAnim);
+    const speaker = ui.radio('su-type', '演讲者放映（全屏幕）(&P)', !s.kiosk), kiosk = ui.radio('su-type', '在展台浏览（全屏幕）(&k)', !!s.kiosk);
+    const loop = ui.check('循环放映，按 Esc 键终止(&L)', !!s.loop), noAnim = ui.check('放映时不加动画(&a)', !!s.noAnim);
     const pen = colorPick(s.penColor || '#FF0000');
-    const all = ui.radio('su-rng', '全部(&A)', !(s.from && s.to)), rng = ui.radio('su-rng', '从(&F):', !!(s.from && s.to));
+    const all = ui.radio('su-rng', '全部(&A)', !(s.from && s.to)), rng = ui.radio('su-rng', '从(&F)：', !!(s.from && s.to));
     const from = ui.spin({ value: s.from || 1, min: 1, max: Math.max(1, n), step: 1, dec: 0 }), to = ui.spin({ value: s.to || n, min: 1, max: Math.max(1, n), step: 1, dec: 0 });
-    const man = ui.radio('su-adv', '手动(&M)', s.useTimings === false), tim = ui.radio('su-adv', '如果存在计时，则使用(&U)', s.useTimings !== false);
+    const man = ui.radio('su-adv', '手动(&M)', s.useTimings === false), tim = ui.radio('su-adv', '如果存在计时，则使用计时(&U)', s.useTimings !== false);
     const body = h('div', { class: 'row' },
-      h('div', { class: 'col' }, ui.group('放映类型', speaker, kiosk), ui.group('显示选项', loop, noAnim, ui.field('笔颜色(&E):', pen))),
-      h('div', { class: 'col' }, ui.group('放映幻灯片', all, h('div', { class: 'row', style: 'align-items:center' }, rng, from, h('span', { text: 'To:' }), to)), ui.group('换片方式', man, tim)));
-    ui.dialog({ title: '设置放映方式', body, width: 560, buttons: [{ label: '确定', primary: true, onClick: () => { L.hist.push('Set Up Show'); Object.assign(s, { kiosk: kiosk.input.checked, loop: loop.input.checked || kiosk.input.checked, noAnim: noAnim.input.checked, penColor: pen.get() && pen.get()[0] === '#' ? pen.get() : L.model.resolveColor(pen.get(), design()), from: rng.input.checked ? from.get() : 0, to: rng.input.checked ? to.get() : 0, useTimings: tim.input.checked }); } }, { label: '取消' }] });
+      h('div', { class: 'col' }, ui.group('放映类型', speaker, kiosk), ui.group('显示选项', loop, noAnim, ui.field('笔颜色(&e)：', pen))),
+      h('div', { class: 'col' }, ui.group('放映幻灯片', all, h('div', { class: 'row', style: 'align-items:center' }, rng, from, h('span', { text: '到：' }), to)), ui.group('换片', man, tim)));
+    ui.dialog({ title: '设置放映方式', body, width: 560, buttons: [{ label: '确定', primary: true, onClick: () => { L.hist.push('设置放映方式'); Object.assign(s, { kiosk: kiosk.input.checked, loop: loop.input.checked || kiosk.input.checked, noAnim: noAnim.input.checked, penColor: pen.get() && pen.get()[0] === '#' ? pen.get() : L.model.resolveColor(pen.get(), design()), from: rng.input.checked ? from.get() : 0, to: rng.input.checked ? to.get() : 0, useTimings: tim.input.checked }); } }, { label: '取消' }] });
   };
 
   /* ---------- Options ---------- */
@@ -852,11 +853,11 @@
     const pwOpen = h('input', { type: 'password', id: 'op-pw', value: L.pres.password || '', autocomplete: 'new-password', style: 'width:180px' });
     const look = ui.lookField();
     const tabs = ui.tabs([
-      { label: 'View', body: h('div', { class: 'col' }, ui.group('Show', c('Startup &Task Pane', 'startupPane'), c('&Slide Layout task pane when inserting new slides', 'layoutPaneOnNew'), c('Task pane f&ollows the selected object', 'paneFollows'), c('Stat&us bar', 'statusBar'), c('&Vertical ruler', 'ruler')), ui.group('幻灯片放映', c('&Popup menu on right mouse click', 'showPopup'), c('Show popup menu &button', 'showPopbar'), c('&End with black slide', 'endBlack'))) },
-      { label: 'General', body: h('div', { class: 'col' }, look && look.el, ui.group('用户信息', ui.field('&Name:', user)), c('Recently used file &list', 'recent')) },
-      { label: '编辑', body: h('div', { class: 'col' }, ui.group('文本', c('Replace straight &quotes with smart quotes', 'smartQuotes'), c('&AutoCorrect as you type', 'autocorrect'), c('句首字母大写(&S)', 'capSentence')), ui.group('Undo', ui.field('最多可取消操作次数(&M):', undo, { cls: 'wide' }))) },
-      { label: '拼写和样式', body: h('div', { class: 'col' }, ui.group('Spelling', c('Check spelling as you &type', 'spell')), h('div', { class: 'tp-note', text: '拼写建议来自浏览器。按住 Shift 并右键单击单词即可查看。' })) },
-      { label: 'Security', body: h('div', { class: 'col' }, ui.group('此文档的文件加密设置', ui.field('Password to &open:', pwOpen, { cls: 'wide' })), h('div', { class: 'tp-note', text: '下次另存为 PowerPoint 文件时，将按 PowerPoint 2007 及更高版本的做法用 AES-256 加密此演示文稿。留空则保存时不设密码。密码一旦丢失或忘记将无法恢复。' })) },
+      { label: '视图', body: h('div', { class: 'col' }, ui.group('显示', c('启动任务窗格(&T)', 'startupPane'), c('插入新幻灯片时显示“幻灯片版式”任务窗格(&S)', 'layoutPaneOnNew'), c('任务窗格跟随所选对象(&o)', 'paneFollows'), c('状态栏(&u)', 'statusBar'), c('垂直标尺(&V)', 'ruler')), ui.group('幻灯片放映', c('右键单击时显示快捷菜单(&P)', 'showPopup'), c('显示弹出菜单按钮(&b)', 'showPopbar'), c('以黑幻灯片结束(&E)', 'endBlack'))) },
+      { label: '常规', body: h('div', { class: 'col' }, look && look.el, ui.group('用户信息', ui.field('名称(&N)：', user)), c('最近使用的文件列表(&l)', 'recent')) },
+      { label: '编辑', body: h('div', { class: 'col' }, ui.group('文本', c('将直引号替换为弯引号(&q)', 'smartQuotes'), c('键入时自动更正(&A)', 'autocorrect'), c('句首字母大写(&s)', 'capSentence')), ui.group('撤消', ui.field('最多可撤消操作数(&M)：', undo, { cls: 'wide' }))) },
+      { label: '拼写和文风', body: h('div', { class: 'col' }, ui.group('拼写', c('键入时检查拼写(&t)', 'spell')), h('div', { class: 'tp-note', text: '拼写建议由浏览器提供。按住 Shift 并右键单击单词即可查看。' })) },
+      { label: '安全性', body: h('div', { class: 'col' }, ui.group('此文档的文件加密设置', ui.field('打开文件的密码(&o)：', pwOpen, { cls: 'wide' })), h('div', { class: 'tp-note', text: '下次保存为 PowerPoint 文件时，演示文稿将采用 AES-256 加密，与 PowerPoint 2007 及更高版本相同。将密码框留空可不设密码保存。密码丢失或遗忘后将无法恢复。' })) },
     ]);
     const applyPw = () => {
       const pw = pwOpen.value || '';
@@ -864,7 +865,7 @@
       if (!pw) { delete L.pres.password; L.hist.dirty = true; return true; }
       /* confirm a new password, as PowerPoint does */
       const p2 = h('input', { type: 'password', id: 'pw-confirm', autocomplete: 'new-password', style: 'width:100%' });
-      ui.dialog({ title: '确认密码', width: 320, body: h('div', { class: 'col' }, h('label', { for: 'pw-confirm', text: 'Reenter password to open:' }), p2, h('div', { class: 'tp-note', text: 'Caution: If you lose or forget the password, it cannot be recovered.' })), buttons: [{ label: '确定', primary: true, onClick: () => { if (p2.value !== pw) { ui.msg('确认密码不一致。', { icon: 'warn' }); return false; } L.pres.password = pw; L.hist.dirty = true; } }, { label: '取消' }] });
+      ui.dialog({ title: '确认密码', width: 320, body: h('div', { class: 'col' }, h('label', { for: 'pw-confirm', text: '再次输入打开文件的密码：' }), p2, h('div', { class: 'tp-note', text: '注意：密码丢失或遗忘后将无法恢复。' })), buttons: [{ label: '确定', primary: true, onClick: () => { if (p2.value !== pw) { ui.msg('两次输入的密码不一致。', { icon: 'warn' }); return false; } L.pres.password = pw; L.hist.dirty = true; } }, { label: '取消' }] });
       setTimeout(() => p2.focus(), 0);
       return true;
     };
@@ -877,15 +878,15 @@
     const AC = L.te.AUTOCORRECT;
     const list = h('div', { class: 'list-box', style: 'height:150px' });
     const rep = h('input', { type: 'text', id: 'ac-rep', style: 'width:120px' }), wit = h('input', { type: 'text', id: 'ac-with', style: 'width:200px' });
-    const draw = () => { L.clear(list); Object.keys(AC).sort().forEach((k) => { const li = h('div', { class: 'li' }, h('span', { text: k, style: 'width:110px;display:inline-block' }), h('span', { text: AC[k] })); li.addEventListener('click', () => { L.$$('.li', list).forEach((x) => x.classList.remove('on')); li.classList.add('on'); rep.value = k; wit.value = AC[k]; }); list.appendChild(li); }); };
+    const draw = () => { L.clear(list); Object.keys(AC).sort().forEach((k) => { const li = h('div', { class: 'li', translate: 'no' }, h('span', { text: k, style: 'width:110px;display:inline-block', translate: 'no' }), h('span', { text: AC[k], translate: 'no' })); li.addEventListener('click', () => { L.$$('.li', list).forEach((x) => x.classList.remove('on')); li.classList.add('on'); rep.value = k; wit.value = AC[k]; }); list.appendChild(li); }); };
     draw();
     const body = ui.tabs([{
       label: '自动更正', body: h('div', { class: 'col' },
-        ui.check('更正两个连续的大写字母', !!o.autocorrect, (v) => { o.autocorrect = v; }),
-        ui.check('句首字母大写(&S)', !!o.capSentence, (v) => { o.capSentence = v; }),
+        ui.check('更正连续两个大写字母', !!o.autocorrect, (v) => { o.autocorrect = v; }),
+        ui.check('句首字母大写(&s)', !!o.capSentence, (v) => { o.capSentence = v; }),
         ui.check('将直引号替换为弯引号', !!o.smartQuotes, (v) => { o.smartQuotes = v; }),
-        h('div', { class: 'row' }, ui.field('替换(&R):', rep), ui.field('为(&W):', wit)), list,
-        h('div', { class: 'row' }, ui.button('&Add', () => { if (rep.value) { AC[rep.value] = wit.value; draw(); } }), ui.button('&Delete', () => { delete AC[rep.value]; draw(); }))),
+        h('div', { class: 'row' }, ui.field('替换(&R)：', rep), ui.field('替换为(&W)：', wit)), list,
+        h('div', { class: 'row' }, ui.button('添加(&A)', () => { if (rep.value) { AC[rep.value] = wit.value; draw(); } }), ui.button('删除(&D)', () => { delete AC[rep.value]; draw(); }))),
     }]);
     ui.dialog({ title: '自动更正：英语（美国）', body, width: 420, buttons: [{ label: '确定', primary: true, onClick: () => L.app.saveOpts() }, { label: '取消' }] });
   };
@@ -897,38 +898,38 @@
     const cm = h('textarea', { id: 'pr-cm', rows: 3, style: 'width:260px' }); cm.value = p.comments || ''; cm.addEventListener('input', () => { p.comments = cm.value; });
     const words = L.pres.slides.reduce((a, s) => a + (M.allText(s).match(/\S+/g) || []).length, 0);
     const tabs = ui.tabs([
-      { label: 'Summary', body: h('div', { class: 'col' }, f('title', '&Title:'), f('subject', '&Subject:'), f('author', '&Author:'), f('company', 'C&ompany:'), f('category', 'Ca&tegory:'), f('keywords', '&Keywords:'), ui.field('批注(&C):', cm, { cls: 'wide' })) },
-      { label: 'Statistics', body: h('table', { class: 'kbd-table' }, ...[['Created:', p.created ? new Date(p.created).toLocaleString() : '—'], ['Slides:', L.pres.slides.length], ['Hidden slides:', L.pres.slides.filter((s) => s.hidden).length], ['Notes:', L.pres.slides.filter((s) => s.notes).length], ['Words:', words], ['Pictures:', L.media.all().size]].map(([a, b]) => h('tr', null, h('td', { text: a }), h('td', { text: String(b) })))) },
+      { label: '摘要', body: h('div', { class: 'col' }, f('title', '标题(&T)：'), f('subject', '主题(&S)：'), f('author', '作者(&A)：'), f('company', '公司(&o)：'), f('category', '类别(&t)：'), f('keywords', '关键词(&K)：'), ui.field('批注(&C)：', cm, { cls: 'wide' })) },
+      { label: '统计信息', body: h('table', { class: 'kbd-table' }, ...[['创建时间：', p.created ? new Date(p.created).toLocaleString() : '—'], ['幻灯片：', L.pres.slides.length], ['隐藏的幻灯片：', L.pres.slides.filter((s) => s.hidden).length], ['备注：', L.pres.slides.filter((s) => s.notes).length], ['字数：', words], ['图片：', L.media.all().size]].map(([a, b]) => h('tr', null, h('td', { text: a }), h('td', { text: String(b), translate: 'no' })))) },
     ]);
-    ui.dialog({ title: (L.app.fileName || 'Presentation') + ' Properties', body: tabs, width: 430, buttons: [{ label: '确定', primary: true }] });
+    ui.dialog({ title: L.t('{0} 属性', L.app.fileName || 'Presentation'), body: tabs, width: 430, buttons: [{ label: '确定', primary: true }] });
   };
 
   /* ---------- Save As ---------- */
   D.saveAs = function (cb) {
     const base = (L.app.fileName || 'Presentation1').replace(/\.[^.]+$/, '');
     const name = h('input', { type: 'text', id: 'sa-name', value: base, style: 'width:300px' });
-    const types = [['pptx', 'PowerPoint 演示文稿 (*.pptx)'], ['pptm', '启用宏的演示文稿 (*.pptm)'], ['ppsx', 'PowerPoint 放映 (*.ppsx)'], ['ppsm', '启用宏的放映 (*.ppsm)'], ['potx', '设计模板 (*.potx)'], ['potm', '启用宏的模板 (*.potm)'], ['pdf', 'PDF，每页一张幻灯片 (*.pdf)'], ['html', '单文件网页 (*.html)'], ['png', 'PNG 图形格式，当前幻灯片 (*.png)'], ['txt', '大纲 (*.txt)']];
+    const types = [['pptx', L.N('PowerPoint 演示文稿 (*.pptx)')], ['pptm', L.N('启用宏的演示文稿 (*.pptm)')], ['ppsx', L.N('PowerPoint 放映 (*.ppsx)')], ['ppsm', L.N('启用宏的放映 (*.ppsm)')], ['potx', L.N('设计模板 (*.potx)')], ['potm', L.N('启用宏的模板 (*.potm)')], ['pdf', L.N('PDF，每页一张幻灯片 (*.pdf)')], ['html', L.N('单文件网页 (*.html)')], ['png', L.N('PNG 图形格式，当前幻灯片 (*.png)')], ['txt', L.N('大纲 (*.txt)')]];
     const cur = types.some(([k]) => k === L.app.fileType) ? L.app.fileType : 'pptx';
     const type = ui.select(types, cur);
-    return ui.dialog({ title: '另存为', body: h('div', { class: 'col' }, ui.field('File &name:', name, { cls: 'wide' }), ui.field('Save as &type:', type, { cls: 'wide' }), h('div', { class: 'tp-note', text: '下载文件的保存位置由浏览器决定。' })), width: 470, buttons: [{ label: '保存(&S)', primary: true, onClick: () => cb((name.value.trim() || base).replace(/\.(pptx|pptm|ppsx|ppsm|potx|potm)$/i, ''), type.value) }, { label: '取消' }] });
+    return ui.dialog({ title: '另存为', body: h('div', { class: 'col' }, ui.field('文件名(&n)：', name, { cls: 'wide' }), ui.field('保存类型(&t)：', type, { cls: 'wide' }), h('div', { class: 'tp-note', text: '下载文件的保存位置由浏览器决定。' })), width: 470, buttons: [{ label: '保存(&S)', primary: true, onClick: () => cb((name.value.trim() || base).replace(/\.(pptx|pptm|ppsx|ppsm|potx|potm)$/i, ''), type.value) }, { label: '取消' }] });
   };
 
   /* ---------- Zoom ---------- */
   D.zoom = function () {
-    const presets = [['fit', '适应'], [4, '400%'], [2, '200%'], [1, '100%'], [0.66, '66%'], [0.5, '50%'], [0.33, '33%']];
+    const presets = [['fit', L.N('适应')], [4, '400%'], [2, '200%'], [1, '100%'], [0.66, '66%'], [0.5, '50%'], [0.33, '33%']];
     let pick = E().zoom;
     const pct = ui.spin({ value: E().zoomPct(), min: 10, max: 400, step: 1, unit: '%', dec: 0, onChange: (v) => { pick = v / 100; } });
-    const body = h('div', { class: 'row' }, ui.group('Zoom to', h('div', { class: 'col' }, ...presets.map(([v, l]) => ui.radio('zm', l, String(v) === String(E().zoom), () => { pick = v; if (v !== 'fit') pct.set(Math.round(v * 100)); })))), h('div', { class: 'col' }, ui.field('百分比(&P):', pct)));
-    ui.dialog({ title: '显示比例', body, width: 300, buttons: [{ label: '确定', primary: true, onClick: () => E().setZoom(pick) }, { label: '取消' }] });
+    const body = h('div', { class: 'row' }, ui.group('缩放到', h('div', { class: 'col' }, ...presets.map(([v, l]) => ui.radio('zm', l, String(v) === String(E().zoom), () => { pick = v; if (v !== 'fit') pct.set(Math.round(v * 100)); })))), h('div', { class: 'col' }, ui.field('百分比(&P)：', pct)));
+    ui.dialog({ title: '缩放', body, width: 300, buttons: [{ label: '确定', primary: true, onClick: () => E().setZoom(pick) }, { label: '取消' }] });
   };
 
   /* ---------- Grid and Guides ---------- */
   D.grid = function () {
     const g = E().grid;
-    const snap = ui.check('&Snap objects to grid', g.snap);
+    const snap = ui.check('对象与网格对齐(&S)', g.snap);
     const sp = ui.select([[4.5, '1/16"'], [6, '0.083"'], [7.2, '0.1"'], [9, '0.125"'], [12, '0.167"'], [14.4, '0.2"'], [18, '0.25"'], [24, '0.333"'], [36, '0.5"'], [72, '1"']], g.size);
-    const disp = ui.check('在屏幕上显示网格(&D)', g.show), gd = ui.check('在屏幕上显示绘图参考线(&G)', g.guides);
-    ui.dialog({ title: '网格和参考线', body: h('div', { class: 'col' }, ui.group('对齐到', snap), ui.group('Grid settings', ui.field('间距(&I):', sp), disp), ui.group('参考线设置', gd)), width: 320, buttons: [{ label: '确定', primary: true, onClick: () => { g.snap = snap.input.checked; g.size = +sp.value; g.show = disp.input.checked; g.guides = gd.input.checked; E().layout(); L.ui.refresh(); L.app.saveOpts(); } }, { label: '取消' }] });
+    const disp = ui.check('在屏幕上显示网格(&D)', g.show), gd = ui.check('在屏幕上显示绘图参考线(&g)', g.guides);
+    ui.dialog({ title: '网格和参考线', body: h('div', { class: 'col' }, ui.group('对齐到', snap), ui.group('网格设置', ui.field('间距(&i)：', sp), disp), ui.group('参考线设置', gd)), width: 320, buttons: [{ label: '确定', primary: true, onClick: () => { g.snap = snap.input.checked; g.size = +sp.value; g.show = disp.input.checked; g.guides = gd.input.checked; E().layout(); L.ui.refresh(); L.app.saveOpts(); } }, { label: '取消' }] });
   };
 
   /* ---------- WordArt ---------- */
@@ -953,14 +954,14 @@
     let pick = current != null ? current : 0;
     const grid = h('div', { class: 'wa-grid' });
     WA_STYLES.forEach((st, i) => {
-      const b = h('button', { type: 'button', 'aria-label': 'LettersArt style ' + (i + 1), class: i === pick ? 'on' : '' });
+      const b = h('button', { type: 'button', 'aria-label': L.t('LettersArt 样式 {0}', i + 1), class: i === pick ? 'on' : '' });
       const sh = { w: 66, h: 46, wa: Object.assign({}, st, { text: 'LettersArt', vert: false }) };
       b.appendChild(L.render.wordart(sh, design(), {}));
       b.addEventListener('click', () => { L.$$('button', grid).forEach((x) => x.classList.remove('on')); b.classList.add('on'); pick = i; });
       b.addEventListener('dblclick', () => { okb.click(); });
       grid.appendChild(b);
     });
-    const d = ui.dialog({ title: '艺术字库', body: h('div', { class: 'col' }, h('label', { text: 'Select a LettersArt style:' }), grid), width: 470, buttons: [{ label: '确定', primary: true, onClick: () => cb(pick) }, { label: '取消' }] });
+    const d = ui.dialog({ title: 'LettersArt 库', body: h('div', { class: 'col' }, h('label', { text: '选择 LettersArt 样式：' }), grid), width: 470, buttons: [{ label: '确定', primary: true, onClick: () => cb(pick) }, { label: '取消' }] });
     const okb = d.buttons[0];
   };
   D.wordartText = function (init, cb) {
@@ -968,11 +969,11 @@
     const size = ui.select(L.SIZE_LIST, 36);
     const b = ui.check('&B', !!init.b), i = ui.check('&I', !!init.i);
     const ta = h('textarea', { id: 'wa-text', rows: 5, style: 'width:100%;font-size:18px' });
-    ta.value = init.text || 'Your Text Here';
+    ta.value = init.text || '在此输入文字';
     const sync = () => { ta.style.fontFamily = L.fontStack(font.value); ta.style.fontWeight = b.input.checked ? '700' : '400'; ta.style.fontStyle = i.input.checked ? 'italic' : 'normal'; };
     font.addEventListener('change', sync); b.input.addEventListener('change', sync); i.input.addEventListener('change', sync);
     sync();
-    ui.dialog({ title: '编辑艺术字文字', body: h('div', { class: 'col' }, h('div', { class: 'row' }, ui.field('&Font:', font), ui.field('&Size:', size), b, i), h('label', { for: 'wa-text', html: '<u>T</u>ext:' }), ta), width: 470, focus: '#wa-text', buttons: [{ label: '确定', primary: true, onClick: () => cb({ text: ta.value, font: font.value, b: b.input.checked, i: i.input.checked, size: +size.value }) }, { label: '取消' }] });
+    ui.dialog({ title: '编辑 LettersArt 文字', body: h('div', { class: 'col' }, h('div', { class: 'row' }, ui.field('字体(&F)：', font), ui.field('大小(&S)：', size), b, i), h('label', { for: 'wa-text', html: ui.ampHTML('文本(&T)：') }), ta), width: 470, focus: '#wa-text', buttons: [{ label: '确定', primary: true, onClick: () => cb({ text: ta.value, font: font.value, b: b.input.checked, i: i.input.checked, size: +size.value }) }, { label: '取消' }] });
   };
 
   /* ---------- Photo Album ---------- */
@@ -983,18 +984,18 @@
     let sel = -1;
     const draw = () => {
       L.clear(list);
-      pics.forEach((p, i) => { const li = h('div', { class: 'li' + (i === sel ? ' on' : ''), text: `${i + 1}  ${p.name}` }); li.addEventListener('click', () => { sel = i; draw(); prev.style.background = `url(${p.url}) center/contain no-repeat`; }); list.appendChild(li); });
+      pics.forEach((p, i) => { const li = h('div', { class: 'li' + (i === sel ? ' on' : ''), text: `${i + 1}  ${p.name}`, translate: 'no' }); li.addEventListener('click', () => { sel = i; draw(); prev.style.background = `url(${p.url}) center/contain no-repeat`; }); list.appendChild(li); });
     };
-    const layout = ui.select([['fit', '适应幻灯片'], ['1', '1 张图片'], ['2', '2 张图片'], ['4', '4 张图片'], ['1t', '1 张图片带标题'], ['2t', '2 张图片带标题'], ['4t', '4 张图片带标题']], '1');
-    const frame = ui.select([['rect', '矩形'], ['roundRect', '圆角矩形'], ['simple', '白色简单边框'], ['black', '黑色简单边框'], ['shadow', '柔和阴影']], 'rect');
-    const caps = ui.check('所有图片下方均加题注(&B)', false);
+    const layout = ui.select([['fit', '适应幻灯片'], ['1', '1 张图片'], ['2', '2 张图片'], ['4', '4 张图片'], ['1t', '1 张图片（带标题）'], ['2t', '2 张图片（带标题）'], ['4t', '4 张图片（带标题）']], '1');
+    const frame = ui.select([['rect', '矩形'], ['roundRect', '圆角矩形'], ['simple', '简单框架，白色'], ['black', '简单框架，黑色'], ['shadow', '柔和阴影']], 'rect');
+    const caps = ui.check('在所有图片下方添加题注(&b)', false);
     const add = ui.button('文件/磁盘(&F)...', async () => { const fs = await L.pickFiles('image/*', true); for (const f of fs) pics.push({ file: f, name: f.name, url: URL.createObjectURL(f) }); draw(); });
-    const rm = ui.button('删除(&M)', () => { if (sel >= 0) { pics.splice(sel, 1); sel = -1; draw(); prev.style.background = ''; } });
+    const rm = ui.button('移除(&m)', () => { if (sel >= 0) { pics.splice(sel, 1); sel = -1; draw(); prev.style.background = ''; } });
     const up = ui.button('↑', () => { if (sel > 0) { [pics[sel - 1], pics[sel]] = [pics[sel], pics[sel - 1]]; sel--; draw(); } });
     const dn = ui.button('↓', () => { if (sel >= 0 && sel < pics.length - 1) { [pics[sel + 1], pics[sel]] = [pics[sel], pics[sel + 1]]; sel++; draw(); } });
     const body = h('div', { class: 'col' },
-      ui.group('相册内容', h('div', { class: 'row' }, h('div', { class: 'col' }, h('label', { text: '插入图片来自:' }), add), h('div', { class: 'col' }, h('label', { text: '相册中的图片:' }), list, h('div', { class: 'row' }, up, dn, rm)), h('div', { class: 'col' }, h('label', { text: '预览:' }), prev))),
-      ui.group('相册版式', ui.field('图片版式(&P):', layout, { cls: 'wide' }), ui.field('边框形状(&H):', frame, { cls: 'wide' }), caps));
+      ui.group('相册内容', h('div', { class: 'row' }, h('div', { class: 'col' }, h('label', { text: '图片来源：' }), add), h('div', { class: 'col' }, h('label', { text: '相册中的图片：' }), list, h('div', { class: 'row' }, up, dn, rm)), h('div', { class: 'col' }, h('label', { text: '预览：' }), prev))),
+      ui.group('相册版式', ui.field('图片版式(&P)：', layout, { cls: 'wide' }), ui.field('框形(&h)：', frame, { cls: 'wide' }), caps));
     ui.dialog({ title: '相册', body, width: 600, buttons: [{ label: '创建(&C)', primary: true, onClick: () => { if (!pics.length) { ui.msg('请至少添加一张图片。'); return false; } L.app.createPhotoAlbum(pics, layout.value, frame.value, caps.input.checked); } }, { label: '取消' }] });
   };
 
@@ -1002,9 +1003,9 @@
   D.slideFinder = async function () {
     const files = await L.pickFiles('.pptx,.ppsx,.potx,.pptm');
     if (!files[0]) return;
-    ui.busy(true, 'Opening ' + files[0].name + '...');
+    ui.busy(true, L.t('正在打开 {0}...', files[0].name));
     let src;
-    try { src = await L.pptx.read(await L.readAsArrayBuffer(files[0])); } catch (e) { ui.busy(false); ui.msg(`无法打开 ${files[0].name}：${e.message}`, { icon: 'error' }); return; }
+    try { src = await L.pptx.read(await L.readAsArrayBuffer(files[0])); } catch (e) { ui.busy(false); ui.msg(L.t('无法打开 {0}：{1}', files[0].name, e.message), { icon: 'error' }); return; }
     ui.busy(false);
     const picked = new Set();
     const grid = h('div', { style: 'display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;max-height:320px;overflow:auto;padding:4px;background:#fff;border:1px solid #888' });
@@ -1014,16 +1015,16 @@
       ck.addEventListener('change', () => { if (ck.checked) picked.add(i); else picked.delete(i); });
       const th = L.render.thumb(src, s, 124);
       th.style.border = '1px solid #999';
-      cell.append(th, h('span', { style: 'display:flex;gap:4px;align-items:center' }, ck, h('span', { text: `${i + 1}. ${(M.slideTitle(s) || 'Slide').slice(0, 24)}` })));
+      cell.append(th, h('span', { style: 'display:flex;gap:4px;align-items:center' }, ck, h('span', { text: `${i + 1}. ${(M.slideTitle(s) || L.t('幻灯片')).slice(0, 24)}`, translate: 'no' })));
       grid.appendChild(cell);
     });
     const keep = ui.check('保留源格式(&K)', false);
     const doInsert = (all) => {
       const idxs = all ? src.slides.map((_, i) => i) : Array.from(picked).sort((a, b) => a - b);
-      if (!idxs.length) { ui.msg('请至少选定一张幻灯片。'); return false; }
+      if (!idxs.length) { ui.msg('请至少选择一张幻灯片。'); return false; }
       L.app.insertSlidesFrom(src, idxs, keep.input.checked);
     };
-    ui.dialog({ title: '幻灯片搜索器', body: h('div', { class: 'col' }, h('div', { text: 'Presentation: ' + files[0].name }), grid, keep), width: 640, buttons: [{ label: '插入(&I)', primary: true, onClick: () => doInsert(false) }, { label: '全部插入(&A)', onClick: () => doInsert(true) }, { label: '关闭' }] });
+    ui.dialog({ title: '幻灯片搜索器', body: h('div', { class: 'col' }, h('div', { text: L.t('演示文稿：{0}', files[0].name), translate: 'no' }), grid, keep), width: 640, buttons: [{ label: '插入(&I)', primary: true, onClick: () => doInsert(false) }, { label: '全部插入(&A)', onClick: () => doInsert(true) }, { label: '关闭' }] });
   };
 
   /* ---------- Custom Animation effect options ---------- */
@@ -1032,16 +1033,16 @@
     const dir = info.dirs ? ui.select(info.dirs.map((d) => [d[0], d[1]]), a.dir || info.dirs[0][0]) : null;
     const amt = a.cls === 'emph' && (a.eff === 'growShrink' || a.eff === 'spin') ? ui.spin({ value: a.amount || (a.eff === 'spin' ? 360 : 150), min: 10, max: 1440, step: 10, unit: a.eff === 'spin' ? '°' : '%', dec: 0 }) : null;
     const start = ui.select([['click', '单击时'], ['with', '与上一动画同时'], ['after', '上一动画之后']], a.start);
-    const delay = ui.spin({ value: (a.delay || 0) / 1000, min: 0, max: 60, step: 0.5, unit: ' seconds', dec: 1 });
-    const speed = ui.select(L.anim.SPEEDS.map(([n, ms]) => [ms, `${n}（${ms / 1000} 秒）`]), L.anim.SPEEDS.reduce((best, s) => (Math.abs(s[1] - (a.dur || 500)) < Math.abs(best - (a.dur || 500)) ? s[1] : best), 500));
-    const repeat = ui.select([[1, '(none)'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [10, '10']], a.repeat || 1);
+    const delay = ui.spin({ value: (a.delay || 0) / 1000, min: 0, max: 60, step: 0.5, fmt: (v) => L.t('{0} 秒', L.round(v, 1)) });
+    const speed = ui.select(L.anim.SPEEDS.map(([n, ms]) => [ms, L.t('{0}（{1} 秒）', L.t(n), ms / 1000)]), L.anim.SPEEDS.reduce((best, s) => (Math.abs(s[1] - (a.dur || 500)) < Math.abs(best - (a.dur || 500)) ? s[1] : best), 500));
+    const repeat = ui.select([[1, '（无）'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [10, '10']], a.repeat || 1);
     const sh = M.shapeById(E().slide(), a.sid);
     const grp = ui.select([['all', '作为一个对象'], ['para', '按第一级段落']], a.by || 'all');
     if (!sh || !sh.tx || sh.tx.ps.length < 2) grp.disabled = true;
     const tabs = ui.tabs([
-      { label: '效果', body: h('div', { class: 'col' }, ui.group('Settings', dir ? ui.field('方向(&D):', dir) : h('div', { class: 'tp-note', text: '此效果没有方向设置。' }), amt ? ui.field(a.eff === 'spin' ? '&Amount:' : '&Size:', amt) : null)) },
-      { label: '计时', body: h('div', { class: 'col' }, ui.field('起始(&S):', start), ui.field('延迟(&D):', delay), ui.field('速度(&E):', speed), ui.field('重复(&R):', repeat)) },
-      { label: '文字动画', body: h('div', { class: 'col' }, ui.field('组合文字(&G):', grp, { cls: 'wide' })) },
+      { label: '效果', body: h('div', { class: 'col' }, ui.group('设置', dir ? ui.field('方向(&D)：', dir) : h('div', { class: 'tp-note', text: '此效果没有方向设置。' }), amt ? ui.field(a.eff === 'spin' ? '数量(&A)：' : '大小(&S)：', amt) : null)) },
+      { label: '计时', body: h('div', { class: 'col' }, ui.field('开始(&S)：', start), ui.field('延迟(&D)：', delay), ui.field('速度(&e)：', speed), ui.field('重复(&R)：', repeat)) },
+      { label: '文本动画', body: h('div', { class: 'col' }, ui.field('组合文本(&G)：', grp, { cls: 'wide' })) },
     ]);
     ui.dialog({ title: L.anim.name(a), body: tabs, width: 380, buttons: [{ label: '确定', primary: true, onClick: () => onDone({ dir: dir ? dir.value : a.dir, amount: amt ? amt.get() : a.amount, start: start.value, delay: delay.get() * 1000, dur: +speed.value, repeat: +repeat.value, by: grp.value }) }, { label: '取消' }] });
   };
@@ -1051,12 +1052,12 @@
     const n = L.pres.slides.length;
     const what = ui.select([['slides', '幻灯片'], ['handouts', '讲义'], ['notes', '备注页'], ['outline', '大纲视图']], L.app.printOpts.what);
     const per = ui.select([[1, '1'], [2, '2'], [3, '3'], [4, '4'], [6, '6'], [9, '9']], L.app.printOpts.per);
-    const color = ui.select([['color', '彩色'], ['gray', '灰度'], ['bw', '纯黑白']], L.app.printOpts.color);
-    const frame = ui.check('给幻灯片加框(&M)', L.app.printOpts.frame);
-    const hid = ui.check('打印隐藏幻灯片(&H)', L.app.printOpts.hidden);
-    const all = ui.radio('pr-r', '全部(&A)', true), cur = ui.radio('pr-r', '当前幻灯片(&E)', false), rng = ui.radio('pr-r', '幻灯片(&S):', false);
+    const color = ui.select([['color', '颜色'], ['gray', '灰度'], ['bw', '纯黑白']], L.app.printOpts.color);
+    const frame = ui.check('幻灯片加框(&m)', L.app.printOpts.frame);
+    const hid = ui.check('打印隐藏幻灯片(&h)', L.app.printOpts.hidden);
+    const all = ui.radio('pr-r', '全部(&A)', true), cur = ui.radio('pr-r', '当前幻灯片(&e)', false), rng = ui.radio('pr-r', '幻灯片(&S)：', false);
     const rIn = h('input', { type: 'text', id: 'pr-range', value: `1-${n}`, style: 'width:120px' });
-    const body = h('div', { class: 'col' }, ui.group('打印范围', all, cur, h('div', { class: 'row', style: 'align-items:center' }, rng, rIn)), h('div', { class: 'row' }, ui.field('打印内容(&W):', what), ui.field('每页幻灯片数:', per)), ui.field('颜色/灰度(&Y):', color), frame, hid);
+    const body = h('div', { class: 'col' }, ui.group('打印范围', all, cur, h('div', { class: 'row', style: 'align-items:center' }, rng, rIn)), h('div', { class: 'row' }, ui.field('打印内容(&w)：', what), ui.field('每页幻灯片数：', per)), ui.field('颜色/灰度(&y)：', color), frame, hid);
     ui.dialog({
       title: '打印', body, width: 420, buttons: [{
         label: '预览', primary: true, onClick: () => {
@@ -1080,6 +1081,6 @@
 
   /* ---------- About ---------- */
   D.about = () => ui.about({ name: 'Lectern', office: 'PowerPoint', text: [
-    'A presentation editor in the style of Microsoft Office PowerPoint 2003 that runs entirely in your browser. Presentations are read and written as Office Open XML (.pptx, .pptm); nothing is uploaded.',
-    '幻灯片放映可在浏览器中播放，演示文稿可导出为 PDF、PNG 图片和网页。'] });
+    L.N('一个仿 Microsoft Office PowerPoint 的演示文稿编辑器，完全在浏览器中运行。演示文稿以 Office Open XML（.pptx、.pptm）读写；不会上传任何内容。'),
+    '幻灯片在浏览器中放映，演示文稿可导出为 PDF、PNG 图片和网页。'] });
 })();

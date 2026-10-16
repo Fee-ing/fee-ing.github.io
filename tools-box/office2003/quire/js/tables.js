@@ -148,7 +148,7 @@
     const n = opts.count || rg.r1 - rg.r0 + 1;
     const refIdx = opts.from != null ? opts.from : above ? rg.r0 : rg.r1;
     let target = null;
-    E.edit(above ? 'Insert Rows Above' : 'Insert Rows Below', () => {
+    E.edit(above ? '在上方插入行' : '在下方插入行', () => {
       D.touchTbl(t);
       const map = R.tblMap(t);
       const ref = t.rows[refIdx];
@@ -178,7 +178,12 @@
     if (!rg) return;
     const t = rg.tbl;
     if (rg.r0 === 0 && rg.r1 >= t.rows.length - 1) { T.deleteTable(); return; }
-    E.edit('Delete Rows', () => {
+    E.edit('删除行', () => T.removeRows(t, rg.r0, rg.r1));
+  };
+  /** remove rows r0…r1 of table t (inside an edit); the caret position in the row now there */
+  T.removeRows = function (t, r0, r1) {
+    const rg = { r0, r1 };
+    {
       D.touchTbl(t);
       const map = R.tblMap(t);
       /* a merge that starts in a deleted row and continues below restarts below */
@@ -194,7 +199,7 @@
       const r = t.rows[Math.min(rg.r0, t.rows.length - 1)];
       cleanMerges(t);
       return firstPos(r.cells.find((c) => c.tcPr.vMerge !== 'continue') || r.cells[0]);
-    });
+    }
   };
   /** a lone 'continue' with no restart above becomes a restart; a restart with nothing below loses its merge */
   function cleanMerges(t) {
@@ -216,7 +221,7 @@
     const n = opts.count || rg.c1 - rg.c0 + 1;
     const gi = left ? rg.c0 : rg.c1 + 1;
     let target = null;
-    E.edit(left ? 'Insert Columns to the Left' : 'Insert Columns to the Right', () => {
+    E.edit(left ? '在左侧插入列' : '在右侧插入列', () => {
       D.touchTbl(t);
       const map = R.tblMap(t);
       const widths = t.grid.slice(rg.c0, rg.c1 + 1);
@@ -254,7 +259,7 @@
     if (!rg) return;
     const t = rg.tbl;
     if (rg.c0 === 0 && rg.c1 >= t.grid.length - 1) { T.deleteTable(); return; }
-    E.edit('Delete Columns', () => {
+    E.edit('删除列', () => {
       D.touchTbl(t);
       const map = R.tblMap(t);
       const n = rg.c1 - rg.c0 + 1;
@@ -282,7 +287,7 @@
   T.deleteTable = function () {
     const ci = T.cur();
     if (!ci) return;
-    E.edit('Delete Table', () => O.removeBlock(ci.tbl));
+    E.edit('删除表格', () => O.removeBlock(ci.tbl));
   };
   /** Insert Cells dialog result: 'right' | 'down' | 'row' | 'col' */
   T.insertCells = function (mode) {
@@ -291,7 +296,7 @@
     const rg = T.range();
     if (!rg) return;
     const t = rg.tbl;
-    E.edit('Insert Cells', () => {
+    E.edit('插入单元格', () => {
       D.touchTbl(t);
       if (mode === 'right') {
         /* new cells shift existing ones right in each selected row */
@@ -331,7 +336,7 @@
     const rg = T.range();
     if (!rg) return;
     const t = rg.tbl;
-    E.edit('Delete Cells', () => {
+    E.edit('删除单元格', () => {
       D.touchTbl(t);
       if (mode === 'left') {
         for (let r = rg.r0; r <= rg.r1; r++) {
@@ -377,7 +382,7 @@
       if (!changed) break;
     }
     if (r0 === r1 && c0 === c1) return;
-    E.edit('Merge Cells', () => {
+    E.edit('合并单元格', () => {
       D.touchTbl(t);
       const mp = R.tblMap(t);
       const top = mp[r0].find((m) => m.c0 === c0);
@@ -416,7 +421,7 @@
     if (!ci) return;
     const t = ci.tbl;
     const targets = E.cellSel && !mergeFirst ? E.cellSel.cells.slice() : [ci.cell];
-    E.edit('Split Cells', () => {
+    E.edit('拆分单元格', () => {
       D.touchTbl(t);
       for (const cell of targets) {
         if (nCols > 1) splitCols(t, cell, nCols);
@@ -534,7 +539,7 @@
     const ci = T.cur();
     if (!ci) return;
     const t = ci.tbl;
-    E.edit('Split Table', () => {
+    E.edit('拆分表格', () => {
       const tb = D.tblInfo(doc(), t);
       const cont = D.touchList(tb.cont);
       const i = cont.blocks.indexOf(t);
@@ -557,18 +562,18 @@
     E.edit(label, () => { D.touchTbl(rg.tbl); for (const c of rg.cells) fn(c, rg); return E.sel; });
   }
   T.forCells = forCells;
-  T.setVAlign = (v) => forCells('Cell Alignment', (c) => { if (v === 'top') delete c.tcPr.vAlign; else c.tcPr.vAlign = v; });
-  T.cycleTextDirection = () => forCells('Text Direction', (c) => { const v = c.tcPr.textDir; c.tcPr.textDir = !v ? 'tbRl' : v === 'tbRl' ? 'btLr' : undefined; if (!c.tcPr.textDir) delete c.tcPr.textDir; });
+  T.setVAlign = (v) => forCells('单元格对齐方式', (c) => { if (v === 'top') delete c.tcPr.vAlign; else c.tcPr.vAlign = v; });
+  T.cycleTextDirection = () => forCells('文字方向', (c) => { const v = c.tcPr.textDir; c.tcPr.textDir = !v ? 'tbRl' : v === 'tbRl' ? 'btLr' : undefined; if (!c.tcPr.textDir) delete c.tcPr.textDir; });
   T.toggleHeaderRow = function () {
     const rg = T.range();
     if (!rg) return;
     const t = rg.tbl;
     const on = !t.rows[rg.r0].trPr.header;
-    E.edit('Heading Rows Repeat', () => { D.touchTbl(t); for (let r = 0; r <= rg.r1; r++) { if (on) t.rows[r].trPr.header = true; else delete t.rows[r].trPr.header; } return E.sel; });
+    E.edit('标题行重复', () => { D.touchTbl(t); for (let r = 0; r <= rg.r1; r++) { if (on) t.rows[r].trPr.header = true; else delete t.rows[r].trPr.header; } return E.sel; });
   };
   T.shade = function (fill) {
-    if (!T.inTable()) { E.formatPara((pPr) => { pPr.shd = fill ? { val: 'clear', fill, color: 'auto' } : undefined; }, 'Shading'); return; }
-    forCells('Shading', (c) => { if (fill) c.tcPr.shd = { val: 'clear', fill, color: 'auto' }; else delete c.tcPr.shd; });
+    if (!T.inTable()) { E.formatPara((pPr) => { pPr.shd = fill ? { val: 'clear', fill, color: 'auto' } : undefined; }, L.N('底纹')); return; }
+    forCells(L.N('底纹'), (c) => { if (fill) c.tcPr.shd = { val: 'clear', fill, color: 'auto' }; else delete c.tcPr.shd; });
   };
   /** border buttons applied to the selected cells */
   T.applyBorder = function (k) {
@@ -604,7 +609,7 @@
     /* toggle: if every target edge already shows a border, the button removes them */
     let allOn = k !== 'none';
     for (const [c, p] of pos) { const e = edgesFor(p); for (const s in e) if (e[s] && !R.hasBorder(effective(c, s, p))) allOn = false; }
-    E.edit('Borders', () => {
+    E.edit(L.N('边框'), () => {
       D.touchTbl(t);
       for (const [c, p] of pos) {
         const e = edgesFor(p);
@@ -664,7 +669,7 @@
     const d = doc();
     const avail = availWidth(D.pos(D.firstPara(t.rows[0].cells[0].blocks) || E.sel.f.p, 0)) ;
     const outer = (() => { const tb = D.tblInfo(d, t); if (!tb || !tb.parents.length) { const s = D.sectFor(d, E.sel.f.p); return s.pgW - s.ml - s.mr - (s.gutter || 0); } return avail; })();
-    E.edit('AutoFit', () => {
+    E.edit(L.N('自动调整'), () => {
       D.touchTbl(t);
       const { tp } = R.tblProps(d, t);
       const mar = (tp.cellMar.l || 0) + (tp.cellMar.r || 0);
@@ -710,7 +715,7 @@
     if (!rg) return;
     const t = rg.tbl;
     const whole = !E.cellSel;
-    E.edit(what === 'rows' ? 'Distribute Rows Evenly' : 'Distribute Columns Evenly', () => {
+    E.edit(what === 'rows' ? '平均分布各行' : '平均分布各列', () => {
       D.touchTbl(t);
       if (what === 'cols') {
         const c0 = whole ? 0 : rg.c0, c1 = whole ? t.grid.length - 1 : rg.c1;
@@ -758,11 +763,11 @@
     if (!ci) return;
     const t = ci.tbl;
     const map = R.tblMap(t);
-    if (map.some((row) => row.some((m) => m.rowspan > 1 || m.hidden))) { L.ui.msg('Tables with vertically merged cells cannot be sorted.', { icon: 'warn' }); return; }
+    if (map.some((row) => row.some((m) => m.rowspan > 1 || m.hidden))) { L.ui.msg('包含纵向合并单元格的表格无法排序。', { icon: 'warn' }); return; }
     let hdr = 0;
     if (opts.header) hdr = 1;
     else while (hdr < t.rows.length && t.rows[hdr].trPr.header) hdr++;
-    E.edit('Sort', () => {
+    E.edit(L.N('排序'), () => {
       D.touchTbl(t);
       const body = t.rows.slice(hdr);
       const textAt = (row, col) => { const m = R.tblMap({ rows: [row], tblPr: t.tblPr })[0].find((x) => x.c0 <= col && col < x.c0 + x.span); return m ? cellText(m.cell) : ''; };
@@ -778,7 +783,7 @@
     const d = doc();
     const info = D.info(d, paras[0]);
     if (paras.some((p) => D.info(d, p).cont !== info.cont)) return;
-    E.edit('Sort Text', () => {
+    E.edit('文字排序', () => {
       const cont = D.touchList(info.cont);
       const idx = paras.map((p) => cont.blocks.indexOf(p));
       const i0 = Math.min(...idx);
@@ -877,14 +882,14 @@
         else out.push(cmp());
         const s = next();
         if (s === ')') break;
-        if (s !== ',') throw new Error('Syntax Error');
+        if (s !== ',') throw new Error('语法错误');
       }
       return out;
     }
     function prim() {
       const tk = next();
-      if (tk == null) throw new Error('Syntax Error');
-      if (tk === '(') { const v = cmp(); if (next() !== ')') throw new Error('Syntax Error'); return v; }
+      if (tk == null) throw new Error('语法错误');
+      if (tk === '(') { const v = cmp(); if (next() !== ')') throw new Error('语法错误'); return v; }
       if (tk === '-') return -prim();
       if (tk === '+') return prim();
       if (/^\d*\.?\d/.test(tk)) return parseFloat(tk);
@@ -933,7 +938,7 @@
     if (!ci) return;
     let dir = 'ABOVE';
     try { const v = T.evalFormula('SUM(ABOVE)', E.sel.f.p); const left = T.evalFormula('SUM(LEFT)', E.sel.f.p); if (!v && left) dir = 'LEFT'; } catch (e) { /* default above */ }
-    A().insertFieldNow('=SUM(' + dir + ')', 'AutoSum');
+    A().insertFieldNow('=SUM(' + dir + ')', L.N('自动求和'));
   };
 
   /* ================= conversion ================= */
@@ -967,7 +972,7 @@
     }
     const nc = Math.max(opts.cols || 0, ...rowsText.map((r) => r.length));
     const width = availWidth(D.pos(paras[0], 0));
-    E.edit('Convert Text to Table', () => {
+    E.edit('文本转换成表格', () => {
       const t = D.simpleTable(rowsText.length, nc, opts.colWidth ? opts.colWidth * nc : width);
       rowsText.forEach((r, ri) => r.forEach((c, cix) => { const p = t.rows[ri].cells[cix].blocks[0]; p.runs = c.runs.map((x) => L.clone(x)); p.pPr = L.clone(c.src.pPr); delete p.pPr.num; D.normalize(p); }));
       const cont = D.touchList(info.cont);
@@ -985,7 +990,7 @@
     if (!ci) return;
     sep = sep == null ? '\t' : sep;
     const t = ci.tbl;
-    E.edit('Convert Table to Text', () => {
+    E.edit('表格转换成文本', () => {
       const out = [];
       const flat = (blocks) => { const res = []; for (const b of blocks) { if (b.t === 'p') res.push(b); else if (b.t === 'tbl') for (const r of b.rows) for (const c of r.cells) res.push(...flat(c.blocks)); } return res; };
       for (const row of t.rows) {
@@ -1076,7 +1081,7 @@
     const ci = T.cur();
     if (!ci) return;
     const t = ci.tbl;
-    E.edit('Table AutoFormat', () => {
+    E.edit('表格自动套用格式', () => {
       const id = name === 'Table Normal' ? 'TableNormal' : T.ensureStyle(T.styleId(name)) || T.ensureStyle(name);
       D.touchTbl(t);
       t.tblPr.style = id;
@@ -1089,6 +1094,7 @@
   /* ================= Draw Table pencil, eraser, and border dragging ================= */
   T.tool = null;
   T.setTool = function (kind) {
+    L.ui.dragCancel();   /* a tool switch ends a drag in progress */
     T.tool = kind;
     const sc = L.$('#scroller');
     sc.classList.toggle('tool-pen', kind === 'draw');
@@ -1148,16 +1154,16 @@
     place(e.clientX, e.clientY);
     const x0 = e.clientX, y0 = e.clientY;
     drag = { hb };
-    const mv = (ev) => place(ev.clientX, ev.clientY);
-    const up = (ev) => {
-      window.removeEventListener('pointermove', mv, true);
-      window.removeEventListener('pointerup', up, true);
+    L.ui.drag(e, { move: (ev) => place(ev.clientX, ev.clientY), up, cancel: () => { guide.remove(); drag = null; }, capture: sc });
+    /* the release sets the width or height the guide shows; a click on the border changes nothing */
+    function up(ev, dr) {
       guide.remove();
       drag = null;
+      if (!dr.moved) return;
       const dxPt = (ev.clientX - x0) * ptPerPx(), dyPt = (ev.clientY - y0) * ptPerPx();
       if (hb.kind === 'col' && Math.abs(dxPt) > 0.5) {
         const k = m.c0 + m.span - 1;
-        E.edit('Column Width', () => {
+        E.edit('列宽', () => {
           D.touchTbl(t);
           const shift = !ev.shiftKey;
           if (k + 1 < t.grid.length && shift) {
@@ -1172,11 +1178,9 @@
         const tr = hb.td.closest('tr');
         const cur = tr.getBoundingClientRect().height * ptPerPx();
         const ri = c.ri + (m.rowspan || 1) - 1;
-        E.edit('Row Height', () => { D.touchTbl(t); t.rows[ri].trPr.h = L.round(Math.max(6, cur + dyPt), 2); if (t.rows[ri].trPr.hRule !== 'exact') t.rows[ri].trPr.hRule = 'atLeast'; return E.sel; });
+        E.edit('行高', () => { D.touchTbl(t); t.rows[ri].trPr.h = L.round(Math.max(6, cur + dyPt), 2); if (t.rows[ri].trPr.hRule !== 'exact') t.rows[ri].trPr.hRule = 'atLeast'; return E.sel; });
       }
-    };
-    window.addEventListener('pointermove', mv, true);
-    window.addEventListener('pointerup', up, true);
+    }
   }
   /* pencil & eraser */
   function toolDown(e) {
@@ -1212,25 +1216,24 @@
       ghost.style.cssText = `left:${l - sr.left + sc.scrollLeft}px;top:${t0 - sr.top + sc.scrollTop}px;width:${Math.abs(ev.clientX - x0)}px;height:${Math.abs(ev.clientY - y0)}px`;
     };
     upd(e);
-    const mv = (ev) => upd(ev);
-    const up = (ev) => {
-      window.removeEventListener('pointermove', mv, true);
-      window.removeEventListener('pointerup', up, true);
+    L.ui.drag(e, { move: (ev) => upd(ev), up, cancel: (d, why) => { ghost.remove(); if (why === 'esc') T.setTool(null); }, capture: sc });
+    /* the release draws the table or the line the outline shows */
+    function up(ev, dr) {
       ghost.remove();
       const w = Math.abs(ev.clientX - x0) * ptPerPx(), hh = Math.abs(ev.clientY - y0) * ptPerPx();
-      if (w < 4 && hh < 4) return;
+      if (!dr.moved || (w < 4 && hh < 4)) return;
       if (startTd) {
         const t = findTable(+startTd.closest('table.tbl').dataset.tid);
         const c = t && cellById(t, +startTd.dataset.cid);
         if (!c) return;
         const fp = D.firstPara(c.cell.blocks);
         E.setSel(D.pos(fp, 0));
-        if (w > hh) { E.edit('Draw Table', () => { D.touchTbl(t); splitRows(t, c.cell, 2); fixWidths(t); return E.sel; }); }
+        if (w > hh) { E.edit('绘制表格', () => { D.touchTbl(t); splitRows(t, c.cell, 2); fixWidths(t); return E.sel; }); }
         else {
           /* vertical line: split at the drawn x */
           const r = startTd.getBoundingClientRect();
           const frac = L.clamp((Math.min(x0, ev.clientX) + Math.abs(ev.clientX - x0) / 2 - r.left) / r.width, 0.1, 0.9);
-          E.edit('Draw Table', () => {
+          E.edit('绘制表格', () => {
             D.touchTbl(t);
             const map = R.tblMap(t);
             const m = map[c.ri].find((x) => x.cell === c.cell);
@@ -1257,9 +1260,7 @@
       T.insert(1, 1, { width: Math.max(18, w), colWidth: Math.max(18, w) });
       const ci = T.cur();
       if (ci && hh > 14) E.edit('Draw Table', () => { D.touchTbl(ci.tbl); ci.tbl.rows[0].trPr.h = L.round(hh, 2); ci.tbl.rows[0].trPr.hRule = 'atLeast'; return E.sel; });
-    };
-    window.addEventListener('pointermove', mv, true);
-    window.addEventListener('pointerup', up, true);
+    }
   }
   void tableOf;
   T.mount = function () {

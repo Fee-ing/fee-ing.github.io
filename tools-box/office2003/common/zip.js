@@ -30,7 +30,31 @@
     return (c ^ 0xffffffff) >>> 0;
   }
 
-  /* ---------- pure-JS inflate (RFC 1951) ---------- */
+  /* ---------- pure-JS inflate (RFC 1951) ----------
+     Derived from puff contrib/puff/puff.c (zlib licence): Mark Adler's puff.c translated to JavaScript and
+     altered (typed arrays, a growing output buffer). This is an altered version, not the original puff. Its
+     notice:
+
+       Copyright (C) 2002-2013 Mark Adler, all rights reserved
+       version 2.3, 21 Jan 2013
+
+       This software is provided 'as-is', without any express or implied
+       warranty.  In no event will the author be held liable for any damages
+       arising from the use of this software.
+
+       Permission is granted to anyone to use this software for any purpose,
+       including commercial applications, and to alter it and redistribute it
+       freely, subject to the following restrictions:
+
+       1. The origin of this software must not be misrepresented; you must not
+          claim that you wrote the original software. If you use this software
+          in a product, an acknowledgment in the product documentation would be
+          appreciated but is not required.
+       2. Altered source versions must be plainly marked as such, and must not be
+          misrepresented as being the original software.
+       3. This notice may not be removed or altered from any source distribution.
+
+       Mark Adler    madler@alumni.caltech.edu */
   const LBASE = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258];
   const LEXT = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0];
   const DBASE = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577];

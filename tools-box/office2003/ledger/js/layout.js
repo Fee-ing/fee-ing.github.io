@@ -123,7 +123,9 @@
     return 0;
   };
   /** theme-aware font name: scheme fonts follow the workbook theme */
-  LY.fontName = (wb, f) => (f.scheme === 'minor' && wb.theme && wb.theme.minor ? wb.theme.minor : f.scheme === 'major' && wb.theme && wb.theme.major ? wb.theme.major : f.name || 'Arial');
+  /* a theme font: the theme's, unless it is an East Asian font (a Japanese Excel's ＭＳ Ｐゴシック is its theme's font for
+     Japanese, <a:font script="Jpan">, while the theme's Latin font is Calibri) */
+  LY.fontName = (wb, f) => (f.name && L.fontIsEA && L.fontIsEA(f.name) ? f.name : f.scheme === 'minor' && wb.theme && wb.theme.minor ? wb.theme.minor : f.scheme === 'major' && wb.theme && wb.theme.major ? wb.theme.major : f.name || 'Arial');
 
   /* ------------------------------------------------------------ display text */
   /**

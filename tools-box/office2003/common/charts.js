@@ -9,18 +9,19 @@
   const { h, s } = L;
   const CH = (L.chart = {});
   CH.PALETTE = ['#9999FF', '#993366', '#FFFFCC', '#CCFFFF', '#660066', '#FF8080', '#0066CC', '#CCCCFF', '#000080', '#FF00FF', '#FFFF00', '#00FFFF'];
+  const N = (x) => x;   // UI text, translated where it is shown (common/i18n.js)
   CH.KINDS = [
-    ['col', 'Clustered Column'], ['colStacked', 'Stacked Column'], ['colPct', '100% Stacked Column'],
-    ['bar', 'Clustered Bar'], ['barStacked', 'Stacked Bar'],
-    ['line', 'Line'], ['lineMarkers', 'Line with Markers'],
-    ['area', 'Area'], ['areaStacked', 'Stacked Area'],
-    ['pie', 'Pie'], ['doughnut', 'Doughnut'], ['scatter', 'XY (Scatter)'],
+    ['col', N('簇状柱形图')], ['colStacked', N('堆积柱形图')], ['colPct', N('百分比堆积柱形图')],
+    ['bar', N('簇状条形图')], ['barStacked', N('堆积条形图')],
+    ['line', N('折线图')], ['lineMarkers', N('带数据标记的折线图')],
+    ['area', N('面积图')], ['areaStacked', N('堆积面积图')],
+    ['pie', N('饼图')], ['doughnut', N('圆环图')], ['scatter', N('XY（散点图）')],
   ];
   /* kinds only the v2 renderer (Lectern's chart-draw.js) draws; offered when it is loaded */
   const KINDS_V2 = CH.KINDS.slice();
-  KINDS_V2.splice(5, 0, ['barPct', '100% Stacked Bar']);
-  KINDS_V2.splice(10, 0, ['areaPct', '100% Stacked Area']);
-  KINDS_V2.push(['bubble', 'Bubble'], ['radar', 'Radar'], ['radarFilled', 'Filled Radar']);
+  KINDS_V2.splice(5, 0, ['barPct', N('百分比堆积条形图')]);
+  KINDS_V2.splice(10, 0, ['areaPct', N('百分比堆积面积图')]);
+  KINDS_V2.push(['bubble', N('气泡图')], ['radar', N('雷达图')], ['radarFilled', N('填充雷达图')]);
   CH.kinds = () => (CH.renderV2 ? KINDS_V2 : CH.KINDS);
   /* the design (theme) of what is being edited, for theme colours: Lectern's slide; none in Quire and Ledger */
   const curDesign = () => (L.ui && L.ui.currentDesign ? L.ui.currentDesign() : null);
@@ -391,9 +392,9 @@
     const preview = h('div', { class: 'chart-preview' });
     const kind = ui.select(CH.kinds().map(([k, n]) => [k, n]), c.kind, (v) => { const prev = c.kind; c.kind = v; CH.syncV2(c, prev); draw(); });
     const title = h('input', { type: 'text', id: 'chart-title', value: c.title || '', oninput: (e) => { c.title = e.target.value; draw(); } });
-    const legend = ui.select([['r', 'Right'], ['b', 'Bottom'], ['t', 'Top'], ['l', 'Left'], ['none', 'None']], c.legend || 'r', (v) => { c.legend = v; draw(); });
-    const grid = ui.check('Major gridlines', c.gridY !== false, (v) => { c.gridY = v; draw(); });
-    const labels = ui.check('Show values', !!c.labels, (v) => { c.labels = v; draw(); });
+    const legend = ui.select([['r', '右'], ['b', '底端'], ['t', '顶端'], ['l', '左'], ['none', '无']], c.legend || 'r', (v) => { c.legend = v; draw(); });
+    const grid = ui.check('主要网格线', c.gridY !== false, (v) => { c.gridY = v; draw(); });
+    const labels = ui.check('显示数值', !!c.labels, (v) => { c.labels = v; draw(); });
     function draw() {
       L.clear(preview);
       const design = curDesign();
@@ -421,19 +422,19 @@
       sheet.appendChild(t);
     }
     const tools = h('div', { class: 'ds-tools' },
-      ui.button('Add Column', () => { c.cats.push('Col ' + (c.cats.length + 1)); c.series.forEach((sr) => sr.vals.push(0)); buildSheet(); draw(); }),
-      ui.button('Delete Column', () => { if (c.cats.length > 1) { c.cats.pop(); c.series.forEach((sr) => sr.vals.pop()); buildSheet(); draw(); } }),
-      ui.button('Add Row', () => { c.series.push({ name: 'Series ' + (c.series.length + 1), vals: c.cats.map(() => 0), color: CH.PALETTE[c.series.length % 12] }); buildSheet(); draw(); }),
-      ui.button('Delete Row', () => { if (c.series.length > 1) { c.series.pop(); buildSheet(); draw(); } }));
+      ui.button('添加列', () => { c.cats.push('Col ' + (c.cats.length + 1)); c.series.forEach((sr) => sr.vals.push(0)); buildSheet(); draw(); }),
+      ui.button('删除列', () => { if (c.cats.length > 1) { c.cats.pop(); c.series.forEach((sr) => sr.vals.pop()); buildSheet(); draw(); } }),
+      ui.button('添加行', () => { c.series.push({ name: 'Series ' + (c.series.length + 1), vals: c.cats.map(() => 0), color: CH.PALETTE[c.series.length % 12] }); buildSheet(); draw(); }),
+      ui.button('删除行', () => { if (c.series.length > 1) { c.series.pop(); buildSheet(); draw(); } }));
     const body = h('div', { class: 'chart-dlg' },
       h('div', { class: 'cd-left' },
-        h('div', { class: 'cd-row' }, h('label', { text: 'Chart type:' }), kind),
-        h('div', { class: 'cd-row' }, h('label', { for: 'chart-title', text: 'Chart title:' }), title),
-        h('div', { class: 'cd-row' }, h('label', { text: 'Legend:' }), legend),
+        h('div', { class: 'cd-row' }, h('label', { text: '图表类型：' }), kind),
+        h('div', { class: 'cd-row' }, h('label', { for: 'chart-title', text: '图表标题：' }), title),
+        h('div', { class: 'cd-row' }, h('label', { text: '图例：' }), legend),
         h('div', { class: 'cd-row' }, grid, labels),
-        h('fieldset', null, h('legend', { text: 'Datasheet' }), sheet, tools)),
-      h('div', { class: 'cd-right' }, h('div', { class: 'cd-cap', text: 'Preview' }), preview));
+        h('fieldset', null, h('legend', { text: '数据表' }), sheet, tools)),
+      h('div', { class: 'cd-right' }, h('div', { class: 'cd-cap', text: '预览' }), preview));
     buildSheet(); draw();
-    ui.dialog({ title: 'Chart', body, width: 720, buttons: [{ label: 'OK', primary: true, onClick: () => { CH.syncV2(c); c.edited = true; onDone(c); } }, { label: 'Cancel' }] });
+    ui.dialog({ title: '图表', body, width: 720, buttons: [{ label: '确定', primary: true, onClick: () => { CH.syncV2(c); c.edited = true; onDone(c); } }, { label: '取消' }] });
   };
 })(typeof window !== 'undefined' ? window : globalThis);

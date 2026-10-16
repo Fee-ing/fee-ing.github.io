@@ -113,8 +113,8 @@
       if (!intact(d) || keep.source !== wb.pkg?.id || !keep.views?.length) {
         entry.status = 'convert';
         w.loss({ id: 'slicer-conversion:' + sh.id + ':' + d.id, what: keep.source !== wb.pkg?.id ?
-          'A pasted slicer or timeline will be saved as a plain shape and won\'t filter anything, because its table or pivot table isn\'t in this workbook.' :
-          'A slicer or timeline you edited will be saved as a plain shape and will no longer filter data.', where: sh.name, place: sh.name, action: 'conversion', notify: true });
+          '粘贴的切片器或时间线将保存为普通形状，无法筛选数据，因为其所属的表或数据透视表不在此工作簿中。' :
+          '您编辑的切片器或时间线将保存为普通形状，无法再筛选数据。', where: sh.name, place: sh.name, action: 'conversion', notify: true });
         continue;
       }
       if (keep.views.some(v => {
@@ -162,10 +162,10 @@
     for (const c of state.caches) {
       const hadView = original?.groups.some(g => g.definitions.some(v => v.cache === c.name));
       if (hadView && !state.groups.some(g => g.members.some(v => v.cache === c.name))) c.drop = true;
-      if (c.drop) { state.omitted.add(c.part); w.omit(c.part, 'The slicer/timeline source or all its views were deleted.'); }
+      if (c.drop) { state.omitted.add(c.part); w.omit(c.part, '切片器/时间线的源数据或其所有视图已删除。'); }
     }
     for (const g of original?.groups || []) if (!state.groups.some(next => next.part === g.part && next.target === w.target(wb.pkg, g.part))) {
-      state.omitted.add(g.part); w.omit(g.part, 'The slicer/timeline views on this worksheet were deleted.');
+      state.omitted.add(g.part); w.omit(g.part, '此工作表上的切片器/时间线视图已删除。');
     }
     return state;
   };

@@ -24,21 +24,24 @@
   /* id: [name, colours, 'span' (item by item from the first to the last) or 'cycle', text colour (white), colour of
      arrows, lines and cards (the first)] */
   DG.PALETTES = {
-    ocean: ['Ocean', ['#0891B2', '#4F46E5'], 'span'], aurora: ['Aurora', ['#059669', '#2563EB'], 'span'], lagoon: ['Lagoon', ['#0F766E', '#0284C7'], 'span'],
-    midnight: ['Midnight', ['#1E3A8A', '#7C3AED'], 'span'], berry: ['Berry', ['#7C3AED', '#DB2777'], 'span'], sunset: ['Sunset', ['#EA580C', '#DB2777'], 'span'],
-    fire: ['Fire', ['#B91C1C', '#EA580C'], 'span'], amber: ['Amber', ['#B45309', '#CA8A04'], 'span'], forest: ['Forest', ['#166534', '#65A30D'], 'span'],
-    slate: ['Slate', ['#1E293B', '#64748B'], 'span'],
-    vivid: ['Vivid', ['#E03131', '#E8590C', '#2F9E44', '#1971C2', '#7048E8'], 'cycle'], jewel: ['Jewel', ['#0E7490', '#7E22CE', '#BE123C', '#15803D', '#1D4ED8'], 'cycle'],
-    pastel: ['Pastel', ['#FBCFE8', '#BFDBFE', '#BBF7D0', '#FDE68A', '#DDD6FE'], 'cycle', '#1F2937', '#64748B'],
+    ocean: [L.N('海洋'), ['#0891B2', '#4F46E5'], 'span'], aurora: [L.N('极光'), ['#059669', '#2563EB'], 'span'], lagoon: [L.N('潟湖'), ['#0F766E', '#0284C7'], 'span'],
+    midnight: [L.N('午夜'), ['#1E3A8A', '#7C3AED'], 'span'], berry: [L.N('浆果'), ['#7C3AED', '#DB2777'], 'span'], sunset: [L.N('日落'), ['#EA580C', '#DB2777'], 'span'],
+    fire: [L.N('火焰'), ['#B91C1C', '#EA580C'], 'span'], amber: [L.N('琥珀色'), ['#B45309', '#CA8A04'], 'span'], forest: [L.N('森林'), ['#166534', '#65A30D'], 'span'],
+    slate: [L.N('石板'), ['#1E293B', '#64748B'], 'span'],
+    vivid: [L.N('鲜艳'), ['#E03131', '#E8590C', '#2F9E44', '#1971C2', '#7048E8'], 'cycle'], jewel: [L.N('宝石'), ['#0E7490', '#7E22CE', '#BE123C', '#15803D', '#1D4ED8'], 'cycle'],
+    pastel: [L.N('粉彩'), ['#FBCFE8', '#BFDBFE', '#BBF7D0', '#FDE68A', '#DDD6FE'], 'cycle', '#1F2937', '#64748B'],
   };
   const N = (a) => a.slice(6);
-  DG.colorsName = (id) => {
+  const colorsText = (id, t) => {
     const [ref, kind] = DG.colorsOf(id);
-    if (DG.PALETTES[ref]) return DG.PALETTES[ref][0];
-    return ref === 'colorful' ? 'Colorful - Accent Colors' : ref === 'dark2' ? 'Dark 2 Fill' : ACC.includes(kind) ? `Colorful Range - Accent Colors ${N(ref)} to ${N(kind)}` : `${kind === 'range' ? 'Gradient Range' : 'Colored Fill'} - Accent ${N(ref)}`;
+    if (DG.PALETTES[ref]) return t(DG.PALETTES[ref][0]);
+    return ref === 'colorful' ? t('彩色 - 强调文字颜色') : ref === 'dark2' ? t('深色 2 填充') : ACC.includes(kind) ? t('彩色范围 - 强调文字颜色 {0} 至 {1}', N(ref), N(kind)) : kind === 'range' ? t('渐变范围 - 强调文字颜色 {0}', N(ref)) : t('彩色填充 - 强调文字颜色 {0}', N(ref));
   };
+  /** the colours' name as written into the file (smartart-io.js), and as shown in the UI's language */
+  DG.colorsName = (id) => colorsText(id, (s, ...a) => s.replace(/\{(\d+)\}/g, (m, i) => a[i]));
+  DG.colorsLabel = (id) => colorsText(id, L.t);
   /** the colour choices: two from the design's theme, then our palettes */
-  DG.colorChoices = (d) => ['colorful', DG.themeRange(d)].concat(Object.keys(DG.PALETTES)).map((k) => [k, DG.colorsName(k)]);
+  DG.colorChoices = (d) => ['colorful', DG.themeRange(d)].concat(Object.keys(DG.PALETTES)).map((k) => [k, DG.colorsLabel(k)]);
   /** what a new diagram is coloured with */
   DG.DEFAULT_COLORS = 'ocean';
   /** the items' colours of a colours id: { cols: [[colour, colour changes]…] (a theme slot or '#hex'), meth ('span',
@@ -59,10 +62,10 @@
      rich gradient fill, a drop shadow. PowerPoint draws them from the theme the same way. Three design languages:
      filled shapes; outlined (the slide's background inside a coloured edge, coloured text); tinted (a pale wash
      of the colour, coloured text). The last two have colours of their own (smartart-io.js colorsXML) */
-  DG.STYLES = [['simple', '简单填充', [2, 1, 0]], ['flat', '平面', [0, 1, 0]], ['white', '白色轮廓', [3, 1, 0]], ['subtle', '细微效果', [2, 1, 1]],
-    ['soft', '柔和渐变', [0, 2, 0]], ['moderate', '中等效果', [0, 2, 2]], ['intense', '强烈效果', [0, 3, 3]], ['lifted', '凸起', [2, 2, 3]], ['gloss', '光泽', [1, 3, 2]],
-    ['outline', 'Outline', [2, 1, 0], 'outline'], ['card', '大纲卡片', [1, 1, 2], 'outline'], ['tint', '着色', [0, 1, 0], 'tint'], ['tintLine', '着色轮廓', [2, 1, 0], 'tint']];
-  DG.STYLE_GROUPS = [['fill', '实心'], ['outline', '镂空'], ['tint', '着色']];
+  DG.STYLES = [['simple', L.N('简单填充'), [2, 1, 0]], ['flat', L.N('平面'), [0, 1, 0]], ['white', L.N('白色轮廓'), [3, 1, 0]], ['subtle', L.N('细微效果'), [2, 1, 1]],
+    ['soft', L.N('柔和渐变'), [0, 2, 0]], ['moderate', L.N('中等效果'), [0, 2, 2]], ['intense', L.N('强烈效果'), [0, 3, 3]], ['lifted', L.N('凸起'), [2, 2, 3]], ['gloss', L.N('光泽'), [1, 3, 2]],
+    ['outline', L.N('轮廓'), [2, 1, 0], 'outline'], ['card', L.N('轮廓卡片'), [1, 1, 2], 'outline'], ['tint', L.N('淡色'), [0, 1, 0], 'tint'], ['tintLine', L.N('淡色轮廓'), [2, 1, 0], 'tint']];
+  DG.STYLE_GROUPS = [['fill', L.N('已填充')], ['outline', L.N('空心')], ['tint', L.N('淡色')]];
   const styleOf = (id) => DG.STYLES.find((s) => s[0] === id) || DG.STYLES[0];
   DG.styleRefs = (id) => styleOf(id)[2];
   /** the style's design language: 'fill', 'outline' or 'tint' */
@@ -226,7 +229,7 @@
     if (!g.sa.office) return;
     delete g.sa.office;
     g.sa.converted = true;
-    ui.toast(`This IntelliArt now uses Lectern's ${(SA.get(g.sa.layout) || {}).name} layout, so it can be edited here.`, 4000);
+    ui.toast(L.t('此 IntelliArt 现已使用 Lectern 的“{0}”布局，可在这里编辑。', L.t((SA.get(g.sa.layout) || {}).name)), 4000);
   }
   /** after a change: undo point, lay out, draw, keep the text pane in step */
   function change(g, label, fn, coalesce) {
@@ -246,7 +249,7 @@
     /* like PowerPoint, an empty content placeholder on the slide takes the diagram */
     const ph = phId ? E().shape(phId) : slide.shapes.find((s) => s.ph && ['obj', 'body'].includes(s.ph.type || 'body') && T.isEmpty(s.tx));
     const box = ph ? { x: ph.x, y: ph.y, w: ph.w, h: ph.h } : { x: L.pres.W * 0.15, y: L.pres.H * 0.22, w: L.pres.W * 0.7, h: L.pres.H * 0.66 };
-    L.hist.push('Insert IntelliArt');
+    L.hist.push('插入 IntelliArt');
     const lay = SA.get(layout) || SA.LAYOUTS[0];
     const g = { id: L.uid('s'), type: 'group', name: lay.name + ' ' + (slide.shapes.length + 1), rot: 0, x: box.x, y: box.y, w: box.w, h: box.h,
       sa: { layout: lay.id, colors: DG.DEFAULT_COLORS, style: DG.DEFAULT_STYLE, items: SA.blank(lay.id) }, kids: [] };
@@ -338,10 +341,10 @@
   /** Insert ▸ SmartArt (and Change Layout): categories, pictures of the layouts, a description */
   DG.gallery = (cb, current) => {
     let pick = current || SA.LAYOUTS[0].id, cat = 'all';
-    const cats = h('div', { class: 'sa-cats list-box', role: 'listbox', 'aria-label': 'Categories' });
-    const grid = h('div', { class: 'sa-grid', role: 'listbox', 'aria-label': 'Layouts' });
+    const cats = h('div', { class: 'sa-cats list-box', role: 'listbox', 'aria-label': '类别' });
+    const grid = h('div', { class: 'sa-grid', role: 'listbox', 'aria-label': '布局' });
     const big = h('div', { class: 'sa-big' }), title = h('b'), desc = h('div', { class: 'sa-desc' });
-    const show = () => { const lay = SA.get(pick); big.innerHTML = DG.thumb(pick, 190, 150); title.textContent = lay.name; desc.textContent = lay.desc; L.$$('button', grid).forEach((b) => b.classList.toggle('on', b.dataset.lay === pick)); };
+    const show = () => { const lay = SA.get(pick); big.innerHTML = DG.thumb(pick, 190, 150); title.textContent = L.t(lay.name); desc.textContent = L.t(lay.desc); L.$$('button', grid).forEach((b) => b.classList.toggle('on', b.dataset.lay === pick)); };
     const fill = () => {
       L.clear(grid);
       const shown = SA.LAYOUTS.filter((l) => cat === 'all' || l.cat === cat);
@@ -355,14 +358,14 @@
       show();
     };
     const used = new Set(SA.LAYOUTS.map((l) => l.cat));
-    for (const [k, n] of [['all', '全部']].concat(SA.CATEGORIES.filter(([k]) => used.has(k)))) {
+    for (const [k, n] of [['all', L.N('全部')]].concat(SA.CATEGORIES.filter(([k]) => used.has(k)))) {
       const b = h('button', { type: 'button', class: 'sa-cat' + (k === cat ? ' on' : ''), text: n });
       b.addEventListener('click', () => { cat = k; L.$$('.sa-cat', cats).forEach((x) => x.classList.toggle('on', x === b)); fill(); });
       cats.append(b);
     }
-    const d = ui.dialog({ title: current ? 'Change IntelliArt Layout' : 'Choose an IntelliArt Graphic', width: 720,
+    const d = ui.dialog({ title: current ? '更改 IntelliArt 布局' : '选择 IntelliArt 图形', width: 720,
       body: h('div', { class: 'sa-gallery' }, cats, grid, h('div', { class: 'sa-side' }, big, title, desc)),
-      buttons: [{ label: 'OK', primary: true, onClick: () => cb(pick) }, { label: 'Cancel' }] });
+      buttons: [{ label: '确定', primary: true, onClick: () => cb(pick) }, { label: '取消' }] });
     fill();
   };
 
@@ -413,7 +416,7 @@
       return out.length ? out[Math.min(out.length - 1, Math.max(0, r.i - 1))].item.id : null;
     },
   };
-  const LABELS = { after: 'Add Shape', before: 'Add Shape', above: 'Add Shape', below: 'Add Shape', promote: 'Promote', demote: 'Demote', up: 'Move Up', down: 'Move Down', remove: 'Delete Shape' };
+  const LABELS = { after: '添加形状', before: '添加形状', above: '添加形状', below: '添加形状', promote: L.N('升级'), demote: L.N('降级'), up: '上移', down: '下移', remove: '删除形状' };
   /** run an item operation on the current diagram; the pane follows the item it leaves you on */
   DG.op = (name, g, id) => {
     g = g || DG.current();
@@ -432,18 +435,18 @@
   DG.setText = (g, id, text) => {
     const r = DG.locate(g, id);
     if (!r || r.item.text === text) return;
-    change(g, 'Typing', () => { r.item.text = text; }, 'sa-type-' + id);
+    change(g, L.N('键入'), () => { r.item.text = text; }, 'sa-type-' + id);
   };
   DG.set = (key, val, g) => {
     g = g || DG.current();
     if (!g || g.sa[key] === val) return;
-    const label = { layout: 'Change Layout', colors: 'Change Colors', style: 'IntelliArt Style' }[key];
+    const label = { layout: '更改布局', colors: '更改颜色', style: L.N('IntelliArt 样式') }[key];
     change(g, label, () => { g.sa[key] = val; if (key === 'layout') g.name = (SA.get(val) || {}).name + ' ' + g.name.split(' ').pop(); });
   };
   DG.reset = (g) => {
     g = g || DG.current();
     if (!g) return;
-    change(g, 'Reset Graphic', () => {
+    change(g, '重置图形', () => {
       g.sa.colors = DG.DEFAULT_COLORS; g.sa.style = DG.DEFAULT_STYLE;
       for (const k of g.kids) if (k.sa) delete k.sa.gen;   // nothing to capture: the shapes start again
       for (const o of SA.outline(g.sa.items)) delete o.item.fmt;
@@ -453,7 +456,7 @@
   DG.toShapes = (g) => {
     g = g || DG.current();
     if (!g) return;
-    E().commit('Convert to Shapes', () => { delete g.sa; for (const k of g.kids) { delete k.sa; } g.name = 'Group ' + g.name.split(' ').pop(); });
+    E().commit('转换为形状', () => { delete g.sa; for (const k of g.kids) { delete k.sa; } g.name = 'Group ' + g.name.split(' ').pop(); });
     refreshPane();
   };
   /** Delete on shapes of one diagram removes their items (their sub-items move up); true when handled */
@@ -461,7 +464,7 @@
     const g = shapes.length && DG.of(shapes[0]);
     if (!g || DG.isDiagram(shapes[0]) || !shapes.every((s) => s.sa && s.sa.item && DG.of(s) === g)) return false;
     const ids = [...new Set(shapes.map((s) => s.sa.item))];
-    change(g, 'Delete Shape', () => { for (const id of ids) ops.remove(g, id); });
+    change(g, '删除形状', () => { for (const id of ids) ops.remove(g, id); });
     E().select([g.id]);
     return true;
   };
@@ -481,7 +484,7 @@
       const now = T.plain(k.tx).replace(/\s+/g, ' ').trim();
       if (!hit || now === before) return;
       officeEdited(g);
-      L.hist.push('Typing');
+      L.hist.push(L.N('键入'));
       hit.item.text = now;
       DG.relayout(g); E().renderShape(g.id); E().touched(); refreshPane();
       return;
@@ -491,7 +494,7 @@
     const paras = (k.tx ? k.tx.ps : []).map((p) => ({ t: T.paraText(p), lvl: p.lvl || 0 }));
     const top = paras.filter((p) => !p.lvl).map((p) => p.t);
     const subs = paras.filter((p) => p.lvl).map((p) => p.t);
-    L.hist.push('Typing');
+    L.hist.push(L.N('键入'));
     if (k.sa.role === 'child') r.item.kids = subs.concat(top).map((t, i) => Object.assign(r.item.kids[i] || newItem(), { text: t }));
     else {
       r.item.text = top.join(' ');
@@ -529,26 +532,26 @@
     L.clear(b);
     const g = DG.current();
     paneG = g ? g.id : null;
-    if (!g) { b.append(h('div', { class: 'tp-note', text: '选定智能图形后在此输入文字。' }), h('div', { class: 'tp-row' }, ui.button('插入智能图形...', () => ui.exec('insertDiagram'), { class: 'btn' }))); return; }
-    b.append(h('div', { class: 'tp-h', text: '在此输入文字' }));
+    if (!g) { b.append(h('div', { class: 'tp-note', text: '选择 IntelliArt 图形后，可在此输入其文本。' }), h('div', { class: 'tp-row' }, ui.button('插入 IntelliArt...', () => ui.exec('insertDiagram'), { class: 'btn' }))); return; }
+    b.append(h('div', { class: 'tp-h', text: '在此键入文字' }));
     b.append(h('div', { class: 'sa-tools' }, ...['diagramAddShape', 'diagramPromote', 'diagramDemote', 'diagramMoveUp', 'diagramMoveDown'].map((id) => ui.tbButton(id))));
-    const list = h('div', { class: 'sa-pane', role: 'tree', 'aria-label': 'IntelliArt text' });
+    const list = h('div', { class: 'sa-pane', role: 'tree', 'aria-label': 'IntelliArt 文本' });
     for (const row of rowsOf(g)) {
-      const inp = h('input', { type: 'text', class: 'sa-row', value: row.item.text, placeholder: '[Text]', 'aria-label': 'Item, level ' + (row.level + 1), 'data-item': row.item.id, style: `margin-left:${row.level * 16}px` });
+      const inp = h('input', { type: 'text', class: 'sa-row', value: row.item.text, placeholder: '[文本]', 'aria-label': L.t('项目，第 {0} 级', row.level + 1), 'data-item': row.item.id, style: `margin-left:${row.level * 16}px` });
       inp.addEventListener('focus', () => { paneItem = row.item.id; selectItem(g, row.item.id); L.hist.breakCoalesce(); });
       inp.addEventListener('input', () => DG.setText(g, row.item.id, inp.value));
       inp.addEventListener('keydown', (e) => paneKey(e, g, row, inp));
       list.append(h('div', { class: 'sa-line', role: 'treeitem' }, h('span', { class: 'sa-bul', text: '•', style: `margin-left:${row.level * 16}px` }), inp));
     }
     b.append(list);
-    b.append(h('div', { class: 'tp-note', text: '按 Enter 添加项目，Tab 和 Shift+Tab 调整级别，Alt+Shift+↑/↓ 移动位置。' }));
+    b.append(h('div', { class: 'tp-note', text: '按 Enter 添加项目，Tab 和 Shift+Tab 调整级别，Alt+Shift+↑/↓ 移动项目。' }));
     /* the layouts of the same kind, the colours and the styles, each drawn as it would look */
     const lay = SA.get(g.sa.layout) || SA.LAYOUTS[0];
-    b.append(h('div', { class: 'tp-h', text: 'Layout' }), DG.layoutGrid(g, (l) => l.cat === lay.cat, 4),
-      h('div', { class: 'tp-row' }, ui.button('其他版式...', () => ui.exec('diagramLayout'), { class: 'btn small' })));
-    b.append(h('div', { class: 'tp-h', text: 'Colors' }), DG.colorsGrid(g, 3));
-    b.append(h('div', { class: 'tp-h', text: '智能图形样式' }), DG.stylesGrid(g, 3));
-    b.append(h('div', { class: 'tp-row' }, ui.button('重设图形', () => DG.reset(), { class: 'btn small' }), ui.button('转换为形状', () => DG.toShapes(), { class: 'btn small' })));
+    b.append(h('div', { class: 'tp-h', text: '布局' }), DG.layoutGrid(g, (l) => l.cat === lay.cat, 4),
+      h('div', { class: 'tp-row' }, ui.button('其他布局...', () => ui.exec('diagramLayout'), { class: 'btn small' })));
+    b.append(h('div', { class: 'tp-h', text: '颜色' }), DG.colorsGrid(g, 3));
+    b.append(h('div', { class: 'tp-h', text: 'IntelliArt 样式' }), DG.stylesGrid(g, 3));
+    b.append(h('div', { class: 'tp-row' }, ui.button('重置图形', () => DG.reset(), { class: 'btn small' }), ui.button('转换为形状', () => DG.toShapes(), { class: 'btn small' })));
     const want = paneItem && L.$(`.sa-row[data-item="${paneItem}"]`, list);
     if (want && paneFocus) { want.focus(); want.setSelectionRange(want.value.length, want.value.length); }
   }
@@ -603,7 +606,7 @@
   /** the colour choices this design can show (an accent too pale for the slide would repeat another) */
   DG.colorsGrid = (g, cols, done) => {
     const shown = DG.colorChoices(design());
-    if (g && !shown.some(([k]) => k === g.sa.colors)) shown.unshift([g.sa.colors, DG.colorsName(g.sa.colors)]);
+    if (g && !shown.some(([k]) => k === g.sa.colors)) shown.unshift([g.sa.colors, DG.colorsLabel(g.sa.colors)]);
     return grid(cols, shown.map(([k, n]) => [k, n, DG.thumb('process', 72, 28, { colors: k, style: g && g.sa.style, items: three }), !!g && g.sa.colors === k]), 'sa-colors', (k) => { if (done) done(); DG.set('colors', k, g); });
   };
   /** the styles, a grid for each design language */
@@ -621,19 +624,19 @@
   /* ---------------------------------------------------------------- commands */
   const C = (id, def) => ui.cmd(id, def);
   const inDiagram = () => !!DG.current() && E().view !== 'master';
-  C('diagramAddShape', { label: '添加形状', icon: 'addShape', tip: 'Add Shape After', enabled: inDiagram, run: () => DG.op('after') });
+  C('diagramAddShape', { label: '添加形状', icon: 'addShape', tip: '在后面添加形状', enabled: inDiagram, run: () => DG.op('after') });
   C('diagramAddAfter', { label: '在后面添加形状(&A)', icon: 'addShape', enabled: inDiagram, run: () => DG.op('after') });
   C('diagramAddBefore', { label: '在前面添加形状(&B)', enabled: inDiagram, run: () => DG.op('before') });
-  C('diagramAddAbove', { label: '在上方添加形状(&O)', enabled: inDiagram, run: () => DG.op('above') });
-  C('diagramAddBelow', { label: '在下方添加形状(&L)', enabled: inDiagram, run: () => DG.op('below') });
+  C('diagramAddAbove', { label: '在上方添加形状(&o)', enabled: inDiagram, run: () => DG.op('above') });
+  C('diagramAddBelow', { label: '在下方添加形状(&l)', enabled: inDiagram, run: () => DG.op('below') });
   C('diagramPromote', { label: '升级', icon: 'promote', enabled: inDiagram, run: () => DG.op('promote') });
   C('diagramDemote', { label: '降级', icon: 'demote', enabled: inDiagram, run: () => DG.op('demote') });
   C('diagramMoveUp', { label: '上移', icon: 'moveUp', enabled: inDiagram, run: () => DG.op('up') });
   C('diagramMoveDown', { label: '下移', icon: 'moveDown', enabled: inDiagram, run: () => DG.op('down') });
   C('diagramTextPane', { label: '文本窗格', icon: 'taskpane', enabled: inDiagram, checked: () => !!(L.panes && L.panes.task.current === 'diagramText' && L.panes.task.el && !L.panes.task.el.hidden), run: () => { const on = ui.checked('diagramTextPane'); DG.showPane(!on); } });
-  C('diagramLayout', { label: '更改版式(&L)...', icon: 'layout', enabled: inDiagram, run: () => { const g = DG.current(); DG.gallery((k) => DG.set('layout', k, g), g.sa.layout); } });
+  C('diagramLayout', { label: '更改布局(&L)...', icon: 'layout', enabled: inDiagram, run: () => { const g = DG.current(); DG.gallery((k) => DG.set('layout', k, g), g.sa.layout); } });
   C('diagramColors', { label: '更改颜色', icon: 'colorPic', enabled: inDiagram, run: () => {} });
-  C('diagramStyle', { label: '智能图形样式', icon: 'themes', enabled: inDiagram, run: () => {} });
-  C('diagramReset', { label: '重设图形', icon: 'resetGraphic', enabled: inDiagram, run: () => DG.reset() });
+  C('diagramStyle', { label: 'IntelliArt 样式', icon: 'themes', enabled: inDiagram, run: () => {} });
+  C('diagramReset', { label: '重置图形', icon: 'resetGraphic', enabled: inDiagram, run: () => DG.reset() });
   C('diagramToShapes', { label: '转换为形状', icon: 'toShapes', enabled: inDiagram, run: () => DG.toShapes() });
 })();

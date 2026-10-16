@@ -4,8 +4,10 @@
  * day he is shown, by himself or from the menu, he says good morning and who he is, and offers a few things to
  * do; after that Help ▸ Show the Assistant brings him in with a wave. A click on him offers the things to do, and a right-click gives Animate!, Search commands, the app's Help and Hide
  * (he waves goodbye). Where he sits is kept for the whole suite. While the user works he acts out what they do
- * (saving, printing, searching, …), from the suite's own signals; the apps don't call him. While the window is
- * in the background he stands still and nothing is drawn, to save energy; he carries on when it comes back.
+ * (saving, printing, searching, …), from the suite's own signals; the apps don't call him. His idling follows
+ * them: a small thing now and then while they work, more once they are quiet, a nap after five minutes, from
+ * which they wake him. While the window is in the background he stands still and nothing is drawn, to save
+ * energy; he carries on when it comes back.
  *
  *   L.assistant.show(asked) / hide() / shown() / scout()
  *   command showAssistant: Show the Assistant / Hide the Assistant (each app's Help menu)
@@ -41,17 +43,17 @@
     const r = inp.getBoundingClientRect();
     scout.stop();
     scout.gestureAt(r.left + r.width / 2, r.top + r.height / 2);
-    scout.speak('Type what you want to do in Search commands, up there.');
+    scout.speak(L.t('在上方的“搜索命令”中输入您想执行的操作。'));
     inp.focus();
   }
   /* the welcome's choices; a command's only where the app has it */
   const CHOICES = [
-    { label: 'Find a command by name', when: () => !!searchInput(), run: toSearch },
-    { label: 'Look something up in Help', cmd: 'help' },
-    { label: 'Get started', cmd: 'gettingStarted' },
-    { label: 'See the keyboard shortcuts', cmd: 'keyboardHelp' },
-    { label: 'Show me a trick', run: () => scout.animate() },
-    { label: 'Nothing for now' },
+    { label: '按名称查找命令', when: () => !!searchInput(), run: toSearch },
+    { label: '在帮助中查找', cmd: 'help' },
+    { label: '开始使用', cmd: 'gettingStarted' },
+    { label: '查看键盘快捷键', cmd: 'keyboardHelp' },
+    { label: '表演一个小把戏', run: () => scout.animate() },
+    { label: '暂时没有' },
   ];
 
   function place() {
@@ -60,15 +62,15 @@
   }
   function make() {
     scout = new L.Scout({
-      size: SIZE, label: 'Scout, the assistant. Click him for help; right-click for more.',
-      onclick: () => { if (scout.hidden) return; if (balloonOpen()) scout.stop(); else ask('What would you like to do?'); },
+      size: SIZE, label: L.t('Scout 助手。单击获取帮助，右键单击查看更多选项。'),
+      onclick: () => { if (scout.hidden) return; if (balloonOpen()) scout.stop(); else ask('您想做什么？'); },
       onmenu: (x, y) => ui.openMenu([
-        { label: '&Animate!', run: () => { scout.stop(); scout.animate(); } },
+        { label: '播放动画！(&A)', run: () => { scout.stop(); scout.animate(); } },
         '-',
-        { label: '&Search commands', key: 'Alt+Q', run: toSearch, enabled: () => !!searchInput() },
+        { label: '搜索命令(&S)', key: 'Alt+Q', run: toSearch, enabled: () => !!searchInput() },
         'help',
         '-',
-        { label: '&Hide', run: () => hide() },
+        { label: '隐藏(&H)', run: () => hide() },
       ], { x, y }),
       onmoved: (x, y) => save({ r: Math.round(innerWidth - SIZE - x), b: Math.round(innerHeight - H - y) }),
     });
@@ -81,7 +83,7 @@
   function ask(text, wait) {
     if (!wait) scout.stop();
     const list = CHOICES.filter((c) => (c.cmd ? can(c.cmd) : !c.when || c.when()));
-    scout.ask(text, list.map((c) => ({ label: c.label, value: c }))).then((c) => {
+    scout.ask(L.t(text), list.map((c) => ({ label: L.t(c.label), value: c }))).then((c) => {
       if (!c) return;
       if (c.cmd) ui.exec(c.cmd);
       else if (c.run) c.run();
@@ -93,7 +95,8 @@
     if (get(GREETED) === today()) return '';
     put(GREETED, today());
     const h = new Date().getHours();
-    return (h >= 5 && h < 12 ? 'Good morning!' : h >= 12 && h < 18 ? 'Good afternoon!' : 'Good evening!') + ' I\'m Scout, your soon-to-be-AI assistant. For now, I mostly fetch.';
+    return h >= 5 && h < 12 ? L.t('早上好！我是 Scout，未来的 AI 助手。目前我主要负责帮您查找。')
+      : h >= 12 && h < 18 ? L.t('下午好！我是 Scout，未来的 AI 助手。目前我主要负责帮您查找。') : L.t('晚上好！我是 Scout，未来的 AI 助手。目前我主要负责帮您查找。');
   }
 
   /** Bring him in. The first time today he waves (Greeting), introduces himself and asks what the user would like
@@ -106,7 +109,7 @@
     scout.play(asked || intro ? 'Greeting' : 'Show', { interrupt: true });
     if (!intro) return;
     scout.delay(900);
-    ask(intro + ' What would you like to do?', true);
+    ask(L.t('{0} 您想做什么？', intro), true);
   }
   /** He waves goodbye and drops through his mat, and stays away today; quiet: gone at once (hidden in another window). */
   function hide(quiet) {
@@ -118,7 +121,7 @@
 
   ui.cmd('showAssistant', {
     get label() { return on ? '隐藏助手(&A)' : '显示助手(&A)'; },
-    tip: 'Scout，办公助手',
+    tip: 'Scout 助手',
     run: () => (on ? hide() : show(true)),
   });
 
@@ -128,8 +131,9 @@
      printing; the work that keeps them waiting (vo-busy, the busy box) keeps him at it. Saving is the
      exception: he saves once the file is written (vo-saved, from L.saveFile), not when the user asks. The pairings are
      Office's (msoAnimationSaving, msoAnimationPrinting, …). Manners: only while he is on screen with the window
-     in front; never while he is asking something or coming and going; what he was doing gives way, nothing
-     queues; the same act at most once in COOL_MS; nothing with reduced motion. */
+     in front; never while he is asking something or coming and going; an idle gives way at once, and a nap ends
+     with his waking up; an act under way plays out, and one act waits for it (a newer one takes its place); the
+     act he is at already, nothing new; nothing with reduced motion. */
   const ON_COMMAND = {
     Print: 'print printQuick printPreview',
     Fetch: 'open slidesFromFiles insertFile importText',
@@ -145,10 +149,8 @@
   const ACT_OF = {};
   for (const [act, ids] of Object.entries(ON_COMMAND)) for (const id of ids.split(' ')) ACT_OF[id] = act;
   const SAVES = /^(save|saveAs|saveWeb|exportPDF|exportCSV)$/;   // a file written after these is a save (after Print, a PDF is not)
-  const COOL_MS = 20000;
   const WORK_MS = 400;   // the busy box shorter than this is no work to act out
   const ENTRANCES = /^(Show|Greeting|Hide|GoodBye)$/;
-  const lastAct = {};
   let work = null, workDone = null, lastCmd = '';   // work: a promise that settles when the busy box goes
 
   const free = () => !!scout && !scout.hidden && !scout.frozen && !balloonOpen() && !matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -157,10 +159,7 @@
     if (!free()) return;
     const cur = scout.current;
     if (cur && (ENTRANCES.test(cur.name) || cur.name === act)) return;
-    const now = Date.now();
-    if (now - (lastAct[act] || -Infinity) < COOL_MS) return;
-    lastAct[act] = now;
-    scout.play(act, { interrupt: true }).then((done) => { if (done && work) scout.play('Processing', { until: work }); });
+    scout.play(act, { next: true }).then((done) => { if (done && work) scout.play('Processing', { until: work }); });
   }
 
   addEventListener('vo-command', (e) => { lastCmd = e.detail.id; if (ACT_OF[lastCmd]) react(ACT_OF[lastCmd]); });
@@ -169,10 +168,14 @@
   addEventListener('vo-busy', (e) => {
     if (!e.detail.on) { if (workDone) workDone(); work = workDone = null; return; }
     const w = work = new Promise((r) => { workDone = r; });
-    setTimeout(() => { if (work === w && free() && !scout.current) scout.play('Processing', { interrupt: true, until: w }); }, WORK_MS);
+    setTimeout(() => { if (work === w && free() && (!scout.current || scout.current.idle)) scout.play('Processing', { next: true, until: w }); }, WORK_MS);
   });
   addEventListener('vo-message', (e) => { if (e.detail.icon === 'warn' || e.detail.icon === 'error') react('Alert'); });
   addEventListener('beforeprint', () => react('Print'));
+  /* the user at work: what he idles at follows them (keys, presses, the wheel, the window coming back; the mouse
+     merely moving is no work) */
+  const stir = () => { if (scout) scout.userActive(); };
+  for (const type of ['keydown', 'pointerdown', 'wheel']) addEventListener(type, stir, { capture: true, passive: true });
 
   /* the window in the background: he stands still, nothing drawn until it comes back (a hidden page draws
      nothing anyway) */
@@ -187,7 +190,7 @@
   addEventListener('focus', () => {
     clearTimeout(awayTimer);
     away = false;
-    if (scout) scout.freeze(false);
+    if (scout) scout.freeze(false).userActive();
   });
   addEventListener('resize', () => { if (scout) place(); });
   /* shown or hidden in another window */

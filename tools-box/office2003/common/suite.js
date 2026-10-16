@@ -18,7 +18,7 @@
  */
 (function () {
   'use strict';
-  const VO = (window.VO = {});
+  const VO = (window.VO = window.VO || {});   // keep the language choice made before the first paint
   VO.VERSION = 'dev';   // the published copy says v<yyyy>.<mm>.<dd>-<6 hex> (tools/current-tree-version.sh, stamped by the sync script)
   if (window.__VO_HOST__ && window.__VO_HOST__.appVersion) VO.VERSION = window.__VO_HOST__.appVersion;   // the desktop app's build
   /** a version's date as a number (20261011), or null for a version without one (dev); copies before
@@ -48,8 +48,7 @@
   VO.accept = () => Object.values(VO.APPS).flatMap((a) => a.ext.map((e) => '.' + e)).join(',');
   /** VO.url('quire', { new: true }) -> .../quire/index.html?new
    *  Embedded copy (tools-box): the folder form (.../quire/) relies on the static host
-   *  resolving a directory to its index.html; a plain file path works everywhere
-   *  (Vite dev/preview, Vercel rewrites, Render, GitHub Pages). */
+   *  answering with the directory's index.html; an explicit file needs nothing of the host. */
   VO.url = (app, params) => {
     const qs = Object.keys(params || {}).map((k) => (params[k] === true ? k : k + '=' + encodeURIComponent(params[k]))).join('&');
     return new URL(app + '/index.html', BASE).href + (qs ? '?' + qs : '');
@@ -75,6 +74,8 @@
     kind: native ? 'desktop' : 'web',
     platform: native ? native.platform : 'web',
     version: native ? native.version : 0,
+    /** whether this edition looks for its updates (updater/current.json): not the Mac App Store's, which the store updates */
+    updates: !native || native.edition !== 'appstore',
     /** open a web or mail address in the system's browser: a new tab on the web, the default browser in the
      *  desktop app (which also sends every link that leaves the app there) */
     async openUrl(url) {
@@ -144,6 +145,11 @@
     return { ask, news };
   };
 
+  /* ------------------------------------------------------------ open source licenses */
+  /* Embedded copy (tools-box): removed, together with public/office2003/oss-licenses.html — the page,
+     its About links (common/ui.js, index.html) and every reference to it are gone. The license itself
+     (Apache-2.0) is public/office2003/LICENSE, and the third-party notices are in the repository. */
+
   /* ------------------------------------------------------------ fonts on this computer */
   /** the font families Local Font Access listed (Chrome and Edge, after the user allows it), kept in this
    *  browser for every app of the suite; the Font boxes show them (L.localFonts in core.js) */
@@ -171,15 +177,22 @@
   if (native) window.addEventListener('vo-download', (e) => {
     const ui = window.L && window.L.ui, d = e.detail || {};
     if (!ui) return;
-    if (d.ok) ui.toast(`Saved to Downloads folder: ${d.name}`, 8000, { label: 'Browse', run: () => VO.host.showDownloads().catch((err) => console.error('browse:', err)) });
-    else ui.toast('The file could not be saved to the Downloads folder.', 8000);
+    if (d.ok) ui.toast(VO.t('已保存到“下载”文件夹：{0}', d.name), 8000, { label: '浏览', run: () => VO.host.showDownloads().catch((err) => console.error('browse:', err)) });
+    else ui.toast('无法将文件保存到“下载”文件夹。', 8000);
   });
 
   /* ------------------------------------------------------------ service worker */
-  /* Embedded copy (tools-box): removed, together with public/office2003/sw.js.
-     Upstream registers sw.js to cache the published site for offline use, but only on
-     https://vibeoffice.work or 127.0.0.1 — on the host that frames this copy the registration never
-     happened, so the file was never fetched and the 'vo-cache' progress UI never showed. */
+  /* The published site, https://vibeoffice.work/, is cached for offline use, one version per page (sw.js); the
+     worker is registered there and on 127.0.0.1 (any port: a published copy tried locally; the dev server's own
+     files are unstamped, so the worker caches nothing there), and anywhere else (preview deployments) any earlier
+     registration is removed. While the worker caches a version it reports to every page: 'vo-cache' on window, detail { state:
+     'progress', 'done' or 'failed', update (an earlier version was cached: this is an update), progress (0 to 1),
+     version }. updateViaCache 'none': the browser always asks the server for sw.js, so a new version is found on
+     the next visit. */
+  /* Embedded copy (tools-box): the registration is gone, together with public/office2003/sw.js. Upstream
+     registers it only on vibeoffice.work and on 127.0.0.1, so it would never run on this site anyway; the
+     'vo-cache' progress the Settings dialog shows therefore stays empty here (see index.html). */
+
 
   /* ------------------------------------------------------------ IndexedDB */
   let dbp = null;
@@ -218,9 +231,11 @@
      toolbars (common/ribbon.js); one choice for the whole suite: <html data-look data-layout> is set before
      the first paint by each page's head script from localStorage 'vibeoffice.look'; changing it here
      repaints every open window of the suite. Canvas-drawn chrome (rulers, sheet headers) redraws on 'vo-look'. */
-  const LOOKS = [{ id: 'classic', name: '经典', note: 'Office 2003 的蓝色工具栏与菜单。' },
-    { id: 'paper', name: '纸张', note: '轻松安静：暖纸色调，一点青色点缀，圆角造型。' },
-    { id: 'paper2016', name: '纸张 2016', layout: 'ribbon', note: '纸张外观，但用按任务分组的命令选项卡代替菜单与工具栏。' }];
+  const N = (s) => s;   // UI text, translated where it is shown (VO.N, common/i18n.js)
+  N('空白文档'); N('空白工作簿'); N('空白演示文稿');   // templates.json's Blank entries (tools/templates.mjs)
+  const LOOKS = [{ id: 'classic', name: N('经典'), note: 'Office 2003 的蓝色工具栏与菜单。' },
+    { id: 'paper', name: N('纸张'), note: '明亮宁静：温暖的纸张色调、青绿色点缀、圆润的形状。' },
+    { id: 'paper2016', name: N('纸张 2016'), layout: 'ribbon', note: '纸张风格，以按任务分组的命令选项卡代替菜单和工具栏。' }];
   const storedLook = () => { try { return localStorage.getItem('vibeoffice.look') || 'classic'; } catch (e) { return 'classic'; } };
   const applyLook = (id) => {
     const root = document.documentElement;
@@ -385,7 +400,7 @@
           if (rec) await tx('handoff', 'readwrite', (s) => s.delete(l.open));
         } catch (e) { console.error(e); }
         if (rec && rec.file) await current.hooks.open(asFile(rec.file, rec.name), {});
-        else (current.hooks.message || alert)('That file is no longer available here. Open it again from your computer.');
+        else (current.hooks.message || alert)(VO.t('此处已无法访问该文件。请从计算机中重新打开。'));
       } else if (l.recent) await VO.openRecent(l.recent, { draft: l.draft });
     }
     setTimeout(async () => {
@@ -400,7 +415,7 @@
     try { e = await VO.recent.get(key); } catch (err) { console.error(err); }
     const draft = !!(o && o.draft && e && e.draft);
     const blob = e && (draft ? e.draft.file : e.file);
-    if (!blob) { (current.hooks.message || alert)('That file is no longer available here. Open it again from your computer.'); return; }
+    if (!blob) { (current.hooks.message || alert)(VO.t('此处已无法访问该文件。请从计算机中重新打开。')); return; }
     const f = asFile(blob, draft ? e.draft.name : e.name);
     if (draft) f.voDraft = key;
     await current.hooks.open(f, { draft, name: e.name, saved: !!e.file, lossState: draft ? e.draft.lossState : undefined });
@@ -412,7 +427,7 @@
     if (!ui || !ui.dialog) return create('');
     let list = null;
     try { list = (await (await fetch(BASE + 'common/templates.json')).json())[app]; } catch (e) { console.warn('templates:', e); }
-    if (!list || !list.length) list = [{ id: '', name: '空白', img: null }];
+    if (!list || !list.length) list = [{ id: '', name: 'Blank', img: null }];
     if (!document.getElementById('vo-gallery-css')) {
       const st = document.createElement('style');
       st.id = 'vo-gallery-css';
@@ -430,11 +445,11 @@
     let d = null;
     for (const t of list) {
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'vo-tpl'; b.title = t.name;
+      b.type = 'button'; b.className = 'vo-tpl'; b.title = VO.t(t.name);
       const pic = document.createElement('span');
       if (t.img) { const img = document.createElement('img'); img.src = BASE + t.img; img.alt = ''; pic.append(img); }
       const name = document.createElement('b');
-      name.textContent = t.name;
+      name.textContent = VO.t(t.name);
       b.append(pic, name);
       b.addEventListener('click', () => { if (d) d.close(-1); create(t.id); });
       gal.append(b);
@@ -442,9 +457,9 @@
     const body = document.createElement('div');
     const note = document.createElement('p');
     note.className = 'vo-gal-note';
-    note.textContent = 'Choose Blank or a template:';
+    note.textContent = VO.t('选择空白文件或模板：');
     body.append(note, gal);
-    d = ui.dialog({ title: 'New ' + VO.APPS[app].kind, width: 700, body, buttons: [{ label: '取消', cancel: true }], focus: gal.firstChild });
+    d = ui.dialog({ title: VO.t({ quire: '新建文档', ledger: '新建电子表格', lectern: '新建演示文稿' }[app]), width: 700, body, buttons: [{ label: '取消', cancel: true }], focus: gal.firstChild });
   };
   /** the open app's templates: [{ id, name }] */
   VO.templates = () => (current && current.hooks.templates ? current.hooks.templates() : []);
@@ -527,13 +542,15 @@
   /* ------------------------------------------------------------ the list inside the apps */
   const when = (t) => {
     const d = new Date(t), today = new Date().toDateString() === d.toDateString();
-    return today ? d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : d.toLocaleDateString([], { month: 'short', day: 'numeric' });
+    const loc = 'zh-CN';
+    return today ? d.toLocaleTimeString(loc, { hour: '2-digit', minute: '2-digit' }) : d.toLocaleDateString(loc, { month: 'short', day: 'numeric' });
   };
-  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  /* its text (common/text.js) */
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = VO.t ? VO.t(text) : text; return e; };
   const icon = (name) => (window.L && L.icons ? L.icons.get(name) : '');
   /** File menu: the app's four most recent entries ({ label, run } items for L.ui menus) */
   VO.recentMenuItems = (max) => VO.recent.forApp().slice(0, max || 4).map((e, i) => ({
-    label: `&${i + 1} ${e.name.replace(/&/g, '&&')}${e.draft ? ' (unsaved changes)' : ''}`,
+    label: '&' + (i + 1) + ' ' + (e.draft ? VO.t('{0}（有未保存的更改）', e.name) : e.name).replace(/&/g, '&&'), raw: true,
     run: () => VO.openRecent(e.key, { draft: !!e.draft }),
   }));
   /** task pane: the app's recent entries as links (Getting Started ▸ Open); keeps itself up to date */
@@ -545,9 +562,12 @@
       box.replaceChildren(...VO.recent.forApp().slice(0, max || 4).map((e) => {
         const b = el('button', 'tp-link');
         b.type = 'button';
-        b.title = e.draft ? `${e.name} — unsaved changes from ${new Date(e.draft.time).toLocaleString()}` : e.name;
+        b.title = e.draft ? VO.t('{0} — {1} 的未保存更改', e.name, new Date(e.draft.time).toLocaleString('zh-CN')) : e.name;
+        b.translate = false;
         const ic = el('span'); ic.innerHTML = icon(e.draft ? 'save' : 'open');
-        b.append(ic, el('span', null, e.name + (e.draft ? ' (unsaved)' : '')));
+        const name = el('span');
+        name.textContent = e.draft ? VO.t('{0}（未保存）', e.name) : e.name;
+        b.append(ic, name);
         b.addEventListener('click', () => VO.openRecent(e.key, { draft: !!e.draft }));
         return b;
       }));
@@ -567,20 +587,21 @@
       list.replaceChildren(...(drafts.length ? drafts.map((e) => {
         const item = el('div', 'tp-sec');
         const head = el('div', 'tp-h', e.name);
-        const note = el('div', 'tp-note', `Unsaved changes from ${when(e.draft.time)}` + (e.file ? '' : ' (never saved)') + (openKeys.has(e.key) ? ' — open in this window' : ''));
+        const from = e.file ? VO.t('{0} 的未保存更改', when(e.draft.time)) : VO.t('{0} 的未保存更改（从未保存）', when(e.draft.time));
+        const note = el('div', 'tp-note', openKeys.has(e.key) ? VO.t('{0} — 在此窗口打开', from) : from);
         const open = el('button', 'tp-link'); open.type = 'button';
-        const oi = el('span'); oi.innerHTML = icon('open'); open.append(oi, el('span', null, 'Open the unsaved version'));
+        const oi = el('span'); oi.innerHTML = icon('open'); open.append(oi, el('span', null, '打开未保存的版本'));
         open.addEventListener('click', () => VO.openRecent(e.key, { draft: true }));
         const drop = el('button', 'tp-link'); drop.type = 'button';
-        const di = el('span'); di.innerHTML = icon('delete') || icon('cut'); drop.append(di, el('span', null, 'Discard the changes'));
+        const di = el('span'); di.innerHTML = icon('delete') || icon('cut'); drop.append(di, el('span', null, '放弃更改'));
         drop.addEventListener('click', () => VO.recent.discardDraft(e.key));
         item.append(head, note, open, drop);
         return item;
-      }) : [el('div', 'tp-note', 'No unsaved versions are waiting.')]));
+      }) : [el('div', 'tp-note', '没有待恢复的未保存版本。')]));
     };
     draw.cacheOnly = true;
     const stop = VO.onRecentChange(draw);
-    b.append(el('div', 'tp-note', `${current ? VO.APPS[current.app].name : 'Office 2003'} kept the unsaved changes of these documents. Open the ones you want to keep and save them; discard the rest.`), list);
+    b.append(el('div', 'tp-note', VO.t('{0} 保留了这些文档中未保存的更改。请打开并保存需要保留的文档，放弃其余文档的更改。', current ? VO.APPS[current.app].name : 'Office 2003')), list);
     VO.recent.list().then((l) => { VO.recent.cache = l; draw(); }, () => draw());
   };
 })();

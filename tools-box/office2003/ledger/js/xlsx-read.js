@@ -6,6 +6,8 @@
   const L = root.L;
   const M = L.model, F = L.formula, NF = L.numfmt, XML = L.xml, K = L.opc;
   const R = (L.xlsxRead = {});
+  /* the messages the user sees (shown translated where they are shown): N marks them for the catalog */
+  const N = (s) => s;
 
   /* ------------------------------------------------------------ element helpers */
   const kids = (el, name) => (el ? el.children.filter((c) => !name || c.localName === name) : []);
@@ -708,6 +710,7 @@
     const hf = kid(el, 'headerFooter');
     if (hf) {
       const p = sh.print;
+      /* Embedded copy (tools-box): `t` reads an XML child of the headerFooter part; it is not the translator */
       const t = (n) => { const e = kid(hf, n); return e ? XML.unx(e.textContent) : ''; };
       p.header = t('oddHeader'); p.footer = t('oddFooter');
       if (bool(hf, 'differentFirst', false)) { p.diffFirst = true; p.firstHeader = t('firstHeader'); p.firstFooter = t('firstFooter'); }
@@ -967,7 +970,7 @@
     const ref = F.parseRange(at(el, 'ref') || '');
     if (!ref) return;
     const t = {
-      ooxmlPart: part, id: num(el, 'id', ctx.wb.tables.length + 1), name: at(el, 'displayName') || at(el, 'name') || 'Table' + (ctx.wb.tables.length + 1), dname: at(el, 'name'), sheet: sh, ref,
+      ooxmlPart: part, id: num(el, 'id', ctx.wb.tables.length + 1), name: at(el, 'displayName') || at(el, 'name') || '表格' + (ctx.wb.tables.length + 1), dname: at(el, 'name'), sheet: sh, ref,
       header: num(el, 'headerRowCount', 1) > 0, totals: num(el, 'totalsRowCount', 0) > 0 || bool(el, 'totalsRowShown', false) && num(el, 'totalsRowCount', 0) > 0,
       columns: [], style: null, autoFilter: !!kid(el, 'autoFilter'), comment: at(el, 'comment') || undefined,
     };
@@ -1139,7 +1142,7 @@
           if (!opts.password) { const err = new Error('password'); err.code = 'password'; throw err; }
           try { inner = await L.officeCrypto.decrypt(bytes, opts.password); } catch (e2) {
             const unsup = e2 && e2.message === 'unsupported';
-            const err = new Error(unsup ? 'This workbook is encrypted with a method Ledger does not support (only the AES encryption Excel 2007 and later use is supported).' : 'The password you supplied is not correct. Verify that the CAPS LOCK key is off and be sure to use the correct capitalization.');
+            const err = new Error(unsup ? N('此工作簿使用了 Ledger 不支持的加密方式（仅支持 Excel 2007 及更高版本使用的 AES 加密）。') : N('您输入的密码不正确。请检查 Caps Lock 是否已关闭，并确认字母大小写正确。'));
             err.code = unsup ? 'unsupported' : 'badpassword';
             throw err;
           }
@@ -1155,13 +1158,13 @@
     const off = Array.from(rootRels.values()).find((r) => r.type === 'officeDocument');
     let wbPart = off ? off.target : 'xl/workbook.xml';
     if (!pkg.has(wbPart)) wbPart = pkg.find('xl/workbook.xml') || Array.from(zip.keys()).find((k) => /workbook\.xml$/.test(k));
-    if (!wbPart) throw new Error('This file is not an Excel workbook.');
+    if (!wbPart) throw new Error(N('此文件不是 Excel 工作簿。'));
     const wbEl = await pkg.xml(wbPart);
-    if (!wbEl) throw new Error('The workbook part is damaged.');
+    if (!wbEl) throw new Error(N('工作簿部件已损坏。'));
     const wrels = await pkg.rels(wbPart);
     const wb = new M.Workbook();
     try { L.opc.attach(wb, await L.opc.open(zip)); }
-    catch (error) { L.opc.loss(wb, { id: 'package', what: 'Part of this file couldn\'t be read. Anything in it that Office 2003 can\'t edit itself, such as macros or embedded objects, won\'t be saved.', detail: error.message, where: wbPart, action: 'drop', notify: true }); }
+    catch (error) { L.opc.loss(wb, { id: 'package', what: '此文件的部分内容无法读取。其中 Office 2003 无法直接编辑的内容，例如宏或嵌入对象，将不会保存。', detail: error.message, where: wbPart, action: 'drop', notify: true }); }
     wb.ooxmlFormat = L.opc.variant(wb.pkg, 'xlsx');
     wb.strict = /purl\.oclc\.org/.test(wbEl.lookupNamespaceURI(wbEl.prefix) || '');
     const wpr = kid(wbEl, 'workbookPr');
@@ -1213,7 +1216,7 @@
     for (const s of sheetEls) {
       const r = wrels.get(rid(s, 'id'));
       const kind = r ? (r.type === 'chartsheet' ? 'chartsheet' : r.type === 'dialogsheet' ? 'dialogsheet' : r.type === 'xlMacrosheet' || r.type === 'xlIntlMacrosheet' ? 'macrosheet' : 'worksheet') : 'worksheet';
-      const sh = wb.addSheet(XML.unx(at(s, 'name') || 'Sheet' + (wb.sheets.length + 1)), null, kind);
+      const sh = wb.addSheet(XML.unx(at(s, 'name') || '工作表' + (wb.sheets.length + 1)), null, kind);
       sh.sheetId = num(s, 'sheetId', wb.sheets.length);
       if (r && !r.external) sh.extra.ooxmlPart = r.target;
       const state = at(s, 'state');

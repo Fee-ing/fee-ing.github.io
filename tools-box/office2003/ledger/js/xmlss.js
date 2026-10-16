@@ -5,6 +5,8 @@
   const L = root.L;
   const M = L.model, F = L.formula, NF = L.numfmt;
   const XS = (L.xmlss = {});
+  /* the messages the user sees (shown translated where they are shown): N marks them for the catalog */
+  const N = (s) => s;
   const SS = 'urn:schemas-microsoft-com:office:spreadsheet';
 
   /* ------------------------------------------------------------ R1C1 ⇄ A1 */
@@ -143,7 +145,7 @@
   }
   XS.read = async function (bytes) {
     const text = L.csv ? L.csv.decode(bytes).text : new TextDecoder().decode(bytes);
-    if (!/urn:schemas-microsoft-com:office:spreadsheet/.test(text)) throw Object.assign(new Error('This file is not an XML Spreadsheet 2003 workbook.'), { code: 'format' });
+    if (!/urn:schemas-microsoft-com:office:spreadsheet/.test(text)) throw Object.assign(new Error(N('此文件不是 XML Spreadsheet 2003 工作簿。')), { code: 'format' });
     const doc = L.xml.parse(text.replace(/^[\s\S]*?(<Workbook)/, '$1'));
     const wb = new M.Workbook({ font: { name: 'Arial', sz: 10 } });
     /* styles */

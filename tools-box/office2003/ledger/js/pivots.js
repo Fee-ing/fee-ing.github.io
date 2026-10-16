@@ -110,10 +110,10 @@
   P.begin = wb => state(wb) && { data: P.snapshot(wb), areas: areas(wb), names: names(wb) };
   function validate(wb, p = state(wb)) {
     if (!p) return;
-    for (const c of p.caches) if (!c.drop && c.sources.some(s => area(wb, s).missing)) c.drop = 'The pivot source was deleted.';
+    for (const c of p.caches) if (!c.drop && c.sources.some(s => area(wb, s).missing)) c.drop = '数据透视表的源数据已删除。';
     for (const t of p.tables) {
       const c = p.caches.find(c => c.id === t.cache);
-      if (!t.drop && (!sheet(wb, t.sheet) || c?.drop)) { t.drop = !sheet(wb, t.sheet) ? 'The worksheet containing the pivot table was deleted.' : c.drop; t.notify = !!sheet(wb, t.sheet); }
+      if (!t.drop && (!sheet(wb, t.sheet) || c?.drop)) { t.drop = !sheet(wb, t.sheet) ? '包含数据透视表的工作表已删除。' : c.drop; t.notify = !!sheet(wb, t.sheet); }
     }
   }
   P.current = wb => { const p = clone(state(wb)); validate(wb, p); return p; };
@@ -183,7 +183,7 @@
       if (a.sheet !== sh.id || !a.ref) continue;
       const rg = a.ref, kept = whole(rg), next = kept ? rg : O.shiftRange(rg, axis, at, n);
       if (!kept && same(rg, next)) continue;
-      if (!next) cache.drop = 'The complete pivot source range was deleted.';
+      if (!next) cache.drop = '数据透视表的整个源区域已删除。';
       if (src.kind === 'range' && !kept) src.ref = next;
       cache.refresh = true;
       if (axis === 'c' && cache.columns && cache.sources.length === 1) {
@@ -191,7 +191,7 @@
           const from = Math.max(at, rg.c1) - rg.c1, to = Math.min(at - n - 1, rg.c2) - rg.c1;
           const removed = to >= from ? cache.columns.slice(from, to + 1) : [];
           for (const t of p.tables) if (!t.drop && t.cache === cache.id && t.used.some(i => removed.includes(i))) {
-            t.drop = 'A source column used by the pivot table was deleted. Its remaining result cells are kept.'; t.notify = true;
+            t.drop = '数据透视表使用的源数据列已被删除。其余结果单元格予以保留。'; t.notify = true;
           }
           if (to >= from) cache.columns.splice(from, to - from + 1);
         } else if (at > rg.c1 && at <= rg.c2 || kept && at - rg.c1 < cache.columns.length) cache.columns.splice(at - rg.c1, 0, ...Array(n).fill(null));
@@ -199,7 +199,7 @@
     }
     for (const t of p.tables) if (!t.drop && t.sheet === sh.id && t.ref) {
       const rg = t.ref, next = O.shiftRange(rg, axis, at, n);
-      if (!next) { t.drop = 'The complete pivot table output was deleted.'; continue; }
+      if (!next) { t.drop = '数据透视表的整个输出区域已删除。'; continue; }
       // Lines removed from or inserted into the result change its layout; Excel rebuilds it on open.
       const through = n < 0 ? at <= rg[k2] && at - n - 1 >= rg[k1] : at > rg[k1] && at <= rg[k2];
       if (through) { t.reshaped = true; const c = p.caches.find(c => c.id === t.cache); if (c) c.refresh = true; }
@@ -240,7 +240,7 @@
     w.pivotOmitted = new Set();
     for (const c of p.caches) {
       c.omit = !!c.drop || !retained.has(c.id) && p.tables.some(t => t.cache === c.id);
-      if (c.omit) { w.pivotOmitted.add(c.id); w.omit(c.part, c.drop || 'The cache has no remaining pivot tables.'); continue; }
+      if (c.omit) { w.pivotOmitted.add(c.id); w.omit(c.part, c.drop || '此缓存已无剩余的数据透视表。'); continue; }
       if (c.opaque) { w.carry(pkg, c.part); continue; }
       let xml = pkg.text(c.part), tree = K.parse(xml), edits = [], cs = kid(tree, 'cacheSource');
       const elements = c.kind === 'worksheet' ? kids(cs, 'worksheetSource') : kids(kid(kid(cs, 'consolidation'), 'rangeSets'), 'rangeSet');
@@ -253,7 +253,7 @@
       });
       if (c.refresh) {
         edits.push([tree, { refreshOnLoad: '1' }]);
-        w.loss({ id: 'pivot-refresh:' + c.part, what: 'The pivot source changed. Excel will refresh its cached result when the file opens.', where: c.part, action: 'conversion' });
+        w.loss({ id: 'pivot-refresh:' + c.part, what: '数据透视表的源数据已更改。Excel 打开文件时将刷新缓存的结果。', where: c.part, action: 'conversion' });
       }
       xml = patchXML(xml, edits);
       if (xml === pkg.text(c.part)) w.carry(pkg, c.part);
@@ -265,7 +265,7 @@
     for (const t of p.tables) {
       if (t.drop) {
         // Told only when the result stays behind as plain cells; a deleted sheet or output takes the pivot with it
-        const notice = t.notify ? { what: 'This pivot table will be saved as plain cells, because ' + (/source column/.test(t.drop) ? 'a column it uses was deleted from its source data.' : 'its source data was deleted.'), place: (sheet(wb, t.sheet)?.name || '') + ': ' + t.name, notify: true } : { what: t.drop, notify: false };
+        const notice = t.notify ? { what: /source column/.test(t.drop) ? '此数据透视表所用的某列已从源数据中删除，因此将保存为普通单元格。' : '此数据透视表的源数据已删除，因此将保存为普通单元格。', place: (sheet(wb, t.sheet)?.name || '') + ': ' + t.name, notify: true } : { what: t.drop, notify: false };
         if (!t.copy) w.omit(t.part, notice.what, { notify: notice.notify, place: notice.place }); else w.loss({ id: 'pivot-copy:' + t.sheet + ':' + t.name, what: notice.what, place: notice.place, notify: notice.notify, where: t.name, action: 'drop' });
         continue;
       }
@@ -290,7 +290,7 @@
       const sh = sheet(wb, t.sheet), owner = pack.sheetParts.get(sh);
       const rel = relation(pkg, sh.extra.ooxmlPart || '', 'pivotTable').find(r => r.part === t.part);
       w.rels(owner).add(K.NS.rel + '/pivotTable', K.relative(owner, target), false, t.copy ? undefined : rel?.id);
-      const changed = 'Changes made inside this pivot table will be replaced when Excel refreshes it.', place = sh.name + ': ' + t.name;
+      const changed = 'Excel 刷新此数据透视表时，会替换在表内所做的更改。', place = sh.name + ': ' + t.name;
       if (t.reshaped) w.loss({ id: 'pivot-layout:' + t.sheet + ':' + t.name, what: changed, place, notify: true, where: sh.name + '!' + F.rangeName(t.ref), action: 'conversion' });
       if (t.edited) w.loss({ id: 'pivot-output:' + t.sheet + ':' + t.name, what: changed, place, notify: true, where: sh.name + '!' + F.rangeName(t.ref), action: 'conversion' });
     }

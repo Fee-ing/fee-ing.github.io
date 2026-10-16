@@ -12,10 +12,10 @@
   function label(root) {
     const nodes = all(root);
     if (nodes.some(e => e.localName === 'relIds' && /\/diagram$/.test(e.namespaceURI))) return 'IntelliArt';
-    if (nodes.some(e => e.localName === 'oleObj')) return 'Embedded object';
+    if (nodes.some(e => e.localName === 'oleObj')) return '嵌入对象';
     if (nodes.some(e => e.localName === 'contentPart')) return 'Ink';
     if (nodes.some(e => e.localName === 'model3d')) return '3-D model';
-    if (nodes.some(e => e.localName === 'chart' && /\/chartex$/.test(e.namespaceURI))) return 'New chart';
+    if (nodes.some(e => e.localName === 'chart' && /\/chartex$/.test(e.namespaceURI))) return '新建图表';
     return null;
   }
   function source(working, original, parent) {
@@ -147,10 +147,17 @@
     pres.keep.frames = records;
   };
   F.consumes = (pres, part, rel) => (pres.keep?.frames || []).some(f => f.part === part && f.rels.includes(rel.id));
-  // What the user is told when a kept object can only be saved as its preview
-  const savedAs = (label, why) => 'This ' + (({ 'New chart': 'chart', Ink: 'ink drawing', 'Embedded object': 'embedded object' })[label] || label) +
-    ' will be saved as ' + (label === 'Embedded object' ? 'a picture' : 'ordinary shapes') + why;
-  const slidePlace = (pres, part) => { const i = pres.slides.findIndex(s => s.keep?.part === part); return i < 0 ? undefined : 'Slide ' + (i + 1); };
+  // What the user is told when a kept object can only be saved as its preview: whole sentences (the Compatibility
+  // Checker shows them in the UI's language), [edited here, the original couldn't be kept]
+  const SAVED_AS = {
+    IntelliArt: ['此 IntelliArt 在这里编辑过，将保存为普通形状。', '此 IntelliArt 的原始内容无法保留，将保存为普通形状。'],
+    'Embedded object': ['此嵌入对象在这里编辑过，将保存为图片。', '此嵌入对象的原始内容无法保留，将保存为图片。'],
+    Ink: ['此墨迹绘图在这里编辑过，将保存为普通形状。', '此墨迹绘图的原始内容无法保留，将保存为普通形状。'],
+    '3-D model': ['此三维模型在这里编辑过，将保存为普通形状。', '此三维模型的原始内容无法保留，将保存为普通形状。'],
+    'New chart': ['此图表在这里编辑过，将保存为普通形状。', '此图表的原始内容无法保留，将保存为普通形状。'],
+  };
+  const savedAs = (label, notKept) => (SAVED_AS[label] || SAVED_AS.IntelliArt)[notKept ? 1 : 0];
+  const slidePlace = (pres, part) => { const i = pres.slides.findIndex(s => s.keep?.part === part); return i < 0 ? undefined : L.t ? L.t('幻灯片 {0}', i + 1) : 'Slide ' + (i + 1); };
   F.prepare = function (pres, writer) {
     const groups = new Map(), seen = new Set(), converted = new Map();
     containers(pres, list => {
@@ -171,7 +178,7 @@
     }
     for (const record of [...(pres.keep?.frames || []), ...converted.values()]) if (!seen.has(record.key)) {
       // Removed objects were deleted by the user; converted ones were ungrouped or edited
-      if (converted.has(record.key)) writer.loss({ id: 'frame:' + record.key, what: savedAs(record.label, ', because it was edited here.'), where: record.part, place: slidePlace(pres, record.part), action: 'conversion', notify: true });
+      if (converted.has(record.key)) writer.loss({ id: 'frame:' + record.key, what: savedAs(record.label, false), where: record.part, place: slidePlace(pres, record.part), action: 'conversion', notify: true });
       else writer.loss({ id: 'frame:' + record.key, what: record.label + ' was removed.', where: record.part, action: 'drop', notify: false });
     }
     return groups;
@@ -268,7 +275,7 @@
         const target = privateCopy ? copy(dep.dataPart) : w.target(pkg, dep.dataPart);
         if (!privateCopy) { w.claim(dep.dataPart, 'merged', target, pkg); w.carryRels(pkg, dep.dataPart, target); }
         w.put(target, K.patch(X.source.get(tree).text, edits), pkg.type(dep.dataPart));
-        w.loss({ id: 'diagram-cache:' + ctx.part + ':' + dep.dataPart, what: 'A reference to an IntelliArt drawing cache missing from the original file was removed; its data and layout are retained.', where: dep.dataPart, action: 'conversion' });
+        w.loss({ id: 'diagram-cache:' + ctx.part + ':' + dep.dataPart, what: '原文件中缺失的 IntelliArt 绘图缓存引用已移除；其数据和布局仍予以保留。', where: dep.dataPart, action: 'conversion' });
       } else if (/\/vmlDrawing$/.test(dep.type)) {
         const kept = vml(record, dep, shape, ctx, changed); relIds.set(dep.id, kept.id);
         for (const entry of kept.spids) spids.set(...entry);
@@ -300,7 +307,7 @@
     const record = shape.keep?.frame; if (!record) return null;
     const group = ctx.frames?.get(key(record.fragment));
     const loss = (what, error) => ctx.writer.loss({ id: 'frame:' + key(record.fragment), what, detail: error?.message, where: ctx.part, place: ctx.place, action: 'conversion', notify: !K.sourceMissing(error) });
-    if (!group?.intact) { loss(savedAs(record.label, ', because it was edited here.')); return null; }
+    if (!group?.intact) { loss(savedAs(record.label, false)); return null; }
     if (group.emitted) return '';
     try {
       const fragment = dependencies(record, shape, ctx, group.moved || ctx.inGroup);
@@ -311,7 +318,7 @@
       }
       xml = L.comments.shapeIdentity(shape, ctx, xml);
       group.emitted = true; return xml;
-    } catch (error) { group.intact = false; loss(savedAs(record.label, ', because the original couldn\'t be kept.'), error); return null; }
+    } catch (error) { group.intact = false; loss(savedAs(record.label, true), error); return null; }
   };
   F.references = function (item) {
     const refs = [];

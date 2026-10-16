@@ -319,7 +319,7 @@
     let sh = E.shape(id);
     if (!sh) return;
     if (sh.type === 'shape' && !sh.tx) {
-      L.hist.push('Add Text');
+      L.hist.push('添加文本');
       sh.tx = T.body([T.para('', { algn: 'ctr' })], { anchor: 'ctr' });
       E.renderShape(E.topOf(id).id);
     }
@@ -353,7 +353,7 @@
     if (opts.sel) TE.setSel(opts.sel);
     else if (opts.point) {
       const rg = caretFromPoint(opts.point.x, opts.point.y);
-      if (rg && root.contains(rg.startContainer)) { const s = window.getSelection(); s.removeAllRanges(); s.addRange(rg); if (opts.word && s.modify) { s.modify('move', 'backward', 'word'); s.modify('extend', 'forward', 'word'); } }
+      if (rg && root.contains(rg.startContainer)) { const s = window.getSelection(); s.removeAllRanges(); s.addRange(rg); if (opts.word) wordAround(s); }
       else TE.setSel(endSel(tx));
     } else if (opts.selectAll) TE.setSel(T.allRange(tx));
     else TE.setSel(endSel(tx));
@@ -361,6 +361,15 @@
     E.drawOverlay();
     L.bus.emit('edit-start');
     L.ui.refresh();
+  };
+  function wordAround(s) { if (s.modify) { s.modify('move', 'backward', 'word'); s.modify('extend', 'forward', 'word'); } }
+  /** select the word at a screen point of the text being edited (a double-click whose first click started the edit) */
+  TE.selectWordAt = function (x, y) {
+    const rg = TE.state && caretFromPoint(x, y);
+    if (!rg || !TE.contains(rg.startContainer.nodeType === 1 ? rg.startContainer : rg.startContainer.parentNode)) return;
+    const s = window.getSelection();
+    s.removeAllRanges(); s.addRange(rg); wordAround(s);
+    TE.lastSel = TE.getSel();
   };
   const endSel = (tx) => { const p = tx.ps.length - 1; const o = T.len(tx.ps[p]); return { p0: p, o0: o, p1: p, o1: o }; };
   function caretFromPoint(x, y) {
@@ -526,7 +535,7 @@
     if (!st) return;
     const t = e.inputType;
     if (t === 'historyUndo' || t === 'historyRedo') { e.preventDefault(); L.ui.exec(t === 'historyUndo' ? 'undo' : 'redo'); return; }
-    L.hist.push('Typing', 'type:' + st.id + ':' + (st.cell ? st.cell.join(',') : ''));
+    L.hist.push(L.N('键入'), 'type:' + st.id + ':' + (st.cell ? st.cell.join(',') : ''));
     if (t === 'insertParagraph') { e.preventDefault(); TE.newParagraph(); return; }
     if (t === 'insertLineBreak') { e.preventDefault(); TE.insertText('\n', { asBreak: true }); return; }
     if (t === 'insertText' && e.data) {
@@ -573,7 +582,7 @@
     if (files.length && L.app) { TE.end(); L.app.insertPictureFiles(files); return; }
     const text = dt.getData('text/plain');
     if (!text) return;
-    L.hist.push('Paste');
+    L.hist.push(L.N('粘贴'));
     TE.insertText(text.replace(/\r\n?/g, '\n').replace(/\t/g, '\t'));
   }
 
@@ -675,17 +684,17 @@
     if (T.collapsed(s)) {
       const w = T.wordAt(t.tx, { p: s.p0, o: s.o0 });
       if (w) {
-        L.hist.push(label || 'Format');
+        L.hist.push(label || L.N('格式'));
         T.mapRange(t.tx, w, fn);
         TE.rerender(s);
       } else {
         const base = T.propsAt(t.tx, { p: s.p0, o: s.o0 });
         const p = t.tx.ps[s.p0];
-        if (!T.len(p)) { L.hist.push(label || 'Format'); p.end = fn(Object.assign({}, p.end || base)); delete p.end.t; TE.rerender(s); }
+        if (!T.len(p)) { L.hist.push(label || L.N('格式')); p.end = fn(Object.assign({}, p.end || base)); delete p.end.t; TE.rerender(s); }
         else TE.pending = { at: { p: s.p0, o: s.o0 }, props: (() => { const r = fn(Object.assign({}, base, TE.pending ? TE.pending.props : {})); delete r.t; return r; })() };
       }
     } else {
-      L.hist.push(label || 'Format');
+      L.hist.push(label || L.N('格式'));
       T.mapRange(t.tx, s, fn);
       TE.rerender(s);
     }
@@ -697,7 +706,7 @@
     if (!t) return;
     TE.sync();
     const s = T.norm(TE.currentSel() || T.allRange(t.tx));
-    L.hist.push(label || 'Format Paragraph');
+    L.hist.push(label || '设置段落格式');
     for (let i = s.p0; i <= s.p1; i++) if (t.tx.ps[i]) fn(t.tx.ps[i], i, t);
     TE.rerender(s);
     if (E.view === 'master') E.syncMaster();
@@ -737,11 +746,21 @@
     const t = TE.target();
     if (!t) return false;
     const k = e.key;
+    /* over a range of table cells, Delete and Backspace empty the cells; typing or moving goes on in the cell where the
+       drag started, and the range ends with its highlight (as Impress) */
+    if (E.cellSel && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      if (k === 'Delete' || k === 'Backspace') { e.preventDefault(); clearCells(t); return true; }
+      if (k.length === 1 || /^(Enter|Tab|Arrow\w+|Home|End|PageUp|PageDown)$/.test(k)) {
+        E.cellSel = null; E.drawOverlay();
+        const s = window.getSelection();
+        if (!s.rangeCount || !TE.state.root.contains(s.anchorNode)) TE.setSel(endSel(t.tx));
+      }
+    }
     if (k === 'Escape') { e.preventDefault(); const id = t.sh.id; TE.end(); E.select([id]); E.refocus(); return true; }
     if (k === 'F2') { e.preventDefault(); const id = t.sh.id; TE.end(); E.select([id]); E.refocus(); return true; }
     if (k === 'Enter' && !e.ctrlKey && !e.altKey && !e.metaKey) {
       e.preventDefault();
-      L.hist.push('Typing', 'type:' + TE.state.id + ':' + (TE.state.cell ? TE.state.cell.join(',') : ''));
+      L.hist.push(L.N('键入'), 'type:' + TE.state.id + ':' + (TE.state.cell ? TE.state.cell.join(',') : ''));
       if (e.shiftKey) TE.insertText('\n', { asBreak: true }); else TE.newParagraph();
       return true;
     }
@@ -749,7 +768,7 @@
       e.preventDefault();
       if (t.sh.type === 'table') { TE.moveCell(e.shiftKey ? -1 : 1); return true; }
       if (TE.atParaStart() || TE.multiPara() || e.shiftKey) L.ui.exec(e.shiftKey ? 'promote' : 'demote');
-      else { L.hist.push('Typing', 'type:' + TE.state.id + ':' + (TE.state.cell ? TE.state.cell.join(',') : '')); TE.insertText('\t'); }
+      else { L.hist.push(L.N('键入'), 'type:' + TE.state.id + ':' + (TE.state.cell ? TE.state.cell.join(',') : '')); TE.insertText('\t'); }
       return true;
     }
     if (k === 'Backspace' && !e.ctrlKey && TE.atParaStart()) {
@@ -759,6 +778,18 @@
     }
     return false;
   };
+  /** empty the cells of the range (one undo step); the caret stays in the cell the drag started from */
+  function clearCells(t) {
+    const cells = E.cellSel, id = t.sh.id, cell = TE.state.cell;
+    TE.detach();
+    E.cellSel = cells;
+    L.hist.push(L.N('清除'));
+    F.forEachTx(t.sh, (tx) => { tx.ps = [Object.assign(L.clone(tx.ps[0]), { rs: [] })]; });
+    E.cellSel = null;
+    E.render({ keepEdit: false });
+    TE.begin(id, { cell, sel: { p0: 0, o0: 0, p1: 0, o1: 0 } });
+    E.touched();
+  }
   TE.moveCell = function (dir) {
     const st = TE.state;
     const sh = TE.target().sh;
@@ -771,7 +802,7 @@
       if (c < 0) { c = cols - 1; r--; }
     } while (r >= 0 && r < rows && sh.tbl.rows[r].cells[c] && (sh.tbl.rows[r].cells[c].hm || sh.tbl.rows[r].cells[c].vm));
     if (r >= rows) {
-      L.hist.push('Insert Row');
+      L.hist.push('插入行');
       L.app.tableAddRow(sh, rows - 1, true);
       const id = sh.id;
       TE.detach(true);
@@ -810,8 +841,10 @@
     const shapes = TE.active() ? [TE.target().sh] : F.textShapes();
     if (!shapes.length) return;
     const editSnap = TE.active() ? TE.snapshot() : null;
+    const cells = E.cellSel;   /* a range of table cells: detaching ends it, but it is what gets formatted */
     if (editSnap) TE.detach();
-    L.hist.push(label || 'Format');
+    E.cellSel = cells;
+    L.hist.push(label || L.N('格式'));
     for (const sh of shapes) {
       if (sh.type === 'wordart') { if (waFn) waFn(sh.wa); continue; }
       forEachTx(sh, (tx) => { T.mapRange(tx, T.allRange(tx), fn); for (const p of tx.ps) if (!p.rs.length) { p.end = fn(Object.assign({}, p.end || {})); delete p.end.t; } });
@@ -819,6 +852,7 @@
     if (E.view === 'master') E.syncMaster();
     E.render({ keepEdit: false });
     if (editSnap) TE.resume(editSnap);
+    if (cells && editSnap) { E.cellSel = cells; E.drawOverlay(); }   /* the range stays selected */
     E.touched();
   };
   F.para = function (fn, label) {
@@ -826,12 +860,15 @@
     const shapes = TE.active() ? [TE.target().sh] : F.textShapes().filter((s) => s.type !== 'wordart');
     if (!shapes.length) return;
     const editSnap = TE.active() ? TE.snapshot() : null;
+    const cells = E.cellSel;   /* a range of table cells: detaching ends it, but it is what gets formatted */
     if (editSnap) TE.detach();
-    L.hist.push(label || 'Format Paragraph');
+    E.cellSel = cells;
+    L.hist.push(label || '设置段落格式');
     for (const sh of shapes) forEachTx(sh, (tx) => tx.ps.forEach((p, i) => fn(p, i, { sh, tx })));
     if (E.view === 'master') E.syncMaster();
     E.render({ keepEdit: false });
     if (editSnap) TE.resume(editSnap);
+    if (cells && editSnap) { E.cellSel = cells; E.drawOverlay(); }   /* the range stays selected */
     E.touched();
   };
   /** Effective run & paragraph state for toolbar display */

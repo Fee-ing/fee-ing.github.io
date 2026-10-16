@@ -785,7 +785,7 @@
     x += `<w:defaultTabStop w:val="${tw(s.defTab || 36)}"/>`;
     if (s.autoHyphen) x += '<w:autoHyphenation/>';
     if (s.evenOdd) x += '<w:evenAndOddHeaders/>';
-    x += '<w:characterSpacingControl w:val="doNotCompress"/>';
+    x += `<w:characterSpacingControl w:val="${X(s.charSpacing || 'doNotCompress')}"/>`;
     if (s.updateFields || (opts && opts.updateFields)) x += '<w:updateFields w:val="true"/>';
     if (opts && opts.hasFn) x += notePrXML('footnotePr', s.fnPr || {}, true);
     if (opts && opts.hasEn) x += notePrXML('endnotePr', s.enPr || {}, true);
@@ -796,7 +796,9 @@
     const legacySettings = (legacy.match(/<w:compatSetting [^>]*\/>/g) || []).join('');
     x += `<w:compat>${legacyFlags}<w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="${s.compat || 12}"/>${legacySettings}</w:compat>`;
     if (s.docVars && s.docVars.length) x += `<w:docVars>${s.docVars.map((v) => `<w:docVar w:name="${X(v.name)}" w:val="${X(v.val)}"/>`).join('')}</w:docVars>`;
-    x += '<w:themeFontLang w:val="en-US"/><w:clrSchemeMapping w:bg1="light1" w:t1="dark1" w:bg2="light2" w:t2="dark2" w:accent1="accent1" w:accent2="accent2" w:accent3="accent3" w:accent4="accent4" w:accent5="accent5" w:accent6="accent6" w:hyperlink="hyperlink" w:followedHyperlink="followedHyperlink"/>';
+    const tl = s.themeLang || { val: 'en-US' };
+    x += `<w:themeFontLang${['val', 'eastAsia', 'bidi'].filter((k) => tl[k]).map((k) => ` w:${k}="${X(tl[k])}"`).join('')}/>`;
+    x += '<w:clrSchemeMapping w:bg1="light1" w:t1="dark1" w:bg2="light2" w:t2="dark2" w:accent1="accent1" w:accent2="accent2" w:accent3="accent3" w:accent4="accent4" w:accent5="accent5" w:accent6="accent6" w:hyperlink="hyperlink" w:followedHyperlink="followedHyperlink"/>';
     x += '<w:decimalSymbol w:val="."/><w:listSeparator w:val=","/>';
     return x + '</w:settings>';
   }
@@ -804,11 +806,14 @@
     const t = doc.theme || {};
     const c = Object.assign({}, L.dml.DEFAULT_THEME, t.colors || {});
     const sc = (k) => (k === 'dk1' || k === 'lt1' ? `<a:${k}><a:sysClr val="${k === 'dk1' ? 'windowText' : 'window'}" lastClr="${(c[k] || '#000000').replace('#', '').toUpperCase()}"/></a:${k}>` : `<a:${k}><a:srgbClr val="${(c[k] || '#000000').replace('#', '').toUpperCase()}"/></a:${k}>`);
-    const fnt = (f) => `<a:latin typeface="${X(f)}"/><a:ea typeface=""/><a:cs typeface=""/>`;
+    /* the East Asian font as the theme's font for the document's East Asian script, as a Japanese Word writes it */
+    const ea = ((doc.settings && doc.settings.themeLang) || {}).eastAsia || '';
+    const script = /^ja/i.test(ea) ? 'Jpan' : /^ko/i.test(ea) ? 'Hang' : /^zh-(cn|sg)/i.test(ea) ? 'Hans' : /^zh/i.test(ea) ? 'Hant' : null;
+    const fnt = (f, eaFont) => `<a:latin typeface="${X(f)}"/><a:ea typeface=""/><a:cs typeface=""/>` + (script && eaFont ? `<a:font script="${script}" typeface="${X(eaFont)}"/>` : '');
     const ph = '<a:solidFill><a:schemeClr val="phClr"/></a:solidFill>';
     const ln = (w) => `<a:ln w="${w}" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/></a:ln>`;
     return HEAD + `<a:theme xmlns:a="${NS.a}" name="Office Theme"><a:themeElements><a:clrScheme name="Office">${['dk1', 'lt1', 'dk2', 'lt2', 'accent1', 'accent2', 'accent3', 'accent4', 'accent5', 'accent6', 'hlink', 'folHlink'].map(sc).join('')}</a:clrScheme>` +
-      `<a:fontScheme name="Office"><a:majorFont>${fnt(t.major || 'Cambria')}</a:majorFont><a:minorFont>${fnt(t.minor || 'Calibri')}</a:minorFont></a:fontScheme>` +
+      `<a:fontScheme name="Office"><a:majorFont>${fnt(t.major || 'Cambria', t.majorEA)}</a:majorFont><a:minorFont>${fnt(t.minor || 'Calibri', t.minorEA)}</a:minorFont></a:fontScheme>` +
       `<a:fmtScheme name="Office"><a:fillStyleLst>${ph}${ph}${ph}</a:fillStyleLst><a:lnStyleLst>${ln(9525)}${ln(25400)}${ln(38100)}</a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst>${ph}${ph}${ph}</a:bgFillStyleLst></a:fmtScheme>` +
       '</a:themeElements><a:objectDefaults/><a:extraClrSchemeLst/></a:theme>';
   }
@@ -835,7 +840,7 @@
   function appXML(doc, stats) {
     const p = doc.props;
     return HEAD + '<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">' +
-      `<Template>${X(p.template || 'Normal.dotm')}</Template><TotalTime>0</TotalTime><Pages>${stats.pages}</Pages><Words>${stats.words}</Words><Characters>${stats.charsNoSp}</Characters><Application>Quire 2003</Application><DocSecurity>0</DocSecurity><Lines>${stats.lines}</Lines><Paragraphs>${stats.paras}</Paragraphs><ScaleCrop>false</ScaleCrop>` +
+      `<Template>${X(p.template || 'Normal.dotm')}</Template><TotalTime>0</TotalTime><Pages>${stats.pages}</Pages><Words>${stats.words}</Words><Characters>${stats.charsNoSp}</Characters><Application>Quire</Application><DocSecurity>0</DocSecurity><Lines>${stats.lines}</Lines><Paragraphs>${stats.paras}</Paragraphs><ScaleCrop>false</ScaleCrop>` +
       (p.manager ? `<Manager>${X(p.manager)}</Manager>` : '') + `<Company>${X(p.company || '')}</Company><LinksUpToDate>false</LinksUpToDate><CharactersWithSpaces>${stats.chars}</CharactersWithSpaces><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>11.0000</AppVersion></Properties>`;
   }
   function customXML(doc) {

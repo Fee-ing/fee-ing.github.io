@@ -122,7 +122,7 @@
       replacements['{' + NS + '}mentions'] = t.mentions.length ? K.mergeBag(list ? K.raw(list) : '<mentions xmlns="' + NS + '"/>', {
         ['{' + NS + '}mention']: t.mentions.map(m => K.attributes(byId.has(m.mentionId) ? K.raw(byId.get(m.mentionId)) : '<mention xmlns="' + NS + '"/>', m))
       }) : [];
-      if (old.mentions.some(m => !t.mentions.some(n => n.mentionId === m.mentionId))) writer.loss({ id: 'thread-mentions:' + t.id, what: 'Some mentions could not be kept after the comment text was edited.', where: ref, action: 'drop' });
+      if (old.mentions.some(m => !t.mentions.some(n => n.mentionId === m.mentionId))) writer.loss({ id: 'thread-mentions:' + t.id, what: '批注文字编辑后，部分提及信息无法保留。', where: ref, action: 'drop' });
     }
     if (Object.keys(replacements).length) xml = K.mergeBag(xml, replacements);
     return writer.emit(K.slice(f, xml), owner);
@@ -135,9 +135,9 @@
         if (T.active(cm)) {
           for (const t of cm.thread) items.push({ cm, t });
           for (const p of cm.threadKeep.people) needed.set(p.id, p.xml);
-        } else if (cm.thread?.length) w.loss({ id: 'thread-conversion:' + sh.id + ':' + rootId(cm), what: 'A comment thread you edited will be saved as an ordinary note. Excel will show it as a note, not as a conversation.', where: sh.name + '!' + F.cellName(cm.r, cm.c), place: sh.name + '!' + F.cellName(cm.r, cm.c), action: 'conversion', notify: true });
+        } else if (cm.thread?.length) w.loss({ id: 'thread-conversion:' + sh.id + ':' + rootId(cm), what: '您编辑的批注对话将保存为普通备注。Excel 会将其显示为备注，而非对话。', where: sh.name + '!' + F.cellName(cm.r, cm.c), place: sh.name + '!' + F.cellName(cm.r, cm.c), action: 'conversion', notify: true });
       }
-      if (!items.length) { if (source) w.omit(source, 'The comments on this sheet were deleted or converted to ordinary notes.'); continue; }
+      if (!items.length) { if (source) w.omit(source, '此工作表中的批注已删除或转换为普通注释。'); continue; }
       const old = kids(originals, 'threadedComment'), positions = new Map(old.map((e, index) => [at(e, 'id'), index]));
       items.sort((a, b) => (positions.get(a.t.id) ?? Infinity) - (positions.get(b.t.id) ?? Infinity));
       const target = source ? w.target(pkg, source) : w.name('xl/threadedComments', 'threadedComment', 'xml');
