@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792179943018,
+  "timestamp": 1792180863714,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2600,6 +2600,11 @@
           "heat": "Claude Blog"
         },
         {
+          "url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
+          "text": "Stack Overflow for Agents triples signups with ChatGPT plugin",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31700",
           "text": "印度首报「失控智能体」：AI 测试时擅自入侵企业系统，受害方浑然不知",
           "heat": "aibase"
@@ -2633,11 +2638,6 @@
           "url": "https://daily.dev/posts/china-proposes-export-controls-on-its-advanced-ai-models-and-chip-designs-0yanh2zcb",
           "text": "China proposes export controls on AI models above 2 trillion parameters and chip designs",
           "heat": "daily.dev"
-        },
-        {
-          "url": "https://wallstreetcn.com/articles/3783801",
-          "text": "下周 Meta 财报成 AI 资本开支试金石，万亿支出能否换来回报面临首次大考",
-          "heat": "华尔街见闻"
         }
       ]
     },
@@ -9626,7 +9626,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48916936",
           "text": "教练，我想打篮球",
-          "heat": "1540"
+          "heat": "1543"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898510",
@@ -9636,12 +9636,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48917818",
           "text": "【东方八音盒︎●花映塚篇】魂之花～Another Dream...",
-          "heat": "567"
+          "heat": "571"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898506",
           "text": "【中国音乐地图之听见内蒙古 蒙古族民间歌曲集】僧格林沁",
-          "heat": "124"
+          "heat": "138"
         },
         {
           "url": "http://www.acfun.cn/v/ac48918755",
@@ -9686,7 +9686,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48918143",
           "text": "季托夫指挥圣彼得堡国立学术交响乐团：普罗科菲耶夫第五钢琴协奏曲（帕波扬独奏，2024）",
-          "heat": "81"
+          "heat": "98"
         },
         {
           "url": "http://www.acfun.cn/v/ac48918738",
