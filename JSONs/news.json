@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792178148206,
+  "timestamp": 1792179055729,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2620,6 +2620,16 @@
           "heat": "daily.dev"
         },
         {
+          "url": "https://www.infoq.com/news/2026/10/envharness-self-evolving-agents/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+          "text": "Google EnvHarness Enables Self-Evolving Agents to Learn in Dynamic Environments",
+          "heat": "infoq.com"
+        },
+        {
+          "url": "https://news.10jqka.com.cn/20261017/c680797749.shtml",
+          "text": "软银据称考虑收购美国最大安保公司 Allied Universal",
+          "heat": "同花顺财经"
+        },
+        {
           "url": "https://daily.dev/posts/china-proposes-export-controls-on-its-advanced-ai-models-and-chip-designs-0yanh2zcb",
           "text": "China proposes export controls on AI models above 2 trillion parameters and chip designs",
           "heat": "daily.dev"
@@ -2628,16 +2638,6 @@
           "url": "https://wallstreetcn.com/articles/3783801",
           "text": "下周 Meta 财报成 AI 资本开支试金石，万亿支出能否换来回报面临首次大考",
           "heat": "华尔街见闻"
-        },
-        {
-          "url": "https://www.huxiu.com/article/4898155.html?f=rss",
-          "text": "沃什：AI 是我一生最深远的经济变革，10 月和 12 月议息会议至关重要",
-          "heat": "虎嗅网"
-        },
-        {
-          "url": "https://www.huxiu.com/article/4898147.html?f=rss",
-          "text": "长鑫把晶体管「竖起来」：绕开 EUV 的追赶路，会撼动存储三巨头吗？",
-          "heat": "虎嗅网"
         }
       ]
     },
@@ -9181,7 +9181,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48916936",
           "text": "教练，我想打篮球",
-          "heat": "1534"
+          "heat": "1540"
         },
         {
           "url": "http://www.acfun.cn/v/ac48898510",
@@ -9199,11 +9199,6 @@
           "heat": "124"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48916243",
-          "text": "天依翻唱「十万嬉皮」-(￢∀￢)σ",
-          "heat": "72"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48918755",
           "text": "［朝鲜音乐］赤胆红心",
           "heat": "232"
@@ -9217,11 +9212,6 @@
           "url": "http://www.acfun.cn/v/ac48918471",
           "text": "神随的彩蛋！！！！！！（副榜第21名）",
           "heat": "144"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48916236",
-          "text": "音乐故事《432Hz降临》虚拟歌手演唱会版-天晓音",
-          "heat": "168"
         },
         {
           "url": "http://www.acfun.cn/v/ac48916970",
@@ -9252,6 +9242,11 @@
           "url": "http://www.acfun.cn/v/ac48918143",
           "text": "季托夫指挥圣彼得堡国立学术交响乐团：普罗科菲耶夫第五钢琴协奏曲（帕波扬独奏，2024）",
           "heat": "81"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48918738",
+          "text": "【作业用BGM】再次暂停的世界",
+          "heat": "57"
         },
         {
           "url": "http://www.acfun.cn/v/ac48916658",
@@ -9289,11 +9284,6 @@
           "heat": "127"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48918738",
-          "text": "【作业用BGM】再次暂停的世界",
-          "heat": "36"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48916846",
           "text": "【作业用BGM】Silk, Steel & Sundown",
           "heat": "36"
@@ -9327,6 +9317,16 @@
           "url": "http://www.acfun.cn/v/ac48916284",
           "text": "2025.5.17 0014556 双腿失聪",
           "heat": "252"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48898548",
+          "text": "【罗百吉&宝贝】摩天轮(国语)",
+          "heat": "92"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48917405",
+          "text": "【有声书】杂货店禁止驯养饿虎",
+          "heat": "67"
         }
       ]
     },
