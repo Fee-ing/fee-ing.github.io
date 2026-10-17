@@ -1,10 +1,14 @@
 {
-  "timestamp": 1792243857231,
+  "timestamp": 1792244746385,
   "data": [
     {
       "source": "足球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/match2067709date2026vnative.htm",
+          "text": "2连胜+零封！切尔西2-0送埃弗顿首败 内托双响大马丁重伤伤退"
+        },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-17/6ad32167e107anative.htm",
           "text": "曼城vs伊普斯维奇首发：哈兰德、多库、福登先发 恩佐+谢尔基替补"
@@ -22,24 +26,20 @@
           "text": "下轮直接对话！蓉城仍是3轮拿1分夺冠 若全败英博剩余2轮全胜夺冠"
         },
         {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/match2124402date2026vnative.htm",
+          "text": "夺首届闽超冠军！福州2-1逆转厦门夺冠 厦门首败16战全胜遭终结"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/6ad36ed6eb780native.htm",
+          "text": "零封奖回来了！切尔西时隔273天再次零封，终结22轮连续丢球记录"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/6ad378647bfdbnative.htm",
+          "text": "皇马官方：多家国际媒体对特巴斯的言论感到愤怒，纷纷呼吁他辞职"
+        },
+        {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-17/match1923647date2026vnative.htm",
           "text": "冠军悬念延续！英博3-1新鹏城近6场5胜1平 罗竞传射阿奇姆彭破门"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/6ad363cbdd399native.htm",
-          "text": "半场-泰山3-0十人浙江 徐俊驰飞铲染红瓦科传射克雷桑两助"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/6ad376847fa56native.htm",
-          "text": "内托乱战破门梅开二度，切尔西客场2-0领先埃弗顿"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/match1923648date2026vnative.htm",
-          "text": "关键3分！铁人4-0十人海牛领先降级区7分 安以恩双响 海牛12连败"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-17/match1923649date2026vnative.htm",
-          "text": "云南玉昆1-1战平重庆铜梁龙 卡约助攻克莱伯破门 肯帕努点射扳平"
         }
       ]
     },
@@ -60,28 +60,28 @@
           "text": "季前赛收官！哪支球队的表现最让你意外？你认为谁有夺冠之资？"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-17/6ad317aad206anative.htm",
-          "text": "媒体人：诺里给瀚森定位是第三中锋 这个NBA独苗需要我们理性守护"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-17/6ad2fd21f1361native.htm",
-          "text": "有进步吗？杨瀚森季前赛场均7.3分4.8板 去年季前赛场均8分3.5板"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-17/6ad33ae1da3b1native.htm",
-          "text": "三外援全部注册完成！CBA官网：广东新增注册外援弗格和阿祖布克"
+          "url": "https://news.zhibo8.com/nba/2026-10-17/6ad2cf7d7ef5dnative.htm",
+          "text": "雷迪克：我不清楚克内克特的心理状态 我又不是优秀的心理学家"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-17/6ad34a897e8e5native.htm",
           "text": "杜锋：离任广东帅位是因为审美疲劳 我和杨鸣指导未来会重返一线"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-17/6ad2bea79f9c3native.htm",
-          "text": "😨又显“零”了！克莱半场15分钟7投0中 贡献0分3助3犯规~"
+          "url": "https://news.zhibo8.com/nba/2026-10-17/match2111671date2026vnative.htm",
+          "text": "🏀季前赛-掘金轻取湖人 穆雷21+6 约基奇17+6+8 东&里34分"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-17/6ad26060e72c0native.htm",
+          "text": "Slater：勇士内部认为巴特勒的交易是库里时代的最后一次重大操作"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-17/6ad3731d496e4native.htm",
           "text": "杜锋：现在CBA外援拿6-70分是常态 联赛锻炼的不是国手而是外援了"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-17/6ad33aff824e6native.htm",
+          "text": "杜锋：新赛季压力最大的主教练是深圳的顾全 其次是北京主帅李楠"
         }
       ]
     }
