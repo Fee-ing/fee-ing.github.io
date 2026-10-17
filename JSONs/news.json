@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792262746792,
+  "timestamp": 1792263661819,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2703,7 +2703,7 @@
         {
           "url": "https://m.ithome.com/html/1014328.htm",
           "text": "DeepSeek V4.1 Flash-1017 新版本发布：性能提升、耗时缩短，许愿式编程一键成真",
-          "heat": "182评"
+          "heat": "185评"
         },
         {
           "url": "https://m.ithome.com/html/1014253.htm",
@@ -2713,7 +2713,7 @@
         {
           "url": "https://m.ithome.com/html/1014272.htm",
           "text": "消息称苹果 iPhone 18 Pro Max 手机刷新纪录：W41 单周单品国内激活近 90 万台",
-          "heat": "376评"
+          "heat": "377评"
         },
         {
           "url": "https://m.ithome.com/html/1014212.htm",
@@ -2723,7 +2723,7 @@
         {
           "url": "https://m.ithome.com/html/1014247.htm",
           "text": "古尔曼称苹果首款折叠 iPhone Duo 需求“空前”，首销线下恐难直接买下",
-          "heat": "209评"
+          "heat": "210评"
         },
         {
           "url": "https://m.ithome.com/html/1014299.htm",
@@ -2731,14 +2731,14 @@
           "heat": "206评"
         },
         {
-          "url": "https://m.ithome.com/html/1014394.htm",
-          "text": "10.97 万元起吉利星瑞 L PLUS 正式上市，国内首款搭载激光雷达的燃油轿车",
-          "heat": "83评"
-        },
-        {
           "url": "https://m.ithome.com/html/1014352.htm",
           "text": "奇瑞智界将获批独立造车资质，内部人士确认计划独立上市",
           "heat": "132评"
+        },
+        {
+          "url": "https://m.ithome.com/html/1014394.htm",
+          "text": "10.97 万元起吉利星瑞 L PLUS 正式上市，国内首款搭载激光雷达的燃油轿车",
+          "heat": "83评"
         },
         {
           "url": "https://m.ithome.com/html/1014392.htm",
@@ -2758,7 +2758,7 @@
         {
           "url": "https://m.ithome.com/html/1014271.htm",
           "text": "运行 iOS 27.0.1 的苹果 iPhone 18 Pro 被“完美越狱”：重启后仍可维持最高权限",
-          "heat": "79评"
+          "heat": "80评"
         }
       ]
     },
@@ -3060,6 +3060,16 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652735556&idx=2&sn=025c950b095d8dabc68a3671a4e4b8ba",
+          "text": "56 年没解开的题，AI 全解了！谷歌 DeepMind 新成果登上 Science 主刊",
+          "heat": "新智元"
+        },
+        {
+          "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651063492&idx=3&sn=25bcc369df362a36ce14020def7e91f6",
+          "text": "538 小时「极脏」人类数据，真机不到 1 小时：港大让机器人学会拆快递、打胶枪、做冷饮",
+          "heat": "机器之心"
+        },
+        {
           "url": "https://www.ithome.com/1/014/390.htm",
           "text": "华硕推出旗下首款英特尔 Arc Pro B70 显卡：32GB ECC 显存，AI 算力达 367 TOPS",
           "heat": "IT 之家"
@@ -3073,16 +3083,6 @@
           "url": "https://openai.com/index/itau-generative-ai",
           "text": "How Itaú is building generative AI for its entire customer base",
           "heat": "OpenAI"
-        },
-        {
-          "url": "https://news.cctv.com/2026/10/17/ARTIfzcduh91cxzQJtHZPalP261017.shtml",
-          "text": "新型「灵巧手」亮相广交会 单指可提近 20 公斤重物",
-          "heat": "央视新闻"
-        },
-        {
-          "url": "https://www.huxiu.com/article/4898339.html?f=rss",
-          "text": "巨头自研 AI 芯片：靠推理突围，抢回算力垄断利润",
-          "heat": "虎嗅网"
         }
       ]
     },
@@ -10496,12 +10496,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48920343",
           "text": "【绝望女神/庆生翻唱】【Eminem Godzilla】",
-          "heat": "1029"
+          "heat": "1034"
         },
         {
           "url": "http://www.acfun.cn/v/ac48920798",
           "text": "就让因后退果上追，大梦终不归",
-          "heat": "606"
+          "heat": "685"
         },
         {
           "url": "http://www.acfun.cn/v/ac48919834",
@@ -10516,7 +10516,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48920172",
           "text": "碰碰—你究竟想要（DX）",
-          "heat": "113"
+          "heat": "123"
         },
         {
           "url": "http://www.acfun.cn/v/ac48918963",
@@ -10604,6 +10604,11 @@
           "heat": "65"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48920433",
+          "text": "杰伦新歌 如诗一般形容你 吉他弹唱",
+          "heat": "31"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48898621",
           "text": "【M6 Music Live Session】Joé Dwet Filé",
           "heat": "82"
@@ -10612,6 +10617,11 @@
           "url": "http://www.acfun.cn/v/ac48919582",
           "text": "[东方project同人音乐推荐]Wind-Frontiers Create",
           "heat": "54"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48898625",
+          "text": "【大塚 愛】甘えんぼ",
+          "heat": "59"
         },
         {
           "url": "http://www.acfun.cn/v/ac48919213",
@@ -10624,24 +10634,14 @@
           "heat": "42"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48920670",
+          "text": "盘点童年回忆，快来看看有没有你的那份在这里，你也可以参与讨论",
+          "heat": "139"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48918870",
           "text": "Auratum - The Last Sanctuary of Rain and Stone",
           "heat": "46"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48920433",
-          "text": "杰伦新歌 如诗一般形容你 吉他弹唱",
-          "heat": "21"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48920670",
-          "text": "盘点童年回忆，快来看看有没有你的那份在这里，你也可以参与讨论",
-          "heat": "113"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48898604",
-          "text": "里尔国家管弦乐团 奥芬巴赫《地狱中的奥菲欧序曲》圣桑《第一大提琴协奏曲》布朗热《春天的早晨",
-          "heat": "112"
         }
       ]
     },
