@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792350942329,
+  "timestamp": 1792351855617,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2585,6 +2585,11 @@
           "heat": "钛媒体"
         },
         {
+          "url": "https://news.cctv.com/2026/10/19/ARTIbF26SSebVSltjwBHVHcC261019.shtml",
+          "text": "多家期刊拒绝人工智能参与撰写稿件，润色也不行",
+          "heat": "央视新闻"
+        },
+        {
           "url": "https://www.ithome.com/1/014/589.htm",
           "text": "研究人员让 6 款 AI 智能体尝试「追回火车票退款」，暴露模型使用激进方式执行任务风险",
           "heat": "IT 之家"
@@ -2613,11 +2618,6 @@
           "url": "https://www.nbd.com.cn/articles/2026-10-18/4607717.html",
           "text": "每经热评 | 算法推荐了假「吴越」，技术中立不是平台挡箭牌",
           "heat": "每经网"
-        },
-        {
-          "url": "https://www.tmtpost.com/8172203.html",
-          "text": "DeepSeek 成立产品部，整合 Harness 及 Web、App、Platform 团队",
-          "heat": "钛媒体"
         }
       ]
     },
@@ -9111,32 +9111,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48920811",
           "text": "【桃夜朔】遊霊婚（cover菅原圭）极致病娇的女鬼情歌",
-          "heat": "1645"
+          "heat": "1652"
         },
         {
           "url": "http://www.acfun.cn/v/ac48921458",
           "text": "因为没交舍保，我被踢出了自己的粉丝群",
-          "heat": "1750"
+          "heat": "1755"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922196",
           "text": "【柯基】《昨夜小楼又东风》｜费玉清｜今夜月稀掩朦胧，低声叹呢喃望星空，恰似回首终究一场梦",
-          "heat": "1091"
+          "heat": "1093"
         },
         {
           "url": "http://www.acfun.cn/v/ac48921675",
           "text": "『何处山海万象生 (Japanese Ver.)』・霧雨",
-          "heat": "1105"
+          "heat": "1107"
         },
         {
           "url": "http://www.acfun.cn/v/ac48905413",
           "text": "【东方/交响】神灵庙的秋日祭典【幻宴Project2025片段】",
-          "heat": "663"
+          "heat": "687"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922270",
           "text": "【妖一】Lucifer【ルシファー】",
-          "heat": "175"
+          "heat": "195"
         },
         {
           "url": "http://www.acfun.cn/v/ac48920069",
@@ -9146,7 +9146,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48921760",
           "text": "夜行 cover：ヨルシカ",
-          "heat": "176"
+          "heat": "196"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922620",
@@ -9199,6 +9199,11 @@
           "heat": "88"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48921161",
+          "text": "校庆老师唱歌",
+          "heat": "24"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48922346",
           "text": "【mashup】展示中毒x太阳系disco x施魅者x等离子·雷霆·超新星",
           "heat": "67"
@@ -9222,11 +9227,6 @@
           "url": "http://www.acfun.cn/v/ac48898994",
           "text": "【大塚 愛】しゃぼん玉",
           "heat": "79"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48921161",
-          "text": "校庆老师唱歌",
-          "heat": "13"
         },
         {
           "url": "http://www.acfun.cn/v/ac48920642",
