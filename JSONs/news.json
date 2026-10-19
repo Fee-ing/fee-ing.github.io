@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792428346330,
+  "timestamp": 1792429264199,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://wallstreetcn.com/livenews/3181333",
+          "text": "标普全球警告：超大规模云服务商的 AI 相关债务可能高于目前已知水平",
+          "heat": "华尔街见闻"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31728",
           "text": "OpenAI 发布 ChatGPT 扩展程序重大升级，支持跨标签页上下文读取与自动化操作",
           "heat": "aibase"
@@ -3073,11 +3078,6 @@
           "url": "https://www.theblockbeats.info/flash/372604",
           "text": "美国土安全部下令将 DeepSeek 产品排除在民用政府机构系统之外",
           "heat": "theblockbeats.info"
-        },
-        {
-          "url": "https://www.huxiu.com/article/4898743.html?f=rss",
-          "text": "Cue 一周实测：给 AI 配了身份证，却还做不到「随时可用」",
-          "heat": "虎嗅网"
         }
       ]
     },
@@ -4382,6 +4382,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261019Q038JZ00",
+          "text": "NBA国王队西蒙斯在训练中跟腱撕裂，他最少得缺席多长时间？NBA生涯会就此终结吗？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261019Q0BG5J00",
           "text": "马斯克称将向美国每名儿童赠送一股SpaceX股票，为何他突然开始“发钱”？其他大企业和富豪能跟进吗？",
           "heat": "之乎者也小鱼儿"
@@ -4394,11 +4399,6 @@
         {
           "url": "https://new.qq.com/rain/a/20261019Q03G9W00",
           "text": "加拿大军事基地演习引发爆炸造成严重伤亡，为何演习区内会有天然气井？事故会对当地政治局势带来什么影响？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261019Q038JZ00",
-          "text": "NBA国王队西蒙斯在训练中跟腱撕裂，他最少得缺席多长时间？NBA生涯会就此终结吗？",
           "heat": "之乎者也小鱼儿"
         },
         {
@@ -4432,9 +4432,9 @@
           "heat": "本来就是个局外人"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261019Q09P8J00",
+          "url": "https://new.qq.com/rain/a/20261019Q0D4TX00",
           "text": "湖北小伙踩着自制“飞行滑板”飞越长江，这和普通无人机有什么区别？载人飞行的技术难点在哪里？",
-          "heat": "拾光者"
+          "heat": "夏夏回来了随见"
         },
         {
           "url": "https://new.qq.com/rain/a/20261019Q08TVO00",
@@ -10416,22 +10416,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48923933",
           "text": "AC若有我们在，爱就一直在",
-          "heat": "1478"
+          "heat": "1492"
         },
         {
           "url": "http://www.acfun.cn/v/ac48924668",
           "text": "《明知故犯》主播转型做网感少女有说法吗？",
-          "heat": "1104"
+          "heat": "1110"
         },
         {
           "url": "http://www.acfun.cn/v/ac48914992",
           "text": "【东方/作业用】适合清爽秋日的东方组曲 66mins（恢复疲劳 音乐治疗~）",
-          "heat": "527"
+          "heat": "546"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925083",
           "text": "【衣笠雪绘】ALICE 歌切day206",
-          "heat": "289"
+          "heat": "326"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922678",
@@ -10441,7 +10441,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48922740",
           "text": "【男声翻唱】10月無口な君を忘れる（十月，忘记沉默的你）",
-          "heat": "226"
+          "heat": "234"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48925206",
+          "text": "【K】ブラウニー（布朗尼）【A站独家】",
+          "heat": "141"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922463",
@@ -10471,7 +10476,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48923392",
           "text": "【Ado】Raven Sky【MV】",
-          "heat": "252"
+          "heat": "269"
         },
         {
           "url": "http://www.acfun.cn/v/ac48923359",
@@ -10489,14 +10494,14 @@
           "heat": "62"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48924586",
+          "text": "小小前奏",
+          "heat": "74"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48899086",
           "text": "【M6 Music Live Session】Kaaris",
           "heat": "144"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48923385",
-          "text": "【まふまふ】東京テディベア - 2026 Arrange ver. -",
-          "heat": "62"
         },
         {
           "url": "http://www.acfun.cn/v/ac48899091",
@@ -10504,9 +10509,9 @@
           "heat": "85"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48924586",
-          "text": "小小前奏",
-          "heat": "74"
+          "url": "http://www.acfun.cn/v/ac48923385",
+          "text": "【まふまふ】東京テディベア - 2026 Arrange ver. -",
+          "heat": "62"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922422",
@@ -10526,7 +10531,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48924856",
           "text": "年度配乐《Hortus Regis Alti》-皇牌空战8",
-          "heat": "175"
+          "heat": "180"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922657",
@@ -10546,7 +10551,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48924881",
           "text": "短视频听歌",
-          "heat": "136"
+          "heat": "148"
         },
         {
           "url": "http://www.acfun.cn/v/ac48891838",
@@ -10557,11 +10562,6 @@
           "url": "http://www.acfun.cn/v/ac48923329",
           "text": "【NOMELON NOLEMON（ツミキ × みきまりあ）】摇曳不定【MV】",
           "heat": "37"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48922706",
-          "text": "【碧蓝幻想+罪恶装备+饿狼传说】t0冠军合集(不含EWC)！！！！！",
-          "heat": "52"
         }
       ]
     },
