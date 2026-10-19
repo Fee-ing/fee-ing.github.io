@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792435545134,
+  "timestamp": 1792436469081,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.gelonghui.com/live/2718320",
+          "text": "英伟达完成量子纠错技术验证 所需物理量子比特减少 90%",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://www.leiphone.com/category/private/QgMWStz8hCPsFf68.html",
           "text": "华中师大 CoReFuse-Med：先净化再融合，让低质模态不再拖后腿｜ACM MM 2026",
           "heat": "雷锋网"
@@ -3078,11 +3083,6 @@
           "url": "https://www.aibase.com/zh/news/31722",
           "text": "英特尔杀入大模型推理市场！发布 GPU D 系列：最高配 480GB 显存，专为万亿参数推理而生",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.theblockbeats.info/flash/372604",
-          "text": "美国土安全部下令将 DeepSeek 产品排除在民用政府机构系统之外",
-          "heat": "theblockbeats.info"
         }
       ]
     },
@@ -4432,14 +4432,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261019Q0DATU00",
-          "text": "男子在四川稻城严重高反去世，曾独自在帐篷躺卧三天，身体高反能硬抗吗？同行人没带他下撤需要担责吗？",
-          "heat": "本来就是个局外人"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261019Q0D4TX00",
           "text": "湖北小伙踩着自制“飞行滑板”飞越长江，这和普通无人机有什么区别？载人飞行的技术难点在哪里？",
           "heat": "夏夏回来了随见"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261019Q0DATU00",
+          "text": "男子在四川稻城严重高反去世，曾独自在帐篷躺卧三天，身体高反能硬抗吗？同行人没带他下撤需要担责吗？",
+          "heat": "本来就是个局外人"
         },
         {
           "url": "https://new.qq.com/rain/a/20261019Q08TVO00",
