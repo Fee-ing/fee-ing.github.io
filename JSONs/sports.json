@@ -1,13 +1,21 @@
 {
-  "timestamp": 1792431053458,
+  "timestamp": 1792432865998,
   "data": [
     {
       "source": "足球",
       "type": "直播吧",
       "content": [
         {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad64ffa19ebenative.htm",
+          "text": "官方：C罗因擅自退出葡萄牙集训营被禁赛30天，罚款255欧"
+        },
+        {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad61ca5f17fcnative.htm",
           "text": "邮报独家：曼城很可能被巨额扣分确保降级，至少在英冠停留两赛季"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad6543c875ccnative.htm",
+          "text": "葡媒：C罗禁赛处罚已服完19天还剩11天，可入选葡萄牙下月名单"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad61fe667389native.htm",
@@ -22,24 +30,16 @@
           "text": "真要去英冠？曼城7连胜领跑英超但降级赔率仅2.2，高居第三"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad5d4915247fnative.htm",
-          "text": "穆里尼奥谈迪奥曼德：让我想起刚来皇马的维尼修斯，还是个半成品"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad559959549fnative.htm",
+          "text": "新气象！梅西社媒再晒观看埃登斯补时绝杀，官宣收购后球队3连胜"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad622a3c89eenative.htm",
-          "text": "英超积分榜翻天覆地？曼城被曝将巨额扣分降级，榜首可能跌榜尾"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad64b4da5314native.htm",
+          "text": "会是谁？记者：一位金球奖顶级热门将缺席颁奖，他是前五热门之一"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad5df9d32204native.htm",
-          "text": "是不是AI？詹俊转发弗格森“睡着”报道：这不是AI图片吧？"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad5cd2ac2ebdnative.htm",
-          "text": "5000万镑值！孔萨93分钟封堵绝平为枪手守住3分 28岁悍将稳坐首发"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad574d0c91dfnative.htm",
-          "text": "1.4亿标王不白买！迪奥曼德赛季前6场0球0助 近5场2球3助坐稳首发"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad5d41cf0918native.htm",
+          "text": "双子星不同命！2年前费尔明1500万加维9000万，现在1.1亿&2500万"
         }
       ]
     },
@@ -52,36 +52,36 @@
           "text": "🥹12年独行侠生涯落幕！Shams：独行侠裁掉老将中锋鲍威尔！"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad5f43e079e8native.htm",
-          "text": "记者：上海男篮外援拉塞尔因为大腿肌肉紧张 球队让他今晚休战"
+          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad56939ac9ffnative.htm",
+          "text": "😮壕！凯莉·詹娜穿天价内衣首登维密 仅主石黄钻就值2200万刀"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-19/6ad62c7bd32c1native.htm",
           "text": "就差一天50万美元没了！等到常规赛揭幕日鲍威尔合同将保障150万"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad5e2e707579native.htm",
-          "text": "西蒙斯跟腱断裂、库里90度崴脚！新季最让你担心伤病的球星是谁？"
+          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad584782de3enative.htm",
+          "text": "薪资炸了！雷霆27-28赛季潜在首发5人薪资将达2亿 工资帽仅1.76亿"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad58d88a3544native.htm",
-          "text": "名嘴：若马刺再让哈珀打替补 他可能会像当年的伦纳德一样离开"
+          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad616a0f3f40native.htm",
+          "text": "夸梅：布朗尼将来能继承十亿美元家产 我才不会同情他"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-19/6ad619c04a481native.htm",
           "text": "教练真敢用啊！王浩然复出首秀打满40分钟15中5拿下13分5板3助"
         },
         {
+          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad5f43e079e8native.htm",
+          "text": "记者：上海男篮外援拉塞尔因为大腿肌肉紧张 球队让他今晚休战"
+        },
+        {
           "url": "https://news.zhibo8.com/nba/2026-10-19/6ad5defa61ff3native.htm",
           "text": "杰伦·布朗谈最亏的消费：买了台保时捷Taycan Turbo但自己没开过"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad62f4fdad4cnative.htm",
-          "text": "队记：独行侠曾给巴里亚260万保障合同后裁掉 这是温情的告别礼物"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-19/6ad5820437d28native.htm",
-          "text": "媒体人：陈国豪首秀20分三分6中5 休赛期减重/速率变快转型迎质变"
+          "url": "https://news.zhibo8.com/nba/2026-10-19/match2295790date2026vnative.htm",
+          "text": "🏀上海击败北控 张镇麟28分 麦基17+6 廖三宁空砍34分"
         }
       ]
     }
