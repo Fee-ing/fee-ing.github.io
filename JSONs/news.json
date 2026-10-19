@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792426544422,
+  "timestamp": 1792427454969,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,11 @@
           "heat": "aibase"
         },
         {
+          "url": "https://aws.amazon.com/blogs/machine-learning/improve-ttft-for-multi-turn-agentic-workloads-with-bi-directional-kv-transfer-in-vllm/",
+          "text": "Improve TTFT for multi-turn agentic workloads with bi-directional KV transfer in vLLM",
+          "heat": "aws.amazon.com"
+        },
+        {
           "url": "https://www.techflowpost.com/zh-CN/newsletter/140545",
           "text": "英伟达发布 Nemotron 3.5 Super VL 及 Bolt 开放权重模型",
           "heat": "techflowpost.com"
@@ -3068,11 +3073,6 @@
           "url": "https://www.huxiu.com/article/4898743.html?f=rss",
           "text": "Cue 一周实测：给 AI 配了身份证，却还做不到「随时可用」",
           "heat": "虎嗅网"
-        },
-        {
-          "url": "https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture/",
-          "text": "The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do",
-          "heat": "engineering.fb.com"
         }
       ]
     },
@@ -4414,6 +4414,16 @@
         {
           "url": "https://new.qq.com/rain/a/20261019Q04XLK00",
           "text": "孕妇咨询取消订单，快递员称被记为投诉扣掉一天工资，快递公司的考核规定为何如此粗暴？这种罚款合法吗？",
+          "heat": "本来就是个局外人"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261019Q0DQJ500",
+          "text": "马斯克去年总薪酬为1583.6亿美元股票，这个薪酬是什么概念？为何全都用股票奖励形式发放？",
+          "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261019Q0DATU00",
+          "text": "男子在四川稻城严重高反去世，曾独自在帐篷躺卧三天，身体高反能硬抗吗？同行人没带他下撤需要担责吗？",
           "heat": "本来就是个局外人"
         },
         {
@@ -10521,12 +10531,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48923933",
           "text": "AC若有我们在，爱就一直在",
-          "heat": "1455"
+          "heat": "1461"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922597",
           "text": "【睡眠向/作业向】【东方八音盒】东方花映塚全曲合集【14首】",
-          "heat": "662"
+          "heat": "671"
         },
         {
           "url": "http://www.acfun.cn/v/ac48924668",
@@ -10541,12 +10551,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48914992",
           "text": "【东方/作业用】适合清爽秋日的东方组曲 66mins（恢复疲劳 音乐治疗~）",
-          "heat": "479"
+          "heat": "491"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922678",
           "text": "【妖一】Bluffman【ブラフマン】",
-          "heat": "65"
+          "heat": "71"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922740",
@@ -10556,7 +10566,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48925083",
           "text": "【衣笠雪绘】ALICE 歌切day206",
-          "heat": "227"
+          "heat": "255"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922463",
@@ -10641,7 +10651,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48924586",
           "text": "小小前奏",
-          "heat": "64"
+          "heat": "74"
         },
         {
           "url": "http://www.acfun.cn/v/ac48922657",
