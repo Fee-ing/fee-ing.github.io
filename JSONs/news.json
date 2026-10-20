@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792512943352,
+  "timestamp": 1792513857764,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://huggingface.co/blog/allenai/fairstress",
+          "text": "FairStress: A deeper evaluation of fairness in LLM decision-making",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31758",
           "text": "DeepSeek 开源推理框架 DeepInfer：推理成本成为 AI 普惠的关键一层",
           "heat": "aibase"
@@ -3078,11 +3083,6 @@
           "url": "https://www.infzm.com/contents/343038",
           "text": "无人车开始上夜班：你的快递已经闯了好几关",
           "heat": "南方周末"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/17117",
-          "text": "Astra 开始攻入具身腹地？天生就懂触觉，清华团队实测精细操作任务成功率达 93.8%",
-          "heat": "麻省理工科技评论"
         }
       ]
     },
@@ -10661,7 +10661,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48925618",
           "text": "评论区艾特你心中分量最重的人【UP创作大赛】",
-          "heat": "1672"
+          "heat": "1683"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925206",
@@ -10671,22 +10671,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48927660",
           "text": "歌切-绒绒",
-          "heat": "453"
+          "heat": "551"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926657",
           "text": "来看爻妹！ NMIXX《Birthday Wish》4K版MV",
-          "heat": "721"
+          "heat": "743"
         },
         {
           "url": "http://www.acfun.cn/v/ac48927104",
           "text": "【UP创作大赛】原创赛道 云一白 翻唱 写给我第一个喜欢的女孩的歌",
-          "heat": "380"
+          "heat": "406"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926420",
           "text": "还得是芙人！ IVE《Looks Can Kill》 4K版MV公开",
-          "heat": "548"
+          "heat": "563"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925216",
@@ -10701,7 +10701,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48926842",
           "text": "【翻唱】别找我麻烦",
-          "heat": "189"
+          "heat": "217"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925225",
@@ -10711,7 +10711,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48924325",
           "text": "【翻唱】舞 feat. 理芽｜这样的我，也能存在于这世上吗（Cover by：青山）",
-          "heat": "170"
+          "heat": "180"
         },
         {
           "url": "http://www.acfun.cn/v/ac48899112",
@@ -10784,6 +10784,11 @@
           "heat": "21"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48925798",
+          "text": "格林卡歌剧《伊凡·苏萨宁》中的终曲《光荣颂》（卡拉巴诺夫指挥米哈伊洛夫斯基剧院管弦乐团，冬宫博物馆）",
+          "heat": "27"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48925629",
           "text": "【NANIMONO】Shooting Star【MV】",
           "heat": "191"
@@ -10794,19 +10799,14 @@
           "heat": "58"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48899154",
+          "text": "【M6 Music Live Session】Keen V",
+          "heat": "177"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48925783",
           "text": "格林卡歌剧《伊凡·苏萨宁》中苏萨宁的咏叹调（卡拉巴诺夫指挥米哈伊洛夫斯基剧院管弦乐团，冬宫博物馆）",
           "heat": "15"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48899160",
-          "text": "【大塚 愛】クムリウタ",
-          "heat": "55"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48926614",
-          "text": "9.12fm🪑记录",
-          "heat": "172"
         }
       ]
     },
