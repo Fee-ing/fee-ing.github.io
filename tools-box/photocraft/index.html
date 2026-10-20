@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>PhotoCraft</title>
+  
+<script>
+/* Embedded copy (tools-box): 只阻断 Discord 外链，详见 src/pages/PhotoCraft/index.jsx。
+
+   PhotoCraft 的 Help 菜单与 About 对话框里带了一批外链：
+     Join us on Discord   → https://discord.gg/artcraft     ← 本站不要，拦掉
+     PhotoCraft website   → https://getartcraft.com/apps/photocraft
+     GitHub               → https://github.com/storytold/photocraft(/issues)
+     ArtCraft             → https://getartcraft.com
+   文案编译在 wasm 里（改不掉），点击最终都落到 window.open 或一个临时 <a> 的
+   click 上，所以只在这两个出口上判断：Discord 的一律不打开，**其余照常在新窗口
+   打开**。同源、blob:、data: 一律放行 —— 保存 / 导出（下载）走的是这几条路。 */
+(function () {
+  // 只认主机名，不看路径 —— 邀请链接换了码也照样拦得住。后缀锚定，
+  // 避免把 discord.gg.example.com 这类无关域名一起拦掉。
+  var DISCORD_HOST = /(^|\.)(discord\.gg|discord\.com|discordapp\.com)$/;
+
+  function isBlocked(url) {
+    if (!url) return false;
+    try {
+      var u = new URL(String(url), location.href);
+      if (u.protocol !== 'http:' && u.protocol !== 'https:') return false;
+      return DISCORD_HOST.test(u.hostname.toLowerCase());
+    } catch (e) {
+      return false; // 解析不了的交给浏览器原样处理
+    }
+  }
+
+  var nativeOpen = window.open;
+  window.open = function (url, target, features) {
+    if (isBlocked(url)) {
+      console.info('[tools-box] Discord 外链已阻断：' + url);
+      return null;
+    }
+    return nativeOpen.call(window, url, target, features);
+  };
+
+  // 左键 / 中键点击 <a>（wasm-bindgen 的 open_url 会临时造一个 <a> 并 click 它）
+  function onPointer(event) {
+    var el = event.target;
+    var a = el && el.closest ? el.closest('a[href]') : null;
+    if (!a || !isBlocked(a.href)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    console.info('[tools-box] Discord 外链已阻断：' + a.href);
+  }
+  document.addEventListener('click', onPointer, true);
+  document.addEventListener('auxclick', onPointer, true);
+})();
+</script>
+
+<script type="module">
+import init, * as bindings from './photocraft-web-boot-a223668ac1e11b19.js';
+const wasm = await init({ module_or_path: './photocraft-web-boot-a223668ac1e11b19_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #262626; }
+    #photocraft_canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    #photocraft_loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 0 16px; text-align: center; color: #b8b8b8; font: 14px system-ui, sans-serif; pointer-events: none; }
+    #photocraft_loading p { margin: 0 0 8px; max-width: 420px; line-height: 1.5; }
+    #photocraft_loading a { color: #e0e0e0; pointer-events: auto; }
+    /* The app removes this element once it runs. If the WebAssembly never downloads or doesn't match
+       this page, no Rust runs to say so, so the page itself shows what to do after a while. */
+    #photocraft_stalled { color: #8c8c8c; visibility: hidden; animation: photocraft-stalled 0s 20s forwards; }
+    @keyframes photocraft-stalled { to { visibility: visible; } }
+  </style>
+<link rel="modulepreload" href="./photocraft-web-boot-a223668ac1e11b19.js" crossorigin="anonymous" integrity="sha384-7UFv5T9Di8oDc/Ic0R29r/RmaD3nEnscnNmQULye3RzQBLZKoa4Piwl+T87jqbTU"><link rel="preload" href="./photocraft-web-boot-a223668ac1e11b19_bg.wasm" crossorigin="anonymous" as="fetch" type="application/wasm"></head>
+<body>
+  <canvas id="photocraft_canvas"></canvas>
+  <div id="photocraft_loading">
+    <p>Loading PhotoCraft&hellip;</p>
+    <p id="photocraft_stalled">This is taking longer than usual. If PhotoCraft doesn't start, its files may have failed to
+      download or come from a different version of this page. <a href="">Reload</a> to try again; the browser
+      console lists what failed.</p>
+  </div>
+</body>
+</html>
