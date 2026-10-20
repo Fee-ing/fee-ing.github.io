@@ -1,14 +1,10 @@
 {
-  "timestamp": 1792487747592,
+  "timestamp": 1792488651029,
   "data": [
     {
       "source": "足球",
       "type": "直播吧",
       "content": [
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad64ffa19ebenative.htm",
-          "text": "官方：C罗因擅自退出葡萄牙集训营被禁赛30天，罚款255欧"
-        },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad71415b1aa1native.htm",
           "text": "大爆料！滕哈赫：C罗曾退出训练参训也不达标，在场上又跑不动"
@@ -18,28 +14,32 @@
           "text": "信息量巨大！滕哈赫专访：曼联食言|有毒的文化|与C罗的抓马矛盾"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad6d6c22b2e7native.htm",
-          "text": "为何是“255欧”？C罗的罚款经2次减半，葡足协已按上限进行处罚"
-        },
-        {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad714936f116native.htm",
           "text": "利马炮轰管理层！滕哈赫：我认为是马德里帮的影响，球员们权力大"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad730e3b8306native.htm",
+          "text": "亚运第四！FIFA排名：中国女足被韩国女足反超 下降两位至第18位"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad71fef39007native.htm",
           "text": "一边倒！外网热议曼城或巨额扣分：太轻了；不公平；至少扣10年…"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad6dc55c01cbnative.htm",
-          "text": "确保降级？曼城队史最多高出降级区67分，68分才能让他们一定降级"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad6ccc627d13native.htm",
+          "text": "恩里克：不要拿亚马尔和梅西比，不能将任何人和历史最佳梅西相比"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad702bae30e5native.htm",
-          "text": "体坛：刘凯源在争抢中与对方争执吐口水，裁判在四官提醒下出红牌"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad6f29000153native.htm",
+          "text": "国家报：费兰在巴黎受追捧，球衣字母卖断货 但在巴萨已被遗忘"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad6db1595e3fnative.htm",
-          "text": "梅西PK格子？美职联晒图：按当前排名，迈阿密季后赛交手奥兰多城"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-19/6ad601698db79native.htm",
+          "text": "C罗持股25%！阿尔梅里亚斩7连胜领跑西乙，两度冲甲梦碎再次冲击"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-20/6ad6ef09babf1native.htm",
+          "text": "克罗斯：莱比锡本可能半场0-10输拜仁，他们表现得毫无雄心"
         }
       ]
     },
@@ -68,20 +68,20 @@
           "text": "去年刚进名人堂~40岁霍华德7个月两次宣告退役 复出仅打2场职业赛"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-20/6ad724aa33c03native.htm",
-          "text": "你又嘴谁？库明加：森林狼没有高高在上充满优越感的人"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-20/6ad71caa49844native.htm",
-          "text": "单月190分vs生涯184分！船记：克内克特不算出色但打球比布朗尼强"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-20/6ad6c34339d75native.htm",
           "text": "突然的告别！欧文：得知鲍威尔离队时我正在泡澡 感到有些心碎"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-19/6ad62c7bd32c1native.htm",
           "text": "就差一天50万美元没了！等到常规赛揭幕日鲍威尔合同将保障150万"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-20/6ad71caa49844native.htm",
+          "text": "单月190分vs生涯184分！船记：克内克特不算出色但打球比布朗尼强"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-20/6ad6ddbbc7ddenative.htm",
+          "text": "里程碑预警！NBA官方：杜兰特距超越科比升至历史第四仅差1047分"
         }
       ]
     }
