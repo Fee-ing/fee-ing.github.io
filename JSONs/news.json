@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792518349989,
+  "timestamp": 1792519264418,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,16 @@
           "heat": "Hugging Face Blog"
         },
         {
+          "url": "https://openai.com/index/ted-taylor-restaurant",
+          "text": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
+          "heat": "OpenAI"
+        },
+        {
+          "url": "https://www.leiphone.com/category/private/JI8CBnLPkIokurs6.html",
+          "text": "王友清教授团队论文被 ACM MM 2026 录用",
+          "heat": "雷锋网"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31758",
           "text": "DeepSeek 开源推理框架 DeepInfer：推理成本成为 AI 普惠的关键一层",
           "heat": "aibase"
@@ -3068,16 +3078,6 @@
           "url": "https://www.ithome.com/1/015/601.htm",
           "text": "Adobe Lightroom 移动版新增「睁眼」AI 修图，一键修复闭眼照片",
           "heat": "IT 之家"
-        },
-        {
-          "url": "https://daily.dev/posts/llm-d-1-0-an-open-source-stack-for-distributed-inference-5yvf9dd61",
-          "text": "Google releases llm-d 1.0 open-source distributed LLM inference stack as CNCF Sandbox project",
-          "heat": "daily.dev"
-        },
-        {
-          "url": "https://www.infzm.com/contents/343038",
-          "text": "无人车开始上夜班：你的快递已经闯了好几关",
-          "heat": "南方周末"
         }
       ]
     },
@@ -10616,12 +10616,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48925618",
           "text": "评论区艾特你心中分量最重的人【UP创作大赛】",
-          "heat": "1708"
+          "heat": "1720"
         },
         {
           "url": "http://www.acfun.cn/v/ac48927660",
           "text": "歌切-绒绒",
-          "heat": "675"
+          "heat": "804"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926657",
@@ -10636,12 +10636,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48926420",
           "text": "还得是芙人！ IVE《Looks Can Kill》 4K版MV公开",
-          "heat": "590"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48925216",
-          "text": "墨尔本的翡翠",
-          "heat": "280"
+          "heat": "612"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925279",
@@ -10651,12 +10646,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48926842",
           "text": "【翻唱】别找我麻烦",
-          "heat": "220"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48925225",
-          "text": "［朝鲜音乐］是10月啊",
-          "heat": "157"
+          "heat": "244"
         },
         {
           "url": "http://www.acfun.cn/v/ac48924325",
@@ -10681,7 +10671,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48926496",
           "text": "DASHBOARD: 2001 系统菜单氛围 | Xbox 导航枢纽",
-          "heat": "129"
+          "heat": "133"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925270",
@@ -10697,6 +10687,11 @@
           "url": "http://www.acfun.cn/v/ac48912948",
           "text": "路迢梦远，此生沉淀｜学会「渐渐忘记」",
           "heat": "13"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48927718",
+          "text": "（非鬼畜）AV255812 - 葛炮热唱mass",
+          "heat": "51"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926050",
@@ -10722,11 +10717,6 @@
           "url": "http://www.acfun.cn/v/ac48925798",
           "text": "格林卡歌剧《伊凡·苏萨宁》中的终曲《光荣颂》（卡拉巴诺夫指挥米哈伊洛夫斯基剧院管弦乐团，冬宫博物馆）",
           "heat": "39"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48927718",
-          "text": "（非鬼畜）AV255812 - 葛炮热唱mass",
-          "heat": "41"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925247",
@@ -10762,6 +10752,16 @@
           "url": "http://www.acfun.cn/v/ac48926614",
           "text": "9.12fm🪑记录",
           "heat": "172"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48925845",
+          "text": "柴可夫斯基《斯拉夫进行曲》（卡拉巴诺夫指挥米哈伊洛夫斯基剧院管弦乐团，2013）",
+          "heat": "50"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48899150",
+          "text": "【罗百吉&宝贝】苏伟在哪里-国语-合唱",
+          "heat": "148"
         }
       ]
     },
