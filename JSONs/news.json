@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792606546633,
+  "timestamp": 1792607457310,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://huggingface.co/blog/nvidia/microduck-isaac-lab-sim-to-real",
+          "text": "Train in Simulation, Deploy on a Real Robot: Microduck with Isaac Lab 3.0",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://huggingface.co/blog/ibm-granite/granite-speech-5",
           "text": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
           "heat": "Hugging Face Blog"
@@ -3073,11 +3078,6 @@
           "url": "https://blogs.nvidia.com/blog/cudss-generally-available-engineering-scientific-simulation/",
           "text": "NVIDIA cuDSS 正式发布，加速工程与科学仿真",
           "heat": "NVIDIA Blog"
-        },
-        {
-          "url": "https://huggingface.co/blog/nvidia/kumo-anomaly",
-          "text": "NVIDIA Kumo Anomaly Brings Diffusion-Based Anomaly Detection to Multivariate Time Series",
-          "heat": "Hugging Face Blog"
         }
       ]
     },
@@ -10636,27 +10636,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48927970",
           "text": "【UP创作大赛】图卡萨 VS QYQ",
-          "heat": "1760"
+          "heat": "1773"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928162",
           "text": "爱情是精神鸭片还是无聊消遣【UP创作大赛】",
-          "heat": "1378"
+          "heat": "1387"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925664",
           "text": "【东方】用软弹枪弹奏ナイト・オブ・ナイツ吧！【制作周期一整月】",
-          "heat": "1110"
+          "heat": "1113"
         },
         {
           "url": "http://www.acfun.cn/v/ac48929730",
           "text": "【绝望女神/翻唱】【死神 BLEACH ED1 人生如舟】",
-          "heat": "1045"
+          "heat": "1053"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928429",
           "text": "【斑斑Spot】超高校级喜猪妹的直播录像",
-          "heat": "1115"
+          "heat": "1117"
         },
         {
           "url": "http://www.acfun.cn/v/ac48930153",
