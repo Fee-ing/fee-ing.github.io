@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792602944592,
+  "timestamp": 1792603860927,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10631,32 +10631,37 @@
         {
           "url": "http://www.acfun.cn/v/ac48927970",
           "text": "【UP创作大赛】图卡萨 VS QYQ",
-          "heat": "1742"
+          "heat": "1751"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928162",
           "text": "爱情是精神鸭片还是无聊消遣【UP创作大赛】",
-          "heat": "1372"
+          "heat": "1375"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925664",
           "text": "【东方】用软弹枪弹奏ナイト・オブ・ナイツ吧！【制作周期一整月】",
-          "heat": "1106"
+          "heat": "1107"
         },
         {
           "url": "http://www.acfun.cn/v/ac48929730",
           "text": "【绝望女神/翻唱】【死神 BLEACH ED1 人生如舟】",
-          "heat": "1036"
+          "heat": "1041"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928429",
           "text": "【斑斑Spot】超高校级喜猪妹的直播录像",
-          "heat": "1111"
+          "heat": "1112"
         },
         {
           "url": "http://www.acfun.cn/v/ac48930153",
           "text": "助眠千元和万元麦克风差别究竟在哪",
           "heat": "67"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48900293",
+          "text": "【大塚 愛】なんだっけ",
+          "heat": "176"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928544",
@@ -10667,11 +10672,6 @@
           "url": "http://www.acfun.cn/v/ac48929705",
           "text": "卡拉巴诺夫指挥中央海军模范乐团：斯拉夫进行曲",
           "heat": "53"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48900293",
-          "text": "【大塚 愛】なんだっけ",
-          "heat": "176"
         },
         {
           "url": "http://www.acfun.cn/v/ac48929975",
@@ -10694,6 +10694,11 @@
           "heat": "49"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48930168",
+          "text": "[重音テト]没有共产党就没有新中国",
+          "heat": "63"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48928926",
           "text": "普洛特尼科夫指挥中央海军模范乐团：柴可夫斯基幻想序曲《罗密欧与朱丽叶》",
           "heat": "89"
@@ -10702,11 +10707,6 @@
           "url": "http://www.acfun.cn/v/ac48900227",
           "text": "基安·索尔塔尼大提琴独奏会 舒伯特《a小调阿佩乔尼奏鸣曲》雷扎·瓦利《波斯民谣》拉赫玛尼诺",
           "heat": "132"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48930168",
-          "text": "[重音テト]没有共产党就没有新中国",
-          "heat": "48"
         },
         {
           "url": "http://www.acfun.cn/v/ac48929700",
@@ -10759,6 +10759,11 @@
           "heat": "46"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48928673",
+          "text": "Gene Vincent - Spaceship to mars",
+          "heat": "44"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48925793",
           "text": "喻言《wake up》上海房车音乐节",
           "heat": "56"
@@ -10772,11 +10777,6 @@
           "url": "http://www.acfun.cn/v/ac48925769",
           "text": "【钢琴】unconditionally——Katy Perry",
           "heat": "12"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48929468",
-          "text": "中国SCS 【饿狼传说：群狼之城】三大冠军 采访！！！！！！！！！",
-          "heat": "24"
         }
       ]
     },
@@ -14458,12 +14458,12 @@
         {
           "url": "https://www.dongchedi.com/article/7698694423002366488",
           "text": "硬核实测魏牌高山9智慧版：冰箱彩电之后，MPV开始拼脑子了",
-          "heat": "700"
+          "heat": "817"
         },
         {
           "url": "https://www.dongchedi.com/article/7698370234986938904",
           "text": "超级开箱 | 华为乾崑ADS 5大测评，奕境X9闯进全世界最窄县城",
-          "heat": "251"
+          "heat": "252"
         },
         {
           "url": "https://www.dongchedi.com/article/7698610787359130174",
@@ -14491,13 +14491,13 @@
           "heat": "7"
         },
         {
-          "url": "https://www.dongchedi.com/article/7697244621822378521",
-          "text": "新能源车出口退税从13%降至9%：谁的利润先扛不住了？",
-          "heat": "6"
-        },
-        {
           "url": "https://www.dongchedi.com/article/7698763963014021694",
           "text": "从13%到9%，新能源汽车出海告别千亿退税红利",
+          "heat": "7"
+        },
+        {
+          "url": "https://www.dongchedi.com/article/7697244621822378521",
+          "text": "新能源车出口退税从13%降至9%：谁的利润先扛不住了？",
           "heat": "6"
         },
         {
