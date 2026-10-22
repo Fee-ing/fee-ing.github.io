@@ -1,0 +1,1 @@
+import{E as e}from"./createBaseUIEventDetails-B5S5Sovj.js";function t(t){return e(t,`base-ui`)}export{t};
