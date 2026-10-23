@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792784746654,
+  "timestamp": 1792785663855,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2780,6 +2780,16 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+          "text": "Kimi K3.1 Pro 上线 Kimi API，Moonshot 承诺 2026 年 11 月 4 日前发布完整模型权重",
+          "heat": "Simon Willison"
+        },
+        {
+          "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+          "text": "OpenAI 详解前沿模型训练环境的安全加固措施",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://huggingface.co/blog/allenai/litpivot",
           "text": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
           "heat": "Hugging Face Blog"
@@ -2793,6 +2803,11 @@
           "url": "https://www.mittrchina.com/news/detail/17132",
           "text": "港中深教授创业做量子 AI，用量子计算增强大模型推理",
           "heat": "麻省理工科技评论"
+        },
+        {
+          "url": "https://www.gelonghui.com/live/2727228",
+          "text": "OpenAI 宣布最先进 AI 模型训练期间禁止直接访问互联网",
+          "heat": "格隆汇"
         },
         {
           "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
@@ -2813,21 +2828,6 @@
           "url": "https://www.leiphone.com/category/robot/h4vGHMyQ6b8drzy6.html",
           "text": "覆盖存、拣、运全场景，海康机器人 2026 移动机器人新品发布会举行",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31840",
-          "text": "Gemini 4 Argon 首发 72 小时吞下 25 万亿 Token，皮查伊首谈砍掉 3.5 Pro 内幕",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.ithome.com/1/017/274.htm",
-          "text": "OpenAI 联合研究机构部署数千个 AI 智能体：32 分钟分析数百万个小鼠脑细胞，相当于人类数月时间",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.techradar.com/pro/the-us-wants-to-fill-thousands-of-acres-of-public-land-with-ai-data-centers-land-records-show-35-data-center-related-developments-are-planned-so-far",
-          "text": "美国拟在数千英亩公共土地上建设AI数据中心，土地记录显示已规划35个相关开发项目",
-          "heat": "techradar.com"
         }
       ]
     },
@@ -10096,7 +10096,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48934047",
           "text": "【柯基】国风歌曲《西楼别序》｜“我提笔不为离愁 只为你转身回眸 心事把自己弄丢淋湿在阁楼”",
-          "heat": "1209"
+          "heat": "1210"
         },
         {
           "url": "http://www.acfun.cn/v/ac48933075",
@@ -10121,12 +10121,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48913554",
           "text": "【翻唱|粤语】《你唔爱我啦》| 你爱唔爱？反正我很爱，全新故事 MV 演绎",
-          "heat": "213"
+          "heat": "220"
         },
         {
           "url": "http://www.acfun.cn/v/ac48934992",
           "text": "【衣笠雪绘】活动小丑 歌切day207",
-          "heat": "206"
+          "heat": "213"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926154",
