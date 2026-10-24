@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792878341651,
+  "timestamp": 1792879260392,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://daily.dev/posts/key-dates-if-you-use-chroma-cloud-read-only-from-22-nov-reads-stop-22-dec-so-export-before-then--fc7a1skaj",
+          "text": "Chroma joins Replit and shuts down Chroma Cloud in 60 days",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://www.techradar.com/pro/how-much-chinese-startup-unveils-copper-colored-ai-max-pro-495-workstation-with-192gb-ram-selling-for-a-cool-usd6-800-topc-txa2-can-take-4-ssds-and-drives-4-8k-monitors",
           "text": "Chinese startup unveils copper-colored AI Max+ PRO 495 workstation with 192GB RAM for $6,800 — TOPC TXA2 supports 4 SSDs and drives 4 8K monitors",
           "heat": "techradar.com"
@@ -3055,6 +3060,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://www.huxiu.com/article/4900212.html?f=rss",
+          "text": "KIMI 之殇",
+          "heat": "虎嗅网"
+        },
+        {
           "url": "https://news.mydrivers.com/1/1160/1160251.htm",
           "text": "把内存焊在处理器头顶！美光 vHBM 曝光：带宽冲到 2TB/s",
           "heat": "快科技"
@@ -3068,16 +3078,6 @@
           "url": "https://www.51cto.com/article/859126.html",
           "text": "Anthropic 官宣：Claude 上线实时仪表盘与代码动画，文档、幻灯片、设计三件套转正",
           "heat": "maomu.com"
-        },
-        {
-          "url": "https://www.techradar.com/pro/gmktec-nucbox-evo-x1-pro-mini-pc-review",
-          "text": "GMKTec NucBox EVO-X1 Pro mini PC review",
-          "heat": "techradar.com"
-        },
-        {
-          "url": "https://www.ithome.com/1/017/517.htm",
-          "text": "研究人员通过 DNS 数据库发现数千个公开的 Muse 聊天记录分享链接，Meta 已修复",
-          "heat": "IT 之家"
         }
       ]
     },
@@ -10631,7 +10631,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48936878",
           "text": "【番凩】翻唱PV｜鸟居落雪，万叶归风",
-          "heat": "978"
+          "heat": "1023"
         },
         {
           "url": "http://www.acfun.cn/v/ac48936390",
@@ -10646,12 +10646,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48936687",
           "text": "[伴奏](koyori)MelancholicDegree–GUMI",
-          "heat": "126"
+          "heat": "131"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926339",
           "text": "【萧亚轩】爱的主打歌",
-          "heat": "187"
+          "heat": "192"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926344",
@@ -10666,7 +10666,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48936786",
           "text": "【拼好切】【炸麦警告】气《泡泡》音夹子音总之是很炸的声音",
-          "heat": "669"
+          "heat": "671"
         },
         {
           "url": "http://www.acfun.cn/v/ac48935935",
@@ -10681,7 +10681,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48926288",
           "text": "【M6 Music Live Session】Les Trois Cafés Gourma",
-          "heat": "72"
+          "heat": "86"
         },
         {
           "url": "http://www.acfun.cn/v/ac48935605",
