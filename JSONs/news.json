@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792946741209,
+  "timestamp": 1792947665854,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "腾讯网"
         },
         {
+          "url": "https://www.51cto.com/article/859181.html",
+          "text": "为什么现在的 top 大模型说话越来越「拗口、难懂」了？",
+          "heat": "maomu.com"
+        },
+        {
           "url": "https://news.qq.com/rain/a/20261025A09BHG00",
           "text": "比 GPT-6 Luna 快 8 倍！扩散 LLM 跑分也反超了",
           "heat": "腾讯网"
@@ -3073,11 +3078,6 @@
           "url": "https://www.ithome.com/1/017/710.htm",
           "text": "Claude 桌面应用推出新版界面，从草图到上线用时不到 3 周",
           "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.huxiu.com/article/4900321.html?f=rss",
-          "text": "观察｜从国际具身智能技能大赛看中美路线之争：在代码里模拟物理 VS 在车间里喂养数据",
-          "heat": "虎嗅网"
         }
       ]
     },
@@ -10611,7 +10611,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48936878",
           "text": "【UP创作大赛】【番凩】翻唱PV｜鸟居落雪，万叶归风",
-          "heat": "2525"
+          "heat": "2626"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937760",
@@ -10621,27 +10621,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48937927",
           "text": "【UP创作大赛】逆鳞MV（MMM）",
-          "heat": "691"
+          "heat": "702"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937601",
           "text": "【柯基】《Conte d Amour（爱情故事）》｜乌克兰作曲家：瓦西里·普里索夫斯基",
-          "heat": "1069"
+          "heat": "1073"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937120",
           "text": "当年传唱度过亿的华语R&B神曲，热泪盈眶，DNA真的控制不住！",
-          "heat": "1109"
+          "heat": "1112"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937848",
           "text": "【猪肝来也】耻辱柱",
-          "heat": "1126"
+          "heat": "1130"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48936786",
-          "text": "【拼好切】【炸麦警告】气《泡泡》音夹子音总之是很炸的声音",
-          "heat": "1200"
+          "url": "http://www.acfun.cn/v/ac48938461",
+          "text": "【DAY2】Ave Mujica 7th LIVE「Virtus」 DAY2",
+          "heat": "534"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937784",
@@ -10651,12 +10651,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48930170",
           "text": "【东方/爵士】天马Live组曲【OTAKU JAZZ COLONY】",
-          "heat": "510"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48938461",
-          "text": "【DAY2】Ave Mujica 7th LIVE「Virtus」 DAY2",
-          "heat": "337"
+          "heat": "553"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926350",
@@ -10691,7 +10686,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48938143",
           "text": "［朝鲜音乐］用青春响应我们党的号召",
-          "heat": "293"
+          "heat": "323"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48938385",
+          "text": "［日本歌曲］青山脉（朝鲜普天堡电子乐团翻唱）",
+          "heat": "164"
         },
         {
           "url": "http://www.acfun.cn/v/ac48936928",
@@ -10702,11 +10702,6 @@
           "url": "http://www.acfun.cn/v/ac48936066",
           "text": "【UP创作大赛】每周音乐分享 2026.10.24期",
           "heat": "112"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48938385",
-          "text": "［日本歌曲］青山脉（朝鲜普天堡电子乐团翻唱）",
-          "heat": "143"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926516",
@@ -10757,6 +10752,11 @@
           "url": "http://www.acfun.cn/v/ac48936930",
           "text": "天依翻唱「大石碎胸口」(๑╹ヮ╹๑)ﾉ",
           "heat": "21"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48936955",
+          "text": "明日方舟2026感谢庆典印象曲 - Когда душе твоей",
+          "heat": "117"
         }
       ]
     },
