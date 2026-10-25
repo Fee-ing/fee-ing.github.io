@@ -1,5 +1,5 @@
 {
-  "timestamp": 1792952141570,
+  "timestamp": 1792953056785,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10589,11 +10589,6 @@
       "type": "音乐",
       "content": [
         {
-          "url": "http://www.acfun.cn/v/ac48936878",
-          "text": "【UP创作大赛】【番凩】翻唱PV｜鸟居落雪，万叶归风",
-          "heat": "2738"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48937760",
           "text": "[伴奏](つなまる)Paranoia",
           "heat": "437"
@@ -10606,22 +10601,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48937601",
           "text": "【柯基】《Conte d Amour（爱情故事）》｜乌克兰作曲家：瓦西里·普里索夫斯基",
-          "heat": "1083"
+          "heat": "1092"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937120",
           "text": "当年传唱度过亿的华语R&B神曲，热泪盈眶，DNA真的控制不住！",
-          "heat": "1113"
+          "heat": "1119"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937848",
           "text": "【猪肝来也】耻辱柱",
-          "heat": "1137"
+          "heat": "1141"
         },
         {
           "url": "http://www.acfun.cn/v/ac48938461",
           "text": "【DAY2】Ave Mujica 7th LIVE「Virtus」 DAY2",
-          "heat": "690"
+          "heat": "774"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937784",
@@ -10631,7 +10626,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48930170",
           "text": "【东方/爵士】天马Live组曲【OTAKU JAZZ COLONY】",
-          "heat": "576"
+          "heat": "584"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926350",
@@ -10639,24 +10634,24 @@
           "heat": "190"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48926374",
-          "text": "【罗百吉&詹曼铃】就是你-国语-合唱",
-          "heat": "65"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48937788",
           "text": "[人声](くるりんご)アイデンティティ·クライシス",
           "heat": "77"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48937364",
-          "text": "ピノキオピー - えねみぃ feat. 初音ミク・重音テト / ENEMy【敌人】",
-          "heat": "291"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48926507",
           "text": "【萧亚轩】把心放进来",
           "heat": "56"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48926374",
+          "text": "【罗百吉&詹曼铃】就是你-国语-合唱",
+          "heat": "65"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48937364",
+          "text": "ピノキオピー - えねみぃ feat. 初音ミク・重音テト / ENEMy【敌人】",
+          "heat": "291"
         },
         {
           "url": "http://www.acfun.cn/v/ac48938143",
@@ -10669,6 +10664,11 @@
           "heat": "113"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48937399",
+          "text": "Enemy ft:初音未来&重音Teto原作者：匹诺曹P",
+          "heat": "117"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48938385",
           "text": "［日本歌曲］青山脉（朝鲜普天堡电子乐团翻唱）",
           "heat": "164"
@@ -10679,14 +10679,14 @@
           "heat": "178"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48936066",
-          "text": "【UP创作大赛】每周音乐分享 2026.10.24期",
-          "heat": "112"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48926516",
           "text": "【大塚 愛】水野良樹HIROBA- ふたたび(with 大塚 愛)",
           "heat": "65"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48936066",
+          "text": "【UP创作大赛】每周音乐分享 2026.10.24期",
+          "heat": "112"
         },
         {
           "url": "http://www.acfun.cn/v/ac48937040",
@@ -10707,6 +10707,11 @@
           "url": "http://www.acfun.cn/v/ac48926454",
           "text": "【M6 Music Live Session】Lomepal",
           "heat": "31"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48938532",
+          "text": "【自制MV】unravel-millsage",
+          "heat": "59"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926357",
@@ -10732,11 +10737,6 @@
           "url": "http://www.acfun.cn/v/ac48937098",
           "text": "2026-10-24 超绝可爱锅锅酱 直播录像",
           "heat": "148"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48936930",
-          "text": "天依翻唱「大石碎胸口」(๑╹ヮ╹๑)ﾉ",
-          "heat": "21"
         }
       ]
     },
