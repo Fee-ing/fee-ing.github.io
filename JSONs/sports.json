@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793075447073,
+  "timestamp": 1793076335729,
   "data": [
     {
       "source": "足球",
@@ -18,10 +18,6 @@
           "text": "金球奖排名：凯恩荣膺金球！亚马尔第3，39岁梅西第5，贝林第11"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-27/6adf7560d5389native.htm",
-          "text": "三连庄！官方：19岁亚马尔获2026科帕奖，连续三年当选"
-        },
-        {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-27/6adfefc01be06native.htm",
           "text": "难掩失落！亚马尔微笑鼓掌向凯恩致意，但凯恩致辞时他已眼含泪光"
         },
@@ -30,16 +26,20 @@
           "text": "金球奖中国评委骆明投票：梅西第一，凯恩第四，登贝莱罗德里2、3"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-27/6adffe66f29b6native.htm",
-          "text": "无缘金球！亚马尔采访造势曾刻意忽略凯恩，称金球不是给进球多的"
-        },
-        {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-27/6ae000e35880fnative.htm",
           "text": "39岁金球第5！梅西17次提名金球8次获奖，仅3次掉出前三1次出前五"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-27/6adffeb7c1c64native.htm",
           "text": "与金球渐行渐远？维尼修斯缺席典礼＆排名创新低，社媒晒潮流穿搭"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-27/6adf5294b5706native.htm",
+          "text": "从\"冠军绝缘体\"到加冕金球，\"胖男孩\"凯恩终在\"伤心地\"夺回了一切"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-27/6ae01f1a5cd9anative.htm",
+          "text": "妙可蓝多官方声明：即日起，我司终止与姆巴佩的全部合作"
         }
       ]
     },
@@ -48,12 +48,12 @@
       "type": "直播吧",
       "content": [
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-27/6adfcd91bdc42native.htm",
-          "text": "雷霆遭重创💥杰伦威遭遇左踝脱臼&腓骨骨折 卡森左肩盂唇撕裂！"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-27/match2139839date2026vnative.htm",
           "text": "🏀火箭双杀老鹰迎四连胜 申京29+9+9+6断 KD22+9 小史密斯16+12"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-27/match2139845date2026vnative.htm",
+          "text": "🏀勇士大胜掘金迎首胜 伦德博格新高31分+12板6助 库里8中8"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-27/match2139840date2026vnative.htm",
@@ -68,20 +68,20 @@
           "text": "🏀独行侠送热火4连败！弗拉格29+11+4断 字母哥29+15+11+5失误"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-27/6ae0076670b52native.htm",
-          "text": "出问题了！热火不敌独行侠惨遭4连败 联盟目前唯一一个4连败"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-27/6ae01347a2c71native.htm",
           "text": "等了12年了！火箭豪取开季四连胜 自2014-15赛季魔登时代后首次"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-27/match2139838date2026vnative.htm",
-          "text": "🏀雷霆射落太阳取4连胜 亚历山大26分 布克7中1 卡鲁索伤退"
+          "url": "https://news.zhibo8.com/nba/2026-10-27/6ae0209c134c1native.htm",
+          "text": "现场狂骂裁判！戈登持续抱怨裁判连吃两个技犯！被裁判驱逐出场！"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-27/6ae010bc0023fnative.htm",
-          "text": "战斗暴龙兽！申京15中11砍下29分9板9助6断1帽 正负值+29最高"
+          "url": "https://news.zhibo8.com/nba/2026-10-27/6ae01aa3d9e2dnative.htm",
+          "text": "这谁能想得到？灰熊豪取开季四连胜 和火箭&雷霆并列西部第一"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-27/6ae026c1751f5native.htm",
+          "text": "31分到手！伦德博格空接炸扣怒吼庆祝 砍下本届新秀第三个30+"
         }
       ]
     }
