@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793117745234,
+  "timestamp": 1793118650032,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4357,14 +4357,14 @@
           "heat": "斯嘉丽聊电影"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261026Q03GHF00",
-          "text": "曼联0-3主场惨败给伯恩茅斯，距降级区仅1分，究竟谁该为惨剧背锅？为何曼联重建10余年仍这么混乱？",
-          "heat": "之乎者也小鱼儿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261027Q0D9IO00",
           "text": "昂跑签下姆巴佩第39天，后者发表涉华不当言论遭抵制，姆巴佩给企业造成的损失有多大？他们能找姆巴佩维权吗？",
           "heat": "点评校尉"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261026Q03GHF00",
+          "text": "曼联0-3主场惨败给伯恩茅斯，距降级区仅1分，究竟谁该为惨剧背锅？为何曼联重建10余年仍这么混乱？",
+          "heat": "之乎者也小鱼儿"
         },
         {
           "url": "https://new.qq.com/rain/a/20261026Q0DSB700",
@@ -10606,32 +10606,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48942097",
           "text": "【UP创作大赛】《The Pirate and Kids》海绵宝宝主题曲",
-          "heat": "1166"
+          "heat": "1171"
         },
         {
           "url": "http://www.acfun.cn/v/ac48943259",
           "text": "物业让我滚外边唱去，原创曲目《喑哑》",
-          "heat": "1170"
+          "heat": "1195"
         },
         {
           "url": "http://www.acfun.cn/v/ac48942415",
           "text": "【猪肝来也】My love Mine all Mine",
-          "heat": "1033"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48941149",
-          "text": "【衣笠雪绘】stay with me 歌切day208【UP创作大赛】",
-          "heat": "821"
+          "heat": "1034"
         },
         {
           "url": "http://www.acfun.cn/v/ac48942413",
           "text": "【猪肝来也】过渡期",
-          "heat": "720"
+          "heat": "737"
         },
         {
           "url": "http://www.acfun.cn/v/ac48941880",
           "text": "【衣笠雪绘丨PV付】再也不恋爱了#02【UP创作大赛】",
-          "heat": "596"
+          "heat": "661"
         },
         {
           "url": "http://www.acfun.cn/v/ac48941958",
@@ -10666,27 +10661,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48938229",
           "text": "【妖一】莫比乌斯【メビウス】",
-          "heat": "130"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48926774",
-          "text": "【萧亚轩】不爱．请闪开",
-          "heat": "113"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48942849",
-          "text": "安静（JACKY）翻唱",
-          "heat": "216"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48943102",
-          "text": "【UP创作大赛】超生快乐（静止画面）",
-          "heat": "271"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48926772",
-          "text": "【M6 Music Live Session】LP",
-          "heat": "85"
+          "heat": "154"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926781",
@@ -10694,9 +10669,34 @@
           "heat": "140"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48942849",
+          "text": "安静（JACKY）翻唱",
+          "heat": "252"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48943102",
+          "text": "【UP创作大赛】超生快乐（静止画面）",
+          "heat": "271"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48926774",
+          "text": "【萧亚轩】不爱．请闪开",
+          "heat": "113"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48926772",
+          "text": "【M6 Music Live Session】LP",
+          "heat": "85"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48941566",
           "text": "【东方八音盒︎●红魔乡篇】妖魔夜行",
           "heat": "142"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48943243",
+          "text": "【魔女黛西育成计划】主题曲(以上是自己的同人小说作品 领盒饭顺序 和原版无关)",
+          "heat": "47"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926748",
@@ -10709,14 +10709,19 @@
           "heat": "205"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48943243",
-          "text": "【魔女黛西育成计划】主题曲(以上是自己的同人小说作品 领盒饭顺序 和原版无关)",
-          "heat": "47"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48934985",
           "text": "《花骨朵》洛天依×亚细亚旷世奇才（合唱）（完整版）",
           "heat": "81"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48943263",
+          "text": "【UP创作大赛】富士山下",
+          "heat": "117"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48943316",
+          "text": "【妖一】envy baby【エンヴィーベイビー】",
+          "heat": "30"
         },
         {
           "url": "http://www.acfun.cn/v/ac48943129",
@@ -10727,11 +10732,6 @@
           "url": "http://www.acfun.cn/v/ac48943104",
           "text": "[伴奏](梨本うい)心の形",
           "heat": "37"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48943263",
-          "text": "【UP创作大赛】富士山下",
-          "heat": "117"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926740",
@@ -10749,9 +10749,9 @@
           "heat": "26"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48941146",
-          "text": "【是跟唱】真2026了还记得红魔城传说ED啊是Fatal Bite",
-          "heat": "57"
+          "url": "http://www.acfun.cn/v/ac48939918",
+          "text": "【钢琴】Believer——Imagine Dragons",
+          "heat": "65"
         }
       ]
     },
