@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793209541634,
+  "timestamp": 1793210457816,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3045,6 +3045,16 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://www.gelonghui.com/live/2734364",
+          "text": "谷歌发布前沿模型 Gemini 4 Carbon，编程与网络安全能力显著提升",
+          "heat": "格隆汇"
+        },
+        {
+          "url": "https://daily.dev/posts/your-favorite-agents-are-now-integrated-in-android-studio-1bssir1jv",
+          "text": "Android Studio Rabbit 2 发布：支持自带 40+ 编码代理",
+          "heat": "daily.dev"
+        },
+        {
           "url": "https://news.mydrivers.com/1/1161/1161410.htm",
           "text": "嫌数据中心发电机太吵？马斯克直接掏钱上门买房：已有 18 户签字放弃集体诉讼",
           "heat": "快科技"
@@ -3063,16 +3073,6 @@
           "url": "https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/",
           "text": "Chrome 增强自动填充功能，可从 Gmail 提取建议帮你填写表单",
           "heat": "blog.google"
-        },
-        {
-          "url": "https://www.infoq.com/news/2026/10/airbnb-chronon-recommendation/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
-          "text": "Airbnb Cuts Recommendation Staleness from 2 Days to Seconds with Chronon",
-          "heat": "infoq.com"
-        },
-        {
-          "url": "https://www.leiphone.com/category/ai/Ep3M1c7RboyafpOS.html",
-          "text": "华为刘睿：AI 助手要告别聊天框，从「被动响应」走向「主动服务」",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -10596,7 +10596,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48945185",
           "text": "【UP创作大赛】一首灵动唯美的粤语歌…王菀之《巴黎没有摩天轮》",
-          "heat": "1069"
+          "heat": "1075"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945540",
@@ -10606,17 +10606,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48945600",
           "text": "【重音テトSV】『ミステリー / 谜团』 MIMI",
-          "heat": "573"
+          "heat": "585"
         },
         {
           "url": "http://www.acfun.cn/v/ac48944662",
           "text": "是成熟的礼了！ILLIT《You re Under Arrest》4K60帧极致画质版",
           "heat": "664"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48943504",
-          "text": "人是猫 发疯节选",
-          "heat": "422"
         },
         {
           "url": "http://www.acfun.cn/v/ac48938421",
@@ -10631,7 +10626,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48926810",
           "text": "【大塚 愛】スターターピストルfeat.Lyric speaker",
-          "heat": "149"
+          "heat": "150"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926804",
@@ -10676,7 +10671,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48945832",
           "text": "【UP创作大赛】 妄想感伤代偿联盟 咒术回战混剪",
-          "heat": "127"
+          "heat": "149"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945783",
@@ -10689,6 +10684,11 @@
           "heat": "55"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48945941",
+          "text": "［朝鲜音乐］我们能否保持当年的精神（吉他四重奏）",
+          "heat": "111"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48942972",
           "text": "专辑“朝鲜之歌”第三张",
           "heat": "26"
@@ -10697,11 +10697,6 @@
           "url": "http://www.acfun.cn/v/ac48945764",
           "text": "【可不】花と棘【amaoto】",
           "heat": "112"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48945941",
-          "text": "［朝鲜音乐］我们能否保持当年的精神（吉他四重奏）",
-          "heat": "88"
         },
         {
           "url": "http://www.acfun.cn/v/ac48943757",
@@ -10742,6 +10737,11 @@
           "url": "http://www.acfun.cn/v/ac48943613",
           "text": "IVE SPIN-OFF : CRUMBS FILM 官方字幕20261026",
           "heat": "63"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48945241",
+          "text": "《不二》",
+          "heat": "61"
         }
       ]
     },
