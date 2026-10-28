@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793211337277,
+  "timestamp": 1793212248758,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://openai.com/index/the-future-of-the-firm",
+          "text": "The future of the firm",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-updates-models-agents-games/",
           "text": "NVIDIA RTX Spark Windows Laptops Gain New Models, Agent Tools and Games",
           "heat": "NVIDIA Blog"
@@ -3068,11 +3073,6 @@
           "url": "https://www.leiphone.com/category/industrynews/kw1tPKZvQauDl4UJ.html",
           "text": "字节辟谣「群演数据喂大模型」：严重失实！",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/",
-          "text": "Chrome 增强自动填充功能，可从 Gmail 提取建议帮你填写表单",
-          "heat": "blog.google"
         }
       ]
     },
@@ -10601,22 +10601,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48945185",
           "text": "【UP创作大赛】一首灵动唯美的粤语歌…王菀之《巴黎没有摩天轮》",
-          "heat": "1075"
+          "heat": "1089"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945540",
           "text": "【UP创作大赛】【绝望女神/翻唱】【俄罗斯方块 tetoris】",
-          "heat": "742"
+          "heat": "776"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945600",
           "text": "【重音テトSV】『ミステリー / 谜团』 MIMI",
-          "heat": "585"
+          "heat": "595"
         },
         {
           "url": "http://www.acfun.cn/v/ac48944662",
           "text": "是成熟的礼了！ILLIT《You re Under Arrest》4K60帧极致画质版",
-          "heat": "664"
+          "heat": "696"
         },
         {
           "url": "http://www.acfun.cn/v/ac48938421",
@@ -10669,14 +10669,14 @@
           "heat": "284"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48945207",
-          "text": "FNF DJ大可不必",
-          "heat": "86"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48945832",
           "text": "【UP创作大赛】 妄想感伤代偿联盟 咒术回战混剪",
           "heat": "149"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48945207",
+          "text": "FNF DJ大可不必",
+          "heat": "86"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945783",
@@ -10691,17 +10691,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48945941",
           "text": "［朝鲜音乐］我们能否保持当年的精神（吉他四重奏）",
-          "heat": "111"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48942972",
-          "text": "专辑“朝鲜之歌”第三张",
-          "heat": "26"
+          "heat": "129"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945764",
           "text": "【可不】花と棘【amaoto】",
           "heat": "112"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48942972",
+          "text": "专辑“朝鲜之歌”第三张",
+          "heat": "26"
         },
         {
           "url": "http://www.acfun.cn/v/ac48943757",
@@ -10729,11 +10729,6 @@
           "heat": "43"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48943516",
-          "text": "【ASMR・耳かき・耳マッサージ】グイグイ系彼女に、お耳かきとお耳オイルマッサージで迫られ",
-          "heat": "97"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48943528",
           "text": "【ASMR2時間】一度味わうと戻れない太綿棒の快感。耳奥快楽で寝落ち耳かき。両耳・吐息・囁",
           "heat": "75"
@@ -10747,6 +10742,11 @@
           "url": "http://www.acfun.cn/v/ac48945241",
           "text": "《不二》",
           "heat": "61"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48944675",
+          "text": "你们有一个12年同班的好兄弟么",
+          "heat": "51"
         }
       ]
     },
