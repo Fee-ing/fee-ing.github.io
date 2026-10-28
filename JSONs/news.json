@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793214940447,
+  "timestamp": 1793215850109,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://www.ithome.com/1/019/251.htm",
+          "text": "苹果发布首款触控 MacBook Pro：最高 128GB 统一内存，可本地运行数千亿参数 AI 模型",
+          "heat": "IT 之家"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-updates-models-agents-games/",
           "text": "NVIDIA RTX Spark Windows Laptops Gain New Models, Agent Tools and Games",
           "heat": "NVIDIA Blog"
@@ -3073,11 +3078,6 @@
           "url": "https://news.10jqka.com.cn/20261028/c681209785.shtml",
           "text": "英伟达推出本地 AI 语音模型 RTX Spark 新增模型与智能体工具支持",
           "heat": "同花顺财经"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/kw1tPKZvQauDl4UJ.html",
-          "text": "字节辟谣「群演数据喂大模型」：严重失实！",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -10206,17 +10206,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48945185",
           "text": "【UP创作大赛】一首灵动唯美的粤语歌…王菀之《巴黎没有摩天轮》",
-          "heat": "1090"
+          "heat": "1093"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945540",
           "text": "【UP创作大赛】【绝望女神/翻唱】【俄罗斯方块 tetoris】",
-          "heat": "787"
+          "heat": "812"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945600",
           "text": "【重音テトSV】『ミステリー / 谜团』 MIMI",
-          "heat": "634"
+          "heat": "668"
         },
         {
           "url": "http://www.acfun.cn/v/ac48944662",
@@ -10266,7 +10266,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48944873",
           "text": "古艳歌（cover左慈/代号鸢）",
-          "heat": "57"
+          "heat": "68"
         },
         {
           "url": "http://www.acfun.cn/v/ac48944375",
@@ -10276,7 +10276,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48945832",
           "text": "【UP创作大赛】 妄想感伤代偿联盟 咒术回战混剪",
-          "heat": "149"
+          "heat": "163"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945207",
@@ -10334,6 +10334,11 @@
           "heat": "43"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48945937",
+          "text": "2026-10-28 懒銀 虚弱猫猫",
+          "heat": "40"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48943613",
           "text": "IVE SPIN-OFF : CRUMBS FILM 官方字幕20261026",
           "heat": "63"
@@ -10344,14 +10349,9 @@
           "heat": "61"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48944675",
-          "text": "你们有一个12年同班的好兄弟么",
-          "heat": "51"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48943590",
-          "text": "奔跑的姜允儿-2026.10.27",
-          "heat": "51"
+          "url": "http://www.acfun.cn/v/ac48945382",
+          "text": "FNF 爱你的鼻孔",
+          "heat": "53"
         }
       ]
     },
