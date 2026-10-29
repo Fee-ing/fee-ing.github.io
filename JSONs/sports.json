@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793241048690,
+  "timestamp": 1793241939911,
   "data": [
     {
       "source": "足球",
@@ -38,8 +38,8 @@
           "text": "两轮不胜！迈阿密2-2辛辛那提 苏亚雷斯破门 双方轮轰神仙球"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-29/6ae2974b24fc0native.htm",
-          "text": "四问姆巴佩翻车事件：为何屡屡祸从口出？采访他的是何媒体？"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-29/6ae29425ad234native.htm",
+          "text": "奥斯卡出席活动：看到不了解中国的却对其批评我很难过，我爱上海"
         }
       ]
     },
@@ -47,6 +47,10 @@
       "source": "篮球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-29/match2139857date2026vnative.htm",
+          "text": "🏀勇士力克森林狼迎连胜 库里44+8+6 伦德博格26+8 库明加20分"
+        },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-29/match2139851date2026vnative.htm",
           "text": "🏀76人4人20+险胜步行者 詹姆斯13+5+10助0失误 西蒙斯6记三分"
@@ -76,12 +80,8 @@
           "text": "🏀热火力擒老鹰获首胜 字母哥24+18 阿德巴约24+9 沃克23分"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2a9ce05fb5native.htm",
-          "text": "文班21分5板 哈珀7中2 乔治13分 贝利12分 马刺半场落后爵士4分"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2ac02ca766native.htm",
-          "text": "NBA历史第二人！约基奇砍下21+13+10三双 生涯三双突破200次"
+          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2aeec43818native.htm",
+          "text": "仙丹复活！博格丹替补15分钟爆砍16分2断🔥三分5中4 正负值+23"
         }
       ]
     }
