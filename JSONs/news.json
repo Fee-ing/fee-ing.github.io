@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793292343426,
+  "timestamp": 1793293261829,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.leiphone.com/category/ai/HecXToP0EHbPjPd0.html",
+          "text": "DeepSeek 又一开源重器！深挖 DeepInfer 究竟藏着多少技术狠活？",
+          "heat": "雷锋网"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17159",
           "text": "AI 光通信的下一场争夺战？激光器产能告急，830 亿美元巨头 Lumentum 或卖身 Marvell",
           "heat": "麻省理工科技评论"
@@ -3055,6 +3060,16 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.leiphone.com/category/ai/t2cIBqBZVfpYPhPg.html",
+          "text": "别再盯着 800 亿美元亏损了，Anthropic 的 AI 造 AI 已推进到 26%！",
+          "heat": "雷锋网"
+        },
+        {
+          "url": "https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html",
+          "text": "拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？",
+          "heat": "雷锋网"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/31967",
           "text": "新芯航途发布 X7 Ultra 智驾芯片：专为端到端大模型打造，中国首发量产 Armv9 车规级 CPU",
           "heat": "aibase"
@@ -3068,21 +3083,6 @@
           "url": "https://www.aibase.com/zh/news/31962",
           "text": "GitHub 发布 Copilot Fusion，多模型自动编排提升编码效率与性价比",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/17157",
-          "text": "三个月内完成三轮融资，港大教授创业押注量子算法，瞄准医药与能源材料",
-          "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.ithome.com/1/019/781.htm",
-          "text": "微软发布自 2018 年以来最大 DirectX 光追升级：AMD RX 9070 示例性能提升约 66 倍",
-          "heat": "IT 之家"
-        },
-        {
-          "url": "https://www.ithome.com/1/019/780.htm",
-          "text": "华为制药军团总裁樊杰明确「华为不做药」，希望成为 AI 制药产业技术底座",
-          "heat": "IT 之家"
         }
       ]
     },
@@ -10606,22 +10606,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48947761",
           "text": "【UP创作大赛】轻飘飘丧丧的「airhead｜ガランド」-在10884号房间彻夜起舞",
-          "heat": "1189"
+          "heat": "1203"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947947",
           "text": "录完才发现忘开伴奏了【UP创作大赛】",
-          "heat": "1249"
+          "heat": "1278"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947891",
           "text": "【UP创作大赛】《赤伶》｜“位卑未敢忘忧国，哪怕无人知我”",
-          "heat": "1114"
+          "heat": "1123"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947189",
           "text": "【猪肝来也】季候风",
-          "heat": "1070"
+          "heat": "1072"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926814",
@@ -10641,12 +10641,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48926933",
           "text": "【大塚 愛】ネコに風船",
-          "heat": "88"
+          "heat": "97"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926926",
           "text": "【萧亚轩】不配",
-          "heat": "78"
+          "heat": "89"
         },
         {
           "url": "http://www.acfun.cn/v/ac48946470",
@@ -10654,29 +10654,24 @@
           "heat": "199"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48926898",
-          "text": "【罗百吉】COZ  I BELIEVE(国语)",
-          "heat": "54"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48926921",
           "text": "【M6 Music Live Session】M.Pokora",
-          "heat": "27"
+          "heat": "47"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48945941",
-          "text": "［朝鲜音乐］我们能否保持当年的精神（吉他四重奏）",
-          "heat": "235"
+          "url": "http://www.acfun.cn/v/ac48926898",
+          "text": "【罗百吉】COZ  I BELIEVE(国语)",
+          "heat": "67"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48948279",
+          "text": "【重音テトSV  初音ミクV6】Witch Trial （bongftah）",
+          "heat": "257"
         },
         {
           "url": "http://www.acfun.cn/v/ac48946499",
           "text": "【重音テト】ミステリー（谜团）【MIMI】",
           "heat": "83"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48948279",
-          "text": "【重音テトSV  初音ミクV6】Witch Trial （bongftah）",
-          "heat": "194"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945975",
@@ -10734,14 +10729,19 @@
           "heat": "99"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48948022",
+          "text": "Spotted：ikura（YOASOBI） - 夜に駆ける ⧸ 咲き誇れ",
+          "heat": "50"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48945937",
           "text": "2026-10-28 懒銀 虚弱猫猫",
           "heat": "104"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48948022",
-          "text": "Spotted：ikura（YOASOBI） - 夜に駆ける ⧸ 咲き誇れ",
-          "heat": "50"
+          "url": "http://www.acfun.cn/v/ac48946994",
+          "text": "二十岁的坚果",
+          "heat": "79"
         },
         {
           "url": "http://www.acfun.cn/v/ac48946573",
@@ -10749,9 +10749,9 @@
           "heat": "49"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48946994",
-          "text": "二十岁的坚果",
-          "heat": "79"
+          "url": "http://www.acfun.cn/v/ac48946458",
+          "text": "【初音ミク】Headwind【さまぐら】",
+          "heat": "80"
         }
       ]
     },
