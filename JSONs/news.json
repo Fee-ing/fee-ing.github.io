@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793297736843,
+  "timestamp": 1793298647736,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://openai.com/index/updated-model-spec",
+          "text": "OpenAI 更新 Model Spec，为更强大且有益的 AI 提供指引",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17160",
           "text": "IBM 用四根超导线缆实现芯片级协同，打破量子比特拥挤魔咒",
           "heat": "麻省理工科技评论"
@@ -3075,14 +3080,9 @@
           "heat": "雷锋网"
         },
         {
-          "url": "https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html",
-          "text": "拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31967",
-          "text": "新芯航途发布 X7 Ultra 智驾芯片：专为端到端大模型打造，中国首发量产 Armv9 车规级 CPU",
-          "heat": "aibase"
+          "url": "https://openai.com/index/ropes-gray-ai-diligence",
+          "text": "How Ropes & Gray is developing AI for transactional diligence",
+          "heat": "OpenAI"
         }
       ]
     },
@@ -10581,17 +10581,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48947761",
           "text": "【UP创作大赛】轻飘飘丧丧的「airhead｜ガランド」-在10884号房间彻夜起舞",
-          "heat": "1235"
+          "heat": "1239"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947947",
           "text": "录完才发现忘开伴奏了【UP创作大赛】",
-          "heat": "1295"
+          "heat": "1303"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947891",
           "text": "【UP创作大赛】《赤伶》｜“位卑未敢忘忧国，哪怕无人知我”",
-          "heat": "1125"
+          "heat": "1129"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947189",
@@ -10604,14 +10604,14 @@
           "heat": "87"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48926893",
-          "text": "【马戏之王】03 Come Alive",
-          "heat": "96"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48948279",
           "text": "【重音テトSV  初音ミクV6】Witch Trial （bongftah）",
           "heat": "338"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48926893",
+          "text": "【马戏之王】03 Come Alive",
+          "heat": "96"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926933",
@@ -10669,14 +10669,14 @@
           "heat": "792"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48947002",
+          "text": "寻她",
+          "heat": "102"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48946103",
           "text": "2026-10-28 懒銀 直播录像",
           "heat": "57"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48947002",
-          "text": "寻她",
-          "heat": "92"
         },
         {
           "url": "http://www.acfun.cn/v/ac48946472",
@@ -10689,14 +10689,14 @@
           "heat": "72"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48946106",
-          "text": "2026-10-28 张梓义 直播录像",
-          "heat": "99"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48948022",
           "text": "Spotted：ikura（YOASOBI） - 夜に駆ける ⧸ 咲き誇れ",
           "heat": "65"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48946106",
+          "text": "2026-10-28 张梓义 直播录像",
+          "heat": "99"
         },
         {
           "url": "http://www.acfun.cn/v/ac48946994",
@@ -10721,7 +10721,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48946945",
           "text": "造物之爱",
-          "heat": "53"
+          "heat": "67"
         },
         {
           "url": "http://www.acfun.cn/v/ac48946988",
