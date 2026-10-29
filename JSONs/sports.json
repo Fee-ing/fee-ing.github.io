@@ -1,10 +1,14 @@
 {
-  "timestamp": 1793259938281,
+  "timestamp": 1793260853365,
   "data": [
     {
       "source": "足球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-29/6ae2f1f81777enative.htm",
+          "text": "982球！记者：沙特联将上轮争议球算在C罗名下，已单独告知他决定"
+        },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-29/6ae2a147c0c77native.htm",
           "text": "G·拉莫斯：我和C罗可以一起上场 若C罗回归国家队没人会责怪他"
@@ -18,8 +22,8 @@
           "text": "😂红军DNA动了？福法纳禁区内手球后，队友亨德森立刻举手示意"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-29/6ae2e36b80f8fnative.htm",
-          "text": "法媒：法国足协密切关注姆巴佩事件，暂未收到中国合作方退出信号"
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-29/6ae29e0db9b5enative.htm",
+          "text": "奥斯卡：希望更多的外籍球员、社媒有影响力的人，都要尊重中国人"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-29/6ae2cacad765anative.htm",
@@ -32,10 +36,6 @@
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-28/6ae1aaa3b8866native.htm",
           "text": "记者：皇马内部不理解姆巴佩为何通过个人渠道致歉，而非俱乐部"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-28/6ae1be1ee63ecnative.htm",
-          "text": "进球-1！德转将C罗进球改记为对手乌龙，同时C罗赛季数据扣除1球"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-28/6ae1ba7e34033native.htm",
@@ -72,16 +72,16 @@
           "text": "🏀马刺加时12-0力克残阵爵士 文班36+14 基昂特·乔治31分"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2e9f5bd8b0native.htm",
-          "text": "🤣我队友真NB！库里撤步超远三分后搞怪 伦德博格反应亮了！"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2ef3078e4bnative.htm",
           "text": "差点拥有人生高光！内姆哈德撤步晃得詹姆斯一个大趔趄险些摔倒"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2c1e8ad024native.htm",
-          "text": "四大主力全伤了！落后16分 亚历山大坐在替补席两眼无神......"
+          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2f64d5d0c1native.htm",
+          "text": "医学专家：杰伦威预计是常规赛+季后赛报销 提前复出风险过大"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2d0d7835e2native.htm",
+          "text": "场均2.8次断帽悄悄惊艳！底薪詹10助0失误夯爆 41岁控+防仍是大腿"
         }
       ]
     }
