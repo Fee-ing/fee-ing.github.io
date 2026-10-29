@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793238332569,
+  "timestamp": 1793239270180,
   "data": [
     {
       "source": "足球",
@@ -39,7 +39,7 @@
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-29/match1862987date2026vnative.htm",
-          "text": "两轮不胜！迈阿密国际2-2辛辛那提 苏亚雷斯破门卡塞米罗献助攻"
+          "text": "两轮不胜！迈阿密2-2辛辛那提 苏亚雷斯破门 双方轮轰神仙球"
         }
       ]
     },
@@ -47,6 +47,10 @@
       "source": "篮球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-29/match2139851date2026vnative.htm",
+          "text": "🏀76人4人20+险胜步行者 詹姆斯13+5+10+0失误 西蒙斯6记三分"
+        },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-29/match2139854date2026vnative.htm",
           "text": "🏀骑士逆转奇才迎3连胜 莫布里24+12 哈登18中5 迪班萨首秀19分"
@@ -60,28 +64,24 @@
           "text": "高级货！状元迪班萨全场12投8中 高效贡献19分2篮板2助攻"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae29a545aeaanative.htm",
-          "text": "无敌了！库里踩着Logo再轰超远三分！停不下来连进6球连得17分！"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-29/match2139853date2026vnative.htm",
           "text": "🏀热火力擒老鹰获首胜 字母哥24+18 阿德巴约24+9 沃克23分"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae29d7e7fcddnative.htm",
-          "text": "依旧是被科尔严防！库里连得17分被换下无缘单节20+ 半场仅23分！"
+          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae29a545aeaanative.htm",
+          "text": "无敌了！库里踩着Logo再轰超远三分！停不下来连进6球连得17分！"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae29edb7cef1native.htm",
-          "text": "犯规！詹姆斯上篮不中愤怒锤地！裁判过了两秒才补哨引全场嘘声！"
+          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2a12ce16e1native.htm",
+          "text": "镇队之宝！詹姆斯13分5板10助攻&0失误 打出超越10倍底薪价值！"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-29/6ae29c50ed8abnative.htm",
           "text": "撤销一份交易申请！字母哥砍24分18板🔥五战终迎热火生涯首胜！"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2966ae1666native.htm",
-          "text": "球不打跑去西班牙整牙？波尔津吉斯现身西班牙马贝拉打卡牙科诊所"
+          "url": "https://news.zhibo8.com/nba/2026-10-29/6ae2a48659134native.htm",
+          "text": "交易倒计时？普尔因左脚踝扭伤而伤退 报道称他向鹈鹕摊牌想换队"
         }
       ]
     }
