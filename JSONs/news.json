@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793385932928,
+  "timestamp": 1793386855719,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://openai.com/index/helping-websites-express-ai-training-preferences",
+          "text": "Making it easier for websites to express AI training preferences",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
           "text": "OpenAI 发布社区安全报告，为青少年推出新保护措施",
           "heat": "OpenAI"
@@ -3073,11 +3078,6 @@
           "url": "https://www.leiphone.com/category/industrynews/mxLii4LkfIz829iH.html",
           "text": "沙钢接入千问办公，已将 Agent 落地核心业务场景",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/31991",
-          "text": "AI 也能重新编曲和翻唱？Spotify 计划推出付费音乐混音服务",
-          "heat": "aibase"
         }
       ]
     },
@@ -10631,12 +10631,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48950459",
           "text": "【余若】Really Like You（Cover Gyubin）",
-          "heat": "704"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48926941",
-          "text": "【中国音乐地图之听见内蒙古 蒙古族民间乐曲集】森德尔姑娘",
-          "heat": "203"
+          "heat": "721"
         },
         {
           "url": "http://www.acfun.cn/v/ac48948665",
@@ -10644,19 +10639,24 @@
           "heat": "1041"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48949414",
-          "text": "【衣笠雪绘】猫 歌切day209【UP创作大赛】",
-          "heat": "768"
+          "url": "http://www.acfun.cn/v/ac48926941",
+          "text": "【中国音乐地图之听见内蒙古 蒙古族民间乐曲集】森德尔姑娘",
+          "heat": "203"
         },
         {
           "url": "http://www.acfun.cn/v/ac48950848",
           "text": "那席卷而来的粉红季风【pink monsoon翻唱】",
-          "heat": "310"
+          "heat": "330"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48949414",
+          "text": "【衣笠雪绘】猫 歌切day209【UP创作大赛】",
+          "heat": "770"
         },
         {
           "url": "http://www.acfun.cn/v/ac48948511",
           "text": "瓦尔瓦拉 • 玛丽亚·沃罗诺娃 — 《喀秋莎》 | 2026年胜利日音乐会《战火灼痕的书页》",
-          "heat": "742"
+          "heat": "752"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926964",
@@ -10691,12 +10691,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48948865",
           "text": "【东方八音盒︎●红魔乡篇】活泼的纯情小姑娘",
-          "heat": "317"
+          "heat": "335"
         },
         {
           "url": "http://www.acfun.cn/v/ac48950508",
           "text": "Duvet  [LAIN]玲音",
-          "heat": "268"
+          "heat": "271"
         },
         {
           "url": "http://www.acfun.cn/v/ac48950436",
@@ -10711,7 +10711,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48947781",
           "text": "你生活在2000年代——鱼儿主题浴帘 ⋆.˚（适合学习的“鱼”系音乐 III） ⋆˚࿔ 无AI",
-          "heat": "51"
+          "heat": "64"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947842",
@@ -10769,13 +10769,13 @@
           "heat": "39"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48949491",
-          "text": "她",
+          "url": "http://www.acfun.cn/v/ac48950184",
+          "text": "心華 原創 漫步 (秋天)",
           "heat": "10"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48950184",
-          "text": "心華 原創 漫步 (秋天)",
+          "url": "http://www.acfun.cn/v/ac48949491",
+          "text": "她",
           "heat": "10"
         }
       ]
