@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793384139319,
+  "timestamp": 1793385042422,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://huggingface.co/blog/nvidia/nemotron-halloween",
+          "text": "NVIDIA Nemotron 万圣节语音代理演示",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/ai-joins-the-search-for-extraterrestrial-signals/",
           "text": "Things That Go Beep in the Night: Agentic AI Joins the Search for Extraterrestrial Signals",
           "heat": "NVIDIA Blog"
@@ -3073,11 +3078,6 @@
           "url": "https://www.aibase.com/zh/news/31991",
           "text": "AI 也能重新编曲和翻唱？Spotify 计划推出付费音乐混音服务",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.leiphone.com/category/aihealth/BseLhlDzaWQ8XrWr.html",
-          "text": "盖伦奖提名一年后，希格生科的边界、验证与野心",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -10626,7 +10626,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48950459",
           "text": "【余若】Really Like You（Cover Gyubin）",
-          "heat": "651"
+          "heat": "704"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926941",
@@ -10636,22 +10636,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48948665",
           "text": "她来了！金智秀 - ADDICTED 官方MV",
-          "heat": "1035"
+          "heat": "1041"
         },
         {
           "url": "http://www.acfun.cn/v/ac48949414",
           "text": "【衣笠雪绘】猫 歌切day209【UP创作大赛】",
-          "heat": "742"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48948511",
-          "text": "瓦尔瓦拉 • 玛丽亚·沃罗诺娃 — 《喀秋莎》 | 2026年胜利日音乐会《战火灼痕的书页》",
-          "heat": "722"
+          "heat": "768"
         },
         {
           "url": "http://www.acfun.cn/v/ac48950848",
           "text": "那席卷而来的粉红季风【pink monsoon翻唱】",
-          "heat": "290"
+          "heat": "310"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48948511",
+          "text": "瓦尔瓦拉 • 玛丽亚·沃罗诺娃 — 《喀秋莎》 | 2026年胜利日音乐会《战火灼痕的书页》",
+          "heat": "742"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926964",
@@ -10664,14 +10664,14 @@
           "heat": "195"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48926981",
-          "text": "【M6 Music Live Session】Maître Gims",
-          "heat": "67"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48926984",
           "text": "【萧亚轩】逞强",
           "heat": "192"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48926981",
+          "text": "【M6 Music Live Session】Maître Gims",
+          "heat": "67"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926960",
@@ -10686,12 +10686,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48948865",
           "text": "【东方八音盒︎●红魔乡篇】活泼的纯情小姑娘",
-          "heat": "267"
+          "heat": "317"
         },
         {
           "url": "http://www.acfun.cn/v/ac48950508",
           "text": "Duvet  [LAIN]玲音",
-          "heat": "253"
+          "heat": "268"
         },
         {
           "url": "http://www.acfun.cn/v/ac48950436",
@@ -10734,14 +10734,14 @@
           "heat": "39"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48949151",
+          "text": "一曲尺八《青鸟》，洞箫友也可以听听，卧奏静心",
+          "heat": "33"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48948903",
           "text": "【有声书】阿加莎-克里斯蒂 系列《20》",
           "heat": "12"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48949151",
-          "text": "一曲尺八《青鸟》，洞箫友也可以听听，卧奏静心",
-          "heat": "26"
         },
         {
           "url": "http://www.acfun.cn/v/ac48948528",
@@ -10764,13 +10764,13 @@
           "heat": "39"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48950184",
-          "text": "心華 原創 漫步 (秋天)",
+          "url": "http://www.acfun.cn/v/ac48949491",
+          "text": "她",
           "heat": "10"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48949491",
-          "text": "她",
+          "url": "http://www.acfun.cn/v/ac48950184",
+          "text": "心華 原創 漫步 (秋天)",
           "heat": "10"
         }
       ]
