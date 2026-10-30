@@ -218,6 +218,9 @@ input, select, textarea { font: inherit; color: var(--ink); }
 .row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
 .row > * { min-width: 0; }
 .col { display: flex; flex-direction: column; gap: 4px; }
+/* a document's hyperlink (ui.linkDialog): its whole address, and the line that says it was copied */
+.dlg .link-url { width: 100%; box-sizing: border-box; }
+.dlg .link-copied { min-height: 1.3em; margin: 0; color: var(--muted); }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 14px; }
 .grid3 { display: grid; grid-template-columns: repeat(3, auto); gap: 2px 14px; align-items: center; }
 .ck { display: inline-flex; align-items: center; gap: 4px; margin: 3px 10px 3px 0; cursor: default; }

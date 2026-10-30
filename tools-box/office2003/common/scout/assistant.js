@@ -22,10 +22,11 @@
   const HIDDEN = 'scout.lastHiddenDay';   // the last day the user hid him: he doesn't come in by himself that day
   const SIZE = 154, H = Math.round(SIZE * 235 / 260);
   const AWAY_MS = 250;   // a blur shorter than this (a quick switch) is not "in the background"
-  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
-  const save = (o) => { try { localStorage.setItem(KEY, JSON.stringify(Object.assign(load(), o))); } catch (e) { /* not kept */ } };
-  const get = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
-  const put = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { /* not kept */ } };
+  /* the suite's settings (VO.settings, common/look.js); what can't be kept is forgotten with the page */
+  const get = (k) => (root.VO && root.VO.settings ? root.VO.settings.get(k) : null);
+  const put = (k, v) => { if (root.VO && root.VO.settings) root.VO.settings.set(k, v); };
+  const load = () => { try { return JSON.parse(get(KEY)) || {}; } catch (e) { return {}; } };
+  const save = (o) => put(KEY, JSON.stringify(Object.assign(load(), o)));
   /** the local date, 2026-10-11; days are only ever compared for equality, so a clock set back breaks nothing */
   const today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 
@@ -194,8 +195,8 @@
   });
   addEventListener('resize', () => { if (scout) place(); });
   /* shown or hidden in another window */
-  addEventListener('storage', (e) => {
-    if ((e.key !== KEY && e.key !== HIDDEN) || wanted() === on) return;
+  if (root.VO && root.VO.settings) root.VO.settings.on((key) => {
+    if ((key !== KEY && key !== HIDDEN && key !== null) || wanted() === on) return;
     if (on) hide(true); else show(false);
   });
   /* in when the app has started */

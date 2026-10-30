@@ -1041,6 +1041,11 @@
     put(line);
     L.ui.drag(e, { threshold: 0, move(ev) { const cur = lineAt(ev.clientY); if (cur) put(cur); }, up() { setTimeout(selDone, 0); } });
   }
+  /** a hyperlink: a bookmark in this document, or (L.ui.linkDialog) its address to copy, never opened from here */
+  E.followLink = function (url) {
+    if (url.startsWith('#')) { if (L.app && L.app.gotoBookmark) L.app.gotoBookmark(url.slice(1)); }
+    else L.ui.linkDialog(url);
+  };
   function onClick(e) {
     const t = e.target;
     const control = t.closest && t.closest('[data-control]');
@@ -1051,9 +1056,7 @@
     const ln = t.closest && t.closest('[data-link]');
     if (ln && (e.ctrlKey || e.metaKey || LY.view === 'reading' || E.readOnly)) {
       e.preventDefault();
-      const url = ln.dataset.link;
-      if (url.startsWith('#')) { if (L.app && L.app.gotoBookmark) L.app.gotoBookmark(url.slice(1)); }
-      else { const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.click(); }
+      E.followLink(ln.dataset.link);
       return;
     }
     const nr = t.closest && t.closest('.nref');

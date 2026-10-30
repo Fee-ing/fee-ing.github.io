@@ -81,7 +81,7 @@
         if (f.i) css.push('font-style:italic');
         if (f.u) css.push('text-decoration:underline');
         if (f.color) css.push('color:' + M.colorHex(sh.wb, f.color, '#000000'));
-        if (f.name) css.push(`font-family:'${f.name}'`);
+        if (f.name) css.push(`font-family:${L.cssString(f.name)}`);
         if (f.sz) css.push('font-size:' + f.sz + 'pt');
         if (st.fill && st.fill.pattern === 'solid') css.push('background:' + M.colorHex(sh.wb, st.fill.fg || st.fill.bg, '#FFFFFF'));
         if (st.align && st.align.h) css.push('text-align:' + ({ general: 'left', centerContinuous: 'center' }[st.align.h] || st.align.h));
@@ -90,7 +90,7 @@
         for (const [k, side] of [['t', 'top'], ['b', 'bottom'], ['l', 'left'], ['r', 'right']]) if (b[k]) css.push(`border-${side}:${L.render.borderWidth(b[k])}px ${b[k].style === 'double' ? 'double' : /dash|dot|hair/.test(b[k].style) ? 'dashed' : 'solid'} ${M.colorHex(sh.wb, b[k].color, '#000000')}`);
         const span = m ? ` rowspan="${m.r2 - m.r1 + 1}" colspan="${m.c2 - m.c1 + 1}"` : '';
         const num = typeof v === 'number' ? ` x:num="${v}"` : '';
-        html += `<td${span}${num} style="${css.join(';')};width:${g.cols.size(c)}px">${esc(t).replace(/\n/g, '<br>')}</td>`;
+        html += `<td${span}${num} style="${esc(css.join(';'))};width:${g.cols.size(c)}px">${esc(t).replace(/\n/g, '<br>')}</td>`;
       }
       html += '</tr>';
     }

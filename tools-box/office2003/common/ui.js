@@ -188,7 +188,7 @@
       void idx;
       return false;
     };
-    document.body.appendChild(el);
+    (document.fullscreenElement || document.body).appendChild(el);   // over a slide show, as dialogs
     /* position */
     const r = el.getBoundingClientRect();
     let x, y;
@@ -425,7 +425,7 @@
     });
     dlg.append(titleBar, body, foot);
     overlay.appendChild(dlg);
-    document.body.appendChild(overlay);
+    (document.fullscreenElement || document.body).appendChild(overlay);   // over a slide show, which is full screen
     /* center */
     const r = dlg.getBoundingClientRect();
     dlg.style.left = Math.max(4, (window.innerWidth - r.width) / 2) + 'px';
@@ -484,6 +484,29 @@
   };
   ui.dialogKey = (e) => { const top = dlgStack[dlgStack.length - 1]; return top ? top.keys(e) || true : false; };
 
+  /** A document's hyperlink, which the suite never opens itself: a link in a file can lead anywhere, so it shows
+   *  the address with a warning and Copy, to paste into the browser's address bar (or, for mail, into a message).
+   *  Every app's Open Hyperlink, Ctrl+click and slide show link come here; links within the document don't. */
+  ui.linkDialog = function (url) {
+    const mail = /^mailto:/i.test(url);
+    const box = h('input', { type: 'text', class: 'link-url', readonly: true, value: url, spellcheck: 'false', 'aria-label': t('地址') });
+    const copied = h('p', { class: 'link-copied', role: 'status' });
+    const body = h('div', { class: 'col' },
+      h('p', { text: t('此链接指向：') }), box,
+      h('p', { text: mail ? t('要写信到这个地址，请复制它并粘贴到您的电子邮件程序中。')
+        : t('文档中的链接可能指向有害网站。如果您信任此链接，请复制它的地址并粘贴到浏览器的地址栏中。') }),
+      copied);
+    const copy = async () => {
+      try { await navigator.clipboard.writeText(url); } catch (e) { box.select(); document.execCommand('copy'); }
+      copied.textContent = t('已复制。');
+    };
+    // Copy leaves the dialog open (false), so the address can be pasted while it shows
+    const d = ui.dialog({ title: t('超链接'), width: 440, body, buttons: [{ label: '复制地址(&C)', primary: true, onClick: () => { copy(); return false; } }, { label: '关闭' }] });
+    box.focus();
+    box.select();
+    return d;
+  };
+
   /** Message box. Returns Promise<buttonIndex|null> */
   ui.msg = function (text, o) {
     o = o || {};
@@ -498,22 +521,30 @@
     String(L.t ? L.t(text) : text).split('\n').forEach((line, i) => { if (i) t.appendChild(h('br')); t.appendChild(document.createTextNode(line)); });
     const labels = o.buttons || ['OK'];
     tell('vo-message', { icon: o.icon || 'info' });
-    const d = ui.dialog({ title: o.title || L.APP, body, width: o.width || 380, buttons: labels.map((l, i) => ({ label: l, primary: i === (o.def || 0), cancel: /^(?:cancel|no|取消|否)(?:\(&?[A-Za-z]\))?$/i.test(plainAmp(l)) })) });
+    /* Esc answers Cancel; No only where there is no Cancel (Yes/No), never in Yes/No/Cancel, where No discards
+       Embedded copy (tools-box): the test is Chinese-aware and matches the whole label (plainAmp has already
+       dropped the &X accelerator) — a prefix test would take 「取消链接」 for Cancel */
+    const plain = labels.map(plainAmp);
+    const CANCEL = /^(?:cancel|close|取消|关闭)$/i, NO = /^(?:no|否)$/i;
+    const esc = plain.some((l) => CANCEL.test(l)) ? plain.findIndex((l) => CANCEL.test(l)) : plain.findIndex((l) => NO.test(l));
+    const d = ui.dialog({ title: o.title || L.APP, body, width: o.width || 380, buttons: labels.map((l, i) => ({ label: l, primary: i === (o.def || 0), cancel: i === esc })) });
     return d.done;
   };
   /** Help ▸ About, the same in every app: icon, name and version, the app's own paragraphs, the link to the open
-   *  source licenses, the suite's license and font notes (as in the Start Center's About), then the trademark note
-   *  naming the Office program it follows (o: { name, text: [paragraphs], office })
+   *  source licenses, and the suite's license and font notes (as in the Start Center's About).
+   *  Descriptions stay general, without naming another company's products (o: { name, text: [paragraphs] }).
    *  Embedded copy (tools-box): the "Open source licenses" link is gone with oss-licenses.html. */
   ui.about = function (o) {
     const body = h('div', { class: 'col about' },
       h('div', { class: 'about-head' }, h('span', { html: L.icons.app ? L.icons.app(48) : '' }),
-        h('div', null, h('div', { class: 'about-name', text: t('{0} 网络版', o.name) }), h('div', { text: t('版本 {0}', L.VERSION) }))),
+        h('div', null, h('div', { class: 'about-name', translate: 'no', text: root.VO ? root.VO.editionName(o.name) : o.name }), h('div', { text: t('版本 {0}', L.VERSION) }))),
       ...o.text.map((t) => h('p', { text: t })),
-      /* Embedded copy (tools-box): the "Open source licenses" link is gone with oss-licenses.html. */
+      /* Embedded copy (tools-box): the "Open source licenses" link is gone with oss-licenses.html.
+         Upstream dropped ui.about's `office` argument (no other company's product is named any more),
+         so the trademark note must not interpolate o.office — it would print "undefined". */
       h('p', { text: '本项目以 Apache License 2.0 开源许可发布，按原样提供，不作任何担保。Office 2003 是独立项目。文档中提及的产品名称为各自所有者的商标；Office 2003 与其没有关联。' }),
       h('p', { class: 'about-marks', text: '字体名称仅用于标识文档中指定的字体，并与 Office Open XML 文件及其创建程序保持互操作性；此类名称可能是各自所有者的商标。Office 2003 使用您计算机上已安装的字体来显示文字。若文档指定的字体未安装，Office 2003 会用自带的开源字体或您计算机上的其他字体代替，因此文档的显示效果可能与其他程序不同。Office 2003 不包含也不分发任何商业字体软件。' }),
-      h('p', { class: 'about-marks', text: t('Microsoft、{0} 和 Office 是 Microsoft Corporation 的商标。{1} 是独立作品，与 Microsoft 没有关联。', o.office, o.name) }));
+      h('p', { class: 'about-marks', text: t('Microsoft 和 Office 是 Microsoft Corporation 的商标。{0} 是独立作品，与 Microsoft 没有关联。', o.name) }));
     return ui.dialog({ title: t('关于 {0}', o.name), width: 420, body, buttons: [{ label: '确定', primary: true }] });
   };
   ui.prompt = function (label, value, title) {

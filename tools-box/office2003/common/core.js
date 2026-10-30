@@ -1,15 +1,19 @@
 /* Office 2003 — core utilities, shared by Quire, Ledger and Lectern.
  * Shared namespace, DOM helpers, units, colors, events, file I/O, media store, PDF writer.
- * Every other script attaches itself to window.L. Each page names its app before loading this file:
- *   <script>window.L = { APP_ID: 'quire', APP_NAME: 'Quire', APP: 'Quire' };</script>
- * APP_ID keeps each app's saved settings apart (localStorage 'quire.…'); APP_NAME and APP appear in messages.
+ * Every other script attaches itself to window.L. Each page names its app on its <html> (no inline script:
+ * the pages' Content-Security-Policy):
+ *   <html lang="en" data-app="quire" data-app-name="Quire">
+ * APP_ID keeps each app's saved settings apart ('quire.…', L.store); APP_NAME and APP appear in messages.
  */
 (function (root) {
   'use strict';
   const L = root.L || (root.L = {});
+  const named = root.document?.documentElement?.dataset || {};
   L.VERSION = root.VO?.VERSION || 'dev';   // one version for the suite: common/suite.js
-  L.APP_ID = L.APP_ID || 'vibeoffice';
-  L.APP_NAME = L.APP_NAME || 'Office 2003';
+  /* Embedded copy (tools-box): the app is named by <html data-app="quire" data-app-name="Quire"> on the page
+     (upstream, CSP-friendly) — the fallback name stays our own "Office 2003" rather than "VibeOffice" */
+  L.APP_ID = L.APP_ID || named.app || 'vibeoffice';
+  L.APP_NAME = L.APP_NAME || named.appName || 'Office 2003';
   L.APP = L.APP || L.APP_NAME;
 
   /* ---------- DOM ---------- */
@@ -200,11 +204,12 @@
     '#FF99CC', '#FFCC99', '#FFFF99', '#CCFFCC', '#CCFFFF', '#99CCFF', '#CC99FF', '#FFFFFF',
   ];
 
-  /* ---------- storage (never relied on) ---------- */
+  /* ---------- the app's settings (never relied on): VO.settings (common/look.js), as JSON under '<APP_ID>.<k>' ---------- */
+  const settings = () => root.VO?.settings;
   L.store = {
-    get(k, d) { try { const v = localStorage.getItem(L.APP_ID + '.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem(L.APP_ID + '.' + k, JSON.stringify(v)); return true; } catch (e) { return false; } },
-    del(k) { try { localStorage.removeItem(L.APP_ID + '.' + k); } catch (e) { /* ignore */ } },
+    get(k, d) { const v = settings()?.get(L.APP_ID + '.' + k); if (v == null) return d; try { return JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { return !!settings()?.set(L.APP_ID + '.' + k, JSON.stringify(v)); },
+    del(k) { settings()?.remove(L.APP_ID + '.' + k); },
   };
 
   /* ---------- the look (common/looks.css) for chrome drawn on canvases ---------- */
@@ -255,9 +260,137 @@
     push(`trailer\n<< /Size ${total} /Root 1 0 R /Info ${infoId} 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
     return new Blob(chunks, { type: 'application/pdf' });
   };
+  /* ---------- saving to real files (the desktop app) ----------
+     On the web a save is a download (L.saveFile). In the desktop app it is a real file (docs/desktop.md, Saving):
+     Save writes the window's own file in place ('save'), Save As and exports what the user picks in the system's
+     Save dialog (choose, then 'chosen'); the native side checks and writes (desktop/src/files.rs) and says what went
+     wrong as a code, which is told here in plain words with the next step. One write at a time per window. */
+  const native = () => (root.VO && root.VO.host.kind === 'desktop' ? root.VO.host : null);
+  let pending = null;   // the Save dialog's pick, until written or given up
+  let queue = Promise.resolve();
+  const extOf = (name) => (/\.([^.]+)$/.exec(name || '') || ['', ''])[1].toLowerCase();
+  const without = (name) => String(name || '').replace(/\.[^.]+$/, '');
+  /* "{0}" is the file's name; every failure before the file is replaced says it hasn't changed */
+  const N = (s) => s;   // UI text, translated where it is shown
+  const SAYS = {
+    changed: [N('“{0}” was changed by another program after you opened it. Replace it with this version, or save this version under another name?'), ['&Replace It', '&Save As...', 'Cancel'], ['replace', 'saveas']],
+    missing: [N('“{0}” is no longer where it was: it was moved, renamed or deleted.'), ['&Save As...', 'Cancel'], ['saveas']],
+    denied: [N('{1} can\'t save “{0}”: it is read-only, or you don\'t have permission to change it. Your file hasn\'t changed.'), ['&Save As...', 'Cancel'], ['saveas']],
+    /* the Mac's sandbox: the app may need the user's leave to save in the file's folder */
+    sandboxed: [N('{1} doesn\'t have permission to save “{0}” in its folder. Allow {1} into the folder, or save this version under another name? Your file hasn\'t changed.'), ['&Allow Access...', '&Save As...', 'Cancel'], ['allow', 'saveas']],
+    busy: [N('“{0}” is open in another program, which is keeping it from being changed. Your file hasn\'t changed.'), ['&Try Again', '&Save As...', 'Cancel'], ['retry', 'saveas']],
+    full: [N('There isn\'t enough space on the disk to save “{0}”. Your file hasn\'t changed.'), ['&Save As...', 'Cancel'], ['saveas']],
+  };
+  L.file = {
+    /** whether saves are real files (the desktop app), not downloads */
+    native: () => !!native(),
+    /** the app's types for the Save dialog, in its order: [{ id, label, ext }] (each app sets them) */
+    types: [],
+    /** the type of a file name, by its extension */
+    typeOf: (name) => (L.file.types.find((t) => t.ext.includes(extOf(name))) || {}).id || null,
+    /** the desktop app: whether the window has a file of its own */
+    bound: () => { const h = native(); return !!(h && h.file.bound); },
+    /** the document's name for the title bar: "(Read-Only)" after it when the window's file may not be changed */
+    titled: (name) => { const h = native(); return h && h.file.bound && h.file.readOnly ? L.t('{0} (Read-Only)', name) : name; },
+    /** the desktop app: whether Save writes the window's own file in place (it has one, and may change it) */
+    inPlace: () => { const h = native(); return !!(h && h.file.bound && !h.file.readOnly); },
+    /** the desktop app's Save dialog for a Save As ('saveAs') or an export ('export'): the app's types (or `ids`),
+     *  `type` first, `name` (no extension) filled in. { name (no extension), file (with it), type }, or null */
+    async choose(purpose, type, name, ids) {
+      const types = L.file.types.filter((t) => !ids || ids.includes(t.id)).map((t) => ({ id: t.id, label: L.t(t.label) }));
+      for (;;) {
+        try {
+          const c = await native().choose({ purpose, types, type, name: without(name) || 'Document', title: L.t('Save As') });
+          pending = c;
+          return c && { name: without(c.name), file: c.name, type: c.type };
+        } catch (e) {
+          if (e && e.code === 'open-elsewhere') { await L.ui.msg(L.t('“{0}” is open in another {1} window. Close it there, or choose another name.', e.file || name, L.APP), { icon: 'warn' }); continue; }
+          await L.ui.msg(String(e && e.message || e), { icon: 'error' });
+          return null;
+        }
+      }
+    },
+    /** the Save dialog's pick is not written after all (the compatibility check's Cancel) */
+    cancel() { if (pending) { pending = null; native().cancelChoice().catch(() => {}); } },
+    /** File ▸ Versions... (the desktop app): the versions of the document's file its saves replaced (kept 30 days),
+     *  one of them opened in a window of its own, to be saved where the user likes */
+    async showVersions(fileName) {
+      const ui = L.ui;
+      let list = [];
+      try { list = await native().versions(); } catch (e) { ui.msg(String(e && e.message || e), { icon: 'error' }); return; }
+      if (!list.length) { ui.msg(L.t('{0} hasn\'t kept any earlier versions of “{1}”. It keeps the version a save replaces, for 30 days.', L.APP, fileName), { icon: 'info' }); return; }
+      const box = L.h('select', { size: 8, style: 'width:100%' }, ...list.map((v, i) => L.h('option', { value: v.id, selected: i === 0 ? '' : null, translate: 'no' },
+        new Date(v.time).toLocaleString(root.VO && root.VO.i18n ? root.VO.i18n.dates : []) + ' · ' + L.t('{0} KB', Math.max(1, Math.round(v.size / 1024))))));
+      const open = () => native().openVersion(box.value).catch((e) => ui.msg(String(e && e.message || e), { icon: 'error' }));
+      box.addEventListener('dblclick', open);
+      ui.dialog({ title: L.t('Versions'), width: 420, focus: box, body: L.h('div', { class: 'col' }, L.h('div', { text: L.t('Earlier versions of “{0}”, kept as saves replaced them:', fileName) }), box),
+        buttons: [{ label: '&Open', primary: true, onClick: () => { open(); } }, { label: 'Close', cancel: true }] });
+    },
+    /** writes `blob` as `type`: how 'save' (the window's own file) or 'chosen' (what choose picked). A failure is
+     *  told with its next step (Replace It, Try Again, Save As...). { result: 'saved' or 'cancelled', name (the
+     *  file's, with its extension), bound (it is now the window's file) } */
+    write(blob, how, { type, name }) {
+      const run = queue.then(() => writeNow(blob, how, type, name));
+      queue = run.catch(() => {});
+      return run;
+    },
+  };
+  async function writeNow(blob, how, type, name) {
+    const host = native();
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    let replace = false;
+    for (;;) {
+      const shown = how === 'save' ? host.file.name : (pending && pending.name) || name;
+      try {
+        if (how === 'save') {
+          await host.save(bytes, replace);
+          return { result: 'saved', name: host.file.name, bound: true };
+        }
+        const w = await host.writeChosen(bytes);
+        pending = null;
+        if (w.bound) host.file = { bound: true, readOnly: false, name: w.name };
+        return { result: 'saved', name: w.name, bound: w.bound };
+      } catch (e) {
+        const code = e && e.code, say = SAYS[code === 'denied' && host.sandboxed ? 'sandboxed' : code];
+        if (!say) {
+          await L.ui.msg(L.t('“{0}” couldn\'t be saved: {1} Your file hasn\'t changed.', shown, String(e && e.message || e)), { icon: 'error' });
+          if (how === 'chosen') L.file.cancel();
+          return { result: 'cancelled' };
+        }
+        const r = await L.ui.msg(L.t(say[0], shown, L.APP), { icon: 'warn', buttons: say[1] });
+        const act = say[2][r];
+        if (act === 'replace') { replace = true; continue; }
+        if (act === 'retry') continue;
+        if (act === 'allow') {
+          /* the folder chooser, at the file's folder; then the same save again (asked again if still refused) */
+          try { await host.allowAccess(how, L.t('Choose the folder of “{0}” and click Open to let {1} save there.', shown, L.APP)); }
+          catch (err) { await L.ui.msg(String(err && err.message || err), { icon: 'warn' }); }
+          continue;
+        }
+        if (act === 'saveas') {
+          const c = await L.file.choose('saveAs', type, without(shown), [type]);
+          if (!c) return { result: 'cancelled' };
+          how = 'chosen';
+          continue;
+        }
+        if (how === 'chosen') L.file.cancel();
+        return { result: 'cancelled' };
+      }
+    }
+  }
   /** Offer a generated file to the user as a download. Returns 'saved', and tells vo-saved { name } on window once
-   *  the file is handed over (the assistant acts out Save and Save As then, common/scout/assistant.js). */
+   *  the file is handed over (the assistant acts out Save and Save As then, common/scout/assistant.js). In the
+   *  desktop app it is an export: the Save dialog asks where (unless the app's own Save As just did), then the file
+   *  is written there; 'cancelled' if the user gave up. */
   L.saveFile = async function (name, blob) {
+    if (native()) {
+      const type = L.file.typeOf(name);
+      if (!type) throw new Error(L.t('{0} doesn\'t save “{1}”.', L.APP, name));
+      if (!pending || pending.type !== type) { const c = await L.file.choose('export', type, name, [type]); if (!c) return 'cancelled'; }
+      const w = await L.file.write(blob, 'chosen', { type, name });
+      if (w.result === 'saved') window.dispatchEvent(new CustomEvent('vo-saved', { detail: { name: w.name } }));
+      return w.result;
+    }
     const url = URL.createObjectURL(blob);
     const a = L.h('a', { href: url, download: name, style: 'display:none' });
     document.body.appendChild(a);
@@ -524,6 +657,17 @@
       tip: generic ? t('{0} 未安装在此计算机上，因此其文字以默认字体显示。文档仍保留字体名 {0}，在装有该字体的计算机上会以该字体显示。', name)
         : t('{0} 未安装在此计算机上，因此其文字以 {1} 显示。文档仍保留字体名 {0}，在装有该字体的计算机上会以该字体显示。', name, used),
     };
+  };
+  /** a string as a quoted CSS string (a font name in HTML we write), with the quotes, backslash, angle brackets
+   * and line breaks escaped: a document's font name can end neither the string, an attribute nor a <style>. */
+  L.cssString = (s) => `'${String(s).replace(/[\\'"<>\n\r\f]/g, (c) => '\\' + c.charCodeAt(0).toString(16) + ' ')}'`;
+  /** the Content-Security-Policy meta tag of a page we export (Save as Web Page). The file is opened from disk,
+   * away from the suite's own policy, so it carries one: pictures and fonts are inside it (data:), styles
+   * inline, nothing loads from anywhere, and no script runs but the page's own `script` (the text between its
+   * <script> tags, allowed by its SHA-256; common/sha.js), if it has one. */
+  L.exportCSP = function (script) {
+    const hash = script == null ? null : btoa(String.fromCharCode(...L.sha.sha256(new TextEncoder().encode(script))));
+    return `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; font-src data:; style-src 'unsafe-inline'; script-src ${hash ? `'sha256-${hash}'` : "'none'"}; base-uri 'none'; form-action 'none'">`;
   };
   /** @font-face rules for a standalone export (an HTML page): the stand-ins from public/fonts/ that
    * `markup` names, as data: URLs, with bold/italic faces only if the markup uses them. */

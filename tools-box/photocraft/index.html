@@ -53,11 +53,33 @@
   document.addEventListener('click', onPointer, true);
   document.addEventListener('auxclick', onPointer, true);
 })();
+
+/* Embedded copy (tools-box)：静音 eframe 那条「未实现 viewport 命令」的告警。
+
+   启动后 eframe 会打一条：
+     [eframe::web::app_runner] … Unhandled egui viewport command:
+     Title("PhotoCraft") - not implemented in web backend
+   Rust 侧调了 ViewportCommand::Title，而 web 后端不实现它 —— 网页标题本来就是
+   index.html 里的 <title>PhotoCraft</title>，行为没有任何缺失，纯粹是噪音。
+   文案在 wasm 里改不掉，只能在这里按内容精确过滤：只丢这一条，其余
+   console.warn / info / error 一律原样透传。 */
+(function () {
+  var MUTED = /Unhandled egui viewport command: Title\("PhotoCraft"\)/;
+  var nativeWarn = console.warn;
+  console.warn = function () {
+    try {
+      if (MUTED.test(Array.prototype.join.call(arguments, ' '))) return;
+    } catch (e) {
+      /* 判断失败就原样输出 */
+    }
+    return nativeWarn.apply(console, arguments);
+  };
+})();
 </script>
 
 <script type="module">
-import init, * as bindings from './photocraft-web-boot-a223668ac1e11b19.js';
-const wasm = await init({ module_or_path: './photocraft-web-boot-a223668ac1e11b19_bg.wasm' });
+import init, * as bindings from './photocraft-web-boot-251aa3764a2189ed.js';
+const wasm = await init({ module_or_path: './photocraft-web-boot-251aa3764a2189ed_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -78,7 +100,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
     #photocraft_stalled { color: #8c8c8c; visibility: hidden; animation: photocraft-stalled 0s 20s forwards; }
     @keyframes photocraft-stalled { to { visibility: visible; } }
   </style>
-<link rel="modulepreload" href="./photocraft-web-boot-a223668ac1e11b19.js" crossorigin="anonymous" integrity="sha384-7UFv5T9Di8oDc/Ic0R29r/RmaD3nEnscnNmQULye3RzQBLZKoa4Piwl+T87jqbTU"><link rel="preload" href="./photocraft-web-boot-a223668ac1e11b19_bg.wasm" crossorigin="anonymous" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="./photocraft-web-boot-251aa3764a2189ed.js" crossorigin="anonymous" integrity="sha384-yNt0bAtHUoay5vgElwlTAEVxV1J781ZltBC335HKI5bKcknXxxrIkiXbcQM+GbGp"><link rel="modulepreload" href="./app/snippets/eframe-d31a8450ea12dfc1/inline0.js" crossorigin="anonymous" integrity="sha384-uPZQ72BwgZ4v7Km6+UIFbkDDlt7ShGEsAVEHVN/+wZSGFhItJZB83iKMFQXauTSs"><link rel="preload" href="./photocraft-web-boot-251aa3764a2189ed_bg.wasm" crossorigin="anonymous" as="fetch" type="application/wasm"></head>
 <body>
   <canvas id="photocraft_canvas"></canvas>
   <div id="photocraft_loading">

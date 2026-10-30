@@ -23,7 +23,7 @@
     if (r.hidden) st.push('display:none');
     return st.join(';');
   }
-  const cssFont = (f) => (/\s/.test(f) ? `'${f}'` : f) + (/courier|mono|consol/i.test(f) ? ',monospace' : /arial|helvetica|verdana|tahoma|calibri|segoe|sans/i.test(f) ? ',sans-serif' : ',serif');
+  const cssFont = (f) => (/^[\w-]+$/.test(f) ? f : L.cssString(f)) + (/courier|mono|consol/i.test(f) ? ',monospace' : /arial|helvetica|verdana|tahoma|calibri|segoe|sans/i.test(f) ? ',sans-serif' : ',serif');
   function wrapTags(r, inner) {
     let s = inner;
     if (r.vert === 'superscript') s = `<sup>${s}</sup>`;
@@ -34,7 +34,15 @@
     if (r.b) s = `<b>${s}</b>`;
     return s;
   }
-  function linkHref(l) { if (!l) return null; if (typeof l === 'string') return l; return (l.url || '') + (l.anchor ? '#' + l.anchor : ''); }
+  /** a hyperlink's address in exported HTML: web and mail addresses and bookmarks only; another scheme
+   * (javascript:, file:, …) leaves the text unlinked */
+  function linkHref(l) {
+    if (!l) return null;
+    const href = typeof l === 'string' ? l : (l.url || '') + (l.anchor ? '#' + l.anchor : '');
+    return /^(https?:|mailto:|#)/i.test(href.trim()) ? href : null;
+  }
+  /** a style attribute, escaped: the CSS holds document data (font names, colours) */
+  const sty = (css) => ` style="${attr(css)}"`;
   function parasHTML(p, d, opts, labels) {
     const ctx = opts.tblCtx || null;
     const pp = D.pProps(d, p, ctx);
@@ -42,7 +50,7 @@
     let inner = '';
     const lb = labels && labels.get(p.id);
     const inList = opts.inList && lb;
-    if (lb && !inList) inner += `<span style="${runStyle(D.mergeRPr(markR, lb.lv.rPr || {}), null)}">${esc(lb.text)}</span>&nbsp;&nbsp;`;
+    if (lb && !inList) inner += `<span${sty(runStyle(D.mergeRPr(markR, lb.lv.rPr || {}), null))}>${esc(lb.text)}</span>&nbsp;&nbsp;`;
     let linkOpen = null;
     for (const it of p.runs) {
       const r = D.rProps(d, p, it, ctx);
@@ -58,11 +66,11 @@
       else if (it.t === 'raw' && it.math) { const m = L.R.mathFor(it); piece = m ? m.math.outerHTML : esc(it.text || ''); }
       else if (it.t === 'img' && it.media) { const src = opts.media ? opts.media.get(it.media) || L.media.url(it.media) : L.media.url(it.media); piece = `<img src="${attr(src)}" width="${Math.round((it.w || 72) * D.PX)}" height="${Math.round((it.h || 72) * D.PX)}" alt="${attr(it.alt || '')}"${it.float ? ` style="float:${it.float.posH && it.float.posH.align === 'right' ? 'right' : 'left'};margin:4px 9px"` : ''}>`; }
       else if (it.t === 'shape' && it.tb) piece = `<span style="display:inline-block;border:1px solid #000;padding:3px 7px">${it.tb.blocks.filter((b) => b.t === 'p').map((q) => esc(D.plainText(q))).join('<br>')}</span>`;
-      else if ((it.t === 'fn' || it.t === 'en') && !it.self) { const n = L.layout.noteNum ? L.layout.noteNum(it) : '*'; piece = opts.notes ? `<sup><a href="#_${it.t}${it.id}" name="_${it.t}ref${it.id}">[${esc(n)}]</a></sup>` : `<sup>${esc(n)}</sup>`; if (opts.notes) opts.notes.push(it); }
+      else if ((it.t === 'fn' || it.t === 'en') && !it.self) { const n = L.layout.noteNum ? L.layout.noteNum(it) : '*'; piece = opts.notes ? `<sup><a href="#_${it.t}${attr(it.id)}" name="_${it.t}ref${attr(it.id)}">[${esc(n)}]</a></sup>` : `<sup>${esc(n)}</sup>`; if (opts.notes) opts.notes.push(it); }
       else continue;
       const css = runStyle(r, opts.baseR);
       piece = wrapTags(r, piece);
-      inner += css ? `<span style="${css}">${piece}</span>` : piece;
+      inner += css ? `<span${sty(css)}>${piece}</span>` : piece;
     }
     if (linkOpen != null) inner += '</a>';
     if (!inner) inner = '&nbsp;';
@@ -79,7 +87,7 @@
     const fstyle = runStyle(markR, null);
     const lvl = D.headingLevel(d, p);
     const tag = inList ? 'li' : lvl && lvl <= 6 ? 'h' + lvl : 'p';
-    return `<${tag} style="${st.join(';')};${fstyle}">${inner}</${tag}>`;
+    return `<${tag}${sty(`${st.join(';')};${fstyle}`)}>${inner}</${tag}>`;
   }
   function tableHTML(t, d, opts, labels) {
     const { tp, sp } = R.tblProps(d, t);
@@ -102,7 +110,7 @@
         const shd = tcPr.shd || cs.tcPr.shd;
         if (shd) { const c = R.shadeCSS(shd); if (c) st.push(`background:${c}`); }
         const cellOpts = Object.assign({}, opts, { tblCtx: { tblRPr: D.mergeRPr(sp.rPr, cs.rPr), tblPPr: D.mergePPr(sp.pPr, cs.pPr) } });
-        s += `<td${m.span > 1 ? ` colspan="${m.span}"` : ''}${m.rowspan > 1 ? ` rowspan="${m.rowspan}"` : ''} style="${st.join(';')}">${blocksHTML(m.cell.blocks, d, cellOpts, labels)}</td>`;
+        s += `<td${m.span > 1 ? ` colspan="${m.span}"` : ''}${m.rowspan > 1 ? ` rowspan="${m.rowspan}"` : ''}${sty(st.join(';'))}>${blocksHTML(m.cell.blocks, d, cellOpts, labels)}</td>`;
       }
       s += '</tr>';
     });
@@ -158,12 +166,12 @@
         const st = (it.t === 'fn' ? d.fn : d.en)[it.id];
         if (!st) continue;
         const n = L.layout.noteNum ? L.layout.noteNum(it) : '*';
-        foot += `<div id="_${it.t}${it.id}"><a href="#_${it.t}ref${it.id}">[${esc(n)}]</a> ${blocksHTML(st.blocks.map((b) => (b.t === 'p' ? Object.assign({}, b, { runs: b.runs.filter((x) => !x.self) }) : b)), d, { media, baseR }, labels).replace(/^<p([^>]*)>/, '<span$1>').replace(/<\/p>$/, '</span>')}</div>`;
+        foot += `<div id="_${it.t}${attr(it.id)}"><a href="#_${it.t}ref${attr(it.id)}">[${esc(n)}]</a> ${blocksHTML(st.blocks.map((b) => (b.t === 'p' ? Object.assign({}, b, { runs: b.runs.filter((x) => !x.self) }) : b)), d, { media, baseR }, labels).replace(/^<p([^>]*)>/, '<span$1>').replace(/<\/p>$/, '</span>')}</div>`;
       }
     }
     const title = d.props.title || name || 'Document';
-    const bg = d.bg ? `background:#${d.bg};` : '';
-    const html = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="generator" content="Quire">\n<title>${esc(title)}</title>\n` +
+    const bg = /^[0-9a-f]{6}$/i.test(d.bg || '') ? `background:#${d.bg};` : '';
+    const html = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n${L.exportCSP()}\n<meta name="generator" content="Quire">\n<title>${esc(title)}</title>\n` +
       `${d.props.creator ? `<meta name="author" content="${attr(d.props.creator)}">\n` : ''}${d.props.description ? `<meta name="description" content="${attr(d.props.description)}">\n` : ''}` +
       `<style>body{${bg}font-family:${cssFont(baseR.font || 'Times New Roman')};font-size:${baseR.sz || 12}pt;margin:1in;max-width:${L.round((d.sect.pgW - d.sect.ml - d.sect.mr) / 72, 2)}in}p,h1,h2,h3,h4,h5,h6,li{margin:0}table{margin:4pt 0}a{color:#0000ff}</style>\n</head>\n<body>\n${body}\n${foot}\n</body>\n</html>\n`;
     return new Blob([html], { type: 'text/html;charset=utf-8' });

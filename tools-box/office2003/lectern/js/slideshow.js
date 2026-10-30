@@ -808,9 +808,11 @@
     return [(e.clientX - r.left) / st.k, (e.clientY - r.top) / st.k];
   }
   let drawing = null;
+  /** a dialog or menu over the show (inside it in full screen, L.ui): its clicks, wheel and right-clicks are its own */
+  const overShow = (e) => !!(e.target.closest && e.target.closest('.dlg-overlay, .menu'));
   function onPointerDown(e) {
     if (!st) return;
-    if (e.target.closest('.popbar') || e.target.closest('.rehearse')) return;
+    if (e.target.closest('.popbar') || e.target.closest('.rehearse') || overShow(e)) return;
     idleCursor();
     if (e.button === 2) return;
     if (st.pen && e.button === 0) {
@@ -853,9 +855,9 @@
     st.ink[key] = list.filter((s) => !s.pts.some((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 10));
     redrawInk();
   }
-  function onWheel(e) { if (!st || st.pen) return; if (e.deltaY > 0) S.next(); else if (e.deltaY < 0) S.prev(); }
+  function onWheel(e) { if (!st || st.pen || overShow(e)) return; if (e.deltaY > 0) S.next(); else if (e.deltaY < 0) S.prev(); }
   function follow(link) {
-    if (link.url) { const a = h('a', { href: link.url, target: '_blank', rel: 'noopener noreferrer' }); document.body.appendChild(a); a.click(); a.remove(); return; }
+    if (link.url) { L.ui.linkDialog(link.url); return; }   // shown to copy, never opened from here
     if (link.slide) { const i = L.pres.slides.findIndex((s) => s.id === link.slide); if (i >= 0) S.goto(i); return; }
     switch (link.action) {
       case 'next': S.next(); break;
@@ -908,6 +910,7 @@
     ];
   }
   function onContext(e) {
+    if (overShow(e)) return;
     e.preventDefault();
     if (!st) return;
     if (st.pen) { setPen(null); }
@@ -927,7 +930,7 @@
     /* the browser's reload keys would reload the page, and the presentation with it: during the show they do nothing
        (also with the show's menu or a dialog open) */
     if (e.key === 'F5' || ((e.ctrlKey || e.metaKey) && (e.key === 'r' || e.key === 'R'))) { e.preventDefault(); e.stopPropagation(); return; }
-    if (L.ui.dialogOpen()) return;
+    if (L.ui.dialogOpen()) { L.ui.dialogKey(e); return; }   // the app's own handler stands aside during the show
     if (L.ui.menuOpen()) { if (L.ui.menuKey(e)) { e.preventDefault(); e.stopPropagation(); } return; }
     const k = e.key;
     e.stopPropagation();

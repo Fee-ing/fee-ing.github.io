@@ -9,8 +9,10 @@
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <!-- Embedded copy (tools-box): the apple-touch-icon, the web app manifest (manifest.webmanifest) and its
      icons are gone — all of them only serve installing the suite as a standalone app, which cannot happen
-     while it is framed on another site. -->
-<script>try{var d=document.documentElement,l=localStorage.getItem('vibeoffice.look')||'classic';d.dataset.look=l;d.dataset.layout=l==='paper2016'?'ribbon':'bars'}catch(e){}</script>
+     while it is framed on another site. Upstream's Content-Security-Policy is gone as well: it allows no
+     inline script, and this copy's start page is the inline one below (the Chinese text has no runtime to
+     come from). -->
+<script src="common/look.js"></script>
 <link rel="stylesheet" href="common/looks.css">
 <style>
   /* colours come from the look settings (common/looks.css); the app colours are the apps' own */
@@ -141,9 +143,17 @@
   .gallery h2 { display: flex; align-items: center; gap: 8px; margin: 18px 0 10px; font-size: 13px; color: var(--pane-ink); }
   .gallery h2 small { font-weight: normal; color: var(--muted); }
   .gallery .grid { padding: 0; overflow: visible; }
-  .empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 24px; text-align: center; color: var(--muted); }
-  .empty img { width: 96px; height: 96px; opacity: .9; margin-bottom: 8px; }
-  .empty b { font-size: 16px; color: var(--pane-ink); }
+  /* no recent files: the welcome, what the suite is (centred; scrolls in a short window) */
+  .empty { flex: 1; min-height: 0; overflow: auto; display: flex; padding: 24px; color: var(--muted); }
+  .welcome { margin: auto; max-width: 600px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+  .welcome img { width: 72px; height: 72px; opacity: .9; margin-bottom: 4px; }
+  .welcome h2 { margin: 0; font-size: 16px; color: var(--pane-ink); }
+  .welcome p { margin: 0; }
+  .welcome ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  .welcome .apps li { display: flex; align-items: center; gap: 10px; }
+  .welcome .apps a { flex: none; width: 92px; display: flex; align-items: center; gap: 6px; color: var(--pane-link); }
+  .welcome b { color: var(--pane-ink); }
+  .welcome .hint { margin-top: 12px; }
 
   .drop { position: absolute; inset: 10px; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--sel); border-radius: 8px;
     background: var(--drop-bg); font-size: 16px; font-weight: bold; color: var(--pane-ink); pointer-events: none; }
@@ -206,14 +216,32 @@
     <div class="grid" id="grid" hidden></div>
     <div class="gallery" id="gallery" hidden></div>
     <div class="empty" id="empty">
-      <img src="icons/icon.svg" alt="">
-      <b>欢迎使用 Office 2003。</b>
-      <span>将文档拖到此处，或选择左侧的应用来创建文档。</span>
+      <div class="welcome">
+        <img src="icons/icon.svg" alt="">
+        <h2>欢迎使用 Office 2003。</h2>
+        <p>一套在浏览器中运行的免费办公套件：可处理 .docx、.xlsx 和 .pptx 文件的文字处理器、电子表格和演示文稿编辑器。</p>
+        <!-- Embedded copy (tools-box): explicit index.html here too — see the note at the apps above -->
+        <ul class="apps">
+          <li><a href="quire/index.html" data-go><span data-icon="quire"></span><b>Quire</b></a><span>文档：修订、批注、脚注、目录和邮件合并。可打开并保存 .docx、.rtf、Markdown、HTML 和文本；可输出 PDF。</span></li>
+          <li><a href="ledger/index.html" data-go><span data-icon="ledger"></span><b>Ledger</b></a><span>电子表格：519 个函数、图表、数据透视表和条件格式。可打开并保存 .xlsx、.csv、XML Spreadsheet 2003 和 HTML；可输出 PDF。</span></li>
+          <li><a href="lectern/index.html" data-go><span data-icon="lectern"></span><b>Lectern</b></a><span>演示文稿：切换、动画、图表和 IntelliArt 图示。可打开并保存 .pptx；可导出 PDF、PNG 和 HTML。</span></li>
+        </ul>
+        <ul>
+          <li><b>文件保持完整。</b>未做更改的内容会按原样保存，包括应用暂时无法编辑的部分，文件回到发件人手中时依然完整。</li>
+          <li><b>天生私密。</b>一切都在此计算机上运行：不会上传任何内容，也不需要注册账号。</li>
+          <li><b>无需重新学习。</b>经典菜单和工具栏，或功能区：可在「主题」中选择。</li>
+        </ul>
+        <p class="hint">将文档拖到此处，或选择左侧的应用来创建文档。</p>
+      </div>
     </div>
     <div class="drop" id="drop" hidden>拖到此处打开</div>
   </main>
 </div>
 
+<!-- Embedded copy (tools-box): upstream's update dialog (#updatedlg: the desktop app's update check and what is
+     new since this version), the About dialog (#aboutdlg: its licenses are oss-licenses.html, which this copy does
+     not carry) and the Language field of Settings (there is no i18n runtime here) are gone, together with the
+     buttons that open them. "Updates (desktop app): gone" in the script below means this note. -->
 <dialog id="settingsdlg">
   <div class="dt">设置</div>
   <div class="db">
@@ -252,7 +280,7 @@
   const $ = (id) => document.getElementById(id);
   /* Safari's Lockdown Mode takes IndexedDB away (the name is undefined), which Recent Files, unsaved
      versions and opening files from here need */
-  const noStorage = typeof indexedDB === 'undefined';
+  const noStorage = VO.host.kind === 'web' && typeof indexedDB === 'undefined';   // (the desktop app keeps them itself)
   if (noStorage) alert('Office 2003 会在此浏览器中保留「最近使用的文件」和未保存的更改，而 Safari 的「锁定模式」会关闭该功能。\n\n只为此站点允许：点按地址栏中的 aA，点按「网站设置」，然后关闭「锁定模式」。Safari 会重新载入页面。');
   /* text and the attributes the user reads are already Chinese here */
   const T = (s) => (typeof s === 'string' ? VO.t(s) : s);
@@ -323,14 +351,21 @@
     const grid = $('grid');
     grid.replaceChildren(...list.map((e) => {
       const thumb = h('div', { class: 'thumb' });
-      if (e.thumb) { const u = URL.createObjectURL(e.thumb); urls.push(u); thumb.append(h('img', { src: u, alt: '' })); }
-      else thumb.innerHTML = picture(e.app, VO.ext(e.name));
+      thumb.innerHTML = picture(e.app, VO.ext(e.name));
+      VO.recent.preview(e).then((blob) => {
+        if (!blob) return;
+        const u = URL.createObjectURL(blob);
+        urls.push(u);
+        thumb.replaceChildren(h('img', { src: u, alt: '' }));
+      }, () => {});
       /* a document with unsaved changes opens at its unsaved version; × then discards those changes */
       const rm = h('button', { class: 'rm', type: 'button', title: e.draft ? '放弃未保存的更改' : '从列表中移除' }, '×');
       rm.setAttribute('aria-label', e.draft ? VO.t('放弃对 {0} 所做的未保存更改', e.name) : VO.t('从列表中移除：{0}', e.name));
       rm.addEventListener('click', async () => {
-        if (e.draft) { if (confirm(e.file ? VO.t('要放弃对“{0}”所做的未保存更改吗？已保存的版本仍会保留在列表中。', e.name) : VO.t('放弃对“{0}”所做的未保存更改？', e.name))) await VO.recent.discardDraft(e.key); }
-        else await VO.recent.remove(e.key);
+        try {
+          if (e.draft) { if (confirm(e.saved ? VO.t('要放弃对“{0}”所做的未保存更改吗？已保存的版本仍会保留在列表中。', e.name) : VO.t('放弃对“{0}”所做的未保存更改？', e.name))) await VO.recent.discardDraft(e.key); }
+          else await VO.recent.remove(e.key);
+        } catch (err) { status(String(err)); }
         render();
       });
       const app = VO.APPS[e.app] || { name: e.app };
@@ -339,10 +374,10 @@
         thumb,
         h('a', { class: 'name', href: VO.url(e.app, e.draft ? { recent: e.key, draft: true } : { recent: e.key }), 'data-go': '', translate: 'no' }, e.name),
         h('div', { class: 'meta', translate: 'no' }, dot, app.name + ' · ' + when(e.time)),
-        e.draft ? h('span', { class: 'unsaved' }, e.file ? '未保存的更改' : '尚未保存') : null,
-        e.draft && e.file ? h('a', { class: 'alt', href: VO.url(e.app, { recent: e.key }), 'data-go': '', title: '打开更改前保存的版本' }, '已保存的版本') : null,
+        e.draft ? h('span', { class: 'unsaved' }, e.saved ? '未保存的更改' : '尚未保存') : null,
+        e.draft && e.saved ? h('a', { class: 'alt', href: VO.url(e.app, { recent: e.key }), 'data-go': '', title: '打开更改前保存的版本' }, '已保存的版本') : null,
         rm);
-      card.title = `${e.name}\n${app.name}` + (e.file ? ' · ' + VO.t('{0} KB', (e.size / 1024).toFixed(0)) : '') + ` · ${new Date(e.time).toLocaleString('zh-CN')}` + (e.draft ? '\n' + VO.t('未保存的更改') : '');
+      card.title = `${e.name}\n${app.name}` + (e.folder ? ' · ' + e.folder : '') + (e.saved ? ' · ' + VO.t('{0} KB', (e.size / 1024).toFixed(0)) : '') + ` · ${new Date(e.time).toLocaleString('zh-CN')}` + (e.draft ? '\n' + VO.t('未保存的更改') : '');
       return card;
     }));
     grid.hidden = !list.length;

@@ -14,7 +14,7 @@
       gridGuides: 'grid', autocorrectDlg: 'options', duplicateSlide: 'duplicate', subscript: 'subscript', superscript: 'superscript', headerFooter: 'headerFooter',
       pageSetup: 'pageSetup', animSchemes: 'animation' },
     qat: ['save', 'undo', 'redo', 'showFromStart'],
-    file: () => ['new', 'open', 'close', '-', 'save', 'saveAs', 'saveWeb', '-', 'properties', '-', 'pageSetup', 'printPreview', 'print', '-', 'optionsDlg', 'help', 'about', '-', 'exitApp'],
+    file: () => ['new', 'open', 'close', '-', 'save', 'saveAs', 'saveWeb', '-', 'properties', ...(L.file.native() ? ['versions'] : []), '-', 'pageSetup', 'printPreview', 'print', '-', 'optionsDlg', 'help', 'about', '-', 'exitApp'],
     tabs: [
       { id: 'home', label: '开始(&H)', groups: [
         { label: '剪贴板', launcher: 'officeClipboard', items: [{ split: 'paste', size: 'large', menu: open(['paste', 'pasteSpecial']) }, 'cut', { split: 'copy', menu: open(['copy', 'duplicate']) }, 'painter'] },
