@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793376939506,
+  "timestamp": 1793377847151,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -10654,14 +10654,19 @@
       "type": "音乐",
       "content": [
         {
+          "url": "http://www.acfun.cn/v/ac48950459",
+          "text": "【余若】Really Like You（Cover Gyubin）",
+          "heat": "234"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48926941",
           "text": "【中国音乐地图之听见内蒙古 蒙古族民间乐曲集】森德尔姑娘",
-          "heat": "199"
+          "heat": "203"
         },
         {
           "url": "http://www.acfun.cn/v/ac48948665",
           "text": "她来了！金智秀 - ADDICTED 官方MV",
-          "heat": "1022"
+          "heat": "1029"
         },
         {
           "url": "http://www.acfun.cn/v/ac48949414",
@@ -10671,12 +10676,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48948511",
           "text": "瓦尔瓦拉 • 玛丽亚·沃罗诺娃 — 《喀秋莎》 | 2026年胜利日音乐会《战火灼痕的书页》",
-          "heat": "674"
+          "heat": "688"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926964",
           "text": "【马戏之王】04 The Other Side",
-          "heat": "183"
+          "heat": "192"
         },
         {
           "url": "http://www.acfun.cn/v/ac48926992",
@@ -10711,7 +10716,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48950508",
           "text": "Duvet  [LAIN]玲音",
-          "heat": "122"
+          "heat": "151"
         },
         {
           "url": "http://www.acfun.cn/v/ac48948308",
@@ -10731,7 +10736,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48950436",
           "text": "【UP创作大赛】AI赛道｜鯨の落ちる街·换声翻唱",
-          "heat": "33"
+          "heat": "45"
         },
         {
           "url": "http://www.acfun.cn/v/ac48947781",
@@ -10796,11 +10801,6 @@
         {
           "url": "http://www.acfun.cn/v/ac48950184",
           "text": "心華 原創 漫步 (秋天)",
-          "heat": "10"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48949491",
-          "text": "她",
           "heat": "10"
         }
       ]
@@ -14508,7 +14508,7 @@
         {
           "url": "https://www.dongchedi.com/article/7698610787359130174",
           "text": "小米澎程N90：买不起房买辆车，让你户外有个家！",
-          "heat": "288"
+          "heat": "289"
         },
         {
           "url": "https://www.dongchedi.com/article/7699298415091843609",
