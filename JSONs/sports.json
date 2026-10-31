@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793404853608,
+  "timestamp": 1793405737960,
   "data": [
     {
       "source": "足球",
@@ -27,7 +27,11 @@
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-31/6ae517c74d5b8native.htm",
-          "text": "此前称埃梅里应执教曼联！维拉官方：将对卡拉格提起法律诉讼"
+          "text": "此前暗示埃梅里应执教曼联！维拉官方：将对卡拉格提起法律诉讼"
+        },
+        {
+          "url": "https://news.zhibo8.com/zuqiu/2026-10-31/6ae5024478d1bnative.htm",
+          "text": "6个国家记者金球首投梅西：阿根廷 中国 巴西 巴拿马 阿联酋 白俄"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-31/6ae4fb981fdaenative.htm",
@@ -36,10 +40,6 @@
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-10-31/6ae4de1c1479enative.htm",
           "text": "早报：凯恩微弱优势险胜夺金球"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-10-30/6ae496704218anative.htm",
-          "text": "巅峰身价1亿欧！31岁格拉利什旷训遭弃用，转会费1.18亿球荒近1年"
         }
       ]
     },
@@ -47,6 +47,10 @@
       "source": "篮球",
       "type": "直播吧",
       "content": [
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-31/6ae521758e15enative.htm",
+          "text": "💥名记：沃尔特125亿出售湖人已完全达成一致 预计很快正式签约"
+        },
         {
           "url": "https://news.zhibo8.com/nba/2026-10-31/6ae4e52c301b3native.htm",
           "text": "开季伤病接二连三！Shams：莫兰特左腿筋二级拉伤 将至少缺席四周"
@@ -64,24 +68,20 @@
           "text": "难顶~开拓者昨日惨负灰熊遭赛季首败 莫兰特腿筋2级拉伤4周后复查"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-31/6ae51ec85a109native.htm",
-          "text": "乌度卡：申京今日继续缺阵 斯玛特大概率复出 谢泼德或下一场回归"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-10-31/6ae51031517e2native.htm",
-          "text": "NBA杯76人迎战尼克斯 杰伦·布朗因左膝酸痛缺席比赛"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-10-30/6ae42d61a6344native.htm",
           "text": "还没完！布泽尔超越文班亚马 成为NBA历史最年轻的前场三双先生"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-30/6ae4131935390native.htm",
-          "text": "雷霆好惨😭Ary：切特右膝髌腱恐急性损伤 伤停时间可能超预期"
+          "url": "https://news.zhibo8.com/nba/2026-10-30/6ae47587e6cf4native.htm",
+          "text": "乔治开赛至今场均22.3分2.3断+命中率47% 布朗20.6分1.2断+44%"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-10-30/6ae4322bd9620native.htm",
-          "text": "苏群谈杨瀚森困境：很多球队缺中锋 但签位太高交易的希望很渺茫"
+          "url": "https://news.zhibo8.com/nba/2026-10-30/6ae4755209b6anative.htm",
+          "text": "内线告急！老哈达威：76人放走里德太亏了 纳斯现在肯定郁闷坏了"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-10-30/6ae411c91c3e1native.htm",
+          "text": "开拓者今天替补中锋为落选秀卡尔森和波特 首轮秀杨瀚森暂未登场"
         }
       ]
     }
