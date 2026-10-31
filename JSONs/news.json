@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793465137412,
+  "timestamp": 1793466054145,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.zhidx.com/p/606311.html",
+          "text": "DeepSeek 又开源了！公布 Super agent 架构",
+          "heat": "智东西"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17171",
           "text": "关于 AI 的法案，何时才能关注日常生活",
           "heat": "麻省理工科技评论"
@@ -3058,11 +3063,6 @@
           "url": "https://news.mydrivers.com/1/1162/1162176.htm",
           "text": "存储短缺逼急 OpenAI！奥尔特曼赴韩密会三星 50 名高管：锁定「星际之门」芯片供应",
           "heat": "快科技"
-        },
-        {
-          "url": "https://www.gelonghui.com/live/2739900",
-          "text": "DeepSeek 发布全新 Agent 架构",
-          "heat": "格隆汇"
         },
         {
           "url": "https://api3.cls.cn/share/article/2521640?os=web&sv=8.4.6&app=CailianpressWeb",
