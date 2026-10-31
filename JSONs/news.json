@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793468735984,
+  "timestamp": 1793469650631,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -4367,14 +4367,14 @@
           "heat": "江神"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261030Q039Z500",
-          "text": "谷歌大跌超12%，英特尔盘后大跌超20%，发生了什么？市场为什么这么恐慌？",
-          "heat": "木马研究猿"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261031Q0CHQQ00",
           "text": "官方披露2030年前将有2名中国人登陆月球，登月最险的是哪一步？为何是2人登陆1人留守？",
           "heat": "之乎者也小鱼儿"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261030Q039Z500",
+          "text": "谷歌大跌超12%，英特尔盘后大跌超20%，发生了什么？市场为什么这么恐慌？",
+          "heat": "木马研究猿"
         },
         {
           "url": "https://new.qq.com/rain/a/20261030Q0AKKP00",
@@ -10591,17 +10591,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48951116",
           "text": "换了个车库，这里没保安【UP创作大赛】",
-          "heat": "1436"
+          "heat": "1438"
         },
         {
           "url": "http://www.acfun.cn/v/ac48952033",
           "text": "【UP创作大赛】【现切桃片】渡月橋 ～君想ふ～-让我们恭喜这对旧人",
-          "heat": "1206"
+          "heat": "1207"
         },
         {
           "url": "http://www.acfun.cn/v/ac48952193",
           "text": "【UP创作大赛】【绝望女神/翻唱】【甩葱歌】",
-          "heat": "834"
+          "heat": "842"
         },
         {
           "url": "http://www.acfun.cn/v/ac48951397",
@@ -10611,7 +10611,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48952381",
           "text": "【邓紫棋】巡演收官，新篇启程！粤语版《自由的你》",
-          "heat": "453"
+          "heat": "462"
         },
         {
           "url": "http://www.acfun.cn/v/ac48927027",
@@ -13888,11 +13888,6 @@
       "type": "应用",
       "content": [
         {
-          "url": "https://sspai.com/post/116047",
-          "text": "App+1｜该吃药了：一片小药板，让吃药提醒变得轻松有趣",
-          "heat": ""
-        },
-        {
           "url": "https://sspai.com/post/117557",
           "text": "Apple Sports：不看新闻、不聊球，只看我关心的比赛",
           "heat": ""
@@ -13945,6 +13940,11 @@
         {
           "url": "https://sspai.com/post/115400",
           "text": "App+1 | 我做了一个专为「P 人」和 ADHD 设计的精力管理 App",
+          "heat": ""
+        },
+        {
+          "url": "https://sspai.com/post/116047",
+          "text": "「该吃药了」上线 App Store，让按时服药成为一件轻松，有趣的小事",
           "heat": ""
         },
         {
