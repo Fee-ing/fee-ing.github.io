@@ -1,1 +1,0 @@
-import{t as e}from"./react-vendor-ClOvZRfs.js";import{t}from"./loader-circle-X5sAkJrl.js";import{t as n}from"./utils-B2-RQIcQ.js";var r=e();function i({className:e,...i}){return(0,r.jsx)(t,{"data-slot":`spinner`,role:`status`,"aria-label":`Loading`,className:n(`size-4 animate-spin`,e),...i})}export{i as t};
