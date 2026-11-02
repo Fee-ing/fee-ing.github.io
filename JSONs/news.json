@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793646941632,
+  "timestamp": 1793647848933,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -2725,6 +2725,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://openai.com/index/qodo-codex-plugin",
+          "text": "Qodo builds context into AI code review with Codex",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://news.mydrivers.com/1/1162/1162600.htm",
           "text": "Anthropic 第三季度营收暴涨 1127%，Claude 营收达 170 亿美元",
           "heat": "快科技"
@@ -2733,11 +2738,6 @@
           "url": "https://www.leiphone.com/category/industrynews/kqJzcDsRfxHUQGy9.html",
           "text": "半小时卖出 2 万亿 Token，李佳琦直播卖千问办公爆火",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32021",
-          "text": "韩国公布史上最大预算案：820 万亿韩元，AI 与半导体成绝对主角",
-          "heat": "aibase"
         }
       ]
     },
