@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793643336273,
+  "timestamp": 1793644258807,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,9 +3040,19 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://openai.com/index/lifeval",
+          "text": "LifeVal：衡量 AI 帮助人们完成日常任务的基准",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17182",
           "text": "大模型竞争进入下半场：速度正在成为新的竞争力",
           "heat": "麻省理工科技评论"
+        },
+        {
+          "url": "https://daily.dev/posts/new-york-times-and-three-other-us-papers-sue-brave-over-ai-scraping-a6npfekqt",
+          "text": "New York Times and three other US papers sue Brave over AI scraping and copyright infringement",
+          "heat": "daily.dev"
         },
         {
           "url": "https://www.leiphone.com/category/industrynews/mUPVr3RF0MHNmn3t.html",
@@ -3063,16 +3073,6 @@
           "url": "https://www.aibase.com/zh/news/32021",
           "text": "韩国公布史上最大预算案：820 万亿韩元，AI 与半导体成绝对主角",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32025",
-          "text": "ChatGPT 要能主动挂断危险对话，屡犯者直接封号",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html",
-          "text": "破解智能体跨端协同办事难题，支付宝 AHA 方案获世界互联网大会「新耀」场景奖",
-          "heat": "雷锋网"
         }
       ]
     },
@@ -10591,22 +10591,22 @@
         {
           "url": "http://www.acfun.cn/v/ac48954545",
           "text": "《我的好姐妹》【hjm专辑】",
-          "heat": "1439"
+          "heat": "1442"
         },
         {
           "url": "http://www.acfun.cn/v/ac48956236",
           "text": "街头小丑妆唱《空心》本来看热闹的人，后来都安静了",
-          "heat": "1160"
+          "heat": "1162"
         },
         {
           "url": "http://www.acfun.cn/v/ac48955070",
           "text": "【作业用/助眠】晚秋庭院里的静谧爵士夜 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "539"
+          "heat": "566"
         },
         {
           "url": "http://www.acfun.cn/v/ac48955895",
           "text": "Tell Your World（cover初音未来）",
-          "heat": "343"
+          "heat": "353"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928414",
@@ -10621,7 +10621,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48928437",
           "text": "【大塚 愛】フレンジャー",
-          "heat": "96"
+          "heat": "104"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928402",
@@ -10649,6 +10649,11 @@
           "heat": "48"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48954609",
+          "text": "你是我的四月天V3",
+          "heat": "44"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48955347",
           "text": "你住在舒适的2000年代水族馆里（适合学习的鱼类音乐 IV）✶⋆.˚ 无AI",
           "heat": "126"
@@ -10657,11 +10662,6 @@
           "url": "http://www.acfun.cn/v/ac48928408",
           "text": "【马戏之王】08 Tightrope",
           "heat": "21"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48954609",
-          "text": "你是我的四月天V3",
-          "heat": "39"
         },
         {
           "url": "http://www.acfun.cn/v/ac48954922",
