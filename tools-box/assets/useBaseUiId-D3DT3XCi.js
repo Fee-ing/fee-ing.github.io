@@ -1,0 +1,1 @@
+import{T as e}from"./createBaseUIEventDetails-DvbO-an6.js";function t(t){return e(t,`base-ui`)}export{t};

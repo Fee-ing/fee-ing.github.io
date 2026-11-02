@@ -1,1 +1,0 @@
-import{t as e}from"./useRenderElement-ptsdZNOo.js";function t(t){return e(t.defaultTagName??`div`,t,t)}export{t};
