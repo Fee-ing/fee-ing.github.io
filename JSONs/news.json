@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793648739613,
+  "timestamp": 1793649653695,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.techflowpost.com/zh-CN/newsletter/142583",
+          "text": "MIT 研究团队：GPT-6 Astra 修改模型权重提升数学表现",
+          "heat": "techflowpost.com"
+        },
+        {
           "url": "https://daily.dev/posts/new-york-times-and-three-other-us-papers-sue-brave-over-ai-scraping-a6npfekqt",
           "text": "New York Times and three other US papers sue Brave over AI scraping and copyright infringement",
           "heat": "daily.dev"
@@ -3068,11 +3073,6 @@
           "url": "https://news.mydrivers.com/1/1162/1162600.htm",
           "text": "Anthropic 第三季度营收暴涨 1127%，Claude 营收达 170 亿美元",
           "heat": "快科技"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/kqJzcDsRfxHUQGy9.html",
-          "text": "半小时卖出 2 万亿 Token，李佳琦直播卖千问办公爆火",
-          "heat": "雷锋网"
         }
       ]
     },
