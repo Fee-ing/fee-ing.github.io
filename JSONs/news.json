@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793636136682,
+  "timestamp": 1793637075496,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3050,6 +3050,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://news.mydrivers.com/1/1162/1162600.htm",
+          "text": "Anthropic 第三季度营收暴涨 1127%，Claude 营收达 170 亿美元",
+          "heat": "快科技"
+        },
+        {
           "url": "https://www.leiphone.com/category/industrynews/kqJzcDsRfxHUQGy9.html",
           "text": "半小时卖出 2 万亿 Token，李佳琦直播卖千问办公爆火",
           "heat": "雷锋网"
@@ -3067,11 +3072,6 @@
         {
           "url": "https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html",
           "text": "破解智能体跨端协同办事难题，支付宝 AHA 方案获世界互联网大会「新耀」场景奖",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html",
-          "text": "阿里 Qoder 获世界互联网大会领先科技奖，已服务超 800 万用户、10 万家企业",
           "heat": "雷锋网"
         }
       ]
@@ -10621,27 +10621,27 @@
         {
           "url": "http://www.acfun.cn/v/ac48954545",
           "text": "《我的好姐妹》【hjm专辑】",
-          "heat": "1408"
+          "heat": "1413"
         },
         {
           "url": "http://www.acfun.cn/v/ac48956236",
           "text": "街头小丑妆唱《空心》本来看热闹的人，后来都安静了",
-          "heat": "1116"
+          "heat": "1123"
         },
         {
           "url": "http://www.acfun.cn/v/ac48955070",
           "text": "【作业用/助眠】晚秋庭院里的静谧爵士夜 60mins（恢复疲劳 音乐治疗~）",
-          "heat": "425"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48928414",
-          "text": "【罗百吉】fall in love-国语-流行",
-          "heat": "216"
+          "heat": "463"
         },
         {
           "url": "http://www.acfun.cn/v/ac48955895",
           "text": "Tell Your World（cover初音未来）",
           "heat": "303"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48928414",
+          "text": "【罗百吉】fall in love-国语-流行",
+          "heat": "216"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928399",
@@ -10664,6 +10664,11 @@
           "heat": "131"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48954402",
+          "text": "261101 本周女团现场合集 60帧体验",
+          "heat": "279"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48928435",
           "text": "【萧亚轩】错的人",
           "heat": "63"
@@ -10672,11 +10677,6 @@
           "url": "http://www.acfun.cn/v/ac48954439",
           "text": "【魔法少女育成计划】全boss bgm 合集！！！！！！！！！！！！！",
           "heat": "75"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48954402",
-          "text": "261101 本周女团现场合集 60帧体验",
-          "heat": "279"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928434",
@@ -10744,14 +10744,19 @@
           "heat": "12"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48956791",
+          "text": "【瞎弹琴】20261102之怎么感觉即兴的曲子都苦大仇深的（）",
+          "heat": "16"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48953899",
           "text": "阿列克谢耶夫指挥圣彼得堡爱乐乐团：拉赫玛尼诺夫第二交响曲与交响诗《钟声》（2026.10.31）",
           "heat": "39"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48954450",
-          "text": "FNF 及相",
-          "heat": "37"
+          "url": "http://www.acfun.cn/v/ac48954605",
+          "text": "2026-11-01 懒銀 早点睡哟",
+          "heat": "35"
         },
         {
           "url": "http://www.acfun.cn/v/ac48956002",
@@ -10762,11 +10767,6 @@
           "url": "http://www.acfun.cn/v/ac48956052",
           "text": "知牧",
           "heat": "26"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48955577",
-          "text": "奥迷自制圆谷新作赛罗奥特曼2027剧场版主题曲《ゼロ・ザ・ネクスト》日本音乐歌曲原声带还挺好听",
-          "heat": "25"
         }
       ]
     },
@@ -14463,7 +14463,7 @@
         {
           "url": "https://www.dongchedi.com/article/7702402546309382680",
           "text": "中大型PK中型，长安启源A06和MG 07，选谁？",
-          "heat": "4941"
+          "heat": "4942"
         },
         {
           "url": "https://www.dongchedi.com/article/7702675737228739097",
@@ -14478,7 +14478,7 @@
         {
           "url": "https://www.dongchedi.com/article/7702641393219224126",
           "text": "1.2T丰田卡罗拉油耗实测，这油耗你感觉怎么样？",
-          "heat": "79"
+          "heat": "80"
         },
         {
           "url": "https://www.dongchedi.com/article/7701929583117877785",
