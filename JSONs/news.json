@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793722541265,
+  "timestamp": 1793723451980,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3025,6 +3025,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://blogs.nvidia.com/blog/ai-semiconductor-fabs/",
+          "text": "AI Is Changing How Semiconductor Fabs Work — and Engineers Are Moving Faster Because of It",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://huggingface.co/blog/ibm-research/cuga-harness",
           "text": "Same Model, Different Harness: CUGA, Hermes, and Deep Agents — When to Pick CUGA?",
           "heat": "Hugging Face Blog"
@@ -3045,6 +3050,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://www.leiphone.com/category/industrynews/NVxn28w1vAG2qbFy.html",
+          "text": "百度 Apollo 发布世界模型 Apollo World，为无人驾驶提供虚拟训练环境",
+          "heat": "雷锋网"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17186",
           "text": "对话港城大闫峻：未来的科学家，要习惯和 AI 一起做研究",
           "heat": "麻省理工科技评论"
@@ -3063,16 +3073,6 @@
           "url": "https://www.aibase.com/zh/news/32055",
           "text": "腾讯混元重磅发布 Hyra 2.0，让 AI Agent 全面参与科学大模型与硬核研发",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32051",
-          "text": "Kimi 不再只写方案：直接上手改 Unity、虚幻工程做游戏原型",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.techradar.com/pro/security/hackers-are-using-llmjacking-attacks-to-hijack-company-ai-usage-and-run-up-huge-cloud-bills",
-          "text": "Hackers are using 'LLMjacking attacks' to hijack company AI usage and run up huge cloud bills",
-          "heat": "techradar.com"
         }
       ]
     },
@@ -4427,6 +4427,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261102Q08HQM00",
+          "text": "清朝年间发生的“无夏之年”被记录到了南极冰芯中？这是什么科学原理？",
+          "heat": "李传金"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261102Q0DALU00",
           "text": "女孩课间被同学冲撞致脑死亡，家长质疑学校拨打120太迟致错过抢救时机，为何一次冲撞会引发这么严重的后果？谁该担责？",
           "heat": "夏夏回来了随见"
@@ -4470,11 +4475,6 @@
           "url": "https://new.qq.com/rain/a/20261103Q08XVF00",
           "text": "“孙颖莎比赛还没开始，直播间就打到了决胜局”，假直播靠什么骗过球迷？是否涉嫌违法和侵权？",
           "heat": "贵重物品DR"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261102Q08HQM00",
-          "text": "清朝年间发生的“无夏之年”被记录到了南极冰芯中？这是什么科学原理？",
-          "heat": "李传金"
         }
       ]
     },
@@ -10646,32 +10646,32 @@
         {
           "url": "http://www.acfun.cn/v/ac48958136",
           "text": "【猛A】宿命高燃~拼了命的唱",
-          "heat": "1088"
+          "heat": "1093"
         },
         {
           "url": "http://www.acfun.cn/v/ac48958157",
           "text": "【柯基】奥斯卡金曲《Colors Of The Wind》｜《风中奇缘》主题曲",
-          "heat": "1118"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48958183",
-          "text": "【UP创作大赛】耗时6天时间，和AI共创一首S16应援曲《CARVE MY NAME》（刻我之名）",
-          "heat": "467"
+          "heat": "1129"
         },
         {
           "url": "http://www.acfun.cn/v/ac48959101",
           "text": "【UP创作大赛】想知道关于你的事情…",
-          "heat": "520"
+          "heat": "675"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48958183",
+          "text": "【UP创作大赛】耗时6天时间，和AI共创一首S16应援曲《CARVE MY NAME》（刻我之名）",
+          "heat": "536"
         },
         {
           "url": "http://www.acfun.cn/v/ac48957456",
           "text": "最近很火的kpop舞台细糠-Bestie",
-          "heat": "716"
+          "heat": "749"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928451",
           "text": "【马戏之王】09 Never Enough (Reprise)",
-          "heat": "205"
+          "heat": "215"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928461",
@@ -10684,6 +10684,11 @@
           "heat": "156"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48928483",
+          "text": "【大塚 愛】ロケットスニーカー",
+          "heat": "136"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48928447",
           "text": "【苏芮】给爱",
           "heat": "154"
@@ -10692,11 +10697,6 @@
           "url": "http://www.acfun.cn/v/ac48928454",
           "text": "【罗百吉】FRIDAY NIGHT(国语)",
           "heat": "123"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48928483",
-          "text": "【大塚 愛】ロケットスニーカー",
-          "heat": "136"
         },
         {
           "url": "http://www.acfun.cn/v/ac48928468",
@@ -10711,7 +10711,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48955389",
           "text": "【BD丨角色设定不可崩!!】 「Neuweltfahrt」大阪·东京公演 幕间映像",
-          "heat": "221"
+          "heat": "232"
         },
         {
           "url": "http://www.acfun.cn/v/ac48925782",
@@ -10724,14 +10724,14 @@
           "heat": "109"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48957694",
+          "text": "【wowaka生贺】RIVER FOG, CHOCOLATE BUTTERFLY.coverGUMI",
+          "heat": "162"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48958410",
           "text": "..",
           "heat": "116"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48957694",
-          "text": "【wowaka生贺】RIVER FOG, CHOCOLATE BUTTERFLY.coverGUMI",
-          "heat": "143"
         },
         {
           "url": "http://www.acfun.cn/v/ac48957612",
@@ -10784,9 +10784,9 @@
           "heat": "31"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48938542",
-          "text": "【中波双语】Nazif Gljiva - Branioci Sarajeva",
-          "heat": "13"
+          "url": "http://www.acfun.cn/v/ac48959074",
+          "text": "【古风音乐欣赏】南山对讲Radio账号播放邓寓君歌曲的BGM合集",
+          "heat": "50"
         },
         {
           "url": "http://www.acfun.cn/v/ac48957098",
@@ -11931,6 +11931,11 @@
       "type": "产品",
       "content": [
         {
+          "url": "https://m.okjike.com/originalPosts/6aea05df5ab9d15028317b0b",
+          "text": "产品经理的日常 11月04日",
+          "heat": ""
+        },
+        {
           "url": "https://m.okjike.com/originalPosts/6ae9d41538389f5993b0dc20",
           "text": "产品经理的日常 11月03日",
           "heat": ""
@@ -11943,11 +11948,6 @@
         {
           "url": "https://m.okjike.com/originalPosts/6ae949e0136b2761c6be6898",
           "text": "产品经理的日常 11月03日",
-          "heat": ""
-        },
-        {
-          "url": "https://m.okjike.com/originalPosts/6ae6d74438389f59935bd181",
-          "text": "产品经理的日常 11月01日",
           "heat": ""
         },
         {
