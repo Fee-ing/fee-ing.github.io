@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793726143472,
+  "timestamp": 1793727054598,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3030,6 +3030,11 @@
       "type": "人工智能",
       "content": [
         {
+          "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
+          "text": "Agentic cheminformatics with Google Antigravity",
+          "heat": "Google DeepMind"
+        },
+        {
           "url": "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/",
           "text": "Qwen 3.8 27B on my laptop can interpret model weights, too",
           "heat": "Simon Willison"
@@ -3042,6 +3047,11 @@
         {
           "url": "https://huggingface.co/blog/ibm-research/cuga-harness",
           "text": "Same Model, Different Harness: CUGA, Hermes, and Deep Agents — When to Pick CUGA?",
+          "heat": "Hugging Face Blog"
+        },
+        {
+          "url": "https://huggingface.co/blog/ibm-research/palette-deck-building",
+          "text": "Palette: teaching a small model to build decks in your design language",
           "heat": "Hugging Face Blog"
         },
         {
@@ -3068,16 +3078,6 @@
           "url": "https://www.mittrchina.com/news/detail/17186",
           "text": "对话港城大闫峻：未来的科学家，要习惯和 AI 一起做研究",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/ADcxxdwtaojQvzhp.html",
-          "text": "中国开源走向物理世界，蚂蚁灵波携机器人通用大脑亮相乌镇",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32058",
-          "text": "电动车退烧、AI 储能烧起来：LG 新能源把产能挪向数据中心",
-          "heat": "aibase"
         }
       ]
     },
@@ -4367,14 +4367,14 @@
           "heat": "夏夏回来了随见"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261102Q0CX9Z00",
-          "text": "综艺《后会友期》中的“画地为牢”梗爆火，网友为什么喜欢这个梗？这档聚焦友谊修复的节目为何引发全网热议？",
-          "heat": "不怕困难的王导演"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261102Q08HQM00",
           "text": "清朝年间发生的“无夏之年”被记录到了南极冰芯中？这是什么科学原理？",
           "heat": "李传金"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261102Q0CX9Z00",
+          "text": "综艺《后会友期》中的“画地为牢”梗爆火，网友为什么喜欢这个梗？这档聚焦友谊修复的节目为何引发全网热议？",
+          "heat": "不怕困难的王导演"
         },
         {
           "url": "https://new.qq.com/rain/a/20261102Q068T900",
@@ -14518,12 +14518,12 @@
         {
           "url": "https://www.dongchedi.com/article/7703435295521243673",
           "text": "13.98万起的小鹏MONA L05，3分钟5000台准现车秒空，走量潜质拉满",
-          "heat": "473"
+          "heat": "474"
         },
         {
           "url": "https://www.dongchedi.com/article/7702675737228739097",
           "text": "长轴的卡罗拉细节工艺观察：该省省该花花的大宗师",
-          "heat": "456"
+          "heat": "458"
         },
         {
           "url": "https://www.dongchedi.com/article/7701947214348075545",
