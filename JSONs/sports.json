@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793811658796,
+  "timestamp": 1793812541923,
   "data": [
     {
       "source": "足球",
@@ -7,11 +7,11 @@
       "content": [
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-11-05/6aeb478eb85a5native.htm",
-          "text": "利物浦客战费内巴切首发：索博回归首发，尼奥尼、恩古莫哈先发"
+          "text": "利物浦客战费内巴切首发：索博回归先发，恩古莫哈、格林伍德出战"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-11-05/6aeb44cf5e48fnative.htm",
-          "text": "皇马客战雅典AEK首发：维尼修斯担任场上队长，邓弗里斯出战"
+          "text": "皇马客战雅典AEK首发：维尼修斯、邓弗里斯先发，约维奇战旧主"
         },
         {
           "url": "https://news.zhibo8.com/zuqiu/2026-11-04/6aeb531b5e86cnative.htm",
@@ -22,6 +22,10 @@
           "text": "巴尔韦德妻子谈致人死亡的门将：真心希望别逼到又失去一条人命"
         },
         {
+          "url": "https://news.zhibo8.com/zuqiu/2026-11-04/6aeaf693a6ff7native.htm",
+          "text": "法媒：巴萨越来越担心罗德里，开始质疑他能否在最高水平连续出战"
+        },
+        {
           "url": "https://news.zhibo8.com/zuqiu/2026-11-04/6aeb2f8a4ffe2native.htm",
           "text": "DO确认：皇马击败巴萨&巴黎&拜仁签下16岁JJ，曼联获得6位数补偿"
         },
@@ -30,16 +34,12 @@
           "text": "水货新生！28岁约维奇58场28球将战皇马，7年前6300万加盟51场3球"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-11-04/6aea7ef8613fbnative.htm",
-          "text": "恩里克：换作世界上的任何一支球队，8分钟内连丢3球都会陷入困境"
+          "url": "https://news.zhibo8.com/zuqiu/2026-11-04/6aeac51a5dcc3native.htm",
+          "text": "跨界内衣模特！太阳报盘点代言内衣球员：C罗孙兴慜纳达尔在列"
         },
         {
-          "url": "https://news.zhibo8.com/zuqiu/2026-11-04/6aeaf27a0c959native.htm",
-          "text": "杰拉德：亚马尔太吓人了，他将在未来十年达到梅西C罗那样的级别"
-        },
-        {
-          "url": "https://news.zhibo8.com/zuqiu/2026-11-04/6aeaf693a6ff7native.htm",
-          "text": "法媒：巴萨越来越担心罗德里，开始质疑他能否在最高水平连续出战"
+          "url": "https://news.zhibo8.com/zuqiu/2026-11-05/6aeb5e4898bf1native.htm",
+          "text": "官方：埃及主帅被实施全媒体禁令，禁止在所有媒体公开发言或亮相"
         }
       ]
     },
@@ -48,40 +48,40 @@
       "type": "直播吧",
       "content": [
         {
-          "url": "https://news.zhibo8.com/nba/2026-11-04/6aeb34d070454native.htm",
-          "text": "男篮集训名单：周琦&赵睿&王哲林&张镇麟&姜伟泽&王岚嵚&徐昕在列"
-        },
-        {
           "url": "https://news.zhibo8.com/nba/2026-11-04/6aeb52db8f878native.htm",
           "text": "年薪2000万！Shams：勇士拒绝给波津支付薪水 后者可能选择退役"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-11-04/6aeb4ee05b635native.htm",
-          "text": "新秀榜：布泽尔&伦德博格稳居前2 阿卡夫第3 状元迪班萨第5"
+          "url": "https://news.zhibo8.com/nba/2026-11-04/6aeb34d070454native.htm",
+          "text": "男篮集训名单：周琦&赵睿&王哲林&张镇麟&姜伟泽&王岚嵚&徐昕在列"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-11-04/6aeb37ff709c5native.htm",
           "text": "广东男篮官宣：亚科夫列维奇不再担任主帅 助教贝罗卡尔接替"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-11-05/6aeb5b1b40d9dnative.htm",
-          "text": "名记：勇士和波津分道扬镳只是时间问题 后者正在考虑退役"
+          "url": "https://news.zhibo8.com/nba/2026-11-05/6aeb5de337f53native.htm",
+          "text": "名记：勇士暂无取消铂金合同的计划 铂金对停薪没有异议"
         },
         {
-          "url": "https://news.zhibo8.com/nba/2026-11-05/6aeb57f75284enative.htm",
-          "text": "解说：若铂金坐在替补席 这钱都会到他账上 但找不到人就是旷工了"
+          "url": "https://news.zhibo8.com/nba/2026-11-04/6aeb4ee05b635native.htm",
+          "text": "新秀榜：布泽尔&伦德博格稳居前2 阿卡夫第3 状元迪班萨第5"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-11-05/6aeb578536171native.htm",
+          "text": "名记：开拓者后场阵容太拥挤 斯库特·亨德森明夏或被交易"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-11-05/6aeb6220057e3native.htm",
+          "text": "美记：铂金相当于到期合同 克拉克斯顿&特纳&小卡特都是潜在目标"
+        },
+        {
+          "url": "https://news.zhibo8.com/nba/2026-11-05/6aeb5b1b40d9dnative.htm",
+          "text": "名记：勇士和铂金分道扬镳只是时间问题 后者正在考虑退役"
         },
         {
           "url": "https://news.zhibo8.com/nba/2026-11-04/6aeb1ec57bf12native.htm",
           "text": "“朱芳雨重返广东任总经理”上热搜！媒体人：朱总这就回来了？"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-11-04/6aeaa14e728dcnative.htm",
-          "text": "夸梅：真不懂布朗尼为何在打NBA 这是我见过最垃圾的90秒篮球比赛"
-        },
-        {
-          "url": "https://news.zhibo8.com/nba/2026-11-04/6aea88262fff3native.htm",
-          "text": "里程碑预警⚠️库里常规赛得分26708分历史第18 距离超大O只差3分"
         }
       ]
     }
