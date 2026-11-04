@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793816140834,
+  "timestamp": 1793817046674,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,9 +3040,24 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+          "text": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://openai.com/index/daybreak-red-aws-govcloud",
           "text": "Daybreak Red is now available in AWS GovCloud (US-East)",
           "heat": "OpenAI"
+        },
+        {
+          "url": "https://www.leiphone.com/category/industrynews/30nTa8g0yzQmZGys.html",
+          "text": "腾讯前高级研究员获数千万投资，锚定物理 AI 接触智能",
+          "heat": "雷锋网"
+        },
+        {
+          "url": "https://www.leiphone.com/category/industrynews/5gyZIVYyxDzi67wu.html",
+          "text": "AI 预测引擎 Prophetlab 获数千万元种子轮，常春藤资本等机构联合投资",
+          "heat": "雷锋网"
         },
         {
           "url": "https://www.leiphone.com/category/private/qWW7SeepMBzAQAfb.html",
@@ -3068,21 +3083,6 @@
           "url": "https://www.mittrchina.com/news/detail/17191",
           "text": "用 Astra 改写 Qwen 神经网络，MIT 爆火研究被高估了吗？",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.leiphone.com/category/industrynews/vxZxNvbxdDFhYp55.html",
-          "text": "虎鲸文娱「鲸锐 AI」平台正式上线，AI 视频单分钟成本节省 30% 以上",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32081",
-          "text": "普林斯顿 AI Lab 推出 SSoN 基准，人类准确率 83.3% 而大模型最高仅 39.7%",
-          "heat": "aibase"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32088",
-          "text": "一个人一天搞定：Windows 11 原生测速工具背后的「AI 副驾」模式",
-          "heat": "aibase"
         }
       ]
     },
