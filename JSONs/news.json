@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793823337079,
+  "timestamp": 1793824255893,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://www.techflowpost.com/zh-CN/newsletter/143022",
+          "text": "Ricursive 发布开源权重模型 Ripple-65B Preview",
+          "heat": "techflowpost.com"
+        },
+        {
           "url": "https://www.leiphone.com/category/industrynews/5gyZIVYyxDzi67wu.html",
           "text": "AI 预测引擎 Prophetlab 获数千万元种子轮，常春藤资本等机构联合投资",
           "heat": "雷锋网"
@@ -3078,11 +3083,6 @@
           "url": "https://simonwillison.net/2026/Nov/4/datasette-llm/",
           "text": "datasette-llm 0.1a10",
           "heat": "Simon Willison"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32083",
-          "text": "机器人距离自主完成复杂任务还有多远？王兴兴谈具身智能突破方向",
-          "heat": "aibase"
         }
       ]
     },
@@ -4417,6 +4417,11 @@
           "heat": "之乎者也小鱼儿"
         },
         {
+          "url": "https://new.qq.com/rain/a/20261104Q0BMHD00",
+          "text": "“多地禁用电动车挡风被”引热议，加装挡风被会影响事故责任划分吗？挡风被“肇事”风险有多大？",
+          "heat": "拾光者"
+        },
+        {
           "url": "https://new.qq.com/rain/a/20261104Q08VLF00",
           "text": "特朗普称将动用总统否决权与民主党对抗，这招管用吗？民主党将如何应对？",
           "heat": "之乎者也小鱼儿"
@@ -4427,14 +4432,14 @@
           "heat": "之乎者也小鱼儿"
         },
         {
-          "url": "https://new.qq.com/rain/a/20261104Q0BMHD00",
-          "text": "“多地禁用电动车挡风被”引热议，加装挡风被会影响事故责任划分吗？挡风被“肇事”风险有多大？",
-          "heat": "拾光者"
-        },
-        {
           "url": "https://new.qq.com/rain/a/20261104Q03H3900",
           "text": "25岁女子每天使用手机超10小时出现健忘，就医确诊“手机痴呆症”，什么是“手机痴呆症”？这种情况能治愈吗？",
           "heat": "营养师Bruce"
+        },
+        {
+          "url": "https://new.qq.com/rain/a/20261104Q0E4B300",
+          "text": "患者被三甲医院医生推荐去三乙医院，花费2万多又被告知治不了，这是什么套路？普通人就医该如何甄别？",
+          "heat": "中医大课堂"
         },
         {
           "url": "https://new.qq.com/rain/a/20261104Q0BBUV00",
@@ -4445,11 +4450,6 @@
           "url": "https://new.qq.com/rain/a/20261104Q05DTH00",
           "text": "日韩股市大跳水，美国中期选举如何搅动全球市场？国会掌控权的归属将对市场预期产生哪些影响？",
           "heat": "闻号说经济"
-        },
-        {
-          "url": "https://new.qq.com/rain/a/20261104Q0E4B300",
-          "text": "患者被三甲医院医生推荐去三乙医院，花费2万多又被告知治不了，这是什么套路？普通人就医该如何甄别？",
-          "heat": "中医大课堂"
         },
         {
           "url": "https://new.qq.com/rain/a/20261104Q0DPPJ00",
