@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793909737447,
+  "timestamp": 1793910647432,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,16 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/",
+          "text": "Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents",
+          "heat": "NVIDIA Blog"
+        },
+        {
+          "url": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+          "text": "NVIDIA 发布 Cosmos 3 开放模型，用于交互式世界模拟",
+          "heat": "Hugging Face Blog"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17199",
           "text": "美国中期选举落幕，AI 产业将迎来哪些变数？",
           "heat": "麻省理工科技评论"
@@ -3068,16 +3078,6 @@
           "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
           "text": "Claude 推出个人理财功能",
           "heat": "Claude Blog"
-        },
-        {
-          "url": "https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/",
-          "text": "The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models",
-          "heat": "NVIDIA Blog"
-        },
-        {
-          "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
-          "text": "Setting a new standard for responsible AI infrastructure",
-          "heat": "OpenAI"
         }
       ]
     },
@@ -10591,7 +10591,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48961356",
           "text": "《拿包烟》尼灯喵喵 吸烟有害健康 【UP创作大赛】",
-          "heat": "1375"
+          "heat": "1376"
         },
         {
           "url": "http://www.acfun.cn/v/ac48963112",
@@ -10691,7 +10691,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48961806",
           "text": "【夜】Lyrical Lily 6th LIVE「渋谷とは魔境でございますか？」",
-          "heat": "240"
+          "heat": "252"
         },
         {
           "url": "http://www.acfun.cn/v/ac48963845",
@@ -10709,9 +10709,14 @@
           "heat": "133"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48962193",
+          "text": "爱音没有派对",
+          "heat": "40"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48961800",
           "text": "【昼】Lyrical Lily 6th LIVE「渋谷とは魔境でございますか？」",
-          "heat": "93"
+          "heat": "101"
         },
         {
           "url": "http://www.acfun.cn/v/ac48961826",
@@ -10722,11 +10727,6 @@
           "url": "http://www.acfun.cn/v/ac48961850",
           "text": "【贝斯COVER】忘れられないの - サカナクション",
           "heat": "54"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48962193",
-          "text": "爱音没有派对",
-          "heat": "21"
         },
         {
           "url": "http://www.acfun.cn/v/ac48961841",
