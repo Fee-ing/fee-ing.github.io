@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793897138696,
+  "timestamp": 1793898056588,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/",
+          "text": "The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
           "text": "Setting a new standard for responsible AI infrastructure",
           "heat": "OpenAI"
@@ -3068,11 +3073,6 @@
           "url": "https://www.leiphone.com/category/industrynews/XOv7MDFAP99kUMEW.html",
           "text": "百度开源文心 5.5 Flash Base，多基准测试刷新同尺寸模型 SOTA",
           "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32122",
-          "text": "美国民主党提出《禁止人工超级智能法案》，拟全面封杀超级 AI 研发",
-          "heat": "aibase"
         }
       ]
     },
