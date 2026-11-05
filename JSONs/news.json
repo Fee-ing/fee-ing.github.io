@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793902537390,
+  "timestamp": 1793903443726,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+          "text": "Claude 推出个人理财功能",
+          "heat": "Claude Blog"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/",
           "text": "The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models",
           "heat": "NVIDIA Blog"
@@ -3073,11 +3078,6 @@
           "url": "https://www.mittrchina.com/news/detail/17194",
           "text": "上交团队用 GPU 优化算法，解开 18 年未解量子难题",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://wallstreetcn.com/livenews/3195268",
-          "text": "OpenAI 推出 GPT-6 Cyber，其网络安全评级为「关键」级",
-          "heat": "华尔街见闻"
         }
       ]
     },
@@ -10591,17 +10591,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48961356",
           "text": "《拿包烟》尼灯喵喵 吸烟有害健康 【UP创作大赛】",
-          "heat": "1328"
+          "heat": "1343"
         },
         {
           "url": "http://www.acfun.cn/v/ac48963112",
           "text": "【这一集是真辞职了】辞职信~翻唱",
-          "heat": "1144"
+          "heat": "1148"
         },
         {
           "url": "http://www.acfun.cn/v/ac48961953",
           "text": "【东方】ラクトガール～少女密室 钢琴演绎【ViddyWell】",
-          "heat": "648"
+          "heat": "664"
         },
         {
           "url": "http://www.acfun.cn/v/ac48931068",
@@ -10639,11 +10639,6 @@
           "heat": "80"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48961735",
-          "text": "米津玄師 - Lemon（Live） Music Video 10億回記念",
-          "heat": "75"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48945542",
           "text": "【M6 Music Live Session】Uzi",
           "heat": "44"
@@ -10656,12 +10651,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48964219",
           "text": "【UP创作大赛】告白气球",
-          "heat": "103"
+          "heat": "132"
         },
         {
           "url": "http://www.acfun.cn/v/ac48963706",
           "text": "2026.11.4俄罗斯第一频道民族团结日音乐会",
-          "heat": "115"
+          "heat": "134"
         },
         {
           "url": "http://www.acfun.cn/v/ac48961851",
@@ -10676,7 +10671,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48962429",
           "text": "你生活在千禧年的野生动物搜寻书 ˚˖𓍢ִ໋❀（适合学习时听的“鱼”系音乐 7）⋆. 无AI ˎˊ˗",
-          "heat": "126"
+          "heat": "137"
         },
         {
           "url": "http://www.acfun.cn/v/ac48961892",
@@ -10691,7 +10686,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48961806",
           "text": "【夜】Lyrical Lily 6th LIVE「渋谷とは魔境でございますか？」",
-          "heat": "210"
+          "heat": "238"
         },
         {
           "url": "http://www.acfun.cn/v/ac48963845",
@@ -10714,6 +10709,11 @@
           "heat": "93"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48961850",
+          "text": "【贝斯COVER】忘れられないの - サカナクション",
+          "heat": "49"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48963476",
           "text": "ROIROM  GHOST HOUSE  Music Video",
           "heat": "0"
@@ -10734,9 +10734,9 @@
           "heat": "96"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48961850",
-          "text": "【贝斯COVER】忘れられないの - サカナクション",
-          "heat": "30"
+          "url": "http://www.acfun.cn/v/ac48962539",
+          "text": "2026-11-04 丝音_silk 直播录像",
+          "heat": "34"
         }
       ]
     },
