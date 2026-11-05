@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793915142800,
+  "timestamp": 1793916054186,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://wallstreetcn.com/articles/3785298",
+          "text": "Anthropic 推出个人财务功能：Claude 可接入银行账户，回答用户理财问题",
+          "heat": "华尔街见闻"
+        },
+        {
           "url": "https://www.mittrchina.com/news/detail/17196",
           "text": "如何用「逆向博弈论」约束 AI 智能体",
           "heat": "麻省理工科技评论"
@@ -3068,11 +3073,6 @@
           "url": "https://www.mittrchina.com/news/detail/17197",
           "text": "Anthropic 被曝取消 IPO？Claude Code 三大功臣接连离开，但迎来 AMD 高管",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
-          "text": "Claude 推出个人理财功能",
-          "heat": "Claude Blog"
         }
       ]
     },
@@ -10591,7 +10591,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48961356",
           "text": "《拿包烟》尼灯喵喵 吸烟有害健康 【UP创作大赛】",
-          "heat": "1379"
+          "heat": "1381"
         },
         {
           "url": "http://www.acfun.cn/v/ac48963112",
@@ -10601,7 +10601,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48961953",
           "text": "【东方】ラクトガール～少女密室 钢琴演绎【ViddyWell】",
-          "heat": "701"
+          "heat": "714"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945546",
