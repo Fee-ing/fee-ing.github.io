@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793988937280,
+  "timestamp": 1793989848147,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3060,6 +3060,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://www.gelonghui.com/live/2750809",
+          "text": "报道：微软逐步终止与甲骨文 AI 算力租赁协议",
+          "heat": "格隆汇"
+        },
+        {
           "url": "https://www.aibase.com/zh/news/32151",
           "text": "淘宝 MNN 团队开源 MNN-Pocket-0.3B，iPhone 18 Pro 离线解码飙升至 350 token/s",
           "heat": "aibase"
@@ -3078,11 +3083,6 @@
           "url": "https://www.mittrchina.com/news/detail/17200",
           "text": "上交大谢伟迪创业，他想打造让 AI 进入生命科学的「编译器」",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32146",
-          "text": "谷歌发布 Gemini Omni1.2Flash：单次时长增至 15 秒，成本降幅达 30%",
-          "heat": "aibase"
         }
       ]
     },
@@ -10591,17 +10591,17 @@
         {
           "url": "http://www.acfun.cn/v/ac48966940",
           "text": "把《在夜里跳舞》改成city pop！",
-          "heat": "431"
+          "heat": "473"
         },
         {
           "url": "http://www.acfun.cn/v/ac48959113",
           "text": "【UP创作大赛】一段帅气的ending！",
-          "heat": "858"
+          "heat": "887"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965198",
           "text": "起飞了！RESCENE 《With》4K版MV",
-          "heat": "1030"
+          "heat": "1035"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945665",
@@ -10649,14 +10649,19 @@
           "heat": "38"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48965031",
-          "text": "ヤングスキニー - 雪月花 (Live at Zepp Haneda(TOKYO) 2025.07.",
-          "heat": "29"
+          "url": "http://www.acfun.cn/v/ac48963922",
+          "text": "鈴木瑛美子×亀田誠治「フロントメモリー」映画「恋は雨上がりのように」主題歌",
+          "heat": "14"
         },
         {
           "url": "http://www.acfun.cn/v/ac48966810",
           "text": "［朝鲜抗日歌曲］消失在云间的马车",
           "heat": "379"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48965031",
+          "text": "ヤングスキニー - 雪月花 (Live at Zepp Haneda(TOKYO) 2025.07.",
+          "heat": "29"
         },
         {
           "url": "http://www.acfun.cn/v/ac48963917",
@@ -10667,11 +10672,6 @@
           "url": "http://www.acfun.cn/v/ac48963920",
           "text": "Osaka Let s Get Jump (Original Mix) / Kento, Dbb,",
           "heat": "24"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48963922",
-          "text": "鈴木瑛美子×亀田誠治「フロントメモリー」映画「恋は雨上がりのように」主題歌",
-          "heat": "14"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965112",
@@ -10694,6 +10694,11 @@
           "heat": "103"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48966112",
+          "text": "HiRes无损-beyond 1989年《四拍四》",
+          "heat": "59"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48965151",
           "text": "波利扬斯基指挥俄罗斯国立卡佩拉交响乐团：穆索尔斯基、柴可夫斯基与拉赫玛尼诺夫（2026.11.5）",
           "heat": "69"
@@ -10707,6 +10712,11 @@
           "url": "http://www.acfun.cn/v/ac48965093",
           "text": "FRESH AIR OS - (千禧年 Frutiger Aero 学习音乐) .ᐟ无AI",
           "heat": "282"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48966969",
+          "text": "【衣笠雪绘】路过人间 歌切day210【UP创作大赛】",
+          "heat": "151"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965204",
@@ -10727,16 +10737,6 @@
           "url": "http://www.acfun.cn/v/ac48964565",
           "text": "2026-11-05 牛铲铲 直播录像",
           "heat": "97"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48944276",
-          "text": "张靓颖 澳门演唱会",
-          "heat": "28"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48966969",
-          "text": "【衣笠雪绘】路过人间 歌切day210【UP创作大赛】",
-          "heat": "119"
         }
       ]
     },
