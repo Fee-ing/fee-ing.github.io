@@ -1,5 +1,5 @@
 {
-  "timestamp": 1793981736848,
+  "timestamp": 1793982649901,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "麻省理工科技评论"
         },
         {
+          "url": "https://blogs.nvidia.com/blog/telco-open-source-tools-research-6g-networks/",
+          "text": "How NVIDIA Open Source Tools Are Helping Researchers Build Next-Generation 6G Networks",
+          "heat": "NVIDIA Blog"
+        },
+        {
           "url": "https://huggingface.co/blog/allenai/toyblocks",
           "text": "ToyBlocks: A controlled world for robot learning and evaluation",
           "heat": "Hugging Face Blog"
@@ -3073,11 +3078,6 @@
           "url": "https://www.aibase.com/zh/news/32146",
           "text": "谷歌发布 Gemini Omni1.2Flash：单次时长增至 15 秒，成本降幅达 30%",
           "heat": "aibase"
-        },
-        {
-          "url": "https://www.techflowpost.com/zh-CN/newsletter/143421",
-          "text": "台积电拟进军先进内存芯片制造，应英伟达要求布局 3D DRAM",
-          "heat": "techflowpost.com"
         }
       ]
     },
@@ -10616,12 +10616,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48959113",
           "text": "【UP创作大赛】一段帅气的ending！",
-          "heat": "719"
+          "heat": "764"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965198",
           "text": "起飞了！RESCENE 《With》4K版MV",
-          "heat": "994"
+          "heat": "1023"
         },
         {
           "url": "http://www.acfun.cn/v/ac48945665",
@@ -10684,14 +10684,19 @@
           "heat": "24"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48945713",
+          "text": "【大塚 愛】黒毛和牛上塩タン焼680円",
+          "heat": "75"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48963922",
           "text": "鈴木瑛美子×亀田誠治「フロントメモリー」映画「恋は雨上がりのように」主題歌",
           "heat": "14"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48945713",
-          "text": "【大塚 愛】黒毛和牛上塩タン焼680円",
-          "heat": "62"
+          "url": "http://www.acfun.cn/v/ac48966810",
+          "text": "［朝鲜抗日歌曲］消失在云间的马车",
+          "heat": "283"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965112",
@@ -10699,14 +10704,14 @@
           "heat": "1033"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48966810",
-          "text": "［朝鲜抗日歌曲］消失在云间的马车",
-          "heat": "233"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48957744",
           "text": "【AI】機動警察パトレイバーEZY テーマソングメドレー（机动警察PATLABOR 主题曲组曲）",
           "heat": "83"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48961165",
+          "text": "テセサクch - GOODKUN（Official Music Video）",
+          "heat": "12"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965151",
@@ -10722,6 +10727,11 @@
           "url": "http://www.acfun.cn/v/ac48965093",
           "text": "FRESH AIR OS - (千禧年 Frutiger Aero 学习音乐) .ᐟ无AI",
           "heat": "278"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48966940",
+          "text": "把《在夜里跳舞》改成city pop！",
+          "heat": "203"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965204",
@@ -10744,24 +10754,14 @@
           "heat": "97"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48966907",
+          "text": "【蔚蓝档案】5th Anniversary OST - Unending Moderato",
+          "heat": "27"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48944276",
           "text": "张靓颖 澳门演唱会",
           "heat": "28"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48964215",
-          "text": "预告：广州高达only  あんなに一緒だったのに",
-          "heat": "90"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48961165",
-          "text": "テセサクch - GOODKUN（Official Music Video）",
-          "heat": "0"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48964456",
-          "text": "2026-11-05 贝学姐 直播录像",
-          "heat": "56"
         }
       ]
     },
