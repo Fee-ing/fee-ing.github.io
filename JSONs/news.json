@@ -1,5 +1,5 @@
 {
-  "timestamp": 1794172537748,
+  "timestamp": 1794173448428,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3055,6 +3055,11 @@
           "heat": "雷锋网"
         },
         {
+          "url": "https://www.199it.com/archives/1841254.html",
+          "text": "2026-2027年全球经济展望：AI托底增长，能源冲击趋于缓和",
+          "heat": "199IT"
+        },
+        {
           "url": "https://www.techflowpost.com/zh-CN/newsletter/143593",
           "text": "报道称苹果加快 Siri 智能体路线图",
           "heat": "techflowpost.com"
@@ -3073,11 +3078,6 @@
           "url": "https://www.199it.com/archives/1842339.html",
           "text": "Gartner：2026 年印度企业云支出将达到 175 亿美元，同比增长 28.1%",
           "heat": "199IT"
-        },
-        {
-          "url": "https://news.qq.com/rain/a/20261108A0BA9O00",
-          "text": "跨模型上下文交接还要重算 KV？北大提出 MapFlow，让注意力跨模型复用",
-          "heat": "腾讯网"
         }
       ]
     },
