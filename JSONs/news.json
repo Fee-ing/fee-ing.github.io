@@ -1,5 +1,5 @@
 {
-  "timestamp": 1794163541767,
+  "timestamp": 1794164453625,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3070,6 +3070,11 @@
           "heat": "联商网"
         },
         {
+          "url": "https://www.199it.com/archives/1842339.html",
+          "text": "Gartner：2026 年印度企业云支出将达到 175 亿美元，同比增长 28.1%",
+          "heat": "199IT"
+        },
+        {
           "url": "https://news.qq.com/rain/a/20261108A0BA9O00",
           "text": "跨模型上下文交接还要重算 KV？北大提出 MapFlow，让注意力跨模型复用",
           "heat": "腾讯网"
@@ -3078,11 +3083,6 @@
           "url": "https://www.techradar.com/pro/google-and-microsoft-among-those-signing-up-to-openais-plan-for-a-new-website-crawling-standard-including-opting-out-of-internet-scraping",
           "text": "Google and Microsoft among those signing up to OpenAI's plan for a new website crawling standard — including opting-out of internet scraping",
           "heat": "techradar.com"
-        },
-        {
-          "url": "https://www.techflowpost.com/zh-CN/newsletter/143567",
-          "text": "Anthropic 斥资 34 亿美元采购燃气发电设备，为数据中心供电",
-          "heat": "techflowpost.com"
         }
       ]
     },
@@ -10566,7 +10566,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48974445",
           "text": "「神性」与「邪性」并存的《嗵嗵》翻唱|“让我知道我是谁”",
-          "heat": "1074"
+          "heat": "1081"
         },
         {
           "url": "http://www.acfun.cn/v/ac48973565",
@@ -10576,7 +10576,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48975050",
           "text": "【UP创作大赛】ゲキヤクV和カゼヒキV的Enemy",
-          "heat": "385"
+          "heat": "417"
         },
         {
           "url": "http://www.acfun.cn/v/ac48951389",
@@ -10604,14 +10604,14 @@
           "heat": "65"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48974103",
-          "text": "【中文字幕】重演-プレイバック -Playback-【我的VOCALOID有点奇怪】",
-          "heat": "488"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48951411",
           "text": "【萧亚轩】敢伤",
-          "heat": "80"
+          "heat": "99"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48974103",
+          "text": "【中文字幕】重演-プレイバック -Playback-【我的VOCALOID有点奇怪】",
+          "heat": "499"
         },
         {
           "url": "http://www.acfun.cn/v/ac48973712",
@@ -10626,7 +10626,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48972457",
           "text": "【UP创作大赛】每周音乐分享 2026.11.07期",
-          "heat": "143"
+          "heat": "154"
         },
         {
           "url": "http://www.acfun.cn/v/ac48974435",
@@ -10654,14 +10654,14 @@
           "heat": "66"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48973485",
-          "text": "专辑“朝鲜之歌”第39张",
-          "heat": "154"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48974090",
           "text": "为应付而发",
           "heat": "65"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48973485",
+          "text": "专辑“朝鲜之歌”第39张",
+          "heat": "154"
         },
         {
           "url": "http://www.acfun.cn/v/ac48973855",
