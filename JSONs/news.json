@@ -1,5 +1,5 @@
 {
-  "timestamp": 1794330945165,
+  "timestamp": 1794331852033,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3040,6 +3040,11 @@
           "heat": "NVIDIA Blog"
         },
         {
+          "url": "https://sebastianraschka.com/blog/2026/full-to-hybrid-attention.html",
+          "text": "From Full to Hybrid Attention in LLMs",
+          "heat": "sebastianraschka.com"
+        },
+        {
           "url": "https://openai.com/index/ai-effect-on-freelance-work",
           "text": "Work at the Frontier: AI’s effect on freelance work",
           "heat": "OpenAI"
@@ -3068,11 +3073,6 @@
           "url": "https://www.mittrchina.com/news/detail/17222",
           "text": "Fable 5.2 登场：解出两道黑洞物理难题，30 小时完成费马大定理形式化",
           "heat": "麻省理工科技评论"
-        },
-        {
-          "url": "https://www.aibase.com/zh/news/32206",
-          "text": "美团开源 LongCat-2.5，长序列 SFT 单卡吞吐较 DDP 提升 86%",
-          "heat": "aibase"
         }
       ]
     },
@@ -10639,19 +10639,24 @@
           "heat": "151"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48979784",
+          "text": "【绝望女神/翻唱】【囍】",
+          "heat": "389"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48979651",
           "text": "[伴奏](ユジー)落花式",
           "heat": "79"
         },
         {
-          "url": "http://www.acfun.cn/v/ac48978757",
-          "text": "pupsies ‘misery.’ (Official Lyric Video)",
-          "heat": "290"
-        },
-        {
           "url": "http://www.acfun.cn/v/ac48980786",
           "text": "滴水生根原创国风民谣《甘南的春天啊在舟曲上岸了》#九色甘南 #舟曲 #民谣 #博峪采花节",
           "heat": "183"
+        },
+        {
+          "url": "http://www.acfun.cn/v/ac48978757",
+          "text": "pupsies ‘misery.’ (Official Lyric Video)",
+          "heat": "313"
         },
         {
           "url": "http://www.acfun.cn/v/ac48978897",
@@ -10664,19 +10669,14 @@
           "heat": "127"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48951571",
+          "text": "【大塚 愛】恋フル",
+          "heat": "97"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48951503",
           "text": "【中国音乐地图之听见内蒙古 四胡、三弦、雅托嘎音乐集】巴音杭盖",
           "heat": "115"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48951571",
-          "text": "【大塚 愛】恋フル",
-          "heat": "83"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48979784",
-          "text": "【绝望女神/翻唱】【囍】",
-          "heat": "260"
         },
         {
           "url": "http://www.acfun.cn/v/ac48951511",
@@ -10701,12 +10701,12 @@
         {
           "url": "http://www.acfun.cn/v/ac48978414",
           "text": "《胜利女神：NIKKE》OST-Call my name, Again",
-          "heat": "253"
+          "heat": "265"
         },
         {
           "url": "http://www.acfun.cn/v/ac48978858",
           "text": "【重音テト】Puppet（木偶）【NIJUUGO*A】",
-          "heat": "176"
+          "heat": "189"
         },
         {
           "url": "http://www.acfun.cn/v/ac48951568",
@@ -10739,14 +10739,14 @@
           "heat": "280"
         },
         {
+          "url": "http://www.acfun.cn/v/ac48978876",
+          "text": "【重音テト】テイカー｛低下｝【原口沙輔】",
+          "heat": "121"
+        },
+        {
           "url": "http://www.acfun.cn/v/ac48964517",
           "text": "H2O √ after and another Complete story Edition OST",
           "heat": "45"
-        },
-        {
-          "url": "http://www.acfun.cn/v/ac48978876",
-          "text": "【重音テト】テイカー｛低下｝【原口沙輔】",
-          "heat": "112"
         },
         {
           "url": "http://www.acfun.cn/v/ac48978326",
@@ -10766,7 +10766,7 @@
         {
           "url": "http://www.acfun.cn/v/ac48978884",
           "text": "【花隈千冬】#魔法少女推活中【nogi】",
-          "heat": "58"
+          "heat": "62"
         },
         {
           "url": "http://www.acfun.cn/v/ac48965690",
