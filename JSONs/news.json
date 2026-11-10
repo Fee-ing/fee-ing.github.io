@@ -1,5 +1,5 @@
 {
-  "timestamp": 1794336342504,
+  "timestamp": 1794337256955,
   "data": [
     {
       "source": "淘宝‧天猫",
@@ -3035,6 +3035,11 @@
           "heat": "OpenAI"
         },
         {
+          "url": "https://openai.com/index/introducing-businesses-chatgpt",
+          "text": "ChatGPT 推出 Businesses 功能",
+          "heat": "OpenAI"
+        },
+        {
           "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/",
           "text": "NVIDIA Expands Open Source Commitment With OpenShell Donation and New AI Infrastructure",
           "heat": "NVIDIA Blog"
@@ -3065,14 +3070,9 @@
           "heat": "麻省理工科技评论"
         },
         {
-          "url": "https://www.leiphone.com/category/industrynews/dew7AYBxkGAYilZj.html",
-          "text": "阿里巴巴：已正式申请平头哥独立上市",
-          "heat": "雷锋网"
-        },
-        {
-          "url": "https://www.mittrchina.com/news/detail/17222",
-          "text": "Fable 5.2 登场：解出两道黑洞物理难题，30 小时完成费马大定理形式化",
-          "heat": "麻省理工科技评论"
+          "url": "https://wallstreetcn.com/articles/3785667",
+          "text": "MiniMax 开源 H3 Image：4K 图像生成仅 10 秒，支持多达 16 张参考图",
+          "heat": "华尔街见闻"
         }
       ]
     },
