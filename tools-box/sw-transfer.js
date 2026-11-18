@@ -47,11 +47,14 @@ async function serve(key, name) {
     const dir = await root.getDirectoryHandle(DIR);
     const file = await (await dir.getFileHandle(key)).getFile();
     const safe = (name || 'file').replace(/[\\/:*?"<>|]/g, '_');
+    // 同时提供 ASCII filename 兜底：部分国产内核 / 下载管理器
+    // 解析 filename*=UTF-8'' 扩展参数不稳，会导致下载异常
+    const ascii = safe.replace(/[^\x20-\x7e]/g, '_').replace(/"/g, '') || 'file';
     return new Response(file, {
       headers: {
         'Content-Type': 'application/octet-stream',
         'Content-Length': String(file.size),
-        'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(safe)}`,
+        'Content-Disposition': `attachment; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(safe)}`,
         'Cache-Control': 'no-store',
       },
     });
