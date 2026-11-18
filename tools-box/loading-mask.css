@@ -7,9 +7,12 @@
  *   2. React 挂载后的 LoadingMask。
  * 若只留在 src 里被打包，静态壳就必须另抄一份，改一处漏一处。
  *
- * 视觉：高饱和呼吸渐变 + 斜向流光 + 噪点纹理，让加载过程有「色彩在流动」的
- * 真实感。根节点用 absolute inset-0 铺满调用方的相对容器，因此这里只管外观，
- * 尺寸与定位交给组件上的 Tailwind 类（静态壳用内联样式）。
+ * 视觉：兜底层刻意复刻流体引擎（loading-fluid.js）的**第一帧**——同一套
+ * Electric Shock 色板、同样的 6 团色斑位置。流体画布不透明、盖在兜底层之上，
+ * 兜底层只在「画布就位前」可见；两边长得一样，接管瞬间肉眼无缝，不存在
+ * 「先看到一套颜色、再硬切成另一套」的生硬过渡。WebGL 不可用时，这层静态
+ * 近似就是最终外观。根节点用 absolute inset-0 铺满调用方的相对容器，
+ * 因此这里只管外观，尺寸与定位交给组件上的 Tailwind 类（静态壳用内联样式）。
  */
 
 .lm-mask {
@@ -22,17 +25,29 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* 第1层：高饱和模糊渐变呼吸背景 */
+/* 第1层：兜底渐变 —— 复刻流体第一帧（色板与色斑位置取自 loading-fluid.js
+   的 COLORS / DYES，坐标为 dye 的 st 值直接换算成 CSS 的 x%/y%，自上而下
+   依次对应 dot_5 → dot_0，与着色器「后画的在上」的叠放顺序一致） */
 .lm-mask__blur {
   position: absolute;
   inset: -40px;
   /* ✅ 不透明度拉满，让色彩层占主导 */
   opacity: 1;
-  /* ✅ 提升渐变 alpha 值，色彩更浓郁 */
   background:
-    radial-gradient(circle at 30% 40%, rgba(255, 160, 175, 0.75), transparent 50%),
-    radial-gradient(circle at 70% 20%, rgba(140, 200, 255, 0.8), transparent 55%),
-    radial-gradient(circle at 50% 80%, rgba(190, 170, 255, 0.7), transparent 60%);
+    /* dot_5 红 #EC2025 */
+    radial-gradient(circle at 64% 28%, #EC2025 16%, transparent 46%),
+    /* dot_4 橙 #FCBD33 */
+    radial-gradient(circle at 41% 36%, #FCBD33 20%, transparent 42%),
+    /* dot_3 黄 #EDE82F */
+    radial-gradient(circle at 98% 5%, #EDE82F 10%, transparent 43%),
+    /* dot_2 深灰 #383A3C */
+    radial-gradient(circle at 60% 31%, #383A3C 18%, transparent 42%),
+    /* dot_1 蓝 #1C75ED */
+    radial-gradient(circle at 50% 45%, #1C75ED 18%, transparent 41%),
+    /* dot_0 青 #7CFFFD */
+    radial-gradient(circle at 11% 44%, #7CFFFD 15%, transparent 34%),
+    /* 渐变底：左青 → 右蓝，右侧按 st.x² 混入深灰压暗（对应染料着色器的底色） */
+    linear-gradient(90deg, #7CFFFD 0%, #1C75ED 55%, #383A3C 100%);
   /* ✅ 模糊略微收紧，减少色彩混合泛白 */
   filter: blur(30px);
   animation: lm-breathing 5s ease-in-out infinite alternate;
