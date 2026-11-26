@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -13,9 +13,10 @@
      PhotoCraft website   → https://getartcraft.com/apps/photocraft
      GitHub               → https://github.com/storytold/photocraft(/issues)
      ArtCraft             → https://getartcraft.com
-   文案编译在 wasm 里（改不掉），点击最终都落到 window.open 或一个临时 <a> 的
-   click 上，所以只在这两个出口上判断：Discord 的一律不打开，**其余照常在新窗口
-   打开**。同源、blob:、data: 一律放行 —— 保存 / 导出（下载）走的是这几条路。 */
+   上面是上游英文原文（本站已由下面的 i18n 脚本切成简体中文），但链接目标不变。
+   点击最终都落到 window.open 或一个临时 <a> 的 click 上，所以只在这两个出口上
+   判断：Discord 的一律不打开，**其余照常在新窗口打开**。同源、blob:、data:
+   一律放行 —— 保存 / 导出（下载）走的是这几条路。 */
 (function () {
   // 只认主机名，不看路径 —— 邀请链接换了码也照样拦得住。后缀锚定，
   // 避免把 discord.gg.example.com 这类无关域名一起拦掉。
@@ -77,6 +78,33 @@
 })();
 </script>
 
+<script>
+/* Embedded copy (tools-box)：默认把 PhotoCraft 界面切到简体中文，详见
+   src/pages/PhotoCraft/index.jsx 的改动 ⑦。
+
+   上游 0.17.0 内置 zh-hans / zh-hant 目录（i18n.rs 的 LANGUAGES），语言取自
+   localStorage["photocraft.preferences"] 里的 interface.language：
+     Lang::from_pref(pref) -> zh-hans | zh-hant | auto | ...
+   只在缺失或 auto 时写入 zh-hans；用户若在应用内显式选过语言，尊重其选择。
+   必须在下面的 module 脚本之前执行 —— WASM 启动时一次性读取这份偏好。 */
+(function () {
+  try {
+    var KEY = 'photocraft.preferences';
+    var raw = localStorage.getItem(KEY);
+    var prefs = raw ? JSON.parse(raw) : {};
+    if (!prefs || typeof prefs !== 'object' || Array.isArray(prefs)) prefs = {};
+    var iface = prefs.interface;
+    if (!iface || typeof iface !== 'object' || Array.isArray(iface)) iface = prefs.interface = {};
+    if (!iface.language || String(iface.language).toLowerCase() === 'auto') {
+      iface.language = 'zh-hans';
+      localStorage.setItem(KEY, JSON.stringify(prefs));
+    }
+  } catch (e) {
+    /* 隐私模式 / 存储不可用：交给应用自己的默认逻辑 */
+  }
+})();
+</script>
+
 <script type="module">
 import init, * as bindings from './photocraft-web-boot-251aa3764a2189ed.js';
 const wasm = await init({ module_or_path: './photocraft-web-boot-251aa3764a2189ed_bg.wasm' });
@@ -104,10 +132,8 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
 <body>
   <canvas id="photocraft_canvas"></canvas>
   <div id="photocraft_loading">
-    <p>Loading PhotoCraft&hellip;</p>
-    <p id="photocraft_stalled">This is taking longer than usual. If PhotoCraft doesn't start, its files may have failed to
-      download or come from a different version of this page. <a href="">Reload</a> to try again; the browser
-      console lists what failed.</p>
+    <p>正在加载 PhotoCraft…</p>
+    <p id="photocraft_stalled">加载时间比平时更长。如果 PhotoCraft 未能启动，可能是文件下载失败，或文件与当前页面版本不一致。<a href="">重新加载</a>重试；浏览器控制台会列出失败原因。</p>
   </div>
 </body>
 </html>
